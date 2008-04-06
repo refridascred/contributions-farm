@@ -45,15 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Idle,
-            Paused,
-            Draft,
-            Retry,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleInterval = "open";
+        public const double LimitAccount = 16.68;
+        public const string IdleAccount = "alpha-v2";
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
