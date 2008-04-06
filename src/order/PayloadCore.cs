@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 7366;
+        public const long StepContributi = 753;
+        public const long IdleContributi = 8382;
+        public const long DefaultContributi = 1670;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
