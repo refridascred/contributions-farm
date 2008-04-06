@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "staging-edge";
-        public const long SoftRecord = 1944;
-        public const long LimitSize = 16;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBatch = "local-edge";
