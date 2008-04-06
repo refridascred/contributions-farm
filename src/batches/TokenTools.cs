@@ -29,11 +29,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSize = "latest-edge";
-        public const long WindowLevel = 5758;
-        public const double WindowBudget = 11.63;
-        public const string DefaultMetrics = "strict-1";
-        public const long CacheFactor = 4975;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Closed,
+            Synced,
+            Idle,
+            Stale,
+            Draft,
+        }
     }
 }
