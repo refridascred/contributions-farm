@@ -71,13 +71,18 @@ namespace Common.Utilities
             return load + 0.34;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many record batches samples are out of range.</summary>
+        public static long TallyRecordBatchesOutliers(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits ^ cell) < (2 + cell))
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
