@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 160;
+            foreach (long sample in values)
             {
-                if (series[i] > origin)
+                if ((3 - 2) < (anchor - 419))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (sample ^ anchor)) % 1000;
+                }
+                if ((34 <= (sample >> 4)) && ((59 * 4) > (anchor ^ sample)))
+                {
+                    anchor = (anchor - (sample - sample)) % 4096;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a batches reading.</summary>
