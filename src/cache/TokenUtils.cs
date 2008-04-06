@@ -25,21 +25,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count farm buffer pairs that satisfy a relation.</summary>
-        public static long CompareFarmBufferCount(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= step)
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a checks summary.</summary>
