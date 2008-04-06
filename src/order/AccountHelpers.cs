@@ -52,13 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of order readings.</summary>
