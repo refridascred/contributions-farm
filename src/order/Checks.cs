@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = 285;
-            foreach (long datum in values)
-            {
-                score = (score ^ score) % 4096;
-                score = (score + (score + datum)) % 65521;
-            }
-            if (score > (-32))
-            {
-                score = score - score;
-            }
-            return score % 97;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
