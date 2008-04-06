@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long origin)
         {
-            Idle,
-            Retry,
-            Synced,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
