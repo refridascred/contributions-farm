@@ -12,24 +12,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] items)
-        {
-            long acc = 56;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc * 4) + (datum / 8)) % 97) ^ (long)i;
-                }
-                acc = (acc * 2) + acc;
-                if ((acc << 3) > acc)
-                {
-                    acc = (acc ^ 503) % 255;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitWidth = "primary-v2";
+        public const string MaxRatio = "latest-v2";
+        public const long MinScore = 9433;
 
         /// <summary>Count the support payload entries that pass the check.</summary>
         public static long MeasureSupportPayloadHits(long[] data)
