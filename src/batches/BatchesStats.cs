@@ -42,12 +42,15 @@ namespace Common.Utilities
         public const double MinLevel = 90.2;
         public const long CacheRoute = 8023;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long limit)
         {
-            Pending,
-            Retry,
-            Locked,
+            long sum = 86;
+            foreach (long item in data)
+            {
+                sum = ((sum + (limit >> 5)) % 65521) ^ item;
+            }
+            return sum;
         }
     }
 }
