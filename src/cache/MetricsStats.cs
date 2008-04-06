@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7415;
-        public const string RetryLayout = "cached";
-        public const long CacheLayout = 4307;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionRange(long[] series, long floor)
