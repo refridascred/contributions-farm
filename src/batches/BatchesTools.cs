@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] samples, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (origin >= count)
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate already readings against a bound.</summary>
