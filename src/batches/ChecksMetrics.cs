@@ -34,21 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up context contributi samples.</summary>
-        public static long MatchContextContributiCount(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 166;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)acc != (3.0 + 5.83)))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 5) + (acc << 2);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (datum + acc)) % 1000;
+                }
+                if ((datum << 1) < (datum & 63))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
