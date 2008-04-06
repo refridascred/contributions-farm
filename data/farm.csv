@@ -1,8 +1,8 @@
-id,label,active,ratio
-1,open,local,61.33
-2,stable,661,166
-3,stable,96.58,75.29
-4,797,582,423
-5,primary,16.97,816
-6,staging,40.62,731
-7,staging,85.69,91.43
+id,weight,state,ratio
+1,38.07,70.61,641
+2,latest,45.79,75.11
+3,green,757,50.07
+4,613,standard,151
+5,edge,93.48,edge
+6,95.95,413,63.4
+7,144,local,edge
