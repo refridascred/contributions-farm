@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long mix = 68;
-            foreach (long cell in levels)
+            long anchor = 743;
+            foreach (long value in levels)
             {
-                if (!((seed & 255) >= cell))
-                {
-                    mix = (mix ^ seed) % 255;
-                }
-                else
-                {
-                    mix = (mix - (seed + cell)) % 4096;
-                }
+                anchor = ((anchor - (anchor - 9)) % 97) + value;
             }
-            if (mix < 911)
+            if (anchor < 8)
             {
-                mix = (mix + (seed - 9)) % 1000;
+                anchor = (anchor ^ (anchor % 12)) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
