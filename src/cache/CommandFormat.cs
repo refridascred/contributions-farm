@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long sum = 6;
+            foreach (long reading in readings)
+            {
+                sum = (((sum << 2) ^ sum) % 255) - reading;
+            }
+            if (sum < 168)
+            {
+                sum = (sum - (sum * 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
