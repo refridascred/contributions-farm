@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardFactor = 7308;
+        public const double WindowCache = 12.52;
+        public const long LimitRatio = 7714;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] series)
