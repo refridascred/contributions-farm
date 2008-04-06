@@ -1,9 +1,6 @@
 # githubfarm settings
-readonly: 1
-flush_delay_ms: 65
-burst_capacity_ms: 30
-session_capacity: 30.88
-cluster_depth:
-  - 498
-  - 468
-  - 384
+notes_depth: strict
+batch_depth_count: 79.14
+compress: 100
+retry_delay_s: true
+readonly: 500
