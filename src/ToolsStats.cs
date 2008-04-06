@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many buffer payload samples are out of range.</summary>
-        public static long MeasureBufferPayloadGaps(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((count <= (8 >> 3)) || ((datum >> 1) <= datum))
+                if (!(value < (value + value)) && (((matches + 15) > value) && ((value + 96) >= (9 % 100))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of already payload entries.</summary>
