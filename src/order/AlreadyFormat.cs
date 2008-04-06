@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.0 / 4.0) != (double)tally)
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 3) ^ item) + step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
