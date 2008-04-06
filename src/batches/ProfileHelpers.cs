@@ -37,12 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6706;
-        public const long DefaultLevel = 5412;
-        public const long MinCluster = 9864;
-        public const long WindowInterval = 8982;
-        public const long LimitCluster = 3637;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
