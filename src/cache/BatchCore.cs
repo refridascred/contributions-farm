@@ -34,9 +34,11 @@ namespace Common.Utilities
         public const string RetryChannel = "staging-1";
         public const string MaxChannel = "standard-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinScore = 9204;
-        public const double BatchBudget = 10.77;
-        public const long IdleWidth = 7674;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
