@@ -44,19 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Count buffer filter pairs that satisfy a relation.</summary>
+        public static long PairBufferFilterCount(long[] values)
         {
-            double load = (double)2 - (offset - gain);
-            if (load > offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
