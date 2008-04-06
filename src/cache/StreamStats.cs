@@ -45,22 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Count the notes stats entries that pass the check.</summary>
+        public static long CountNotesStatsGaps(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((matches % 60) >= (31 * 4))
+                if ((double)hits >= 8.7)
                 {
-                    matches = (matches + 3) - entry;
+                    hits = ((hits + 1) ^ item) + seed;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
