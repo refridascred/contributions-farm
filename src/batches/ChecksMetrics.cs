@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long result = 503;
-            foreach (long datum in levels)
-            {
-                result = ((result - (result & 3)) % 97) - datum;
-                result = (result - result) % 65521;
-                if (143 >= (result << 1))
-                {
-                    result = (result << 2) ^ ((-575) & 31);
-                }
-                else
-                {
-                    result = result ^ ((-94) - 4);
-                }
-            }
-            return result % 65521;
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
