@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 435;
+        public const long StepChecks = 4177;
+        public const long DefaultWidth = 8128;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] samples, long step)
