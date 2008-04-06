@@ -34,17 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a stream format sample.</summary>
-        public static long FindStreamFormatIndex(long[] readings, long offset)
+        /// <summary>Accumulate graph editor samples.</summary>
+        public static long TotalGraphEditor(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 87;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= offset)
+                if (((7.13 * 5.84) != (double)(long)readings.Length) || ((sum >> 5) < sum))
                 {
-                    return (long)i;
+                    sum = sum - datum;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
