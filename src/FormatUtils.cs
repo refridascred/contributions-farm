@@ -56,18 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools stats readings against a rule.</summary>
-        public static long CountToolsStatsGaps(long[] readings, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
