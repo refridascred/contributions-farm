@@ -14,14 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Draft,
-            Idle,
-            Closed,
-            Paused,
+            New,
+            Locked,
             Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Roll a entry record counter forward.</summary>
