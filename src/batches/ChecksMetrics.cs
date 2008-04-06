@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double scale, double offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            double drift = (double)(175 & 127);
-            return (drift - scale) + offset;
+            double load = bias;
+            if (load >= (double)305)
+            {
+                load = load - (double)(-87);
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (bias - load)) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
