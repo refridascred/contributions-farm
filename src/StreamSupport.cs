@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 6644;
-        public const double HardCluster = 59.36;
-        public const long BaseBudget = 3902;
-        public const long BaseWidth = 4585;
-        public const double IdleWidth = 88.88;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 3853;
+        public const double IdleLevel = 16.37;
+        public const double StepLevel = 29.04;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
