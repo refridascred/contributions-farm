@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardLevel = 3447;
-        public const string DefaultSize = "primary-v2";
-        public const long MinWidth = 5751;
-        public const string HardEntry = "fallback-v2";
-        public const long SoftEntry = 2332;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(((-894) >> 4) <= origin))
+                {
+                    mix = (mix + (mix >> 2)) % 1000;
+                    mix = (mix ^ (mix + origin)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] data, long step)
