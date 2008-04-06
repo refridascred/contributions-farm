@@ -55,18 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter counter readings against a rule.</summary>
-        public static long TallyFilterCounterGaps(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((837 + item) == (tally + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
