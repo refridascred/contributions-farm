@@ -1,27 +1,15 @@
 {
-  "sync_retries_s": 30,
-  "persist": {
-    "record_depth": 100,
-    "idle_interval_count": false,
-    "strict": true
-  },
-  "max_limit": {
-    "default_window": {
-      "notes_size": 39,
-      "cache_depth": 10,
-      "verbose": "latest"
+  "layout_threshold": "local",
+  "min_size_count": 44.38,
+  "command_interval": true,
+  "burst_retries_s": {
+    "min_window": {
+      "cache_interval_s": 24,
+      "sync_threshold": "open",
+      "dry_run": "blue"
     },
-    "command_size": ["open", "open"],
-    "enabled": 100,
-    "sync_threshold_count": true,
-    "strict": {
-      "layout_interval": ["legacy", "legacy"],
-      "dry_run": false,
-      "base_limit_count": true,
-      "cache_depth": 60
-    },
-    "cache_threshold": 88.14
+    "entry_timeout": "green",
+    "base_timeout_count": ["cached", "stable", "fallback", "staging"]
   },
-  "batch_ttl_pct": 60,
-  "warm_depth_ms": ["green", "open", "strict"]
+  "cache_ttl": 250
 }
