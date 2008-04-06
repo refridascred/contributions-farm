@@ -48,12 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
