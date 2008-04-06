@@ -1,13 +1,9 @@
 # support settings
-persist: true
-default_size:
-  dry_run: eu-west
-  poll_capacity_pct:
-    - standard
-    - strict
-    - blue
-    - cached
-  audit: 47.24
-  graph_size: 72.83
-buffer_ratio: green
-burst_depth_s: latest
+schema_ttl: blue
+sync_timeout_ms: 22
+sync_capacity_s:
+  - strict
+  - legacy
+  - latest
+  - staging
+command_depth: 1462
