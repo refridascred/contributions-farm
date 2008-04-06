@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowCount = 92.49;
-        public const long LimitLevel = 5669;
-        public const long BurstBatch = 9116;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Locked,
+            Active,
+            Pending,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] levels)
