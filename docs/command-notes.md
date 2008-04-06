@@ -1,14 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the queue list.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep farm and channel names short and lowercase.
+The route module keeps schema values in sync with the queue cache.
 
-Run the token check before changing any entry limits.
-Use commits settings to tune how often batches data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
+When a notes fails, the payload handler retries a few times before giving up.
+The token report groups every session by route.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep commits values small
 - Validate contributi input early
+- Keep editor values small
+- Review schema limits each release
+- Document new commits fields
