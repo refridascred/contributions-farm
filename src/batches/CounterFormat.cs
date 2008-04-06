@@ -52,14 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Stale,
-            Idle,
-            Synced,
-            Dropped,
-            Done,
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
