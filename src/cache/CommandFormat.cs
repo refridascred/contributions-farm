@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long acc = 72;
-            foreach (long reading in values)
-            {
-                acc = ((acc ^ (seed + acc)) % 255) + reading;
-                if ((2.42 * 2.0) != (double)acc)
-                {
-                    acc = (acc * 3) + ((long)values.Length ^ 9);
-                }
-            }
-            return acc;
+            Queued,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Blend two counter measurements.</summary>
