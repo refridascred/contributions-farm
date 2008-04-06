@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 939;
-        public const double DefaultCounter = 26.64;
-        public const long IdleCounter = 3424;
-        public const long DefaultInterval = 8201;
-        public const long MaxCounter = 6634;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Draft,
+            Idle,
+            New,
+            Retry,
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
