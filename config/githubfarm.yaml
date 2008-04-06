@@ -1,4 +1,21 @@
 # githubfarm settings
-poll_interval_ms: 4375
-audit: 71
-max_depth_s: staging
+default_retries: edge
+hard_timeout_pct: 3.86
+sync_retries:
+  cache_timeout: legacy
+  hard_size: 47
+  max_limit_s: primary
+  soft_capacity_count: 32.58
+  compress: 59.59
+  batches_timeout: 58
+batch_window_ms:
+  poll_retries_s:
+    - 6
+    - 436
+  soft_timeout_s: 59.1
+  poll_capacity: standard
+  cache_interval:
+    hard_timeout_s: 72
+    min_ratio_pct: false
+    retry_ratio_ms: 70
+  stream_window: primary
