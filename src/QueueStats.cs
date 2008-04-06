@@ -39,31 +39,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank report tools input into a small class.</summary>
-        public static long ClassifyReportTools(long limit, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings, long offset)
         {
-            if (!((double)step <= (6.2 * 7.09)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + limit) >= (limit % 8)) && ((step + step) < (limit << 3)))
+                if ((((cell + offset) <= (cell * 2)) && ((cell + seen) <= (offset - offset))) || (cell <= offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ limit) > (step * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
