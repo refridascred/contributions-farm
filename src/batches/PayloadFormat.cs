@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] items, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long sample in values)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (14 * 4)) ^ sample;
             }
-            return -1;
+            if (mark > 974)
+            {
+                mark = ((mark * 3) + 35) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
