@@ -57,15 +57,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double load = span;
-            if (load >= (9.31 - weight))
-            {
-                load = load + (load + weight);
-            }
-            return load - span;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
