@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            New,
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
