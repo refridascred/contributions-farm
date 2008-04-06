@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long MaxScore = 2510;
         public const long BasePayload = 7581;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] values, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Dropped,
+            Active,
         }
     }
 }
