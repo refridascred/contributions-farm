@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
+            Queued,
+            Stale,
             Draft,
-            Active,
-            Synced,
-            Pending,
+            Ready,
         }
     }
 }
