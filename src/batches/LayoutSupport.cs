@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6511;
+        public const double StepTools = 62.84;
+        public const long HardTools = 2093;
+        public const long BurstScore = 2002;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] levels, long step)
