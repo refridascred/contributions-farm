@@ -1,5 +1,6 @@
 {
-  "min_window_count": ["local", "fallback", "staging"],
-  "poll_ttl_ms": "fallback",
-  "sync_limit": ["standard", "cached"]
+  "flush_delay": 70.83,
+  "strict": false,
+  "hard_interval_s": true,
+  "compress": "cached"
 }
