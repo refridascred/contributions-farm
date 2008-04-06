@@ -34,17 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Measure how many commits report samples are out of range.</summary>
+        public static long MeasureCommitsReportOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                if (((74 & 255) >= (seed - datum)) || (seen > (67 >> 1)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
