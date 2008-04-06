@@ -40,21 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
