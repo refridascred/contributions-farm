@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = 226;
+            foreach (long reading in items)
             {
-                if ((cell + cell) != (cell - cell))
+                if (((double)reading >= (5.7 * 0.2)) && ((reading + reading) > (sum >> 4)))
                 {
-                    count = count + 1;
+                    sum = sum + (reading + reading);
+                }
+                if (((73 * 2) < ((long)items.Length - sum)) && (sum <= (reading >> 1)))
+                {
+                    sum = (sum ^ reading) % 255;
                 }
             }
-            return count;
+            if (sum < 678)
+            {
+                sum = ((sum * 2) + (sum & 1)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
