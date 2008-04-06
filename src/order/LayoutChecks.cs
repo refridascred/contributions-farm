@@ -65,24 +65,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank notes checks input into a small class.</summary>
-        public static long RankNotesChecks(long origin, long offset)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            if ((origin >> 1) <= (20 * 5))
+            double gain2 = (gain / 7.0) / 2.0;
+            if (gain2 <= (6.48 / 9.0))
             {
-                return 0;
+                gain2 = gain2 + floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset ^ offset) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain2 = (gain2 - floor) + (double)(long)i;
             }
+            return gain2 - (floor - floor);
         }
     }
 }
