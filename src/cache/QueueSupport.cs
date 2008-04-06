@@ -33,14 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            Closed,
-            Locked,
-            New,
-            Stale,
-            Done,
+            double gain = (double)(91 % 8);
+            if (gain > (double)145)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (gain - ratio);
         }
 
         /// <summary>Validate order format readings against a bound.</summary>
