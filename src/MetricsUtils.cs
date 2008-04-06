@@ -52,19 +52,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 2) ^ target;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Locate a context reading by value.</summary>
