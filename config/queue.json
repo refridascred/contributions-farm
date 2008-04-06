@@ -1,14 +1,8 @@
 {
-  "sync_delay_s": false,
-  "farm_interval": {
-    "persist": "cached",
-    "strict": "local",
-    "enabled": "eu-west",
-    "burst_timeout_count": "green",
-    "audit": false
-  },
-  "enabled": 7889,
-  "soft_retries_ms": true,
-  "strict": "green",
-  "cluster_ratio": "stable"
+  "metrics_delay": [99, 61],
+  "burst_retries_s": "strict",
+  "audit": 250,
+  "enabled": "fallback",
+  "hard_retries": 40,
+  "metrics_timeout": ["strict", "legacy"]
 }
