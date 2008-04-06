@@ -20,18 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long origin)
         {
-            long acc = 891;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.4 - 7.0) != (double)acc) || ((bound - acc) < (acc + 832)))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    acc = (((acc * 4) + (acc * 2)) % 101) + entry;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
