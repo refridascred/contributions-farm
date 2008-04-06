@@ -1,5 +1,10 @@
 # entry settings
-base_limit_ms: staging
-readonly: 24
-min_size: true
-persist: 500
+min_capacity_s: fallback
+graph_interval:
+  batch_capacity_ms: 66.97
+  checks_ttl: 4.56
+  filter_interval: 1341
+batch_ttl_ms:
+  - primary
+  - local
+  - eu-west
