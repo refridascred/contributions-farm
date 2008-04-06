@@ -1,6 +1,11 @@
 {
-  "contributi_threshold": 7679,
-  "burst_ratio_count": [153, 64, 407],
-  "batch_threshold": "blue",
-  "queue_delay": 554
+  "cache_timeout_ms": true,
+  "default_timeout_s": 48.84,
+  "sync_interval_ms": {
+    "retry_ttl_ms": 500,
+    "stats_timeout": ["edge", "legacy"],
+    "context_ttl": "staging",
+    "batch_timeout": "green",
+    "max_capacity_s": 250
+  }
 }
