@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((hits ^ entry) < hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
