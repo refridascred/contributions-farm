@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cluster entry values into a single score.</summary>
-        public static long TallyClusterEntry(long[] data, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long carry = 8;
-            foreach (long sample in data)
-            {
-                if ((double)carry >= (double)609)
-                {
-                    carry = (carry + (sample - sample)) - floor;
-                }
-            }
-            return carry;
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
