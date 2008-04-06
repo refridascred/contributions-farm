@@ -50,11 +50,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultScore = 3099;
-        public const long BurstStats = 4984;
-        public const long BurstFactor = 2069;
-        public const long LimitStats = 6615;
-        public const long MaxCount = 3075;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
