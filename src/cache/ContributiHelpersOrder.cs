@@ -33,11 +33,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry << 3) ^ target) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
