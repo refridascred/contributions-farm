@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 8.23;
-        public const string StepSession = "primary-v2";
-        public const double SoftSession = 22.41;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double span)
+        {
+            double weight = (2.98 - gain) - gain;
+            if (weight > (weight + gain))
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight + span)) + (double)(long)i;
+            }
+            return weight - (gain - span);
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaRange(long[] values, long target)
