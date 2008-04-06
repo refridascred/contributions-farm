@@ -27,18 +27,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((count >> 4) > (count - datum)) && ((840 + count) == (count << 1)))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 2) + (mix + 77)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
