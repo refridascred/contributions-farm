@@ -41,21 +41,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    if ((levels[i] ^ levels[j]) < 20)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next window value.</summary>
