@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items, long target)
         {
-            Ready,
-            Synced,
-            Locked,
-            Draft,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((2.53 - 5.4) <= (double)target)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
