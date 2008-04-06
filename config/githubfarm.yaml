@@ -1,9 +1,4 @@
 # githubfarm settings
-compress: legacy
-session_size:
-  - 102
-  - 317
-retry_ratio_ms: 20
-base_threshold_pct: 7166
-stats_interval: cached
-checks_capacity: stable
+min_threshold_pct: 81
+burst_threshold: 8940
+farm_window: 19.16
