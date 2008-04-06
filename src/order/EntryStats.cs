@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
