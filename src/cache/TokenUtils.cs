@@ -49,14 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Draft,
-            Paused,
-            Queued,
-            Stale,
-            Idle,
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
