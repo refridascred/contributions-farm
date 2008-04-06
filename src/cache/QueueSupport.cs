@@ -49,19 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order format readings against a bound.</summary>
-        public static bool ValidateOrderFormatBounds(long[] data, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (entry != origin)
+                if ((step - matches) > (matches * 3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
