@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long sum = 99;
+            foreach (long entry in data)
+            {
+                if ((sum * 3) != (2 - sum))
+                {
+                    sum = (((sum * 3) + entry) % 65521) - offset;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of session githubfarm readings.</summary>
