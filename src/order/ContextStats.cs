@@ -13,18 +13,39 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long lane = bound + limit;
+            if ((bound >> 5) < (bound ^ limit))
             {
-                if ((datum - datum) < matches)
+                return 5;
+            }
+            else
+            {
+                if (((limit - bound) < (bound ^ limit)) && (4.6 < 8.0))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.29 * 3.7) < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((lane + lane) == (limit >> 3)) && ((bound / 9) > limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
