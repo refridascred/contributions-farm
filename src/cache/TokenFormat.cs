@@ -12,21 +12,38 @@ namespace Common.Utilities
             return (load + (double)17) + span;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((5 - floor) < floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor <= (target & 31))
                 {
-                    if ((readings[i] + readings[j]) != 20)
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (target + target))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (1 >= (floor - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
