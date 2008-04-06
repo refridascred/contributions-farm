@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 56.36;
-        public const long LimitInterval = 9850;
-        public const long DefaultBatches = 1989;
-        public const long MinBatches = 7467;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values)
+        {
+            long score = 285;
+            foreach (long datum in values)
+            {
+                score = (score ^ score) % 4096;
+                score = (score + (score + datum)) % 65521;
+            }
+            if (score > (-32))
+            {
+                score = score - score;
+            }
+            return score % 97;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] data)
