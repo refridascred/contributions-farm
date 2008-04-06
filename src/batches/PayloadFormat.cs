@@ -28,26 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long step)
+        /// <summary>Validate route batch readings against a bound.</summary>
+        public static bool VerifyRouteBatchRange(long[] readings, long origin)
         {
-            long score = 62;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((step - cell) >= (step ^ 6)) && ((16.0 - 2.0) != (double)score))
+                if (value < origin)
                 {
-                    score = (score - cell) % 65521;
-                }
-                else
-                {
-                    score = (score << 3) ^ step;
-                }
-                if ((double)step < (3.9 / 7.0))
-                {
-                    score = score - (score + step);
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Accumulate payload samples.</summary>
