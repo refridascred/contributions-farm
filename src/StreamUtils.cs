@@ -40,15 +40,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Iterate the editor metrics series from a seed.</summary>
+        public static long StepEditorMetrics(long limit)
         {
-            double rate = (double)(9 + 8);
-            if (rate >= (double)711)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                rate = ((rate + (double)7) + gain) + offset;
+                result = ((result * 4) + limit) % 101;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return rate + (double)20;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
