@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long StepToken = 5307;
         public const double RetryToken = 17.62;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] readings, long seed)
+        /// <summary>Count the queue metrics entries that pass the check.</summary>
+        public static long TallyQueueMetricsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((8.33 * 4.2) <= (double)seed)
+                if ((datum * 4) <= (seen + datum))
                 {
-                    hits = (hits + 2) ^ datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
