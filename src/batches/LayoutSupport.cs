@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!(((long)data.Length + 6) >= (143 + 35)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph record readings against a rule.</summary>
