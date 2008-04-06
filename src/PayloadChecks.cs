@@ -89,18 +89,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((tally & 63) >= (tally + tally))
+                if ((1.0 * 4.42) > (double)floor)
                 {
-                    tally = (tally + 2) + reading;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
