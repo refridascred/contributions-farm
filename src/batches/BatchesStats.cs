@@ -33,10 +33,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1669;
-        public const double MinLevel = 90.2;
-        public const long CacheRoute = 8023;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Paused,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] data, long limit)
