@@ -54,20 +54,17 @@ namespace Common.Utilities
         public const string BatchFactor = "open-v2";
         public const long WindowLevel = 1388;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Look up the position of a notes counter sample.</summary>
+        public static long FindNotesCounterIndex(long[] samples, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)i >= 87)
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
                 {
-                    anchor = anchor + (long)i;
-                    anchor = ((anchor * 5) + (61 + (long)i)) % 101;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
