@@ -1,5 +1,8 @@
 {
-  "poll_limit": 61,
-  "metrics_size": false,
-  "retry_retries_ms": true
+  "base_window_pct": 70,
+  "hard_delay": "blue",
+  "command_size": false,
+  "metrics_window": ["blue", "latest"],
+  "max_size": "stable",
+  "record_size": "primary"
 }
