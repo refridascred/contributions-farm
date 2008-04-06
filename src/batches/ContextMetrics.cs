@@ -16,21 +16,25 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Grade a schema commits value against two limits.</summary>
+        public static long GradeSchemaCommits(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = offset ^ offset2;
+            if (((offset + offset2) < (edge / 7)) && (offset >= (edge ^ offset2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((edge + 617) <= offset2)
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
