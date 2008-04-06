@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long TallyFilterFormatMatches(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 24) >= (228 - reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
