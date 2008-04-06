@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 7366;
-        public const long StepContributi = 753;
-        public const long IdleContributi = 8382;
-        public const long DefaultContributi = 1670;
+        /// <summary>Validate entry buffer readings against a bound.</summary>
+        public static bool CheckEntryBufferRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] data, long bound)
