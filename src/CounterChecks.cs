@@ -31,32 +31,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long cur = seed ^ bound;
-            if (((double)7 >= (double)cur) && ((seed >> 1) != (bound - 306)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound > (bound + cur)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound * 4) >= (cur >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
