@@ -26,13 +26,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
             New,
-            Closed,
-            Dropped,
+            Failed,
+            Locked,
             Done,
+            Draft,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
