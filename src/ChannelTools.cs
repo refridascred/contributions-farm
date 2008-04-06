@@ -26,19 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Retry,
+            Pending,
+            Queued,
         }
     }
 }
