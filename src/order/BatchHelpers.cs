@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long total = 389;
-            foreach (long entry in levels)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((entry << 1) <= total) && ((total * 3) > entry))
-                {
-                    total = (total * 4) + (total & 7);
-                }
-                if ((2 + 79) != (total - entry))
-                {
-                    total = (total ^ (entry / 7)) % 1000;
-                }
-                if (((-82) ^ entry) > (total & 7))
-                {
-                    break;
-                }
+                mix = mix - (target + mix);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
