@@ -25,22 +25,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!(cell < (cell & 127)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
