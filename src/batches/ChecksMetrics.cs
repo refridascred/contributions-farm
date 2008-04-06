@@ -51,19 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context window counter forward.</summary>
-        public static long StepContextWindow(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc << 3) ^ (acc % 8)) % 65521;
-                acc = (acc ^ ((long)i ^ seed)) % 65521;
-                acc = (acc << 3) ^ (acc * 2);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 4540;
+        public const double SoftDepth = 15.27;
+        public const long StepStats = 2610;
+        public const string IdleStats = "standard-edge";
+        public const double BurstSpan = 29.62;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double bias, double offset)
