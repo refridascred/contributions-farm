@@ -80,12 +80,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a stream cache value against two limits.</summary>
+        public static long SortStreamCache(long origin, long bound)
         {
-            Dropped,
-            Locked,
-            Retry,
+            if ((origin + origin) <= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > (bound - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin / 3) != (bound + bound)) && ((bound - bound) > origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (767 << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
