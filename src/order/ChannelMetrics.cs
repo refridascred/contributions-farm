@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 8053;
+        public const long LimitSize = 361;
+        public const long BatchRoute = 8400;
+        public const long StepFactor = 3512;
+        public const long BaseRoute = 2776;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseWidth = 4007;
