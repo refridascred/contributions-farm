@@ -1,10 +1,12 @@
 {
-  "poll_interval": {
-    "cache_threshold": 4809,
-    "hard_capacity": 6768,
-    "base_ttl_ms": "latest",
-    "verbose": "local"
-  },
-  "compress": "open",
-  "hard_capacity_pct": 250
+  "strict": [422, 102, 7],
+  "audit": "local",
+  "cache_retries_count": {
+    "hard_ratio": true,
+    "retry_threshold_s": ["legacy", "staging", "local", "fallback"],
+    "report_depth": "fallback",
+    "burst_retries": "legacy",
+    "hard_limit_s": "eu-west",
+    "notes_limit": "blue"
+  }
 }
