@@ -43,21 +43,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Look up the position of a route format sample.</summary>
+        public static long LookupRouteFormatIndex(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] > offset)
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
