@@ -48,12 +48,18 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((80 * 2) == (tally % 100))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
