@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long origin)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((7.79 + 4.5) > (double)origin)
+                {
+                    state = ((state * 4) + (origin % 16)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
