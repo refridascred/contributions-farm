@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value < step)
+                if ((count + count) < (count - 5))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
