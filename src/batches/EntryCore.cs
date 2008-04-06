@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (entry >= seed)
+                if ((double)count > 7.1)
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) + value) + offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
