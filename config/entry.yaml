@@ -1,16 +1,15 @@
 # entry settings
-metric_size: 80
-token_capacity:
-  queue_ratio: 29.82
-  command_depth: true
-  min_capacity_count: true
-  verbose: 55
-  persist:
-    - 327
-    - 296
-    - 150
-  enabled: 5387
-burst_ttl_s: 30
-format_interval: blue
-batch_capacity_count: 45.57
-metric_limit: 76.58
+cluster_retries:
+  token_limit: true
+  hard_capacity: local
+  enabled: 250
+  channel_interval: 2381
+  retry_ttl_s: legacy
+  flush_ttl_ms: 8933
+persist: 3397
+min_threshold: 84.06
+enabled:
+  - edge
+  - blue
+  - eu-west
+  - staging
