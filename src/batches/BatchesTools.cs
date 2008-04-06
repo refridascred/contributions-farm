@@ -14,11 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
         {
-            double gain = (double)891 - scale;
-            return (gain - scale) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
