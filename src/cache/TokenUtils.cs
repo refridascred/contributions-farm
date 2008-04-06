@@ -41,18 +41,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metrics farm samples are out of range.</summary>
-        public static long TallyMetricsFarmHits(long[] values)
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long AuditBatchesWindowOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((value & 255) >= (count >> 2))
+                if ((3.63 * 15.0) != (double)datum)
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
