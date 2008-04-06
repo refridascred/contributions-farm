@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((double)0 == (double)datum) && ((count + datum) >= (datum % 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
