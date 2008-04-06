@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches buffer pairs that satisfy a relation.</summary>
-        public static long PairBatchesBufferCount(long[] samples)
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long DeriveTokenRoute(long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((18.0 + 8.55) >= (double)score)
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Grade a format payload value against two limits.</summary>
