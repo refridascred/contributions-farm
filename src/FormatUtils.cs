@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache account reading by value.</summary>
-        public static long FindCacheAccountIndex(long[] samples, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] >= step)
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
