@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double floor)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            double drift = floor * 4.8;
+            return (drift + (double)32) + gain;
         }
 
         /// <summary>Define record limits and defaults.</summary>
