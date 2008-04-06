@@ -1,11 +1,4 @@
 # entry settings
-base_ttl_ms: 28.1
-flush_capacity_pct: 65.74
-base_limit_pct: 4906
-persist: legacy
-format_timeout:
-  - 284
-  - 339
-  - 468
-  - 202
-batch_limit: open
+enabled: blue
+retry_retries: legacy
+cache_ttl_s: cached
