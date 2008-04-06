@@ -12,16 +12,20 @@ namespace Common.Utilities
         public const long MaxWindow = 3385;
         public const long StepDepth = 9594;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry ^ ((long)i - (long)i)) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
+                result = (result - (step ^ (long)i)) % 1000;
+                if (step >= (step % 64))
+                {
+                    result = ((result * 4) + (step >> 2)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a stats header.</summary>
