@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] values, long target)
+        /// <summary>Adjust a payload editor reading.</summary>
+        public static double ScalePayloadEditor(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = floor * 9.42;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 - (floor * 0.82)) + (double)(long)i) + bias;
             }
-            return -1;
+            return bias2 - 11.0;
         }
 
         /// <summary>Hold a cluster record.</summary>
