@@ -1,14 +1,5 @@
 {
-  "hard_depth_s": 4586,
-  "account_threshold": true,
-  "base_ratio": ["green", "stable"],
-  "batch_window": "open",
-  "commits_retries": "cached",
-  "audit": {
-    "persist": "standard",
-    "retry_ttl_ms": 73.75,
-    "poll_interval": 74.77,
-    "route_timeout": [300, 262, 431],
-    "enabled": 30
-  }
+  "burst_retries": "cached",
+  "enabled": "staging",
+  "strict": "latest"
 }
