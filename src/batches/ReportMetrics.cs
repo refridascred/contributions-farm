@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 76;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum ^ sum) % 101;
+                if ((origin - sum) < (sum & 1))
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ cell) % 97;
                 }
             }
-            return seen;
+            if (sum > (-463))
+            {
+                sum = sum ^ (sum + 61);
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache phase values.</summary>
