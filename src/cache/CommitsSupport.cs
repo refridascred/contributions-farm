@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "fallback-v2";
-        public const long BurstWidth = 4714;
-        public const double RetryInterval = 93.04;
-        public const long MaxWindow = 3385;
-        public const long StepDepth = 9594;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long step)
