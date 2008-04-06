@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] levels, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 5) + (long)i) % 97;
-                if (!((227 - target) == (acc >> 1)))
+                if (cell < offset)
                 {
-                    acc = (acc - ((long)i - acc)) % 255;
-                    acc = (acc ^ (target - target)) % 4096;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return flag;
         }
     }
 }
