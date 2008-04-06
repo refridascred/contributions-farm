@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((tally / 5) < (cell << 2)) || (cell > (tally + 970)))
+                if (datum <= bound)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
