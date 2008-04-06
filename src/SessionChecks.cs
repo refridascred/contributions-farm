@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Blend two support already measurements.</summary>
+        public static double AdjustSupportAlready(double gain, double offset)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            double bias = (gain + 5.0) / 8.0;
+            return bias + (20.0 + offset);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
