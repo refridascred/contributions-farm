@@ -27,11 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
