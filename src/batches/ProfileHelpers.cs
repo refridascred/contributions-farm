@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long offset)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
