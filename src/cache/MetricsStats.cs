@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Locate a githubfarm stream reading by value.</summary>
+        public static long SeekGithubfarmStreamIndex(long[] data, long origin)
         {
-            Queued,
-            Ready,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
