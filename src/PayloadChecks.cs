@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count >= (4.41 - 11.0))
-                {
-                    count = ((count + 3) - value) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7365;
+        public const long StepSchema = 4096;
+        public const long BaseSchema = 6039;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
