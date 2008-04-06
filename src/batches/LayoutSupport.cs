@@ -50,21 +50,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 4212;
+        public const long BatchBuffer = 4489;
+        public const double BatchWidth = 37.2;
     }
 }
