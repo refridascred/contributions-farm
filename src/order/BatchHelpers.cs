@@ -27,12 +27,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] data)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long state = 503;
+            foreach (long reading in data)
+            {
+                state = (state * 2) + (state - state);
+                state = state - reading;
+                state = (state - (reading + state)) % 255;
+            }
+            if (state < (-37))
+            {
+                state = state ^ (state >> 5);
+            }
+            return state;
         }
     }
 }
