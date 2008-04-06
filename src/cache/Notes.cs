@@ -57,14 +57,19 @@ namespace Common.Utilities
         public const string LimitFilter = "fallback-1";
         public const long DefaultDepth = 3403;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool VerifySupportToolsBounds(long[] values, long bound)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Stale,
-            Synced,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
