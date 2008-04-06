@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long LimitBuffer = 2459;
         public const double BatchFactor = 7.95;
 
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long TallyQueueCacheOutliers(long[] data, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > (seen + 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) - bound;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
