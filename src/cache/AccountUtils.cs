@@ -49,18 +49,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long AuditReportLayoutHits(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches * 5) == (7 + matches))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
