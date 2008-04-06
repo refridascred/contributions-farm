@@ -38,22 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Count the report format entries that pass the check.</summary>
+        public static long TallyReportFormatOutliers(long[] levels)
         {
-            long total = 10;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((long)series.Length % 2) < ((long)series.Length & 255))
+                if (matches < (matches + datum))
                 {
-                    total = (((total << 3) ^ total) % 65521) ^ value;
-                }
-                else
-                {
-                    total = total ^ (9 / 7);
+                    matches = matches + 2;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
