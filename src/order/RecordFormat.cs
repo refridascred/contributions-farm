@@ -23,22 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many token payload samples are out of range.</summary>
-        public static long TallyTokenPayloadOutliers(long[] samples, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if ((1.3 - 7.6) > (0.6 - 3.0))
+                if ((cell - cell) == (cell ^ score))
                 {
-                    matches = ((matches + 2) + entry) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score << 3) ^ (long)data.Length) % 255;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Validate farm route readings against a bound.</summary>
