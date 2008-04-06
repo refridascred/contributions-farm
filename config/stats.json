@@ -1,5 +1,5 @@
 {
-  "graph_interval": 19,
-  "batch_size_ms": ["stable", "open", "latest"],
-  "cache_ttl": "edge"
+  "stream_threshold": 95.81,
+  "idle_ttl_ms": 20.36,
+  "cache_depth_ms": 2428
 }
