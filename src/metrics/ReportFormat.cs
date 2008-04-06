@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix * 5) + (origin + (long)i)) % 97;
+                if ((origin - (long)i) >= origin)
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 3) + (long)i) % 1000;
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
