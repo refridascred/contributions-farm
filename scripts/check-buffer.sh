@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=127
-log "limit is ${BUFFER_LIMIT}"
-
-for item in edge latest fallback staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    primary)
         log "fast path"
         ;;
     *)
