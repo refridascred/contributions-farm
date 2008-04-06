@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of tools filter entries.</summary>
-        public static long CombineToolsFilter(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 10;
-            foreach (long entry in data)
-            {
-                total = ((total + (341 * 2)) % 4096) + entry;
-            }
-            if (total > 9)
-            {
-                total = total + (total >> 4);
-            }
-            return total;
+            Paused,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
