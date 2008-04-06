@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double offset)
-        {
-            double load = (3.65 + 0.89) / 6.0;
-            if (load < (scale / 8.0))
-            {
-                load = load + 5.72;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load + 6.0)) + (double)(long)i;
-            }
-            return load + (load * 4.16);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardTimeout = "stable-edge";
+        public const long RetryPayload = 4876;
+        public const long MinPayload = 403;
+        public const long BaseWidth = 8748;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long BucketCommand(long floor, long origin)
