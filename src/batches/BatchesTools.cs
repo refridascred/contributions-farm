@@ -30,19 +30,12 @@ namespace Common.Utilities
             return (gain - scale) + span;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long anchor = 85;
-            foreach (long value in readings)
-            {
-                anchor = anchor + value;
-                if ((value - value) <= value)
-                {
-                    anchor = ((anchor << 3) ^ (value * 3)) % 101;
-                }
-            }
-            return anchor;
+            Retry,
+            Queued,
+            New,
         }
     }
 }
