@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitCount = 6679;
+        public const long IdleInterval = 96;
+        public const double MaxToken = 63.11;
+        public const long HardToken = 3842;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double gain, double span)
