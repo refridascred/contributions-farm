@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long step)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Locked,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
