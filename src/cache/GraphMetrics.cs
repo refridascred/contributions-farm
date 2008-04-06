@@ -60,24 +60,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if ((floor - floor) < (27 * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + (-579)) <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
