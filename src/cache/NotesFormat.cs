@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "cached-edge";
-        public const string SoftFactor = "fallback-v2";
-        public const string BatchLevel = "alpha-edge";
-        public const string HardToken = "cached-v2";
-        public const long DefaultSize = 1163;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9020;
+        public const double SoftFormat = 78.72;
+        public const long MinSpan = 6790;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] readings)
