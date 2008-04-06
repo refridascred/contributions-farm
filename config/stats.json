@@ -1,11 +1,5 @@
 {
-  "min_ratio": "green",
-  "cache_depth_s": false,
-  "metric_limit": {
-    "dry_run": "cached",
-    "cache_delay_pct": "blue",
-    "order_size": "local"
-  },
-  "poll_threshold_s": 6,
-  "max_capacity_pct": "strict"
+  "warm_retries_s": false,
+  "sync_threshold_count": "blue",
+  "burst_retries_pct": 8698
 }
