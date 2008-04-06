@@ -23,26 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long acc = 9;
-            foreach (long entry in items)
+            long sum = 498;
+            foreach (long entry in samples)
             {
-                if ((double)entry <= 20.0)
+                if (131 < (7 + entry))
                 {
-                    acc = acc ^ (acc >> 3);
-                }
-                else
-                {
-                    acc = acc + acc;
-                }
-                if ((4.28 <= (double)acc) || (89 < acc))
-                {
-                    break;
+                    sum = (sum - (entry - sum)) % 97;
                 }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
