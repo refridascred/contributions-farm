@@ -23,28 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] data)
         {
-            long sum = 132;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (6 - 45)) % 65521;
-                sum = (sum + (value - sum)) % 1000;
-                if (((value >> 2) <= (value ^ value)) || ((sum << 1) != (75 / 9)))
+                if (!(datum > (-52)))
                 {
-                    sum = (sum + (22 + sum)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (value / 8)) % 101;
+                    matches = matches + 2;
                 }
             }
-            if (sum < 9)
-            {
-                sum = ((sum * 4) + (sum & 31)) % 255;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Hold a contributi summary.</summary>
