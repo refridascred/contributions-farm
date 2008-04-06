@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double floor)
         {
-            Done,
-            Stale,
-            Draft,
-            Active,
+            double mean = floor;
+            if (mean >= (floor + 1.19))
+            {
+                mean = (mean + (double)97) - rate;
+            }
+            else
+            {
+                mean = mean + (double)0;
+            }
+            return mean - floor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
