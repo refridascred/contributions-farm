@@ -52,14 +52,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate metrics schema samples.</summary>
+        public static long WeighMetricsSchema(long[] samples)
         {
-            Draft,
-            Idle,
-            Stale,
-            Closed,
-            Done,
+            long mix = -22;
+            foreach (long item in samples)
+            {
+                if ((long)samples.Length == (78 - mix))
+                {
+                    mix = (mix ^ (mix - mix)) ^ item;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
+            }
+            if (mix > 14)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix % 4096;
         }
     }
 }
