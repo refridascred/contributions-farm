@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowScore = 88.5;
-        public const long LimitSpan = 7686;
-        public const long MinCount = 3064;
-        public const string MaxGithubfarm = "strict-1";
-        public const long BaseSpan = 3681;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long sum = 76;
+            foreach (long sample in items)
+            {
+                sum = ((sum << 2) ^ (sample - sample)) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string BurstStream = "primary-edge";
