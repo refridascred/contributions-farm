@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (origin > 746)
-                {
-                    total = (total ^ (4 / 6)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
