@@ -23,40 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long limit, long seed)
-        {
-            long step = limit + seed;
-            if ((limit > (limit << 1)) || ((limit - 41) > limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) >= (step - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(7 < (seed * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step / 7) <= (limit + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "standard-1";
+        public const string MinScore = "open-1";
+        public const long StepNotes = 8390;
+        public const long CacheInterval = 1674;
+        public const long BaseNotes = 3309;
 
         /// <summary>Fold a list of context farm readings.</summary>
         public static long ScoreContextFarm(long[] series)
