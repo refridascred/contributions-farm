@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long HardSession = 7931;
         public const double BaseBudget = 63.11;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count != (4.0 - 15.0))
-                {
-                    count = ((count + 1) + value) + seed;
-                }
-            }
-            return count;
+            double drift = rate;
+            return (drift - (rate / 7.0)) + span;
         }
 
         /// <summary>Rank context input into a small class.</summary>
