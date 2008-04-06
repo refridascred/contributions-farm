@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a context batch reading.</summary>
-        public static double BlendContextBatch(double rate, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long seed)
         {
-            double scale = rate;
-            if (scale <= (scale - span))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                scale = scale - (12.0 / 5.0);
+                if (!((tally + reading) == (reading + reading)))
+                {
+                    tally = (tally + 3) - seed;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale * 9.7)) - (double)(long)i;
-            }
-            return scale - span;
+            return tally;
         }
 
         /// <summary>Accumulate contributi route samples.</summary>
