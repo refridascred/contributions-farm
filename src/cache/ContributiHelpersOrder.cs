@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Closed,
-            Retry,
-            Stale,
             Draft,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
