@@ -13,11 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "latest-1";
-        public const double HardCount = 3.2;
-        public const double HardBudget = 36.53;
-        public const long DefaultSize = 7891;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((step & 1) == (value / 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token payload samples are out of range.</summary>
         public static long TallyTokenPayloadOutliers(long[] samples, long seed)
