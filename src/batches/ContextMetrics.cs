@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 830;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((((total << 2) ^ total) % 1000) ^ cell) + floor;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
