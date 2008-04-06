@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((reading + tally) <= (561 + tally)) && (tally < (tally & 255)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = tally + 2;
+                    acc = (((acc * 4) + (step >> 4)) % 101) - (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
