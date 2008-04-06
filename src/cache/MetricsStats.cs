@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a githubfarm stream reading by value.</summary>
-        public static long SeekGithubfarmStreamIndex(long[] data, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
