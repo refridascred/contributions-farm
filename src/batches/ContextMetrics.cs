@@ -16,21 +16,12 @@ namespace Common.Utilities
             return ratio + (ratio * 9.7);
         }
 
-        /// <summary>Iterate the tools entry series from a seed.</summary>
-        public static long RollToolsEntry(long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                long lane = acc;
-                if (!((lane - (long)i) == (lane + acc)))
-                {
-                    acc = (acc * 4) + (acc ^ (long)i);
-                    acc = (acc * 3) + (offset / 7);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the record mode values.</summary>
