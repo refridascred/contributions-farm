@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (scale - (7.08 + offset)) + bias;
         }
 
-        /// <summary>Accumulate tools window samples.</summary>
-        public static long TallyToolsWindow(long[] data)
+        /// <summary>Audit batch cluster readings against a rule.</summary>
+        public static long CountBatchClusterHits(long[] values, long target)
         {
-            long mark = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((reading > (reading >> 5)) || ((5.8 + 9.1) == (double)reading))
+                if ((target ^ target) < (hits - hits))
                 {
-                    mark = mark - (reading >> 3);
-                }
-                else
-                {
-                    mark = (mark * 4) + (1 << 2);
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
