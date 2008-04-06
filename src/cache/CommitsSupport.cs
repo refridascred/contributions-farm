@@ -45,11 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3301;
-        public const string BatchDepth = "cached-edge";
-        public const long SoftBuffer = 8349;
-        public const long MaxFactor = 6839;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Dropped,
+            Active,
+            Stale,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitSpan = 175;
