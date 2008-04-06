@@ -25,15 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            if (!(seed > (2 >> 1)))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((seed > (seed & 255)) && ((604 + seed) >= (target % 97)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed + seed) >= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order status values.</summary>
