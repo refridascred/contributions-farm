@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4 & 31) < tally)
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
