@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstInterval = "latest";
-        public const double BurstPayload = 0.13;
-        public const double MinPayload = 53.7;
-        public const double WindowSize = 53.18;
-        public const double StepBudget = 65.58;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
