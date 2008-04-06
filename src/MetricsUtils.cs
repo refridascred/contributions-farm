@@ -53,18 +53,9 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits != (2.7 / 7.0))
-                {
-                    hits = ((hits + 3) - datum) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "standard-1";
+        public const long BurstInterval = 3635;
+        public const double RetryRatio = 7.46;
     }
 }
