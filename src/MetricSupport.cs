@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 5992;
+        public const string DefaultChannel = "alpha-edge";
+        public const double SoftSpan = 60.21;
+        public const string MaxChannel = "open-v2";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] values, long floor)
