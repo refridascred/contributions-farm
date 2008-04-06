@@ -32,19 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] series, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Locked,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the route status values.</summary>
