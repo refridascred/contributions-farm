@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double IdleLevel = 16.37;
         public const double StepLevel = 29.04;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long CountEditorNotesHits(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)origin <= (7.02 * 4.0))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
