@@ -65,10 +65,13 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 35.5;
-        public const long IdleFactor = 6145;
-        public const long StepGithubfarm = 1656;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Idle,
+            Active,
+            Paused,
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
