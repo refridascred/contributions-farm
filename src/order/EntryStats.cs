@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] readings, long target)
         {
-            double rate = (double)(23 - (-1));
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                rate = (rate - offset) + (double)(long)i;
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + gain;
+            return stale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
