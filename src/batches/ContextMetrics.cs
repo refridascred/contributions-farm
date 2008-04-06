@@ -16,12 +16,21 @@ namespace Common.Utilities
             return ratio + (ratio * 9.7);
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            Retry,
-            Ready,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
