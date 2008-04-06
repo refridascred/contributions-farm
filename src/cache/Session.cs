@@ -21,18 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] values, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + seed) <= count)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
