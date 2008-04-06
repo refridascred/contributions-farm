@@ -23,14 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate contributi record readings against a bound.</summary>
+        public static bool GuardContributiRecordRange(long[] series, long seed)
         {
-            New,
-            Locked,
-            Queued,
-            Done,
-            Active,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a entry record counter forward.</summary>
