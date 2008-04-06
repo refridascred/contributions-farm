@@ -51,18 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 4355;
+        public const string LimitSpan = "strict-1";
+        public const double WindowCount = 2.96;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultBatch = 2587;
