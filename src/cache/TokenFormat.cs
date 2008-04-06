@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            Pending,
-            Paused,
-            Locked,
-            Idle,
-            Queued,
+            long result = 4;
+            foreach (long reading in values)
+            {
+                result = ((result << 2) ^ (reading ^ reading)) % 101;
+            }
+            if (result > 17)
+            {
+                result = ((result << 3) ^ (result << 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Blend two context measurements.</summary>
