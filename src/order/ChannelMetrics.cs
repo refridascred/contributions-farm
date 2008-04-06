@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] series, long offset)
         {
-            New,
-            Active,
-            Synced,
-            Idle,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item + offset) != (hits % 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
