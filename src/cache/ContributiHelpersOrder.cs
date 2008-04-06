@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] series, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((double)(long)i < 4.0)
+                if (sample != step)
                 {
-                    sum = (sum << 3) ^ (sum + origin);
-                    sum = sum - origin;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
