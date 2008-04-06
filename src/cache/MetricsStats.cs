@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const long BaseBudget = 4103;
         public const long BatchStats = 6964;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 1;
+            foreach (long entry in readings)
             {
-                if ((hits >= 508) && (((891 % 100) <= (hits >> 5)) || (98 <= hits)))
-                {
-                    hits = (hits + 1) + item;
-                }
+                mark = (mark - (mark + entry)) % 255;
             }
-            return hits;
+            if (mark < 741)
+            {
+                mark = (mark + 41) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics options.</summary>
