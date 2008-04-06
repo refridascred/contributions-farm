@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long IdleDepth = 6154;
         public const double BatchRatio = 64.17;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] readings, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.3 - 5.0) == (double)limit)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
