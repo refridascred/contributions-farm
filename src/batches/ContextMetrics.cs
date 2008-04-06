@@ -59,12 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchInterval = "local";
-        public const long MinMetrics = 932;
-        public const long DefaultCount = 7966;
-        public const long BurstSpan = 9188;
-        public const long BaseMetrics = 7237;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Active,
+            Done,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
