@@ -1,15 +1,16 @@
 # Command notes
 
-The schema report groups every stats by filter.
-The window helpers are pure functions, so they are safe to call from any thread.
-A githubfarm that stays idle for too long is moved to the batches list.
+The batches module keeps filter values in sync with the window cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-The command module keeps format values in sync with the counter cache.
-Use batch settings to tune how often stream data is refreshed.
+A metric that stays idle for too long is moved to the farm list.
+Use buffer settings to tune how often metric data is refreshed.
+When a editor fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Document new counter fields
-- Log every notes change
-- Prefer route defaults
+- Validate buffer input early
+- Review route limits each release
+- Document new commits fields
+- Prefer channel defaults
