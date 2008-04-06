@@ -64,17 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long step)
+        /// <summary>Count the context record entries that pass the check.</summary>
+        public static long TallyContextRecordMatches(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] < step)
+                if (8.0 >= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 1) - datum) + limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
