@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((80 * 2) == (tally % 100))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
