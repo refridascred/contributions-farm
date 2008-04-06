@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values, long bound)
         {
-            double rate = (double)(970 >> 3);
-            return ((rate - rate) + weight) + floor;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((((hits + 1) <= hits) && ((entry * 2) < bound)) || ((double)hits >= (8.2 / 9.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
