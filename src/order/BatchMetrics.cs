@@ -59,23 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            double bias = span;
-            if (bias > span)
+            double bias = offset;
+            if (bias <= (bias + offset))
             {
-                bias = bias - weight;
+                bias = bias + (ratio - 4.4);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias - (1.29 + weight);
+                bias = bias + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (span + span)) + (double)(long)i;
-            }
-            return bias - weight;
+            return bias - (double)42;
         }
 
         /// <summary>Match up support samples.</summary>
