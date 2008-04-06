@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((-894) >> 4) <= origin))
-                {
-                    mix = (mix + (mix >> 2)) % 1000;
-                    mix = (mix ^ (mix + origin)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Digest a series of window entries.</summary>
