@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long seed)
+        /// <summary>Count the tools layout entries that pass the check.</summary>
+        public static long CountToolsLayoutGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (sample > seed)
+                if (!(hits > (hits & 63)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
