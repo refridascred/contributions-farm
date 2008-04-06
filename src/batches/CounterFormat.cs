@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
