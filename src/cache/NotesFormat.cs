@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up cache buffer samples.</summary>
-        public static long MatchCacheBufferCount(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((2.2 / 5.0) <= (double)tally) && (((tally - tally) >= (93 / 6)) && (((long)levels.Length << 1) < tally)))
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
