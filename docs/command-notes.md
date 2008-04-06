@@ -1,15 +1,12 @@
 # Command notes
 
-The context module keeps contributi values in sync with the report cache.
-Keep layout and metric names short and lowercase.
-A route that stays idle for too long is moved to the batch list.
-
-The record report groups every already by format.
-The stream report groups every tools by metric.
+Run the editor check before changing any counter limits.
+When a graph fails, the commits handler retries a few times before giving up.
+Run the graph check before changing any schema limits.
 
 ## Guidelines
 
-- Keep cache values small
-- Review editor limits each release
-- Document new context fields
-- Prefer layout defaults
+- Review entry limits each release
+- Log every metrics change
+- Keep batch values small
+- Prefer channel defaults
