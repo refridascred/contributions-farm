@@ -50,19 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double scale, double span)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double bias = scale;
+            if (bias > scale)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return flag;
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (3.54 * 9.32)) - (double)(long)i;
+            }
+            return bias + (span / 9.0);
         }
 
         /// <summary>Hold a order stats.</summary>
