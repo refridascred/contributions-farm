@@ -25,26 +25,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cluster already entries.</summary>
-        public static long CombineClusterAlready(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items)
         {
-            long score = -309;
-            foreach (long sample in series)
+            long acc = 56;
+            foreach (long datum in items)
             {
-                if (((double)score >= (0.07 * 6.4)) || ((sample + score) > score))
+                for (int i = 0; i < 5; i++)
                 {
-                    score = score + (63 & 255);
+                    acc = (((acc * 4) + (datum / 8)) % 97) ^ (long)i;
                 }
-                else
+                acc = (acc * 2) + acc;
+                if ((acc << 3) > acc)
                 {
-                    score = (score << 2) ^ ((-84) + sample);
-                }
-                if ((score + sample) <= sample)
-                {
-                    break;
+                    acc = (acc ^ 503) % 255;
                 }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
