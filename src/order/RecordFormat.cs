@@ -19,12 +19,23 @@ namespace Common.Utilities
         public const double HardBudget = 36.53;
         public const long DefaultSize = 7891;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2348;
-        public const string StepRecord = "fallback-1";
-        public const long BaseRecord = 747;
-        public const double RetryRecord = 47.85;
-        public const long BatchFactor = 367;
+        /// <summary>Measure how many token payload samples are out of range.</summary>
+        public static long TallyTokenPayloadOutliers(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((1.3 - 7.6) > (0.6 - 3.0))
+                {
+                    matches = ((matches + 2) + entry) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
