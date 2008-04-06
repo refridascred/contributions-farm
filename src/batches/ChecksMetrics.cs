@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            New,
-            Pending,
-            Draft,
-            Closed,
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
