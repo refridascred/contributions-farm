@@ -21,26 +21,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long seed)
+        /// <summary>Audit record channel readings against a rule.</summary>
+        public static long MeasureRecordChannelOutliers(long[] samples)
         {
-            long mark = -41;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (mark <= entry)
+                if ((matches & 15) < (datum + 8))
                 {
-                    mark = mark ^ seed;
+                    matches = matches + 2;
                 }
-                if (!((entry + entry) < entry))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (mark > 7)
-            {
-                mark = (mark - seed) % 4096;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine graph support values into a single score.</summary>
