@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            double ratio = (double)(58 + 6);
-            for (int i = 0; i < 4; i++)
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ((ratio - (span / 6.0)) - (double)(long)i) + scale;
+                drift = (drift + (floor + 5.0)) + (double)(long)i;
             }
-            return ratio + (ratio * 9.7);
+            return drift + floor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
