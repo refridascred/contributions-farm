@@ -1,8 +1,9 @@
-id,ratio,region,weight
-1,blue,46.55,open
-2,edge,42.32,681
-3,84,313,blue
-4,366,standard,legacy
-5,130,908,62.53
-6,937,36.94,529
-7,51.76,503,29.7
+id,score,region,ratio
+1,staging,99,18.12
+2,470,74.39,376
+3,2,20.17,838
+4,local,27.86,strict
+5,848,open,eu-west
+6,71.57,standard,908
+7,local,432,751
+8,245,17.37,75.05
