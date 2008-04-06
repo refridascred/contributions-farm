@@ -37,17 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin - offset;
+            if ((double)cur <= 2.45)
             {
-                if (data[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if (offset <= (292 >> 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((cur >= (cur + origin)) && ((double)offset != (0.41 * 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
