@@ -12,18 +12,22 @@ namespace Common.Utilities
             return weight + 2.0;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = 14;
+            foreach (long item in samples)
             {
-                if (((892 ^ (long)data.Length) != (90 << 3)) && ((double)reading <= (double)349))
+                if ((acc / 9) <= (item % 16))
                 {
-                    seen = seen + 2;
+                    acc = ((acc * 5) + (acc >> 2)) % 101;
+                }
+                else
+                {
+                    acc = acc - (seed + 95);
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Hold a farm entry.</summary>
