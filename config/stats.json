@@ -1,8 +1,5 @@
 {
-  "poll_interval_ms": "stable",
-  "flush_ttl_s": "cached",
-  "contributi_depth": ["primary", "blue", "green", "local"],
-  "base_limit_count": true,
-  "queue_depth": [4, 348],
-  "readonly": 1024
+  "graph_interval": 19,
+  "batch_size_ms": ["stable", "open", "latest"],
+  "cache_ttl": "edge"
 }
