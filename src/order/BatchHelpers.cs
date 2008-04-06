@@ -29,14 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Queued,
-            Closed,
-            Active,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxRatio = "local-1";
+        public const long MinLevel = 1336;
+        public const double MaxSize = 19.76;
+        public const long LimitMetric = 2691;
     }
 }
