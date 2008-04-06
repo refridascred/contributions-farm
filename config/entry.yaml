@@ -1,20 +1,11 @@
 # entry settings
-min_window_ms: 68.23
-max_ratio: 9146
-poll_retries: 500
-githubfarm_ttl: stable
-readonly:
-  cluster_retries: staging
-  retry_interval_pct: 45
-  enabled: 79
-  token_ttl: eu-west
-  idle_capacity:
-    poll_threshold_count: 44.98
-    already_retries: open
-    compress:
-      - 304
-      - 159
-    cache_ttl_s:
-      - fallback
-      - edge
-cache_ratio_count: 49.85
+dry_run: legacy
+base_delay_s: 84.66
+batch_timeout_count: eu-west
+poll_capacity_s: blue
+max_interval: 91
+cache_threshold:
+  - 145
+  - 132
+  - 17
+  - 193
