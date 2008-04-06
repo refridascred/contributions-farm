@@ -16,12 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the report level values.</summary>
