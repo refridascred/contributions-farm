@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long HardSession = 7931;
         public const double BaseBudget = 63.11;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double rate, double span)
-        {
-            double drift = rate;
-            return (drift - (rate / 7.0)) + span;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 86.19;
+        public const long StepRecord = 3579;
+        public const double MinRatio = 74.35;
+        public const double RetryRatio = 45.92;
+        public const double BaseRecord = 64.36;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long limit, long seed)
