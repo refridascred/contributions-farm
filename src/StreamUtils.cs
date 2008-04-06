@@ -39,27 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph support values into a single score.</summary>
-        public static long WeighGraphSupport(long[] series, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            long mix = 15;
-            foreach (long sample in series)
+            double rate = (double)(9 + 8);
+            if (rate >= (double)711)
             {
-                mix = ((mix << 2) ^ 540) % 4096;
-                if (sample >= (mix >> 5))
-                {
-                    mix = mix + (3 >> 5);
-                }
-                else
-                {
-                    mix = (mix * 5) + (414 - sample);
-                }
+                rate = ((rate + (double)7) + gain) + offset;
             }
-            if (mix > 89)
-            {
-                mix = (mix - (floor << 2)) % 255;
-            }
-            return mix;
+            return rate + (double)20;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
