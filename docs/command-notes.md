@@ -1,10 +1,15 @@
 # Command notes
 
-The stream report groups every batches by commits.
-When a editor fails, the schema handler retries a few times before giving up.
+The context module keeps contributi values in sync with the report cache.
+Keep layout and metric names short and lowercase.
+A route that stays idle for too long is moved to the batch list.
+
+The record report groups every already by format.
+The stream report groups every tools by metric.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer contributi defaults
-- Validate notes input early
+- Keep cache values small
+- Review editor limits each release
+- Document new context fields
+- Prefer layout defaults
