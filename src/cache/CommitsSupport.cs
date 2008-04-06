@@ -32,17 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                if (item < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the route status values.</summary>
