@@ -55,14 +55,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] levels)
         {
-            Failed,
-            Ready,
-            Synced,
-            Closed,
-            Locked,
+            long acc = 15;
+            foreach (long datum in levels)
+            {
+                if ((3 < (acc - acc)) || ((8.0 / 2.0) < (double)acc))
+                {
+                    acc = ((acc * 3) + (datum & 7)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + acc;
+                    acc = acc ^ (acc >> 3);
+                }
+                acc = (acc << 3) ^ datum;
+                if (!((datum + datum) < (acc & 15)))
+                {
+                    acc = (acc + (acc ^ datum)) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (datum + datum);
+                }
+            }
+            if (acc < 712)
+            {
+                acc = ((acc * 4) + acc) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a batch record.</summary>
