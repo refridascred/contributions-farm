@@ -69,16 +69,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long floor)
+        /// <summary>Check that every already window entry stays within the limit.</summary>
+        public static bool CheckAlreadyWindowRange(long[] series, long target)
         {
-            long result = 88;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long item in series)
             {
-                result = (result + (floor + floor)) - entry;
-                result = (result ^ (long)levels.Length) % 97;
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
