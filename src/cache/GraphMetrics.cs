@@ -33,16 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            if ((10.0 + 7.43) <= (double)floor)
             {
-                acc = acc - ((long)i - acc);
-                acc = ((acc * 3) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (!((step % 12) >= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step >> 4) == (step * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a support reading.</summary>
