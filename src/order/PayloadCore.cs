@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long IdleContributi = 8382;
         public const long DefaultContributi = 1670;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Compare every pair of batches notes readings.</summary>
+        public static long CompareBatchesNotesCount(long[] samples)
         {
-            Locked,
-            Queued,
-            Closed,
-            Failed,
-            Active,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many commits report samples are out of range.</summary>
