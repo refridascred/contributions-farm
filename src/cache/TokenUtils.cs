@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a farm record reading by value.</summary>
-        public static long FindFarmRecordIndex(long[] levels, long seed)
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long AuditContributiCommitsGaps(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] <= seed)
+                if ((3.65 - 1.87) > (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ reading) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
