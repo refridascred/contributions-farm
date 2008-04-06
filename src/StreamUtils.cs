@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen * 4) < (item + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
