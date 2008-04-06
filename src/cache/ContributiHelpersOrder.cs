@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            long result = 2;
-            foreach (long sample in levels)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result << 3) ^ (result + 47);
-                if ((result / 3) >= (74 ^ result))
+                if ((double)(long)i < 4.0)
                 {
-                    result = result + (sample << 3);
+                    sum = (sum << 3) ^ (sum + origin);
+                    sum = sum - origin;
                 }
-                else
-                {
-                    result = result ^ (result * 4);
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (result < 89)
-            {
-                result = (result * 3) + (47 / 7);
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
