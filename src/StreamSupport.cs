@@ -30,19 +30,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] values, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
