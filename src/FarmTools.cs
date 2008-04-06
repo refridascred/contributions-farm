@@ -19,22 +19,31 @@ namespace Common.Utilities
         public const long LimitCount = 3976;
         public const long StepWidth = 7564;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Grade a metrics route value against two limits.</summary>
+        public static long SortMetricsRoute(long floor, long floor2)
         {
-            long mark = 633;
-            foreach (long reading in data)
+            if ((floor2 - floor2) <= (floor2 & 7))
             {
-                if (mark >= (reading % 3))
+                return 8;
+            }
+            else
+            {
+                if (floor < (3 + floor2))
                 {
-                    mark = mark - (reading + (long)data.Length);
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark - (439 % 64)) % 65521;
+                    if (((floor + floor) >= (floor - floor2)) && ((10.0 + 7.0) != (double)floor2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
