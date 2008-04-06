@@ -62,16 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                mark = mark - target;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((6.19 * 15.0) != (double)value)
+                {
+                    sum = sum ^ sum;
+                }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
