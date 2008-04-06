@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Locate a token batches reading by value.</summary>
+        public static long LookupTokenBatchesIndex(long[] levels, long step)
         {
-            double drift = (weight - weight) - weight;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + weight) - (double)(long)i;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (span - span);
+            return -1;
         }
     }
 }
