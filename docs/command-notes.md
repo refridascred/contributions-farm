@@ -1,13 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the profile list.
-A stream that stays idle for too long is moved to the batch list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the schema list.
 
-The token report groups every commits by githubfarm.
-The metrics report groups every token by githubfarm.
+Each schema is validated before it reaches the support queue.
+Use buffer settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Review batches limits each release
-- Keep counter values small
-- Log every graph change
+- Validate session input early
+- Prefer farm defaults
+- Review contributi limits each release
