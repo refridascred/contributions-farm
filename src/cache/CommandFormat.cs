@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareNotesGithubfarmCount(long[] items)
+        /// <summary>Count the commits report entries that pass the check.</summary>
+        public static long TallyCommitsReportGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits ^ reading) > hits)
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
