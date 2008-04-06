@@ -26,11 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheTimeout = 3730;
-        public const long LimitSize = 4934;
-        public const double WindowBatches = 76.67;
-        public const long RetryBatches = 8515;
-        public const double SoftScore = 59.99;
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double span)
+        {
+            double ratio = (span - 8.6) + (span * 14.0);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + rate)) + (double)(long)i;
+            }
+            return ratio - (8.0 - ratio);
+        }
     }
 }
