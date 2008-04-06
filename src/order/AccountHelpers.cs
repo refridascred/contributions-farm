@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 25;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell & 63) > (cell % 100))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total * 3) + total;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
