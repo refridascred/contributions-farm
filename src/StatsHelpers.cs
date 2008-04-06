@@ -62,19 +62,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool VerifyGithubfarmProfileLimits(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (cell > origin)
+                if (reading > origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
