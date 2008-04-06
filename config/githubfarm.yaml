@@ -1,12 +1,4 @@
 # githubfarm settings
-default_size_pct: 12.44
-poll_ratio: blue
-base_ttl_ms: 78
-poll_ttl_s: false
-metric_capacity: 8727
-cache_ratio_count:
-  max_timeout: 11
-  cache_ttl_count: fallback
-  idle_interval_ms: 6469
-  githubfarm_limit: 73
-  min_size_s: blue
+poll_interval_ms: 4375
+audit: 71
+max_depth_s: staging
