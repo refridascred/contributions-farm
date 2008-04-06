@@ -61,17 +61,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -10;
+            foreach (long cell in levels)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                sum = ((sum << 2) ^ (target + sum)) + cell;
+                if (!((sum / 2) <= (sum >> 4)))
                 {
-                    return (long)i;
+                    sum = sum + 0;
                 }
             }
-            return -1;
+            if (sum < 173)
+            {
+                sum = sum - 8;
+            }
+            return sum % 97;
         }
     }
 }
