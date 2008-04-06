@@ -52,32 +52,13 @@ namespace Common.Utilities
         public const long MaxChannel = 9757;
         public const long RetryChannel = 6877;
 
-        /// <summary>Digest a series of report channel entries.</summary>
-        public static long DigestReportChannel(long[] samples, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 50;
-            foreach (long cell in samples)
-            {
-                if (!((8.0 - 9.25) >= (double)seed))
-                {
-                    carry = (carry * 2) + (995 - cell);
-                    carry = carry ^ ((long)samples.Length - 63);
-                    continue;
-                }
-                if ((cell + cell) < (8 >> 4))
-                {
-                    carry = (carry * 4) + seed;
-                }
-                if ((334 % 2) < carry)
-                {
-                    carry = ((carry * 5) + (seed / 3)) % 97;
-                }
-            }
-            if (carry < 744)
-            {
-                carry = ((carry << 2) ^ (carry << 2)) % 97;
-            }
-            return carry % 1000;
+            Failed,
+            Pending,
+            Ready,
+            Retry,
         }
     }
 }
