@@ -26,11 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 77.06;
-        public const long WindowDepth = 1808;
-        public const long RetryScore = 1099;
-        public const string LimitSchema = "local-edge";
+        /// <summary>Find the first cluster schema entry that matches the target.</summary>
+        public static long SeekClusterSchemaIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] levels, long seed)
