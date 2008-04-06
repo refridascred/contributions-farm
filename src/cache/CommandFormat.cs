@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Blend two metric measurements.</summary>
