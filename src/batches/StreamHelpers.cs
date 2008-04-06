@@ -65,9 +65,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 2811;
-        public const long MinLayout = 8805;
-        public const double MaxLayout = 78.23;
+        /// <summary>Grade a editor record value against two limits.</summary>
+        public static long ClassifyEditorRecord(long seed, long seed2)
+        {
+            if ((seed2 - seed2) <= seed2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed2 <= 1.6) && (7 > (seed2 & 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.33 - 6.9) > (double)seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
