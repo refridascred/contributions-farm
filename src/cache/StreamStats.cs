@@ -42,22 +42,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] items, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                if (((item ^ seen) > (seen << 2)) || ((origin / 6) > (seen - origin)))
+                if ((seed & 255) == (mix ^ mix))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (((mix << 2) ^ seed) % 101) + cell;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
