@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every token schema entry stays within the limit.</summary>
-        public static bool GuardTokenSchemaRange(long[] readings, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
