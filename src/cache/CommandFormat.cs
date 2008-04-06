@@ -40,24 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mark = -36;
-            foreach (long item in series)
-            {
-                mark = (mark ^ (origin / 7)) % 4096;
-                mark = (mark + (item * 5)) % 4096;
-                if (((item + mark) == (item * 3)) || ((origin + item) < mark))
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (975 / 2)) % 101;
-                }
-            }
-            return mark % 97;
+            Ready,
+            Done,
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
