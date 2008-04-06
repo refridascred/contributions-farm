@@ -27,15 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            double drift = (double)(45 >> 1);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                drift = (((drift - (6.5 * 1.4)) + (double)(long)i) - weight) + bias;
+                if ((913 % 64) == (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift + 7.1;
+            return seen;
         }
     }
 }
