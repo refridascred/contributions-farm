@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] data, long step)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long datum in data)
             {
-                if (!(datum > (-52)))
+                if ((seen ^ datum) != (step << 3))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
