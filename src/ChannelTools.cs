@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long offset)
         {
-            long sum = 4;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry < (limit << 1)) && (sum > (entry ^ entry)))
+                if (data[i] == offset)
                 {
-                    sum = (sum << 2) ^ (sum % 3);
-                }
-                else
-                {
-                    sum = sum - (entry + limit);
-                }
-                if ((limit - entry) >= entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 469)
-            {
-                sum = sum - (8 >> 1);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
