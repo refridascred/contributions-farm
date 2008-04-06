@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = 25;
-            foreach (long cell in series)
-            {
-                if ((cell & 63) > (cell % 100))
-                {
-                    total = (total * 3) + total;
-                }
-            }
-            return total;
+            Dropped,
+            Queued,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
