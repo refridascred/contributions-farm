@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8201;
         public const long MaxCounter = 6634;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long target)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two cache measurements.</summary>
