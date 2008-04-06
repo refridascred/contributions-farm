@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many entry window samples are out of range.</summary>
+        public static long MeasureEntryWindowMatches(long[] series, long limit)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally + cell) < (limit - limit))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
