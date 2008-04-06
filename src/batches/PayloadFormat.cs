@@ -31,19 +31,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
-        public static bool GuardGithubfarmQueueBounds(long[] readings, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (cell < origin)
+                if ((((target - seen) != (seen & 15)) && (16.0 >= (double)target)) || ((target & 3) > datum))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
