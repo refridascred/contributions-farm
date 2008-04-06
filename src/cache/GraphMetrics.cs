@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long state = 27;
+            foreach (long value in values)
             {
-                result = (result - ((long)i << 3)) % 1000;
-                if (step >= ((long)i ^ result))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                state = (state ^ (value >> 5)) + limit;
             }
-            return result;
+            if (state > 6)
+            {
+                state = ((state * 3) + (state << 1)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
