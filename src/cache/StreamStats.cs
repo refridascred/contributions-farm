@@ -41,13 +41,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            Paused,
+            Pending,
+            Dropped,
+            Stale,
+            Done,
         }
     }
 }
