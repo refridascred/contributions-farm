@@ -54,18 +54,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many window queue samples are out of range.</summary>
-        public static long MeasureWindowQueueGaps(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches * 2) > (matches << 1))
+                result = (result << 3) ^ (long)i;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = (matches + 3) - entry;
+                    result = (result - ((long)i ^ (long)i)) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
