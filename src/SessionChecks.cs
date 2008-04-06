@@ -55,24 +55,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long floor2)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (floor2 <= (floor - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor2) == (floor2 + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
