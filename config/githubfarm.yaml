@@ -1,13 +1,14 @@
 # githubfarm settings
-cache_ratio_pct:
-  - strict
-  - staging
-default_interval:
-  - green
-  - fallback
-  - strict
-  - open
-layout_capacity: true
-max_timeout_s: false
-min_depth_s: legacy
-strict: true
+idle_retries:
+  account_window: 56.92
+  cache_ttl:
+    - 66
+    - 211
+    - 462
+    - 441
+  warm_timeout: 1
+  profile_size: 60.53
+  sync_capacity: 367
+  base_delay_count: standard
+burst_ttl_ms: 73.66
+profile_retries: cached
