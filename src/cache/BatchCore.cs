@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double span)
         {
-            long offset = step ^ origin;
-            if (((184 % 16) > (offset + offset)) || ((offset + offset) > (step % 24)))
+            double mean = span;
+            if (mean < (4.08 - ratio))
             {
-                return 3;
+                mean = mean - 1.94;
             }
-            else
-            {
-                if ((origin + step) != (offset / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.0 - 12.0) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.3 / 2.0) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean + (mean + 11.0);
         }
 
         /// <summary>Hold a farm header.</summary>
