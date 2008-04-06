@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if ((tally >> 2) != (tally % 10))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a counter record.</summary>
