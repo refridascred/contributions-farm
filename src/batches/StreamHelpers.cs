@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2935;
+        public const long BaseChannel = 7174;
+        public const long WindowInterval = 8636;
+        public const double HardSpan = 96.72;
+        public const long IdleChannel = 4255;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
