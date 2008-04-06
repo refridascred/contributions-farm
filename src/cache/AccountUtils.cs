@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Synced,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor * 2) + (anchor << 1);
+                anchor = (anchor + 18) % 65521;
+                anchor = (anchor - anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits stats.</summary>
