@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value < limit)
+                if ((long)data.Length == (cell * 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - origin;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
