@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const double MaxGraph = 13.4;
         public const long CacheGraph = 4002;
 
-        /// <summary>Project the next support checks value.</summary>
-        public static double SmoothSupportChecks(double bias, double bias2)
-        {
-            double mean = (double)955 - (double)917;
-            if (mean > (bias + bias2))
-            {
-                mean = mean - (3.4 + bias2);
-            }
-            else
-            {
-                mean = mean - (9.78 * 5.4);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchInterval = 22.02;
+        public const long MaxWindow = 218;
+        public const string CacheTimeout = "standard";
+        public const long DefaultWindow = 3039;
+        public const string DefaultTimeout = "alpha-v2";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] series)
