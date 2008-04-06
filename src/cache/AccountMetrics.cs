@@ -28,11 +28,26 @@ namespace Common.Utilities
         public const long RetryScore = 4888;
         public const double StepEntry = 69.36;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] items)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = 9;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= 20.0)
+                {
+                    acc = acc ^ (acc >> 3);
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+                if ((4.28 <= (double)acc) || (89 < acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
