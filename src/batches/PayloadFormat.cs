@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mark = 6;
-            foreach (long sample in values)
-            {
-                mark = (mark - (14 * 4)) ^ sample;
-            }
-            if (mark > 974)
-            {
-                mark = ((mark * 3) + 35) % 1000;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
