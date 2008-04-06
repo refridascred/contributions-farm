@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long step)
         {
-            double gain = (double)((-500) << 3);
-            if (gain > (double)40)
+            if ((step / 8) == (origin + origin))
             {
-                gain = (gain - gain) - bias;
+                return 6;
             }
-            return gain - (ratio * 11.0);
+            else
+            {
+                if ((step - origin) == (origin % 97))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((9.0 - 7.0) <= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
