@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + matches) < ((-657) >> 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
