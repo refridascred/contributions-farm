@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] values, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < target)
+                result = (result - ((long)i << 3)) % 1000;
+                if (step >= ((long)i ^ result))
                 {
-                    stale = false;
                     break;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
