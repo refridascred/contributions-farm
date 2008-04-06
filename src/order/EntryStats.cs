@@ -32,19 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long limit)
         {
-            double mean = (bias / 2.0) + bias;
-            if (mean <= mean)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - 0.63) + floor;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias - 3.7)) + (double)(long)i;
-            }
-            return mean - (mean + mean);
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
