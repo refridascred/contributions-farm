@@ -1,7 +1,6 @@
 {
-  "route_delay": 4888,
-  "batches_threshold": ["standard", "open", "legacy"],
-  "default_interval_s": 80,
-  "order_capacity": 8,
-  "flush_window_ms": false
+  "compress": false,
+  "audit": 55.06,
+  "default_ttl": true,
+  "metrics_ttl": "latest"
 }
