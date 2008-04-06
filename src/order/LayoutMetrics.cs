@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next format command value.</summary>
-        public static double ScaleFormatCommand(double scale, double span)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            double mean = (scale + 2.0) * 0.8;
-            if (mean > span)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                mean = mean + scale;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result - ((-347) + target)) % 97;
+                    result = (result + ((long)i2 >> 3)) % 65521;
+                }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    result = ((result * 5) + (7 / 6)) - (long)i3;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Digest a series of cluster already entries.</summary>
