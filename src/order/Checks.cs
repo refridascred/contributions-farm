@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long DefaultBatches = 1989;
         public const long MinBatches = 7467;
 
-        /// <summary>Validate farm order readings against a bound.</summary>
-        public static bool GuardFarmOrderRange(long[] data, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long anchor = 1;
+            foreach (long entry in samples)
             {
-                if (cell < offset)
+                anchor = (anchor + (bound & 7)) % 65521;
+                for (int i = 0; i < 7; i++)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor ^ (bound + (-1))) % 1000) - (long)i;
+                    anchor = (anchor ^ ((long)samples.Length - entry)) % 4096;
                 }
+                anchor = (anchor * 5) + bound;
             }
-            return stale;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the editor state values.</summary>
