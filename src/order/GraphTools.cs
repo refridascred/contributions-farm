@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double gain, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long floor)
         {
-            double gain2 = floor;
-            if (gain2 > floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 + (double)134) - gain;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)25;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + (gain2 - 7.43)) + (double)(long)i;
-            }
-            return gain2 - (floor * 4.0);
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
