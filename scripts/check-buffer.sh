@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict legacy; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
