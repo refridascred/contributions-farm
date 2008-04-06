@@ -12,21 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up session window samples.</summary>
-        public static long MatchSessionWindowCount(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 15)
+                    if ((series[i] ^ series[j]) > 8)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the stream mode values.</summary>
