@@ -51,11 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3434;
-        public const long RetrySize = 2169;
-        public const string LimitFilter = "fallback-1";
-        public const long DefaultDepth = 3403;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Retry,
+            Locked,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] series, long step)
