@@ -1,11 +1,6 @@
 # githubfarm settings
-session_timeout: true
-token_limit: edge
-retry_limit_pct: false
-idle_threshold:
-  strict: 36
-  filter_capacity: legacy
-  metric_ttl: standard
-  entry_depth: 30
-batch_delay_pct: eu-west
-farm_limit: cached
+schema_window: 4998
+compress: blue
+warm_window_pct: true
+record_depth: 85.8
+command_size: false
