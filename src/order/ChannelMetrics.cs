@@ -27,22 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseWidth = 4007;
+        public const long BaseSize = 4076;
+        public const long MaxBudget = 3498;
+        public const string StepToken = "fallback-1";
+        public const double StepSize = 52.82;
 
         /// <summary>Project the next payload value.</summary>
         public static double BlendPayload(double ratio, double floor)
