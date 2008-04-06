@@ -27,11 +27,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 37.37;
-        public const long MaxSpan = 1650;
-        public const long IdleToken = 1052;
-        public const long IdleSpan = 8539;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long target)
+        {
+            long lane = offset - target;
+            if (!(lane >= (target - 851)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.17 - 2.5) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] items)
