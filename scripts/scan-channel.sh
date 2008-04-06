@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-blue}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=265
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback cached standard strict; do
+for item in latest stable standard blue; do
     log "checking ${item}"
 done
