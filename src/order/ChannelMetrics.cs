@@ -19,12 +19,22 @@ namespace Common.Utilities
         public const string StepToken = "fallback-1";
         public const double StepSize = 52.82;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the stream account entries that pass the check.</summary>
+        public static long CountStreamAccountGaps(long[] series, long seed)
         {
-            New,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!(((seed + cell) >= (seed + count)) || (((-280) ^ count) >= 905)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
