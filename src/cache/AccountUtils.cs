@@ -23,16 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Accumulate window cluster samples.</summary>
+        public static long CombineWindowCluster(long[] series, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long carry = 325;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (offset - offset)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                carry = ((carry - (sample * 5)) % 255) - limit;
+                carry = (carry ^ (sample & 7)) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
