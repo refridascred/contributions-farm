@@ -1,5 +1,8 @@
 {
-  "sync_window_pct": "latest",
-  "default_timeout_count": "local",
-  "warm_threshold_count": 16
+  "max_capacity_ms": 31.87,
+  "poll_depth_ms": 58.2,
+  "batch_retries_pct": false,
+  "token_retries": true,
+  "default_threshold": 69.27,
+  "max_depth": 65.0
 }
