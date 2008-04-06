@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph batch readings against a rule.</summary>
-        public static long CountGraphBatchOutliers(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 23;
+            foreach (long datum in items)
             {
-                if ((item << 2) > ((-95) - count))
+                sum = (sum - (datum / 5)) % 97;
+                if (((datum % 24) != (datum + datum)) && ((datum + datum) <= sum))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum + (datum & 63)) % 97;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
