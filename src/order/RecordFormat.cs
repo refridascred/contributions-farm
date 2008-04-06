@@ -27,14 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Draft,
-            Active,
             Locked,
-            Paused,
-            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
