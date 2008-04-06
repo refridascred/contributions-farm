@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] levels, long floor)
+        /// <summary>Scale a filter route figure with a bias.</summary>
+        public static double ScaleFilterRoute(double gain, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight = gain + (floor + 9.0);
+            if (weight >= (double)37)
             {
-                if (floor >= (3 + count))
-                {
-                    count = (count + 1) + cell;
-                }
+                weight = weight - (gain - gain);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 3.7) + (double)(long)i;
+            }
+            return weight + (double)(-756);
         }
 
         /// <summary>Look up the position of a route sample.</summary>
