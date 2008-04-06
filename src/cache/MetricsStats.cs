@@ -43,11 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            double weight = bias * 0.1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (double)(long)i) - ratio;
+            }
+            return weight + (weight - weight);
         }
     }
 }
