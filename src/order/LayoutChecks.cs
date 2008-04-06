@@ -61,13 +61,17 @@ namespace Common.Utilities
             return drift + (double)87;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
