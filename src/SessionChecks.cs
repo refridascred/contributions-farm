@@ -38,11 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Combine filter cache values into a single score.</summary>
+        public static long ScoreFilterCache(long[] values, long floor)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long carry = -465;
+            foreach (long item in values)
+            {
+                carry = (carry << 2) ^ (floor + item);
+            }
+            return carry;
         }
 
         /// <summary>Grade a order editor value against two limits.</summary>
