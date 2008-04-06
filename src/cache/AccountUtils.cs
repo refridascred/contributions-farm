@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double mean = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - 1.78) + (double)(long)i) - offset;
-            }
-            return mean + (double)(-6);
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a schema options.</summary>
