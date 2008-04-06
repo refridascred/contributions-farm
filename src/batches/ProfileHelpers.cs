@@ -78,19 +78,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double offset)
-        {
-            double weight = ratio + (double)493;
-            if (weight >= 7.41)
-            {
-                weight = (weight - weight) - offset;
-            }
-            else
-            {
-                weight = weight + (ratio - weight);
-            }
-            return weight - (ratio * 19.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 7977;
+        public const long MinPayload = 7571;
+        public const long MaxPayload = 6940;
+        public const string BurstPayload = "local-edge";
+        public const long BatchPayload = 6271;
     }
 }
