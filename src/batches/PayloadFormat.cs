@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double floor)
-        {
-            double drift = floor * 4.8;
-            return (drift + (double)32) + gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 7613;
+        public const long MaxProfile = 8786;
+        public const long DefaultScore = 3627;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBatch = "local-edge";
