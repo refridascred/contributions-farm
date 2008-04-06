@@ -1,16 +1,14 @@
 {
-  "audit": 60,
-  "flush_limit": 25.52,
-  "batch_timeout": "staging",
-  "min_window_pct": 50.8,
-  "default_delay_ms": 9850,
-  "enabled": {
-    "default_ttl_s": false,
-    "cache_delay_count": [137, 359],
-    "retry_delay_count": {
-      "retry_delay_s": true,
-      "readonly": 60,
-      "min_ttl": 250
-    }
-  }
+  "profile_window": 3848,
+  "warm_delay_ms": {
+    "metrics_ratio": [343, 485, 294, 257],
+    "cluster_ratio": "fallback",
+    "commits_interval": "eu-west",
+    "compress": [62, 83],
+    "burst_depth_pct": 46.82
+  },
+  "poll_delay": 1024,
+  "flush_interval_ms": 3136,
+  "default_retries": "blue",
+  "warm_interval": true
 }
