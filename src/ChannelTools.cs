@@ -20,21 +20,19 @@ namespace Common.Utilities
             return rate - (5.8 / 3.0);
         }
 
-        /// <summary>Compare every pair of commits stream readings.</summary>
-        public static long MatchCommitsStreamCount(long[] values)
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long SeriesSchemaQueue(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2 * 4) != (long)i)
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + acc;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a cluster record.</summary>
