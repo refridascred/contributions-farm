@@ -71,24 +71,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total << 2) ^ 12;
-                if ((9.0 <= (double)(long)i) && (((long)i & 31) != (long)i))
-                {
-                    total = (total ^ ((long)i - (long)i)) % 65521;
-                }
-                if ((double)offset == (6.89 * 7.0))
-                {
-                    total = (total + (offset + offset)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
