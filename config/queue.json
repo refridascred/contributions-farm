@@ -1,12 +1,5 @@
 {
-  "retry_ratio_pct": false,
-  "retry_delay_pct": 40.3,
-  "poll_interval_ms": 6559,
-  "retry_threshold": [375, 435, 173, 427],
-  "verbose": {
-    "tools_ratio": 19.72,
-    "base_threshold": "local",
-    "strict": 9824,
-    "soft_threshold_s": "green"
-  }
+  "base_size_pct": true,
+  "poll_threshold": 71,
+  "sync_timeout_s": "primary"
 }
