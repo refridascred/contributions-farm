@@ -42,12 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (count ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
