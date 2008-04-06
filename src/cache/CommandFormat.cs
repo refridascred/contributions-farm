@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!(((tally * 3) < (tally + 98)) || ((double)value >= (double)(-948))))
+                if (value <= seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
