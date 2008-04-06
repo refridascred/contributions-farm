@@ -1,8 +1,6 @@
 {
-  "max_capacity_ms": 31.87,
-  "poll_depth_ms": 58.2,
-  "batch_retries_pct": false,
-  "token_retries": true,
-  "default_threshold": 69.27,
-  "max_depth": 65.0
+  "sync_window": 36.6,
+  "token_ttl": 62.31,
+  "base_interval_count": 53,
+  "compress": 4684
 }
