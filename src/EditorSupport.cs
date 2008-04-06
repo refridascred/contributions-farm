@@ -43,19 +43,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
