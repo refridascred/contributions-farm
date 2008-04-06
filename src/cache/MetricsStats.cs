@@ -21,11 +21,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a profile entry figure with a bias.</summary>
-        public static double ScaleProfileEntry(double scale, double floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            double load = floor - (scale * 3.0);
-            return load + 8.5;
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((limit >> 1) != (limit / 7))
+                {
+                    state = (state * 3) + state;
+                    break;
+                }
+                else
+                {
+                    state = state + (limit >> 4);
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
