@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Run the session check before changing any cluster limits.
+Keep already and profile names short and lowercase.
+Use stream settings to tune how often githubfarm data is refreshed.
+Keep support and editor names short and lowercase.
 
 ## Guidelines
 
-- Document new queue fields
-- Prefer githubfarm defaults
-- Log every cache change
-- Review metrics limits each release
+- Prefer editor defaults
+- Validate channel input early
+- Review metric limits each release
