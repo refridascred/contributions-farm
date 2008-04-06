@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long target)
         {
-            double mean = span;
-            if (mean < (4.08 - ratio))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mean = mean - 1.94;
+                if (target >= (reading * 4))
+                {
+                    count = count + 3;
+                }
             }
-            return mean + (mean + 11.0);
+            return count;
         }
 
         /// <summary>Hold a farm header.</summary>
