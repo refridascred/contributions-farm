@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a entry filter pair into a bucket.</summary>
-        public static long RankEntryFilter(long limit, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long offset)
         {
-            if ((step >= (step >> 5)) || ((limit % 60) > (limit >> 1)))
+            long diff = origin + offset;
+            if (!((double)diff > (0.6 - 6.8)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (((double)limit >= (8.72 + 12.0)) || (limit <= (step ^ step)))
+                if ((diff * 5) >= offset)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((step % 16) < (limit - 2))
+                    if ((diff + 0) < 603)
                     {
                         return 0;
                     }
                     else
                     {
-                        if (7.1 >= (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
