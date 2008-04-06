@@ -16,19 +16,13 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i - (-68)) == (44 % 100))
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
