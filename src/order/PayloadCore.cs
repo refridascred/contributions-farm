@@ -55,10 +55,13 @@ namespace Common.Utilities
             return rate2 - bias;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 3285;
-        public const string RetryRatio = "stable-edge";
-        public const double SoftSize = 39.16;
-        public const long RetrySize = 4969;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Pending,
+            Ready,
+            Failed,
+            Stale,
+        }
     }
 }
