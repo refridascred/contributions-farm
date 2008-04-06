@@ -47,17 +47,18 @@ namespace Common.Utilities
             return ratio + (rate + bias);
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long bound)
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long TallyCommitsBatchMatches(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) != 0))
+                if (datum < (count & 15))
                 {
-                    return (long)i;
+                    count = (count + 2) - offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
