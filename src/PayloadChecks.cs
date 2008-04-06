@@ -66,18 +66,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + value) >= value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
