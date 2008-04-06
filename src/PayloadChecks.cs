@@ -87,13 +87,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count + value) >= value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up stats samples.</summary>
