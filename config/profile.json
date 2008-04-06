@@ -1,8 +1,8 @@
 {
-  "flush_size_count": ["stable", "primary", "edge"],
-  "audit": true,
-  "cache_capacity": "eu-west",
-  "cache_size": 100,
-  "sync_retries_count": 36.15,
-  "strict": 47.47
+  "dry_run": [167, 220, 424, 24],
+  "batch_timeout_ms": 26,
+  "idle_threshold": "local",
+  "retry_interval_pct": 3869,
+  "already_limit": 61,
+  "sync_depth_s": 31
 }
