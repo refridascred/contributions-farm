@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long step)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                result = ((result ^ (result + result)) % 97) - sample;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Project the next batch value.</summary>
