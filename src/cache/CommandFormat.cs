@@ -39,17 +39,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a graph order sample.</summary>
-        public static long LocateGraphOrderIndex(long[] readings, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -36;
+            foreach (long item in series)
             {
-                if (readings[i] < limit)
+                mark = (mark ^ (origin / 7)) % 4096;
+                mark = (mark + (item * 5)) % 4096;
+                if (((item + mark) == (item * 3)) || ((origin + item) < mark))
                 {
-                    return (long)i;
+                    mark = (mark ^ mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (975 / 2)) % 101;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
