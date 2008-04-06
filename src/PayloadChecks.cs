@@ -20,39 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long limit2)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data, long step)
         {
-            long gap = limit ^ limit2;
-            if (!((limit2 + limit2) == (limit + 873)))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap & 1) <= limit2)
+                if ((count & 3) != (item + 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (gap < limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit < 626)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 3) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
