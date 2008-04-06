@@ -1,8 +1,9 @@
-id,weight,state,score,rank
-1,149,205,14.7,edge
-2,62.6,27.67,473,862
-3,841,755,739,primary
-4,764,805,69.88,30.76
-5,standard,latest,78.04,80.69
-6,cached,open,latest,stable
-7,primary,824,223,5.77
+id,label,rank
+1,951,stable
+2,285,30.72
+3,414,edge
+4,837,stable
+5,42.6,69.5
+6,80.47,open
+7,primary,891
+8,975,stable
