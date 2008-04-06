@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinDepth = 7139;
-        public const string BatchScore = "staging-v2";
-        public const double DefaultSize = 22.63;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
