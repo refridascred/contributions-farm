@@ -1,10 +1,9 @@
 # entry settings
-min_capacity_s: fallback
-graph_interval:
-  batch_capacity_ms: 66.97
-  checks_ttl: 4.56
-  filter_interval: 1341
-batch_ttl_ms:
+cluster_depth: cached
+batch_timeout_pct: 8365
+burst_size_ms:
+  - green
+  - cached
   - primary
-  - local
   - eu-west
+min_depth_ms: false
