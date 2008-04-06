@@ -28,12 +28,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Locate a schema context reading by value.</summary>
+        public static long FindSchemaContextIndex(long[] readings, long seed)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
