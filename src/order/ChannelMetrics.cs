@@ -28,13 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (8.6 + 17.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
