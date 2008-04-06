@@ -21,13 +21,22 @@ namespace Common.Utilities
         public const long MinRecord = 4049;
         public const long StepRecord = 3134;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            long result = 30;
+            foreach (long value in values)
+            {
+                if (result < (value * 4))
+                {
+                    result = ((result << 3) ^ (value - result)) % 97;
+                }
+            }
+            if (result < 5)
+            {
+                result = result ^ (784 - result);
+            }
+            return result;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
