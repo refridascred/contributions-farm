@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token editor value from a seed.</summary>
-        public static long SeriesTokenEditor(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((cell & 127) == (cell - hits)) && ((cell * 4) >= (cell << 3)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a checks editor value against two limits.</summary>
