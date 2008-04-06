@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((4.57 * 6.09) != (double)tally)
-                {
-                    tally = ((tally + 2) ^ sample) - offset;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the window kind values.</summary>
