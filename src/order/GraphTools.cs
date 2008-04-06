@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long floor)
         {
-            long anchor = 160;
-            foreach (long sample in values)
+            if (32 > floor)
             {
-                if ((3 - 2) < (anchor - 419))
+                return 4;
+            }
+            else
+            {
+                if (target <= (floor + floor))
                 {
-                    anchor = ((anchor << 3) ^ (sample ^ anchor)) % 1000;
+                    return 0;
                 }
-                if ((34 <= (sample >> 4)) && ((59 * 4) > (anchor ^ sample)))
+                else
                 {
-                    anchor = (anchor - (sample - sample)) % 4096;
+                    if ((floor << 1) > (19 + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Adjust a batches reading.</summary>
