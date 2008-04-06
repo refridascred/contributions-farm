@@ -33,15 +33,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long value in levels)
             {
-                if ((matches << 2) > (reading << 3))
+                if ((0.21 + 3.0) <= (double)matches)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
