@@ -1,19 +1,6 @@
 # support settings
-counter_limit: 90
-batch_ttl: 94.82
-burst_interval_s: 8274
-default_timeout:
-  strict:
-    - 428
-    - 156
-    - 170
-  batch_interval_ms: 50.19
-  hard_limit_s: standard
-  soft_capacity: 8.75
-  context_capacity:
-    - latest
-    - edge
-    - standard
-    - cached
-poll_window_s: legacy
-default_delay: 69
+batch_depth_ms: fallback
+sync_window_count: local
+record_delay: 500
+warm_ttl_ms: true
+min_limit: 19.58
