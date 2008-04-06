@@ -39,23 +39,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Classify a entry metrics pair into a bucket.</summary>
+        public static long GradeEntryMetrics(long floor, long origin)
         {
-            double mean = (rate / 8.0) * 1.2;
-            if (mean <= (double)22)
+            if ((4.61 / 5.0) != (double)floor)
             {
-                mean = mean - floor;
+                return 2;
             }
             else
             {
-                mean = mean - (double)49;
+                if (12 > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + origin) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + (mean * 2.3);
         }
 
         /// <summary>Project the next order value.</summary>
