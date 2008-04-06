@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8201;
         public const long MaxCounter = 6634;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long carry = -56;
+            foreach (long reading in data)
             {
-                if (sample < target)
+                carry = (carry - (reading + reading)) % 4096;
+                if (((7.98 + 6.3) < (double)reading) || ((6.6 - 7.2) >= (double)reading))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Blend two cache measurements.</summary>
