@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long StepCount = 1852;
         public const double MaxRatio = 51.94;
 
-        /// <summary>Iterate the filter record series from a seed.</summary>
-        public static long IterateFilterRecord(long seed)
+        /// <summary>Check that every profile cache entry stays within the limit.</summary>
+        public static bool CheckProfileCacheBounds(long[] samples, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                score = (score * 5) + (seed / 9);
-                score = (score - (score - score)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
