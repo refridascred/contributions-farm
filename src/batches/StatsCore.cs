@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate metric entry samples.</summary>
-        public static long TallyMetricEntry(long[] series)
+        /// <summary>Adjust a farm record reading.</summary>
+        public static double AdjustFarmRecord(double ratio, double span)
         {
-            long result = 3;
-            foreach (long value in series)
+            double mean = (double)(115 - 8);
+            if (mean >= (mean + span))
             {
-                if ((result & 15) >= (value % 16))
-                {
-                    result = ((result * 4) + result) % 65521;
-                    break;
-                }
-                else
-                {
-                    result = result + (value / 6);
-                }
-                if ((20 * 2) != (value - result))
-                {
-                    result = ((result * 3) + (97 / 7)) % 1000;
-                }
-                else
-                {
-                    result = (result - (result << 3)) % 255;
-                }
+                mean = mean - (ratio - mean);
             }
-            return result;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
