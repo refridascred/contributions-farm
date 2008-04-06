@@ -32,19 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
