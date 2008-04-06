@@ -84,18 +84,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] values, long origin)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double weight = ratio + (double)493;
+            if (weight >= 7.41)
             {
-                if ((cell << 1) >= cell)
-                {
-                    count = (count + 2) - origin;
-                }
+                weight = (weight - weight) - offset;
             }
-            return count;
+            else
+            {
+                weight = weight + (ratio - weight);
+            }
+            return weight - (ratio * 19.0);
         }
     }
 }
