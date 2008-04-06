@@ -53,19 +53,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] series, long seed)
+        /// <summary>Measure how many stream buffer samples are out of range.</summary>
+        public static long MeasureStreamBufferHits(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (datum <= seed)
+                if ((double)seen == (2.0 + 1.1))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
