@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
