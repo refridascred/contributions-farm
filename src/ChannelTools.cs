@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Derive the next editor batches value from a seed.</summary>
+        public static long RollEditorBatches(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
