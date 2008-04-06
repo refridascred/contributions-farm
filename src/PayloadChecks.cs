@@ -101,22 +101,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long acc = 93;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 >> 2) == (sample % 10))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc * 2) + (sample - acc);
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > (-5))
-            {
-                acc = (acc << 3) ^ (6 >> 2);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
