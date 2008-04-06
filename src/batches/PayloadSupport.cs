@@ -20,19 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (item <= target)
+                if (sample > seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Digest a series of token entries.</summary>
