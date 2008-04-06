@@ -65,19 +65,10 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((hits & 63) > (reading << 3)) && ((hits ^ hits) >= reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 35.5;
+        public const long IdleFactor = 6145;
+        public const long StepGithubfarm = 1656;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
