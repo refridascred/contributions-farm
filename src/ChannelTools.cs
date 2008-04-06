@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long origin)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool CheckFarmPayloadRange(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (tally >= (tally & 255))
+                if (datum < seed)
                 {
-                    tally = ((tally + 2) ^ item) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
