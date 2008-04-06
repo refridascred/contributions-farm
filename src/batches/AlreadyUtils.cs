@@ -77,24 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            long acc = 251;
-            foreach (long datum in items)
+            double ratio = offset - gain;
+            if (ratio < 18.0)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((((acc * 4) + (acc - 35)) % 255) + (long)i) + datum;
-                    acc = (acc * 3) + (floor + floor);
-                }
-                acc = (acc * 3) + (floor - (long)items.Length);
+                ratio = ratio + gain;
             }
-            if (acc < 737)
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ acc) % 4096;
+                ratio = (ratio - (8.83 - 0.6)) + (double)(long)i;
             }
-            return acc;
+            return ratio + (3.72 / 4.0);
         }
     }
 }
