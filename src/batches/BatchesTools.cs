@@ -27,12 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            Retry,
-            Queued,
-            New,
+            long score = 62;
+            foreach (long cell in levels)
+            {
+                score = ((score ^ (435 + (-9))) % 4096) + cell;
+            }
+            return score;
         }
     }
 }
