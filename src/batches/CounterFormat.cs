@@ -19,21 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context cache samples.</summary>
-        public static long CompareContextCacheCount(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a profile options.</summary>
