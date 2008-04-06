@@ -59,18 +59,24 @@ namespace Common.Utilities
         public const long MaxChannel = 9757;
         public const long RetryChannel = 6877;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] levels, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (((long)levels.Length - matches) != (reading - matches))
+                total = (total << 2) ^ 12;
+                if ((9.0 <= (double)(long)i) && (((long)i & 31) != (long)i))
                 {
-                    matches = (matches + 1) + target;
+                    total = (total ^ ((long)i - (long)i)) % 65521;
                 }
+                if ((double)offset == (6.89 * 7.0))
+                {
+                    total = (total + (offset + offset)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
