@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] items, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long floor)
         {
-            long mix = 62;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mix = ((mix ^ mix) % 97) - entry;
-                if (!((13 & 31) >= (offset + mix)))
+                if (sample < floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
