@@ -39,13 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            if ((limit < (limit + 55)) && ((2.3 / 6.0) > (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step + limit) != (limit + step)) && ((step + limit) <= (step - 323)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 << 3) > (602 - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit >> 2) <= (limit - limit)) && ((2.7 * 17.0) != (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report layout entries that pass the check.</summary>
