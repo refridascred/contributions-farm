@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of account queue entries.</summary>
-        public static long FoldAccountQueue(long[] levels, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long score = 233;
-            foreach (long cell in levels)
+            long sum = 70;
+            foreach (long reading in levels)
             {
-                score = score - (cell / 7);
-                if (((score >> 4) < (seed << 3)) || ((score - cell) >= 529))
+                if ((reading / 6) > sum)
                 {
-                    score = (score + (score % 16)) % 1000;
+                    continue;
                 }
-                if (!((seed - seed) >= (score / 9)))
+                else
                 {
-                    break;
+                    sum = sum - (reading + 562);
                 }
+                sum = (sum + ((-5) + reading)) % 4096;
             }
-            if (score > 904)
-            {
-                score = score ^ (score - seed);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Derive the next checks contributi value from a seed.</summary>
