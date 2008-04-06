@@ -1,8 +1,15 @@
 # entry settings
-cache_ttl_count:
-  - 306
-  - 493
-soft_window_count: 1863
-verbose: 2383
-contributi_ratio: 65.42
-max_ratio_s: primary
+filter_threshold: green
+batch_size_s:
+  - standard
+  - strict
+base_retries: 100
+base_retries_pct:
+  - 471
+  - 4
+  - 61
+  - 182
+buffer_capacity: legacy
+farm_interval:
+  - 267
+  - 269
