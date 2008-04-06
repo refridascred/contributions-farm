@@ -20,20 +20,10 @@ namespace Common.Utilities
             return weight + (double)(-756);
         }
 
-        /// <summary>Scale a stream window figure with a bias.</summary>
-        public static double SmoothStreamWindow(double scale, double bias)
-        {
-            double scale2 = 4.3;
-            if (scale2 > 0.3)
-            {
-                scale2 = (scale2 + scale) - bias;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            return scale2 + (scale2 + scale);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepScore = 8.28;
+        public const double RetryFormat = 55.98;
+        public const long StepSize = 1752;
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
         public static bool VerifyGraphMetricsLimits(long[] items, long offset)
