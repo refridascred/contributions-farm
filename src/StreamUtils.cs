@@ -45,12 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
