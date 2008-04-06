@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultTimeout = 8.78;
-        public const string BurstGraph = "local";
-        public const long MaxGraph = 5652;
-        public const long StepGraph = 6002;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            New,
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
