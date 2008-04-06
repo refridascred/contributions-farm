@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] samples, long origin)
         {
-            Idle,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches & 127) < (47 + cell))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
