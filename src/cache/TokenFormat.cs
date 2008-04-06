@@ -33,18 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long TallyContextSupportGaps(long[] series)
+        /// <summary>Match up window githubfarm samples.</summary>
+        public static long OverlapWindowGithubfarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((713 - value) == (value ^ matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
