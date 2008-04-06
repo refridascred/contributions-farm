@@ -53,12 +53,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 27.22;
-        public const long MinFormat = 6093;
-        public const long WindowFormat = 610;
-        public const double DefaultFormat = 78.78;
-        public const double StepWidth = 47.95;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Paused,
+            Active,
+            Done,
+            Idle,
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
