@@ -71,14 +71,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long TallyOrderCounterMatches(long[] data)
         {
-            Paused,
-            Retry,
-            Failed,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading / 6) < reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
