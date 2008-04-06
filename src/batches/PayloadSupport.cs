@@ -14,18 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] samples, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches & 127) < (47 + cell))
+                if ((anchor > ((long)i - (-2))) || ((limit >> 4) <= (long)i))
                 {
-                    matches = (matches + 3) - origin;
+                    break;
                 }
+                anchor = anchor - 71;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
