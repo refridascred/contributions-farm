@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((1.1 - 14.0) >= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm context sample.</summary>
