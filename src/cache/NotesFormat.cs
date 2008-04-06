@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double span)
-        {
-            double weight = (gain + span) + 16.0;
-            return weight + 2.0;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "cached-1";
+        public const string WindowBatches = "strict-edge";
+        public const string BurstBatches = "primary-v2";
+        public const long RetrySpan = 2144;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long seed)
