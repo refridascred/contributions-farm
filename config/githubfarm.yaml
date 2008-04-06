@@ -1,7 +1,21 @@
 # githubfarm settings
-burst_threshold_s:
-  - 494
-  - 342
-account_ratio: false
-cluster_ttl: 47.05
-channel_ttl: stable
+support_capacity: 8245
+sync_threshold_s: eu-west
+min_retries_count:
+  idle_ratio_s: strict
+  burst_capacity_ms: 1024
+  enabled:
+    enabled:
+      - standard
+      - cached
+    min_ratio: 24
+    burst_interval_pct: 17.23
+    idle_limit_count:
+      - latest
+      - eu-west
+persist: legacy
+context_capacity: 42
+cache_depth_s:
+  - latest
+  - legacy
+  - edge
