@@ -36,19 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command checks counter forward.</summary>
-        public static long StepCommandChecks(long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (step > 52)
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
                 {
-                    carry = carry - carry;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
