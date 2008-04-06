@@ -79,18 +79,39 @@ namespace Common.Utilities
         public const double WindowRoute = 49.25;
         public const long BatchFactor = 1073;
 
-        /// <summary>Measure how many buffer channel samples are out of range.</summary>
-        public static long TallyBufferChannelGaps(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long step, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long next = step - floor;
+            if (floor <= (793 - next))
             {
-                if ((double)seen > (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((89 * 5) > (next - next))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) != (636 % 100))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (93 ^ 73))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
