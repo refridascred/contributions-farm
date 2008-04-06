@@ -67,9 +67,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 4059;
-        public const long StepCounter = 7375;
-        public const long RetryCounter = 9643;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 5103;
+        public const long RetryDepth = 1712;
+        public const long CacheDepth = 3299;
     }
 }
