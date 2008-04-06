@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseSpan = "fallback-1";
-        public const long RetryDepth = 7426;
-        public const double RetryLevel = 1.78;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long origin, long offset)
