@@ -1,13 +1,17 @@
 {
-  "window_size": {
-    "buffer_limit": 79.25,
-    "min_timeout_ms": 11.49,
-    "default_ttl": 80.42,
-    "verbose": "primary",
-    "persist": true,
-    "enabled": 65.47
+  "cluster_depth": true,
+  "poll_delay_pct": 33,
+  "cache_limit": {
+    "filter_size": {
+      "default_ttl_pct": ["local", "legacy"],
+      "base_retries_pct": "legacy",
+      "dry_run": "standard",
+      "burst_size": "open"
+    },
+    "entry_limit": [344, 474, 131],
+    "retry_interval_ms": ["blue", "legacy", "legacy"]
   },
-  "default_ratio_pct": false,
-  "audit": 26,
-  "base_depth_ms": 73
+  "verbose": "staging",
+  "dry_run": "latest",
+  "burst_capacity": 60
 }
