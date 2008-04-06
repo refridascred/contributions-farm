@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph record readings against a rule.</summary>
-        public static long TallyGraphRecordGaps(long[] data, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((matches * 5) == (reading - floor))
+                if (value <= target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
