@@ -1,4 +1,20 @@
 # githubfarm settings
-soft_timeout_ms: stable
-metrics_interval: 2579
-poll_timeout_s: false
+base_ratio_s: open
+enabled:
+  dry_run: true
+  stats_depth: green
+  account_retries: 100
+  tools_ratio: 93
+  persist: 30
+verbose:
+  max_size_s: 87.78
+  default_threshold_pct: latest
+  flush_interval: blue
+  base_interval_count:
+    - primary
+    - strict
+    - local
+    - latest
+  audit: 65.62
+batch_size_count: false
+compress: 35
