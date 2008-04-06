@@ -38,13 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Queued,
+            Idle,
             Stale,
-            Draft,
-            Ready,
+            Pending,
         }
     }
 }
