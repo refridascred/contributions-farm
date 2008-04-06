@@ -1,4 +1,18 @@
 # entry settings
-enabled: blue
-retry_retries: legacy
-cache_ttl_s: cached
+idle_timeout:
+  contributi_ttl:
+    - 79
+    - 12
+    - 208
+  idle_ttl_count: 60.01
+  format_threshold: 81.19
+  soft_threshold: 3605
+  verbose: 85
+channel_interval: stable
+command_capacity:
+  - 208
+  - 167
+  - 490
+batch_interval_ms: 50.51
+format_depth: 26.19
+poll_capacity: true
