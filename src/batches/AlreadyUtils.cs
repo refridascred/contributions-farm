@@ -32,25 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long floor, long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long delta = floor + bound;
-            if (((1 ^ floor) <= (bound << 3)) || (delta > (bound + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 102) < (floor - delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Queued,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
