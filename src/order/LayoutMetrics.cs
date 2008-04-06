@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample ^ hits) < (hits & 127))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a channel summary.</summary>
