@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm layout pair into a bucket.</summary>
-        public static long ClassifyFarmLayout(long origin, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if (0.6 >= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + origin) < bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (4.23 - 6.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((17.0 * 14.0) <= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Audit graph batch readings against a rule.</summary>
