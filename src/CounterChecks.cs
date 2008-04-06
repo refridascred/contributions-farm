@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
             public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
