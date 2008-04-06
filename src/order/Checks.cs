@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels)
-        {
-            long acc = 406;
-            foreach (long entry in levels)
-            {
-                if ((double)(long)levels.Length < (double)acc)
-                {
-                    acc = (acc - (entry << 2)) % 97;
-                }
-            }
-            if (acc < 78)
-            {
-                acc = (acc + (acc + acc)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 56.36;
+        public const long LimitInterval = 9850;
+        public const long DefaultBatches = 1989;
+        public const long MinBatches = 7467;
 
         /// <summary>Validate farm order readings against a bound.</summary>
         public static bool GuardFarmOrderRange(long[] data, long offset)
