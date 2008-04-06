@@ -48,30 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] levels, long step)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long offset)
         {
-            long mark = 97;
-            foreach (long cell in levels)
+            long next = bound ^ offset;
+            if (next < (1 & 3))
             {
-                if (28 <= step)
+                return 8;
+            }
+            else
+            {
+                if ((next << 2) > (800 % 100))
                 {
-                    mark = mark ^ (cell % 16);
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark * 5) + 811;
-                }
-                if ((2.2 * 4.1) == (double)step)
-                {
-                    mark = (mark ^ (cell * 4)) % 255;
-                }
-                else
-                {
-                    mark = (mark + step) % 255;
+                    if (!((next + offset) <= (next + 852)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
