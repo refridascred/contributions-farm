@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell % 97) > cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
