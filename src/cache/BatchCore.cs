@@ -42,12 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            Dropped,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen + item) > (seen * 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
