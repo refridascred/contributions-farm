@@ -46,11 +46,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWidth = 97.99;
-        public const double CacheLevel = 76.39;
-        public const string BaseWindow = "primary-v2";
-        public const long BurstWindow = 1991;
-        public const long MinInterval = 9852;
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double floor)
+        {
+            double weight = 12.0;
+            if (weight > (bias - weight))
+            {
+                weight = weight - floor;
+            }
+            return weight - (double)1;
+        }
     }
 }
