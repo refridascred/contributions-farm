@@ -12,26 +12,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Digest a series of cluster already entries.</summary>
+        public static long CombineClusterAlready(long[] series)
         {
-            long anchor = 4;
-            foreach (long entry in samples)
+            long score = -309;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 4; i++)
+                if (((double)score >= (0.07 * 6.4)) || ((sample + score) > score))
                 {
-                    anchor = (anchor ^ (544 + anchor)) - (long)i;
+                    score = score + (63 & 255);
                 }
-                if ((double)entry >= (13.0 + 1.57))
+                else
                 {
-                    anchor = (anchor << 3) ^ (8 % 64);
+                    score = (score << 2) ^ ((-84) + sample);
+                }
+                if ((score + sample) <= sample)
+                {
+                    break;
                 }
             }
-            if (anchor < 840)
-            {
-                anchor = anchor - (136 & 1);
-            }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
