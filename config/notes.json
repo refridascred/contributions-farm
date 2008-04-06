@@ -1,6 +1,14 @@
 {
-  "compress": false,
-  "audit": 55.06,
-  "default_ttl": true,
-  "metrics_ttl": "latest"
+  "hard_retries_ms": 5974,
+  "command_window": {
+    "channel_ttl": 3841,
+    "base_window_ms": false,
+    "poll_delay_ms": {
+      "enabled": "green",
+      "persist": 87.77,
+      "readonly": false
+    },
+    "default_ttl_pct": 41.52
+  },
+  "readonly": "stable"
 }
