@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 9552;
-        public const long DefaultRatio = 9044;
-        public const string StepEditor = "open-edge";
-        public const long IdleEditor = 1606;
-        public const double HardScore = 6.98;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
