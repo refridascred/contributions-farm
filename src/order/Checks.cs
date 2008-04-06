@@ -56,21 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 21;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix & 127) <= (reading + reading))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                mix = (mix + (mix - mix)) - seed;
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
