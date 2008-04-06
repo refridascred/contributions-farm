@@ -63,15 +63,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long target)
         {
-            double weight = bias * 0.1;
-            for (int i = 0; i < 8; i++)
+            long acc = 8;
+            foreach (long item in series)
             {
-                weight = (weight - (double)(long)i) - ratio;
+                if ((target - item) != (acc & 3))
+                {
+                    acc = (acc + (acc - 525)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (target + target)) % 255;
+                }
             }
-            return weight + (weight - weight);
+            return acc;
         }
     }
 }
