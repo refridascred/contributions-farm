@@ -34,19 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
-        public static bool ValidatePayloadContributiLimits(long[] items, long origin)
+        /// <summary>Validate already filter readings against a bound.</summary>
+        public static bool ValidateAlreadyFilterLimits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (datum != origin)
+                if (value <= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Accumulate window samples.</summary>
