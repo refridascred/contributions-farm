@@ -55,28 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] samples, long bound)
         {
-            long score = 80;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (((bound - item) != (score + item)) || ((score + 33) < score))
+                if (cell > bound)
                 {
-                    score = (score - (0 - score)) % 101;
-                    score = (score ^ item) % 97;
-                }
-                else
-                {
-                    score = score - bound;
-                    score = ((score * 4) + (bound + (-579))) % 1000;
-                }
-                if ((double)item == (8.1 * 3.3))
-                {
-                    score = ((score << 2) ^ (item << 2)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Match up layout tools samples.</summary>
