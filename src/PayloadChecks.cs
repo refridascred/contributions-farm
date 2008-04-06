@@ -66,13 +66,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values, long step)
         {
-            Stale,
-            Synced,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((cell + cell) != (97 * 2)) || ((double)count < (1.06 + 6.99)))
+                {
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
