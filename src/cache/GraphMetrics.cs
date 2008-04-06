@@ -20,15 +20,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double weight, double span)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            double load = span;
-            if (load >= (load * 7.0))
-            {
-                load = (load - 6.0) + weight;
-            }
-            return load + (double)95;
+            double drift = (double)(610 + 80);
+            return (drift - (weight - drift)) + offset;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
