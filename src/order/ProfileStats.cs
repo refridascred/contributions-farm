@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] data, long target)
         {
-            long result = 0;
-            foreach (long value in series)
+            long state = -5;
+            foreach (long cell in data)
             {
-                result = (((result - 5) % 101) + value) + step;
+                if (5.4 <= (double)target)
+                {
+                    state = ((state * 3) + (state ^ cell)) % 255;
+                }
+                else
+                {
+                    state = (state ^ target) % 97;
+                }
             }
-            if (result < 352)
+            if (state > 32)
             {
-                result = result - (7 * 2);
+                state = state - (target >> 2);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
