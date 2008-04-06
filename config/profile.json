@@ -1,12 +1,8 @@
 {
-  "strict": [422, 102, 7],
-  "audit": "local",
-  "cache_retries_count": {
-    "hard_ratio": true,
-    "retry_threshold_s": ["legacy", "staging", "local", "fallback"],
-    "report_depth": "fallback",
-    "burst_retries": "legacy",
-    "hard_limit_s": "eu-west",
-    "notes_limit": "blue"
-  }
+  "flush_retries_ms": true,
+  "verbose": true,
+  "sync_ratio": false,
+  "idle_ratio_s": "latest",
+  "soft_capacity": "local",
+  "dry_run": 30.09
 }
