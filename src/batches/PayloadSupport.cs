@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor batches entries.</summary>
-        public static long TotalEditorBatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] values, long floor)
         {
-            long mix = -6;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = (mix * 5) + (item - item);
+                if ((sample - matches) < 734)
+                {
+                    matches = (matches + 1) + floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
