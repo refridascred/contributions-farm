@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleWidth = "strict-edge";
-        public const double DefaultGraph = 87.49;
-        public const double MaxGraph = 13.4;
-        public const long CacheGraph = 4002;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchInterval = 22.02;
