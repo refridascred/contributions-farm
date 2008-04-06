@@ -29,38 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stats commits input into a small class.</summary>
-        public static long GradeStatsCommits(long limit, long offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            if ((limit << 3) <= (offset & 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.04 + 12.0) <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset == (2.23 - 12.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)offset > (6.3 / 6.0)) && (((-31) - limit) < limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
