@@ -56,18 +56,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((99 >> 1) == (tally - 473))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ reading;
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
