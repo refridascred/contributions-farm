@@ -28,10 +28,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftWidth = 17.51;
-        public const long MaxDepth = 7404;
-        public const long StepScore = 57;
-        public const long BurstTimeout = 8300;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
