@@ -1,5 +1,19 @@
 {
-  "hard_delay_ms": "open",
-  "default_capacity_s": 73.02,
-  "command_timeout": 2.0
+  "default_window": 28.75,
+  "burst_capacity_s": "eu-west",
+  "account_limit": 100,
+  "account_timeout": {
+    "commits_ttl": "local",
+    "idle_delay": "local",
+    "audit": "blue",
+    "max_depth": "open"
+  },
+  "min_depth_s": {
+    "flush_depth": "fallback",
+    "support_depth": "stable",
+    "default_depth_pct": "primary",
+    "burst_ttl_ms": 80,
+    "batches_interval": ["fallback", "edge", "cached"],
+    "batch_window_s": "blue"
+  }
 }
