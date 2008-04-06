@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long acc = 5;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= 6.5)
-                {
-                    acc = (acc - (6 ^ 24)) % 65521;
-                }
-            }
-            return acc % 1000;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
