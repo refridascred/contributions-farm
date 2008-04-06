@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string RetryOrder = "strict";
         public const double BurstOrder = 41.36;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long offset)
+        /// <summary>Compare every pair of format batches readings.</summary>
+        public static long MatchFormatBatchesCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate command notes samples.</summary>
