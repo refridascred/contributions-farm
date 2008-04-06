@@ -1,7 +1,7 @@
-id,weight,score,count
-1,0.54,338,8.06
-2,73.95,624,168
-3,strict,20.54,690
-4,legacy,63.2,cached
-5,34,primary,69
-6,47.7,365,76.37
+id,region,level
+1,661,414
+2,23.43,871
+3,74,legacy
+4,976,83.24
+5,57.33,staging
+6,557,725
