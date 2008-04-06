@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long limit)
         {
-            long sum = 226;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)reading >= (5.7 * 0.2)) && ((reading + reading) > (sum >> 4)))
+                if (series[i] > limit)
                 {
-                    sum = sum + (reading + reading);
-                }
-                if (((73 * 2) < ((long)items.Length - sum)) && (sum <= (reading >> 1)))
-                {
-                    sum = (sum ^ reading) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < 678)
-            {
-                sum = ((sum * 2) + (sum & 1)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
