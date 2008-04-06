@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)(-1) > (double)datum) && (((97 & 15) > (datum >> 2)) && ((count >> 3) >= count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
