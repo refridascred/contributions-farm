@@ -28,11 +28,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinRatio = 57.44;
-        public const double MinSpan = 78.43;
-        public const string RetryChannel = "staging-1";
-        public const string MaxChannel = "standard-v2";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
