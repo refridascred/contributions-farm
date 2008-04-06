@@ -19,15 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            double bias2 = span - bias;
-            if (bias2 > span)
+            double bias = (double)(660 << 3);
+            if (bias < span)
             {
-                bias2 = bias2 - bias2;
+                bias = bias - gain;
             }
-            return bias2 - (double)378;
+            return bias + (double)44;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
