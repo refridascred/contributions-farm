@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double scale = (bias / 5.0) / 2.0;
-            if (scale >= (bias / 6.0))
-            {
-                scale = (scale + (bias + scale)) + bias2;
-            }
-            return scale + (9.0 + scale);
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
