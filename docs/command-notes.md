@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Use account settings to tune how often profile data is refreshed.
-
-Defaults for order live in the config folder and can be overridden per environment.
-Run the entry check before changing any farm limits.
-The context module keeps filter values in sync with the route cache.
+Run the cache check before changing any stream limits.
+Keep checks and notes names short and lowercase.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every window change
-- Keep commits values small
-- Prefer stats defaults
+- Keep record values small
+- Review context limits each release
+- Document new stream fields
+- Validate account input early
