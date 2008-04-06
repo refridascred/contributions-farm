@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((double)count > 7.1)
+                if (!!((seen % 2) > (seen + seen)))
                 {
-                    count = ((count + 3) + value) + offset;
+                    seen = ((seen + 2) + reading) + seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
