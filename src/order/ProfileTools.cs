@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 29;
+            foreach (long reading in samples)
             {
-                if ((hits + 4) > (1 + 589))
+                if (mix <= (reading / 7))
                 {
-                    hits = (hits + 1) ^ datum;
+                    mix = (((mix * 4) + reading) % 97) + bound;
                 }
             }
-            return hits;
+            if (mix > 96)
+            {
+                mix = ((mix << 3) ^ (mix << 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
