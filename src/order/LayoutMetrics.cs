@@ -42,15 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long total = 443;
-            foreach (long sample in values)
-            {
-                total = (total - (sample << 2)) % 65521;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
