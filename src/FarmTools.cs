@@ -29,12 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long anchor = 221;
+            foreach (long reading in readings)
+            {
+                if (((reading >> 2) != (anchor % 10)) || ((double)anchor != (5.3 - 7.65)))
+                {
+                    anchor = (anchor + (reading ^ 98)) + limit;
+                }
+            }
+            return anchor;
         }
     }
 }
