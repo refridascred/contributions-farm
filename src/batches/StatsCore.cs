@@ -51,23 +51,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((total ^ limit) < 1))
-                {
-                    total = total + (45 + (long)i);
-                }
-                if ((limit < ((long)i << 2)) && ((limit + 16) != (51 * 3)))
-                {
-                    total = ((total << 2) ^ ((long)i + (long)i)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
