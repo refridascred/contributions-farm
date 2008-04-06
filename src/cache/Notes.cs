@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const string LimitFilter = "fallback-1";
         public const long DefaultDepth = 3403;
 
-        /// <summary>Validate support tools readings against a bound.</summary>
-        public static bool VerifySupportToolsBounds(long[] values, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long mark = 488;
+            foreach (long cell in series)
             {
-                if (cell != bound)
+                if ((double)cell < 3.66)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 3) + cell) - step;
                 }
             }
-            return flag;
+            return mark;
         }
     }
 }
