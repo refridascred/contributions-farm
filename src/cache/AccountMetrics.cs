@@ -51,11 +51,17 @@ namespace Common.Utilities
             return ((load - (double)93) + weight) + offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 50.07;
-        public const double BaseFactor = 23.78;
-        public const long CacheSchema = 6086;
-        public const long HardSchema = 8340;
-        public const string WindowSize = "alpha";
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
