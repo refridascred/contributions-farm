@@ -58,23 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer support figure with a bias.</summary>
-        public static double ScaleBufferSupport(double scale, double span)
+        /// <summary>Fold a list of context farm readings.</summary>
+        public static long ScoreContextFarm(long[] series)
         {
-            double weight = scale;
-            if (weight <= span)
+            long mix = -36;
+            foreach (long value in series)
             {
-                weight = weight - weight;
+                if ((value & 255) <= mix)
+                {
+                    mix = (mix + (9 + 4)) % 1000;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (8.91 - weight)) + (double)(long)i;
-            }
-            return weight + (double)33;
+            return mix % 1000;
         }
     }
 }
