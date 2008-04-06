@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long offset, long step)
         {
-            Idle,
-            Synced,
-            Queued,
+            long slot = offset - step;
+            if ((step / 7) < (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot / 5) > (step / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.2 * 5.4) > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((360 - offset) < (offset >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
