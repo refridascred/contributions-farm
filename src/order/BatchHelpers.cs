@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "primary";
+        public const string MinSchema = "alpha-1";
+        public const long CacheScore = 2071;
+        public const long StepSize = 1281;
+        public const double BurstSchema = 90.17;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] data)
