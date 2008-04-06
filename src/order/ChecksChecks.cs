@@ -32,11 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] series, long target)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long sum = -1;
+            foreach (long datum in series)
+            {
+                sum = ((sum * 3) + target) % 255;
+                if ((target + 50) >= datum)
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = sum + (datum << 2);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
