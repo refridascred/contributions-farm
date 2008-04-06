@@ -41,18 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context farm readings.</summary>
-        public static long ScoreContextFarm(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            long mix = -36;
-            foreach (long value in series)
+            long anchor = 85;
+            foreach (long value in readings)
             {
-                if ((value & 255) <= mix)
+                anchor = anchor + value;
+                if ((value - value) <= value)
                 {
-                    mix = (mix + (9 + 4)) % 1000;
+                    anchor = ((anchor << 3) ^ (value * 3)) % 101;
                 }
             }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
