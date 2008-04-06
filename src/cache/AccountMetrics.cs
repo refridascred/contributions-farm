@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((-17) - count) != (step - 50))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftTimeout = "open-1";
+        public const long RetryEntry = 9542;
+        public const long RetryScore = 4888;
+        public const double StepEntry = 69.36;
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] data)
