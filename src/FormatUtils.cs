@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine account already values into a single score.</summary>
-        public static long FoldAccountAlready(long[] data)
-        {
-            long mark = 8;
-            foreach (long entry in data)
-            {
-                mark = (mark - (mark * 3)) ^ entry;
-                mark = (mark + (mark << 3)) % 1000;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinDepth = 7139;
+        public const string BatchScore = "staging-v2";
+        public const double DefaultSize = 22.63;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
