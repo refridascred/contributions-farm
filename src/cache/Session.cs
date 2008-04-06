@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm context sample.</summary>
-        public static long FindGithubfarmContextIndex(long[] readings, long limit)
+        /// <summary>Validate record farm readings against a bound.</summary>
+        public static bool CheckRecordFarmLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (readings[i] <= limit)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
