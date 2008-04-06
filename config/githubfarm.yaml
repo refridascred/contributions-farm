@@ -1,19 +1,11 @@
 # githubfarm settings
-min_ttl: false
-account_ratio:
-  strict: 9023
-  filter_ratio: strict
-  burst_timeout:
-    default_ttl: 29.97
-    layout_window:
-      - 99
-      - 120
-      - 473
-    readonly: 6.28
-    verbose: false
-    idle_retries_s: cached
-    dry_run: 60
-readonly: strict
-graph_threshold: stable
-cache_window_s: true
-base_ttl: 78.25
+session_timeout: true
+token_limit: edge
+retry_limit_pct: false
+idle_threshold:
+  strict: 36
+  filter_capacity: legacy
+  metric_ttl: standard
+  entry_depth: 30
+batch_delay_pct: eu-west
+farm_limit: cached
