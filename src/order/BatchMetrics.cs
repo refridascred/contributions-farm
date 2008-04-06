@@ -109,16 +109,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long FoldGraphMetric(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            long acc = 34;
-            foreach (long entry in readings)
+            double gain2 = (double)(0 + 97);
+            if (gain2 <= (span - gain))
             {
-                acc = (acc ^ (entry + acc)) % 1000;
-                acc = ((acc << 2) ^ acc) % 1000;
+                gain2 = gain2 - (gain2 * 1.4);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (gain + gain2)) + (double)(long)i;
+            }
+            return gain2 + (double)57;
         }
     }
 }
