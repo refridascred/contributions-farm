@@ -6,16 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=106
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -24,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict legacy; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
