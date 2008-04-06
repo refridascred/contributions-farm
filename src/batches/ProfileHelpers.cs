@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + matches) >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "primary-edge";
+        public const double HardInterval = 33.15;
+        public const double BatchCount = 66.62;
+        public const long StepMetric = 2456;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BaseDepth = "stable-1";
