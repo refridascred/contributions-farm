@@ -60,13 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            Draft,
-            Queued,
-            Active,
-            Dropped,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item / 4) < item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
