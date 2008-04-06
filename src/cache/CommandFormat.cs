@@ -40,14 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
-            Ready,
-            Done,
-            Locked,
-            Pending,
-            Draft,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches <= (792 + item)) || ((item >> 3) < 999))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
