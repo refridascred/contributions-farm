@@ -16,27 +16,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of buffer command entries.</summary>
-        public static long TallyBufferCommand(long[] data, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long anchor = 874;
-            foreach (long entry in data)
-            {
-                if ((entry / 6) <= (anchor + bound))
-                {
-                    break;
-                }
-                anchor = anchor ^ 34;
-                if ((4 % 7) <= (entry % 5))
-                {
-                    anchor = anchor - (entry + bound);
-                }
-            }
-            if (anchor < 807)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 4096;
+            Done,
+            New,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a order stats.</summary>
