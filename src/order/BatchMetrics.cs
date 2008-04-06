@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up batches samples.</summary>
