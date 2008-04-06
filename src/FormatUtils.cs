@@ -73,18 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((floor << 3) > (reading % 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
