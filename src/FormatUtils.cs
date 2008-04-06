@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] samples, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (samples[i] <= step)
+                if ((entry & 3) > (79 & 1))
                 {
-                    return (long)i;
+                    count = (count + 1) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
