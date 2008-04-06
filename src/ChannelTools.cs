@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item != (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheDepth = 2018;
+        public const long RetryDepth = 2390;
+        public const long MaxWidth = 3593;
+        public const long BatchCount = 6388;
+        public const double BurstFilter = 38.96;
     }
 }
