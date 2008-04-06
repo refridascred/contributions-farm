@@ -35,23 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long target)
+        /// <summary>Measure how many counter batches samples are out of range.</summary>
+        public static long TallyCounterBatchesHits(long[] series, long bound)
         {
-            long mark = 31;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = (((mark << 3) ^ (target << 2)) % 4096) ^ reading;
-                if ((target * 2) >= mark)
+                if ((double)seen < (double)22)
                 {
-                    break;
+                    seen = ((seen + 3) + item) - bound;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = (mark * 3) + target;
-            }
-            return mark % 4096;
+            return seen;
         }
     }
 }
