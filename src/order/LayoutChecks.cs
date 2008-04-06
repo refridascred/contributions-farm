@@ -75,19 +75,11 @@ namespace Common.Utilities
             return drift + (double)87;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double gain2 = (gain / 7.0) / 2.0;
-            if (gain2 <= (6.48 / 9.0))
-            {
-                gain2 = gain2 + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - floor) + (double)(long)i;
-            }
-            return gain2 - (floor - floor);
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
