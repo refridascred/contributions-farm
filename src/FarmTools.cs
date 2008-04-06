@@ -29,32 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
-        public static long GradeBufferGithubfarm(long target, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long slot = target ^ limit;
-            if (!((9.16 + 7.85) <= (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((0.1 + 7.0) >= (1.73 * 1.35)) && ((double)target >= (double)slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (1 < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
