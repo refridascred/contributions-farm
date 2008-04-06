@@ -81,13 +81,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
