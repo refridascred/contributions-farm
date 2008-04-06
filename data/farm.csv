@@ -1,11 +1,6 @@
-id,rank,state,level
-1,30.89,42,667
-2,blue,primary,606
-3,eu-west,strict,89.92
-4,legacy,916,primary
-5,76,19,273
-6,447,575,27.76
-7,3.13,primary,585
-8,44.11,953,stable
-9,22,17,22.0
-10,648,blue,latest
+id,owner,score
+1,9.54,905
+2,77,staging
+3,standard,local
+4,open,90.97
+5,latest,5.19
