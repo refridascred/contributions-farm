@@ -36,11 +36,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6511;
-        public const double StepTools = 62.84;
-        public const long HardTools = 2093;
-        public const long BurstScore = 2002;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 168;
+        public const long RetryChecks = 9350;
+        public const string DefaultChecks = "standard-edge";
+        public const long LimitChecks = 8016;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] levels, long step)
