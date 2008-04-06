@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
