@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)count < (5.0 * 0.5))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the filter mode values.</summary>
