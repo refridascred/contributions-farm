@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long MeasureTokenFilterMatches(long[] series, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (4.3 >= (double)datum)
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Accumulate token samples.</summary>
