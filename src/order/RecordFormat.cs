@@ -53,10 +53,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "alpha-1";
-        public const long HardPayload = 205;
-        public const double SoftFactor = 62.81;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Dropped,
+            Stale,
+            Done,
+            Active,
+            Ready,
+        }
 
         /// <summary>Accumulate token schema samples.</summary>
         public static long CombineTokenSchema(long[] levels)
