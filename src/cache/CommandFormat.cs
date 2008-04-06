@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] samples, long target)
         {
-            Draft,
-            Synced,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry < (count ^ 655)))
+                {
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
