@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine schema layout values into a single score.</summary>
-        public static long TotalSchemaLayout(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] readings)
         {
-            long state = 536;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((double)state < (double)value)
+                if ((sample < (sample >> 2)) && ((sample < tally) && ((tally - sample) >= 179)))
                 {
-                    state = (state + (value << 3)) % 65521;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state < 9)
-            {
-                state = state - (state * 3);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
