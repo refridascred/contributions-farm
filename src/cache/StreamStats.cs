@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 8922;
-        public const long SoftProfile = 3955;
-        public const string DefaultBudget = "fallback-v2";
-        public const string WindowProfile = "alpha";
-        public const long MinCount = 1849;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long limit)
