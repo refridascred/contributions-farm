@@ -53,13 +53,11 @@ namespace Common.Utilities
         public const string DefaultChecks = "standard-edge";
         public const long LimitChecks = 8016;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Stale,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 7425;
+        public const long RetrySession = 4886;
+        public const long BurstRatio = 8931;
+        public const double BurstCount = 49.71;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long limit)
