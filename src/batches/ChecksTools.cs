@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
