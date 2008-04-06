@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((seen % 16) == (seen / 9)))
-                {
-                    seen = ((seen + 2) + datum) + limit;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
