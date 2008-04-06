@@ -1,5 +1,12 @@
 {
-  "buffer_interval": 3276,
-  "batch_ratio": "green",
-  "burst_threshold": true
+  "base_depth_count": {
+    "verbose": 28,
+    "soft_window_pct": 1937,
+    "min_ratio_ms": 12.06,
+    "default_threshold": 18,
+    "channel_size": 20.67
+  },
+  "buffer_interval": "legacy",
+  "batch_depth": "standard",
+  "context_interval": 1
 }
