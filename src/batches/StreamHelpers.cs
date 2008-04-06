@@ -64,21 +64,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
