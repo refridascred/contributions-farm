@@ -26,12 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 86.19;
-        public const long StepRecord = 3579;
-        public const double MinRatio = 74.35;
-        public const double RetryRatio = 45.92;
-        public const double BaseRecord = 64.36;
+        /// <summary>Check that every token entry entry stays within the limit.</summary>
+        public static bool ValidateTokenEntryLimits(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
