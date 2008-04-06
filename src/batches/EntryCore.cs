@@ -45,12 +45,12 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitWidth = 3.09;
-        public const double LimitTools = 6.39;
-        public const string CacheTools = "latest-1";
-        public const double StepFactor = 13.65;
-        public const long MaxLevel = 4463;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count farm format pairs that satisfy a relation.</summary>
         public static long MatchFarmFormatCount(long[] samples)
