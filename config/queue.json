@@ -1,14 +1,6 @@
 {
-  "profile_window": 3848,
-  "warm_delay_ms": {
-    "metrics_ratio": [343, 485, 294, 257],
-    "cluster_ratio": "fallback",
-    "commits_interval": "eu-west",
-    "compress": [62, 83],
-    "burst_depth_pct": 46.82
-  },
-  "poll_delay": 1024,
-  "flush_interval_ms": 3136,
-  "default_retries": "blue",
-  "warm_interval": true
+  "sync_interval_s": false,
+  "idle_depth_pct": true,
+  "enabled": ["green", "local", "standard"],
+  "soft_window": 60
 }
