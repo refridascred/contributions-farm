@@ -1,22 +1,13 @@
 # support settings
-burst_depth:
-  min_capacity_pct: edge
-  retry_limit_count: false
-  hard_capacity_pct: false
-  strict: legacy
-verbose:
-  - standard
-  - eu-west
-  - latest
-  - eu-west
-batch_timeout_s:
-  cache_timeout_pct: true
-  default_threshold_count:
-    verbose: 6945
-    account_limit: primary
-    checks_limit: true
-    min_delay: 60
-  warm_ratio_s: 5437
-  retry_delay_pct: standard
-  hard_capacity_s: 40.77
-persist: 7506
+flush_threshold_s: 84.99
+hard_size_ms:
+  graph_timeout: blue
+  batch_window_count: 8806
+  token_ttl: standard
+  flush_timeout_s: eu-west
+cache_depth_count: 44
+default_capacity: true
+soft_window:
+  - strict
+  - local
+readonly: fallback
