@@ -29,19 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items, long step)
-        {
-            long state = 4;
-            foreach (long datum in items)
-            {
-                if (((step ^ (long)items.Length) == (state << 3)) && ((step + state) < step))
-                {
-                    state = ((state ^ 175) % 4096) ^ datum;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinDepth = 84.56;
+        public const long WindowGithubfarm = 197;
+        public const string HardRatio = "primary-v2";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels)
