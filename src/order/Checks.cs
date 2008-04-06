@@ -26,21 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count batches filter pairs that satisfy a relation.</summary>
-        public static long CompareBatchesFilterCount(long[] levels)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
