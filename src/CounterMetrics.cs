@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Done,
-            Failed,
-            Dropped,
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
