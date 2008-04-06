@@ -27,10 +27,19 @@ namespace Common.Utilities
             return (drift - (weight - drift)) + offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSpan = 3707;
-        public const long RetryLayout = 6781;
-        public const double StepLayout = 25.72;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((-868) * 3) <= (datum + 9))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
