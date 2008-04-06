@@ -43,11 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepLevel = 9283;
-        public const long BaseSize = 1601;
-        public const long BaseFormat = 8787;
-        public const double MaxSpan = 63.86;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels)
+        {
+            long mix = 17;
+            foreach (long sample in levels)
+            {
+                mix = mix ^ (mix - 42);
+                if ((sample + sample) <= (sample ^ (long)levels.Length))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
