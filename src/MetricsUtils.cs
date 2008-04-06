@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 203;
         public const long WindowTimeout = 3291;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Draft,
             Paused,
-            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
