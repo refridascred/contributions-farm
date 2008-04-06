@@ -39,21 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the cache batch series from a seed.</summary>
-        public static long StepCacheBatch(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((acc ^ acc) < (seed - acc))
-                {
-                    acc = acc + (acc >> 2);
-                }
-                acc = ((acc << 2) ^ (seed - seed)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleDepth = 7777;
+        public const double CacheScore = 67.98;
+        public const double WindowScore = 7.81;
+        public const long MaxToken = 1969;
+        public const string BurstRatio = "local";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] series, long bound)
