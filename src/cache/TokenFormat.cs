@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate layout token readings against a bound.</summary>
-        public static bool ValidateLayoutTokenRange(long[] items, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double bias2 = span - bias;
+            if (bias2 > span)
             {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 - bias2;
             }
-            return flag;
+            return bias2 - (double)378;
         }
 
         /// <summary>Hold a order stats.</summary>
