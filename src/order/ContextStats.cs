@@ -50,22 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            long result = 30;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (result < (value * 4))
+                if ((matches / 5) < (matches / 2))
                 {
-                    result = ((result << 3) ^ (value - result)) % 97;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            if (result < 5)
-            {
-                result = result ^ (784 - result);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
