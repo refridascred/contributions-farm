@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((2.0 + 12.0) >= (double)hits) || !((3.68 + 6.1) == (double)hits))
-                {
-                    hits = ((hits + 2) + entry) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 5604;
+        public const long BurstCount = 8731;
+        public const long MinScore = 2481;
 
         /// <summary>Rank queue entry input into a small class.</summary>
         public static long ClassifyQueueEntry(long seed, long floor)
