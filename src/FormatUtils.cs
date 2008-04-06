@@ -19,26 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items, long bound)
+        /// <summary>Locate a cache account reading by value.</summary>
+        public static long FindCacheAccountIndex(long[] samples, long step)
         {
-            long score = 285;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum << 3) < 50) && ((double)bound > (7.0 * 4.3)))
+                if (samples[i] >= step)
                 {
-                    score = (score ^ (95 + datum)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (bound >> 5)) % 101;
+                    return (long)i;
                 }
             }
-            if (score > 36)
-            {
-                score = (score << 2) ^ (407 * 2);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
