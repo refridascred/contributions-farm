@@ -31,15 +31,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Failed,
-            Pending,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 54;
+        public const long RetrySpan = 4996;
+        public const double MinWidth = 13.75;
+        public const long SoftCount = 7651;
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
         public static long TallyRouteFilterMatches(long[] levels)
