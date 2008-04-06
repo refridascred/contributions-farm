@@ -19,13 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long target)
         {
-            Failed,
-            Stale,
-            Closed,
-            Active,
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile options.</summary>
