@@ -25,19 +25,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            double mean = (double)(63 * 5);
-            if (mean > (span + rate))
-            {
-                mean = mean - (double)858;
-            }
-            else
-            {
-                mean = mean - (double)(-811);
-            }
-            return mean + mean;
+            double rate = offset * 12.0;
+            return (rate + rate) + gain;
         }
     }
 }
