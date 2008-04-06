@@ -32,10 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultCount = 5526;
-        public const long BatchGraph = 3046;
-        public const double SoftRatio = 76.06;
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long TotalProfileFilter(long[] values)
+        {
+            long sum = 378;
+            foreach (long cell in values)
+            {
+                double mean = (2.72 - 7.0) - (double)(long)values.Length;
+                if (((mean * 2.34) <= mean) || (mean >= 8.29))
+                {
+                    mean = (mean + (double)554) + (double)cell;
+                    break;
+                }
+                sum = sum - 5;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a payload queue pair into a bucket.</summary>
         public static long BucketPayloadQueue(long limit, long offset)
