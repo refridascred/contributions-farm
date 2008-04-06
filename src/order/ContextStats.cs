@@ -46,20 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long DeriveTokenRoute(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((18.0 + 8.55) >= (double)score)
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 4007;
+        public const long SoftTimeout = 220;
+        public const long MaxChannel = 9757;
+        public const long RetryChannel = 6877;
 
         /// <summary>Digest a series of report channel entries.</summary>
         public static long DigestReportChannel(long[] samples, long seed)
