@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long MaxScore = 2510;
         public const long BasePayload = 7581;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            New,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheTimeout = 8693;
+        public const long BatchMetric = 5851;
+        public const long MinTimeout = 1973;
+        public const double DefaultInterval = 98.92;
+        public const long IdleInterval = 4675;
     }
 }
