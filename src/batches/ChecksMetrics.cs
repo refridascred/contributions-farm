@@ -58,18 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 326;
+            foreach (long sample in data)
             {
-                if (((tally - tally) > entry) && (tally <= 3))
+                total = (((total ^ (total >> 5)) % 1000) ^ sample) + seed;
+                if ((double)total <= (2.0 + 2.78))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return total % 65521;
         }
     }
 }
