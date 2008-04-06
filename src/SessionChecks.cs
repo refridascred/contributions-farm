@@ -30,12 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            Draft,
-            Locked,
-            Paused,
+            double scale = (bias / 5.0) / 2.0;
+            if (scale >= (bias / 6.0))
+            {
+                scale = (scale + (bias + scale)) + bias2;
+            }
+            return scale + (9.0 + scale);
         }
 
         /// <summary>Define context limits and defaults.</summary>
