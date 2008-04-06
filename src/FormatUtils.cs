@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] values, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 285;
+            foreach (long datum in items)
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                if (((datum << 3) < 50) && ((double)bound > (7.0 * 4.3)))
                 {
-                    return (long)i;
+                    score = (score ^ (95 + datum)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (bound >> 5)) % 101;
                 }
             }
-            return -1;
+            if (score > 36)
+            {
+                score = (score << 2) ^ (407 * 2);
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
