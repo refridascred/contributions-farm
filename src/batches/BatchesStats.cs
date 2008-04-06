@@ -37,15 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = 86;
-            foreach (long item in data)
-            {
-                sum = ((sum + (limit >> 5)) % 65521) ^ item;
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
