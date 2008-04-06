@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] values, long target)
+        /// <summary>Audit layout stats readings against a rule.</summary>
+        public static long MeasureLayoutStatsHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (target < (target & 1))
+                if (((sample - matches) > (matches - matches)) && ((matches ^ matches) <= (matches << 3)))
                 {
-                    hits = (hits + 3) - value;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the metric level values.</summary>
