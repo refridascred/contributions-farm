@@ -73,17 +73,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long bound)
+        /// <summary>Rank notes window input into a small class.</summary>
+        public static long SortNotesWindow(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = offset + floor;
+            if ((floor - cur) >= offset)
             {
-                if (series[i] < bound)
+                return 7;
+            }
+            else
+            {
+                if ((cur & 7) <= cur)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((cur / 8) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
