@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate queue counter samples.</summary>
+        public static long TotalQueueCounter(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long acc = 7;
+            foreach (long entry in values)
+            {
+                acc = (acc - origin) % 97;
+                if ((origin + entry) > (35 * 5))
+                {
+                    acc = (acc ^ (acc + 54)) % 255;
+                }
+                if (((double)origin == (8.0 * 9.0)) && ((acc - (long)values.Length) != (origin * 5)))
+                {
+                    break;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = (acc - origin) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
