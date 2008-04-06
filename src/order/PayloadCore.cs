@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const long IdleContributi = 8382;
         public const long DefaultContributi = 1670;
 
-        /// <summary>Compare every pair of batches notes readings.</summary>
-        public static long CompareBatchesNotesCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = limit ^ origin;
+            if (((double)limit <= (16.0 + 7.6)) || ((origin & 7) > diff))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((limit % 60) < (858 << 1)) || ((419 - diff) >= (diff << 3)))
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many commits report samples are out of range.</summary>
