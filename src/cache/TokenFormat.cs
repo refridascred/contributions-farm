@@ -19,15 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels, long target)
         {
-            double bias = (double)(660 << 3);
-            if (bias < span)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                bias = bias - gain;
+                if (!(cell >= (seen % 100)))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            return bias + (double)44;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
