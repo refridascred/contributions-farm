@@ -74,18 +74,11 @@ namespace Common.Utilities
             return drift + (double)87;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches <= (matches - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 7718;
+        public const string MinCount = "standard-1";
+        public const long MinRecord = 3527;
+        public const long IdleWidth = 2687;
+        public const string DefaultRatio = "legacy-1";
     }
 }
