@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const double CacheInterval = 39.67;
         public const long BurstReport = 4684;
 
-        /// <summary>Blend two metrics notes measurements.</summary>
-        public static double ProjectMetricsNotes(double bias, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long limit)
         {
-            double bias2 = 3.49;
-            return ((bias2 - (9.15 / 3.0)) + bias) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
