@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Paused,
-            Pending,
-            Active,
-            Closed,
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
