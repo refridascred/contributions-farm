@@ -44,14 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Paused,
-            Stale,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftBudget = 9743;
+        public const long LimitStream = 3334;
+        public const long HardStream = 7852;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long CombineNotes(long[] data)
