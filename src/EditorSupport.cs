@@ -37,12 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long target)
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
