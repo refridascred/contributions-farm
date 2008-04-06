@@ -68,17 +68,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema graph entry that matches the target.</summary>
-        public static long LocateSchemaGraphIndex(long[] values, long origin)
+        /// <summary>Fold a list of token context readings.</summary>
+        public static long TallyTokenContext(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                acc = (acc * 5) + (6 + entry);
+                if ((0 + entry) > (entry >> 4))
                 {
-                    return (long)i;
+                    acc = (acc - (acc % 2)) % 101;
+                }
+                if ((entry >> 2) == (acc / 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
