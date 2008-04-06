@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] samples)
         {
-            Idle,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 60) < ((long)samples.Length - value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
