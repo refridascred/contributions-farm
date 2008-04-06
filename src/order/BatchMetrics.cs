@@ -83,18 +83,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long floor)
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long FoldGraphMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = 34;
+            foreach (long entry in readings)
             {
-                if ((cell + floor) >= 5)
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc ^ (entry + acc)) % 1000;
+                acc = ((acc << 2) ^ acc) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
