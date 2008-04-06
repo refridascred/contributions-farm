@@ -1,6 +1,7 @@
 {
-  "persist": 84,
-  "default_size": "staging",
-  "dry_run": true,
-  "commits_ratio": 83.67
+  "batch_interval": ["stable", "open", "latest", "strict"],
+  "batches_timeout": false,
+  "metric_ttl": "stable",
+  "verbose": [229, 43],
+  "strict": 60
 }
