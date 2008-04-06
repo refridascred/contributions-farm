@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 5744;
-        public const long StepRecord = 1527;
-        public const double SoftRecord = 13.12;
-        public const long RetryRecord = 7686;
-        public const long MaxCount = 2644;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Size { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
