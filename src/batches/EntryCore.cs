@@ -60,14 +60,15 @@ namespace Common.Utilities
         public const double StepFactor = 13.65;
         public const long MaxLevel = 4463;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            Closed,
-            Paused,
-            Queued,
-            Retry,
-            Ready,
+            long mix = 606;
+            foreach (long value in series)
+            {
+                mix = ((mix << 3) ^ (value + (long)series.Length)) % 97;
+            }
+            return mix;
         }
     }
 }
