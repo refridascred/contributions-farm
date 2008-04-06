@@ -42,9 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 2587;
-        public const long RetryDepth = 171;
-        public const string HardBatch = "stable";
+        /// <summary>Measure how many entry stats samples are out of range.</summary>
+        public static long TallyEntryStatsHits(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count % 8) < (count % 5))
+                {
+                    count = ((count + 3) + cell) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
