@@ -1,9 +1,7 @@
-id,weight,owner
-1,432,68.65
-2,stable,377
-3,edge,38.78
-4,0.06,751
-5,78.36,77.32
-6,726,cached
-7,420,17.44
-8,latest,edge
+id,region,label,active
+1,44,open,cached
+2,standard,green,932
+3,560,blue,10.24
+4,staging,681,705
+5,strict,64.11,896
+6,61.09,134,412
