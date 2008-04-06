@@ -14,30 +14,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long bound, long bound2)
         {
-            long lane = limit - step;
-            if ((1.43 / 6.0) > (double)limit)
+            long gap = bound + bound2;
+            if (bound2 >= (9 << 2))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((limit << 3) == (limit - step)) || ((lane * 4) == (limit ^ step)))
+                if (((bound / 4) != (gap >> 2)) && (9.8 <= (double)bound2))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)step >= (3.0 - 11.0)) && ((lane + 5) == (lane + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
