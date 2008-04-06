@@ -21,11 +21,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxCount = "cached";
-        public const double BaseInterval = 30.39;
-        public const double IdleRecord = 36.34;
-        public const double CacheInterval = 41.11;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long seed)
+        {
+            long lane = floor ^ seed;
+            if ((seed - 6) > (floor + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9 / 7) == (floor % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)lane < (3.48 + 1.7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (0 > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
