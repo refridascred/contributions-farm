@@ -52,18 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item >= (double)bound)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 1068;
+        public const long IdleWidth = 6256;
+        public const string IdleCount = "strict-v2";
+        public const string DefaultTimeout = "staging-1";
+        public const long RetryBatches = 1828;
     }
 }
