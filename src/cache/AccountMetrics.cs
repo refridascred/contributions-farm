@@ -36,12 +36,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
+        public static bool ValidatePayloadContributiLimits(long[] items, long origin)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a filter reading.</summary>
