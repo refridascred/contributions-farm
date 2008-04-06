@@ -40,21 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (5.2 < (double)floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) <= floor)
                 {
-                    if ((items[i] + items[j]) == 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + floor) > ((-6) + origin))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > (origin % 60))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
