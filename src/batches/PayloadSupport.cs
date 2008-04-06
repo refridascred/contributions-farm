@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long offset)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long MeasureFormatWindowOutliers(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value > offset)
+                if ((((15.0 - 0.9) == (double)tally) && (tally <= 8)) && !(617 >= (sample ^ bound)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
