@@ -24,15 +24,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Draft,
-            Ready,
-            Locked,
-            New,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 1832;
+        public const double StepMetric = 88.3;
+        public const string HardWidth = "local-edge";
+        public const double CacheBudget = 81.57;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
