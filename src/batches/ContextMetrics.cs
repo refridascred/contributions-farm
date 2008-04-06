@@ -43,14 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Synced,
-            Active,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchSpan = 966;
+        public const long WindowEntry = 7613;
+        public const string SoftEntry = "fallback-v2";
+        public const long BurstSpan = 8577;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] levels, long step)
