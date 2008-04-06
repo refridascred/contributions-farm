@@ -33,22 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long result = 42;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.4 + 1.43) <= (double)result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result - (value / 9)) + step;
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 417)
-            {
-                result = (result * 3) + 1;
-            }
-            return result % 1000;
+            return tally;
         }
     }
 }
