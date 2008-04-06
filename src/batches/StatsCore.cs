@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] series, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)tally <= 11.0)
+                if ((double)reading >= (19.0 - 6.1))
                 {
-                    tally = ((tally + 3) - entry) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
