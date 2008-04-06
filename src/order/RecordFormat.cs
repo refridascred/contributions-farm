@@ -27,19 +27,10 @@ namespace Common.Utilities
         public const double RetryRecord = 47.85;
         public const long BatchFactor = 367;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches + 512) <= (6 % 97))
-                {
-                    matches = ((matches + 2) ^ value) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstCount = 33.64;
+        public const long BaseEditor = 1697;
+        public const long CacheDepth = 1182;
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
