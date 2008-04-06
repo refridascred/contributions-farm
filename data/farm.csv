@@ -1,10 +1,6 @@
-id,level,active,ratio
-1,50.79,92.61,612
-2,416,strict,63.97
-3,752,900,40.15
-4,1.08,741,265
-5,432,902,local
-6,344,primary,latest
-7,912,legacy,45.07
-8,760,693,41.45
-9,90.51,274,staging
+id,count,level
+1,84.91,stable
+2,213,local
+3,primary,fallback
+4,74.06,staging
+5,strict,879
