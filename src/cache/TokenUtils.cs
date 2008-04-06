@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFactor = 8.43;
-        public const string BatchInterval = "legacy-1";
-        public const double LimitFarm = 91.89;
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long TotalStreamStats(long[] levels, long seed)
+        {
+            long score = 331;
+            foreach (long sample in levels)
+            {
+                score = ((score * 5) + 851) % 255;
+                score = ((score << 2) ^ (score + sample)) % 1000;
+                if (!(sample <= (seed - score)))
+                {
+                    break;
+                }
+            }
+            if (score > 338)
+            {
+                score = ((score * 3) + (score ^ score)) % 4096;
+            }
+            return score % 97;
+        }
 
         /// <summary>Count farm buffer pairs that satisfy a relation.</summary>
         public static long CompareFarmBufferCount(long[] samples)
