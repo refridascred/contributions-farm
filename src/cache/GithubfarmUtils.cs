@@ -22,19 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Derive the next buffer stats value from a seed.</summary>
+        public static long SeriesBufferStats(long origin)
         {
-            long carry = 182;
-            foreach (long entry in readings)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry ^ (entry - 50)) - target;
-                if ((8.2 * 5.48) != (double)carry)
+                if ((79 >> 4) >= origin)
                 {
-                    carry = ((carry << 3) ^ (carry ^ (-859))) % 97;
+                    score = score - (score & 63);
+                    score = score + (origin ^ score);
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the filter mode values.</summary>
