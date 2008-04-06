@@ -60,24 +60,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if (0.84 > (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)24 < (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
