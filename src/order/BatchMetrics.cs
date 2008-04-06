@@ -40,26 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long origin2)
-        {
-            long diff = origin ^ origin2;
-            if (((origin2 ^ origin) < (diff % 100)) && ((diff & 3) > (origin2 & 255)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin2 < (783 + 79))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowScore = 88.5;
+        public const long LimitSpan = 7686;
+        public const long MinCount = 3064;
+        public const string MaxGithubfarm = "strict-1";
+        public const long BaseSpan = 3681;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long bound)
