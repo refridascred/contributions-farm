@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 3.58;
-        public const double BurstScore = 19.1;
-        public const long IdleBudget = 2336;
-        public const long MinBatches = 828;
-        public const long BatchTimeout = 5672;
+        /// <summary>Check that every channel record entry stays within the limit.</summary>
+        public static bool ValidateChannelRecordBounds(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double ScaleRoute(double weight, double bias)
