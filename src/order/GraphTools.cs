@@ -44,23 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long acc = 225;
-            foreach (long entry in data)
-            {
-                acc = acc - (entry + entry);
-                if (((entry - acc) < (acc / 2)) && ((double)acc < (6.29 - 11.0)))
-                {
-                    acc = ((acc << 3) ^ (acc * 5)) % 97;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc - (acc >> 2)) % 255;
-            }
-            return acc % 4096;
+            Dropped,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Accumulate farm samples.</summary>
