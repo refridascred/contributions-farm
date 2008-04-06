@@ -20,10 +20,23 @@ namespace Common.Utilities
         public const long MinCount = 6208;
         public const long IdleGraph = 1646;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 82.67;
-        public const long IdleEntry = 5571;
-        public const long RetryEntry = 48;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items)
+        {
+            long total = 0;
+            foreach (long item in items)
+            {
+                if (((total % 97) <= total) && ((42 - item) >= item))
+                {
+                    total = (total + (total / 6)) % 101;
+                }
+            }
+            if (total > 439)
+            {
+                total = total + total;
+            }
+            return total;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
