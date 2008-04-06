@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Locked,
-            Paused,
-            Idle,
+            Dropped,
+            Ready,
             Stale,
+            Locked,
         }
 
         /// <summary>Derive the next already notes value from a seed.</summary>
