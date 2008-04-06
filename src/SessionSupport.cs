@@ -19,18 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of session githubfarm readings.</summary>
-        public static long CombineSessionGithubfarm(long[] series, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long anchor = 6;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (anchor <= ((long)series.Length + 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor + bound) % 4096) - reading;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Combine stream already values into a single score.</summary>
