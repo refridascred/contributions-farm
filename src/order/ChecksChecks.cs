@@ -19,12 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= seed)
+                if ((values[i] <= seed) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
