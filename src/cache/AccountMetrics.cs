@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Count batch entry pairs that satisfy a relation.</summary>
+        public static long CompareBatchEntryCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-3) - hits) != (cell & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
