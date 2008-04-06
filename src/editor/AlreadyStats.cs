@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 2) ^ (result + result)) % 255;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "cached-v2";
+        public const long BatchFormat = 4442;
+        public const long SoftFactor = 8061;
+        public const string RetryFormat = "cached-v2";
+        public const long MaxSpan = 6504;
 
         /// <summary>Look up the position of a stream counter sample.</summary>
         public static long LocateStreamCounterIndex(long[] readings, long floor)
