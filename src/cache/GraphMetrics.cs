@@ -20,11 +20,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long step)
         {
-            double drift = (double)(610 + 80);
-            return (drift - (weight - drift)) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
