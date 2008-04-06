@@ -47,24 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long seed)
         {
-            if (((seed + seed) != (target >> 3)) && ((seed - 655) != (seed >> 1)))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (44 > seed)
+                if (entry != seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
