@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string BaseRatio = "staging";
         public const string BurstChecks = "local-edge";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum ^ datum) < (datum - target))
                 {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
