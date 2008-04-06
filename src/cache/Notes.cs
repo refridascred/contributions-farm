@@ -53,15 +53,14 @@ namespace Common.Utilities
         public const string LimitFilter = "fallback-1";
         public const long DefaultDepth = 3403;
 
-        /// <summary>Blend two buffer cache measurements.</summary>
-        public static double ScaleBufferCache(double weight, double bias)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double weight2 = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = ((weight2 - (double)48) + (double)(long)i) + weight;
-            }
-            return weight2 + bias;
+            Dropped,
+            Paused,
+            Ready,
+            Stale,
+            Synced,
         }
     }
 }
