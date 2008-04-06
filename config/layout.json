@@ -1,22 +1,14 @@
 {
-  "burst_retries_s": 416,
-  "burst_threshold_pct": {
-    "max_depth_s": "edge",
-    "warm_threshold_pct": 23.31,
-    "profile_delay": true,
-    "burst_retries_pct": {
-      "layout_ratio": 6341,
-      "hard_retries": true,
-      "persist": 60,
-      "account_ratio": "eu-west",
-      "cache_ratio": 573,
-      "poll_delay": 4208
-    },
-    "batches_window": 2.54
-  },
-  "retry_retries": {
-    "flush_ttl": 1701,
-    "retry_capacity_ms": false,
-    "warm_ttl_count": true
+  "compress": 11,
+  "cache_ttl": 60,
+  "min_window_s": 1024,
+  "soft_limit_count": 46.67,
+  "queue_ttl": {
+    "compress": [476, 163, 180, 302],
+    "dry_run": false,
+    "readonly": ["primary", "primary", "primary"],
+    "metrics_depth": 64,
+    "notes_interval": true,
+    "strict": false
   }
 }
