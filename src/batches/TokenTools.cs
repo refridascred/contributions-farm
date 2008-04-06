@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryBudget = 2195;
+        public const string LimitRatio = "cached-1";
+        public const long CacheSupport = 2917;
+        public const long BurstSupport = 7034;
+        public const double IdleBudget = 79.03;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] series)
