@@ -47,15 +47,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Blend two account payload measurements.</summary>
