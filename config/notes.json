@@ -1,5 +1,5 @@
 {
-  "compress": "primary",
-  "metric_capacity": 100,
-  "audit": false
+  "idle_threshold_ms": "edge",
+  "cache_size": ["primary", "blue"],
+  "audit": 90
 }
