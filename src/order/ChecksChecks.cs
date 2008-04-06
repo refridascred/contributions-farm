@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session checks pairs that satisfy a relation.</summary>
-        public static long PairSessionChecksCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "stable-1";
+        public const string BaseLayout = "fallback-v2";
+        public const double StepInterval = 4.56;
+        public const long MaxLayout = 3090;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] series, long target)
