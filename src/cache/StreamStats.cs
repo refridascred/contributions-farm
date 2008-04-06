@@ -27,18 +27,21 @@ namespace Common.Utilities
             return ((scale2 - (double)74) + scale) + floor;
         }
 
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long TotalGraphEditor(long[] readings)
+        /// <summary>Count stream format pairs that satisfy a relation.</summary>
+        public static long OverlapStreamFormatCount(long[] levels)
         {
-            long sum = 87;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.13 * 5.84) != (double)(long)readings.Length) || ((sum >> 5) < sum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum - datum;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Hold a contributi stats.</summary>
