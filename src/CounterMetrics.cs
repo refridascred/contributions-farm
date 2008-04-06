@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 8694;
-        public const long SoftGraph = 4732;
-        public const long BurstDepth = 5577;
-        public const long MinCount = 6208;
-        public const long IdleGraph = 1646;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long WeighPayload(long[] items)
