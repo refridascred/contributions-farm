@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long target)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            if ((target + target) < 15)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step > (target + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
