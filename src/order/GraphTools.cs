@@ -66,21 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleCount = 41.37;
+        public const double BatchDepth = 55.83;
+        public const double BatchWidth = 49.74;
+        public const double BatchSchema = 34.9;
+        public const long CacheScore = 388;
     }
 }
