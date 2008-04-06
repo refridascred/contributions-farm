@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
