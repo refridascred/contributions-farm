@@ -64,15 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] data, long origin)
         {
-            long result = 1;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                result = result ^ (result ^ cell);
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
