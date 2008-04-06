@@ -1,5 +1,6 @@
 {
-  "warm_retries_s": false,
-  "sync_threshold_count": "blue",
-  "burst_retries_pct": 8698
+  "idle_ratio_ms": true,
+  "warm_limit": 250,
+  "retry_retries": "stable",
+  "filter_window": "fallback"
 }
