@@ -41,15 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Ready,
-            Active,
-            Idle,
-            New,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "local-v2";
+        public const long StepEditor = 5718;
+        public const string HardEditor = "latest-1";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] items)
