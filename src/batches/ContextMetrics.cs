@@ -22,25 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema commits value against two limits.</summary>
-        public static long GradeSchemaCommits(long offset, long offset2)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long edge = offset ^ offset2;
-            if (((offset + offset2) < (edge / 7)) && (offset >= (edge ^ offset2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge + 617) <= offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
