@@ -38,15 +38,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] items, long target)
         {
-            double bias = (double)(43 << 2);
-            if (bias < floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + floor) - rate;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
