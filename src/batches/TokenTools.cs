@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            if (limit <= (limit + 924))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 59) >= (492 << 1))
+                if ((double)item == (13.0 / 9.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
