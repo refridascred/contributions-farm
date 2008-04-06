@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format batches readings.</summary>
-        public static long MatchFormatBatchesCount(long[] readings)
+        /// <summary>Fold a list of session githubfarm readings.</summary>
+        public static long CombineSessionGithubfarm(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 6;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (anchor <= ((long)series.Length + 7))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor + bound) % 4096) - reading;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Combine stream already values into a single score.</summary>
