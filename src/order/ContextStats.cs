@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long step)
+        /// <summary>Measure how many session batches samples are out of range.</summary>
+        public static long CountSessionBatchesGaps(long[] items)
         {
-            if ((step / 8) == (origin + origin))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - origin) == (origin % 97))
+                if (((long)items.Length >> 1) <= (datum * 4))
                 {
-                    return 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (!((9.0 - 7.0) <= (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a filter stats.</summary>
