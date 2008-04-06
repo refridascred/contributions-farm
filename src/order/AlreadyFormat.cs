@@ -27,27 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of cluster batches readings.</summary>
-        public static long TotalClusterBatches(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long mix = 610;
-            foreach (long cell in values)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell & 127) <= (mix + mix))
-                {
-                    mix = mix - (mix + cell);
-                    mix = mix - (long)values.Length;
-                }
-                if ((mix + mix) < (cell * 4))
-                {
-                    mix = ((mix * 5) + cell) % 101;
-                }
+                sum = ((sum * 4) + sum) % 1000;
+                sum = (sum - (sum - sum)) % 255;
+                sum = (sum - sum) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (mix < 469)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 1000;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
