@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double floor)
         {
-            if ((914 >= (target & 31)) || ((double)step < (double)target))
+            double mean = (double)(119 - 166);
+            if (mean <= 3.4)
             {
-                return 5;
+                mean = ((mean + (mean * 11.0)) - ratio) - floor;
             }
-            else
-            {
-                if (target >= (target % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean + (double)83;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
