@@ -30,12 +30,38 @@ namespace Common.Utilities
         public const long DefaultAlready = 6101;
         public const long SoftAlready = 7638;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long seed, long target)
         {
-            Queued,
-            Ready,
-            Retry,
+            if ((seed / 4) > (seed % 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 7) == (seed - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(68 >= (target + 173)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target * 2) < (target / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two account measurements.</summary>
