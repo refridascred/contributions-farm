@@ -34,19 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Look up the position of a stream format sample.</summary>
+        public static long FindStreamFormatIndex(long[] readings, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor * 2) < (anchor << 3))
+                if (readings[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
