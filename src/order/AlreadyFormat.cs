@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
