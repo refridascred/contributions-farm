@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long step)
         {
-            New,
-            Queued,
-            Done,
+            long prev = target ^ step;
+            if (((prev << 1) < (prev << 2)) && ((step + step) <= 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev - prev) <= prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
