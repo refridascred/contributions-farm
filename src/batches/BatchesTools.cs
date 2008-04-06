@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Find the first commits counter entry that matches the target.</summary>
+        public static long LookupCommitsCounterIndex(long[] values, long step)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
