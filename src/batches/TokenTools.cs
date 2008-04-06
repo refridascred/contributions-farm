@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 5604;
-        public const long BurstCount = 8731;
-        public const long MinScore = 2481;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long limit)
+        {
+            if (limit <= (limit + 924))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 59) >= (492 << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank queue entry input into a small class.</summary>
         public static long ClassifyQueueEntry(long seed, long floor)
