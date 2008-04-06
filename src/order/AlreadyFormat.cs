@@ -26,13 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            long state = 59;
+            foreach (long value in series)
+            {
+                if ((value >= (state * 3)) || ((double)state < (7.7 / 7.0)))
+                {
+                    state = state + (state + value);
+                }
+                state = state - state;
+                if (value >= (state % 8))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
