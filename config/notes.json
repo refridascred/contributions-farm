@@ -1,17 +1,12 @@
 {
-  "cluster_depth": true,
-  "poll_delay_pct": 33,
-  "cache_limit": {
-    "filter_size": {
-      "default_ttl_pct": ["local", "legacy"],
-      "base_retries_pct": "legacy",
-      "dry_run": "standard",
-      "burst_size": "open"
-    },
-    "entry_limit": [344, 474, 131],
-    "retry_interval_ms": ["blue", "legacy", "legacy"]
+  "base_limit_count": ["latest", "staging", "strict"],
+  "entry_size": 30,
+  "payload_timeout": {
+    "audit": 5.58,
+    "warm_threshold_count": "fallback",
+    "base_ratio": "legacy"
   },
-  "verbose": "staging",
-  "dry_run": "latest",
-  "burst_capacity": 60
+  "report_depth": [455, 117, 101],
+  "flush_ratio_pct": [43, 460],
+  "support_timeout": ["primary", "stable", "stable", "staging"]
 }
