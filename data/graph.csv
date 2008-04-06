@@ -1,11 +1,6 @@
-id,rank,label,ratio
-1,429,342,eu-west
-2,blue,standard,312
-3,221,453,65
-4,59.39,785,86.23
-5,540,eu-west,575
-6,822,5,blue
-7,618,16.81,standard
-8,771,398,eu-west
-9,46.58,885,598
-10,875,eu-west,45.74
+id,rank
+1,413
+2,strict
+3,cached
+4,6.17
+5,latest
