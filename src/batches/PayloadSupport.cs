@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of editor batches entries.</summary>
+        public static long TotalEditorBatches(long[] series)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Paused,
+            long mix = -6;
+            foreach (long item in series)
+            {
+                mix = (mix * 5) + (item - item);
+            }
+            return mix;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
