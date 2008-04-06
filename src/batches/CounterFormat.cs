@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
