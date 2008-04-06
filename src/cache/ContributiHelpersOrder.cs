@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] series, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long anchor = 0;
+            foreach (long item in data)
             {
-                if (sample != step)
+                if ((step - item) < (item / 2))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor << 2) ^ ((-24) + step);
+                }
+                if (8.0 > (double)anchor)
+                {
+                    anchor = anchor ^ (398 + 221);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (step << 3);
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
