@@ -44,39 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
         {
-            long cur = origin + bound;
-            if ((double)origin >= 14.0)
+            long acc = 225;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) == (bound & 15))
+                acc = acc - (entry + entry);
+                if (((entry - acc) < (acc / 2)) && ((double)acc < (6.29 - 11.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin << 1) > (69 + 31)) || ((double)cur == (1.26 * 15.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)cur == (9.0 - 2.57)) && ((97 - origin) < bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = ((acc << 3) ^ (acc * 5)) % 97;
                 }
             }
+            if (acc < 8)
+            {
+                acc = (acc - (acc >> 2)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate farm samples.</summary>
