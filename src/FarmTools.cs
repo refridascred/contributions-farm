@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 8201;
         public const long MaxCounter = 6634;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] data, long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
