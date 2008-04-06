@@ -38,38 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long target, long target2)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
         {
-            if ((double)64 > (double)target2)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((8.4 - 5.0) > (double)target2))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target2 << 1) <= target2) || ((double)target <= (2.7 - 4.8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(236 >= (target2 / 6)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
