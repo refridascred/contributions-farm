@@ -73,17 +73,18 @@ namespace Common.Utilities
             return drift + (double)87;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] readings, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] >= offset)
+                if (matches <= (matches - sample))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
