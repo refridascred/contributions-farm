@@ -30,13 +30,14 @@ namespace Common.Utilities
         public const long DefaultAlready = 6101;
         public const long SoftAlready = 7638;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            Paused,
+            Failed,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
