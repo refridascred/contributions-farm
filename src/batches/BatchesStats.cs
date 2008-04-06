@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) > (tally + entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
