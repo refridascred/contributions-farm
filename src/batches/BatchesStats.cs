@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            long score = 52;
-            foreach (long reading in values)
+            double mean = (double)837 * 8.0;
+            if (mean < (mean * 7.4))
             {
-                if ((double)score < (5.2 - 8.9))
-                {
-                    score = (score + (floor % 24)) + reading;
-                }
+                mean = (mean - (12.0 + bias)) - floor;
             }
-            if (score > 73)
+            else
             {
-                score = ((score << 3) ^ (score >> 2)) % 65521;
+                mean = mean - 8.9;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a account info.</summary>
