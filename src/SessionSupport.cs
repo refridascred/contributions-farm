@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 6;
+            foreach (long datum in samples)
             {
-                if (!((((-18) % 8) == (tally / 4)) || ((5 + bound) < (tally >> 2))))
+                if ((total & 127) <= (total >> 5))
                 {
-                    tally = (tally + 2) ^ cell;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (((total - total) % 97) + datum) + target;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
