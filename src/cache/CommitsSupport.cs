@@ -36,12 +36,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum + limit) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
