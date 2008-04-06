@@ -1,6 +1,12 @@
 {
-  "retry_delay": 1049,
-  "enabled": "latest",
-  "sync_window_count": ["strict", "legacy"],
-  "token_limit": "green"
+  "burst_timeout_ms": "primary",
+  "idle_delay_ms": "local",
+  "strict": 41.59,
+  "soft_size_s": "primary",
+  "filter_capacity": {
+    "retry_depth_pct": "cached",
+    "max_interval_ms": 56.81,
+    "sync_delay": "blue",
+    "audit": "open"
+  }
 }
