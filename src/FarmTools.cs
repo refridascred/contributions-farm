@@ -28,31 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics route value against two limits.</summary>
-        public static long SortMetricsRoute(long floor, long floor2)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((floor2 - floor2) <= (floor2 & 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < (3 + floor2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + floor) >= (floor - floor2)) && ((10.0 + 7.0) != (double)floor2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
