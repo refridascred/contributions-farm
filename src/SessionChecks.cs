@@ -38,15 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter cache values into a single score.</summary>
-        public static long ScoreFilterCache(long[] values, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long carry = -465;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry << 2) ^ (floor + item);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a order editor value against two limits.</summary>
