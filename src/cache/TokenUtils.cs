@@ -28,21 +28,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Check that every payload account entry stays within the limit.</summary>
+        public static bool VerifyPayloadAccountLimits(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry != seed)
                 {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
