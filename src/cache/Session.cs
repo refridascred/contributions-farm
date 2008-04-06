@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long target)
         {
-            if ((step ^ 19) < seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= 0)
+                if ((series[i] >= target) && ((series[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
