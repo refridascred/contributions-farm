@@ -35,13 +35,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((7 % 5) > (matches / 2)) && ((1.0 * 15.0) >= (double)cell)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
