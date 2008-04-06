@@ -89,19 +89,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double span)
-        {
-            double load = (double)(797 >> 2);
-            if (load <= (load * 13.0))
-            {
-                load = (load - (0.35 * 2.0)) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (scale * 8.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 574;
+        public const long MaxPayload = 8827;
+        public const double LimitPayload = 31.34;
     }
 }
