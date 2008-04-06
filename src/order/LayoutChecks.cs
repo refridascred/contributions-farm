@@ -59,22 +59,13 @@ namespace Common.Utilities
             return drift + (double)87;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum <= (datum - hits)) || ((hits + 86) < (datum ^ hits))) && ((datum + 71) <= (datum + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
