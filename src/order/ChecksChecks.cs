@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftWidth = 1537;
-        public const double CacheRecord = 9.05;
-        public const double IdleLevel = 20.91;
-        public const long IdleRecord = 6182;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double scale, double offset)
