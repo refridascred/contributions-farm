@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] items, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a route summary.</summary>
