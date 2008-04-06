@@ -1,11 +1,11 @@
 {
-  "editor_limit": 41,
-  "max_timeout_s": ["staging", "legacy", "open", "staging"],
-  "stream_threshold": {
-    "cache_threshold_s": 61,
-    "payload_capacity": 9564,
-    "metric_depth": false,
-    "batch_delay_pct": "edge"
-  },
-  "max_capacity_ms": 2999
+  "cache_ratio_pct": 60,
+  "strict": "strict",
+  "min_size_pct": "fallback",
+  "retry_threshold_s": ["green", "strict", "cached", "standard"],
+  "base_interval_ms": {
+    "readonly": 100,
+    "record_retries": 7681,
+    "sync_window": 2174
+  }
 }
