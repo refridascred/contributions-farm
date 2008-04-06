@@ -27,14 +27,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] data, long step)
         {
-            Stale,
-            Queued,
-            Retry,
-            Idle,
-            Locked,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
