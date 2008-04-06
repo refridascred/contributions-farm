@@ -1,11 +1,8 @@
 {
-  "soft_threshold_ms": "local",
-  "dry_run": false,
-  "poll_window_count": {
-    "strict": 70,
-    "order_threshold": "blue",
-    "burst_delay": false,
-    "enabled": 92
-  },
-  "soft_delay_count": 10.35
+  "poll_interval_ms": "stable",
+  "flush_ttl_s": "cached",
+  "contributi_depth": ["primary", "blue", "green", "local"],
+  "base_limit_count": true,
+  "queue_depth": [4, 348],
+  "readonly": 1024
 }
