@@ -37,20 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the session checks series from a seed.</summary>
-        public static long IterateSessionChecks(long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                long count = step;
-                if ((double)count > (6.0 * 0.6))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Pending,
+            Locked,
+            Synced,
         }
     }
 }
