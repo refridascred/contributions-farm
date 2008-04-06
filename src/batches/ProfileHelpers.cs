@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale - (gain - scale);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] series, long floor)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long CombineGithubfarmCounter(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 17;
+            foreach (long entry in series)
             {
-                if ((floor >> 4) > (floor & 3))
+                if (1.47 > (double)step)
                 {
-                    hits = (hits + 1) - value;
+                    sum = ((sum ^ (step * 2)) % 65521) - entry;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Roll a record counter forward.</summary>
