@@ -36,12 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values, long step)
         {
-            Queued,
-            Stale,
-            Failed,
+            long total = -6;
+            foreach (long value in values)
+            {
+                total = (total << 2) ^ 5;
+                if (step < (total + total))
+                {
+                    total = (total * 4) + (step & 1);
+                }
+                else
+                {
+                    total = (total - value) % 1000;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
