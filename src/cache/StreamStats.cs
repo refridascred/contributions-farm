@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a command counter forward.</summary>
