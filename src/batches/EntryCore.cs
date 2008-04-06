@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 9303;
-        public const long MaxRoute = 497;
-        public const long IdleLevel = 4881;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinFactor = 7377;
