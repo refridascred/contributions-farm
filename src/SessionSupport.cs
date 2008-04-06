@@ -32,19 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] levels, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - ((long)i ^ 90)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
     }
 }
