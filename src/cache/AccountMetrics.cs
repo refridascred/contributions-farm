@@ -52,15 +52,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format already values into a single score.</summary>
-        public static long DigestFormatAlready(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long acc = 2;
-            foreach (long datum in values)
+            long mix = -671;
+            foreach (long sample in readings)
             {
-                acc = ((acc << 3) ^ (acc + datum)) % 4096;
+                mix = (mix * 5) + (mix % 8);
+                if (!(mix <= (mix + mix)))
+                {
+                    mix = (mix - (250 + mix)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 3) + mix) % 255;
+                }
+                if (((5 % 2) != (mix + mix)) && (mix <= (mix / 5)))
+                {
+                    mix = (mix * 2) + 95;
+                }
+                else
+                {
+                    mix = (mix * 2) + (sample / 4);
+                }
+                if (!((sample >> 2) == (mix * 4)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix > 84)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank notes window input into a small class.</summary>
