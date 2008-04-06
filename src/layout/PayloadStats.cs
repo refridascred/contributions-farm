@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] items)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (cell < step)
+                if (!((0.7 * 9.0) <= (double)matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
