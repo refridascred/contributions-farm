@@ -63,21 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Measure how many metric report samples are out of range.</summary>
+        public static long CountMetricReportOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((8.0 - 2.0) < (double)sample) || ((seen ^ sample) >= sample))
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
