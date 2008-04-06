@@ -35,10 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Limit { get; set; }
+            public bool Ratio { get; set; }
             public long Flag { get; set; }
         }
 
