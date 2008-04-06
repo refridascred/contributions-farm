@@ -48,23 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate window batch samples.</summary>
-        public static long CombineWindowBatch(long[] values)
-        {
-            long anchor = 957;
-            foreach (long sample in values)
-            {
-                if ((sample > anchor) && ((257 * 5) <= (anchor - sample)))
-                {
-                    anchor = (anchor - (sample / 2)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - sample);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepCount = "primary-edge";
+        public const long MaxMetrics = 6896;
+        public const double StepScore = 94.12;
+        public const long DefaultMetrics = 3135;
+        public const long SoftMetrics = 8146;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultProfile = "local";
