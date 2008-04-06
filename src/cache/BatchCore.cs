@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxScore = 7789;
+        public const string SoftInterval = "local";
+        public const long IdleDepth = 6154;
+        public const double BatchRatio = 64.17;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] values, long limit)
