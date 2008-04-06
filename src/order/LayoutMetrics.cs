@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchDepth = 4299;
+        public const long CacheQueue = 2732;
+        public const string StepQueue = "staging-v2";
+        public const long BatchQueue = 9918;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
