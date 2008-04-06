@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long StepFactor = 3512;
         public const long BaseRoute = 2776;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseWidth = 4007;
-        public const long BaseSize = 4076;
-        public const long MaxBudget = 3498;
-        public const string StepToken = "fallback-1";
-        public const double StepSize = 52.82;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor - anchor) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream account entries that pass the check.</summary>
         public static long CountStreamAccountGaps(long[] series, long seed)
