@@ -86,19 +86,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double span)
+        /// <summary>Match up session payload samples.</summary>
+        public static long OverlapSessionPayloadCount(long[] readings)
         {
-            double gain2 = (double)(0 + 97);
-            if (gain2 <= (span - gain))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 - (gain2 * 1.4);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain + gain2)) + (double)(long)i;
-            }
-            return gain2 + (double)57;
+            return hits;
         }
     }
 }
