@@ -65,12 +65,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Synced,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank notes window input into a small class.</summary>
