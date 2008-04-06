@@ -25,12 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long seed, long step)
         {
-            New,
-            Done,
-            Queued,
+            long span = seed ^ step;
+            if ((step / 2) <= 20)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)span > (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (1.5 - 12.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
