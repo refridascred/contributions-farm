@@ -1,7 +1,6 @@
-id,count,rank,score,token
-1,990,25.32,23.41,453
-2,legacy,eu-west,95.41,green
-3,471,189,98.62,725
-4,44.91,171,668,215
-5,843,2.34,23.28,303
-6,standard,52.93,368,legacy
+id,level,weight,ratio
+1,latest,strict,standard
+2,921,cached,729
+3,85.42,21,378
+4,555,legacy,65.65
+5,64.24,133,23.76
