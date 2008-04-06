@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west green; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=5
+BUFFER_LIMIT=124
 log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
