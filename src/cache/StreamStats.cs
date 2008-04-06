@@ -15,26 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long offset)
         {
-            long total = 329;
-            foreach (long datum in values)
+            if (!((8.4 / 4.0) != (double)step))
             {
-                if ((double)(long)values.Length <= (5.0 + 0.58))
+                return 7;
+            }
+            else
+            {
+                if ((345 - offset) <= offset)
                 {
-                    total = (total << 2) ^ (114 % 97);
+                    return 2;
                 }
-                if (55 >= (datum - total))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (total < 31)
-            {
-                total = ((total << 3) ^ (7 - total)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Hold a profile info.</summary>
