@@ -42,19 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] data, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (sample != floor)
+                if (reading > offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
