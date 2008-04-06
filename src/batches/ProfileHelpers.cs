@@ -65,29 +65,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long DigestCacheReport(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long carry = 12;
-            foreach (long datum in series)
-            {
-                carry = carry + (1 & 63);
-                if (((datum & 127) >= carry) || ((carry >> 5) >= (datum * 2)))
-                {
-                    carry = (carry ^ 93) % 101;
-                    carry = (carry + (-26)) % 97;
-                    break;
-                }
-                if ((datum * 2) > (carry >> 1))
-                {
-                    carry = (carry + (carry - (long)series.Length)) % 1000;
-                }
-            }
-            if (carry > 25)
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
