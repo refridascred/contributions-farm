@@ -1,6 +1,24 @@
 {
-  "sync_window": 36.6,
-  "token_ttl": 62.31,
-  "base_interval_count": 53,
-  "compress": 4684
+  "cache_size": "standard",
+  "audit": "fallback",
+  "sync_retries_s": {
+    "max_capacity_pct": 4005,
+    "warm_window": {
+      "filter_capacity": "fallback",
+      "strict": 7103,
+      "filter_depth": "green",
+      "hard_depth_count": [196, 206, 388],
+      "flush_capacity_count": 30,
+      "readonly": "edge"
+    },
+    "retry_capacity_pct": "blue",
+    "strict": 5838,
+    "context_size": 51.57,
+    "max_limit_ms": {
+      "payload_window": 8.81,
+      "warm_delay_pct": "edge",
+      "session_depth": false,
+      "soft_capacity": 36.9
+    }
+  }
 }
