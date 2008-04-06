@@ -1,5 +1,6 @@
 {
-  "githubfarm_threshold": false,
-  "order_interval": true,
-  "min_limit": "open"
+  "cache_limit": 1024,
+  "channel_delay": 93,
+  "retry_threshold": 388,
+  "warm_delay_count": false
 }
