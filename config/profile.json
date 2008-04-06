@@ -1,13 +1,6 @@
 {
-  "min_timeout_pct": {
-    "compress": 26,
-    "report_ratio": 6,
-    "record_retries": "cached",
-    "verbose": false
-  },
-  "report_capacity": [244, 219, 202],
-  "compress": 7209,
-  "min_capacity_ms": ["edge", "blue"],
-  "sync_interval": 87,
-  "poll_limit_s": "fallback"
+  "editor_depth": true,
+  "session_interval": false,
+  "farm_timeout": ["eu-west", "latest", "latest", "strict"],
+  "compress": true
 }
