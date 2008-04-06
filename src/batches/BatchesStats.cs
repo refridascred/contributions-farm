@@ -23,18 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] values, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)origin > 6.12)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
