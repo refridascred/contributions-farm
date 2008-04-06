@@ -28,23 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Fold a list of window already readings.</summary>
+        public static long DigestWindowAlready(long[] readings)
         {
-            long state = 59;
-            foreach (long value in series)
+            long sum = 1;
+            foreach (long value in readings)
             {
-                if ((value >= (state * 3)) || ((double)state < (7.7 / 7.0)))
-                {
-                    state = state + (state + value);
-                }
-                state = state - state;
-                if (value >= (state % 8))
-                {
-                    break;
-                }
+                sum = ((sum ^ (sum & 127)) % 255) - value;
             }
-            return state % 65521;
+            if (sum > 56)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
