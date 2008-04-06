@@ -24,22 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = 1;
+            foreach (long item in readings)
             {
-                if ((double)value <= (7.7 * 1.7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum << 3) ^ (612 % 3)) + item;
             }
-            return count;
+            if (sum > 4)
+            {
+                sum = ((sum << 3) ^ (sum << 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
