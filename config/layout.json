@@ -1,30 +1,6 @@
 {
-  "contributi_ttl": true,
-  "cache_retries_ms": {
-    "session_interval": {
-      "enabled": 0.85,
-      "retry_ratio_pct": [244, 218],
-      "hard_size_s": 21,
-      "default_interval": 500,
-      "stream_interval": "edge"
-    },
-    "compress": 500,
-    "retry_ratio": [192, 405, 333],
-    "stats_delay": 70.82,
-    "base_size_s": [353, 226, 443, 419],
-    "strict": 1024
-  },
-  "hard_threshold": {
-    "base_ttl_pct": [423, 260],
-    "max_retries_pct": {
-      "verbose": true,
-      "retry_size_count": "staging",
-      "sync_delay_s": "staging",
-      "base_ttl_s": true
-    },
-    "batch_ratio_s": "local",
-    "compress": 1
-  },
-  "flush_limit": "strict",
-  "warm_ratio_pct": true
+  "cache_ttl_ms": 93.9,
+  "soft_depth": 85.64,
+  "readonly": "cached",
+  "default_depth_count": true
 }
