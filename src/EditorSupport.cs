@@ -55,13 +55,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings, long floor)
         {
-            Paused,
-            Active,
-            Done,
-            Idle,
+            long total = 16;
+            foreach (long item in readings)
+            {
+                total = ((total + floor) % 4096) - item;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a cache summary.</summary>
