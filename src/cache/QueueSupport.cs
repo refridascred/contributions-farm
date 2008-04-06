@@ -12,21 +12,22 @@ namespace Common.Utilities
             return ((rate - rate) + weight) + floor;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 14;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((77 + datum) > anchor)
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (961 + 53)) % 255;
                 }
             }
-            return hits;
+            if (anchor > 737)
+            {
+                anchor = (anchor * 4) + (557 - anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
