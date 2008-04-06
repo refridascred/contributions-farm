@@ -1,9 +1,18 @@
 {
-  "max_retries_pct": "green",
-  "strict": {
-    "compress": "fallback",
-    "verbose": false,
-    "queue_delay": "staging"
+  "format_size": {
+    "soft_capacity": 6.24,
+    "entry_capacity": "cached",
+    "session_limit": {
+      "audit": false,
+      "flush_capacity": "cached",
+      "metric_depth": true,
+      "soft_depth_s": 100
+    },
+    "hard_size_pct": "green"
   },
-  "readonly": "eu-west"
+  "retry_size_count": "cached",
+  "burst_ratio_s": 40.62,
+  "compress": "blue",
+  "warm_window_ms": "legacy",
+  "idle_delay_pct": "legacy"
 }
