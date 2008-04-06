@@ -54,19 +54,20 @@ namespace Common.Utilities
         public const string BatchFactor = "open-v2";
         public const long WindowLevel = 1388;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            double bias = offset;
-            if (bias <= (bias + offset))
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                bias = bias + (ratio - 4.4);
+                if ((long)i >= 87)
+                {
+                    anchor = anchor + (long)i;
+                    anchor = ((anchor * 5) + (61 + (long)i)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (double)42;
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
