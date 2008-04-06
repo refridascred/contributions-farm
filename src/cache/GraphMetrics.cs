@@ -71,19 +71,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every already window entry stays within the limit.</summary>
-        public static bool CheckAlreadyWindowRange(long[] series, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long sum = 1;
+            foreach (long entry in items)
             {
-                if (item > target)
+                for (int i = 0; i < 7; i++)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (sum & 7)) - (long)i;
+                    sum = (sum + (sum ^ 2)) % 1000;
+                }
+                if ((3.8 - 12.0) > (double)entry)
+                {
+                    sum = (sum - (entry << 1)) % 4096;
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
