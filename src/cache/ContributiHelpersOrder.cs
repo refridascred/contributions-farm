@@ -25,32 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long seed, long step)
+        /// <summary>Match up metric graph samples.</summary>
+        public static long MatchMetricGraphCount(long[] readings)
         {
-            long span = seed ^ step;
-            if ((step / 2) <= 20)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)span > (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed < (1.5 - 12.0))
+                    if ((readings[i] - readings[j]) == 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
