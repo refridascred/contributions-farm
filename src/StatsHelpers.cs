@@ -25,17 +25,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a support command sample.</summary>
-        public static long LocateSupportCommandIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
