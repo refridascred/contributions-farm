@@ -30,11 +30,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 54;
-        public const long RetrySpan = 4996;
-        public const double MinWidth = 13.75;
-        public const long SoftCount = 7651;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double weight, double offset)
+        {
+            double mean = (offset * 3.47) * 6.33;
+            if (mean <= (offset / 7.0))
+            {
+                mean = mean + 10.0;
+            }
+            else
+            {
+                mean = mean + (double)(-38);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 5.2) + (double)(long)i;
+            }
+            return mean - (weight * 16.0);
+        }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
         public static long TallyRouteFilterMatches(long[] levels)
