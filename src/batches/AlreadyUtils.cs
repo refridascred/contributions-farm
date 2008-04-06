@@ -64,20 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] series, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                long count = total << 1;
-                if ((count * 5) > (total / 6))
+                if (item > limit)
                 {
-                    total = (total - (total % 10)) % 255;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return ok;
         }
     }
 }
