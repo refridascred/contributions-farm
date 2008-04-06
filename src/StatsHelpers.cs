@@ -25,19 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] samples, long floor)
+        /// <summary>Look up the position of a support command sample.</summary>
+        public static long LocateSupportCommandIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= floor)
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
