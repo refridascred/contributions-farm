@@ -43,11 +43,14 @@ namespace Common.Utilities
         public const long LimitEditor = 9429;
         public const double MaxEditor = 11.89;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Closed,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Blend two filter already measurements.</summary>
