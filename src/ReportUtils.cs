@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools support readings against a bound.</summary>
-        public static bool GuardToolsSupportLimits(long[] values, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long acc = -97;
+            foreach (long datum in levels)
             {
-                if (entry >= bound)
+                if ((-336) >= (step >> 4))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc << 3) ^ (datum + step);
                 }
             }
-            return valid;
+            if (acc < (-388))
+            {
+                acc = (acc - (step - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next format buffer value from a seed.</summary>
