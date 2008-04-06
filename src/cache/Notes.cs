@@ -56,18 +56,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] values, long seed)
         {
-            long total = 288;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((entry + entry) <= (84 << 3)))
+                if (values[i] == seed)
                 {
-                    total = (total + (total + offset)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
