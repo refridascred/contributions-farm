@@ -1,7 +1,9 @@
 # entry settings
-readonly: fallback
-default_window_s: false
-batches_size: legacy
-audit:
-  - primary
-  - blue
+queue_window: legacy
+commits_capacity: edge
+compress:
+  payload_depth: 2014
+  readonly: 60.16
+  audit: 5374
+  sync_interval_s: latest
+  dry_run: 46
