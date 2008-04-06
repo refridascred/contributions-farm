@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((3.4 >= (double)value) && ((floor & 127) <= (floor >> 2))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
