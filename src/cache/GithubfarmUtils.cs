@@ -44,15 +44,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a graph window reading.</summary>
-        public static double ScaleGraphWindow(double weight, double offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double gain = (double)((-524) - 74);
-            if (gain > offset)
-            {
-                gain = gain + (weight + gain);
-            }
-            return gain + 9.47;
+            Queued,
+            Retry,
+            Locked,
+            New,
         }
     }
 }
