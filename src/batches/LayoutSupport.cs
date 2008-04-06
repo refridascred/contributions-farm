@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const string DefaultChecks = "standard-edge";
         public const long LimitChecks = 8016;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Match up entry samples.</summary>
