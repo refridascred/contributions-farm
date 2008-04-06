@@ -42,18 +42,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long seed)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed & 255) == (mix ^ mix))
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    mix = (((mix << 2) ^ seed) % 101) + cell;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
