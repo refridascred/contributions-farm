@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 435;
-        public const long StepChecks = 4177;
-        public const long DefaultWidth = 8128;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseScore = 9192;
+        public const string SoftRatio = "fallback-v2";
+        public const long MaxReport = 4137;
+        public const long DefaultRatio = 8145;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] samples, long step)
