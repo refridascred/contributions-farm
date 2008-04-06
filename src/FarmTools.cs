@@ -29,18 +29,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings, long limit)
+        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
+        public static long GradeBufferGithubfarm(long target, long limit)
         {
-            long anchor = 221;
-            foreach (long reading in readings)
+            long slot = target ^ limit;
+            if (!((9.16 + 7.85) <= (double)target))
             {
-                if (((reading >> 2) != (anchor % 10)) || ((double)anchor != (5.3 - 7.65)))
+                return 2;
+            }
+            else
+            {
+                if (((0.1 + 7.0) >= (1.73 * 1.35)) && ((double)target >= (double)slot))
                 {
-                    anchor = (anchor + (reading ^ 98)) + limit;
+                    return 7;
+                }
+                else
+                {
+                    if (1 < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
