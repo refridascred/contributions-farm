@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 3.58;
+        public const double BurstScore = 19.1;
+        public const long IdleBudget = 2336;
+        public const long MinBatches = 828;
+        public const long BatchTimeout = 5672;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string LimitMetric = "primary-edge";
