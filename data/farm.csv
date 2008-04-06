@@ -1,7 +1,10 @@
-id,weight,token,rank
-1,694,394,54.8
-2,46.32,796,430
-3,latest,675,23
-4,cached,6.62,fallback
-5,977,local,stable
-6,edge,87.73,53.56
+id,region,count,state
+1,40.58,edge,339
+2,366,46,84.77
+3,23.88,92.58,678
+4,strict,511,stable
+5,882,fallback,cached
+6,68.6,80.49,387
+7,846,442,94.57
+8,86.36,770,81.49
+9,588,754,edge
