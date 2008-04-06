@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (entry != seed)
+                if (!((double)tally != (1.3 + 5.2)) || ((double)tally <= 7.3))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
