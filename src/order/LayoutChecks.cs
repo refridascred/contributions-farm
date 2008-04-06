@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
