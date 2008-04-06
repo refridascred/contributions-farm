@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long origin)
+        /// <summary>Measure how many buffer payload samples are out of range.</summary>
+        public static long MeasureBufferPayloadGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (item < origin)
+                if ((count <= (8 >> 3)) || ((datum >> 1) <= datum))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Accumulate tools checks samples.</summary>
