@@ -1,11 +1,10 @@
 # Command notes
 
-Run the tools check before changing any payload limits.
-The buffer module keeps session values in sync with the contributi cache.
+Use githubfarm settings to tune how often command data is refreshed.
+Each editor is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate payload input early
-- Prefer context defaults
-- Document new stream fields
+- Document new payload fields
+- Validate report input early
+- Log every entry change
