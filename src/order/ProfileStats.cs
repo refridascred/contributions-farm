@@ -61,17 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ (result ^ cell);
             }
-            return -1;
+            return result;
         }
     }
 }
