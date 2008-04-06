@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long bound)
+        /// <summary>Project the next profile checks value.</summary>
+        public static double ProjectProfileChecks(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double scale = (double)(9 + 548);
+            if (scale <= (double)667)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + 0.43) - offset;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (4.86 + 5.69)) + (double)(long)i;
+            }
+            return scale - (gain - scale);
         }
 
         /// <summary>Check that every channel record entry stays within the limit.</summary>
