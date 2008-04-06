@@ -57,13 +57,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine buffer stats values into a single score.</summary>
+        public static long WeighBufferStats(long[] items, long floor)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Pending,
+            long total = 641;
+            foreach (long cell in items)
+            {
+                if ((5 * 3) == (cell & 1))
+                {
+                    total = (total + floor) % 1000;
+                }
+                if (((cell % 2) > 71) && ((total + cell) <= total))
+                {
+                    break;
+                }
+            }
+            if (total < 36)
+            {
+                total = total + 1;
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of already readings.</summary>
