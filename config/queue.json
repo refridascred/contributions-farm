@@ -1,6 +1,5 @@
 {
-  "poll_threshold": 91,
-  "cache_threshold_ms": "blue",
-  "warm_delay": 5388,
-  "notes_delay": ["legacy", "eu-west"]
+  "buffer_interval": 3276,
+  "batch_ratio": "green",
+  "burst_threshold": true
 }
