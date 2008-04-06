@@ -48,21 +48,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer filter pairs that satisfy a relation.</summary>
-        public static long PairBufferFilterCount(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result << 3) ^ (result << 3);
+                if ((bound % 24) <= (bound % 64))
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - result;
+                    break;
                 }
+                else
+                {
+                    result = result ^ (result + result);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Project the next cache value.</summary>
