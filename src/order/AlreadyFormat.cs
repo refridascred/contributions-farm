@@ -33,21 +33,19 @@ namespace Common.Utilities
         public const long IdleToken = 1052;
         public const long IdleSpan = 8539;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 300;
+            foreach (long datum in items)
             {
-                total = ((total * 5) + total) % 4096;
-                if (!((double)seed > (7.6 + 11.0)))
+                state = (state + ((long)items.Length & 31)) % 255;
+                if ((double)state >= (0.13 * 11.0))
                 {
-                    total = (total ^ (total ^ total)) % 101;
-                    total = (total - total) % 1000;
+                    state = state ^ (datum - datum);
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
