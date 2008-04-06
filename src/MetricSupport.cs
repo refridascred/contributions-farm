@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen + value) <= (value / 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
