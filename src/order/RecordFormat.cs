@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of record layout entries.</summary>
+        public static long CombineRecordLayout(long[] readings)
         {
-            Closed,
-            Retry,
-            Failed,
+            long score = 286;
+            foreach (long value in readings)
+            {
+                score = (score + (score * 4)) % 65521;
+                if (!(((-83) >> 5) <= value))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
