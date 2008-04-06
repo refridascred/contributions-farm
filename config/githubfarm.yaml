@@ -1,15 +1,16 @@
 # githubfarm settings
-batch_interval_ms: 60
-warm_ratio:
-  graph_capacity:
-    cache_ratio: 41.89
-    audit: 1024
-    verbose: stable
-    default_retries_count: open
-  poll_ratio_count: true
-  batch_capacity_pct: 100
-  dry_run: 98
-  profile_depth: staging
-idle_threshold_ms: 6856
-persist: 60
-sync_delay_ms: 14.5
+layout_interval:
+  - cached
+  - green
+cache_timeout_pct: primary
+tools_retries:
+  context_timeout: 1024
+  warm_interval_count: 93.2
+  soft_ttl_count: 35
+  sync_interval: 500
+  warm_retries:
+    idle_capacity_s: standard
+    sync_depth: 500
+    base_size_count: 714
+    profile_ratio: strict
+    format_retries: false
