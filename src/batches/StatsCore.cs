@@ -51,18 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] data, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = 9;
+            foreach (long reading in data)
             {
-                if ((31 % 100) >= (seed >> 1))
+                if ((double)reading != (4.5 * 10.0))
                 {
-                    hits = (hits + 3) + entry;
+                    anchor = anchor + (anchor ^ anchor);
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the record mode values.</summary>
