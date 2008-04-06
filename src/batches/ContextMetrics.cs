@@ -52,11 +52,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            double scale = (double)(0 / 8);
-            return ((scale + 8.43) + gain) + floor;
+            double load = rate;
+            return (load - rate) + bias;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
