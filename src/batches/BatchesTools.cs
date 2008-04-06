@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool GuardLayoutCommitsRange(long[] readings, long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
