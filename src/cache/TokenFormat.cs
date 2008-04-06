@@ -48,18 +48,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 3) == (sample - sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
