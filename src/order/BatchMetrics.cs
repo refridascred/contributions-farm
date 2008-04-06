@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - (drift * 3.88)) + (double)(long)i;
             }
-            return tally;
+            return drift - floor;
         }
 
         /// <summary>Blend two stats measurements.</summary>
