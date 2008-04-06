@@ -43,23 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Validate order format readings against a bound.</summary>
+        public static bool ValidateOrderFormatBounds(long[] data, long origin)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mark = ((mark + (mark % 3)) % 4096) - datum;
-                if (7.0 > (9.0 + 17.0))
+                if (entry != origin)
                 {
-                    mark = (mark + (642 * 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark - ((-65) << 1);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
