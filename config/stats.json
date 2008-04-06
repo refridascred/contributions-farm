@@ -1,5 +1,5 @@
 {
-  "stream_threshold": 95.81,
-  "idle_ttl_ms": 20.36,
-  "cache_depth_ms": 2428
+  "strict": [345, 96, 269],
+  "stats_ttl": 71.07,
+  "compress": "staging"
 }
