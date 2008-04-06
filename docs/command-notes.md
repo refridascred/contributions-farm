@@ -1,14 +1,15 @@
 # Command notes
 
-Keep farm and channel names short and lowercase.
-The route module keeps schema values in sync with the queue cache.
+The schema report groups every stats by filter.
+The window helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the batches list.
 
-When a notes fails, the payload handler retries a few times before giving up.
-The token report groups every session by route.
+The command module keeps format values in sync with the counter cache.
+Use batch settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Validate contributi input early
-- Keep editor values small
-- Review schema limits each release
-- Document new commits fields
+- Review cache limits each release
+- Document new counter fields
+- Log every notes change
+- Prefer route defaults
