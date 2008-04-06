@@ -77,21 +77,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((anchor - cell) != (anchor + floor)) && ((floor / 2) == (68 & 127)))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + (floor >> 2)) % 4096;
+                    continue;
                 }
+                anchor = ((anchor << 2) ^ floor) % 4096;
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
