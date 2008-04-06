@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+BUFFER_LIMIT=127
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge latest fallback staging; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=257
-log "limit is ${BUFFER_LIMIT}"
