@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Ready,
-            Idle,
-            Dropped,
-            Active,
-            Failed,
+            Queued,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
