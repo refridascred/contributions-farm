@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=80
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in latest staging open standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+mode="${1:-strict}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
