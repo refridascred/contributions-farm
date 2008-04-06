@@ -54,21 +54,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -987;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((((anchor * 5) + (anchor & 15)) % 255) ^ reading) + offset;
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
