@@ -41,18 +41,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long AuditBatchesWindowOutliers(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.63 * 15.0) != (double)datum)
-                {
-                    seen = seen + 1;
-                }
+                acc = acc ^ (seed << 1);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
