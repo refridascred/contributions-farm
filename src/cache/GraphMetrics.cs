@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((0.2 * 11.0) >= (double)sample) && (((18.0 * 8.55) < (double)sample) || ((sample + sample) > hits)))
+                if (item < target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
