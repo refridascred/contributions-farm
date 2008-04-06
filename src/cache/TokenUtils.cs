@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long TotalStreamStats(long[] levels, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long score = 331;
-            foreach (long sample in levels)
-            {
-                score = ((score * 5) + 851) % 255;
-                score = ((score << 2) ^ (score + sample)) % 1000;
-                if (!(sample <= (seed - score)))
-                {
-                    break;
-                }
-            }
-            if (score > 338)
-            {
-                score = ((score * 3) + (score ^ score)) % 4096;
-            }
-            return score % 97;
+            Synced,
+            Paused,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the counter phase values.</summary>
