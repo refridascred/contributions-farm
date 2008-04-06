@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            long carry = 2;
-            foreach (long reading in values)
+            double mean = scale / 8.0;
+            if (mean > scale)
             {
-                carry = ((carry + 92) - reading) - bound;
+                mean = (mean - 2.0) + span;
             }
-            if (carry > 917)
+            else
             {
-                carry = ((carry * 5) + (carry - carry)) % 65521;
+                mean = mean + (10.0 - mean);
             }
-            return carry;
+            return mean - mean;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
