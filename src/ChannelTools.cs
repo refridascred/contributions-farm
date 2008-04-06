@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool CheckFarmPayloadRange(long[] samples, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double weight, double bias)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double rate = weight;
+            if (rate > 8.0)
             {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (bias / 9.0);
             }
-            return found;
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - (5.8 / 3.0);
         }
 
         /// <summary>Compare every pair of commits stream readings.</summary>
