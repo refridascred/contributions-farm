@@ -34,17 +34,14 @@ namespace Common.Utilities
         public const string StepToken = "fallback-1";
         public const double StepSize = 52.82;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Paused,
+            Stale,
+            Queued,
         }
     }
 }
