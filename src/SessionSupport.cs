@@ -32,16 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state - ((long)i ^ 90)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
