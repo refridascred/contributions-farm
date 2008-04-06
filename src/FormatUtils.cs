@@ -49,32 +49,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a payload queue pair into a bucket.</summary>
-        public static long BucketPayloadQueue(long limit, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long floor)
         {
-            long lane = limit + offset;
-            if (((limit % 64) < lane) && ((offset >> 5) < lane))
+            long anchor = 61;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane <= (lane / 8)) && ((double)limit < (2.0 * 4.0)))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 0;
+                    anchor = ((anchor + ((long)i & 63)) % 65521) + reading;
+                    anchor = ((anchor * 2) + (floor + (long)i)) % 1000;
                 }
-                else
+                if ((anchor - 48) <= (floor >> 4))
                 {
-                    if ((offset & 3) == (offset + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor * 5) + (32 % 24);
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = anchor - (floor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a command entry.</summary>
