@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate farm route readings against a bound.</summary>
-        public static bool VerifyFarmRouteBounds(long[] series, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long item in series)
             {
-                if (item > step)
+                if ((hits - item) > (item - item))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate token schema samples.</summary>
