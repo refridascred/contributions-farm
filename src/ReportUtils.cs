@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long result = 0;
+            foreach (long entry in readings)
+            {
+                result = (result ^ (entry & 255)) % 97;
+            }
+            if (result > 28)
+            {
+                result = (result + (result / 4)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
