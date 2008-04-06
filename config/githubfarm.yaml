@@ -1,11 +1,13 @@
 # githubfarm settings
-cache_window: false
-default_retries_pct: 10.59
-readonly:
-  - 271
-  - 84
-  - 282
-  - 272
-payload_ttl: 9555
-cluster_capacity: open
-batches_interval: 55
+cache_ratio_pct:
+  - strict
+  - staging
+default_interval:
+  - green
+  - fallback
+  - strict
+  - open
+layout_capacity: true
+max_timeout_s: false
+min_depth_s: legacy
+strict: true
