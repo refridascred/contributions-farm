@@ -46,10 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowWidth = 53.36;
-        public const string MinFarm = "fallback-1";
-        public const double DefaultFarm = 51.02;
+        /// <summary>Locate a metric schema reading by value.</summary>
+        public static long FindMetricSchemaIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchInterval = "local";
