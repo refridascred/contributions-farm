@@ -49,22 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] data, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 15;
+            foreach (long entry in data)
             {
-                if ((step - matches) > (matches * 3))
+                total = (total + total) % 4096;
+                if ((entry ^ total) != (total >> 4))
                 {
-                    matches = (matches + 2) ^ item;
+                    total = ((total * 5) + entry) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total + (10 ^ entry)) % 255;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
