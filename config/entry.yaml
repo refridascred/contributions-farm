@@ -1,9 +1,4 @@
 # entry settings
-batch_timeout_pct: open
-hard_capacity_ms: 73.82
-checks_ratio: staging
-strict: 90
-flush_capacity:
-  warm_threshold_pct: 250
-  readonly: cached
-  strict: 48
+hard_retries_pct: 52.91
+burst_threshold: stable
+hard_depth_pct: true
