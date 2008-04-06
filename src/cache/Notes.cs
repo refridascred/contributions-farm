@@ -65,17 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long seed)
+        /// <summary>Blend two buffer cache measurements.</summary>
+        public static double ScaleBufferCache(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                weight2 = ((weight2 - (double)48) + (double)(long)i) + weight;
             }
-            return -1;
+            return weight2 + bias;
         }
     }
 }
