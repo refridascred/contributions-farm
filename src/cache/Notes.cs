@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseScore = 9192;
-        public const string SoftRatio = "fallback-v2";
-        public const long MaxReport = 4137;
-        public const long DefaultRatio = 8145;
+        /// <summary>Roll a cache account counter forward.</summary>
+        public static long DeriveCacheAccount(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i <= target)
+                {
+                    carry = carry + (carry + carry);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
+                    carry = ((carry * 5) + ((long)i + carry)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long floor)
