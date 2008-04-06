@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long limit)
+        /// <summary>Validate tools support readings against a bound.</summary>
+        public static bool GuardToolsSupportLimits(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (data[i] > limit)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank stats commits input into a small class.</summary>
