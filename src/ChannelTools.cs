@@ -37,11 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long target)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
