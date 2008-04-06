@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
