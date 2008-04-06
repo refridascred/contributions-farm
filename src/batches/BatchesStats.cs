@@ -37,17 +37,12 @@ namespace Common.Utilities
         public const double MinLevel = 90.2;
         public const long CacheRoute = 8023;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] levels, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Locked,
         }
     }
 }
