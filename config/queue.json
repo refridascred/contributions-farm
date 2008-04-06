@@ -1,12 +1,16 @@
 {
-  "burst_timeout_ms": "primary",
-  "idle_delay_ms": "local",
-  "strict": 41.59,
-  "soft_size_s": "primary",
-  "filter_capacity": {
-    "retry_depth_pct": "cached",
-    "max_interval_ms": 56.81,
-    "sync_delay": "blue",
-    "audit": "open"
+  "audit": 60,
+  "flush_limit": 25.52,
+  "batch_timeout": "staging",
+  "min_window_pct": 50.8,
+  "default_delay_ms": 9850,
+  "enabled": {
+    "default_ttl_s": false,
+    "cache_delay_count": [137, 359],
+    "retry_delay_count": {
+      "retry_delay_s": true,
+      "readonly": 60,
+      "min_ttl": 250
+    }
   }
 }
