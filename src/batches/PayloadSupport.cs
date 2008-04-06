@@ -46,17 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (!((long)i > carry))
                 {
-                    return (long)i;
+                    carry = (carry ^ (origin / 4)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
