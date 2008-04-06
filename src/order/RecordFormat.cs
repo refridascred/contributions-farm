@@ -41,31 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long origin)
+        /// <summary>Validate farm route readings against a bound.</summary>
+        public static bool VerifyFarmRouteBounds(long[] series, long step)
         {
-            if ((origin + origin) > 400)
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (1.1 - 0.1))
+                if (item > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit < 5.74) || ((571 + limit) <= ((-9) - 107)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batches mode values.</summary>
