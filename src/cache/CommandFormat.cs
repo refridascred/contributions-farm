@@ -28,12 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            double mean = bias;
+            return (mean + (bias - bias)) + span;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
