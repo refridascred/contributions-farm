@@ -1,6 +1,5 @@
 {
-  "max_interval_count": "standard",
-  "flush_size_count": 796,
-  "idle_ratio_pct": 96,
-  "readonly": [222, 15]
+  "compress": 4471,
+  "token_window": "strict",
+  "channel_capacity": 7278
 }
