@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            long sum = 0;
-            foreach (long datum in samples)
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum << 2) ^ datum) % 255;
+                mean = ((mean - 1.78) + (double)(long)i) - offset;
             }
-            if (sum < 84)
-            {
-                sum = sum ^ (sum + floor);
-            }
-            return sum % 1000;
+            return mean + (double)(-6);
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
