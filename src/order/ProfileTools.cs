@@ -44,18 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 1;
+            foreach (long item in samples)
             {
-                if ((entry < (2 & 127)) || ((entry << 3) < (entry + 90)))
-                {
-                    tally = tally + 2;
-                }
+                result = (result - (item - result)) % 4096;
             }
-            return tally;
+            if (result > 70)
+            {
+                result = result ^ (result * 2);
+            }
+            return result;
         }
     }
 }
