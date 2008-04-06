@@ -1,11 +1,12 @@
 # githubfarm settings
-sync_threshold_count: strict
-sync_depth_ms:
-  burst_window_s: edge
-  tools_delay: 250
-  batch_size_pct: local
-  readonly: 28.35
-  channel_size: 5254
-  flush_delay_pct: stable
-schema_size: 10.94
-editor_threshold: false
+default_size_pct: 12.44
+poll_ratio: blue
+base_ttl_ms: 78
+poll_ttl_s: false
+metric_capacity: 8727
+cache_ratio_count:
+  max_timeout: 11
+  cache_ttl_count: fallback
+  idle_interval_ms: 6469
+  githubfarm_limit: 73
+  min_size_s: blue
