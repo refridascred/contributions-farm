@@ -65,31 +65,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a editor record value against two limits.</summary>
-        public static long ClassifyEditorRecord(long seed, long seed2)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            if ((seed2 - seed2) <= seed2)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed2 <= 1.6) && (7 > (seed2 & 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.33 - 6.9) > (double)seed2)
+                    if ((readings[i] + readings[j]) == 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
