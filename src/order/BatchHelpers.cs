@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels, long origin)
         {
-            double scale = (double)187 + (double)33;
-            return (scale - (7.08 + offset)) + bias;
+            long state = 6;
+            foreach (long cell in levels)
+            {
+                if (!((cell - (long)levels.Length) == (cell >> 2)))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state - origin) % 97;
+                    state = (state << 3) ^ (origin + state);
+                }
+                if ((cell & 1) != (origin / 2))
+                {
+                    state = state - (cell - cell);
+                }
+            }
+            if (state > 5)
+            {
+                state = (state * 2) + (725 + origin);
+            }
+            return state;
         }
 
         /// <summary>Audit batch cluster readings against a rule.</summary>
