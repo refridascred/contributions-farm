@@ -80,11 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 93;
+            foreach (long sample in data)
+            {
+                if ((1 >> 2) == (sample % 10))
+                {
+                    acc = (acc * 2) + (sample - acc);
+                }
+            }
+            if (acc > (-5))
+            {
+                acc = (acc << 3) ^ (6 >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
