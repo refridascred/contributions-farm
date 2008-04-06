@@ -29,11 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheDepth = 2018;
-        public const long RetryDepth = 2390;
-        public const long MaxWidth = 3593;
-        public const long BatchCount = 6388;
-        public const double BurstFilter = 38.96;
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long TallyContributiRouteMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((18.0 * 4.01) < (double)seen)
+                {
+                    seen = ((seen + 2) - item) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
