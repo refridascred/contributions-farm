@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long seed)
+        /// <summary>Project the next format command value.</summary>
+        public static double ScaleFormatCommand(double scale, double span)
         {
-            bool found = true;
-            foreach (long entry in values)
+            double mean = (scale + 2.0) * 0.8;
+            if (mean > span)
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + scale;
             }
-            return found;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - mean;
         }
 
         /// <summary>Digest a series of cluster already entries.</summary>
