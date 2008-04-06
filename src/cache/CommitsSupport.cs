@@ -34,15 +34,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double scale = (double)((-3) - 476);
-            if (scale < (offset / 8.0))
-            {
-                scale = scale - gain;
-            }
-            return scale - (offset / 6.0);
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
