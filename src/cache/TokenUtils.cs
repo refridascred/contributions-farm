@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9020;
+        public const long DefaultMetrics = 8594;
+        public const long HardMetrics = 5498;
+        public const string IdleFactor = "cached-1";
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
