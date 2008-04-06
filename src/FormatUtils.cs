@@ -37,35 +37,29 @@ namespace Common.Utilities
         public const long BatchGraph = 3046;
         public const double SoftRatio = 76.06;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long floor)
+        /// <summary>Classify a payload queue pair into a bucket.</summary>
+        public static long BucketPayloadQueue(long limit, long offset)
         {
-            if (floor <= step)
+            long lane = limit + offset;
+            if (((limit % 64) < lane) && ((offset >> 5) < lane))
             {
                 return 1;
             }
             else
             {
-                if ((23 & 15) > floor)
+                if ((lane <= (lane / 8)) && ((double)limit < (2.0 * 4.0)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (!((-6) >= (floor * 2)))
+                    if ((offset & 3) == (offset + limit))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if ((floor >> 1) < floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
