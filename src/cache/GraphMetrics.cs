@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples)
-        {
-            long score = 2;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) > (entry - score))
-                {
-                    score = ((score * 5) + (7 / 3)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8132;
+        public const long MaxStats = 291;
+        public const string StepStats = "standard-1";
+        public const long WindowStats = 9029;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
