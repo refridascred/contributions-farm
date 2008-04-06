@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 66.69;
-        public const long LimitDepth = 7591;
-        public const string CacheLayout = "local-1";
-        public const long BurstTimeout = 1387;
-        public const long RetryLayout = 4038;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen + value) <= (value / 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of notes channel readings.</summary>
         public static long CompareNotesChannelCount(long[] readings)
