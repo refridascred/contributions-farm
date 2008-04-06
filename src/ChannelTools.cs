@@ -27,17 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first editor metric entry that matches the target.</summary>
-        public static long LookupEditorMetricIndex(long[] samples, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -872;
+            foreach (long entry in readings)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                if ((entry + result) < ((-2) + offset))
                 {
-                    return (long)i;
+                    result = result - (result & 7);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
