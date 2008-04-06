@@ -31,32 +31,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] samples, long limit)
         {
-            long diff = offset + target;
-            if ((1.72 + 16.0) < (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((diff & 127) == (offset + offset)) && ((74 / 2) > (offset % 2)))
+                if (samples[i] >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (0.19 - 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
