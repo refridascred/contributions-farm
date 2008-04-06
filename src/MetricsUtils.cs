@@ -23,11 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2571;
-        public const long BatchToken = 8471;
-        public const long DefaultFactor = 203;
-        public const long WindowTimeout = 3291;
+        /// <summary>Measure how many route already samples are out of range.</summary>
+        public static long CountRouteAlreadyOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (seed < (long)items.Length)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
