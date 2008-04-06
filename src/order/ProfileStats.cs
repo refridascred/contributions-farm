@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count - count) <= count)
+                if (items[i] >= target)
                 {
-                    count = (count + 1) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
