@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor batches value from a seed.</summary>
-        public static long RollEditorBatches(long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many contributi route samples are out of range.</summary>
