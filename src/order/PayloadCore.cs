@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const long IdleContributi = 8382;
         public const long DefaultContributi = 1670;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long bound)
         {
-            long diff = limit ^ origin;
-            if (((double)limit <= (16.0 + 7.6)) || ((origin & 7) > diff))
+            long state = 195;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit % 60) < (858 << 1)) || ((419 - diff) >= (diff << 3)))
+                if ((state << 2) < (state + 5))
                 {
-                    return 1;
+                    state = (state + reading) % 97;
+                    state = (state - (reading - 902)) % 97;
                 }
-                else
-                {
-                    return 8;
-                }
+                state = state ^ reading;
+                state = state + (bound >> 4);
             }
+            return state;
         }
 
         /// <summary>Measure how many commits report samples are out of range.</summary>
