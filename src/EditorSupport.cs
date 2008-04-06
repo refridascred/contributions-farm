@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long TallyStreamEntry(long[] items, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long floor, long seed)
         {
-            long result = 812;
-            foreach (long reading in items)
+            long prev = floor ^ seed;
+            if ((floor + prev) > (floor - floor))
             {
-                result = (((result * 3) + (result / 6)) % 255) + reading;
-                if ((double)floor < (3.02 + 0.4))
+                return 4;
+            }
+            else
+            {
+                if (((-5) ^ 64) <= prev)
                 {
-                    result = (result - (floor * 2)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((0.35 - 17.0) >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Match up tools samples.</summary>
