@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardBudget = "staging-edge";
+        public const long BaseSpan = 6996;
+        public const long RetryTimeout = 8460;
+        public const long LimitLevel = 212;
+        public const double BatchDepth = 25.62;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long step)
