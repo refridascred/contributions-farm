@@ -1,6 +1,8 @@
-id,level,count,active
-1,619,713,59.53
-2,green,6.3,3.42
-3,local,732,8.88
-4,37.31,staging,16
-5,82.44,521,907
+id,ratio,rank,weight,count
+1,23.12,54.96,cached,796
+2,837,544,blue,82.38
+3,19.95,5.65,343,932
+4,green,852,706,10.85
+5,65.99,latest,8.69,40
+6,standard,legacy,697,staging
+7,green,729,15.93,22.55
