@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if ((30 / 3) <= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >= bound) || (offset < (offset - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
