@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double rate, double floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double mean = (double)8 / 2.0;
-            if (mean > rate)
-            {
-                mean = (mean + (double)7) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - 10.0;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
