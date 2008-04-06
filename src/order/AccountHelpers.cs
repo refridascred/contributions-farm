@@ -44,21 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Combine route cluster values into a single score.</summary>
+        public static long TallyRouteCluster(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 48;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((51 + reading) >= 2)
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - (total ^ 20);
+                }
+                if (((total ^ total) >= total) && ((reading + reading) != (total >> 4)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
