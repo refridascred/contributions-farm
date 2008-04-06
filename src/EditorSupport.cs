@@ -74,13 +74,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long origin)
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            if (0.84 > (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)24 < (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
