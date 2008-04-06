@@ -50,32 +50,15 @@ namespace Common.Utilities
         public const long SoftRatio = 5009;
         public const long WindowEntry = 8077;
 
-        /// <summary>Rank counter stats input into a small class.</summary>
-        public static long GradeCounterStats(long seed, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            long lane = seed ^ bound;
-            if (lane >= (lane + lane))
+            double mean = scale;
+            if (mean < bias)
             {
-                return 6;
+                mean = mean + (13.0 * 7.0);
             }
-            else
-            {
-                if (!(seed <= 89))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed ^ seed) > (lane << 2)) && ((double)lane == (3.2 + 16.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - (bias * 5.88);
         }
     }
 }
