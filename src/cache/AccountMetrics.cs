@@ -65,11 +65,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double weight, double offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double load = 13.0 / 4.0;
-            return ((load - (double)93) + weight) + offset;
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
