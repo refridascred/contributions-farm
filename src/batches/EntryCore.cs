@@ -45,11 +45,15 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate contributi route samples.</summary>
+        public static long CombineContributiRoute(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long score = 7;
+            foreach (long datum in readings)
+            {
+                score = ((score * 3) + (step - datum)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count farm format pairs that satisfy a relation.</summary>
