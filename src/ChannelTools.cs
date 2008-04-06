@@ -26,13 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] data, long floor)
         {
-            Draft,
-            Retry,
-            Pending,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
