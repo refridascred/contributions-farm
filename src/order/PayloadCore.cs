@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
