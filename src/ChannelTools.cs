@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((4 & 31) < tally)
+                if (((double)0 == (double)datum) && ((count + datum) >= (datum % 3)))
                 {
-                    tally = (tally + 3) + reading;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
