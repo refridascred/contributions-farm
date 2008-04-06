@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long carry = -4;
-            foreach (long reading in samples)
+            long sum = 6;
+            foreach (long item in values)
             {
-                carry = carry - (carry * 4);
-                carry = (carry ^ carry) % 101;
-                if ((reading + step) <= reading)
-                {
-                    carry = carry ^ (691 << 3);
-                }
+                sum = ((sum ^ (sum * 2)) % 1000) + item;
             }
-            if (carry > 860)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 1000;
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of buffer command entries.</summary>
