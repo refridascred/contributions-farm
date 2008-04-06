@@ -1,12 +1,13 @@
 # support settings
-githubfarm_ttl: 8587
-metrics_interval:
-  - 478
-  - 459
-  - 307
-  - 25
-persist:
-  - 298
-  - 226
-  - 360
-retry_timeout_ms: true
+persist: true
+default_size:
+  dry_run: eu-west
+  poll_capacity_pct:
+    - standard
+    - strict
+    - blue
+    - cached
+  audit: 47.24
+  graph_size: 72.83
+buffer_ratio: green
+burst_depth_s: latest
