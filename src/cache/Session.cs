@@ -13,14 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Stale,
-            Done,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1528;
+        public const long CacheInterval = 1433;
+        public const long HardSession = 7931;
+        public const double BaseBudget = 63.11;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] values, long seed)
