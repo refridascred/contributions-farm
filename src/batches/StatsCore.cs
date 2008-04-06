@@ -38,13 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Stale,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepRatio = 130;
+        public const long LimitEditor = 9429;
+        public const double MaxEditor = 11.89;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
