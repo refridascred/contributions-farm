@@ -21,19 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token entry entry stays within the limit.</summary>
-        public static bool ValidateTokenEntryLimits(long[] data, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (entry < floor)
+                if ((count + seed) <= count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
