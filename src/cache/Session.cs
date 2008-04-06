@@ -46,22 +46,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((seed ^ 411) > limit)
             {
-                if (!(((cell / 6) >= (matches << 1)) || (7.91 <= (double)(long)series.Length)))
+                return 8;
+            }
+            else
+            {
+                if ((275 + limit) <= (seed + seed))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
