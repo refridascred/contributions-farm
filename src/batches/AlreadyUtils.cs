@@ -34,22 +34,29 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long target2)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long origin2)
         {
-            if ((2 - 336) >= target2)
+            if ((812 >> 2) >= origin)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((double)target2 > (14.0 - 0.37))
+                if (!(origin >= (origin / 5)))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if ((origin / 8) >= (origin * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
