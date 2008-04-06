@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen * 4) < (item + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
