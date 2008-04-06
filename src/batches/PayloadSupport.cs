@@ -22,19 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((long)i > carry))
-                {
-                    carry = (carry ^ (origin / 4)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
