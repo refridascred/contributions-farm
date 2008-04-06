@@ -29,22 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 3639;
+        public const long StepReport = 7475;
+        public const double IdleReport = 20.94;
+        public const double WindowReport = 35.47;
+        public const string RetryReport = "alpha-v2";
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
