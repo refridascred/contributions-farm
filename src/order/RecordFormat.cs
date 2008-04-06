@@ -20,20 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double span)
-        {
-            double rate = span;
-            if (rate <= (13.0 * 8.0))
-            {
-                rate = rate - (span - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - 0.9;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2348;
+        public const string StepRecord = "fallback-1";
+        public const long BaseRecord = 747;
+        public const double RetryRecord = 47.85;
+        public const long BatchFactor = 367;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiHits(long[] samples, long target)
