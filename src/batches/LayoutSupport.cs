@@ -48,19 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels, long step)
         {
-            long mix = 17;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = mix ^ (mix - 42);
-                if ((sample + sample) <= (sample ^ (long)levels.Length))
+                if (((matches * 5) >= (matches >> 3)) || (step >= (entry * 2)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
