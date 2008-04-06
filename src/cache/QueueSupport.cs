@@ -12,22 +12,24 @@ namespace Common.Utilities
             return ((rate - rate) + weight) + floor;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long origin)
         {
-            long anchor = 14;
-            foreach (long datum in values)
+            if (((7.8 * 8.9) <= (double)limit) && ((2.3 - 4.6) != (double)limit))
             {
-                if ((77 + datum) > anchor)
+                return 6;
+            }
+            else
+            {
+                if (limit <= (origin >> 4))
                 {
-                    anchor = (anchor - (961 + 53)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor > 737)
-            {
-                anchor = (anchor * 4) + (557 - anchor);
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Combine window values into a single score.</summary>
