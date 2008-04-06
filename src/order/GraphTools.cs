@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Closed,
-            Locked,
-            Stale,
-            Active,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowScore = "latest-edge";
+        public const long RetryInterval = 5379;
+        public const long MaxWindow = 3621;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double scale, double offset)
