@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            Idle,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length % 3) != (25 + datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
