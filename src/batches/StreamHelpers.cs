@@ -69,20 +69,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long floor)
-        {
-            long anchor = 7;
-            foreach (long cell in values)
-            {
-                if (((anchor - cell) != (anchor + floor)) && ((floor / 2) == (68 & 127)))
-                {
-                    anchor = ((anchor * 3) + (floor >> 2)) % 4096;
-                    continue;
-                }
-                anchor = ((anchor << 2) ^ floor) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 2811;
+        public const long MinLayout = 8805;
+        public const double MaxLayout = 78.23;
     }
 }
