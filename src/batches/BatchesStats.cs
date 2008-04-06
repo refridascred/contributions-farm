@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long floor)
         {
-            long score = 531;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (score * 5) + (score - sample);
+                if (!((3.4 >= (double)value) && ((floor & 127) <= (floor >> 2))))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score > (-63))
-            {
-                score = score + score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
