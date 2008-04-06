@@ -36,38 +36,17 @@ namespace Common.Utilities
         public const long SoftLevel = 325;
         public const long BatchContext = 5557;
 
-        /// <summary>Grade a order editor value against two limits.</summary>
-        public static long ClassifyOrderEditor(long offset, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long bound)
         {
-            if (((8.0 * 3.8) <= (double)origin) && (5 < (offset + offset)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin & 31) < (origin ^ origin)) && ((double)origin >= (double)offset))
+                if (samples[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 1) <= (6 / 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((1.0 + 15.0) > (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
