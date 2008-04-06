@@ -1,8 +1,21 @@
 {
-  "metrics_delay": [99, 61],
-  "burst_retries_s": "strict",
-  "audit": 250,
-  "enabled": "fallback",
-  "hard_retries": 40,
-  "metrics_timeout": ["strict", "legacy"]
+  "channel_threshold": {
+    "buffer_size": ["staging", "legacy"],
+    "default_timeout_pct": 1024,
+    "base_ratio_count": "strict",
+    "hard_capacity": 2213,
+    "compress": "primary"
+  },
+  "base_timeout_count": {
+    "min_ttl_ms": 90.6,
+    "audit": 93,
+    "verbose": {
+      "retry_ttl_ms": 42.85,
+      "counter_retries": true,
+      "enabled": false,
+      "session_threshold": false,
+      "farm_retries": ["open", "primary"]
+    }
+  },
+  "cache_window_ms": "local"
 }
