@@ -41,19 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long state = -50;
-            foreach (long sample in samples)
-            {
-                state = (state + (seed & 31)) ^ sample;
-                if ((double)state != (2.47 * 1.4))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            Closed,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
