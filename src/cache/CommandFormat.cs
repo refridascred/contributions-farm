@@ -28,13 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a graph counter forward.</summary>
