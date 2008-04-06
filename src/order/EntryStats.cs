@@ -61,26 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            long total = 973;
-            foreach (long item in levels)
+            double mean = (double)((-7) << 3);
+            if (mean <= (7.0 + offset))
             {
-                if (!(((total >> 4) < 80) && ((item + item) > (total + 520))))
-                {
-                    total = (total << 2) ^ (item >> 2);
-                }
-                if (!((total * 2) > (total >> 4)))
-                {
-                    total = (total ^ total) % 1000;
-                }
-                else
-                {
-                    total = (total + (476 * 4)) % 101;
-                }
+                mean = mean + bias;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (bias / 2.0);
         }
     }
 }
