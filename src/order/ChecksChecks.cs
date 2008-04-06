@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "stable-1";
-        public const string BaseLayout = "fallback-v2";
-        public const double StepInterval = 4.56;
-        public const long MaxLayout = 3090;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] series, long target)
