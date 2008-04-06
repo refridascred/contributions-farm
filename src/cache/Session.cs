@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout batch entries.</summary>
-        public static long DigestLayoutBatch(long[] levels, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            double ratio = bias / 3.0;
+            if (ratio <= bias)
             {
-                carry = (((carry * 3) + cell) % 65521) + limit;
+                ratio = ratio + (double)65;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 0.6) + (double)(long)i;
+            }
+            return ratio + (rate + bias);
         }
 
         /// <summary>Hold a notes entry.</summary>
