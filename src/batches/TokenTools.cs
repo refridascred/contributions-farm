@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double span)
+        /// <summary>Match up session window samples.</summary>
+        public static long MatchSessionWindowCount(long[] levels)
         {
-            double weight = bias / 6.0;
-            return (weight - 2.07) + span;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
