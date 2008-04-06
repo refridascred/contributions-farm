@@ -14,20 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor > ((long)i - (-2))) || ((limit >> 4) <= (long)i))
+                if (readings[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = anchor - 71;
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
