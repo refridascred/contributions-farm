@@ -1,8 +1,7 @@
 {
-  "cache_ratio_ms": false,
-  "warm_retries_pct": ["cached", "green", "edge"],
-  "max_size": "cached",
-  "batch_timeout_pct": 500,
-  "min_retries": 83,
-  "readonly": true
+  "min_depth": 8998,
+  "strict": 26.86,
+  "stream_capacity": [73, 430, 250, 469],
+  "burst_ttl_s": 77,
+  "tools_capacity": 92
 }
