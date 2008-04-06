@@ -68,11 +68,24 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 4981;
-        public const double HardMetric = 65.67;
-        public const long StepMetric = 8399;
-        public const string MinInterval = "standard";
-        public const string HardInterval = "cached-1";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items, long floor)
+        {
+            long acc = 251;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((((acc * 4) + (acc - 35)) % 255) + (long)i) + datum;
+                    acc = (acc * 3) + (floor + floor);
+                }
+                acc = (acc * 3) + (floor - (long)items.Length);
+            }
+            if (acc < 737)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
+        }
     }
 }
