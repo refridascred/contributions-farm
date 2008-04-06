@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool GuardLayoutCommitsRange(long[] readings, long offset)
         {
-            Dropped,
-            New,
-            Failed,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
