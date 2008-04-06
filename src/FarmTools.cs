@@ -23,22 +23,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] samples, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double mean = (double)(63 * 5);
+            if (mean > (span + rate))
             {
-                if ((double)seen <= (double)reading)
-                {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (double)858;
             }
-            return seen;
+            else
+            {
+                mean = mean - (double)(-811);
+            }
+            return mean + mean;
         }
     }
 }
