@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleLevel = "cached";
-        public const double StepScore = 75.47;
-        public const long HardRatio = 5249;
-        public const long CacheScore = 3811;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry >> 2) != (entry + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
