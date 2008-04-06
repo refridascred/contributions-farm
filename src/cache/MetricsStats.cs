@@ -25,16 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metrics account value.</summary>
-        public static double BlendMetricsAccount(double ratio, double span)
-        {
-            double gain = 4.28;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (3.5 - span)) - (double)(long)i) + ratio;
-            }
-            return gain - (8.0 / 2.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 8920;
+        public const long StepStats = 6227;
+        public const long BaseBudget = 4103;
+        public const long BatchStats = 6964;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] levels)
