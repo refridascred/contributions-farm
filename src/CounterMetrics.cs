@@ -25,17 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long limit)
+        /// <summary>Check that every commits report entry stays within the limit.</summary>
+        public static bool GuardCommitsReportBounds(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the buffer state values.</summary>
