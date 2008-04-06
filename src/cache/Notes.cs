@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = 97;
+            foreach (long datum in series)
             {
-                if ((0.21 + 3.0) <= (double)matches)
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (((mix << 3) ^ ((long)series.Length & 7)) % 4096) ^ datum;
             }
-            return matches;
+            if (mix > 60)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the counter kind values.</summary>
