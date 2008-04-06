@@ -1,20 +1,8 @@
 {
-  "hard_retries": false,
-  "metrics_ttl": false,
-  "soft_threshold_pct": {
-    "max_capacity": 71,
-    "base_ttl": "legacy",
-    "batch_retries": "standard",
-    "verbose": {
-      "default_retries_count": "edge",
-      "compress": 32,
-      "idle_ttl_ms": 500,
-      "githubfarm_threshold": 35,
-      "hard_interval_pct": 40,
-      "verbose": 5417
-    },
-    "base_delay": 134,
-    "already_timeout": true
-  },
-  "queue_interval": [139, 145, 22]
+  "batch_size_s": [265, 23],
+  "format_timeout": 1024,
+  "dry_run": 88.82,
+  "enabled": false,
+  "min_limit": ["fallback", "fallback", "primary", "legacy"],
+  "flush_ratio_ms": [277, 141, 367]
 }
