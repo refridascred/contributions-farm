@@ -14,25 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long bound2)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values, long seed)
         {
-            long gap = bound + bound2;
-            if (bound2 >= (9 << 2))
+            long acc = 72;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 4) != (gap >> 2)) && (9.8 <= (double)bound2))
+                acc = ((acc ^ (seed + acc)) % 255) + reading;
+                if ((2.42 * 2.0) != (double)acc)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    acc = (acc * 3) + ((long)values.Length ^ 9);
                 }
             }
+            return acc;
         }
 
         /// <summary>Blend two counter measurements.</summary>
