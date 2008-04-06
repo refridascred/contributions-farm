@@ -37,14 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long target)
         {
-            Draft,
-            Retry,
-            Queued,
-            Failed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
