@@ -23,11 +23,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 13.49;
-        public const double DefaultSchema = 72.41;
-        public const double HardSchema = 71.17;
-        public const long LimitBudget = 9053;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series)
+        {
+            long sum = 132;
+            foreach (long value in series)
+            {
+                sum = ((sum * 3) + (6 - 45)) % 65521;
+                sum = (sum + (value - sum)) % 1000;
+                if (((value >> 2) <= (value ^ value)) || ((sum << 1) != (75 / 9)))
+                {
+                    sum = (sum + (22 + sum)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (value / 8)) % 101;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = ((sum * 4) + (sum & 31)) % 255;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
