@@ -26,22 +26,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long carry = 2;
+            foreach (long item in values)
             {
-                if ((tally + bound) >= bound)
+                if (((carry ^ carry) >= (item + item)) && (carry < (62 % 5)))
                 {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry << 2) ^ (item + 2);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
