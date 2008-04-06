@@ -1,8 +1,5 @@
 {
-  "base_window_pct": 70,
-  "hard_delay": "blue",
-  "command_size": false,
-  "metrics_window": ["blue", "latest"],
-  "max_size": "stable",
-  "record_size": "primary"
+  "min_window_count": ["local", "fallback", "staging"],
+  "poll_ttl_ms": "fallback",
+  "sync_limit": ["standard", "cached"]
 }
