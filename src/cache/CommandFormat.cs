@@ -28,11 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double rate = ratio;
-            return rate + bias;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
