@@ -31,11 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowRatio = 4443;
-        public const string RetryTimeout = "latest";
-        public const long LimitOrder = 7071;
-        public const long BurstBudget = 7020;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ (long)i) % 255;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchCount = 7425;
