@@ -25,22 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Locate a context filter reading by value.</summary>
+        public static long SeekContextFilterIndex(long[] series, long floor)
         {
-            long total = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((total % 97) <= total) && ((42 - item) >= item))
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
                 {
-                    total = (total + (total / 6)) % 101;
+                    return (long)i;
                 }
             }
-            if (total > 439)
-            {
-                total = total + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
