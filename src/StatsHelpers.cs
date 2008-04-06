@@ -31,17 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account farm reading by value.</summary>
-        public static long LookupAccountFarmIndex(long[] samples, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
