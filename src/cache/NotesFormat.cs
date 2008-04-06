@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const string HardToken = "cached-v2";
         public const long DefaultSize = 1163;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultLevel = 0.99;
-        public const long HardCommand = 4386;
-        public const string CacheCommand = "latest";
-        public const long SoftDepth = 459;
-        public const long StepCommand = 2047;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
