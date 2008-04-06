@@ -80,11 +80,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxSize = 7079;
-        public const long HardWidth = 2846;
-        public const double MaxDepth = 83.06;
-        public const long MinWindow = 6103;
+        /// <summary>Blend two farm payload measurements.</summary>
+        public static double BlendFarmPayload(double bias, double bias2)
+        {
+            double bias3 = (double)(48 / 2);
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = ((bias3 + bias2) + (double)(long)i) + bias;
+            }
+            return bias3 + (0.2 + bias2);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 2907;
