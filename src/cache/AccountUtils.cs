@@ -48,19 +48,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Compare every pair of schema command readings.</summary>
+        public static long CompareSchemaCommandCount(long[] items)
         {
-            double load = (double)(888 ^ 122);
-            if (load < (double)68)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load - 8.07) - rate) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + (double)903;
+            return matches;
         }
     }
 }
