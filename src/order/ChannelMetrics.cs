@@ -27,19 +27,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWidth = "open-edge";
+        public const long BurstRatio = 3509;
+        public const double HardWindow = 37.55;
     }
 }
