@@ -61,17 +61,19 @@ namespace Common.Utilities
         public const string BatchWindow = "legacy-1";
         public const long WindowScore = 1151;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long bound)
+        /// <summary>Check that every notes stream entry stays within the limit.</summary>
+        public static bool VerifyNotesStreamLimits(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (values[i] == bound)
+                if (cell > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
