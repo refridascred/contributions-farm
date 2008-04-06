@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const string WindowScore = "strict";
         public const long StepInterval = 5702;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > bound)
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
