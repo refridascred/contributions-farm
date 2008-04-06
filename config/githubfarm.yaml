@@ -1,6 +1,35 @@
 # githubfarm settings
-farm_size:
-  - stable
-  - fallback
-enabled: 60
-soft_window: stable
+readonly: 96.76
+commits_interval:
+  max_ratio_pct:
+    - open
+    - green
+    - primary
+  verbose: cached
+  report_ttl: 89.48
+  strict: 500
+  flush_depth_ms:
+    cache_window_ms: 72.22
+    compress: 88.12
+    enabled: 15.5
+    poll_size_ms: open
+    idle_limit: true
+  sync_delay_count: 62
+warm_limit: 5
+enabled:
+  default_ttl_pct:
+    - 492
+    - 408
+    - 217
+  soft_window_s:
+    readonly: local
+    queue_threshold: 61
+    default_interval_s: legacy
+    batch_interval_ms: 41.12
+  burst_limit: 2
+idle_threshold:
+  - 158
+  - 293
+  - 111
+  - 171
+compress: legacy
