@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((hits ^ entry) < hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two counter measurements.</summary>
