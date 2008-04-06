@@ -54,18 +54,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context record entries that pass the check.</summary>
-        public static long TallyContextRecordMatches(long[] data, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.0 >= (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 1) - datum) + limit;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
