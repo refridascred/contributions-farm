@@ -31,16 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            double gain = (double)(8 - 9);
+            for (int i = 0; i < 3; i++)
             {
-                total = (total ^ (long)i) % 255;
-                total = ((total * 5) + (long)i) % 1000;
+                gain = (((gain - (1.09 + gain)) + (double)(long)i) + scale) - floor;
             }
-            return total;
+            return gain + (double)603;
         }
 
         /// <summary>Define session limits and defaults.</summary>
