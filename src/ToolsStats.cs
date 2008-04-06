@@ -49,15 +49,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long bound)
         {
-            double bias2 = (1.0 - bias) - (bias + bias);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - span) + (double)(long)i;
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (bias + 8.0);
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
