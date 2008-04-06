@@ -20,11 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((3.84 + 7.0) != (double)tally) || (((cell / 6) >= cell) && (cell <= (cell >> 3))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
