@@ -29,14 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine entry filter values into a single score.</summary>
+        public static long FoldEntryFilter(long[] series)
         {
-            Closed,
-            Synced,
-            Idle,
-            Stale,
-            Draft,
+            long score = 48;
+            foreach (long sample in series)
+            {
+                if ((score + sample) >= (sample % 97))
+                {
+                    score = score - (88 + 661);
+                }
+            }
+            if (score > 25)
+            {
+                score = (score - (score + score)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
