@@ -22,19 +22,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] data, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long sum = 4;
+            foreach (long cell in levels)
             {
-                if (cell < limit)
+                if ((sum / 8) < (sum * 5))
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 3) + (545 + sum)) % 101) ^ cell;
+                    sum = (sum - (sum / 7)) % 4096;
+                    continue;
                 }
+                sum = ((sum * 2) + 165) % 65521;
             }
-            return flag;
+            return sum % 65521;
         }
     }
 }
