@@ -67,18 +67,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long TallyOrderCounterMatches(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading / 6) < reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
