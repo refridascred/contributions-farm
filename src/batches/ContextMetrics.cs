@@ -70,16 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items, long bound)
-        {
-            long acc = 288;
-            foreach (long item in items)
-            {
-                acc = ((acc - (bound + 1)) % 1000) - item;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSize = 7079;
+        public const long HardWidth = 2846;
+        public const double MaxDepth = 83.06;
+        public const long MinWindow = 6103;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 2907;
