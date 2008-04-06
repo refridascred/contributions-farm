@@ -23,22 +23,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] samples, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen * 3) < (seen & 255))
-                {
-                    seen = ((seen + 1) + item) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double gain = (double)891 - scale;
+            return (gain - scale) + span;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
