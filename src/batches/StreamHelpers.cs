@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long RetryBudget = 4117;
         public const double BaseLevel = 58.64;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (matches <= (matches << 1))
+                if ((double)25 == (double)value)
                 {
-                    matches = (matches + 1) - cell;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
