@@ -1,5 +1,5 @@
 {
-  "default_capacity": true,
-  "buffer_threshold": 7566,
-  "layout_timeout": [173, 68, 490, 186]
+  "window_threshold": 93.23,
+  "poll_size_pct": 500,
+  "window_delay": false
 }
