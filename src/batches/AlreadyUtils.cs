@@ -37,19 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] data, long offset)
         {
-            long carry = -1;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (825 >= (long)series.Length)
+                if (offset <= (225 >> 1))
                 {
-                    carry = (carry + (cell * 4)) - origin;
+                    seen = (seen + 2) ^ entry;
                 }
-                carry = (carry ^ carry) % 4096;
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
