@@ -19,38 +19,18 @@ namespace Common.Utilities
         public const long DefaultAlready = 6101;
         public const long SoftAlready = 7638;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long seed, long target)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long AuditChannelProfileMatches(long[] readings, long offset)
         {
-            if ((seed / 4) > (seed % 8))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 7) == (seed - target))
+                if ((64 << 2) == (offset + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(68 >= (target + 173)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 2) < (target / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up context contributi samples.</summary>
