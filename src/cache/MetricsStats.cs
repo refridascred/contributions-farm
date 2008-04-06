@@ -41,19 +41,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark - (mark + entry)) % 255;
+                mix = (mix ^ mix) % 255;
+                if ((19.0 * 7.24) < (double)offset)
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (mix - mix) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (mark < 741)
-            {
-                mark = (mark + 41) % 255;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
