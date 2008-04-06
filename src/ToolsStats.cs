@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Look up the position of a payload cache sample.</summary>
+        public static long LookupPayloadCacheIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits <= (5 >> 4)) || (5.0 >= (double)sample))
+                if (readings[i] == limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
