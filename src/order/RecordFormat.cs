@@ -37,19 +37,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] items, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item <= target)
+                if ((matches + 512) <= (6 % 97))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 2) ^ value) + target;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Audit filter counter readings against a rule.</summary>
