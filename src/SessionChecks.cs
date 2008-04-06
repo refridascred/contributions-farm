@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long entry in readings)
             {
-                if ((sample < (sample >> 2)) && ((sample < tally) && ((tally - sample) >= 179)))
+                if (((422 - tally) != (tally - tally)) && ((double)entry <= (13.0 + 0.98)))
                 {
                     tally = tally + 1;
                 }
