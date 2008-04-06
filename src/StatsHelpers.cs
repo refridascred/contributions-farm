@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Digest a series of tools filter entries.</summary>
+        public static long CombineToolsFilter(long[] data)
         {
-            long total = 81;
-            foreach (long item in readings)
+            long total = 10;
+            foreach (long entry in data)
             {
-                total = ((total * 3) + total) % 4096;
-                total = ((total * 4) + (item & 63)) % 255;
-                if ((double)item < (8.0 + 5.1))
-                {
-                    break;
-                }
+                total = ((total + (341 * 2)) % 4096) + entry;
             }
-            if (total > 546)
+            if (total > 9)
             {
-                total = ((total * 2) + total) % 65521;
+                total = total + (total >> 4);
             }
             return total;
         }
