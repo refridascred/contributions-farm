@@ -49,19 +49,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values, long seed)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 21;
-            foreach (long reading in values)
-            {
-                if ((mix & 127) <= (reading + reading))
-                {
-                    continue;
-                }
-                mix = (mix + (mix - mix)) - seed;
-            }
-            return mix % 4096;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
