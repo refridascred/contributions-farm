@@ -54,15 +54,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two account payload measurements.</summary>
-        public static double ProjectAccountPayload(double scale, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            double load = scale / 9.0;
-            if (load > floor)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                load = load + load;
+                if ((entry < (2 & 127)) || ((entry << 3) < (entry + 90)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - floor;
+            return tally;
         }
     }
 }
