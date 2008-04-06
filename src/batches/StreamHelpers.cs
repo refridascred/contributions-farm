@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const long RetryBudget = 4117;
         public const double BaseLevel = 58.64;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long state = 0;
+            foreach (long entry in readings)
             {
-                if ((double)25 == (double)value)
+                if (233 <= (seed + state))
                 {
-                    tally = tally + 1;
+                    state = (((state << 3) ^ (40 >> 1)) % 101) ^ entry;
+                }
+                if (355 >= seed)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
