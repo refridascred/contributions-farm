@@ -53,25 +53,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] levels, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = 97;
+            foreach (long cell in levels)
             {
-                carry = (carry ^ carry) % 4096;
-                if ((4.7 / 6.0) < (double)(long)i)
+                if (28 <= step)
                 {
-                    carry = ((carry * 5) + (offset + offset)) % 101;
-                    carry = carry - (carry % 97);
+                    mark = mark ^ (cell % 16);
                 }
                 else
                 {
-                    carry = ((carry * 2) + (long)i) % 255;
+                    mark = (mark * 5) + 811;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((2.2 * 4.1) == (double)step)
+                {
+                    mark = (mark ^ (cell * 4)) % 255;
+                }
+                else
+                {
+                    mark = (mark + step) % 255;
+                }
             }
-            return carry;
+            return mark % 1000;
         }
     }
 }
