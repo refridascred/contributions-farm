@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string CacheContributi = "standard-1";
         public const long IdleCount = 6334;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long seed)
         {
-            Done,
-            Active,
-            Retry,
+            long state = -86;
+            foreach (long value in levels)
+            {
+                if ((state + state) <= 2)
+                {
+                    state = ((state * 5) + value) - seed;
+                }
+            }
+            if (state > 4)
+            {
+                state = ((state << 3) ^ state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
