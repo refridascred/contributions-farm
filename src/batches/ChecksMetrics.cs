@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 6101;
         public const long SoftAlready = 7638;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (((sum * 3) + (seed & 31)) % 255) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
