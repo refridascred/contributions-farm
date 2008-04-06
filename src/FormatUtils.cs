@@ -31,12 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            Synced,
-            Pending,
-            Ready,
+            long score = 3;
+            foreach (long item in values)
+            {
+                score = (((score << 3) ^ ((long)values.Length % 64)) % 4096) + item;
+                if ((double)score > (0.67 * 4.7))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of record entries.</summary>
