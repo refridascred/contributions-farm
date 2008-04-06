@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long IdleDepth = 6154;
         public const double BatchRatio = 64.17;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                if ((3.3 - 5.0) == (double)limit)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next command value.</summary>
