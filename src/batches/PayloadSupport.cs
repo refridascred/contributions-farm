@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long target)
         {
-            Dropped,
-            Failed,
-            Synced,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
