@@ -35,22 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mark = 31;
+            foreach (long reading in readings)
             {
-                if ((8.0 + 11.0) > (double)matches)
+                mark = (((mark << 3) ^ (target << 2)) % 4096) ^ reading;
+                if ((target * 2) >= mark)
                 {
-                    matches = ((matches + 1) + value) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mark < (-3))
+            {
+                mark = (mark * 3) + target;
+            }
+            return mark % 4096;
         }
     }
 }
