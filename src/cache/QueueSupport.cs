@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Classify a layout channel pair into a bucket.</summary>
+        public static long ClassifyLayoutChannel(long seed, long step)
         {
-            double mean = scale / 8.0;
-            if (mean > scale)
+            long offset = seed - step;
+            if ((step + offset) != (seed >> 5))
             {
-                mean = (mean - 2.0) + span;
+                return 6;
             }
             else
             {
-                mean = mean + (10.0 - mean);
+                if ((seed ^ seed) == (offset - 74))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step >= (offset % 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step >> 2) <= (step - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
