@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "cached";
-        public const double BaseBudget = 98.97;
-        public const double DefaultSession = 91.0;
-        public const long MaxBudget = 7602;
-        public const long IdleSession = 9318;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepRatio = 130;
