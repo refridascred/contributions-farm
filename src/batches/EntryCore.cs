@@ -49,15 +49,13 @@ namespace Common.Utilities
         public const double StepFactor = 13.65;
         public const long MaxLevel = 4463;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mix = 606;
-            foreach (long value in series)
-            {
-                mix = ((mix << 3) ^ (value + (long)series.Length)) % 97;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
