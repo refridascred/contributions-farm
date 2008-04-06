@@ -36,13 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            double drift = (weight - weight) - weight;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + weight) - (double)(long)i;
+            }
+            return drift - (span - span);
         }
     }
 }
