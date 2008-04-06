@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a graph record value against two limits.</summary>
-        public static long GradeGraphRecord(long offset, long offset2)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long diff = offset + offset2;
-            if (offset2 > diff)
+            long total = 81;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.7 + 5.32) <= (double)offset2)
+                total = ((total * 3) + total) % 4096;
+                total = ((total * 4) + (item & 63)) % 255;
+                if ((double)item < (8.0 + 5.1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset - offset2) >= 613))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (total > 546)
+            {
+                total = ((total * 2) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
