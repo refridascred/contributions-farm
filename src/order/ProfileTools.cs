@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long bound)
+        /// <summary>Count channel context pairs that satisfy a relation.</summary>
+        public static long PairChannelContextCount(long[] items)
         {
-            long mix = 29;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix <= (reading / 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (((mix * 4) + reading) % 97) + bound;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 96)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 255;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
