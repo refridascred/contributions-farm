@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long result = 706;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - result) == (123 & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (result / 3)) % 65521;
-                }
-                if (!((double)value > (double)result))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
