@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Ready,
-            New,
-            Pending,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a batch record.</summary>
