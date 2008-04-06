@@ -14,11 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 7444;
-        public const long DefaultFactor = 8659;
-        public const double BaseScore = 86.52;
-        public const long RetryFilter = 7966;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a account farm reading by value.</summary>
         public static long LookupAccountFarmIndex(long[] samples, long step)
