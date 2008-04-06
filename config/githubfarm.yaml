@@ -1,16 +1,15 @@
 # githubfarm settings
-layout_interval:
-  - cached
-  - green
-cache_timeout_pct: primary
-tools_retries:
-  context_timeout: 1024
-  warm_interval_count: 93.2
-  soft_ttl_count: 35
-  sync_interval: 500
-  warm_retries:
-    idle_capacity_s: standard
-    sync_depth: 500
-    base_size_count: 714
-    profile_ratio: strict
-    format_retries: false
+hard_retries:
+  - legacy
+  - edge
+  - staging
+  - primary
+dry_run: false
+contributi_ttl: 500
+min_timeout_ms: 46
+retry_threshold:
+  audit: stable
+  buffer_retries: 60
+  min_delay_ms: 85.33
+  token_capacity: green
+  already_retries: eu-west
