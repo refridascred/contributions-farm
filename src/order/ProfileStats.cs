@@ -51,38 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer session value against two limits.</summary>
-        public static long RankBufferSession(long target, long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (0.4 < (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (94 > (target * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((818 % 16) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3 <= (target + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
