@@ -28,18 +28,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data, long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.9 - 8.5) != (double)seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = ((seen + 2) + cell) + seed;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
