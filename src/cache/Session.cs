@@ -13,17 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every token entry entry stays within the limit.</summary>
