@@ -20,21 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 19)
+                    if ((data[i] ^ data[j]) < 0)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
