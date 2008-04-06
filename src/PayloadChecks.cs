@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((count & 3) != (item + 4))
+                if ((reading + reading) == (reading - tally))
                 {
-                    count = (count + 3) + step;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
