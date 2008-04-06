@@ -1,19 +1,11 @@
 {
-  "default_window": 28.75,
-  "burst_capacity_s": "eu-west",
-  "account_limit": 100,
-  "account_timeout": {
-    "commits_ttl": "local",
-    "idle_delay": "local",
-    "audit": "blue",
-    "max_depth": "open"
+  "min_ratio": "green",
+  "cache_depth_s": false,
+  "metric_limit": {
+    "dry_run": "cached",
+    "cache_delay_pct": "blue",
+    "order_size": "local"
   },
-  "min_depth_s": {
-    "flush_depth": "fallback",
-    "support_depth": "stable",
-    "default_depth_pct": "primary",
-    "burst_ttl_ms": 80,
-    "batches_interval": ["fallback", "edge", "cached"],
-    "batch_window_s": "blue"
-  }
+  "poll_threshold_s": 6,
+  "max_capacity_pct": "strict"
 }
