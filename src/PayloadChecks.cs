@@ -22,10 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 7365;
-        public const long StepSchema = 4096;
-        public const long BaseSchema = 6039;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long limit2)
+        {
+            long gap = limit ^ limit2;
+            if (!((limit2 + limit2) == (limit + 873)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap & 1) <= limit2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (gap < limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit < 626)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
