@@ -38,10 +38,20 @@ namespace Common.Utilities
             return gain - (8.0 / 2.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitScore = 7777;
-        public const string HardAlready = "fallback-v2";
-        public const long CacheAlready = 4660;
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long FoldBufferAlready(long[] samples)
+        {
+            long mix = 84;
+            foreach (long item in samples)
+            {
+                mix = ((mix - (62 << 3)) % 65521) ^ item;
+            }
+            if (mix < 6)
+            {
+                mix = ((mix * 4) + (813 >> 1)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
