@@ -1,6 +1,7 @@
 {
-  "sync_timeout_ms": 12.67,
-  "buffer_ratio": true,
-  "batch_window_pct": 29,
-  "sync_timeout_pct": "staging"
+  "readonly": true,
+  "retry_capacity_ms": [4, 304, 487],
+  "default_ttl": 1024,
+  "commits_size": 24,
+  "warm_interval_ms": "staging"
 }
