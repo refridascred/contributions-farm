@@ -34,10 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 9541;
-        public const long BaseEntry = 1128;
-        public const long SoftEntry = 9824;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen + value) > value)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long limit2)
