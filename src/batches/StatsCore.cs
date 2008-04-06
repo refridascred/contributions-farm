@@ -58,18 +58,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] samples, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 1;
+            foreach (long value in data)
             {
-                if ((14.0 > (double)count) && ((origin < (origin ^ datum)) || ((datum + (-24)) < ((-33) + origin))))
+                if ((mix <= (404 % 7)) && ((value ^ value) < (mix + 642)))
                 {
-                    count = count + 2;
+                    mix = mix ^ (mix % 3);
+                    continue;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                if ((mix + value) < value)
+                {
+                    mix = (mix ^ (mix * 3)) % 97;
+                }
+                mix = (mix + value) % 97;
             }
-            return count;
+            if (mix > 26)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
