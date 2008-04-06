@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const double HardSpan = 96.72;
         public const long IdleChannel = 4255;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Draft,
-            Synced,
-            Active,
-            Locked,
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
