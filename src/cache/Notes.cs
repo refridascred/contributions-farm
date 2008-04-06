@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
