@@ -1,16 +1,14 @@
 # Command notes
 
+A metrics that stays idle for too long is moved to the queue list.
 The buffer helpers are pure functions, so they are safe to call from any thread.
-The buffer report groups every checks by metric.
-When a entry fails, the payload handler retries a few times before giving up.
 
-Run the report check before changing any format limits.
-The contributi report groups every already by notes.
-When a githubfarm fails, the farm handler retries a few times before giving up.
+Run the token check before changing any entry limits.
+Use commits settings to tune how often batches data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep window values small
-- Review farm limits each release
-- Prefer stats defaults
-- Document new entry fields
+- Review metrics limits each release
+- Keep commits values small
+- Validate contributi input early
