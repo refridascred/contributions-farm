@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const long StepCount = 1852;
         public const double MaxRatio = 51.94;
 
-        /// <summary>Roll a batches payload counter forward.</summary>
-        public static long RollBatchesPayload(long floor)
+        /// <summary>Adjust a context batch reading.</summary>
+        public static double BlendContextBatch(double rate, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            double scale = rate;
+            if (scale <= (scale - span))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                scale = scale - (12.0 / 5.0);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale * 9.7)) - (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
