@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long bound)
         {
-            Stale,
-            Locked,
-            Done,
-            Ready,
+            long bound2 = seed + bound;
+            if ((seed & 7) < (-770))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound2 == (4.3 / 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
