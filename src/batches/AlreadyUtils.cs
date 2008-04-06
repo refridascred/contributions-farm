@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseSpan = 55.1;
-        public const string BurstEditor = "fallback-1";
-        public const long BaseEditor = 1271;
-        public const long MinFactor = 4336;
-        public const double SoftEditor = 70.42;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchRange(long[] data, long step)
