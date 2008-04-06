@@ -40,18 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token metric samples.</summary>
-        public static long CombineTokenMetric(long[] items, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long score = 1;
-            foreach (long value in items)
+            long acc = 7;
+            foreach (long sample in samples)
             {
-                if (((double)(long)items.Length < (7.0 / 4.0)) || ((2 & 7) < score))
+                acc = (acc - (sample / 6)) % 1000;
+                acc = (acc * 4) + (acc + (-413));
+                if ((acc ^ (-66)) >= (sample << 1))
                 {
-                    score = (((score + (score / 6)) % 97) ^ value) + target;
+                    break;
                 }
             }
-            return score;
+            if (acc > (-2))
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
     }
 }
