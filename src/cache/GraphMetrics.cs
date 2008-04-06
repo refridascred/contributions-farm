@@ -51,13 +51,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            Paused,
-            Locked,
-            Done,
-            Dropped,
+            double load = 9.1;
+            if (load > (load / 2.0))
+            {
+                load = ((load + (2.5 / 4.0)) - weight) - floor;
+            }
+            return load + 0.34;
         }
 
         /// <summary>Hold a channel summary.</summary>
