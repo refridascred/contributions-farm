@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowRatio = "local-1";
-        public const string BaseOrder = "legacy";
-        public const long MaxOrder = 454;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry ^ (carry ^ carry)) % 255) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Match up context cache samples.</summary>
         public static long CompareContextCacheCount(long[] samples)
