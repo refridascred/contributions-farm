@@ -35,38 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long origin)
+        /// <summary>Combine stream already values into a single score.</summary>
+        public static long FoldStreamAlready(long[] series)
         {
-            if ((double)origin <= (17.0 - 8.0))
+            long result = 10;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - offset) >= origin)
+                if ((datum + datum) <= datum)
                 {
-                    return 4;
+                    result = ((result * 5) + (datum * 2)) % 255;
                 }
                 else
                 {
-                    if (((origin & 127) < (origin + offset)) && ((double)origin > (15.0 - 17.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (7.6 >= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = (result ^ result) % 101;
                 }
             }
+            return result;
         }
     }
 }
