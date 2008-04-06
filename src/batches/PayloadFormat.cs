@@ -12,10 +12,10 @@ namespace Common.Utilities
             return (drift + (double)32) + gain;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "legacy";
-        public const string MinRecord = "fallback";
-        public const long BaseRecord = 3217;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "local-edge";
+        public const string BatchDepth = "fallback";
+        public const long BurstBatch = 4970;
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
         public static bool GuardGithubfarmQueueBounds(long[] readings, long origin)
