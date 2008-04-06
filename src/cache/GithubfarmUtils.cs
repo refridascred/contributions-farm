@@ -34,15 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of record readings.</summary>
