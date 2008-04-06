@@ -42,18 +42,39 @@ namespace Common.Utilities
             return ratio + (rate + bias);
         }
 
-        /// <summary>Audit commits batch readings against a rule.</summary>
-        public static long TallyCommitsBatchMatches(long[] items, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long step, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long bound = step ^ target;
+            if (step < (49 + step))
             {
-                if (datum < (count & 15))
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 4) >= ((-68) >> 4))
                 {
-                    count = (count + 2) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ target) <= (73 << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)target < (1.4 * 9.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
