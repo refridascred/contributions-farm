@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                carry = (carry ^ ((long)i << 1)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)tally <= 11.0)
+                {
+                    tally = ((tally + 3) - entry) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
