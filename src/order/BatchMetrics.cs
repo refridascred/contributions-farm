@@ -47,17 +47,12 @@ namespace Common.Utilities
         public const string MaxGithubfarm = "strict-1";
         public const long BaseSpan = 3681;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total * 3) + ((long)i - 0);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "primary-edge";
+        public const long IdleSize = 1498;
+        public const string BurstBudget = "cached-1";
+        public const string BatchFactor = "open-v2";
+        public const long WindowLevel = 1388;
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double ratio, double offset)
