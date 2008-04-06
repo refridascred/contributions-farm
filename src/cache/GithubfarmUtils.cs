@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long offset)
         {
-            double scale = bias;
-            if (scale > (gain * 11.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (4.8 * 7.7);
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (3.45 + scale);
-            }
-            return scale + (double)5;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
