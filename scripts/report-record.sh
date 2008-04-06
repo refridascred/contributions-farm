@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in cached open stable legacy; do
+RECORD_LIMIT=361
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=443
-log "limit is ${RECORD_LIMIT}"
