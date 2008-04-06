@@ -20,19 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] values, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= bound)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
