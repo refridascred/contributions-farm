@@ -33,24 +33,13 @@ namespace Common.Utilities
         public const double RetryRatio = 45.92;
         public const double BaseRecord = 64.36;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long limit, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((seed ^ 411) > limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((275 + limit) <= (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
