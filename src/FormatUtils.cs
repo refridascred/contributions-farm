@@ -40,22 +40,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            long sum = 402;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((double)sum < 1.7))
+                if ((((3 / 6) >= (6 ^ value)) && (hits >= (value - hits))) || ((836 & 255) != (value ^ hits)))
                 {
-                    sum = (sum + floor) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sample + sum)) % 97;
+                    hits = hits + 1;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
