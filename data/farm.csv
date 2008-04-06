@@ -1,6 +1,9 @@
-id,count,level
-1,84.91,stable
-2,213,local
-3,primary,fallback
-4,74.06,staging
-5,strict,879
+id,active,label,owner
+1,edge,6.1,691
+2,staging,64.85,819
+3,424,210,strict
+4,30.12,edge,cached
+5,blue,68,37.17
+6,228,506,eu-west
+7,687,local,68.89
+8,69.65,10.13,legacy
