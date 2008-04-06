@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] data, long floor)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)hits > (2.11 / 7.0))
+                {
+                    hits = ((hits + 1) ^ datum) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
