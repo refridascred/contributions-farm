@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((count - count) < (datum * 4)) && ((double)datum == (7.0 - 8.99)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the tools layout entries that pass the check.</summary>
