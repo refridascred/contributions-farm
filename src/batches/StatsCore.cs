@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] values, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = span;
+            if (weight > scale)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight + weight;
             }
-            return -1;
+            else
+            {
+                weight = weight + (double)60;
+            }
+            return weight + (span - 8.1);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
