@@ -1,13 +1,9 @@
 # entry settings
-metric_size:
-  enabled: strict
-  burst_timeout_pct: primary
-  warm_threshold:
-    poll_window_count: 33.28
-    command_ttl: 67.69
-    soft_ttl: edge
-    readonly: cached
-  audit: 24.31
-  default_size: standard
-audit: open
-cache_timeout: false
+batch_timeout_pct: open
+hard_capacity_ms: 73.82
+checks_ratio: staging
+strict: 90
+flush_capacity:
+  warm_threshold_pct: 250
+  readonly: cached
+  strict: 48
