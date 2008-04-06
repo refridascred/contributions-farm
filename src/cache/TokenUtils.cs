@@ -19,11 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9020;
-        public const long DefaultMetrics = 8594;
-        public const long HardMetrics = 5498;
-        public const string IdleFactor = "cached-1";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data)
+        {
+            long mix = -2;
+            foreach (long item in data)
+            {
+                mix = mix + item;
+                if ((mix + item) < (6 + 319))
+                {
+                    mix = (mix << 2) ^ item;
+                }
+                else
+                {
+                    mix = (mix * 2) + mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many metrics farm samples are out of range.</summary>
         public static long TallyMetricsFarmHits(long[] values)
