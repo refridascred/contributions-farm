@@ -61,21 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Accumulate tools graph samples.</summary>
+        public static long WeighToolsGraph(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 231;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.21 - 6.0) != (double)carry)
                 {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - carry) - cell;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Match up batch samples.</summary>
