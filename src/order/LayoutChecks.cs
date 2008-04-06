@@ -42,21 +42,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Project the next window value.</summary>
