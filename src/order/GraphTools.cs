@@ -31,17 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
