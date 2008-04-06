@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up token graph samples.</summary>
-        public static long OverlapTokenGraphCount(long[] values)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = target - floor;
+            if ((double)target > (0.26 - 4.4))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (lane >= (floor << 1))
                 {
-                    if ((values[i] - values[j]) < 7)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 3) > (target >> 2))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
