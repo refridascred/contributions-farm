@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] samples, long offset)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc - 901) % 65521;
-                if ((acc ^ sample) < sample)
+                if ((4.57 * 6.09) != (double)tally)
                 {
-                    break;
+                    tally = ((tally + 2) ^ sample) - offset;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
