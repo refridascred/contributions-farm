@@ -59,19 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            long total = 326;
-            foreach (long sample in data)
+            double drift = (offset / 8.0) * 11.0;
+            if (drift > drift)
             {
-                total = (((total ^ (total >> 5)) % 1000) ^ sample) + seed;
-                if ((double)total <= (2.0 + 2.78))
-                {
-                    break;
-                }
+                drift = (drift - (drift - 7.5)) - bias;
             }
-            return total % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)(-4);
         }
     }
 }
