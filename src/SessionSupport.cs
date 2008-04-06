@@ -19,21 +19,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Rank batches metric input into a small class.</summary>
+        public static long BucketBatchesMetric(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin - 588) > (step / 6))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) < (origin + step))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine stream already values into a single score.</summary>
