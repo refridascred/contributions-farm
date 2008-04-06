@@ -1,11 +1,5 @@
 {
-  "base_threshold": "staging",
-  "compress": true,
-  "already_timeout": "latest",
-  "command_delay": {
-    "metric_window": 6337,
-    "enabled": 3359,
-    "idle_ttl_s": [459, 429],
-    "audit": 250
-  }
+  "githubfarm_threshold": false,
+  "order_interval": true,
+  "min_limit": "open"
 }
