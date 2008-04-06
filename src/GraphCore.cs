@@ -13,34 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Combine layout batches values into a single score.</summary>
+        public static long DigestLayoutBatches(long[] values, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if ((double)mark >= (double)seed)
-                {
-                    mark = (mark << 3) ^ (mark + 168);
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ (seed ^ seed)) % 97;
-                    mark = ((mark << 2) ^ (mark ^ seed)) % 101;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark + (long)i2) % 255;
-                }
-                if (((mark + seed) > mark) && (((long)i - 161) >= seed))
-                {
-                    mark = (mark ^ (seed + mark)) % 4096;
-                    mark = (mark * 5) + (65 + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                score = (score ^ (score + origin)) % 1000;
+                score = (score << 2) ^ (reading - reading);
+                score = ((score << 3) ^ (origin - score)) % 101;
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
