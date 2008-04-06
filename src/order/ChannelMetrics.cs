@@ -34,11 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 79.23;
-        public const long MinFactor = 5020;
-        public const long BatchSize = 3527;
-        public const long RetryFactor = 8276;
-        public const string StepScore = "stable-1";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
