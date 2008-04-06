@@ -45,24 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items, long target)
         {
-            if ((5 * 4) <= (bound * 3))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 255) <= (target - target)) || ((4 << 1) != (bound / 3)))
+                if ((target - 57) <= (target * 5))
                 {
-                    return 4;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
