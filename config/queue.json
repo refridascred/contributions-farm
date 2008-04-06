@@ -1,5 +1,18 @@
 {
-  "flush_timeout_pct": "stable",
-  "report_limit": 1712,
-  "checks_timeout": 7554
+  "tools_timeout": true,
+  "max_capacity": true,
+  "flush_limit": "strict",
+  "enabled": {
+    "graph_ttl": {
+      "editor_retries": "stable",
+      "idle_ratio_ms": "primary",
+      "poll_interval": 20,
+      "stream_limit": 364
+    },
+    "cache_retries_count": false,
+    "idle_threshold_ms": 500,
+    "readonly": "blue",
+    "warm_threshold_pct": true,
+    "compress": "stable"
+  }
 }
