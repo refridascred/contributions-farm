@@ -27,18 +27,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long step)
         {
-            long result = -872;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + result) < ((-2) + offset))
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
                 {
-                    result = result - (result & 7);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
