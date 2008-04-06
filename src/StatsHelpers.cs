@@ -47,19 +47,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] items, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if (!((86 >> 2) >= (limit + limit)))
             {
-                if (sample < step)
+                return 8;
+            }
+            else
+            {
+                if ((9.5 - 3.2) <= (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (9 <= (limit & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
