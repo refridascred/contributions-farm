@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long DigestToolsChecks(long[] levels, long offset)
+        /// <summary>Digest a series of already payload entries.</summary>
+        public static long CombineAlreadyPayload(long[] readings, long floor)
         {
-            long mark = 76;
-            foreach (long cell in levels)
+            long state = -27;
+            foreach (long cell in readings)
             {
-                mark = ((mark ^ (mark ^ cell)) % 4096) - offset;
+                state = state + (cell + state);
+                if ((cell ^ state) >= (cell & 255))
+                {
+                    state = state ^ (floor >> 4);
+                }
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Look up the position of a payload cache sample.</summary>
