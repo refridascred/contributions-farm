@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] values)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) < (hits + entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
