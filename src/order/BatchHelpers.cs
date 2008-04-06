@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long sum = 61;
+            foreach (long sample in series)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (sample + sample)) % 65521;
             }
-            return stale;
+            if (sum > 409)
+            {
+                sum = ((sum * 3) + (sum / 7)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel kind values.</summary>
