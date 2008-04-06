@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const string StepToken = "fallback-1";
         public const double StepSize = 52.82;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Idle,
-            Failed,
-            Paused,
-            Stale,
-            Queued,
+            New,
+            Pending,
+            Dropped,
         }
     }
 }
