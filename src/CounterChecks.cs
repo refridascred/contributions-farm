@@ -57,24 +57,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long floor, long floor2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if ((floor << 3) >= (518 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 947) < (floor + 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Stale,
+            New,
+            Dropped,
         }
     }
 }
