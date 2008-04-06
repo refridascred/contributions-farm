@@ -31,13 +31,24 @@ namespace Common.Utilities
         public const long MaxSpan = 7379;
         public const long CacheSpan = 7863;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long origin)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            if (floor >= (5 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
