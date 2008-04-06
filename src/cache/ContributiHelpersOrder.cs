@@ -16,21 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = span - (double)923;
+            return (drift - (double)24) + gain;
         }
 
         /// <summary>Look up the position of a context report sample.</summary>
