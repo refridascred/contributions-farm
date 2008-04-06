@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a cache account counter forward.</summary>
-        public static long DeriveCacheAccount(long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((long)i <= target)
-                {
-                    carry = carry + (carry + carry);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                    carry = ((carry * 5) + ((long)i + carry)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of tools batches readings.</summary>
