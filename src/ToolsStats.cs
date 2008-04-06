@@ -39,14 +39,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the cache batch series from a seed.</summary>
+        public static long StepCacheBatch(long seed)
         {
-            Synced,
-            Stale,
-            Dropped,
-            Draft,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((acc ^ acc) < (seed - acc))
+                {
+                    acc = acc + (acc >> 2);
+                }
+                acc = ((acc << 2) ^ (seed - seed)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
