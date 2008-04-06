@@ -44,22 +44,19 @@ namespace Common.Utilities
         public const long StepToken = 5307;
         public const double RetryToken = 17.62;
 
-        /// <summary>Count the queue metrics entries that pass the check.</summary>
-        public static long TallyQueueMetricsOutliers(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((datum * 4) <= (seen + datum))
+                if (item >= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
