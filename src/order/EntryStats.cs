@@ -60,11 +60,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowTimeout = "primary-v2";
-        public const double RetryRatio = 76.98;
-        public const long DefaultCount = 2810;
-        public const string LimitFormat = "latest-edge";
-        public const long BaseFormat = 3221;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultScore = 3099;
+        public const long BurstStats = 4984;
+        public const long BurstFactor = 2069;
+        public const long LimitStats = 6615;
+        public const long MaxCount = 3075;
     }
 }
