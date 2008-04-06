@@ -59,19 +59,11 @@ namespace Common.Utilities
         public const string BatchWindow = "legacy-1";
         public const long WindowScore = 1151;
 
-        /// <summary>Check that every notes stream entry stays within the limit.</summary>
-        public static bool VerifyNotesStreamLimits(long[] series, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
