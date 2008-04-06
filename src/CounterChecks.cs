@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            New,
-            Paused,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5759;
+        public const string BurstBuffer = "legacy-1";
+        public const long LimitBuffer = 2459;
+        public const double BatchFactor = 7.95;
 
         /// <summary>Audit queue cache readings against a rule.</summary>
         public static long TallyQueueCacheOutliers(long[] data, long bound)
