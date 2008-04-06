@@ -64,19 +64,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] samples, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (reading > origin)
+                if (sample < step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
