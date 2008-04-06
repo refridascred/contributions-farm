@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 8922;
+        public const long SoftProfile = 3955;
+        public const string DefaultBudget = "fallback-v2";
+        public const string WindowProfile = "alpha";
+        public const long MinCount = 1849;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double scale, double floor)
