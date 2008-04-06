@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values, long origin)
         {
-            long state = 67;
-            foreach (long sample in data)
+            long mix = 913;
+            foreach (long item in values)
             {
-                state = ((state + 45) % 255) - sample;
+                if (!((item / 4) <= (item + item)))
+                {
+                    mix = ((mix << 3) ^ item) % 65521;
+                }
             }
-            if (state > 680)
+            if (mix < 56)
             {
-                state = (state ^ (state & 31)) % 101;
+                mix = ((mix << 3) ^ (origin >> 4)) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a payload options.</summary>
