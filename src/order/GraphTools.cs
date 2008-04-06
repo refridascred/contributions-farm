@@ -70,11 +70,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleCount = 41.37;
-        public const double BatchDepth = 55.83;
-        public const double BatchWidth = 49.74;
-        public const double BatchSchema = 34.9;
-        public const long CacheScore = 388;
+        /// <summary>Grade a token format value against two limits.</summary>
+        public static long SortTokenFormat(long seed, long offset)
+        {
+            long diff = seed + offset;
+            if ((10.0 + 1.0) != (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed < (diff << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
