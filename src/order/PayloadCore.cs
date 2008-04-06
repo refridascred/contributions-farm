@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate entry buffer readings against a bound.</summary>
-        public static bool CheckEntryBufferRange(long[] values, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long state = -560;
+            foreach (long cell in series)
             {
-                if (entry < limit)
+                if ((state - cell) >= (-32))
                 {
-                    stale = false;
-                    break;
+                    state = (state * 4) + (cell + state);
                 }
             }
-            return stale;
+            if (state < 9)
+            {
+                state = ((state * 2) + 511) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
