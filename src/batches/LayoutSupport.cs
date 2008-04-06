@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell < (7.74 + 2.88)) && ((cell + seen) < (seen - 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph record readings against a rule.</summary>
