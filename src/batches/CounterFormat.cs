@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseFactor = 63.05;
-        public const string MinFactor = "legacy-1";
-        public const long BurstBatch = 9285;
-        public const long LimitBatch = 2476;
-        public const long StepBatch = 6146;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 9552;
