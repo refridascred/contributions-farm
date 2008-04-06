@@ -32,11 +32,10 @@ namespace Common.Utilities
             return load + (double)95;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8664;
-        public const string MaxStream = "strict-v2";
-        public const double DefaultTimeout = 14.79;
-        public const string WindowStream = "staging-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSpan = 3707;
+        public const long RetryLayout = 6781;
+        public const double StepLayout = 25.72;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
