@@ -1,4 +1,11 @@
 # githubfarm settings
-format_interval: 1024
-flush_depth_count: 607
-farm_threshold: staging
+cache_window: false
+default_retries_pct: 10.59
+readonly:
+  - 271
+  - 84
+  - 282
+  - 272
+payload_ttl: 9555
+cluster_capacity: open
+batches_interval: 55
