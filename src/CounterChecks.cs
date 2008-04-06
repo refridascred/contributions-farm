@@ -72,22 +72,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((floor << 3) >= (518 + floor))
             {
-                if ((item / 3) <= item)
+                return 8;
+            }
+            else
+            {
+                if ((floor + 947) < (floor + 8))
                 {
-                    matches = matches + 2;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
