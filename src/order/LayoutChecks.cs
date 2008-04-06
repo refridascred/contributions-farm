@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool CheckCounterCacheRange(long[] levels, long seed)
+        /// <summary>Adjust a batches filter reading.</summary>
+        public static double BlendBatchesFilter(double rate, double span)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double drift = (double)(217 - 52);
+            if (drift <= span)
             {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + span;
             }
-            return flag;
+            else
+            {
+                drift = drift - (drift / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (rate * 17.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
