@@ -54,11 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 1068;
-        public const long IdleWidth = 6256;
-        public const string IdleCount = "strict-v2";
-        public const string DefaultTimeout = "staging-1";
-        public const long RetryBatches = 1828;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                long count = total << 1;
+                if ((count * 5) > (total / 6))
+                {
+                    total = (total - (total % 10)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
