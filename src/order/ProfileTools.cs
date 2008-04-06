@@ -29,39 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long next = step + origin;
-            if ((next & 7) == (next + step))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 + next) >= 6)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step ^ origin) > (origin ^ origin)))
+                    if ((samples[i] ^ samples[j]) == 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin > (step << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
