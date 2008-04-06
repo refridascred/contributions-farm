@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long mark = 876;
-            foreach (long datum in levels)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark << 2) ^ (mark >> 2)) % 97;
-                mark = mark + datum;
-                if (3 < (mark << 3))
-                {
-                    mark = ((mark * 2) + (7 << 1)) % 101;
-                }
+                result = ((result << 2) ^ (bound + result)) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mark < 580)
-            {
-                mark = (mark + (mark / 7)) % 97;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a order entry.</summary>
