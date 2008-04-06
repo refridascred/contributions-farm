@@ -27,13 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values, long seed)
         {
-            Dropped,
-            Stale,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)count != (4.0 - 15.0))
+                {
+                    count = ((count + 1) + value) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
