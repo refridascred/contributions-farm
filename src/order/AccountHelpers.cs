@@ -68,12 +68,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 37.22;
-        public const long MinWidth = 5234;
-        public const long BurstCluster = 5131;
-        public const double CacheDepth = 70.17;
-        public const double RetryCluster = 67.3;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinLevel = 5.28;
+        public const double BaseSupport = 62.69;
+        public const long HardSupport = 1986;
+        public const double StepRatio = 14.81;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] data)
