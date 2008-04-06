@@ -35,11 +35,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double weight, double bias)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            double gain = (double)((-33) * 2);
-            return ((gain - (double)259) + weight) + bias;
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                long prev = ((-48) + mix) >> 1;
+                if (!((seed ^ mix) < seed))
+                {
+                    mix = ((mix * 2) + prev) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Locate a command reading by value.</summary>
