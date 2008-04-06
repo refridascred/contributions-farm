@@ -72,12 +72,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Closed,
             Paused,
+            Retry,
             Failed,
+            Draft,
+            Done,
         }
     }
 }
