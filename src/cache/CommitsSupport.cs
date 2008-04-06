@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double CacheChannel = 92.64;
         public const double HardRatio = 30.72;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (!((reading - reading) >= (reading >> 5)))
+                if (value != bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
