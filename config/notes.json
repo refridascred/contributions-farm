@@ -1,12 +1,5 @@
 {
-  "base_limit_count": ["latest", "staging", "strict"],
-  "entry_size": 30,
-  "payload_timeout": {
-    "audit": 5.58,
-    "warm_threshold_count": "fallback",
-    "base_ratio": "legacy"
-  },
-  "report_depth": [455, 117, 101],
-  "flush_ratio_pct": [43, 460],
-  "support_timeout": ["primary", "stable", "stable", "staging"]
+  "retry_capacity_ms": 4183,
+  "batch_delay_count": "cached",
+  "default_interval_count": "standard"
 }
