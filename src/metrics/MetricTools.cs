@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings, long seed)
-        {
-            long anchor = 60;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor + (anchor - 3)) % 1000) ^ (long)i;
-                }
-                if ((entry - seed) >= (entry - entry))
-                {
-                    anchor = (anchor - (anchor << 3)) % 101;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = anchor + 427;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseTimeout = 36.81;
+        public const long RetryInterval = 1052;
+        public const string MinSupport = "cached-edge";
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
         public static long LocateSessionFilterIndex(long[] readings, long floor)
