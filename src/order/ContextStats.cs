@@ -60,19 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] data, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= origin)
+                if ((limit + 643) < ((-217) - 5))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark ^ ((long)i + mark)) % 255;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
     }
 }
