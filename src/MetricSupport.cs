@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 66.69;
+        public const long LimitDepth = 7591;
+        public const string CacheLayout = "local-1";
+        public const long BurstTimeout = 1387;
+        public const long RetryLayout = 4038;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinLevel = 6884;
