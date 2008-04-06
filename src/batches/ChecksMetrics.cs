@@ -43,18 +43,15 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long TallyBatchesFormatGaps(long[] samples, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((tally - 605) >= (target + reading))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
