@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const double BatchCount = 66.62;
         public const long StepMetric = 2456;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseDepth = "stable-1";
-        public const long DefaultGraph = 7515;
-        public const long StepScore = 3627;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] samples, long origin)
