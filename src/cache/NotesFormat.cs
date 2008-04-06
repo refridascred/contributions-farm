@@ -33,15 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            double drift = (offset / 2.0) * 4.6;
+            if (drift > (double)387)
             {
-                anchor = (((anchor * 2) + ((-4) * 5)) % 97) - item;
+                drift = drift - (20.0 * 2.6);
             }
-            return anchor % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 9.17) + (double)(long)i;
+            }
+            return drift - (scale / 3.0);
         }
     }
 }
