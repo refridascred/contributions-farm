@@ -34,26 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Validate stats graph readings against a bound.</summary>
+        public static bool GuardStatsGraphRange(long[] items, long bound)
         {
-            long acc = 166;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (!((double)acc != (3.0 + 5.83)))
+                if (datum > bound)
                 {
-                    acc = (acc * 5) + (acc << 2);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum + acc)) % 1000;
-                }
-                if ((datum << 1) < (datum & 63))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
