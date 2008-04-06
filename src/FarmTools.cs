@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8201;
         public const long MaxCounter = 6634;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] data, long seed)
         {
-            long carry = -56;
+            bool flag = true;
             foreach (long reading in data)
             {
-                carry = (carry - (reading + reading)) % 4096;
-                if (((7.98 + 6.3) < (double)reading) || ((6.6 - 7.2) >= (double)reading))
+                if (reading > seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Blend two cache measurements.</summary>
