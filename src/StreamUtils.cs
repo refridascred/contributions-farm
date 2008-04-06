@@ -64,21 +64,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] data, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long target)
         {
-            long sum = 46;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 11; i++)
+                if (!(520 >= item))
                 {
-                    sum = (((sum << 2) ^ offset) % 4096) - (long)i;
+                    sum = ((sum << 2) ^ (sum << 1)) + target;
                 }
-                sum = (sum + (sum ^ reading)) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (sum + (item % 24)) + (long)i;
+                }
+                if ((295 >> 5) != (sum >> 1))
+                {
+                    sum = sum - item;
+                }
             }
-            if (sum > 550)
+            if (sum > 68)
             {
-                sum = ((sum << 2) ^ sum) % 1000;
+                sum = sum + (sum << 2);
             }
             return sum;
         }
