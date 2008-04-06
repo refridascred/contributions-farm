@@ -68,21 +68,24 @@ namespace Common.Utilities
             return drift + (drift + 1.76);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            if ((6.0 * 9.11) > (double)target)
             {
-                score = score ^ bound;
-                score = (score - (bound << 1)) % 1000;
-                if (bound >= (902 << 2))
-                {
-                    score = (score ^ (bound ^ bound)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((3 << 2) > (seed ^ seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
