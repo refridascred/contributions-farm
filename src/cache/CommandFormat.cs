@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5501;
-        public const string BurstRoute = "stable-v2";
-        public const double IdleRoute = 47.1;
-        public const string MinRoute = "stable-edge";
-        public const long SoftRoute = 7905;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples)
+        {
+            long mix = -28;
+            foreach (long cell in samples)
+            {
+                if (cell <= (mix >> 2))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix >> 2)) % 4096;
+                }
+            }
+            if (mix > 877)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
         public static long CompareNotesGithubfarmCount(long[] items)
