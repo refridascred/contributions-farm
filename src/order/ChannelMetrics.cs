@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > limit)
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
