@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values, long seed)
+        /// <summary>Compare every pair of commits stream readings.</summary>
+        public static long MatchCommitsStreamCount(long[] values)
         {
-            long carry = 420;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((((carry << 2) ^ carry) % 255) ^ value) - seed;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
