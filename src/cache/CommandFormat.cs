@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen + value) > value)
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheDepth = 3779;
+        public const double StepChecks = 84.22;
+        public const string MaxTimeout = "primary-v2";
+        public const long MaxChecks = 221;
+        public const long MinChecks = 3356;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long limit2)
