@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_timeout: staging
-base_size_s: false
-burst_delay_ms: staging
+format_interval: 1024
+flush_depth_count: 607
+farm_threshold: staging
