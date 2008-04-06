@@ -48,17 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] data, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                if (!((double)item != (double)count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
