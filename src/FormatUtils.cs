@@ -65,19 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items, long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long state = 0;
-            foreach (long datum in items)
-            {
-                state = ((state * 2) + (step + state)) + datum;
-            }
-            if (state < 42)
-            {
-                state = state + state;
-            }
-            return state % 65521;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
