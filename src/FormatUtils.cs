@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary";
         public const long MinCommand = 1501;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] readings, long seed)
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long LocateFarmContributiIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != seed)
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
