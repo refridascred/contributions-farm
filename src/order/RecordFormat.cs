@@ -35,18 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
+        public static double ProjectGithubfarmCache(double rate, double bias)
         {
-            long score = 0;
-            foreach (long cell in data)
+            double load = bias;
+            if (load <= (rate / 4.0))
             {
-                if ((cell - cell) == (cell ^ score))
-                {
-                    score = ((score << 3) ^ (long)data.Length) % 255;
-                }
+                load = load + load;
             }
-            return score % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (double)(-989);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
