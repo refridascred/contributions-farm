@@ -1,6 +1,6 @@
 {
-  "hard_delay_s": ["edge", "local"],
-  "warm_ttl_ms": 98.15,
-  "warm_interval_s": false,
-  "min_window": 8169
+  "sync_timeout_ms": 12.67,
+  "buffer_ratio": true,
+  "batch_window_pct": 29,
+  "sync_timeout_pct": "staging"
 }
