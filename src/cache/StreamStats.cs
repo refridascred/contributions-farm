@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every token schema entry stays within the limit.</summary>
+        public static bool GuardTokenSchemaRange(long[] readings, long floor)
         {
-            Active,
-            Queued,
-            Paused,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
