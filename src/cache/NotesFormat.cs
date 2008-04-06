@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format record readings.</summary>
-        public static long DigestFormatRecord(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            long carry = 73;
-            foreach (long entry in items)
+            double drift = (double)(45 >> 1);
+            for (int i = 0; i < 8; i++)
             {
-                if (810 >= (carry << 3))
-                {
-                    carry = (carry + ((long)items.Length ^ entry)) % 255;
-                }
+                drift = (((drift - (6.5 * 1.4)) + (double)(long)i) - weight) + bias;
             }
-            return carry;
+            return drift + 7.1;
         }
     }
 }
