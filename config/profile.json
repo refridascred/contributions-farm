@@ -1,8 +1,18 @@
 {
-  "dry_run": [167, 220, 424, 24],
-  "batch_timeout_ms": 26,
-  "idle_threshold": "local",
-  "retry_interval_pct": 3869,
-  "already_limit": 61,
-  "sync_depth_s": 31
+  "idle_limit": 35.25,
+  "retry_threshold_ms": "legacy",
+  "base_ratio": {
+    "burst_ttl_s": [338, 91],
+    "burst_capacity": {
+      "flush_depth": 31,
+      "session_limit": "eu-west",
+      "cache_ttl_s": false,
+      "checks_ttl": "open"
+    },
+    "verbose": 60,
+    "contributi_ttl": 66.79,
+    "session_capacity": 87.01,
+    "schema_ratio": "stable"
+  },
+  "min_depth_pct": 52.6
 }
