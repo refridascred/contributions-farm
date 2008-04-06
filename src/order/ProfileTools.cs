@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit layout stats readings against a rule.</summary>
-        public static long MeasureLayoutStatsHits(long[] samples)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample - matches) > (matches - matches)) && ((matches ^ matches) <= (matches << 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the metric level values.</summary>
