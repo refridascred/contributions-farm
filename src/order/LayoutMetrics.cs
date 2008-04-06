@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinDepth = "standard-v2";
+        public const double BaseFactor = 60.82;
+        public const double BaseMetric = 29.86;
+        public const long BurstCount = 3532;
+        public const long SoftMetric = 8721;
 
         /// <summary>Digest a series of cluster already entries.</summary>
         public static long CombineClusterAlready(long[] series)
