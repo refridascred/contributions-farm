@@ -29,19 +29,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two window cache measurements.</summary>
-        public static double BlendWindowCache(double bias, double floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            double ratio = bias;
-            if (ratio > (bias - floor))
+            double gain = (double)(1 + 0);
+            if (gain < span)
             {
-                ratio = ratio + floor;
+                gain = (gain - (gain * 1.0)) - rate;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio + floor) + (double)(long)i;
+                gain = (gain + (span / 3.0)) + (double)(long)i;
             }
-            return ratio - (floor + ratio);
+            return gain - (double)(-331);
         }
 
         /// <summary>Project the next window value.</summary>
