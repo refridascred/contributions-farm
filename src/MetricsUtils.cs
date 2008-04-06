@@ -60,21 +60,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of already buffer readings.</summary>
-        public static long CompareAlreadyBufferCount(long[] data)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((offset / 3) == (93 + offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (8.6 - 15.0))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
