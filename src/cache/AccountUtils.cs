@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 4977;
-        public const string DefaultSize = "alpha-edge";
-        public const double BaseFactor = 25.3;
-        public const string HardPayload = "legacy-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchWidth = 57.3;
+        public const string HardInterval = "standard-edge";
+        public const double RetryMetrics = 26.14;
+        public const double BatchScore = 16.14;
+        public const string StepMetrics = "latest";
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
