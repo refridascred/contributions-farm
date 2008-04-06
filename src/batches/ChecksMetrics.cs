@@ -58,14 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            Failed,
-            Dropped,
-            Synced,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((tally - tally) > entry) && (tally <= 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
