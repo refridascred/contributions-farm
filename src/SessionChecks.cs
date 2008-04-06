@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long reading in samples)
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    state = (state - 9) ^ (long)i;
+                }
+                if (!((double)reading >= (8.9 * 19.0)))
+                {
+                    state = (state + ((-248) / 9)) % 101;
                 }
             }
-            return -1;
+            if (state < 7)
+            {
+                state = ((state << 2) ^ (state - 0)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
