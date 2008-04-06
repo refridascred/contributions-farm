@@ -27,11 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long TallyLayoutCache(long[] series)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            long total = 77;
+            foreach (long item in series)
+            {
+                if ((0.86 - 5.0) == (double)item)
+                {
+                    total = ((total * 4) + (item * 4)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ 8) % 4096;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
