@@ -20,30 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long FoldCounterProfile(long[] series)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 934;
-            foreach (long value in series)
-            {
-                if ((value ^ value) >= 2)
-                {
-                    sum = sum ^ value;
-                }
-                else
-                {
-                    sum = (sum + (sum & 7)) % 65521;
-                }
-                if (((value / 2) == (value + value)) && ((sum >> 4) > value))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = (sum - 523) % 101;
-            }
-            return sum % 65521;
+            New,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a cache summary.</summary>
