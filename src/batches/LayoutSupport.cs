@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph report samples.</summary>
-        public static long WeighGraphReport(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] data)
         {
-            long anchor = 40;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((anchor & 1) <= (anchor + anchor)) && (anchor <= (anchor << 2)))
+                if (!(((long)data.Length + 6) >= (143 + 35)))
                 {
-                    anchor = (anchor << 2) ^ entry;
-                }
-                if (!((anchor / 3) <= (anchor + entry)))
-                {
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit graph record readings against a rule.</summary>
