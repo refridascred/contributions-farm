@@ -22,11 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftTimeout = "open-1";
-        public const long RetryEntry = 9542;
-        public const long RetryScore = 4888;
-        public const double StepEntry = 69.36;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Locked,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] items)
