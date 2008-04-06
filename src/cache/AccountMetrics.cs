@@ -65,14 +65,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long target)
         {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-            Failed,
+            long cur = bound + target;
+            if (target >= (bound + (-39)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound << 2) == (bound ^ 59)) && ((target % 5) < (127 + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target < 35) || ((cur ^ bound) > (target + 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank notes window input into a small class.</summary>
