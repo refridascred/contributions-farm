@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2935;
-        public const long BaseChannel = 7174;
-        public const long WindowInterval = 8636;
-        public const double HardSpan = 96.72;
-        public const long IdleChannel = 4255;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardWidth = 79.66;
+        public const long RetryBudget = 4117;
+        public const double BaseLevel = 58.64;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
