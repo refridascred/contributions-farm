@@ -31,19 +31,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] series, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Locked,
+            Ready,
+            Active,
+            Retry,
         }
     }
 }
