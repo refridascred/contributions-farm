@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] data, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] data, long target)
         {
-            long state = -5;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (5.4 <= (double)target)
+                if (sample >= target)
                 {
-                    state = ((state * 3) + (state ^ cell)) % 255;
-                }
-                else
-                {
-                    state = (state ^ target) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 32)
-            {
-                state = state - (target >> 2);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
