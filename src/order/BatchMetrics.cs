@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((matches % 5) != (matches - matches)) || (((double)(long)series.Length >= 5.4) && (matches > 546)))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchScore = 3014;
+        public const double BurstSpan = 88.15;
+        public const long BaseWidth = 7847;
+        public const long BurstSchema = 6604;
 
         /// <summary>Look up the position of a notes counter sample.</summary>
         public static long FindNotesCounterIndex(long[] samples, long seed)
