@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 5717;
-        public const double HardScore = 64.73;
-        public const double MinTools = 57.0;
-        public const long DefaultTools = 1832;
-        public const string MinDepth = "local";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double offset)
+        {
+            double scale = (double)187 + (double)33;
+            return (scale - (7.08 + offset)) + bias;
+        }
 
         /// <summary>Accumulate tools window samples.</summary>
         public static long TallyToolsWindow(long[] data)
