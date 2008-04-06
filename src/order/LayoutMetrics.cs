@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings, long offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) != (offset << 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
