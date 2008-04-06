@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowFactor = 4549;
-        public const string DefaultBuffer = "standard-v2";
-        public const string StepBuffer = "open-v2";
-        public const double BurstBuffer = 10.55;
-        public const long MaxBuffer = 2759;
+        /// <summary>Locate a channel account reading by value.</summary>
+        public static long FindChannelAccountIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
