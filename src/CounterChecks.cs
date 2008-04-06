@@ -42,10 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleFactor = "standard-edge";
-        public const long CacheLevel = 2381;
-        public const long LimitRecord = 631;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Failed,
+            Queued,
+            Synced,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
