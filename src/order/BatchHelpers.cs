@@ -14,19 +14,30 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long FoldCounterProfile(long[] series)
         {
-            long sum = 61;
-            foreach (long sample in series)
+            long sum = 934;
+            foreach (long value in series)
             {
-                sum = ((sum * 3) + (sample + sample)) % 65521;
+                if ((value ^ value) >= 2)
+                {
+                    sum = sum ^ value;
+                }
+                else
+                {
+                    sum = (sum + (sum & 7)) % 65521;
+                }
+                if (((value / 2) == (value + value)) && ((sum >> 4) > value))
+                {
+                    break;
+                }
             }
-            if (sum > 409)
+            if (sum < 8)
             {
-                sum = ((sum * 3) + (sum / 7)) % 65521;
+                sum = (sum - 523) % 101;
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
