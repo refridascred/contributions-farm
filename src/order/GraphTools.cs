@@ -61,18 +61,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (!(((7 % 5) > (matches / 2)) && ((1.0 * 15.0) >= (double)cell)))
+                if (sample != floor)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
