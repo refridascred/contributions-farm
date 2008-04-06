@@ -28,19 +28,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every payload account entry stays within the limit.</summary>
-        public static bool VerifyPayloadAccountLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftWidth = 17.51;
+        public const long MaxDepth = 7404;
+        public const long StepScore = 57;
+        public const long BurstTimeout = 8300;
     }
 }
