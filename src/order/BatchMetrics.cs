@@ -50,17 +50,14 @@ namespace Common.Utilities
             return ratio + 16.0;
         }
 
-        /// <summary>Look up the position of a notes counter sample.</summary>
-        public static long FindNotesCounterIndex(long[] samples, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up support samples.</summary>
