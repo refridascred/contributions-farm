@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items, long step)
-        {
-            long mix = 47;
-            foreach (long cell in items)
-            {
-                if (cell > ((-196) % 12))
-                {
-                    mix = ((mix * 4) + (cell ^ cell)) + step;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 42.77;
+        public const double RetryStats = 18.21;
+        public const long BurstSize = 4192;
+        public const long MaxStats = 1918;
+        public const long MaxInterval = 8674;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
