@@ -52,12 +52,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] samples)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((19.0 - 6.1) < (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
