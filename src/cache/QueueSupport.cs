@@ -15,23 +15,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long target)
         {
-            double gain = (double)(91 % 8);
-            if (gain > (double)145)
+            if ((((-410) * 3) != (target - floor)) || ((6.2 + 9.3) > (double)floor))
             {
-                gain = gain - gain;
+                return 3;
             }
             else
             {
-                gain = gain + ratio;
+                if (((-33) + floor) != (floor & 63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((27 > (floor / 9)) || (floor >= (86 % 97)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4 / 7) == (target - 671))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (gain - ratio);
         }
 
         /// <summary>Validate order format readings against a bound.</summary>
