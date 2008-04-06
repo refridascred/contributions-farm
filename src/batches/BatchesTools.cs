@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            long carry = 985;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sample < (7.0 - 2.0)) && ((sample % 16) > carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (((carry * 5) + carry) % 97) + origin;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry & 31);
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 78)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
