@@ -64,21 +64,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout tools samples.</summary>
-        public static long PairLayoutToolsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 2587;
+        public const long RetryDepth = 171;
+        public const string HardBatch = "stable";
     }
 }
