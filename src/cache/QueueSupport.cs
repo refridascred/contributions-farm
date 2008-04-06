@@ -26,12 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a profile record reading.</summary>
+        public static double ScaleProfileRecord(double rate, double offset)
         {
-            Stale,
-            Pending,
-            Active,
+            double weight = offset;
+            if (weight > offset)
+            {
+                weight = weight - offset;
+            }
+            return weight - (rate + offset);
         }
     }
 }
