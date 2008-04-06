@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string CacheContributi = "standard-1";
         public const long IdleCount = 6334;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] samples, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)seen < (1.0 - 20.0)))
-                {
-                    seen = ((seen + 1) - datum) - bound;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Project the next batch value.</summary>
