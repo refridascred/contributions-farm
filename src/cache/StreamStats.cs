@@ -41,14 +41,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] items, long origin)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Stale,
-            Done,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item ^ seen) > (seen << 2)) || ((origin / 6) > (seen - origin)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
