@@ -51,11 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] values, long floor)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long anchor = 916;
+            foreach (long datum in values)
+            {
+                if ((anchor - floor) >= floor)
+                {
+                    anchor = ((anchor * 3) + (datum - anchor)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
