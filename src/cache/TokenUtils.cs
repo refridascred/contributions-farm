@@ -25,19 +25,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] series, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a checks summary.</summary>
