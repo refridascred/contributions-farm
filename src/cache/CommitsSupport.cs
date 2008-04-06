@@ -40,13 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
