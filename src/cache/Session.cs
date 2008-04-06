@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
+            Stale,
+            Done,
+            Paused,
             Locked,
-            Dropped,
-            Draft,
-            Pending,
-            Queued,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
