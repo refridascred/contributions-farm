@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Ready,
+            long anchor = 1;
+            foreach (long cell in data)
+            {
+                if (anchor >= cell)
+                {
+                    anchor = ((anchor * 3) + cell) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter mode values.</summary>
