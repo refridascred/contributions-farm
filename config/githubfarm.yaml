@@ -1,9 +1,4 @@
 # githubfarm settings
-default_delay: 40.33
-flush_ratio: 63
-strict:
-  dry_run: open
-  soft_capacity_s: 79
-  retry_limit:
-    - 481
-    - 97
+soft_timeout_ms: stable
+metrics_interval: 2579
+poll_timeout_s: false
