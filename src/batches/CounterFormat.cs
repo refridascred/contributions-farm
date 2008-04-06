@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepWidth = "stable-edge";
+        public const long HardBudget = 5523;
+        public const long CacheWidth = 1324;
+        public const string StepCount = "local-1";
+        public const double BurstContext = 78.58;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] data)
