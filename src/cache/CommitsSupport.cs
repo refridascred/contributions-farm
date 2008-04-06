@@ -13,14 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values)
         {
-            Locked,
-            Failed,
-            Draft,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading - reading) >= (reading >> 5)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
