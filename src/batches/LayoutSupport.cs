@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            long carry = 993;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry + 2) % 65521) ^ value;
+                if (!(datum <= (88 - (-7))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 344)
-            {
-                carry = carry + (seed << 2);
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
