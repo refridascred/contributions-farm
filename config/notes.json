@@ -1,10 +1,6 @@
 {
-  "farm_timeout": {
-    "cache_threshold": 21,
-    "entry_retries": 90,
-    "window_retries": "edge",
-    "idle_retries": "green"
-  },
-  "burst_timeout_ms": [14, 80],
-  "flush_retries_s": [45, 418]
+  "queue_capacity": [252, 277],
+  "base_capacity_count": 60,
+  "cache_retries_pct": 95.93,
+  "cache_interval": 250
 }
