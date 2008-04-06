@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((3.0 * 3.4) > (double)cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
