@@ -14,15 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            long sum = 76;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 2) ^ (sample - sample)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
