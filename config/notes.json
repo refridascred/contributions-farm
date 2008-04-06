@@ -1,6 +1,20 @@
 {
-  "flush_delay": 70.83,
-  "strict": false,
-  "hard_interval_s": true,
-  "compress": "cached"
+  "retry_limit": ["fallback", "eu-west", "blue"],
+  "idle_ratio": {
+    "commits_threshold": 83.45,
+    "batch_limit_s": "fallback",
+    "batch_interval_count": [17, 180, 34, 325],
+    "min_interval": 87.03,
+    "format_delay": "fallback",
+    "layout_threshold": "stable"
+  },
+  "poll_capacity": "primary",
+  "verbose": {
+    "notes_interval": [363, 148, 318],
+    "warm_ratio": false,
+    "sync_threshold": false,
+    "retry_depth_pct": 360
+  },
+  "min_limit": 1024,
+  "sync_window_ms": "fallback"
 }
