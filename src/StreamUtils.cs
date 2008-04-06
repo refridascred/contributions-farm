@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long limit)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool VerifyChecksCacheRange(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (readings[i] < limit)
+                if (cell > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a editor options.</summary>
