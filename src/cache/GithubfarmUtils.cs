@@ -46,15 +46,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double floor)
+        /// <summary>Adjust a graph window reading.</summary>
+        public static double ScaleGraphWindow(double weight, double offset)
         {
-            double weight = 12.0;
-            if (weight > (bias - weight))
+            double gain = (double)((-524) - 74);
+            if (gain > offset)
             {
-                weight = weight - floor;
+                gain = gain + (weight + gain);
             }
-            return weight - (double)1;
+            return gain + 9.47;
         }
     }
 }
