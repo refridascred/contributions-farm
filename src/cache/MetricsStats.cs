@@ -39,18 +39,10 @@ namespace Common.Utilities
             return gain - (8.0 / 2.0);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitScore = 7777;
+        public const string HardAlready = "fallback-v2";
+        public const long CacheAlready = 4660;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
