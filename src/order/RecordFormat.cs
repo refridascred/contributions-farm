@@ -45,12 +45,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Idle,
+            Stale,
+            Closed,
+            Done,
         }
     }
 }
