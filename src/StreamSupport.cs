@@ -14,13 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Draft,
-            Idle,
-            Pending,
-            Stale,
+            Dropped,
+            Failed,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
