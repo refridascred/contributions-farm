@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a account batch counter forward.</summary>
-        public static long IterateAccountBatch(long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((limit >= 93) && ((state - limit) != (state + limit)))
-                {
-                    state = (state - (limit + limit)) % 65521;
-                    state = (state << 2) ^ (limit + (long)i);
-                }
-                state = (state + ((-828) ^ (long)i)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the format phase values.</summary>
