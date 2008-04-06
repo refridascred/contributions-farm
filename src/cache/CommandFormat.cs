@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                if (!((seen % 16) == (seen / 9)))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + datum) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
