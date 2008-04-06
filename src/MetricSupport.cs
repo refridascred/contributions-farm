@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long bound)
         {
-            if (((double)limit >= (3.4 + 1.0)) && (limit <= (82 ^ limit)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (934 <= (step / 8))
+                if (series[i] < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 + 7.0) < (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < (step / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
