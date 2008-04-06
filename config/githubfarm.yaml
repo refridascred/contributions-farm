@@ -1,6 +1,9 @@
 # githubfarm settings
-poll_capacity_s: cached
-idle_threshold_count: 97
-strict: 2252
-already_delay: 52.97
-soft_ttl_s: true
+cache_limit: 7
+retry_limit_s: 65
+readonly: false
+max_timeout_ms:
+  - blue
+  - edge
+  - strict
+  - cached
