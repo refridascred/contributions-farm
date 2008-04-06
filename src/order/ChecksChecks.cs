@@ -12,24 +12,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long limit)
+        /// <summary>Count session checks pairs that satisfy a relation.</summary>
+        public static long PairSessionChecksCount(long[] items)
         {
-            if (step >= (16 + limit))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
