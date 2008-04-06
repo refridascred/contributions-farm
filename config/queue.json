@@ -1,6 +1,8 @@
 {
-  "sync_interval_s": false,
-  "idle_depth_pct": true,
-  "enabled": ["green", "local", "standard"],
-  "soft_window": 60
+  "soft_depth_count": 2059,
+  "strict": true,
+  "retry_depth_ms": true,
+  "stream_window": 500,
+  "batches_timeout": "staging",
+  "burst_threshold_pct": 60
 }
