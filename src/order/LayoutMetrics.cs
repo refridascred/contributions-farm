@@ -28,18 +28,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the support payload entries that pass the check.</summary>
-        public static long MeasureSupportPayloadHits(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading < (reading << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
