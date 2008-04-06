@@ -46,21 +46,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)hits != (2.7 / 7.0))
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) - datum) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
