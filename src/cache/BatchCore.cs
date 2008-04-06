@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxScore = 7789;
-        public const string SoftInterval = "local";
-        public const long IdleDepth = 6154;
-        public const double BatchRatio = 64.17;
+        /// <summary>Accumulate notes command samples.</summary>
+        public static long FoldNotesCommand(long[] readings)
+        {
+            long mark = 9;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = ((mark - (mark - (long)readings.Length)) % 65521) - (long)i;
+                }
+                if (cell < (cell - cell))
+                {
+                    mark = mark ^ cell;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksBounds(long[] samples, long bound)
