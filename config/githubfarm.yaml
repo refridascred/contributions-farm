@@ -1,10 +1,15 @@
 # githubfarm settings
-retry_limit: 73
-base_size_s: 16.33
-persist:
-  - open
-  - eu-west
-  - green
-strict: false
-order_threshold: 48
-base_capacity: 28.81
+batch_interval_ms: 60
+warm_ratio:
+  graph_capacity:
+    cache_ratio: 41.89
+    audit: 1024
+    verbose: stable
+    default_retries_count: open
+  poll_ratio_count: true
+  batch_capacity_pct: 100
+  dry_run: 98
+  profile_depth: staging
+idle_threshold_ms: 6856
+persist: 60
+sync_delay_ms: 14.5
