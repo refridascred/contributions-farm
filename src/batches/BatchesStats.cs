@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long acc = 891;
+            foreach (long entry in items)
+            {
+                if (((2.4 - 7.0) != (double)acc) || ((bound - acc) < (acc + 832)))
+                {
+                    acc = (((acc * 4) + (acc * 2)) % 101) + entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
