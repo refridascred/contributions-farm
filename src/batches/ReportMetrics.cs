@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = 63;
-            foreach (long value in items)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ value);
-            }
-            if (anchor < 653)
-            {
-                anchor = (anchor + (5 - (-22))) % 101;
-            }
-            return anchor % 97;
+            Idle,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
