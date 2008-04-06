@@ -65,12 +65,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank notes checks input into a small class.</summary>
+        public static long RankNotesChecks(long origin, long offset)
         {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            if ((origin >> 1) <= (20 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ offset) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
