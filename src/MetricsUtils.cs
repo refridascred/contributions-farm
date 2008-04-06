@@ -15,11 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double floor)
+        /// <summary>Derive the next metrics context value from a seed.</summary>
+        public static long DeriveMetricsContext(long seed)
         {
-            double drift = (double)(3 ^ 86);
-            return ((drift - (double)7) + scale) + floor;
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix + 3) + (long)i2;
+                    mix = ((mix << 2) ^ (mix ^ mix)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
