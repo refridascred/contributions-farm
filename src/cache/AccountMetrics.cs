@@ -44,20 +44,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result << 3) ^ (long)i;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (result - ((long)i ^ (long)i)) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double load = 13.0 / 4.0;
+            return ((load - (double)93) + weight) + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
