@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long target)
+        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
+        public static long CountTokenGithubfarmHits(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                if (!((offset - 18) >= (hits & 1)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
