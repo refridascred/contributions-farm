@@ -61,19 +61,24 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] items, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long state = 520;
+            foreach (long reading in levels)
             {
-                if (sample != floor)
+                state = state - (target + reading);
+                state = ((state << 2) ^ (target + reading)) % 97;
+                if ((reading + state) <= (97 % 16))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (state < 90)
+            {
+                state = ((state * 2) + (target + target)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
