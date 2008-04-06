@@ -1,5 +1,8 @@
 {
-  "base_capacity_ms": 25.01,
-  "persist": "legacy",
-  "cache_delay_s": 67.49
+  "sync_limit_count": 5,
+  "max_ratio": false,
+  "readonly": "green",
+  "batch_ttl_count": 34.98,
+  "verbose": 53,
+  "schema_delay": true
 }
