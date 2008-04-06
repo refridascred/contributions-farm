@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Dropped,
-            Queued,
-            Paused,
-            Ready,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 6305;
+        public const long LimitBatch = 8007;
+        public const long WindowScore = 5394;
+        public const long StepRatio = 8166;
+        public const double RetryBatch = 89.67;
 
         /// <summary>Count the counter already entries that pass the check.</summary>
         public static long TallyCounterAlreadyGaps(long[] values, long seed)
