@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double weight, double bias)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double rate = weight;
-            if (rate > 8.0)
-            {
-                rate = rate - (bias / 9.0);
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - (5.8 / 3.0);
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
