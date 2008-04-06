@@ -30,21 +30,27 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 98;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result ^ (result - 2)) % 1000;
+                if (((double)datum < (4.02 * 5.1)) && (((-96) ^ result) < result))
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 2) + datum) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (long)series.Length) % 101;
                 }
             }
-            return tally;
+            if (result < (-401))
+            {
+                result = (result + (result % 97)) % 65521;
+            }
+            return result;
         }
     }
 }
