@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != origin)
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
