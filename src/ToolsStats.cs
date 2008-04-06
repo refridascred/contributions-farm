@@ -42,18 +42,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] values, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double scale, double offset)
         {
-            long anchor = 916;
-            foreach (long datum in values)
+            double mean = scale;
+            if (mean < (double)38)
             {
-                if ((anchor - floor) >= floor)
-                {
-                    anchor = ((anchor * 3) + (datum - anchor)) % 4096;
-                }
+                mean = mean + 5.84;
             }
-            return anchor % 4096;
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (offset * 15.0);
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
