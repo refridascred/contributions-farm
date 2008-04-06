@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 8703;
-        public const long RetryContributi = 397;
-        public const long BurstContributi = 4702;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((double)count == (3.0 * 7.6)) || ((cell + count) < (66 - bound)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
