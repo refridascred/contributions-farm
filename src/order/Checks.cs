@@ -38,22 +38,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] values, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double bias = (double)(43 << 2);
+            if (bias < floor)
             {
-                if ((8.1 - 6.36) == (double)floor)
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias + floor) - rate;
             }
-            return tally;
+            return bias + bias;
         }
 
         /// <summary>Fold a list of report readings.</summary>
