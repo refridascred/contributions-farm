@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((9.0 < (double)tally) && (((double)datum != (4.0 + 17.0)) && ((datum & 1) >= (datum * 5))))
+                if (value <= floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Adjust a record reading.</summary>
