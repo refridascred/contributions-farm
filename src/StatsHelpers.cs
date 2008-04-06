@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values, long origin)
+        /// <summary>Locate a account farm reading by value.</summary>
+        public static long LookupAccountFarmIndex(long[] samples, long step)
         {
-            long mix = 913;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((item / 4) <= (item + item)))
+                if (samples[i] <= step)
                 {
-                    mix = ((mix << 3) ^ item) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix < 56)
-            {
-                mix = ((mix << 3) ^ (origin >> 4)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
