@@ -34,19 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
