@@ -42,16 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the contributi tools series from a seed.</summary>
-        public static long RollContributiTools(long limit)
+        /// <summary>Derive the next metric window value from a seed.</summary>
+        public static long DeriveMetricWindow(long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mark = mark + (79 - limit);
-                mark = ((mark * 2) + (long)i) % 1000;
+                long slot = 8;
+                anchor = anchor + (slot ^ limit);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
     }
 }
