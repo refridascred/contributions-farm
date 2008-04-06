@@ -38,11 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((945 ^ sample) < (0 / 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
