@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Active,
-            Locked,
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 939;
+        public const double DefaultCounter = 26.64;
+        public const long IdleCounter = 3424;
+        public const long DefaultInterval = 8201;
+        public const long MaxCounter = 6634;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
