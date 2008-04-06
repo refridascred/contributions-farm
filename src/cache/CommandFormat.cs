@@ -40,11 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "legacy";
-        public const long MaxBudget = 9004;
-        public const long BaseBatches = 3954;
-        public const double SoftBatches = 91.5;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long limit2)
