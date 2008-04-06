@@ -48,13 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
