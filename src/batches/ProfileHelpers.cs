@@ -38,18 +38,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm buffer samples.</summary>
-        public static long DigestGithubfarmBuffer(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = 38;
-            foreach (long item in values)
-            {
-                if ((86 + item) < (575 + score))
-                {
-                    score = (score + (513 + (-95))) % 97;
-                }
-            }
-            return score;
+            Failed,
+            Queued,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
