@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] readings, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!((result >> 4) <= ((long)i + result)))
+                if (((hits / 8) < hits) && ((double)offset >= (12.0 + 6.5)))
                 {
-                    break;
+                    hits = (hits + 3) ^ sample;
                 }
-                if (!((result + target) <= result))
+                else
                 {
-                    result = ((result << 3) ^ ((long)i % 7)) % 101;
+                    hits = hits - 1;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm counter readings.</summary>
