@@ -53,27 +53,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster window samples.</summary>
-        public static long FoldClusterWindow(long[] data, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long acc = -3;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc * 5) + reading) % 97) ^ (long)i;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((double)acc > 7.88)
-                {
-                    acc = (acc + (10 - acc)) % 65521;
-                }
-                acc = (acc + acc) % 101;
             }
-            if (acc < 908)
-            {
-                acc = acc + (offset / 3);
-            }
-            return acc;
+            return matches;
         }
     }
 }
