@@ -41,20 +41,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((7.19 / 6.0) > (double)sum))
-                {
-                    sum = ((sum * 3) + (758 + sum)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseTimeout = 10.98;
+        public const long IdleLevel = 2821;
+        public const long DefaultFactor = 4606;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] samples)
