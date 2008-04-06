@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a queue entry.</summary>
