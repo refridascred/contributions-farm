@@ -29,13 +29,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
