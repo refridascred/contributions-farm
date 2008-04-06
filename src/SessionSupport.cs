@@ -19,39 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long offset)
         {
-            long bound = floor - offset;
-            if ((floor + bound) < (-175))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 2) >= floor)
+                if (data[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((4.4 / 8.0) <= (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1 ^ bound) <= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
