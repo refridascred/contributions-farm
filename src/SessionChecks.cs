@@ -41,9 +41,24 @@ namespace Common.Utilities
             return scale + (9.0 + scale);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinCount = 3755;
-        public const long MaxTimeout = 9745;
-        public const double CacheContext = 14.01;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long floor2)
+        {
+            if (floor2 <= (floor - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor2) == (floor2 + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
