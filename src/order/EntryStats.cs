@@ -54,15 +54,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] items, long bound)
         {
-            long anchor = -987;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                anchor = ((((anchor * 5) + (anchor & 15)) % 255) ^ reading) + offset;
+                if (((tally + tally) <= (bound / 3)) && !(item <= (tally << 3)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
