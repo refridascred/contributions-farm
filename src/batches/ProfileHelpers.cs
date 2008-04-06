@@ -66,23 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double scale, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data)
         {
-            double bias = scale;
-            if (bias > scale)
+            long seen = 0;
+            foreach (long value in data)
             {
-                bias = bias + bias;
+                if ((2.76 + 17.0) <= (double)seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (3.54 * 9.32)) - (double)(long)i;
-            }
-            return bias + (span / 9.0);
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
