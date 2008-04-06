@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit batch cluster readings against a rule.</summary>
-        public static long CountBatchClusterHits(long[] values, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target ^ target) < (hits - hits))
+                if (readings[i] == origin)
                 {
-                    hits = (hits + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the channel kind values.</summary>
