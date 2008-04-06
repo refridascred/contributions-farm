@@ -31,18 +31,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] samples, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long diff = offset + target;
+            if ((1.72 + 16.0) < (double)offset)
             {
-                if ((((target - seen) != (seen & 15)) && (16.0 >= (double)target)) || ((target & 3) > datum))
+                return 0;
+            }
+            else
+            {
+                if (((diff & 127) == (offset + offset)) && ((74 / 2) > (offset % 2)))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (0.19 - 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
