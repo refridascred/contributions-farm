@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long HardMetrics = 5498;
         public const string IdleFactor = "cached-1";
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many metrics farm samples are out of range.</summary>
+        public static long TallyMetricsFarmHits(long[] values)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value & 255) >= (count >> 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
