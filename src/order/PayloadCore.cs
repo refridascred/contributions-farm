@@ -20,19 +20,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] series, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
