@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Validate farm order readings against a bound.</summary>
+        public static bool GuardFarmOrderRange(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((0.51 / 8.0) != (double)datum)
+                if (cell < offset)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count batches filter pairs that satisfy a relation.</summary>
