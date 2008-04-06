@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            New,
-            Locked,
-            Done,
-            Stale,
-            Failed,
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the format phase values.</summary>
