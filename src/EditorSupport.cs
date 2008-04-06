@@ -33,18 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell % 10) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
