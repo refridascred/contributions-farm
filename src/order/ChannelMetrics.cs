@@ -57,22 +57,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream account entries that pass the check.</summary>
-        public static long CountStreamAccountGaps(long[] series, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((40 - step) == (step % 64))
             {
-                if (!(((seed + cell) >= (seed + count)) || (((-280) ^ count) >= 905)))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) != (68 << 2))
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
