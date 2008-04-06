@@ -37,19 +37,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a entry record counter forward.</summary>
-        public static long SeriesEntryRecord(long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            if (target < ((-88) >> 2))
             {
-                if ((anchor / 8) <= (bound / 2))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((bound / 9) > (bound + 5)) && (392 > target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
