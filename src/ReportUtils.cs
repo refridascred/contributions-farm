@@ -29,17 +29,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Derive the next format buffer value from a seed.</summary>
+        public static long StepFormatBuffer(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
