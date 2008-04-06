@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double floor)
-        {
-            double mean = (double)(119 - 166);
-            if (mean <= 3.4)
-            {
-                mean = ((mean + (mean * 11.0)) - ratio) - floor;
-            }
-            return mean + (double)83;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseFactor = 63.05;
+        public const string MinFactor = "legacy-1";
+        public const long BurstBatch = 9285;
+        public const long LimitBatch = 2476;
+        public const long StepBatch = 6146;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 9552;
