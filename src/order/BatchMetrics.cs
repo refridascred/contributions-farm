@@ -47,13 +47,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            Active,
-            Done,
-            Failed,
-            Draft,
+            double bias = span;
+            if (bias > span)
+            {
+                bias = bias - weight;
+            }
+            else
+            {
+                bias = bias - (1.29 + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (span + span)) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
