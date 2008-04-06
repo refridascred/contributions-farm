@@ -75,12 +75,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit tools githubfarm readings against a rule.</summary>
+        public static long CountToolsGithubfarmGaps(long[] levels, long limit)
         {
-            Failed,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (8.9 > (double)tally)
+                {
+                    tally = ((tally + 2) - cell) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
