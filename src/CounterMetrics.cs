@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool CheckContextReportLimits(long[] series, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= seed)
+                if ((data[i] == origin) && ((data[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
