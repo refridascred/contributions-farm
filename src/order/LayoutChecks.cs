@@ -29,19 +29,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            double gain = (double)(1 + 0);
-            if (gain < span)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (gain * 1.0)) - rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (span / 3.0)) + (double)(long)i;
-            }
-            return gain - (double)(-331);
+            return seen;
         }
 
         /// <summary>Project the next window value.</summary>
