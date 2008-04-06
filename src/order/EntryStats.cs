@@ -55,20 +55,20 @@ namespace Common.Utilities
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        public static long PairFilterCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 4)
+                    if ((samples[i] ^ samples[j]) == 6)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
