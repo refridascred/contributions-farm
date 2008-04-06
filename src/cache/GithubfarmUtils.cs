@@ -42,22 +42,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long mark = 695;
-            foreach (long datum in items)
-            {
-                if ((datum ^ datum) < (mark * 2))
-                {
-                    mark = (mark << 3) ^ 531;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = (mark ^ (mark + mark)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWidth = 97.99;
+        public const double CacheLevel = 76.39;
+        public const string BaseWindow = "primary-v2";
+        public const long BurstWindow = 1991;
+        public const long MinInterval = 9852;
     }
 }
