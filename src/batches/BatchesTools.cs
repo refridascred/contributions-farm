@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long score = 62;
-            foreach (long cell in levels)
-            {
-                score = ((score ^ (435 + (-9))) % 4096) + cell;
-            }
-            return score;
+            Dropped,
+            New,
+            Failed,
         }
     }
 }
