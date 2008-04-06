@@ -34,17 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a payload cache sample.</summary>
-        public static long LookupPayloadCacheIndex(long[] readings, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of account readings.</summary>
