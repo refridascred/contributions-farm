@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const long IdleDepth = 6154;
         public const double BatchRatio = 64.17;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Roll a report order counter forward.</summary>
+        public static long DeriveReportOrder(long bound)
         {
-            Failed,
-            Queued,
-            Locked,
-            Paused,
-            Ready,
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
