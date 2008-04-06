@@ -64,15 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double gain = (double)782 + ratio;
-            if (gain > (1.5 - gain))
-            {
-                gain = gain - bias;
-            }
-            return gain + 9.5;
+            Closed,
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
