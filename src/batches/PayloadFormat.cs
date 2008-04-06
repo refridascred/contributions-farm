@@ -14,10 +14,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "local-edge";
-        public const string BatchDepth = "fallback";
-        public const long BurstBatch = 4970;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
         public static bool GuardGithubfarmQueueBounds(long[] readings, long origin)
