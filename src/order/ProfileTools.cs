@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 11)
+                    if ((samples[i] + samples[j]) > 19)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
