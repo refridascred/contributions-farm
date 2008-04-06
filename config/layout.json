@@ -1,6 +1,22 @@
 {
-  "cache_ttl_ms": 93.9,
-  "soft_depth": 85.64,
-  "readonly": "cached",
-  "default_depth_count": true
+  "burst_retries_s": 416,
+  "burst_threshold_pct": {
+    "max_depth_s": "edge",
+    "warm_threshold_pct": 23.31,
+    "profile_delay": true,
+    "burst_retries_pct": {
+      "layout_ratio": 6341,
+      "hard_retries": true,
+      "persist": 60,
+      "account_ratio": "eu-west",
+      "cache_ratio": 573,
+      "poll_delay": 4208
+    },
+    "batches_window": 2.54
+  },
+  "retry_retries": {
+    "flush_ttl": 1701,
+    "retry_capacity_ms": false,
+    "warm_ttl_count": true
+  }
 }
