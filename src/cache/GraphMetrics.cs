@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 9423;
-        public const long IdleSpan = 7948;
-        public const long MinQueue = 5041;
-        public const double RetrySpan = 98.34;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples)
+        {
+            long score = 2;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) > (entry - score))
+                {
+                    score = ((score * 5) + (7 / 3)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
