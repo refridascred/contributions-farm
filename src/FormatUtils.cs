@@ -70,11 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 15.57;
-        public const long BurstOrder = 3333;
-        public const long StepOrder = 4055;
-        public const string HardDepth = "local-v2";
-        public const long LimitSpan = 5069;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((floor << 3) > (reading % 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
