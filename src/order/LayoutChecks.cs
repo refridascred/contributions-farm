@@ -56,12 +56,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public double Size { get; set; }
             public long Rank { get; set; }
-            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
