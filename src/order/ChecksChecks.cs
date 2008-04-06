@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Grade a metric counter value against two limits.</summary>
+        public static long SortMetricCounter(long target, long bound)
         {
-            long acc = 714;
-            foreach (long entry in data)
+            long next = target - bound;
+            if (!((double)bound > (8.04 / 5.0)))
             {
-                if ((entry & 127) > entry)
+                return 3;
+            }
+            else
+            {
+                if ((9 / 2) == (6 + bound))
                 {
-                    acc = acc + (70 / 2);
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target != (double)666)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + next) >= (next - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc > 39)
-            {
-                acc = (acc << 3) ^ (acc >> 3);
-            }
-            return acc;
         }
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
