@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            New,
+            Locked,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
