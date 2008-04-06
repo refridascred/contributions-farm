@@ -47,20 +47,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 4711;
+        public const string BurstLevel = "open-1";
+        public const long SoftFarm = 1905;
+        public const long StepInterval = 7674;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseSize = "cached-edge";
