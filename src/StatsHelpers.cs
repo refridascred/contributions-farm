@@ -48,12 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            long state = 67;
+            foreach (long sample in data)
+            {
+                state = ((state + 45) % 255) - sample;
+            }
+            if (state > 680)
+            {
+                state = (state ^ (state & 31)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a payload options.</summary>
