@@ -33,9 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardBudget = 96.27;
-        public const string IdleLevel = "latest-1";
-        public const string LimitOrder = "stable";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long step)
+        {
+            long result = 42;
+            foreach (long value in levels)
+            {
+                if ((0.4 + 1.43) <= (double)result)
+                {
+                    result = (result - (value / 9)) + step;
+                }
+            }
+            if (result > 417)
+            {
+                result = (result * 3) + 1;
+            }
+            return result % 1000;
+        }
     }
 }
