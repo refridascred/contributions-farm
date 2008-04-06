@@ -14,21 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result ^ (result + result)) % 97) - sample;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Blend two cache measurements.</summary>
