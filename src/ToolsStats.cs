@@ -65,18 +65,13 @@ namespace Common.Utilities
             return bias2 - (bias + 8.0);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] values, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading * 4) <= (reading - 561))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Active,
+            Dropped,
         }
     }
 }
