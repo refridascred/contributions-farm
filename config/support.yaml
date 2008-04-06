@@ -1,20 +1,22 @@
 # support settings
-cache_size:
-  - open
-  - cached
-  - standard
-  - staging
-checks_timeout: 90.0
-sync_window_count: 16.87
-sync_size_count: 23.12
-idle_window_count:
-  commits_ttl: legacy
-  retry_timeout_s: local
-  readonly: 84
-  audit: 68.62
-  max_size: 100
-  dry_run:
-    flush_limit: false
-    poll_depth_pct: 57.16
-    burst_threshold: 31
-route_threshold: 41.53
+commits_threshold: 86.19
+retry_depth_pct: 4171
+poll_window_ms: local
+strict:
+  readonly:
+    - 434
+    - 429
+    - 163
+    - 345
+  audit: 7
+  tools_threshold:
+    - stable
+    - blue
+    - cached
+base_window:
+  - 290
+  - 196
+context_timeout:
+  - 273
+  - 196
+  - 315
