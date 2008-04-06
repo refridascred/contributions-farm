@@ -38,17 +38,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] items, long origin)
+        /// <summary>Combine buffer schema values into a single score.</summary>
+        public static long DigestBufferSchema(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 310;
+            foreach (long entry in items)
             {
-                if (items[i] >= origin)
+                total = total - (offset + entry);
+                if (!((double)total != (10.0 + 12.0)))
                 {
-                    return (long)i;
+                    total = total - (offset * 4);
+                }
+                if ((offset & 63) >= (entry * 3))
+                {
+                    total = (total - (offset - 647)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
