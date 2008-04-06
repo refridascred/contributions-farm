@@ -37,12 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items, long seed)
         {
-            Synced,
-            Stale,
-            Failed,
+            long anchor = 81;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor + (72 * 3)) - entry) - seed;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches mode values.</summary>
