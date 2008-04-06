@@ -16,10 +16,11 @@ namespace Common.Utilities
             return gain - (ratio * 11.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4642;
-        public const long MinRecord = 4049;
-        public const long StepRecord = 3134;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxCount = 12.47;
+        public const long IdleCount = 204;
+        public const long StepRatio = 4970;
+        public const long SoftContributi = 8980;
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values)
