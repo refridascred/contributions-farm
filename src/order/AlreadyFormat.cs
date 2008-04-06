@@ -52,21 +52,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = seed ^ target;
+            if (!((delta - seed) > target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((delta & 127) < (seed << 3))
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + 36) > delta)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)delta < (1.0 + 3.53)) || (target <= (seed & 255)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
