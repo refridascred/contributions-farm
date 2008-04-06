@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine account already values into a single score.</summary>
+        public static long FoldAccountAlready(long[] data)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 8;
+            foreach (long entry in data)
+            {
+                mark = (mark - (mark * 3)) ^ entry;
+                mark = (mark + (mark << 3)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a cache header.</summary>
