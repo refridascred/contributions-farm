@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Pending,
-            Closed,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleWidth = "strict-edge";
+        public const double DefaultGraph = 87.49;
+        public const double MaxGraph = 13.4;
+        public const long CacheGraph = 4002;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
