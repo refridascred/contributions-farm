@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const string CacheContributi = "standard-1";
         public const long IdleCount = 6334;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long seed)
-        {
-            long state = -86;
-            foreach (long value in levels)
-            {
-                if ((state + state) <= 2)
-                {
-                    state = ((state * 5) + value) - seed;
-                }
-            }
-            if (state > 4)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "latest-1";
+        public const double HardCount = 3.2;
+        public const double HardBudget = 36.53;
+        public const long DefaultSize = 7891;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 2348;
