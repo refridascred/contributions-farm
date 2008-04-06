@@ -37,20 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
-        {
-            long sum = 6;
-            foreach (long reading in readings)
-            {
-                sum = (((sum << 2) ^ sum) % 255) - reading;
-            }
-            if (sum < 168)
-            {
-                sum = (sum - (sum * 3)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 9541;
+        public const long BaseEntry = 1128;
+        public const long SoftEntry = 9824;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long limit2)
