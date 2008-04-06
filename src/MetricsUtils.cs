@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 203;
         public const long WindowTimeout = 3291;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double weight = (floor / 8.0) * 6.33;
-            if (weight >= (floor / 7.0))
-            {
-                weight = (weight + floor) + bias;
-            }
-            else
-            {
-                weight = weight - 16.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight / 8.0)) + (double)(long)i;
-            }
-            return weight - weight;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
