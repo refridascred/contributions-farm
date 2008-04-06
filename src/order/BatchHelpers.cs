@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first graph batch entry that matches the target.</summary>
-        public static long FindGraphBatchIndex(long[] samples, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit batch cluster readings against a rule.</summary>
