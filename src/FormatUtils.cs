@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long result = 3;
-            foreach (long entry in samples)
-            {
-                if (158 > (offset + offset))
-                {
-                    result = result - ((-128) / 4);
-                }
-                else
-                {
-                    result = ((result << 3) ^ entry) % 255;
-                }
-            }
-            return result % 1000;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cache header.</summary>
