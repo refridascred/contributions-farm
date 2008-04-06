@@ -38,15 +38,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double weight, double bias)
+        /// <summary>Accumulate githubfarm buffer samples.</summary>
+        public static long DigestGithubfarmBuffer(long[] values)
         {
-            double rate = (bias - 6.8) + (double)6;
-            for (int i = 0; i < 9; i++)
+            long score = 38;
+            foreach (long item in values)
             {
-                rate = ((rate - (2.3 - rate)) + (double)(long)i) + weight;
+                if ((86 + item) < (575 + score))
+                {
+                    score = (score + (513 + (-95))) % 97;
+                }
             }
-            return rate + 18.0;
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
