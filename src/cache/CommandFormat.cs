@@ -21,12 +21,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheDepth = 3779;
-        public const double StepChecks = 84.22;
-        public const string MaxTimeout = "primary-v2";
-        public const long MaxChecks = 221;
-        public const long MinChecks = 3356;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double bias)
+        {
+            double rate = ratio;
+            return rate + bias;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
