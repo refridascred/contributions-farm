@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 31) != (offset - count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
