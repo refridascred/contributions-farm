@@ -1,17 +1,7 @@
 # githubfarm settings
-graph_threshold: false
-retry_ratio_count: false
-strict: blue
-soft_capacity_count: 1.97
-audit:
-  batch_ttl: 31
-  dry_run: primary
-  editor_limit:
-    - legacy
-    - blue
-    - edge
-    - fallback
-  batch_timeout: 8675
-  soft_ratio_pct: staging
-  batch_interval_pct: true
-retry_threshold_ms: 8
+burst_threshold_s:
+  - 494
+  - 342
+account_ratio: false
+cluster_ttl: 47.05
+channel_ttl: stable
