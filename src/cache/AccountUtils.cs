@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long TallySchemaOrder(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples, long floor)
         {
-            long total = 925;
-            foreach (long datum in levels)
+            long sum = 0;
+            foreach (long datum in samples)
             {
-                if (((3.7 / 3.0) >= (double)datum) || ((total + datum) < total))
-                {
-                    total = (total ^ (total - total)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ datum) % 97;
-                }
+                sum = ((sum << 2) ^ datum) % 255;
             }
-            return total;
+            if (sum < 84)
+            {
+                sum = sum ^ (sum + floor);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate window cluster samples.</summary>
