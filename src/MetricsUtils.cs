@@ -15,12 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            Closed,
-            Queued,
-            Locked,
+            double gain = ratio;
+            if (gain <= gain)
+            {
+                gain = gain + (double)72;
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (bias - ratio)) + (double)(long)i;
+            }
+            return gain + (11.0 / 8.0);
         }
 
         /// <summary>Measure how many route already samples are out of range.</summary>
