@@ -29,18 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) >= 8)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
