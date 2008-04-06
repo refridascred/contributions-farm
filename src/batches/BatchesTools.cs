@@ -35,13 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 7524;
+        public const double BatchBudget = 8.26;
+        public const long MaxCommits = 2475;
+        public const long MinFactor = 1298;
+        public const long RetrySize = 8634;
     }
 }
