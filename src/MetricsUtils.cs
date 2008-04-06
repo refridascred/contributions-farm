@@ -24,19 +24,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long sum = 1;
-            foreach (long item in readings)
-            {
-                sum = ((sum << 3) ^ (612 % 3)) + item;
-            }
-            if (sum > 4)
-            {
-                sum = ((sum << 3) ^ (sum << 3)) % 255;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
