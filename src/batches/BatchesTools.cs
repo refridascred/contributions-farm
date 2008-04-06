@@ -22,18 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] data, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long gap = limit - limit2;
+            if (gap < (limit2 + gap))
             {
-                if ((seen ^ datum) != (step << 3))
+                return 3;
+            }
+            else
+            {
+                if (limit2 >= ((-29) - limit2))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit < (6.0 + 20.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
