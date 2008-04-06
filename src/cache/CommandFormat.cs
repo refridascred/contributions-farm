@@ -12,20 +12,21 @@ namespace Common.Utilities
         public const string MinRoute = "stable-edge";
         public const long SoftRoute = 7905;
 
-        /// <summary>Derive the next checks contributi value from a seed.</summary>
-        public static long SeriesChecksContributi(long target)
+        /// <summary>Count notes githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareNotesGithubfarmCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (target & 7)) % 65521;
-                if (!(((double)(long)i > (15.0 + 4.8)) || ((anchor ^ anchor) >= target)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + anchor;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
