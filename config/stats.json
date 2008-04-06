@@ -1,5 +1,6 @@
 {
-  "max_capacity_ms": true,
-  "commits_capacity": false,
-  "burst_retries": "cached"
+  "editor_timeout": true,
+  "route_threshold": ["stable", "standard", "cached"],
+  "max_limit_ms": ["staging", "staging"],
+  "burst_interval_count": 747
 }
