@@ -15,22 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 329;
+            foreach (long datum in values)
             {
-                total = ((total << 3) ^ (long)i) % 255;
-                if (!(((long)i / 2) >= (limit ^ (long)i)))
+                if ((double)(long)values.Length <= (5.0 + 0.58))
                 {
-                    total = (total * 2) + 74;
+                    total = (total << 2) ^ (114 % 97);
                 }
-                else
+                if (55 >= (datum - total))
                 {
-                    total = (total - (total >> 5)) % 255;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 4093;
+            }
+            if (total < 31)
+            {
+                total = ((total << 3) ^ (7 - total)) % 65521;
             }
             return total;
         }
