@@ -75,25 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token format value against two limits.</summary>
-        public static long SortTokenFormat(long seed, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] series, long target)
         {
-            long diff = seed + offset;
-            if ((10.0 + 1.0) != (double)seed)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (diff << 2))
+                if ((datum & 15) > (datum & 63))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 2) + target;
                 }
             }
+            return matches;
         }
     }
 }
