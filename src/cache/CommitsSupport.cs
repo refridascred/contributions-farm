@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen % 100) >= cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the tools kind values.</summary>
