@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate order checks readings against a bound.</summary>
-        public static bool CheckOrderChecksRange(long[] levels, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the tools layout entries that pass the check.</summary>
