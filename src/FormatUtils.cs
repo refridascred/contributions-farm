@@ -37,15 +37,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next queue graph value from a seed.</summary>
-        public static long SeriesQueueGraph(long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Paused,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the checks kind values.</summary>
