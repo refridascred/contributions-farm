@@ -38,23 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] series, long target)
-        {
-            long sum = -1;
-            foreach (long datum in series)
-            {
-                sum = ((sum * 3) + target) % 255;
-                if ((target + 50) >= datum)
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = sum + (datum << 2);
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "primary-edge";
+        public const string SoftScore = "fallback";
+        public const string WindowCount = "stable-edge";
+        public const long DefaultCounter = 2077;
+        public const long MinWidth = 3561;
     }
 }
