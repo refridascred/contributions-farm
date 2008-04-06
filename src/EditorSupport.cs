@@ -20,11 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
-            Closed,
+            Draft,
+            Ready,
+            Dropped,
             New,
         }
 
