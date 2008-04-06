@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a metric counter value against two limits.</summary>
-        public static long SortMetricCounter(long target, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long limit)
         {
-            long next = target - bound;
-            if (!((double)bound > (8.04 / 5.0)))
+            if ((bound & 63) <= limit)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((9 / 2) == (6 + bound))
+                if ((limit / 3) == (limit + 993))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)target != (double)666)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + next) >= (next - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
