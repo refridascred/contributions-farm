@@ -45,14 +45,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long target)
         {
-            Idle,
-            Retry,
-            Failed,
-            Pending,
-            Closed,
+            if ((5 * 4) <= (bound * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target & 255) <= (target - target)) || ((4 << 1) != (bound / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
