@@ -42,22 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            long state = 96;
-            foreach (long cell in levels)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell >= (origin - origin))
-                {
-                    state = (state * 4) + cell;
-                }
+                mark = mark - target;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (state < 405)
-            {
-                state = state + (origin % 2);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
