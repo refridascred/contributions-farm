@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = offset ^ step;
+            if ((step / 5) > (edge + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)edge != (3.1 * 5.7))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a context commits counter forward.</summary>
