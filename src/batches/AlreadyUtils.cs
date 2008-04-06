@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long state = 3;
+            foreach (long sample in values)
+            {
+                if (offset > (state + state))
+                {
+                    state = (state << 2) ^ (sample + state);
+                }
+                if ((sample << 3) <= (475 + offset))
+                {
+                    state = state + sample;
+                }
+            }
+            if (state > 4)
+            {
+                state = (state - offset) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
