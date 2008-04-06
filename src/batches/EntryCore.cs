@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a payload notes pair into a bucket.</summary>
-        public static long BucketPayloadNotes(long target, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if (((floor % 8) >= (51 / 5)) && (floor >= (floor << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target != (0.2 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Failed,
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
