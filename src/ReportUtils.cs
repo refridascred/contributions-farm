@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
