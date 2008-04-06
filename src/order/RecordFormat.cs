@@ -26,21 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = span;
+            if (rate <= (13.0 * 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate - (span - rate);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - 0.9;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
