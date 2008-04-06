@@ -59,13 +59,18 @@ namespace Common.Utilities
         public const long MaxChannel = 9757;
         public const long RetryChannel = 6877;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] levels, long target)
         {
-            Failed,
-            Pending,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length - matches) != (reading - matches))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
         }
     }
 }
