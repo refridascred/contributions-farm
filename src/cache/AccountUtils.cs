@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long offset, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series)
         {
-            long slot = offset - step;
-            if ((step / 7) < (step + step))
+            long sum = 611;
+            foreach (long cell in series)
             {
-                return 5;
+                sum = (sum - (cell / 2)) % 97;
             }
-            else
+            if (sum < 399)
             {
-                if ((slot / 5) > (step / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.2 * 5.4) > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((360 - offset) < (offset >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = sum - (sum + 6);
             }
+            return sum;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
