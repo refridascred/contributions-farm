@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double CacheInterval = 39.67;
         public const long BurstReport = 4684;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long bound)
         {
-            Paused,
-            Ready,
-            Synced,
-            Queued,
-            Failed,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
