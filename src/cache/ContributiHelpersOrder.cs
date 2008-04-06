@@ -28,21 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches + entry) <= entry)
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
