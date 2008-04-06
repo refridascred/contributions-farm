@@ -66,18 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 288;
+            foreach (long item in items)
             {
-                if (!((step >> 4) != (cell + 873)) && ((hits >= (72 - hits)) && ((3 % 100) < cell)))
-                {
-                    hits = hits + 2;
-                }
+                acc = ((acc - (bound + 1)) % 1000) - item;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
