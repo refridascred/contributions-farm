@@ -30,10 +30,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftFactor = 194;
-        public const long HardLevel = 1283;
-        public const double MinPayload = 29.52;
-        public const long MaxPayload = 5467;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
+        {
+            long mark = 0;
+            foreach (long datum in series)
+            {
+                mark = ((mark + (mark % 3)) % 4096) - datum;
+                if (7.0 > (9.0 + 17.0))
+                {
+                    mark = (mark + (642 * 2)) % 65521;
+                }
+                else
+                {
+                    mark = mark - ((-65) << 1);
+                }
+            }
+            return mark;
+        }
     }
 }
