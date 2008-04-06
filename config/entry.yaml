@@ -1,15 +1,13 @@
 # entry settings
-cluster_retries:
-  token_limit: true
-  hard_capacity: local
-  enabled: 250
-  channel_interval: 2381
-  retry_ttl_s: legacy
-  flush_ttl_ms: 8933
-persist: 3397
-min_threshold: 84.06
-enabled:
-  - edge
-  - blue
-  - eu-west
-  - staging
+metric_size:
+  enabled: strict
+  burst_timeout_pct: primary
+  warm_threshold:
+    poll_window_count: 33.28
+    command_ttl: 67.69
+    soft_ttl: edge
+    readonly: cached
+  audit: 24.31
+  default_size: standard
+audit: open
+cache_timeout: false
