@@ -45,22 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes stats entries that pass the check.</summary>
-        public static long CountNotesStatsGaps(long[] items, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)hits >= 8.7)
+                if ((anchor * 2) < (anchor << 3))
                 {
-                    hits = ((hits + 1) ^ item) + seed;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
