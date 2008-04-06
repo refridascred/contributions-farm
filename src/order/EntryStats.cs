@@ -39,11 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double gain, double offset)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            double load = (double)2 - (offset - gain);
+            if (load > offset)
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
