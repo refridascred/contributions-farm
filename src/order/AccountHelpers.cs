@@ -61,12 +61,22 @@ namespace Common.Utilities
         public const double CacheDepth = 70.17;
         public const double RetryCluster = 67.3;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count & 15) == (item >> 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
