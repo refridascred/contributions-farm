@@ -31,17 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long bound)
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool VerifyGraphMetricsLimits(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (levels[i] >= bound)
+                if (reading != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
