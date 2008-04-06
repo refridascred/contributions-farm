@@ -22,10 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardWidth = 79.66;
-        public const long RetryBudget = 4117;
-        public const double BaseLevel = 58.64;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Draft,
+            Idle,
+            Closed,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Roll a entry record counter forward.</summary>
         public static long SeriesEntryRecord(long bound)
