@@ -33,21 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window githubfarm samples.</summary>
-        public static long OverlapWindowGithubfarmCount(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Locked,
+            Stale,
+            Closed,
         }
     }
 }
