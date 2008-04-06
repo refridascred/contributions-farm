@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            double load = bias;
-            if (load >= (double)305)
+            long result = 503;
+            foreach (long datum in levels)
             {
-                load = load - (double)(-87);
+                result = ((result - (result & 3)) % 97) - datum;
+                result = (result - result) % 65521;
+                if (143 >= (result << 1))
+                {
+                    result = (result << 2) ^ ((-575) & 31);
+                }
+                else
+                {
+                    result = result ^ ((-94) - 4);
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (bias - load)) + (double)(long)i;
-            }
-            return load + bias;
+            return result % 65521;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
