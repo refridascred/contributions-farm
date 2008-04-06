@@ -14,11 +14,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            long lane = limit - step;
+            if ((1.43 / 6.0) > (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit << 3) == (limit - step)) || ((lane * 4) == (limit ^ step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step >= (3.0 - 11.0)) && ((lane + 5) == (lane + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
