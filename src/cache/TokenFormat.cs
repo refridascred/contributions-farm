@@ -15,38 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if ((5 - floor) < floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (target & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (target + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (1 >= (floor - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
