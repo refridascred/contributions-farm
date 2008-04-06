@@ -14,23 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long sum = 76;
-            foreach (long cell in series)
+            long anchor = 63;
+            foreach (long value in items)
             {
-                sum = (sum ^ sum) % 101;
-                if ((origin - sum) < (sum & 1))
-                {
-                    sum = (sum ^ cell) % 97;
-                }
+                anchor = (anchor << 3) ^ (anchor ^ value);
             }
-            if (sum > (-463))
+            if (anchor < 653)
             {
-                sum = sum ^ (sum + 61);
+                anchor = (anchor + (5 - (-22))) % 101;
             }
-            return sum;
+            return anchor % 97;
         }
 
         /// <summary>Match up session samples.</summary>
