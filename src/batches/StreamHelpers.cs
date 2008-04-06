@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const long RetryBudget = 4117;
         public const double BaseLevel = 58.64;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (matches <= (matches << 1))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
