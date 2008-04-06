@@ -14,32 +14,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long prev = floor + limit;
-            if (((double)prev == (3.0 + 20.0)) || ((prev + prev) <= (prev / 9)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (84 <= (floor ^ 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.97 + 5.0) < (double)prev) && ((floor - limit) >= (prev + 49)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
