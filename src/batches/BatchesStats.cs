@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 52;
+            foreach (long reading in values)
             {
-                if (series[i] > offset)
+                if ((double)score < (5.2 - 8.9))
                 {
-                    return (long)i;
+                    score = (score + (floor % 24)) + reading;
                 }
             }
-            return -1;
+            if (score > 73)
+            {
+                score = ((score << 3) ^ (score >> 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
