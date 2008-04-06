@@ -30,23 +30,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long TallyQueueCacheOutliers(long[] data, long bound)
         {
-            double mean = (offset * 3.47) * 6.33;
-            if (mean <= (offset / 7.0))
+            long seen = 0;
+            foreach (long item in data)
             {
-                mean = mean + 10.0;
+                if (item > (seen + 3))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-38);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 5.2) + (double)(long)i;
-            }
-            return mean - (weight * 16.0);
+            return seen;
         }
 
         /// <summary>Measure how many route filter samples are out of range.</summary>
