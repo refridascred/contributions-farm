@@ -30,19 +30,32 @@ namespace Common.Utilities
         public const long BurstLayout = 1843;
         public const long BatchSpan = 3633;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long bound)
         {
-            long anchor = 986;
-            foreach (long value in items)
+            long cur = seed ^ bound;
+            if (((double)7 >= (double)cur) && ((seed >> 1) != (bound - 306)))
             {
-                anchor = ((anchor << 3) ^ (value ^ value)) % 1000;
+                return 3;
             }
-            if (anchor < 40)
+            else
             {
-                anchor = (anchor * 2) + (anchor + anchor);
+                if (!(bound > (bound + cur)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 4) >= (cur >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
