@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 33.31;
-        public const string DefaultWindow = "primary-v2";
-        public const string CacheRatio = "primary";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardLevel = 3447;
+        public const string DefaultSize = "primary-v2";
+        public const long MinWidth = 5751;
+        public const string HardEntry = "fallback-v2";
+        public const long SoftEntry = 2332;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] data, long step)
