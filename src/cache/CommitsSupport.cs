@@ -28,17 +28,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum + limit) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3301;
+        public const string BatchDepth = "cached-edge";
+        public const long SoftBuffer = 8349;
+        public const long MaxFactor = 6839;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
