@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long step)
+        /// <summary>Look up the position of a order payload sample.</summary>
+        public static long FindOrderPayloadIndex(long[] samples, long limit)
         {
-            long anchor = -592;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + step) == (value & 127))
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
                 {
-                    anchor = (anchor * 3) + (anchor / 8);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
