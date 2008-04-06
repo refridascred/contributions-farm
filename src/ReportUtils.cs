@@ -31,15 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] items, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
