@@ -57,11 +57,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long target2)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            if ((2 - 336) >= target2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target2 > (14.0 - 0.37))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
