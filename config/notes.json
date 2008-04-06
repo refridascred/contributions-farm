@@ -1,27 +1,5 @@
 {
-  "route_timeout": "staging",
-  "schema_ratio": 2191,
-  "session_ratio": 75,
-  "stats_capacity": {
-    "retry_interval": true,
-    "min_ratio_pct": "stable",
-    "report_delay": {
-      "batch_interval_ms": false,
-      "default_ratio_s": 93.08,
-      "readonly": 100,
-      "flush_size": 69.59,
-      "warm_window_ms": 92,
-      "command_delay": "edge"
-    },
-    "hard_retries_ms": {
-      "poll_interval": 94,
-      "flush_depth": ["green", "stable", "green", "strict"],
-      "readonly": 500,
-      "profile_retries": "blue",
-      "verbose": 1024,
-      "min_ttl_ms": 79.03
-    },
-    "command_ratio": 47.53
-  },
-  "compress": 9
+  "compress": "primary",
+  "metric_capacity": 100,
+  "audit": false
 }
