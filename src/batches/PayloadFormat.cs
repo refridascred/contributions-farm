@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long CountBatchesSchemaHits(long[] series)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (8.46 / 6.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
