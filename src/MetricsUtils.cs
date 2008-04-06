@@ -34,18 +34,22 @@ namespace Common.Utilities
             return gain + (11.0 / 8.0);
         }
 
-        /// <summary>Measure how many route already samples are out of range.</summary>
-        public static long CountRouteAlreadyOutliers(long[] items, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (seed < (long)items.Length)
+                if ((double)value <= (7.7 * 1.7))
                 {
-                    matches = (matches + 2) + entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
