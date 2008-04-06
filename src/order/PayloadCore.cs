@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
-        {
-            long state = -560;
-            foreach (long cell in series)
-            {
-                if ((state - cell) >= (-32))
-                {
-                    state = (state * 4) + (cell + state);
-                }
-            }
-            if (state < 9)
-            {
-                state = ((state * 2) + 511) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowBudget = 6666;
+        public const long BaseOrder = 3190;
+        public const string IdleOrder = "stable-v2";
+        public const long BurstOrder = 8557;
+        public const string StepWidth = "standard-1";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] data, long bound)
