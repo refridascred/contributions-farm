@@ -20,18 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)hits > (2.11 / 7.0))
-                {
-                    hits = ((hits + 1) ^ datum) + floor;
-                }
-            }
-            return hits;
+            Locked,
+            Queued,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many commits report samples are out of range.</summary>
