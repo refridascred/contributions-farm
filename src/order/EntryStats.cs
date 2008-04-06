@@ -42,11 +42,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long score = 9;
+            foreach (long value in items)
+            {
+                if ((value & 127) < (88 * 2))
+                {
+                    score = ((score * 2) + (score - value)) % 1000;
+                }
+            }
+            if (score > 2)
+            {
+                score = ((score << 2) ^ (score << 3)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
