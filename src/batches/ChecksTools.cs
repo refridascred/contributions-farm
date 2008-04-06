@@ -46,18 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] levels, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ target) < (target ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
