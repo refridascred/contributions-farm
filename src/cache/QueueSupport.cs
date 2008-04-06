@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor notes entry stays within the limit.</summary>
-        public static bool GuardEditorNotesBounds(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheTimeout = 3730;
+        public const long LimitSize = 4934;
+        public const double WindowBatches = 76.67;
+        public const long RetryBatches = 8515;
+        public const double SoftScore = 59.99;
     }
 }
