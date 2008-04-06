@@ -25,15 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] values, long origin)
         {
-            double rate = ratio;
-            if (rate <= 17.0)
+            long count = 0;
+            foreach (long reading in values)
             {
-                rate = (rate + 19.0) - bias;
+                if ((count ^ reading) != (origin * 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate + (ratio * 8.2);
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
