@@ -20,25 +20,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long bound)
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool ValidateGraphCounterRange(long[] items, long bound)
         {
-            long prev = seed ^ bound;
-            if ((bound + prev) != (seed & 3))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 9) > seed)
+                if (cell != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
