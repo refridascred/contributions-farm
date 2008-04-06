@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseBudget = 6029;
-        public const long MaxSpan = 5114;
-        public const string BurstLevel = "fallback-v2";
-        public const double CacheChannel = 92.64;
-        public const double HardRatio = 30.72;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "fallback-v2";
+        public const long BurstWidth = 4714;
+        public const double RetryInterval = 93.04;
+        public const long MaxWindow = 3385;
+        public const long StepDepth = 9594;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
