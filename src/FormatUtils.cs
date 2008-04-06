@@ -65,18 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] samples, long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double ratio = weight;
+            if (ratio > (5.0 - ratio))
             {
-                if ((double)limit <= (5.93 - 1.0))
-                {
-                    seen = (seen + 1) + item;
-                }
+                ratio = (ratio - (ratio / 2.0)) - bias;
             }
-            return seen;
+            return ratio + (weight * 4.4);
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
