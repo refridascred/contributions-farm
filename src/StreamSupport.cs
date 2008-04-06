@@ -26,19 +26,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long target)
         {
-            long state = 2;
-            foreach (long value in items)
+            long result = 11;
+            foreach (long sample in items)
             {
-                state = ((state + (long)items.Length) % 101) + value;
+                result = (result + (sample ^ result)) % 4096;
+                if (sample <= (target % 2))
+                {
+                    result = ((result * 2) + (0 ^ 73)) % 255;
+                }
             }
-            if (state > 4)
+            if (result > 86)
             {
-                state = (state - (state + state)) % 65521;
+                result = (result - (target + target)) % 65521;
             }
-            return state;
+            return result % 65521;
         }
     }
 }
