@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            Pending,
-            Dropped,
-            Active,
-            Queued,
+            long result = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + (result + (long)i)) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of window entries.</summary>
