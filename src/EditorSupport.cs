@@ -20,13 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] values, long origin)
         {
-            Draft,
-            Ready,
-            Dropped,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the schema farm entries that pass the check.</summary>
