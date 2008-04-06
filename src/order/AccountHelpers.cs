@@ -54,13 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 37.22;
+        public const long MinWidth = 5234;
+        public const long BurstCluster = 5131;
+        public const double CacheDepth = 70.17;
+        public const double RetryCluster = 67.3;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
