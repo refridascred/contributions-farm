@@ -40,19 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long seed)
+        /// <summary>Accumulate token metric samples.</summary>
+        public static long CombineTokenMetric(long[] items, long target)
         {
-            long score = 8;
-            foreach (long sample in values)
+            long score = 1;
+            foreach (long value in items)
             {
-                score = (score + (sample - seed)) % 101;
+                if (((double)(long)items.Length < (7.0 / 4.0)) || ((2 & 7) < score))
+                {
+                    score = (((score + (score / 6)) % 97) ^ value) + target;
+                }
             }
-            if (score < 62)
-            {
-                score = ((score * 4) + (score % 12)) % 1000;
-            }
-            return score % 97;
+            return score;
         }
     }
 }
