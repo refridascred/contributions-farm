@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two context record measurements.</summary>
-        public static double SmoothContextRecord(double weight, double span)
+        /// <summary>Combine cluster entry values into a single score.</summary>
+        public static long TallyClusterEntry(long[] data, long floor)
         {
-            double bias = span + (double)9;
-            if (bias > 4.5)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                bias = bias + (span - span);
+                if ((double)carry >= (double)609)
+                {
+                    carry = (carry + (sample - sample)) - floor;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (weight / 5.0)) + (double)(long)i;
-            }
-            return bias + span;
+            return carry;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
