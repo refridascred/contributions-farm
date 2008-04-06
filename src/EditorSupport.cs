@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + matches) == (entry << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
