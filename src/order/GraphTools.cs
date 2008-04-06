@@ -58,24 +58,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a entry buffer value against two limits.</summary>
-        public static long SortEntryBuffer(long bound, long bound2)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long offset)
         {
-            if ((bound2 + bound) <= (bound - bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) >= bound2)
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
