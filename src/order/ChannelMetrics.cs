@@ -41,24 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] samples, long floor)
         {
-            if ((40 - step) == (step % 64))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) != (68 << 2))
+                if (entry <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
