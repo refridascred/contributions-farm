@@ -28,13 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a entry info.</summary>
