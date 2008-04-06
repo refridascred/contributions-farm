@@ -30,13 +30,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long anchor = 5;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor * 2) + ((-4) * 5)) % 97) - item;
+            }
+            return anchor % 97;
         }
     }
 }
