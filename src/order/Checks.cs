@@ -38,17 +38,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] items, long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
