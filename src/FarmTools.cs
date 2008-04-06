@@ -29,21 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seen <= (double)reading)
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
