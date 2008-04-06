@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string WindowProfile = "alpha";
         public const long MinCount = 1849;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double scale, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            double scale2 = (double)(743 - 28);
-            return ((scale2 - (double)74) + scale) + floor;
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 3) ^ (long)i) % 255;
+                if (!(((long)i / 2) >= (limit ^ (long)i)))
+                {
+                    total = (total * 2) + 74;
+                }
+                else
+                {
+                    total = (total - (total >> 5)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
