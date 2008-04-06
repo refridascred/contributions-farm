@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            long anchor = 72;
-            foreach (long entry in values)
+            if ((914 >= (target & 31)) || ((double)step < (double)target))
             {
-                if ((limit >= (912 & 1)) && (((-206) & 31) > anchor))
+                return 5;
+            }
+            else
+            {
+                if (target >= (target % 100))
                 {
-                    anchor = ((anchor * 3) + ((long)values.Length + anchor)) - entry;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
