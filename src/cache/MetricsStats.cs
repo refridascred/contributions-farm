@@ -29,11 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSpan = 8920;
-        public const long StepStats = 6227;
-        public const long BaseBudget = 4103;
-        public const long BatchStats = 6964;
+        /// <summary>Scale a profile entry figure with a bias.</summary>
+        public static double ScaleProfileEntry(double scale, double floor)
+        {
+            double load = floor - (scale * 3.0);
+            return load + 8.5;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] readings)
