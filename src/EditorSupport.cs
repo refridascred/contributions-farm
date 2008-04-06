@@ -29,12 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the schema farm entries that pass the check.</summary>
+        public static long CountSchemaFarmHits(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((0.7 / 4.0) <= (double)matches)
+                {
+                    matches = ((matches + 2) ^ item) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
