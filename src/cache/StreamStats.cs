@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (reading < floor)
+                if ((cell + matches) < ((-657) >> 5))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a profile entry.</summary>
