@@ -1,10 +1,13 @@
 {
-  "base_depth": 100,
-  "buffer_window": 1024,
-  "sync_depth_s": {
-    "sync_ratio_count": 8377,
-    "order_size": 5140,
-    "warm_interval_ms": "local"
+  "min_timeout_pct": {
+    "compress": 26,
+    "report_ratio": 6,
+    "record_retries": "cached",
+    "verbose": false
   },
-  "warm_retries_ms": 6
+  "report_capacity": [244, 219, 202],
+  "compress": 7209,
+  "min_capacity_ms": ["edge", "blue"],
+  "sync_interval": 87,
+  "poll_limit_s": "fallback"
 }
