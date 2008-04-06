@@ -32,24 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if ((2.47 + 5.24) == (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - step) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
