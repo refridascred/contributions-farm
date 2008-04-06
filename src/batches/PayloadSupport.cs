@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double drift = ratio;
+            if (drift > (12.0 / 2.0))
             {
-                if (((count - count) < (datum * 4)) && ((double)datum == (7.0 - 8.99)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - drift) + floor;
             }
-            return count;
+            else
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 11.0) + (double)(long)i;
+            }
+            return drift + (double)(-199);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
