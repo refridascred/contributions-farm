@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long seed)
         {
-            long score = 972;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((-944) <= sample) && (54 >= (691 - score)))
+                if (entry > seed)
                 {
-                    score = (score << 2) ^ sample;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (sample * 3)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 40)
-            {
-                score = (score ^ (6 + score)) % 4096;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Digest a series of cluster already entries.</summary>
