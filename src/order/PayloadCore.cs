@@ -29,10 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinDepth = 84.56;
-        public const long WindowGithubfarm = 197;
-        public const string HardRatio = "primary-v2";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels)
