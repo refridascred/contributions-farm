@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values, long bound)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long carry = 2;
+            foreach (long reading in values)
+            {
+                carry = ((carry + 92) - reading) - bound;
+            }
+            if (carry > 917)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
