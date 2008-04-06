@@ -16,17 +16,13 @@ namespace Common.Utilities
             return mean + (double)(-6);
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
