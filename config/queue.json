@@ -1,12 +1,6 @@
 {
-  "flush_limit_ms": false,
-  "max_limit_ms": 87,
-  "persist": "primary",
-  "cache_ratio": {
-    "soft_ttl_ms": 1024,
-    "default_ttl_s": true,
-    "cache_delay_count": 60,
-    "hard_delay": 401,
-    "cache_delay": 5608
-  }
+  "contributi_threshold": 7679,
+  "burst_ratio_count": [153, 64, 407],
+  "batch_threshold": "blue",
+  "queue_delay": 554
 }
