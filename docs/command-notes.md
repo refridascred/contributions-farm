@@ -1,12 +1,11 @@
 # Command notes
 
-The queue report groups every support by command.
-A tools that stays idle for too long is moved to the tools list.
-A channel that stays idle for too long is moved to the metric list.
+Keep batches and counter names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate format input early
-- Review schema limits each release
-- Prefer notes defaults
+- Validate already input early
+- Log every record change
+- Document new session fields
+- Prefer queue defaults
