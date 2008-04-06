@@ -35,18 +35,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((double)origin <= (17.0 - 8.0))
             {
-                if ((2.53 - 5.4) <= (double)target)
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) >= origin)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if (((origin & 127) < (origin + offset)) && ((double)origin > (15.0 - 17.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (7.6 >= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
