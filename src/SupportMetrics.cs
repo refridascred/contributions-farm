@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Look up the position of a record account sample.</summary>
+        public static long FindRecordAccountIndex(long[] data, long seed)
         {
-            Stale,
-            Idle,
-            Retry,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
