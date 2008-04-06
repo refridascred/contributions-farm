@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long MaxWindow = 3385;
         public const long StepDepth = 9594;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry ^ ((long)i - (long)i)) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stats header.</summary>
