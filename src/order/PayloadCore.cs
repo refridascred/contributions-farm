@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double mean = floor;
-            if (mean >= (floor + 1.19))
-            {
-                mean = (mean + (double)97) - rate;
-            }
-            else
-            {
-                mean = mean + (double)0;
-            }
-            return mean - floor;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
