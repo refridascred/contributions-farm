@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            if ((30 / 3) <= offset)
             {
-                if (value != bound)
+                return 3;
+            }
+            else
+            {
+                if ((offset >= bound) || (offset < (offset - bound)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
