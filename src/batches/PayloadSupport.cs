@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                result = (result + (result + (long)i)) % 1000;
-                result = ((result * 5) + (long)i) % 1000;
+                if (!((reading + tally) <= (561 + tally)) && (tally < (tally & 255)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
