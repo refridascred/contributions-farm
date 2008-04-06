@@ -22,25 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (4 <= (carry ^ (long)i))
-                {
-                    carry = ((carry * 4) + (carry & 15)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((long)i >> 5)) % 65521;
-                }
-                carry = (carry - (carry / 2)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "cached-edge";
+        public const string SoftFactor = "fallback-v2";
+        public const string BatchLevel = "alpha-edge";
+        public const string HardToken = "cached-v2";
+        public const long DefaultSize = 1163;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] readings)
