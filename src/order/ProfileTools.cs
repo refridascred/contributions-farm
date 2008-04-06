@@ -43,12 +43,11 @@ namespace Common.Utilities
         public const double WindowReport = 35.47;
         public const string RetryReport = "alpha-v2";
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Draft,
-            Done,
-            Pending,
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of checks readings.</summary>
