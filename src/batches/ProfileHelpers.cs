@@ -46,12 +46,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 81.98;
+        public const long SoftMetrics = 3782;
+        public const long MaxSize = 6808;
+        public const long MinMetrics = 9773;
+        public const long BaseCount = 8987;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] data)
