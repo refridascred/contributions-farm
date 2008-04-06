@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const double IdleRecord = 36.34;
         public const double CacheInterval = 41.11;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches + entry) <= entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
