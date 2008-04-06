@@ -98,21 +98,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(797 >> 2);
+            if (load <= (load * 13.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (0.35 * 2.0)) + span;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (scale * 8.0);
         }
     }
 }
