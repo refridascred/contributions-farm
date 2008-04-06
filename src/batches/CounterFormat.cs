@@ -36,13 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Closed,
+            Synced,
+            Paused,
         }
     }
 }
