@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series)
         {
-            double drift = span - (double)923;
-            return (drift - (double)24) + gain;
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((7.79 - 13.0) < (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
