@@ -1,10 +1,13 @@
 # support settings
-persist: 30
-metric_window: 8675
-dry_run: 7924
-min_threshold_pct:
-  - 116
-  - 131
-  - 490
-  - 339
-route_capacity: latest
+idle_size_s: 78
+base_interval: 30
+sync_timeout_pct:
+  batch_capacity_pct: 88.13
+  idle_retries:
+    schema_capacity: latest
+    commits_delay: local
+    metrics_delay: 96.18
+    hard_capacity: 34
+  warm_ttl_ms: 33.6
+  batch_timeout_s: true
+min_interval_pct: 14.1
