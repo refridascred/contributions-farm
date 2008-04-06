@@ -46,40 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks editor value against two limits.</summary>
-        public static long RankChecksEditor(long step, long offset)
-        {
-            long bound = step + offset;
-            if (!((step % 10) != (bound + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step % 100) >= (offset - offset)) && ((bound << 2) > (offset % 12)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) > (bound >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound & 31) <= (offset * 2)) || (((-2) / 6) < bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowWidth = 53.36;
+        public const string MinFarm = "fallback-1";
+        public const double DefaultFarm = 51.02;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BatchInterval = "local";
