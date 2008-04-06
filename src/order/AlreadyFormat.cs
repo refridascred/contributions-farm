@@ -62,26 +62,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values, long origin)
-        {
-            long total = 31;
-            foreach (long cell in values)
-            {
-                if (35 > (origin - cell))
-                {
-                    total = total - (total + origin);
-                }
-                else
-                {
-                    total = (total - (5 + origin)) % 101;
-                }
-            }
-            if (total > 771)
-            {
-                total = (total - (56 - origin)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseSize = "cached-edge";
+        public const long LimitBudget = 9679;
+        public const long StepFactor = 7480;
     }
 }
