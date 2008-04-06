@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the already state values.</summary>
