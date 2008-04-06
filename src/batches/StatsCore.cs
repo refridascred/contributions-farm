@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Idle,
-            Pending,
+            Stale,
             Ready,
+            Draft,
         }
 
         /// <summary>Hold a session stats.</summary>
