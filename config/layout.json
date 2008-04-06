@@ -1,7 +1,6 @@
 {
-  "verbose": "edge",
-  "cache_capacity_pct": false,
-  "batch_depth_ms": ["legacy", "staging", "primary", "staging"],
-  "warm_threshold_s": "edge",
-  "base_timeout_s": "blue"
+  "persist": 84,
+  "default_size": "staging",
+  "dry_run": true,
+  "commits_ratio": 83.67
 }
