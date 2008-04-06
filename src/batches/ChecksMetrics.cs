@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long TallyBatchesFormatGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((value % 60) < ((long)samples.Length - value))
+                if ((tally - 605) >= (target + reading))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
