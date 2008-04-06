@@ -1,7 +1,9 @@
-id,owner,label,weight,state
-1,137,strict,223,2.78
-2,9.5,599,primary,89.21
-3,3.46,325,green,cached
-4,latest,38.83,91.36,open
-5,34.19,546,staging,55
-6,545,fallback,594,257
+id,owner,level,active,label
+1,380,staging,64.24,168
+2,strict,latest,79.84,15
+3,604,edge,latest,30.11
+4,579,14.47,fallback,56.28
+5,78.96,edge,76.86,53.74
+6,33.39,748,39.6,349
+7,69.49,latest,73,29.89
+8,963,88.65,55.2,937
