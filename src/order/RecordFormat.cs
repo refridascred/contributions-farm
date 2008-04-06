@@ -35,19 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a githubfarm cache figure with a bias.</summary>
-        public static double ProjectGithubfarmCache(double rate, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels, long origin)
         {
-            double load = bias;
-            if (load <= (rate / 4.0))
+            long carry = -61;
+            foreach (long item in levels)
             {
-                load = load + load;
+                if (item >= (6 - 35))
+                {
+                    carry = ((carry * 3) + (carry / 7)) - origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry > 67)
             {
-                load = (load + rate) + (double)(long)i;
+                carry = (carry + (carry - carry)) % 65521;
             }
-            return load + (double)(-989);
+            return carry % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
