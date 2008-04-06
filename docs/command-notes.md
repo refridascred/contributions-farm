@@ -1,11 +1,12 @@
 # Command notes
 
-A session that stays idle for too long is moved to the metrics list.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Each format is validated before it reaches the notes queue.
+The queue report groups every support by command.
+A tools that stays idle for too long is moved to the tools list.
+A channel that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Log every layout change
-- Keep buffer values small
-- Review already limits each release
+- Keep notes values small
+- Validate format input early
+- Review schema limits each release
+- Prefer notes defaults
