@@ -98,19 +98,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            double ratio = 3.0;
-            if (ratio >= (gain / 8.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + (gain + ratio);
+            return tally;
         }
     }
 }
