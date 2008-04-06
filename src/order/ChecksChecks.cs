@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 6310;
-        public const double IdleFactor = 52.68;
-        public const double StepInterval = 72.89;
-        public const long DefaultDepth = 2858;
+        /// <summary>Iterate the already route series from a seed.</summary>
+        public static long RollAlreadyRoute(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
         public static long PairSessionChecksCount(long[] items)
