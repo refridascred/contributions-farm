@@ -29,21 +29,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 47;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > ((-196) % 12))
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + (cell ^ cell)) + step;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
