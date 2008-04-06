@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (target >= (reading * 4))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a farm header.</summary>
