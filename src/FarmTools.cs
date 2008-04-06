@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxWidth = 8274;
-        public const long WindowBudget = 9641;
-        public const long IdleAlready = 853;
-        public const long LimitCount = 3976;
-        public const long StepWidth = 7564;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)(-1) > (double)datum) && (((97 & 15) > (datum >> 2)) && ((count >> 3) >= count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metrics route value against two limits.</summary>
         public static long SortMetricsRoute(long floor, long floor2)
