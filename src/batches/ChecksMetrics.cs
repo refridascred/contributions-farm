@@ -43,15 +43,18 @@ namespace Common.Utilities
         public const long MinSpan = 3118;
         public const long DefaultScore = 145;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Roll a context window counter forward.</summary>
+        public static long StepContextWindow(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                acc = ((acc << 3) ^ (acc % 8)) % 65521;
+                acc = (acc ^ ((long)i ^ seed)) % 65521;
+                acc = (acc << 3) ^ (acc * 2);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
