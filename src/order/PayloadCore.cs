@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Closed,
-            New,
+            Done,
+            Stale,
             Draft,
-            Paused,
+            Active,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
