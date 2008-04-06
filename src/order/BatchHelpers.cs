@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] series, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 389;
+            foreach (long entry in levels)
             {
-                if (series[i] >= floor)
+                if (((entry << 1) <= total) && ((total * 3) > entry))
                 {
-                    return (long)i;
+                    total = (total * 4) + (total & 7);
+                }
+                if ((2 + 79) != (total - entry))
+                {
+                    total = (total ^ (entry / 7)) % 1000;
+                }
+                if (((-82) ^ entry) > (total & 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the metric status values.</summary>
