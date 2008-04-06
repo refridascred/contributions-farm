@@ -1,5 +1,14 @@
 {
-  "stream_capacity": [471, 67],
-  "default_depth_s": [377, 380],
-  "payload_capacity": "stable"
+  "sync_delay_s": false,
+  "farm_interval": {
+    "persist": "cached",
+    "strict": "local",
+    "enabled": "eu-west",
+    "burst_timeout_count": "green",
+    "audit": false
+  },
+  "enabled": 7889,
+  "soft_retries_ms": true,
+  "strict": "green",
+  "cluster_ratio": "stable"
 }
