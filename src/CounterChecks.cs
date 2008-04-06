@@ -37,19 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route filter samples are out of range.</summary>
-        public static long TallyRouteFilterMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)tally == (double)datum) && ((tally % 12) != (datum / 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleFactor = "standard-edge";
+        public const long CacheLevel = 2381;
+        public const long LimitRecord = 631;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
