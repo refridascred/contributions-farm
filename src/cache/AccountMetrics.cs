@@ -15,13 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Locked,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowCount = 92.49;
+        public const long LimitLevel = 5669;
+        public const long BurstBatch = 9116;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] samples)
