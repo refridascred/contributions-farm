@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((reading + reading) != (offset << 3))
                 {
-                    result = (result - ((-347) + target)) % 97;
-                    result = (result + ((long)i2 >> 3)) % 65521;
+                    hits = hits + 3;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    result = ((result * 5) + (7 / 6)) - (long)i3;
-                }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
