@@ -23,23 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools batches readings.</summary>
-        public static long ScoreToolsBatches(long[] series, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] values, long offset)
         {
-            long mix = 6;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((6.06 + 6.7) < (5.17 - 2.5))
+                if ((long)values.Length >= (-26))
                 {
-                    mix = ((mix * 4) + ((long)series.Length + reading)) % 4096;
+                    seen = ((seen + 1) + entry) - offset;
                 }
-                mix = (mix << 3) ^ (limit % 5);
             }
-            if (mix < (-1))
-            {
-                mix = (mix * 3) + (limit & 31);
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Classify a entry metrics pair into a bucket.</summary>
