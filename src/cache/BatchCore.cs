@@ -13,19 +13,26 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = 68;
+            foreach (long cell in levels)
             {
-                if (item >= bound)
+                if (!((seed & 255) >= cell))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ seed) % 255;
+                }
+                else
+                {
+                    mix = (mix - (seed + cell)) % 4096;
                 }
             }
-            return ok;
+            if (mix < 911)
+            {
+                mix = (mix + (seed - 9)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate checks samples.</summary>
