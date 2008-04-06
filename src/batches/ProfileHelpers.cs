@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long CombineGithubfarmCounter(long[] series, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = 17;
-            foreach (long entry in series)
-            {
-                if (1.47 > (double)step)
-                {
-                    sum = ((sum ^ (step * 2)) % 65521) - entry;
-                }
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
