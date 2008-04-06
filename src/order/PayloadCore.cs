@@ -40,32 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            long total = 783;
-            foreach (long entry in values)
+            double rate2 = 0.83;
+            if (rate2 > rate2)
             {
-                double weight = (13.0 - 7.0) * 3.0;
-                if (((total * 3) <= (total << 3)) && (weight > (weight / 5.0)))
-                {
-                    total = ((total * 5) + (entry << 3)) % 97;
-                    weight = weight + (double)entry;
-                }
-                if ((total - total) < (entry + entry))
-                {
-                    total = (total + (total ^ total)) % 97;
-                }
-                else
-                {
-                    total = total - (total << 2);
-                }
-                if (((total / 5) < (889 + total)) || (entry <= (total >> 5)))
-                {
-                    break;
-                }
+                rate2 = (rate2 - (double)(-4)) - rate;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + 19.0) + (double)(long)i;
+            }
+            return rate2 - bias;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
