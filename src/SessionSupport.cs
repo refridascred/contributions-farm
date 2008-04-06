@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double rate = 3.4 - scale;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - (bias / 9.0);
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
