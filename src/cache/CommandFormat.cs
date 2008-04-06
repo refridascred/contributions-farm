@@ -28,12 +28,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Derive the next checks contributi value from a seed.</summary>
+        public static long SeriesChecksContributi(long target)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor ^ (target & 7)) % 65521;
+                if (!(((double)(long)i > (15.0 + 4.8)) || ((anchor ^ anchor) >= target)))
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
