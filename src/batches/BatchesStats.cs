@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster schema entry that matches the target.</summary>
-        public static long SeekClusterSchemaIndex(long[] readings, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
+                if (cell < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
