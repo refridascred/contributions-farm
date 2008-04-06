@@ -19,21 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a context batch reading.</summary>
