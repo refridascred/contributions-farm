@@ -27,11 +27,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Find the first editor metric entry that matches the target.</summary>
+        public static long LookupEditorMetricIndex(long[] samples, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
