@@ -27,18 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value < 8.0)
                 {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
