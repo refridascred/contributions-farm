@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long CountBatchesSchemaHits(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = 5;
+            foreach (long entry in values)
             {
-                if ((double)entry > (8.46 / 6.0))
+                if ((double)entry >= 6.5)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc - (6 ^ 24)) % 65521;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Hold a stats summary.</summary>
