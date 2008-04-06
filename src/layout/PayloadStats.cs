@@ -23,11 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            Active,
+            Dropped,
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
