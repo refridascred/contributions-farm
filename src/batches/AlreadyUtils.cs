@@ -37,20 +37,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 2996;
+        public const double HardCache = 78.31;
+        public const string DefaultFactor = "alpha-1";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long target, long target2)
