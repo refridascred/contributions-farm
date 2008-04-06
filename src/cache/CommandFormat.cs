@@ -29,16 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "legacy";
+        public const long MaxBudget = 9004;
+        public const long BaseBatches = 3954;
+        public const double SoftBatches = 91.5;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] readings)
