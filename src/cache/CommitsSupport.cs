@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long origin)
         {
-            long acc = 58;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((sample ^ acc) >= 6))
+                if ((origin & 127) <= (datum + origin))
                 {
-                    acc = (acc * 3) + (26 >> 1);
-                }
-                if (((double)sample < (8.28 + 7.2)) || ((79 + acc) != (360 - sample)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
