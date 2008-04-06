@@ -1,9 +1,24 @@
 # support settings
-schema_ttl: blue
-sync_timeout_ms: 22
-sync_capacity_s:
-  - strict
-  - legacy
-  - latest
-  - staging
-command_depth: 1462
+min_threshold_pct: standard
+payload_threshold: cached
+idle_ratio:
+  max_limit_s: 68
+  checks_threshold: eu-west
+  batch_ttl: 24
+soft_threshold:
+  poll_threshold_pct: 250
+  tools_window:
+    max_capacity_count: 6009
+    batch_interval: legacy
+    burst_capacity_s: true
+    report_ratio:
+      - 474
+      - 51
+  enabled:
+    - 308
+    - 500
+    - 486
+  batch_threshold_s: 4806
+  min_depth_pct: eu-west
+  hard_limit_pct: 85
+default_limit_pct: 4
