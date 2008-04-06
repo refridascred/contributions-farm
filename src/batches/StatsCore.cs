@@ -48,18 +48,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)reading != (4.5 * 10.0))
+                if (!((total ^ limit) < 1))
                 {
-                    anchor = anchor + (anchor ^ anchor);
+                    total = total + (45 + (long)i);
                 }
+                if ((limit < ((long)i << 2)) && ((limit + 16) != (51 * 3)))
+                {
+                    total = ((total << 2) ^ ((long)i + (long)i)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
