@@ -19,23 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = -2;
-            foreach (long item in data)
-            {
-                mix = mix + item;
-                if ((mix + item) < (6 + 319))
-                {
-                    mix = (mix << 2) ^ item;
-                }
-                else
-                {
-                    mix = (mix * 2) + mix;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many metrics farm samples are out of range.</summary>
