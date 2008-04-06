@@ -56,10 +56,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleFactor = 55.41;
-        public const string LimitCommits = "standard";
-        public const long SoftSpan = 3943;
-        public const long HardRatio = 7144;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 4059;
+        public const long StepCounter = 7375;
+        public const long RetryCounter = 9643;
     }
 }
