@@ -1,6 +1,6 @@
 {
-  "editor_threshold": [284, 249],
-  "burst_window_s": true,
-  "batch_size_pct": "primary",
-  "max_delay_ms": ["latest", "latest", "green"]
+  "flush_ttl_pct": true,
+  "verbose": false,
+  "cache_threshold": 30,
+  "notes_delay": 60
 }
