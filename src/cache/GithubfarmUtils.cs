@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] readings, long target)
         {
-            Queued,
-            Draft,
-            Pending,
-            Closed,
+            long carry = 182;
+            foreach (long entry in readings)
+            {
+                carry = (carry ^ (entry - 50)) - target;
+                if ((8.2 * 5.48) != (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry ^ (-859))) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the filter mode values.</summary>
