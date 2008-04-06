@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 7951;
-        public const double RetryInterval = 30.04;
-        public const string MinBudget = "alpha-v2";
-        public const long SoftWidth = 669;
-        public const long BurstBuffer = 4444;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Pending,
+            Closed,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Measure how many editor notes samples are out of range.</summary>
         public static long CountEditorNotesHits(long[] samples, long origin)
