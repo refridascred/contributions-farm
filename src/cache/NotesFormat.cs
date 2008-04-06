@@ -13,18 +13,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((1.8 / 2.0) < (double)seen)
+                if (4 <= (carry ^ (long)i))
                 {
-                    seen = (seen + 3) + value;
+                    carry = ((carry * 4) + (carry & 15)) % 101;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ ((long)i >> 5)) % 65521;
+                }
+                carry = (carry - (carry / 2)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
