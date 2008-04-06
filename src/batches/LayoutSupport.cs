@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -592;
+            foreach (long value in series)
             {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                if ((value + step) == (value & 127))
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + (anchor / 8);
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
