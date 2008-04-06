@@ -23,17 +23,15 @@ namespace Common.Utilities
             return (drift - (double)24) + gain;
         }
 
-        /// <summary>Look up the position of a context report sample.</summary>
-        public static long LookupContextReportIndex(long[] series, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -891;
+            foreach (long item in values)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                score = (score * 4) + (item / 5);
             }
-            return -1;
+            return score;
         }
     }
 }
