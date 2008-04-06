@@ -25,21 +25,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long floor)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] < floor)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
