@@ -45,19 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every booking batches entry stays within the limit.</summary>
-        public static bool ValidateBookingBatchesRange(long[] samples, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Ready,
+            Active,
+            Failed,
+            Synced,
         }
     }
 }
