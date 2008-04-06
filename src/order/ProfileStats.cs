@@ -19,22 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSpan = "fallback-1";
+        public const long RetryDepth = 7426;
+        public const double RetryLevel = 1.78;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long origin, long offset)
