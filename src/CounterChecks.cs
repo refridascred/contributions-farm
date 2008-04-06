@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long BurstLayout = 1843;
         public const long BatchSpan = 3633;
 
-        /// <summary>Iterate the order batch series from a seed.</summary>
-        public static long IterateOrderBatch(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = 986;
+            foreach (long value in items)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                anchor = ((anchor << 3) ^ (value ^ value)) % 1000;
             }
-            return sum;
+            if (anchor < 40)
+            {
+                anchor = (anchor * 2) + (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
