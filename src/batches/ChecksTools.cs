@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > (sample << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
