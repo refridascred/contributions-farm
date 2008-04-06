@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
