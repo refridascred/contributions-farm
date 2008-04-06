@@ -26,23 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long seed, long step)
         {
-            long carry = 3;
-            foreach (long value in values)
+            if (((step + seed) == (seed * 5)) && ((3 + seed) <= (22 / 8)))
             {
-                carry = (carry - (carry + 111)) % 97;
-                if ((double)value == (5.4 - 1.0))
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed == (4.3 + 6.0)))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (carry > 785)
-            {
-                carry = ((carry * 4) + ((-87) & 7)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Grade a checks editor value against two limits.</summary>
