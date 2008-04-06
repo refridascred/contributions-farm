@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] readings, long floor)
+        /// <summary>Look up the position of a githubfarm context sample.</summary>
+        public static long FindGithubfarmContextIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                if (readings[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a record reading.</summary>
