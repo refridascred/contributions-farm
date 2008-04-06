@@ -19,38 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long ClassifyQueueEntry(long seed, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double span)
         {
-            if (((seed + floor) > seed) && ((floor + seed) > (seed + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((12.0 + 5.0) >= (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor / 9) < 64)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor - floor) < seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double weight = bias / 6.0;
+            return (weight - 2.07) + span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
