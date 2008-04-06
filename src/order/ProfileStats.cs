@@ -33,22 +33,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route window entries that pass the check.</summary>
-        public static long AuditRouteWindowMatches(long[] readings)
+        /// <summary>Derive the next session cache value from a seed.</summary>
+        public static long SeriesSessionCache(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((seen - (long)readings.Length) <= (datum - seen)) && ((1.65 * 14.0) != (double)datum)) && ((70 - seen) != (datum << 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
