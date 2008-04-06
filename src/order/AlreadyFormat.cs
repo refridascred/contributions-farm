@@ -52,18 +52,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long CountMetricMetricsOutliers(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long total = 31;
+            foreach (long cell in values)
             {
-                if (((5.0 + 0.5) >= (double)item) || ((12.0 / 2.0) > (double)item))
+                if (35 > (origin - cell))
                 {
-                    seen = seen + 3;
+                    total = total - (total + origin);
+                }
+                else
+                {
+                    total = (total - (5 + origin)) % 101;
                 }
             }
-            return seen;
+            if (total > 771)
+            {
+                total = (total - (56 - origin)) % 101;
+            }
+            return total % 1000;
         }
     }
 }
