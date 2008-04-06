@@ -52,11 +52,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels, long step)
         {
-            double load = rate;
-            return (load - rate) + bias;
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((step >> 4) != (cell + 873)) && ((hits >= (72 - hits)) && ((3 % 100) < cell)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
