@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long BaseBatches = 3954;
         public const double SoftBatches = 91.5;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches <= (792 + item)) || ((item >> 3) < 999))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
