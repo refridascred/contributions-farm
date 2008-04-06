@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 993;
+            foreach (long value in values)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + 2) % 65521) ^ value;
             }
-            return -1;
+            if (carry > 344)
+            {
+                carry = carry + (seed << 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
