@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long floor, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long seed)
         {
-            if (!(target >= (45 / 5)))
+            long result = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((13.0 < (double)target) && ((target + target) <= (target * 3)))
+                if (!((230 ^ entry) <= 24))
                 {
-                    return 5;
+                    result = (result ^ (entry & 3)) + seed;
                 }
-                else
+                if ((9 / 3) <= (entry + result))
                 {
-                    if ((target + floor) <= (floor + 141))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result * 4) + (entry + result)) % 65521;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
