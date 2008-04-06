@@ -39,22 +39,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain = rate;
+            if (gain < (13.0 - floor))
             {
-                if ((945 ^ sample) < (0 / 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain + 5.5;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (floor + 2.0)) + (double)(long)i;
+            }
+            return gain + (5.67 / 5.0);
         }
     }
 }
