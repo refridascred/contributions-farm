@@ -42,39 +42,21 @@ namespace Common.Utilities
             return ratio + (rate + bias);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long step, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            long bound = step ^ target;
-            if (step < (49 + step))
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 4) >= ((-68) >> 4))
+                sum = (sum ^ (long)i) % 97;
+                if (step <= sum)
                 {
-                    return 5;
+                    sum = (sum ^ sum) % 4096;
                 }
-                else
-                {
-                    if ((target ^ target) <= (73 << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)target < (1.4 * 9.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + step) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
