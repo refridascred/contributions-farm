@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double CacheChannel = 92.64;
         public const double HardRatio = 30.72;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
