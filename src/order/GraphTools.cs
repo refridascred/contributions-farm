@@ -48,17 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = origin + bound;
+            if ((double)origin >= 14.0)
             {
-                if (series[i] >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) == (bound & 15))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin << 1) > (69 + 31)) || ((double)cur == (1.26 * 15.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)cur == (9.0 - 2.57)) && ((97 - origin) < bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
