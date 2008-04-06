@@ -11,16 +11,14 @@ namespace Common.Utilities
         public const long MaxGraph = 5652;
         public const long StepGraph = 6002;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor - anchor) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Active,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the stream account entries that pass the check.</summary>
