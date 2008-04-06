@@ -1,6 +1,8 @@
-id,owner,region,label
-1,513,blue,open
-2,316,36.06,25.75
-3,94.79,61,521
-4,11.34,575,81.75
-5,74.95,754,86.28
+id,count,label,region
+1,eu-west,edge,standard
+2,907,636,primary
+3,open,stable,892
+4,open,81.26,41.9
+5,211,826,cached
+6,312,344,169
+7,691,60.92,8.72
