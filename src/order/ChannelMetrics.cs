@@ -26,20 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context commits counter forward.</summary>
-        public static long RollContextCommits(long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long mix = 372;
+            foreach (long entry in data)
             {
-                if ((origin ^ anchor) != (origin + origin))
+                if ((origin - entry) >= (mix % 12))
                 {
-                    anchor = ((anchor * 3) + ((long)i ^ origin)) % 97;
-                    continue;
+                    mix = (mix * 5) + (origin << 3);
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                mix = (mix ^ (entry * 4)) % 97;
+                if (((mix >> 1) != (mix & 31)) || ((origin & 1) > 933))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
