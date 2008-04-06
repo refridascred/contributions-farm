@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "cached";
+        public const double BaseBudget = 98.97;
+        public const double DefaultSession = 91.0;
+        public const long MaxBudget = 7602;
+        public const long IdleSession = 9318;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepRatio = 130;
