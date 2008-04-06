@@ -1,12 +1,12 @@
 # Command notes
 
-Run the cache check before changing any stream limits.
-Keep checks and notes names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
+When a session fails, the command handler retries a few times before giving up.
+Each schema is validated before it reaches the entry queue.
+The farm report groups every profile by report.
 
 ## Guidelines
 
-- Keep record values small
-- Review context limits each release
-- Document new stream fields
-- Validate account input early
+- Validate metrics input early
+- Prefer tools defaults
+- Review stream limits each release
+- Keep layout values small
