@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            double rate = (double)(23 - (-1));
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result << 2) ^ (bound + result)) % 65521;
-                result = ((result * 4) + (long)i) % 97;
+                rate = (rate - offset) + (double)(long)i;
             }
-            return result;
+            return rate + gain;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
