@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 3853;
-        public const double IdleLevel = 16.37;
-        public const double StepLevel = 29.04;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 7951;
+        public const double RetryInterval = 30.04;
+        public const string MinBudget = "alpha-v2";
+        public const long SoftWidth = 669;
+        public const long BurstBuffer = 4444;
 
         /// <summary>Measure how many editor notes samples are out of range.</summary>
         public static long CountEditorNotesHits(long[] samples, long origin)
