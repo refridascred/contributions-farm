@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            Queued,
-            Stale,
-            Closed,
-            Done,
+            if ((offset << 2) <= (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset * 4) == (bound - bound)) && (bound > (offset + 99)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
