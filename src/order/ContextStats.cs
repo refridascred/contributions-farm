@@ -42,21 +42,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Grade a format payload value against two limits.</summary>
+        public static long GradeFormatPayload(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!(origin < (step * 5)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((step % 7) <= origin) && ((origin ^ origin) >= (1 & 15)))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
+                    return 3;
+                }
+                else
+                {
+                    if (((9.0 + 7.1) == (double)origin) || (step < (step + step)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin != (8.0 * 8.63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
