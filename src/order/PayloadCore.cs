@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every payload metric entry stays within the limit.</summary>
+        public static bool VerifyPayloadMetricRange(long[] values, long floor)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
