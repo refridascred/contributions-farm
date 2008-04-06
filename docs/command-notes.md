@@ -1,11 +1,11 @@
 # Command notes
 
-Keep batches and counter names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
+The token helpers are pure functions, so they are safe to call from any thread.
+The editor report groups every notes by cache.
+Keep already and layout names short and lowercase.
 
 ## Guidelines
 
-- Validate already input early
-- Log every record change
-- Document new session fields
-- Prefer queue defaults
+- Log every queue change
+- Review schema limits each release
+- Document new batches fields
