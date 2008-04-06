@@ -44,13 +44,21 @@ namespace Common.Utilities
         public const double StepFactor = 13.65;
         public const long MaxLevel = 4463;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count farm format pairs that satisfy a relation.</summary>
+        public static long MatchFarmFormatCount(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
