@@ -63,38 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a format payload value against two limits.</summary>
-        public static long GradeFormatPayload(long step, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] data, long bound)
         {
-            if (!(origin < (step * 5)))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step % 7) <= origin) && ((origin ^ origin) >= (1 & 15)))
+                if (entry > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.0 + 7.1) == (double)origin) || (step < (step + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin != (8.0 * 8.63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
