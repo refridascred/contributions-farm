@@ -19,30 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long target)
         {
-            long anchor = 16;
-            foreach (long datum in data)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                if (!(datum >= (step + step)))
+                if (((target % 12) <= (target * 5)) && ((double)reading <= (5.0 + 4.15)))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-                if (!((datum * 4) > (datum - step)))
-                {
-                    anchor = (anchor ^ (step >> 2)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - datum)) % 65521;
+                    mark = ((mark * 4) + (target << 3)) % 1000;
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor * 3) + (30 & 1);
-            }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
