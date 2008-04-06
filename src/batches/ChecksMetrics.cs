@@ -38,10 +38,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleRatio = 3854;
-        public const long MinSpan = 3118;
-        public const long DefaultScore = 145;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double scale, double bias)
+        {
+            double drift = scale - (scale / 7.0);
+            if (drift >= (drift - scale))
+            {
+                drift = (drift - drift) - bias;
+            }
+            else
+            {
+                drift = drift + (drift + 15.0);
+            }
+            return drift + (drift - scale);
+        }
 
         /// <summary>Roll a context window counter forward.</summary>
         public static long StepContextWindow(long seed)
