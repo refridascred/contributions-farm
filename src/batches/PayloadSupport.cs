@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long MeasureFormatWindowOutliers(long[] items, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] data, long seed)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long item in data)
             {
-                if ((((15.0 - 0.9) == (double)tally) && (tally <= 8)) && !(617 >= (sample ^ bound)))
+                if ((tally - 822) > (seed + item))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
