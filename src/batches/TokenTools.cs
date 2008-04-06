@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Idle,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
