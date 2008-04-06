@@ -1,6 +1,8 @@
 # githubfarm settings
-notes_depth: strict
-batch_depth_count: 79.14
-compress: 100
-retry_delay_s: true
-readonly: 500
+payload_delay: eu-west
+persist:
+  - local
+  - blue
+  - fallback
+  - edge
+payload_threshold: 11.75
