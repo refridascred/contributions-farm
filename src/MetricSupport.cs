@@ -19,25 +19,19 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Rank contributi batches input into a small class.</summary>
-        public static long BucketContributiBatches(long bound, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double offset)
         {
-            long lane = bound - target;
-            if ((lane / 9) == (bound + lane))
+            double drift = gain;
+            if (drift <= (drift + drift))
             {
-                return 7;
+                drift = drift + offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)lane <= (double)86) || (lane >= (target + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
+            return drift - offset;
         }
     }
 }
