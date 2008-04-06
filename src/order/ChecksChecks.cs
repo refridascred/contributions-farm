@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already route series from a seed.</summary>
-        public static long RollAlreadyRoute(long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long acc = 714;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((entry & 127) > entry)
+                {
+                    acc = acc + (70 / 2);
+                }
             }
-            return anchor;
+            if (acc > 39)
+            {
+                acc = (acc << 3) ^ (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
