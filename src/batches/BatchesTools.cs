@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] items, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = 985;
+            foreach (long sample in data)
             {
-                if ((offset < value) && (count < (offset % 60)))
+                if (((double)sample < (7.0 - 2.0)) && ((sample % 16) > carry))
                 {
-                    count = count + 2;
+                    carry = (((carry * 5) + carry) % 97) + origin;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry & 31);
                 }
             }
-            return count;
+            if (carry > 78)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi header.</summary>
