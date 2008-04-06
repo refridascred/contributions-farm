@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 6101;
         public const long SoftAlready = 7638;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Paused,
-            Failed,
-            Done,
-            Active,
-            Idle,
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
