@@ -35,18 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)tally != (1.3 + 5.2)) || ((double)tally <= 7.3))
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
