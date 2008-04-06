@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] values, long floor)
+        /// <summary>Measure how many route filter samples are out of range.</summary>
+        public static long TallyRouteFilterMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((sample * 3) == (matches + 23))
+                if (!((double)tally == (double)datum) && ((tally % 12) != (datum / 3)))
                 {
-                    matches = (matches + 2) + floor;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
