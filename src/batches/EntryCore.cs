@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const long StepCount = 1852;
         public const double MaxRatio = 51.94;
 
-        /// <summary>Check that every profile cache entry stays within the limit.</summary>
-        public static bool CheckProfileCacheBounds(long[] samples, long limit)
+        /// <summary>Roll a batches payload counter forward.</summary>
+        public static long RollBatchesPayload(long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
