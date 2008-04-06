@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long limit)
-        {
-            if ((double)limit != (7.54 / 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - seed) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (6.0 + 16.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5 >> 2) < (limit + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardBudget = "legacy-edge";
+        public const string SoftStream = "open";
+        public const long LimitTimeout = 1943;
 
         /// <summary>Audit graph batch readings against a rule.</summary>
         public static long CountGraphBatchOutliers(long[] data)
