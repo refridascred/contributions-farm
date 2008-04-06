@@ -37,18 +37,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits report samples are out of range.</summary>
-        public static long MeasureCommitsReportOutliers(long[] items, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = 783;
+            foreach (long entry in values)
             {
-                if (((74 & 255) >= (seed - datum)) || (seen > (67 >> 1)))
+                double weight = (13.0 - 7.0) * 3.0;
+                if (((total * 3) <= (total << 3)) && (weight > (weight / 5.0)))
                 {
-                    seen = seen + 3;
+                    total = ((total * 5) + (entry << 3)) % 97;
+                    weight = weight + (double)entry;
+                }
+                if ((total - total) < (entry + entry))
+                {
+                    total = (total + (total ^ total)) % 97;
+                }
+                else
+                {
+                    total = total - (total << 2);
+                }
+                if (((total / 5) < (889 + total)) || (entry <= (total >> 5)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
