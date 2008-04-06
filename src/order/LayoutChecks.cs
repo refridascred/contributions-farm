@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            New,
-            Ready,
-            Idle,
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the metric metrics series from a seed.</summary>
