@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double ratio = (double)(-31) - 12.0;
+            if (ratio <= (double)(-2))
             {
-                if (!(value < (value + value)) && (((matches + 15) > value) && ((value + 96) >= (9 % 100))))
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio + ratio) - span;
             }
-            return matches;
+            return ratio + bias;
         }
 
         /// <summary>Digest a series of already payload entries.</summary>
