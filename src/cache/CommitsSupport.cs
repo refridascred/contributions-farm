@@ -40,10 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 4355;
-        public const string LimitSpan = "strict-1";
-        public const double WindowCount = 2.96;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultBatch = 2587;
