@@ -16,15 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Done,
-            New,
-            Locked,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheCount = 208;
+        public const long IdleSpan = 7091;
+        public const long SoftSpan = 6600;
+        public const long StepRecord = 2449;
+        public const long DefaultCount = 2942;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
