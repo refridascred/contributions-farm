@@ -47,11 +47,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 168;
-        public const long RetryChecks = 9350;
-        public const string DefaultChecks = "standard-edge";
-        public const long LimitChecks = 8016;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long step)
+        {
+            if (2 > (step / 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((5.78 + 9.84) >= (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((3.17 * 9.8) >= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (13.0 > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchCount = 7425;
