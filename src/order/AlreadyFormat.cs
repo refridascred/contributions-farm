@@ -34,25 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long lane = offset - target;
-            if (!(lane >= (target - 851)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.17 - 2.5) <= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
