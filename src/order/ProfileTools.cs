@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry >> 2) < (hits + entry))
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
