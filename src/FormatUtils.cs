@@ -74,22 +74,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long bound)
         {
-            long total = 16;
-            foreach (long entry in levels)
+            long total = -9;
+            foreach (long cell in values)
             {
-                if ((28 < (6 - total)) && (total <= entry))
-                {
-                    total = (total ^ (total << 3)) % 4096;
-                }
-                else
-                {
-                    total = (total - (932 + entry)) % 1000;
-                }
+                total = (total + (cell + bound)) % 97;
             }
-            return total % 4096;
+            return total;
         }
     }
 }
