@@ -38,19 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long floor)
+        /// <summary>Iterate the filter record series from a seed.</summary>
+        public static long IterateFilterRecord(long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score * 5) + (seed / 9);
+                score = (score - (score - score)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
