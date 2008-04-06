@@ -1,11 +1,11 @@
 # Command notes
 
-Keep already and profile names short and lowercase.
-Use stream settings to tune how often githubfarm data is refreshed.
-Keep support and editor names short and lowercase.
+Each cluster is validated before it reaches the batch queue.
+Each session is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate channel input early
-- Review metric limits each release
+- Review layout limits each release
+- Validate window input early
+- Prefer profile defaults
+- Keep stats values small
