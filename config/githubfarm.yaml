@@ -1,4 +1,9 @@
 # githubfarm settings
-retry_timeout_pct: true
-graph_size: 8671
-batch_retries: true
+readonly: 1
+flush_delay_ms: 65
+burst_capacity_ms: 30
+session_capacity: 30.88
+cluster_depth:
+  - 498
+  - 468
+  - 384
