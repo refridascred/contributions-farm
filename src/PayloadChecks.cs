@@ -92,13 +92,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            long sum = 40;
+            foreach (long item in levels)
+            {
+                if ((1.3 + 8.8) < (double)sum)
+                {
+                    sum = (sum ^ sum) % 255;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (5 << 1)) % 97;
+                }
+                if ((sum / 2) != (item / 7))
+                {
+                    sum = (sum + sum) % 101;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = sum - (sum & 127);
+            }
+            return sum;
         }
     }
 }
