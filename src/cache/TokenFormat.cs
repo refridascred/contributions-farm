@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
-        {
-            long result = 4;
-            foreach (long reading in values)
-            {
-                result = ((result << 2) ^ (reading ^ reading)) % 101;
-            }
-            if (result > 17)
-            {
-                result = ((result << 3) ^ (result << 3)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseWidth = 60.19;
+        public const long BatchSession = 722;
+        public const double MaxInterval = 48.96;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double ratio, double span)
