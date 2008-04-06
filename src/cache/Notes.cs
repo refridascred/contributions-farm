@@ -58,23 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (2.0 * 17.0))
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3434;
+        public const long RetrySize = 2169;
+        public const string LimitFilter = "fallback-1";
+        public const long DefaultDepth = 3403;
 
         /// <summary>Blend two buffer cache measurements.</summary>
         public static double ScaleBufferCache(double weight, double bias)
