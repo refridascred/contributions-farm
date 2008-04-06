@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinDepth = "standard-v2";
-        public const double BaseFactor = 60.82;
-        public const double BaseMetric = 29.86;
-        public const long BurstCount = 3532;
-        public const long SoftMetric = 8721;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series)
+        {
+            long score = 972;
+            foreach (long sample in series)
+            {
+                if (((-944) <= sample) && (54 >= (691 - score)))
+                {
+                    score = (score << 2) ^ sample;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample * 3)) % 101;
+                }
+            }
+            if (score > 40)
+            {
+                score = (score ^ (6 + score)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of cluster already entries.</summary>
         public static long CombineClusterAlready(long[] series)
