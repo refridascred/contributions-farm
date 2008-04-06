@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count - count) <= count)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
