@@ -31,12 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Idle,
-            Draft,
-            Queued,
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
