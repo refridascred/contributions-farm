@@ -37,20 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes metrics readings against a bound.</summary>
-        public static bool GuardNotesMetricsBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 6706;
+        public const long DefaultLevel = 5412;
+        public const long MinCluster = 9864;
+        public const long WindowInterval = 8982;
+        public const long LimitCluster = 3637;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
