@@ -43,11 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((8.1 - 6.36) == (double)floor)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
