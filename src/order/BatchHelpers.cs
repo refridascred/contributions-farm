@@ -40,10 +40,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxRatio = "local-1";
-        public const long MinLevel = 1336;
-        public const double MaxSize = 19.76;
-        public const long LimitMetric = 2691;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series, long floor)
+        {
+            long score = 965;
+            foreach (long item in series)
+            {
+                if ((4.1 - 8.59) < (double)score)
+                {
+                    score = ((((score << 3) ^ (97 + (long)series.Length)) % 1000) ^ item) - floor;
+                }
+            }
+            return score;
+        }
     }
 }
