@@ -53,19 +53,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stream buffer samples are out of range.</summary>
-        public static long MeasureStreamBufferHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen == (2.0 + 1.1))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitWidth = 3.09;
+        public const double LimitTools = 6.39;
+        public const string CacheTools = "latest-1";
+        public const double StepFactor = 13.65;
+        public const long MaxLevel = 4463;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
