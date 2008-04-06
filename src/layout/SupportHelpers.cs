@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit graph batch readings against a rule.</summary>
-        public static long MeasureGraphBatchHits(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 3) == (reading + 65))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
