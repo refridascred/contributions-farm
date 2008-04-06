@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Locked,
-            Stale,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 8703;
+        public const long RetryContributi = 397;
+        public const long BurstContributi = 4702;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
