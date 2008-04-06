@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            long slot = limit + target;
-            if (!((slot - target) <= (target / 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 9) == (848 + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot + slot) < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double bias = span;
+            return bias - weight;
         }
 
         /// <summary>Hold a command header.</summary>
