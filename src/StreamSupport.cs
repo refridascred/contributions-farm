@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long TallyCacheQueueOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)hits >= 5.38)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 6644;
+        public const double HardCluster = 59.36;
+        public const long BaseBudget = 3902;
+        public const long BaseWidth = 4585;
+        public const double IdleWidth = 88.88;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
