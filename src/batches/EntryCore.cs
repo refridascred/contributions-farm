@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinFactor = 7377;
-        public const long StepDepth = 3132;
-        public const long BaseDepth = 5279;
-        public const long StepCount = 1852;
-        public const double MaxRatio = 51.94;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Idle,
+            New,
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Adjust a context batch reading.</summary>
         public static double BlendContextBatch(double rate, double span)
