@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
