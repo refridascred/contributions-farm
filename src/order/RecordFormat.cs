@@ -50,11 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 1826;
-        public const long MaxLayout = 1498;
-        public const string BatchSize = "fallback";
-        public const string BurstDepth = "standard-edge";
-        public const long StepLayout = 9398;
+        /// <summary>Audit filter counter readings against a rule.</summary>
+        public static long TallyFilterCounterGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((837 + item) == (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
