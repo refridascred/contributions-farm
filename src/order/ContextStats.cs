@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session batches samples are out of range.</summary>
-        public static long CountSessionBatchesGaps(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((long)items.Length >> 1) <= (datum * 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
