@@ -24,13 +24,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            Draft,
+            Ready,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the token class values.</summary>
