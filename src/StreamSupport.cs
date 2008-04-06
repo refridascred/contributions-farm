@@ -21,27 +21,13 @@ namespace Common.Utilities
         public const long DefaultWindow = 3039;
         public const string DefaultTimeout = "alpha-v2";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long result = 98;
-            foreach (long datum in series)
-            {
-                result = (result ^ (result - 2)) % 1000;
-                if (((double)datum < (4.02 * 5.1)) && (((-96) ^ result) < result))
-                {
-                    result = ((result * 2) + datum) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (long)series.Length) % 101;
-                }
-            }
-            if (result < (-401))
-            {
-                result = (result + (result % 97)) % 65521;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
