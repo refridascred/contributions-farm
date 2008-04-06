@@ -20,26 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report buffer entries.</summary>
-        public static long WeighReportBuffer(long[] items, long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double scale, double floor)
         {
-            long anchor = 57;
-            foreach (long reading in items)
-            {
-                if ((double)limit == (0.8 / 8.0))
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 97)) - reading;
-                }
-                else
-                {
-                    anchor = anchor + (44 + limit);
-                }
-                if (!((anchor ^ limit) > (-125)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            double scale2 = (double)(743 - 28);
+            return ((scale2 - (double)74) + scale) + floor;
         }
 
         /// <summary>Accumulate graph editor samples.</summary>
