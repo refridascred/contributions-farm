@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long RetryLevel = 5006;
         public const double MinEditor = 88.44;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] data, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((((hits & 1) == (hits & 63)) || ((9 - hits) <= (hits + hits))) && ((hits - origin) > (hits & 3)))
+                if ((4.01 / 9.0) > (double)item)
                 {
-                    hits = (hits + 1) ^ cell;
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
