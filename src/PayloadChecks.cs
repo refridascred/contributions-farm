@@ -100,9 +100,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 574;
-        public const long MaxPayload = 8827;
-        public const double LimitPayload = 31.34;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
