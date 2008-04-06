@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long origin)
         {
-            Queued,
-            Active,
-            Paused,
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (origin > 746)
+                {
+                    total = (total ^ (4 / 6)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
