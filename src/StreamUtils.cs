@@ -26,22 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record channel readings against a rule.</summary>
-        public static long MeasureRecordChannelOutliers(long[] samples)
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long CombineStatsFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = -3;
+            foreach (long cell in items)
             {
-                if ((matches & 15) < (datum + 8))
+                if ((cell % 97) > (cell + cell))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total ^ (total >> 5)) % 65521;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
