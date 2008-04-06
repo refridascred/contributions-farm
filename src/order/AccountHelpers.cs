@@ -30,18 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((datum >> 5) <= (tally >> 2)) || (((7.0 / 3.0) <= (double)datum) && ((double)tally >= (double)datum)))
-                {
-                    tally = tally + 3;
-                }
+                sum = sum - ((long)i % 97);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
