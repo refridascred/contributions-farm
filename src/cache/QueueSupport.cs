@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] values, long bound)
+        /// <summary>Rank graph batches input into a small class.</summary>
+        public static long ClassifyGraphBatches(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long offset2 = seed - offset;
+            if (offset2 <= 32)
             {
-                if ((((hits + 1) <= hits) && ((entry * 2) < bound)) || ((double)hits >= (8.2 / 9.0)))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (11.0 + 5.11))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset2 ^ seed) == (6 + seed)) && ((double)offset2 <= (15.0 * 13.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
