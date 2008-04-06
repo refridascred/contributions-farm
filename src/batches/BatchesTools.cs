@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardBudget = "staging-edge";
-        public const long BaseSpan = 6996;
-        public const long RetryTimeout = 8460;
-        public const long LimitLevel = 212;
-        public const double BatchDepth = 25.62;
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long MeasureChannelSessionMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((target <= 1) && ((double)target <= (3.5 * 1.0))) || (((82 - tally) >= target) || ((double)tally <= (19.0 / 4.0))))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long step)
