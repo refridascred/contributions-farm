@@ -57,23 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i < (4.0 + 0.3))
-                {
-                    acc = (acc + (acc + 3)) % 1000;
-                }
-                if (limit <= (limit & 15))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
