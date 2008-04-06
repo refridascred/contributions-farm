@@ -1,5 +1,13 @@
 {
-  "cache_delay": 2043,
-  "dry_run": 38.33,
-  "sync_threshold_ms": "staging"
+  "window_size": {
+    "buffer_limit": 79.25,
+    "min_timeout_ms": 11.49,
+    "default_ttl": 80.42,
+    "verbose": "primary",
+    "persist": true,
+    "enabled": 65.47
+  },
+  "default_ratio_pct": false,
+  "audit": 26,
+  "base_depth_ms": 73
 }
