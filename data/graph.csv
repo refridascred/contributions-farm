@@ -1,6 +1,11 @@
-id,label,region
-1,242,green
-2,edge,27.01
-3,594,cached
-4,36.66,local
-5,97.47,31
+id,label,weight,owner,level
+1,open,64.92,primary,843
+2,68.91,3.6,456,31.53
+3,eu-west,22.69,green,58.56
+4,655,79.49,89.91,294
+5,644,392,682,blue
+6,148,eu-west,925,65.34
+7,530,standard,98.22,159
+8,stable,397,93.29,40.96
+9,84,standard,928,42.22
+10,72.0,93.33,811,989
