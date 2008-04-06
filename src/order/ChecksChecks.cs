@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            if ((bound & 63) <= limit)
+            long state = 67;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 3) == (limit + 993))
+                if (40 >= (state + state))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    state = ((state + state) % 97) + entry;
                 }
             }
+            return state;
         }
 
         /// <summary>Locate a report reading by value.</summary>
