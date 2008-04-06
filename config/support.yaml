@@ -1,7 +1,12 @@
 # support settings
-notes_timeout: 6.48
-sync_timeout_pct:
-  - 120
-  - 36
-soft_size_s: 78.9
-burst_delay_pct: false
+warm_limit: eu-west
+verbose:
+  - 281
+  - 35
+  - 373
+  - 473
+base_delay_s:
+  - 180
+  - 15
+  - 168
+min_interval_pct: edge
