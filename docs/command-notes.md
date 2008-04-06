@@ -1,14 +1,11 @@
 # Command notes
 
-Run the notes check before changing any entry limits.
-Each session is validated before it reaches the metrics queue.
-Use support settings to tune how often cluster data is refreshed.
-
-The editor report groups every layout by commits.
-Each contributi is validated before it reaches the format queue.
+Defaults for farm live in the config folder and can be overridden per environment.
+Run the session check before changing any cluster limits.
 
 ## Guidelines
 
-- Validate session input early
-- Review route limits each release
-- Log every editor change
+- Document new queue fields
+- Prefer githubfarm defaults
+- Log every cache change
+- Review metrics limits each release
