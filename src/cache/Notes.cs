@@ -69,18 +69,18 @@ namespace Common.Utilities
             return gain + 9.5;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items, long floor)
         {
-            long mark = 488;
-            foreach (long cell in series)
+            long sum = 299;
+            foreach (long value in items)
             {
-                if ((double)cell < 3.66)
+                if ((value + sum) >= (2 >> 3))
                 {
-                    mark = ((mark * 3) + cell) - step;
+                    sum = ((sum + (sum << 2)) % 1000) - floor;
                 }
             }
-            return mark;
+            return sum;
         }
     }
 }
