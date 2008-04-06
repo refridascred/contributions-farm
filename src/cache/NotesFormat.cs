@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long prev = target ^ step;
-            if (((prev << 1) < (prev << 2)) && ((step + step) <= 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev - prev) <= prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
