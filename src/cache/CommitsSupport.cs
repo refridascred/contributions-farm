@@ -38,11 +38,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
+            double scale = (double)((-3) - 476);
+            if (scale < (offset / 8.0))
+            {
+                scale = scale - gain;
+            }
+            return scale - (offset / 6.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
