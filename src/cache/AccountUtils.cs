@@ -39,38 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((limit < (limit + 55)) && ((2.3 / 6.0) > (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step + limit) != (limit + step)) && ((step + limit) <= (step - 323)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 << 3) > (602 - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit >> 2) <= (limit - limit)) && ((2.7 * 17.0) != (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the report layout entries that pass the check.</summary>
