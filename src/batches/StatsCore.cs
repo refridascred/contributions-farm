@@ -81,39 +81,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long step, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data, long limit)
         {
-            long next = step - floor;
-            if (floor <= (793 - next))
+            long mix = 17;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((89 * 5) > (next - next))
+                if (((-144) & 255) >= (limit + (-7)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) != (636 % 100))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (93 ^ 73))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = ((mix * 4) + (mix + 5)) ^ datum;
                 }
             }
+            return mix;
         }
     }
 }
