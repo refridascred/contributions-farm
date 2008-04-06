@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long offset)
+        /// <summary>Roll a account batch counter forward.</summary>
+        public static long IterateAccountBatch(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] > offset)
+                if ((limit >= 93) && ((state - limit) != (state + limit)))
                 {
-                    return (long)i;
+                    state = (state - (limit + limit)) % 65521;
+                    state = (state << 2) ^ (limit + (long)i);
                 }
+                state = (state + ((-828) ^ (long)i)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
