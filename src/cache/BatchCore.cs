@@ -22,22 +22,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = -41;
+            foreach (long reading in data)
             {
-                if ((count ^ reading) != (origin * 2))
+                state = state - reading;
+                if (!((state ^ reading) <= state))
                 {
-                    count = count + 2;
+                    state = state - (reading - 199);
                 }
                 else
                 {
-                    count = count - 1;
+                    state = (state << 3) ^ (state * 5);
                 }
             }
-            return count;
+            if (state < (-39))
+            {
+                state = (state * 5) + (658 / 3);
+            }
+            return state % 1000;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
