@@ -31,15 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next format buffer value from a seed.</summary>
-        public static long StepFormatBuffer(long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
