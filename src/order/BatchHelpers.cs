@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long bound)
+        /// <summary>Rank metrics checks input into a small class.</summary>
+        public static long GradeMetricsChecks(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = floor - offset;
+            if (!((7 - offset) >= next))
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor <= (offset + 9)) && (floor > 7))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
