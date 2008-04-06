@@ -52,12 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long step)
         {
-            Paused,
-            Queued,
-            Done,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
