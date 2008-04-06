@@ -47,39 +47,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] items, long target)
         {
-            long delta = seed ^ target;
-            if (!((delta - seed) > target))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta & 127) < (seed << 3))
+                if (sample < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + 36) > delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)delta < (1.0 + 3.53)) || (target <= (seed & 255)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
