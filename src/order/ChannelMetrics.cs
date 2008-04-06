@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long edge = offset ^ step;
-            if ((step / 5) > (edge + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge != (3.1 * 5.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
