@@ -30,12 +30,12 @@ namespace Common.Utilities
             return bias2 - (double)378;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
