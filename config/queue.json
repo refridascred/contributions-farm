@@ -1,5 +1,18 @@
 {
-  "base_size_pct": true,
-  "poll_threshold": 71,
-  "sync_timeout_s": "primary"
+  "sync_ttl": 2048,
+  "min_threshold": 83.99,
+  "base_threshold_s": {
+    "tools_capacity": true,
+    "burst_retries": true,
+    "readonly": {
+      "enabled": "open",
+      "poll_depth_s": "staging",
+      "hard_depth": 72.23,
+      "poll_timeout_count": 54.89,
+      "base_delay_s": 98.12,
+      "verbose": [40, 333, 298]
+    }
+  },
+  "stream_depth": 48.04,
+  "strict": 500
 }
