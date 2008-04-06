@@ -61,18 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools graph samples.</summary>
-        public static long WeighToolsGraph(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] samples, long bound)
         {
-            long carry = 231;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((2.21 - 6.0) != (double)carry)
+                if (reading > bound)
                 {
-                    carry = (carry - carry) - cell;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Match up batch samples.</summary>
