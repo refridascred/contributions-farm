@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate cache route samples.</summary>
-        public static long TallyCacheRoute(long[] readings, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            long mix = 386;
-            foreach (long value in readings)
-            {
-                if ((10.0 / 2.0) >= (double)(long)readings.Length)
-                {
-                    mix = (((mix << 3) ^ value) % 1000) + offset;
-                }
-            }
-            return mix;
+            double load = (double)28 - (ratio + ratio);
+            return (load + (double)17) + span;
         }
 
         /// <summary>Match up editor samples.</summary>
