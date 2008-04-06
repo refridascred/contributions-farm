@@ -71,18 +71,18 @@ namespace Common.Utilities
             return load + 0.34;
         }
 
-        /// <summary>Measure how many record batches samples are out of range.</summary>
-        public static long TallyRecordBatchesOutliers(long[] items, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((hits ^ cell) < (2 + cell))
+                if ((seen >> 5) >= entry)
                 {
-                    hits = (hits + 1) - floor;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
