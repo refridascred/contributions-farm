@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((step ^ 19) < seed)
             {
-                if ((1.1 - 14.0) >= (double)sample)
+                return 4;
+            }
+            else
+            {
+                if (seed >= 0)
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm context sample.</summary>
