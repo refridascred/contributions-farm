@@ -53,11 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            double rate = offset * 12.0;
-            return (rate + rate) + gain;
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry ^ carry) % 4096;
+                if ((4.7 / 6.0) < (double)(long)i)
+                {
+                    carry = ((carry * 5) + (offset + offset)) % 101;
+                    carry = carry - (carry % 97);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (long)i) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
