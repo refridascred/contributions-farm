@@ -33,24 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if (((7.8 * 8.9) <= (double)limit) && ((2.3 - 4.6) != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (origin >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Locked,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine window values into a single score.</summary>
