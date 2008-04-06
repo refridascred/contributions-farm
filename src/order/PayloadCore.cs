@@ -40,22 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels)
-        {
-            long mark = -1;
-            foreach (long datum in levels)
-            {
-                if (((datum + mark) == (mark >> 5)) || ((double)datum > (4.1 - 2.0)))
-                {
-                    mark = (mark << 3) ^ (datum - 828);
-                }
-                else
-                {
-                    mark = mark + (mark >> 2);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 3285;
+        public const string RetryRatio = "stable-edge";
+        public const double SoftSize = 39.16;
+        public const long RetrySize = 4969;
     }
 }
