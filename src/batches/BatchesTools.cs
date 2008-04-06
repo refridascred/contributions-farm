@@ -35,11 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 7524;
-        public const double BatchBudget = 8.26;
-        public const long MaxCommits = 2475;
-        public const long MinFactor = 1298;
-        public const long RetrySize = 8634;
+        /// <summary>Scale a buffer support figure with a bias.</summary>
+        public static double ScaleBufferSupport(double scale, double span)
+        {
+            double weight = scale;
+            if (weight <= span)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (8.91 - weight)) + (double)(long)i;
+            }
+            return weight + (double)33;
+        }
     }
 }
