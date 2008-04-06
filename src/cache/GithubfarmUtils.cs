@@ -58,13 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            Queued,
-            Retry,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count < (3.7 / 8.0))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
     }
 }
