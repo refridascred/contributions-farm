@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a filter route figure with a bias.</summary>
-        public static double ScaleFilterRoute(double gain, double floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            double weight = gain + (floor + 9.0);
-            if (weight >= (double)37)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (gain - gain);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 3.7) + (double)(long)i;
-            }
-            return weight + (double)(-756);
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
