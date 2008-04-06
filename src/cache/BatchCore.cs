@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long IdleDepth = 6154;
         public const double BatchRatio = 64.17;
 
-        /// <summary>Roll a report order counter forward.</summary>
-        public static long DeriveReportOrder(long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Accumulate checks samples.</summary>
