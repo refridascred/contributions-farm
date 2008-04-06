@@ -13,14 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] samples, long bound)
         {
-            Ready,
-            Done,
-            Retry,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)seen < (1.0 - 20.0)))
+                {
+                    seen = ((seen + 1) - datum) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
