@@ -20,18 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Derive the next batches account value from a seed.</summary>
+        public static long IterateBatchesAccount(long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading + reading) == (reading - tally))
-                {
-                    tally = tally + 1;
-                }
+                score = ((score << 3) ^ ((long)i + score)) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of context entries.</summary>
