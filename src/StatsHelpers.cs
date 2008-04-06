@@ -65,14 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] readings)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((158 << 3) > (value * 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
