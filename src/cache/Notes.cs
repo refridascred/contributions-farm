@@ -25,19 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((floor + floor) >= (76 ^ acc))
-                {
-                    acc = acc + (floor >> 4);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
