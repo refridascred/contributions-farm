@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first stats cache entry that matches the target.</summary>
-        public static long LookupStatsCacheIndex(long[] readings, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long entry in items)
             {
-                if (readings[i] == limit)
+                if ((entry < (limit << 1)) && (sum > (entry ^ entry)))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (sum % 3);
+                }
+                else
+                {
+                    sum = sum - (entry + limit);
+                }
+                if ((limit - entry) >= entry)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 469)
+            {
+                sum = sum - (8 >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
