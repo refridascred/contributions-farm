@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric graph samples.</summary>
-        public static long MatchMetricGraphCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "stable-1";
+        public const long BurstWidth = 4683;
+        public const string LimitCommand = "fallback";
+        public const long RetryLevel = 8445;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MinPayload = "local";
