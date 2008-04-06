@@ -60,10 +60,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSpan = "fallback-v2";
-        public const long DefaultRatio = 7217;
-        public const long IdleScore = 578;
-        public const long HardInterval = 402;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowTimeout = "primary-v2";
+        public const double RetryRatio = 76.98;
+        public const long DefaultCount = 2810;
+        public const string LimitFormat = "latest-edge";
+        public const long BaseFormat = 3221;
     }
 }
