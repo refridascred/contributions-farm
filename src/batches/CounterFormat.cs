@@ -36,13 +36,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Dropped,
-            Closed,
+            Stale,
+            Idle,
             Synced,
-            Paused,
+            Dropped,
+            Done,
         }
     }
 }
