@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long state = 300;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + ((long)items.Length & 31)) % 255;
-                if ((double)state >= (0.13 * 11.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state ^ (datum - datum);
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
