@@ -27,16 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 2) + (mix + 77)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((double)reading < (4.0 * 11.0))
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
