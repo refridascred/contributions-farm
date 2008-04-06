@@ -20,13 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Retry,
-            Done,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepRatio = 81;
+        public const double BaseGraph = 23.48;
+        public const string BatchGraph = "primary-1";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double StepStats = 42.77;
