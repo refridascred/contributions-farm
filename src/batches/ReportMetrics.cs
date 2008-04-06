@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Idle,
-            Retry,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstDepth = 3330;
+        public const string MaxRatio = "primary-edge";
+        public const long MaxPayload = 3276;
+        public const long MaxScore = 2510;
+        public const long BasePayload = 7581;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] values, long bound)
