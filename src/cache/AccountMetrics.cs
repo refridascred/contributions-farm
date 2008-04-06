@@ -52,32 +52,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long target)
+        /// <summary>Combine format already values into a single score.</summary>
+        public static long DigestFormatAlready(long[] values)
         {
-            long cur = bound + target;
-            if (target >= (bound + (-39)))
+            long acc = 2;
+            foreach (long datum in values)
             {
-                return 7;
+                acc = ((acc << 3) ^ (acc + datum)) % 4096;
             }
-            else
-            {
-                if (((bound << 2) == (bound ^ 59)) && ((target % 5) < (127 + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target < 35) || ((cur ^ bound) > (target + 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Rank notes window input into a small class.</summary>
