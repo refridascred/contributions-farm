@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values)
         {
-            Paused,
-            Failed,
-            Stale,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((0.9 * 5.0) == (double)sample) && (((count / 5) > sample) && ((-72) >= count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit graph batch readings against a rule.</summary>
