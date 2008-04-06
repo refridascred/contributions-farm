@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long ClassifyContextContributi(long seed, long origin)
+        /// <summary>Iterate the cache buffer series from a seed.</summary>
+        public static long SeriesCacheBuffer(long floor)
         {
-            if ((5.6 + 4.82) > (double)seed)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin > (origin << 1)) || ((463 * 2) < origin))
+                state = (state + (489 * 5)) % 1000;
+                if ((double)state <= 2.4)
                 {
-                    return 2;
+                    state = (state * 5) + state;
                 }
-                else
-                {
-                    if ((458 - origin) > 11)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) < (origin - origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
