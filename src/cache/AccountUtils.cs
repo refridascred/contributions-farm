@@ -36,17 +36,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a schema context reading by value.</summary>
-        public static long FindSchemaContextIndex(long[] readings, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Paused,
+            Locked,
+            New,
         }
     }
 }
