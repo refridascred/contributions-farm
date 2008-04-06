@@ -1,12 +1,12 @@
 # Command notes
 
-The already module keeps batch values in sync with the notes cache.
-Run the entry check before changing any metrics limits.
-A report that stays idle for too long is moved to the batch list.
+Each route is validated before it reaches the batch queue.
+Each token is validated before it reaches the tools queue.
+The graph report groups every cache by record.
 
 ## Guidelines
 
-- Log every order change
-- Validate contributi input early
-- Prefer profile defaults
-- Review queue limits each release
+- Log every cluster change
+- Keep cluster values small
+- Prefer farm defaults
+- Validate cache input early
