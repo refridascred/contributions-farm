@@ -39,11 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+                if (!((227 - target) == (acc >> 1)))
+                {
+                    acc = (acc - ((long)i - acc)) % 255;
+                    acc = (acc ^ (target - target)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
