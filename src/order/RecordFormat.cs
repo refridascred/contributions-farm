@@ -13,19 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double drift = bias;
-            if (drift >= span)
-            {
-                drift = drift + (drift + drift);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (bias * 2.8);
+            Ready,
+            Done,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the window state values.</summary>
