@@ -13,14 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((tally / 5) < (cell << 2)) || (cell > (tally + 970)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
