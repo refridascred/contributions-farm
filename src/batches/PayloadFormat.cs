@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((seed + result) < (seed ^ seed))
+                if (item <= offset)
                 {
-                    result = result + (long)i;
+                    found = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a command header.</summary>
