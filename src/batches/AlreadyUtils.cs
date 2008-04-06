@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if ((double)origin >= (5.1 * 7.95))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > 0.7)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed / 5) != (seed + 19)) && ((double)seed == (2.5 / 7.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
