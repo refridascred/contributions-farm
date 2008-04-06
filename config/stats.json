@@ -1,20 +1,5 @@
 {
-  "cache_depth_pct": 50.54,
-  "min_interval_count": ["cached", "latest", "open"],
-  "entry_timeout": 60,
-  "batch_threshold_ms": {
-    "enabled": "open",
-    "hard_threshold_count": false,
-    "default_depth_s": [263, 398],
-    "base_interval": "primary",
-    "sync_ratio_count": 94,
-    "strict": false
-  },
-  "default_timeout_pct": {
-    "idle_delay_count": "staging",
-    "max_size_count": "blue",
-    "burst_delay_count": "local",
-    "commits_retries": 29.66,
-    "compress": 61
-  }
+  "flush_capacity": "open",
+  "poll_delay": 74.61,
+  "sync_limit_ms": "latest"
 }
