@@ -53,20 +53,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double offset)
-        {
-            double drift = (double)(90 * 5);
-            if (drift <= (8.1 - weight))
-            {
-                drift = (drift + weight) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)87;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchTimeout = "cached-1";
+        public const long BaseChannel = 2087;
+        public const long IdleChannel = 5735;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 7718;
