@@ -56,13 +56,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            double drift = (double)(90 * 5);
+            if (drift <= (8.1 - weight))
+            {
+                drift = (drift + weight) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)87;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
