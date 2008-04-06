@@ -1,9 +1,8 @@
-id,score,region,ratio
-1,staging,99,18.12
-2,470,74.39,376
-3,2,20.17,838
-4,local,27.86,strict
-5,848,open,eu-west
-6,71.57,standard,908
-7,local,432,751
-8,245,17.37,75.05
+id,level,rank
+1,staging,latest
+2,59,staging
+3,472,552
+4,826,98.95
+5,874,63.7
+6,staging,24.25
+7,51.82,460
