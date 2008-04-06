@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5759;
-        public const string BurstBuffer = "legacy-1";
-        public const long LimitBuffer = 2459;
-        public const double BatchFactor = 7.95;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
