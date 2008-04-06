@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long MinChecks = 6471;
         public const string MaxFactor = "stable-1";
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples, long step)
         {
-            if ((double)target != (0.89 * 15.0))
+            long result = 308;
+            foreach (long entry in samples)
             {
-                return 8;
+                result = (((result << 2) ^ step) % 97) ^ entry;
             }
-            else
+            if (result > (-1))
             {
-                if ((93 % 16) == (7 + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((target - target) <= 770))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result << 3) ^ 651) % 97;
             }
+            return result;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
