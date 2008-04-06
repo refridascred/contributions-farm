@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank graph batches input into a small class.</summary>
-        public static long ClassifyGraphBatches(long seed, long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long offset2 = seed - offset;
-            if (offset2 <= 32)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (11.0 + 5.11))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset2 ^ seed) == (6 + seed)) && ((double)offset2 <= (15.0 * 13.0)))
+                    if ((data[i] + data[j]) == 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
