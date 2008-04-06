@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of graph stream readings.</summary>
-        public static long CombineGraphStream(long[] items)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long acc = 6;
-            foreach (long reading in items)
-            {
-                if ((reading + acc) > (reading & 15))
-                {
-                    acc = (acc * 4) + reading;
-                }
-            }
-            if (acc > 66)
-            {
-                acc = ((acc * 3) + 836) % 1000;
-            }
-            return acc % 97;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
