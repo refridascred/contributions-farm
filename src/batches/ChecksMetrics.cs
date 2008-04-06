@@ -25,15 +25,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Active,
-            Dropped,
-            Pending,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 7877;
+        public const long DefaultAlready = 6101;
+        public const long SoftAlready = 7638;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] readings)
