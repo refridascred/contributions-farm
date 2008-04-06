@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale - (gain - scale);
         }
 
-        /// <summary>Check that every channel record entry stays within the limit.</summary>
-        public static bool ValidateChannelRecordBounds(long[] readings, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry >= limit)
+                if ((floor >> 4) > (floor & 3))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
