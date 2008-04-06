@@ -35,19 +35,21 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] data, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
