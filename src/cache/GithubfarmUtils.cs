@@ -32,13 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Failed,
+            Idle,
+            Paused,
+            Draft,
             Retry,
             Active,
-            Stale,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
