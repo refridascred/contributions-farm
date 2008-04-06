@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long TallyEditorMetricMatches(long[] data)
+        /// <summary>Locate a farm record reading by value.</summary>
+        public static long FindFarmRecordIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < tally)
+                if (levels[i] <= seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
