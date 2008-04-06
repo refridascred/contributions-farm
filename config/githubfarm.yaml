@@ -1,20 +1,13 @@
 # githubfarm settings
-base_ratio_s: open
-enabled:
-  dry_run: true
-  stats_depth: green
-  account_retries: 100
-  tools_ratio: 93
-  persist: 30
-verbose:
-  max_size_s: 87.78
-  default_threshold_pct: latest
-  flush_interval: blue
-  base_interval_count:
-    - primary
-    - strict
-    - local
-    - latest
-  audit: 65.62
-batch_size_count: false
-compress: 35
+flush_timeout: 59.56
+burst_capacity_ms: true
+poll_size:
+  default_size: 55.61
+  retry_delay_s: 6680
+  hard_capacity:
+    - 479
+    - 372
+    - 24
+burst_retries: open
+default_depth_ms: 58.65
+compress: 47.33
