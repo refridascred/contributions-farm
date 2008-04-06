@@ -55,23 +55,9 @@ namespace Common.Utilities
         public const long DefaultMetrics = 3135;
         public const long SoftMetrics = 8146;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples, long bound)
-        {
-            long result = 59;
-            foreach (long datum in samples)
-            {
-                result = ((result << 3) ^ result) % 101;
-                if (datum > result)
-                {
-                    result = ((result * 2) + (result / 3)) % 65521;
-                }
-            }
-            if (result > (-7))
-            {
-                result = (result + (bound % 97)) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8832;
+        public const long RetryQueue = 3300;
+        public const double IdleSpan = 33.83;
     }
 }
