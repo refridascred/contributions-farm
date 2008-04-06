@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double bias)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double ratio = bias / 3.0;
-            if (ratio <= bias)
-            {
-                ratio = ratio + (double)65;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 0.6) + (double)(long)i;
-            }
-            return ratio + (rate + bias);
+            Dropped,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
