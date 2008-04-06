@@ -1,12 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT
+    label TEXT,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (region, score, label) VALUES ('latest', 69.52, 'blue');
-INSERT INTO commits_records (region, score, label) VALUES ('strict', 79.31, 'staging');
+INSERT INTO commits_records (label, level, region) VALUES ('eu-west', 97, 'blue');
+INSERT INTO commits_records (label, level, region) VALUES ('local', 44, 'blue');
+INSERT INTO commits_records (label, level, region) VALUES ('legacy', 83, 'staging');
