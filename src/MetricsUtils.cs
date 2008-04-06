@@ -45,17 +45,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a entry counter sample.</summary>
-        public static long FindEntryCounterIndex(long[] items, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] < origin)
+                if (!((double)411 != (double)entry))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
