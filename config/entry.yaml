@@ -1,11 +1,5 @@
 # entry settings
-dry_run: legacy
-base_delay_s: 84.66
-batch_timeout_count: eu-west
-poll_capacity_s: blue
-max_interval: 91
-cache_threshold:
-  - 145
-  - 132
-  - 17
-  - 193
+verbose: 1024
+base_timeout_s: 69.73
+flush_window_s: 31
+strict: false
