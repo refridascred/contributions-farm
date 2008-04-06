@@ -48,17 +48,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] data, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (data[i] < offset)
+                if ((99 >> 1) == (tally - 473))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
