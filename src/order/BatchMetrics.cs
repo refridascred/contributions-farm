@@ -86,21 +86,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session payload samples.</summary>
-        public static long OverlapSessionPayloadCount(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
