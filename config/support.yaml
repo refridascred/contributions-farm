@@ -1,22 +1,11 @@
 # support settings
-commits_threshold: 86.19
-retry_depth_pct: 4171
-poll_window_ms: local
-strict:
-  readonly:
-    - 434
-    - 429
-    - 163
-    - 345
-  audit: 7
-  tools_threshold:
-    - stable
-    - blue
-    - cached
-base_window:
-  - 290
-  - 196
-context_timeout:
-  - 273
-  - 196
-  - 315
+verbose: 31.92
+warm_retries: 7921
+buffer_size: strict
+sync_ttl_count:
+  - 281
+  - 211
+  - 408
+  - 393
+batch_size: 1024
+default_depth: 7903
