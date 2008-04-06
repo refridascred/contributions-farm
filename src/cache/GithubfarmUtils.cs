@@ -58,18 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count < (3.7 / 8.0))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
