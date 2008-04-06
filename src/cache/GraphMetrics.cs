@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 8132;
-        public const long MaxStats = 291;
-        public const string StepStats = "standard-1";
-        public const long WindowStats = 9029;
+        /// <summary>Match up command already samples.</summary>
+        public static long CompareCommandAlreadyCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
