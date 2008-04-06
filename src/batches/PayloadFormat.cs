@@ -43,25 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long edge = target - step;
-            if (((double)edge == (11.0 / 2.0)) && ((1.9 / 7.0) != (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (edge - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Synced,
+            Active,
+            Queued,
+            Pending,
         }
     }
 }
