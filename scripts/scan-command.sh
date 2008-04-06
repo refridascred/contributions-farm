@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=463
+mode="${1:-legacy}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open staging legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=484
 log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
