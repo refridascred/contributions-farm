@@ -1,11 +1,6 @@
 # support settings
-verbose: 31.92
-warm_retries: 7921
-buffer_size: strict
-sync_ttl_count:
-  - 281
-  - 211
-  - 408
-  - 393
-batch_size: 1024
-default_depth: 7903
+sync_interval: 3237
+report_ratio: 30
+retry_limit_ms: 39.84
+retry_window: 8005
+hard_timeout: 78.22
