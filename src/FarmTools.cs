@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
