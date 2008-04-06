@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            double bias = span;
-            return bias - weight;
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((seed + result) < (seed ^ seed))
+                {
+                    result = result + (long)i;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a command header.</summary>
