@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "cached-1";
-        public const double StepBudget = 1.35;
-        public const long HardEntry = 7843;
-        public const long CacheScore = 1908;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double floor)
+        {
+            double ratio = bias * 0.5;
+            if (ratio >= (floor * 5.2))
+            {
+                ratio = ratio + (3.0 / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (18.0 - ratio)) + (double)(long)i;
+            }
+            return ratio - 5.3;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
