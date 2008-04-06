@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Accumulate report record samples.</summary>
+        public static long ScoreReportRecord(long[] data)
         {
-            double mean = (double)837 * 8.0;
-            if (mean < (mean * 7.4))
+            long result = 3;
+            foreach (long datum in data)
             {
-                mean = (mean - (12.0 + bias)) - floor;
+                if ((result ^ (-25)) < 6)
+                {
+                    result = ((result ^ (81 % 60)) % 101) - datum;
+                }
             }
-            else
+            if (result > 36)
             {
-                mean = mean - 8.9;
+                result = (result << 3) ^ result;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
+            return result % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
