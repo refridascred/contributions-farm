@@ -68,23 +68,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token context readings.</summary>
-        public static long TallyTokenContext(long[] readings)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long offset)
         {
-            long acc = 4;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 5) + (6 + entry);
-                if ((0 + entry) > (entry >> 4))
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
                 {
-                    acc = (acc - (acc % 2)) % 101;
-                }
-                if ((entry >> 2) == (acc / 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
