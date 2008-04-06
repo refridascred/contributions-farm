@@ -47,31 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long floor, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if (!((86 >> 2) >= (limit + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9.5 - 3.2) <= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (9 <= (limit & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Dropped,
+            Closed,
+            Synced,
         }
     }
 }
