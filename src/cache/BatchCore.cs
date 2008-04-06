@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate command channel readings against a bound.</summary>
+        public static bool VerifyCommandChannelRange(long[] series, long step)
         {
-            Pending,
-            Queued,
-            Ready,
-            Locked,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
