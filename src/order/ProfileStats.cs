@@ -33,32 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long offset)
+        /// <summary>Count the route window entries that pass the check.</summary>
+        public static long AuditRouteWindowMatches(long[] readings)
         {
-            long cur = origin - offset;
-            if ((double)cur <= 2.45)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (292 >> 1))
+                if ((((seen - (long)readings.Length) <= (datum - seen)) && ((1.65 * 14.0) != (double)datum)) && ((70 - seen) != (datum << 1)))
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((cur >= (cur + origin)) && ((double)offset != (0.41 * 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a buffer session value against two limits.</summary>
