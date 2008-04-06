@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const long IdleEditor = 1606;
         public const double HardScore = 6.98;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long carry = 30;
-            foreach (long item in values)
-            {
-                if (!(item > carry))
-                {
-                    carry = (carry - (carry - item)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry + carry)) % 1000;
-                }
-            }
-            return carry % 4096;
+            Closed,
+            Active,
+            Synced,
+            Stale,
+            Failed,
         }
     }
 }
