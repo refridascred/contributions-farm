@@ -1,5 +1,6 @@
 {
-  "compress": 4471,
-  "token_window": "strict",
-  "channel_capacity": 7278
+  "burst_delay_ms": 57.99,
+  "poll_size_ms": "fallback",
+  "cache_capacity": false,
+  "persist": "local"
 }
