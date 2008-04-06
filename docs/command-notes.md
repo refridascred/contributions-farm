@@ -1,12 +1,14 @@
 # Command notes
 
-When a session fails, the command handler retries a few times before giving up.
-Each schema is validated before it reaches the entry queue.
-The farm report groups every profile by report.
+Use context settings to tune how often context data is refreshed.
+Run the channel check before changing any checks limits.
+
+When a report fails, the batches handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
+A layout that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer tools defaults
-- Review stream limits each release
-- Keep layout values small
+- Document new command fields
+- Keep already values small
+- Prefer order defaults
