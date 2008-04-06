@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+for item in latest local fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -21,6 +25,3 @@ while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=441
-log "limit is ${COMMAND_LIMIT}"
