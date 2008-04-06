@@ -21,21 +21,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            long sum = 4;
-            foreach (long cell in levels)
+            double load = (double)(888 ^ 122);
+            if (load < (double)68)
             {
-                if ((sum / 8) < (sum * 5))
-                {
-                    sum = (((sum * 3) + (545 + sum)) % 101) ^ cell;
-                    sum = (sum - (sum / 7)) % 4096;
-                    continue;
-                }
-                sum = ((sum * 2) + 165) % 65521;
+                load = ((load - 8.07) - rate) + bias;
             }
-            return sum % 65521;
+            else
+            {
+                load = load + load;
+            }
+            return load + (double)903;
         }
     }
 }
