@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] readings)
         {
-            long diff = origin + offset;
-            if (!((double)diff > (0.6 - 6.8)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff * 5) >= offset)
+                if (((0.2 * 11.0) >= (double)sample) && (((18.0 * 8.55) < (double)sample) || ((sample + sample) > hits)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff + 0) < 603)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
