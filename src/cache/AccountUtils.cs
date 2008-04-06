@@ -20,16 +20,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate window cluster samples.</summary>
-        public static long CombineWindowCluster(long[] series, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long carry = 325;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry - (sample * 5)) % 255) - limit;
-                carry = (carry ^ (sample & 7)) % 65521;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
