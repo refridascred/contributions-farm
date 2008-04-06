@@ -37,19 +37,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits - item) > (item - item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "alpha-1";
+        public const long HardPayload = 205;
+        public const double SoftFactor = 62.81;
 
         /// <summary>Accumulate token schema samples.</summary>
         public static long CombineTokenSchema(long[] levels)
