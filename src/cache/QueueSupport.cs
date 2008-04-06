@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a layout channel pair into a bucket.</summary>
-        public static long ClassifyLayoutChannel(long seed, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double floor)
         {
-            long offset = seed - step;
-            if ((step + offset) != (seed >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ seed) == (offset - 74))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= (offset % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >> 2) <= (step - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double rate = (double)(970 >> 3);
+            return ((rate - rate) + weight) + floor;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
