@@ -63,13 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples, long limit)
         {
-            Failed,
-            Paused,
-            Dropped,
-            New,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)limit <= (5.93 - 1.0))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
