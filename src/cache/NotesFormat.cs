@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const string HardToken = "cached-v2";
         public const long DefaultSize = 1163;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = 20;
+            foreach (long value in data)
             {
-                if ((913 % 64) == (sample + sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor * 5) + (anchor - anchor)) % 1000) ^ value;
             }
-            return seen;
+            if (anchor > 429)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
