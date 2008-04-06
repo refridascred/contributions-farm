@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] data, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally - 822) > (seed + item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
