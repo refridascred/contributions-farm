@@ -23,19 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = 23;
-            foreach (long datum in items)
-            {
-                sum = (sum - (datum / 5)) % 97;
-                if (((datum % 24) != (datum + datum)) && ((datum + datum) <= sum))
-                {
-                    sum = (sum + (datum & 63)) % 97;
-                }
-            }
-            return sum % 4096;
+            Locked,
+            Failed,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
