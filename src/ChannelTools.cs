@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate - (5.8 / 3.0);
         }
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long SeriesSchemaQueue(long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((2 * 4) != (long)i)
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a cluster record.</summary>
