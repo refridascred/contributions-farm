@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] levels)
-        {
-            long sum = 70;
-            foreach (long reading in levels)
-            {
-                if ((reading / 6) > sum)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum - (reading + 562);
-                }
-                sum = (sum + ((-5) + reading)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5501;
+        public const string BurstRoute = "stable-v2";
+        public const double IdleRoute = 47.1;
+        public const string MinRoute = "stable-edge";
+        public const long SoftRoute = 7905;
 
         /// <summary>Derive the next checks contributi value from a seed.</summary>
         public static long SeriesChecksContributi(long target)
