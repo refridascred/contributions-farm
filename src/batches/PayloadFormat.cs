@@ -19,18 +19,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] levels, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin >= (7.9 - 2.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
