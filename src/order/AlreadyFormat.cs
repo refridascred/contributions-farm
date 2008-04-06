@@ -60,11 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3190;
-        public const double RetryDepth = 72.87;
-        public const long LimitEditor = 664;
-        public const string BatchEditor = "legacy";
-        public const long DefaultCount = 9769;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items, long floor)
+        {
+            long sum = 7;
+            foreach (long datum in items)
+            {
+                sum = (sum ^ (sum << 3)) - floor;
+                if (!(sum > (datum - 167)))
+                {
+                    sum = (sum + datum) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
