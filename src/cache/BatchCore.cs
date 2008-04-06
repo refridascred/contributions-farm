@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const string RetryChannel = "staging-1";
         public const string MaxChannel = "standard-v2";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
