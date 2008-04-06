@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double gain2 = (double)(26 + 457);
-            if (gain2 <= 19.0)
-            {
-                gain2 = ((gain2 + gain2) + gain) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (double)19) + (double)(long)i;
-            }
-            return gain2 - (double)3;
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
