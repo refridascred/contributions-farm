@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record farm readings against a bound.</summary>
-        public static bool CheckRecordFarmLimits(long[] levels, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Dropped,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
