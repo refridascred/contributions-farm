@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSize = "latest-edge";
+        public const long WindowLevel = 5758;
+        public const double WindowBudget = 11.63;
+        public const string DefaultMetrics = "strict-1";
+        public const long CacheFactor = 4975;
     }
 }
