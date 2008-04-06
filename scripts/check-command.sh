@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict green eu-west stable; do
+COMMAND_LIMIT=322
+log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy cached; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
