@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool ValidateGraphCounterRange(long[] items, long bound)
+        /// <summary>Count batches buffer pairs that satisfy a relation.</summary>
+        public static long PairBatchesBufferCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Grade a format payload value against two limits.</summary>
