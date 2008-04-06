@@ -59,18 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] levels, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally >> 3) < bound)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit order counter readings against a rule.</summary>
