@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
