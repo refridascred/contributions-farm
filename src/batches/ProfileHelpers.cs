@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const long MinBatches = 828;
         public const long BatchTimeout = 5672;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "primary-edge";
-        public const double HardInterval = 33.15;
-        public const double BatchCount = 66.62;
-        public const long StepMetric = 2456;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double weight, double bias)
+        {
+            double gain = (double)((-33) * 2);
+            return ((gain - (double)259) + weight) + bias;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] data, long offset)
