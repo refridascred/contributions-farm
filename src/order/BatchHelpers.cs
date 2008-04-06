@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long origin)
+        /// <summary>Find the first graph batch entry that matches the target.</summary>
+        public static long FindGraphBatchIndex(long[] samples, long step)
         {
-            long state = 6;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell - (long)levels.Length) == (cell >> 2)))
+                if (samples[i] >= step)
                 {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = (state - origin) % 97;
-                    state = (state << 3) ^ (origin + state);
-                }
-                if ((cell & 1) != (origin / 2))
-                {
-                    state = state - (cell - cell);
+                    return (long)i;
                 }
             }
-            if (state > 5)
-            {
-                state = (state * 2) + (725 + origin);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit batch cluster readings against a rule.</summary>
