@@ -36,17 +36,9 @@ namespace Common.Utilities
         public const long SoftLevel = 325;
         public const long BatchContext = 5557;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinCount = 3755;
+        public const long MaxTimeout = 9745;
+        public const double CacheContext = 14.01;
     }
 }
