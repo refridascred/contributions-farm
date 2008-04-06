@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Closed,
-            New,
-            Paused,
-            Retry,
-            Done,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
