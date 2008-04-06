@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally >> 2) != (tally % 10))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
