@@ -1,43 +1,16 @@
 # support settings
-audit: 27.97
-cache_ttl_s: 40.43
-window_ratio:
-  already_timeout: primary
-  retry_limit_pct:
-    flush_timeout_pct:
-      - legacy
-      - fallback
-      - local
-      - cached
-    readonly: 43
-    tools_ttl:
-      - cached
-      - cached
-      - fallback
-      - stable
-    compress:
-      - 321
-      - 157
-    metric_capacity: true
-  default_window_s: legacy
-  flush_size_s:
-    default_retries_count: true
-    hard_depth: 19
-    editor_delay: 0.33
-    retry_capacity: cached
-    idle_retries:
-      - 8
-      - 302
-      - 189
-  default_threshold: 41.06
-sync_retries:
-  sync_timeout_pct: false
-  poll_ratio: true
-  buffer_limit: 30
-  verbose: blue
-  persist: 10.18
-  readonly: edge
-idle_depth: 22
-warm_limit_pct:
-  - stable
-  - blue
+cache_ratio:
+  warm_limit: edge
+  audit: 60
+  batch_timeout: false
+cache_retries_count:
+  readonly: 33.43
+  sync_depth_s: green
+  poll_threshold: open
+  default_retries: stable
+  metric_ratio: green
+min_limit:
+  cache_ttl: 81.11
+  verbose: staging
+  cache_ratio_ms: 6382
+sync_capacity_pct: 30
