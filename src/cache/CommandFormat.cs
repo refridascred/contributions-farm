@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] readings, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long sum = 36;
-            foreach (long entry in readings)
-            {
-                if (((sum - (-78)) > (sum ^ 0)) || ((entry & 7) < (65 % 2)))
-                {
-                    sum = sum - (entry / 2);
-                }
-                else
-                {
-                    sum = (sum ^ (target & 127)) % 1000;
-                }
-            }
-            return sum % 65521;
+            Pending,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
