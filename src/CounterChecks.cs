@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 8704;
-        public const long IdleLayout = 6021;
-        public const string BaseLayout = "local";
-        public const long BurstLayout = 1843;
-        public const long BatchSpan = 3633;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            New,
+            Paused,
+            Active,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long seed, long bound)
