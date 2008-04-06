@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest edge; do
+COMMAND_LIMIT=73
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west green primary; do
     log "checking ${item}"
 done
