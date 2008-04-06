@@ -1,13 +1,8 @@
 {
-  "retry_ratio": {
-    "token_threshold": 41,
-    "soft_window": 52.08,
-    "persist": 5098,
-    "editor_depth": true
-  },
-  "verbose": true,
-  "max_capacity_count": false,
-  "order_window": false,
-  "compress": 6012,
-  "batch_window_count": false
+  "dry_run": "cached",
+  "retry_delay_pct": 2236,
+  "base_ttl_pct": "open",
+  "soft_retries_pct": 7981,
+  "hard_threshold_pct": [40, 23],
+  "counter_capacity": [283, 180, 279]
 }
