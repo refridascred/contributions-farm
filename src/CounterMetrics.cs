@@ -25,19 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account githubfarm samples.</summary>
-        public static long TotalAccountGithubfarm(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            long state = -578;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (state + state)) + sample;
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 31)
-            {
-                state = ((state * 5) + state) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
