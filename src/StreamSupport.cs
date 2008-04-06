@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples)
         {
-            double ratio = bias * 0.5;
-            if (ratio >= (floor * 5.2))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio + (3.0 / 2.0);
+                if ((tally * 4) < (tally / 3))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (18.0 - ratio)) + (double)(long)i;
-            }
-            return ratio - 5.3;
+            return tally;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
