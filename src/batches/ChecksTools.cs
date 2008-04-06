@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
