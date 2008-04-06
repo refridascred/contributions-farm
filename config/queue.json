@@ -1,20 +1,5 @@
 {
-  "cache_ttl": 88.01,
-  "tools_depth": "blue",
-  "base_window_pct": {
-    "strict": {
-      "sync_timeout_ms": 15,
-      "poll_retries_ms": ["standard", "primary", "stable"],
-      "contributi_capacity": true,
-      "hard_interval": 72
-    },
-    "idle_window_count": "legacy",
-    "soft_ratio": ["stable", "local"],
-    "burst_delay_s": "edge",
-    "sync_depth": ["cached", "primary", "edge"],
-    "warm_depth_ms": "strict"
-  },
-  "stats_size": "strict",
-  "already_window": 9366,
-  "stats_capacity": 36.43
+  "flush_timeout_pct": "stable",
+  "report_limit": 1712,
+  "checks_timeout": 7554
 }
