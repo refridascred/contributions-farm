@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            double scale = bias;
+            if (scale < offset)
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
