@@ -33,14 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Draft,
-            Retry,
-            Failed,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 5576;
+        public const long MinFactor = 9822;
+        public const long RetryLevel = 5006;
+        public const double MinEditor = 88.44;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesOutliers(long[] data, long origin)
