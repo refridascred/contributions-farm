@@ -33,16 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] readings, long target)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            long mark = 50;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 3) + sample) + limit;
-                mark = mark ^ sample;
+                long seen = target ^ (mark + 30);
+                mark = (mark << 3) ^ (seen % 5);
+                if (((target * 2) == (target + mark)) && ((sample ^ target) < (sample * 4)))
+                {
+                    mark = mark + (mark >> 3);
+                }
             }
-            return mark % 97;
+            return mark;
         }
     }
 }
