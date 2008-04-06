@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const string DefaultChecks = "standard-edge";
         public const long LimitChecks = 8016;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long origin)
         {
-            long matches = 0;
+            bool ok = true;
             foreach (long entry in levels)
             {
-                if (((matches * 5) >= (matches >> 3)) || (step >= (entry * 2)))
+                if (entry <= origin)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up entry samples.</summary>
