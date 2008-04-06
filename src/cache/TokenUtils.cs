@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long bound)
+        /// <summary>Combine commits counter values into a single score.</summary>
+        public static long CombineCommitsCounter(long[] values, long target)
         {
-            if (!(bound < (bound << 3)))
+            long anchor = 3;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target < (3.4 - 8.3)) || ((6.6 * 5.43) != (double)target))
+                if (!((target / 5) != (anchor % 16)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - 37) <= target) && (bound >= (target + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (((anchor << 2) ^ 644) % 1000) ^ reading;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a token summary.</summary>
