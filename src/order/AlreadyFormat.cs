@@ -60,19 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items, long floor)
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long CountMetricMetricsOutliers(long[] values)
         {
-            long sum = 7;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                sum = (sum ^ (sum << 3)) - floor;
-                if (!(sum > (datum - 167)))
+                if (((5.0 + 0.5) >= (double)item) || ((12.0 / 2.0) > (double)item))
                 {
-                    sum = (sum + datum) % 97;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
