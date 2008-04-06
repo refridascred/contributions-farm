@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double ratio, double floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            double drift = ratio;
-            if (drift > (12.0 / 2.0))
+            if (((target & 7) >= 53) && (target < step))
             {
-                drift = (drift - drift) + floor;
+                return 6;
             }
             else
             {
-                drift = drift - ratio;
+                if ((double)step < (4.8 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((697 - step) < (target << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 11.0) + (double)(long)i;
-            }
-            return drift + (double)(-199);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
