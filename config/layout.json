@@ -1,17 +1,7 @@
 {
-  "support_window": 12.18,
-  "readonly": {
-    "verbose": {
-      "burst_limit": 81.56,
-      "retry_window": 16.52,
-      "poll_limit": "legacy",
-      "window_window": 2498,
-      "warm_size": "green"
-    },
-    "support_retries": 250,
-    "warm_retries_ms": 7.6,
-    "metric_ttl": 500
-  },
-  "flush_threshold_ms": 26.42,
-  "persist": 95
+  "verbose": "edge",
+  "cache_capacity_pct": false,
+  "batch_depth_ms": ["legacy", "staging", "primary", "staging"],
+  "warm_threshold_s": "edge",
+  "base_timeout_s": "blue"
 }
