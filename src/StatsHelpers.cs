@@ -14,22 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 7444;
+        public const long DefaultFactor = 8659;
+        public const double BaseScore = 86.52;
+        public const long RetryFilter = 7966;
 
         /// <summary>Locate a account farm reading by value.</summary>
         public static long LookupAccountFarmIndex(long[] samples, long step)
