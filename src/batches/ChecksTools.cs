@@ -35,18 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report format entries that pass the check.</summary>
-        public static long TallyReportFormatOutliers(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (matches < (matches + datum))
+                if ((bound >> 5) < mark)
                 {
-                    matches = matches + 2;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
