@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every schema cluster entry stays within the limit.</summary>
+        public static bool CheckSchemaClusterBounds(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of counter profile entries.</summary>
