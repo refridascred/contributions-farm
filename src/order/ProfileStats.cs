@@ -42,15 +42,17 @@ namespace Common.Utilities
         public const long SoftRatio = 5009;
         public const long WindowEntry = 8077;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            double mean = scale;
-            if (mean < bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (13.0 * 7.0);
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (bias * 5.88);
+            return -1;
         }
     }
 }
