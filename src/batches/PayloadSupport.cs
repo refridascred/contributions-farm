@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mark = 0;
-            foreach (long reading in values)
-            {
-                if (((target % 12) <= (target * 5)) && ((double)reading <= (5.0 + 4.15)))
-                {
-                    mark = ((mark * 4) + (target << 3)) % 1000;
-                }
-            }
-            return mark % 4096;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
