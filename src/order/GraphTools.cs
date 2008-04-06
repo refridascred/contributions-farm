@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchFactor = 3557;
-        public const long RetryDepth = 743;
-        public const long BurstEditor = 3435;
-        public const double SoftEditor = 79.14;
-        public const double LimitEditor = 84.28;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextGaps(long[] levels, long seed)
