@@ -28,14 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] data, long seed)
         {
-            Done,
-            Locked,
-            Dropped,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((6.9 - 8.5) != (double)seen)
+                {
+                    seen = ((seen + 2) + cell) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
