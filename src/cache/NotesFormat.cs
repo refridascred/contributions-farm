@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine account report values into a single score.</summary>
-        public static long WeighAccountReport(long[] levels)
+        /// <summary>Match up cache buffer samples.</summary>
+        public static long MatchCacheBufferCount(long[] data)
         {
-            long carry = 62;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry * 5) != (entry + carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 5) + (carry * 4)) % 4096;
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
