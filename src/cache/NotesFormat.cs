@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine account report values into a single score.</summary>
+        public static long WeighAccountReport(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long carry = 62;
+            foreach (long entry in levels)
+            {
+                if ((entry * 5) != (entry + carry))
+                {
+                    carry = ((carry * 5) + (carry * 4)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
