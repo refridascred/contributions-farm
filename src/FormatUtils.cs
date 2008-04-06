@@ -37,18 +37,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Derive the next queue graph value from a seed.</summary>
+        public static long SeriesQueueGraph(long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((3 / 6) >= (6 ^ value)) && (hits >= (value - hits))) || ((836 & 255) != (value ^ hits)))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
