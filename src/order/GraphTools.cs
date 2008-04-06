@@ -15,31 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            if (32 > floor)
+            double ratio = (double)(38 + 494);
+            if (ratio <= offset)
             {
-                return 4;
+                ratio = (ratio + (ratio * 0.6)) - scale;
             }
             else
             {
-                if (target <= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 1) > (19 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                ratio = ratio + ratio;
             }
+            return ratio + (offset - ratio);
         }
 
         /// <summary>Adjust a batches reading.</summary>
