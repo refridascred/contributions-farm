@@ -1,8 +1,9 @@
 # support settings
-audit: 8407
-warm_depth:
-  max_ratio: latest
-  base_delay: edge
-  retry_ttl_s: blue
-already_timeout: 250
-max_threshold_count: cached
+min_threshold_ms: 26.22
+batch_ttl_ms: fallback
+strict:
+  - 21
+  - 249
+  - 412
+  - 204
+warm_ttl_count: 88.92
