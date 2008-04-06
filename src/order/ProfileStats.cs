@@ -27,22 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < 8.0)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
