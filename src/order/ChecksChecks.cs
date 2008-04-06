@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const double IdleLevel = 20.91;
         public const long IdleRecord = 6182;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            double ratio = (double)(8 + (-289));
+            if (ratio > (ratio * 6.3))
+            {
+                ratio = ratio + (double)(-492);
+            }
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio - (offset + 9.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
