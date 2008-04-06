@@ -30,11 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 9763;
-        public const double IdleFactor = 8.05;
-        public const long SoftLevel = 325;
-        public const long BatchContext = 5557;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Draft,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinCount = 3755;
