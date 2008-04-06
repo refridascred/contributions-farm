@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] values, long target)
         {
-            bool ready = true;
+            bool valid = true;
             foreach (long item in values)
             {
-                if (item != floor)
+                if (item > target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Look up the position of a cache session sample.</summary>
