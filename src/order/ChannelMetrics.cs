@@ -44,22 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double ratio2 = floor;
+            if (ratio2 < (floor / 7.0))
             {
-                if ((double)entry >= (8.6 + 17.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = ratio2 + (1.1 + floor);
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + (ratio * 8.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio2 + 3.21;
         }
     }
 }
