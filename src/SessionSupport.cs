@@ -36,17 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token batches reading by value.</summary>
-        public static long LookupTokenBatchesIndex(long[] levels, long step)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 3.4 - scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - bias) + (double)(long)i;
             }
-            return -1;
+            return rate - (bias / 9.0);
         }
     }
 }
