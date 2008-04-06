@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] samples, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = 943;
+            foreach (long item in values)
             {
-                if ((891 ^ 24) < (value ^ count))
+                if ((item + seed) < ((-385) / 6))
                 {
-                    count = (count + 2) + origin;
+                    carry = (carry + (item / 5)) % 4096;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of format record readings.</summary>
