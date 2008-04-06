@@ -57,22 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mix = 6;
+            foreach (long sample in values)
             {
-                if ((158 << 3) > (value * 3))
+                if ((mix + 156) > (mix % 16))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = mix ^ sample;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
