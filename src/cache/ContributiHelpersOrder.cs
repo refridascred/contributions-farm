@@ -14,19 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (step - carry)) % 4096;
-                carry = carry ^ (carry >> 1);
-                carry = carry + (step + 637);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxCount = "cached";
+        public const double BaseInterval = 30.39;
+        public const double IdleRecord = 36.34;
+        public const double CacheInterval = 41.11;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] series)
