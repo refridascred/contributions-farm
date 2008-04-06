@@ -22,20 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer stats value from a seed.</summary>
-        public static long SeriesBufferStats(long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((79 >> 4) >= origin)
-                {
-                    score = score - (score & 63);
-                    score = score + (origin ^ score);
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Dropped,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the filter mode values.</summary>
