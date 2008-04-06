@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a batches filter reading.</summary>
-        public static double BlendBatchesFilter(double rate, double span)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double drift = (double)(217 - 52);
-            if (drift <= span)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift - (drift / 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (rate * 17.0);
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
