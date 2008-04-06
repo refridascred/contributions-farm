@@ -21,39 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] items, long step)
         {
-            long lane = floor ^ seed;
-            if ((seed - 6) > (floor + seed))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9 / 7) == (floor % 24))
+                if (datum >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)lane < (3.48 + 1.7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (0 > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a route summary.</summary>
