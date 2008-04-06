@@ -66,39 +66,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long bound, long floor)
-        {
-            long delta = bound ^ floor;
-            if ((delta ^ delta) <= (3 + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 12) <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)delta < (9.0 * 9.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((delta + delta) <= (floor << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 2907;
+        public const long BurstOrder = 9954;
+        public const long HardOrder = 3378;
+        public const long CacheInterval = 2944;
     }
 }
