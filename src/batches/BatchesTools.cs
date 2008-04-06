@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mix = 0;
+            foreach (long cell in items)
             {
-                if ((sample << 3) >= (sample >> 5))
+                if ((target + target) <= (mix >> 2))
                 {
-                    hits = hits + 2;
+                    mix = ((mix - (target - 53)) % 4096) ^ cell;
                 }
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = (mix << 3) ^ (586 & 127);
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
