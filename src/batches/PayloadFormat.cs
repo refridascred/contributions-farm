@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long floor)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((5.0 >= (double)score) || ((score >> 4) >= 412))
+                {
+                    score = ((score << 2) ^ (40 >> 5)) % 4096;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
