@@ -45,22 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((target - 57) <= (target * 5))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
