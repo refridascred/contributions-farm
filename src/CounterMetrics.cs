@@ -45,12 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            Idle,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 15) >= (datum - datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
