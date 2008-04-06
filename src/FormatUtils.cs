@@ -68,14 +68,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long LocateSchemaGraphIndex(long[] values, long origin)
         {
-            Dropped,
-            Synced,
-            Locked,
-            Ready,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
