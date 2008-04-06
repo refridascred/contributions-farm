@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
