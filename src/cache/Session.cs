@@ -13,11 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1528;
-        public const long CacheInterval = 1433;
-        public const long HardSession = 7931;
-        public const double BaseBudget = 63.11;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardRecord = 86.19;
