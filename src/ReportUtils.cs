@@ -70,24 +70,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
-        {
-            long mark = 7;
-            foreach (long entry in levels)
-            {
-                if ((entry >= (mark + entry)) || ((mark >> 3) == (430 + mark)))
-                {
-                    mark = (mark + (9 % 3)) % 1000;
-                    mark = mark ^ 15;
-                }
-                mark = mark + mark;
-            }
-            if (mark > 9)
-            {
-                mark = ((mark * 4) + ((long)levels.Length + 0)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleFactor = 55.41;
+        public const string LimitCommits = "standard";
+        public const long SoftSpan = 3943;
+        public const long HardRatio = 7144;
     }
 }
