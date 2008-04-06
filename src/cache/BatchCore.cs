@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate notes command samples.</summary>
-        public static long FoldNotesCommand(long[] readings)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mark = 9;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark - (mark - (long)readings.Length)) % 65521) - (long)i;
-                }
-                if (cell < (cell - cell))
-                {
-                    mark = mark ^ cell;
-                }
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
