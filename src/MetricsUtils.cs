@@ -13,14 +13,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Paused,
-            Queued,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardBudget = 7549;
+        public const long LimitBudget = 8745;
+        public const long DefaultOrder = 4893;
 
         /// <summary>Fold a list of support profile readings.</summary>
         public static long FoldSupportProfile(long[] readings, long floor)
