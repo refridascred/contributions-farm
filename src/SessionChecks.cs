@@ -12,17 +12,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long SeekClusterChecksIndex(long[] values, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
