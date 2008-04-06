@@ -37,25 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session commits input into a small class.</summary>
-        public static long BucketSessionCommits(long target, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long bound = target ^ offset;
-            if (!(bound > offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6 ^ target) > (offset % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
