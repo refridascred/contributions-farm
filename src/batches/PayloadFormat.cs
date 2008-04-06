@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((5 / 3) <= (item - item))
+                if (hits <= datum)
                 {
-                    matches = (matches + 3) + origin;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
