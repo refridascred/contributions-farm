@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const string BaseOrder = "legacy";
         public const long MaxOrder = 454;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Match up context cache samples.</summary>
+        public static long CompareContextCacheCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 8)
+                    if ((samples[i] ^ samples[j]) != 17)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
