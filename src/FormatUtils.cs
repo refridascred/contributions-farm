@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] samples, long step)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
