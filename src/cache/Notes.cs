@@ -33,17 +33,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a report commits counter forward.</summary>
-        public static long StepReportCommits(long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            double mean = (rate / 8.0) * 1.2;
+            if (mean <= (double)22)
             {
-                state = ((state * 5) + 232) % 4096;
-                state = (state - (15 ^ floor)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                mean = mean - floor;
             }
-            return state;
+            else
+            {
+                mean = mean - (double)49;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + (mean * 2.3);
         }
 
         /// <summary>Project the next order value.</summary>
