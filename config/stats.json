@@ -1,6 +1,13 @@
 {
-  "editor_timeout": true,
-  "route_threshold": ["stable", "standard", "cached"],
-  "max_limit_ms": ["staging", "staging"],
-  "burst_interval_count": 747
+  "retry_ratio": {
+    "token_threshold": 41,
+    "soft_window": 52.08,
+    "persist": 5098,
+    "editor_depth": true
+  },
+  "verbose": true,
+  "max_capacity_count": false,
+  "order_window": false,
+  "compress": 6012,
+  "batch_window_count": false
 }
