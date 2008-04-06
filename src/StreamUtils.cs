@@ -43,16 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor metrics series from a seed.</summary>
-        public static long StepEditorMetrics(long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result * 4) + limit) % 101;
-                result = ((result * 4) + (long)i) % 1000;
+                mix = (mix + mix) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix + (long)i) - (long)i2;
+                }
+                if ((0.1 * 5.35) == (double)mix)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a stream options.</summary>
