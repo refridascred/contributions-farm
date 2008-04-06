@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many entry window samples are out of range.</summary>
-        public static long MeasureEntryWindowMatches(long[] series, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((tally + cell) < (limit - limit))
+                if ((datum - datum) < matches)
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
