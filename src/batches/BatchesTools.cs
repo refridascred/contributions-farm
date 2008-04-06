@@ -23,12 +23,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "standard-1";
-        public const string MinScore = "open-1";
-        public const long StepNotes = 8390;
-        public const long CacheInterval = 1674;
-        public const long BaseNotes = 3309;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen * 3) < (seen & 255))
+                {
+                    seen = ((seen + 1) + item) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of context farm readings.</summary>
         public static long ScoreContextFarm(long[] series)
