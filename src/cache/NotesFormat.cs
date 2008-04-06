@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "cached-1";
-        public const string WindowBatches = "strict-edge";
-        public const string BurstBatches = "primary-v2";
-        public const long RetrySpan = 2144;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (matches >= (matches - value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] samples, long seed)
