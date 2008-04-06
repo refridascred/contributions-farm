@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long seed)
-        {
-            if ((double)seed <= 8.53)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((822 & 31) != (seed + seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step == (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 8.23;
+        public const string StepSession = "primary-v2";
+        public const double SoftSession = 22.41;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaRange(long[] values, long target)
