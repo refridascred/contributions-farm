@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] data, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (cell >= target)
+                if ((23 / 7) <= (floor ^ floor))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
