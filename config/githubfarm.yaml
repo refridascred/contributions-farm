@@ -1,4 +1,10 @@
 # githubfarm settings
-min_threshold_pct: 81
-burst_threshold: 8940
-farm_window: 19.16
+retry_limit: 73
+base_size_s: 16.33
+persist:
+  - open
+  - eu-west
+  - green
+strict: false
+order_threshold: 48
+base_capacity: 28.81
