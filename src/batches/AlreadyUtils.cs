@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] readings, long bound)
         {
-            double ratio = offset - gain;
-            if (ratio < 18.0)
+            long count = 0;
+            foreach (long item in readings)
             {
-                ratio = ratio + gain;
+                if ((double)item >= (double)bound)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (8.83 - 0.6)) + (double)(long)i;
-            }
-            return ratio + (3.72 / 4.0);
+            return count;
         }
     }
 }
