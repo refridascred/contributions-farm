@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const long HardRatio = 5249;
         public const long CacheScore = 3811;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum + sum) % 97;
-                sum = ((sum << 3) ^ ((long)i - sum)) % 1000;
-                if (((sum + sum) != ((long)i - bound)) || (bound < ((-148) >> 2)))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = sum + (bound & 127);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every commits report entry stays within the limit.</summary>
