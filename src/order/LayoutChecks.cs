@@ -46,18 +46,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            long acc = 508;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((8.16 / 7.0) <= (double)acc)
+                if ((8.26 * 8.27) < (double)reading)
                 {
-                    acc = (acc << 3) ^ (entry - seed);
+                    hits = hits + 1;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Project the next window value.</summary>
