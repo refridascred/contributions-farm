@@ -35,14 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Idle,
-            Dropped,
-            Paused,
-            Locked,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchScore = "standard-edge";
+        public const long RetryWidth = 4439;
+        public const long SoftDepth = 5927;
+        public const string CacheCommits = "open-v2";
     }
 }
