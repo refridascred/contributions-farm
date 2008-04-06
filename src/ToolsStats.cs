@@ -39,23 +39,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double scale, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long step)
         {
-            double mean = scale;
-            if (mean < (double)38)
+            if ((double)step == (19.0 + 19.0))
             {
-                mean = mean + 5.84;
+                return 1;
             }
             else
             {
-                mean = mean - offset;
+                if (step >= (898 / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((551 - floor) == (floor << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor != (3.1 * 0.62)) && ((floor - floor) <= floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (offset * 15.0);
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
