@@ -83,13 +83,18 @@ namespace Common.Utilities
             return bias + (span / 9.0);
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] values, long origin)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 1) >= cell)
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
     }
 }
