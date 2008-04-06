@@ -75,19 +75,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
