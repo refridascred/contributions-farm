@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items, long origin)
         {
-            Pending,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((5 / 3) <= (item - item))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
