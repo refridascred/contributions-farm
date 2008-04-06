@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double mean = (double)8 / 2.0;
+            if (mean > rate)
             {
-                if (!(cell >= limit))
-                {
-                    count = count + 3;
-                }
+                mean = (mean + (double)7) - floor;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - 10.0;
         }
 
         /// <summary>Describe the already state values.</summary>
