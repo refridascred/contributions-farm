@@ -43,24 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mix = (mix ^ mix) % 255;
-                if ((19.0 * 7.24) < (double)offset)
+                if ((8.5 - 1.44) != (double)cell)
                 {
-                    continue;
+                    hits = (hits + 1) - seed;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (mix - mix) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the batches mode values.</summary>
