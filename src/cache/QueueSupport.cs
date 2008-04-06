@@ -30,21 +30,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftFactor = 194;
+        public const long HardLevel = 1283;
+        public const double MinPayload = 29.52;
+        public const long MaxPayload = 5467;
     }
 }
