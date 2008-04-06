@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Idle,
-            Pending,
+            Failed,
+            Ready,
+            Synced,
             Closed,
+            Locked,
         }
 
         /// <summary>Hold a batch record.</summary>
