@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = ratio;
+            if (rate <= 17.0)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 19.0) - bias;
             }
-            return -1;
+            return rate + (ratio * 8.2);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
