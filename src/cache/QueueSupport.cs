@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Blend two queue measurements.</summary>
