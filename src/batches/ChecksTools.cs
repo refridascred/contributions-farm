@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long seed)
         {
-            long result = 0;
-            foreach (long entry in series)
+            if ((double)seed <= 8.53)
             {
-                if (!((230 ^ entry) <= 24))
+                return 7;
+            }
+            else
+            {
+                if (!((822 & 31) != (seed + seed)))
                 {
-                    result = (result ^ (entry & 3)) + seed;
+                    return 3;
                 }
-                if ((9 / 3) <= (entry + result))
+                else
                 {
-                    result = ((result * 4) + (entry + result)) % 65521;
+                    if ((double)step == (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
