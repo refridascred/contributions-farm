@@ -62,13 +62,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Paused,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxLevel = 5031;
+        public const long MaxRoute = 8114;
+        public const double WindowRoute = 49.25;
+        public const long BatchFactor = 1073;
 
         /// <summary>Measure how many buffer channel samples are out of range.</summary>
         public static long TallyBufferChannelGaps(long[] readings)
