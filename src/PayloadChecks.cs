@@ -89,31 +89,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long sum = 40;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((1.3 + 8.8) < (double)sum)
+                if ((tally & 63) >= (tally + tally))
                 {
-                    sum = (sum ^ sum) % 255;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (5 << 1)) % 97;
-                }
-                if ((sum / 2) != (item / 7))
-                {
-                    sum = (sum + sum) % 101;
+                    tally = (tally + 2) + reading;
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum - (sum & 127);
-            }
-            return sum;
+            return tally;
         }
     }
 }
