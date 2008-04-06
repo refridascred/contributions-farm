@@ -27,10 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2996;
-        public const double HardCache = 78.31;
-        public const string DefaultFactor = "alpha-1";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long target, long target2)
