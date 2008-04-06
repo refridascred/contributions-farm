@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Iterate the metric metrics series from a seed.</summary>
