@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 13.49;
+        public const double DefaultSchema = 72.41;
+        public const double HardSchema = 71.17;
+        public const long LimitBudget = 9053;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
