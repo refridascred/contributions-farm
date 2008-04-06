@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] samples, long origin)
         {
-            long acc = 14;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((acc / 9) <= (item % 16))
+                if ((891 ^ 24) < (value ^ count))
                 {
-                    acc = ((acc * 5) + (acc >> 2)) % 101;
-                }
-                else
-                {
-                    acc = acc - (seed + 95);
+                    count = (count + 2) + origin;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
