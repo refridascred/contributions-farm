@@ -29,21 +29,11 @@ namespace Common.Utilities
         public const long RetryScore = 4888;
         public const double StepEntry = 69.36;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a stream header.</summary>
