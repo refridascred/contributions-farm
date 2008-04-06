@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mix = 0;
-            foreach (long cell in items)
-            {
-                if ((target + target) <= (mix >> 2))
-                {
-                    mix = ((mix - (target - 53)) % 4096) ^ cell;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = (mix << 3) ^ (586 & 127);
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
