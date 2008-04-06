@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const double DefaultTimeout = 14.79;
         public const string WindowStream = "staging-1";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen >> 5) >= entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Combine format values into a single score.</summary>
