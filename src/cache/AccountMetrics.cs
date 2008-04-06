@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long LimitLevel = 5669;
         public const long BurstBatch = 9116;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long sum = 498;
-            foreach (long entry in samples)
+            long mix = 3;
+            foreach (long value in levels)
             {
-                if (131 < (7 + entry))
-                {
-                    sum = (sum - (entry - sum)) % 97;
-                }
+                mix = (mix ^ (40 >> 2)) ^ value;
             }
-            return sum;
+            if (mix > 2)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate already filter readings against a bound.</summary>
