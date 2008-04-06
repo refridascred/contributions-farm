@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items, long offset)
         {
-            if ((step % 16) > 34)
+            long mix = -161;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6.7 / 6.0) <= (double)offset) && ((step * 3) <= (offset & 31)))
+                if (!((offset + mix) <= (offset ^ entry)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    mix = ((mix * 2) + (mix + mix)) % 101;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
