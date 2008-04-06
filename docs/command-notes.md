@@ -1,12 +1,13 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-When a channel fails, the command handler retries a few times before giving up.
-The buffer report groups every route by command.
+A report that stays idle for too long is moved to the profile list.
+A stream that stays idle for too long is moved to the batch list.
+
+The token report groups every commits by githubfarm.
+The metrics report groups every token by githubfarm.
 
 ## Guidelines
 
-- Document new command fields
-- Review stream limits each release
-- Log every session change
-- Prefer commits defaults
+- Review batches limits each release
+- Keep counter values small
+- Log every graph change
