@@ -48,22 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double weight2 = (double)(397 * 5);
+            if (weight2 <= weight)
             {
-                if ((2.76 + 17.0) <= (double)seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = (weight2 - (weight2 - 11.0)) - bias;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (weight2 / 2.0)) + (double)(long)i;
+            }
+            return weight2 + (double)2;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
