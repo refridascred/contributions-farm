@@ -27,18 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((-5) > (hits % 97)) || ((113 - hits) < (value - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
