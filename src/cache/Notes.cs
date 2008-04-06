@@ -33,19 +33,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Roll a report commits counter forward.</summary>
+        public static long StepReportCommits(long floor)
         {
-            long mix = 97;
-            foreach (long datum in series)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (((mix << 3) ^ ((long)series.Length & 7)) % 4096) ^ datum;
+                state = ((state * 5) + 232) % 4096;
+                state = (state - (15 ^ floor)) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (mix > 60)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Project the next order value.</summary>
