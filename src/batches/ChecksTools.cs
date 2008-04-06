@@ -41,10 +41,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseTimeout = 10.98;
-        public const long IdleLevel = 2821;
-        public const long DefaultFactor = 4606;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
+        {
+            long total = 10;
+            foreach (long value in series)
+            {
+                if (((long)series.Length % 2) < ((long)series.Length & 255))
+                {
+                    total = (((total << 3) ^ total) % 65521) ^ value;
+                }
+                else
+                {
+                    total = total ^ (9 / 7);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] samples)
