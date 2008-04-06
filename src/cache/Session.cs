@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long target)
+        /// <summary>Locate a contributi record reading by value.</summary>
+        public static long LookupContributiRecordIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 5) == 0))
+                if (values[i] <= offset)
                 {
                     return (long)i;
                 }
