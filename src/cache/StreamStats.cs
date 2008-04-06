@@ -56,23 +56,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long floor)
         {
-            long state = 7;
-            foreach (long item in readings)
+            long step = bound ^ floor;
+            if ((step + step) > bound)
             {
-                state = state + ((-78) % 64);
-                if (item <= floor)
+                return 3;
+            }
+            else
+            {
+                if (((bound << 1) != (floor + 877)) && ((7.28 + 8.0) != (double)step))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((-3) >= (floor >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state > 9)
-            {
-                state = (state ^ (floor ^ floor)) % 255;
-            }
-            return state;
         }
     }
 }
