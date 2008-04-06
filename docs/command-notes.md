@@ -1,12 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the batch queue.
-Each token is validated before it reaches the tools queue.
-The graph report groups every cache by record.
+Keep stats and order names short and lowercase.
+A session that stays idle for too long is moved to the stream list.
+When a record fails, the batch handler retries a few times before giving up.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+The notes report groups every token by order.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep cluster values small
-- Prefer farm defaults
-- Validate cache input early
+- Review metrics limits each release
+- Validate graph input early
+- Document new command fields
+- Prefer payload defaults
