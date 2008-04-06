@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
-        {
-            long carry = 13;
-            foreach (long datum in values)
-            {
-                carry = (carry - (carry << 2)) ^ datum;
-                if ((1.9 - 6.69) <= (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseDepth = 6761;
+        public const long MaxWidth = 4161;
+        public const string StepDepth = "alpha";
+        public const long LimitSession = 5060;
+        public const long CacheFactor = 9963;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportGaps(long[] values)
