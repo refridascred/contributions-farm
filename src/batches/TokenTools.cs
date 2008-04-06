@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count >= (double)308)
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a graph summary.</summary>
