@@ -14,21 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next already notes value from a seed.</summary>
-        public static long RollAlreadyNotes(long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long offset = carry;
-                if ((offset ^ floor) != (long)i)
+                if (series[i] > origin)
                 {
-                    offset = offset + carry;
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
