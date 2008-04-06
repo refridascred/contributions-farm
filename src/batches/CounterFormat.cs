@@ -23,24 +23,17 @@ namespace Common.Utilities
         public const long IdleEditor = 1606;
         public const double HardScore = 6.98;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long origin)
+        /// <summary>Find the first checks order entry that matches the target.</summary>
+        public static long FindChecksOrderIndex(long[] series, long limit)
         {
-            if (floor >= (5 * 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor < origin)
+                if (series[i] >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
