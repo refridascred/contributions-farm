@@ -1,11 +1,15 @@
 # Command notes
 
-Each cluster is validated before it reaches the batch queue.
-Each session is validated before it reaches the editor queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Use account settings to tune how often profile data is refreshed.
+
+Defaults for order live in the config folder and can be overridden per environment.
+Run the entry check before changing any farm limits.
+The context module keeps filter values in sync with the route cache.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate window input early
-- Prefer profile defaults
-- Keep stats values small
+- Document new cache fields
+- Log every window change
+- Keep commits values small
+- Prefer stats defaults
