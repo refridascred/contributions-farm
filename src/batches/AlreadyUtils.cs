@@ -37,31 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long origin2)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long origin)
         {
-            if ((812 >> 2) >= origin)
+            long carry = -1;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(origin >= (origin / 5)))
+                if (825 >= (long)series.Length)
                 {
-                    return 5;
+                    carry = (carry + (cell * 4)) - origin;
                 }
-                else
-                {
-                    if ((origin / 8) >= (origin * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry ^ carry) % 4096;
             }
+            return carry % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
