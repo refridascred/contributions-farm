@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values, long offset)
-        {
-            long state = 3;
-            foreach (long sample in values)
-            {
-                if (offset > (state + state))
-                {
-                    state = (state << 2) ^ (sample + state);
-                }
-                if ((sample << 3) <= (475 + offset))
-                {
-                    state = state + sample;
-                }
-            }
-            if (state > 4)
-            {
-                state = (state - offset) % 101;
-            }
-            return state % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseSpan = 55.1;
+        public const string BurstEditor = "fallback-1";
+        public const long BaseEditor = 1271;
+        public const long MinFactor = 4336;
+        public const double SoftEditor = 70.42;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchRange(long[] data, long step)
