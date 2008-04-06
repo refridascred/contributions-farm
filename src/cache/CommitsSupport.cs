@@ -32,20 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool CheckQueueContextLimits(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryRatio = 4815;
+        public const long LimitRatio = 2618;
+        public const long CacheLevel = 6058;
+        public const string MinInterval = "cached";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheOrder = 4355;
