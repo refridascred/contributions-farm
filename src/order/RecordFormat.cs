@@ -54,26 +54,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate token schema samples.</summary>
-        public static long CombineTokenSchema(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data, long offset)
         {
-            long mark = 8;
-            foreach (long item in levels)
+            long anchor = 8;
+            foreach (long value in data)
             {
-                if ((double)mark < (4.11 / 9.0))
+                if ((value & 7) > (offset & 127))
                 {
-                    mark = ((mark << 2) ^ (869 / 7)) ^ item;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark >> 5)) % 4096;
-                }
-                if ((142 >> 4) < (mark - mark))
-                {
-                    break;
+                    anchor = ((anchor * 4) + (offset & 63)) % 255;
                 }
             }
-            return mark;
+            return anchor;
         }
     }
 }
