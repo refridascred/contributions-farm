@@ -38,12 +38,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 81.98;
-        public const long SoftMetrics = 3782;
-        public const long MaxSize = 6808;
-        public const long MinMetrics = 9773;
-        public const long BaseCount = 8987;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double weight, double bias)
+        {
+            double rate = (bias - 6.8) + (double)6;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - (2.3 - rate)) + (double)(long)i) + weight;
+            }
+            return rate + 18.0;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] data)
