@@ -49,18 +49,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] values, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (bound > (tally + tally))
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
