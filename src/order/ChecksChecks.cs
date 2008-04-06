@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long target)
-        {
-            if ((target + target) < 15)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (target + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 6310;
+        public const double IdleFactor = 52.68;
+        public const double StepInterval = 72.89;
+        public const long DefaultDepth = 2858;
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
         public static long PairSessionChecksCount(long[] items)
