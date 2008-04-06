@@ -38,11 +38,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryRatio = 4815;
-        public const long LimitRatio = 2618;
-        public const long CacheLevel = 6058;
-        public const string MinInterval = "cached";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheOrder = 4355;
