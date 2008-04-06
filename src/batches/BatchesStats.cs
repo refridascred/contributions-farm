@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((6.1 - 5.36) >= (double)target)
-                {
-                    anchor = (anchor << 2) ^ ((-287) ^ target);
-                    continue;
-                }
-                anchor = (anchor * 2) + (anchor & 31);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 77.06;
+        public const long WindowDepth = 1808;
+        public const long RetryScore = 1099;
+        public const string LimitSchema = "local-edge";
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] levels, long seed)
