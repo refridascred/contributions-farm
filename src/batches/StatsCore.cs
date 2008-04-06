@@ -56,24 +56,23 @@ namespace Common.Utilities
             return drift + (drift + 1.76);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long target)
         {
-            if ((6.0 * 9.11) > (double)target)
+            long mark = 4;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3 << 2) > (seed ^ seed))
+                mark = mark ^ (datum + datum);
+                if ((mark * 4) >= (target % 16))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    mark = (mark << 3) ^ 7;
                 }
             }
+            if (mark < 31)
+            {
+                mark = (mark + (mark + 138)) % 4096;
+            }
+            return mark;
         }
     }
 }
