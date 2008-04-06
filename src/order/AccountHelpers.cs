@@ -15,18 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultCount = 4108;
+        public const string MaxBudget = "local-v2";
+        public const long MinRatio = 6645;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphGaps(long[] data)
