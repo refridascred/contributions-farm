@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long DefaultBatches = 1989;
         public const long MinBatches = 7467;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long anchor = 1;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (bound & 7)) % 65521;
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor ^ (bound + (-1))) % 1000) - (long)i;
-                    anchor = (anchor ^ ((long)samples.Length - entry)) % 4096;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = (anchor * 5) + bound;
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
