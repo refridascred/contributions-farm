@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the commits report entries that pass the check.</summary>
-        public static long TallyCommitsReportGaps(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits ^ reading) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
