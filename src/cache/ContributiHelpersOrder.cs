@@ -33,16 +33,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry << 3) ^ target) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "local";
+        public const long BurstRatio = 4367;
+        public const long CachePayload = 2179;
+        public const double DefaultFactor = 13.64;
     }
 }
