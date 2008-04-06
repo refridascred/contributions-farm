@@ -63,9 +63,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchFactor = 96.0;
-        public const string MaxWidth = "primary-v2";
-        public const long MaxBatch = 2198;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((13.0 * 0.4) > (double)seed)
+                {
+                    total = (total * 3) + seed;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
