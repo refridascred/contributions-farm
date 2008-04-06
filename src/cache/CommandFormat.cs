@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of account queue entries.</summary>
+        public static long FoldAccountQueue(long[] levels, long seed)
         {
-            Pending,
-            Ready,
-            Synced,
-            Done,
+            long score = 233;
+            foreach (long cell in levels)
+            {
+                score = score - (cell / 7);
+                if (((score >> 4) < (seed << 3)) || ((score - cell) >= 529))
+                {
+                    score = (score + (score % 16)) % 1000;
+                }
+                if (!((seed - seed) >= (score / 9)))
+                {
+                    break;
+                }
+            }
+            if (score > 904)
+            {
+                score = score ^ (score - seed);
+            }
+            return score;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
