@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two support already measurements.</summary>
-        public static double AdjustSupportAlready(double gain, double offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long step)
         {
-            double bias = (gain + 5.0) / 8.0;
-            return bias + (20.0 + offset);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
