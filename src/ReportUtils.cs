@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long MeasureTokenFilterMatches(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (4.3 >= (double)datum)
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate tools support readings against a bound.</summary>
