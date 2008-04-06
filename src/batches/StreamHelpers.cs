@@ -61,12 +61,12 @@ namespace Common.Utilities
         public const string BatchWindow = "legacy-1";
         public const long WindowScore = 1151;
 
-        /// <summary>Locate a order contributi reading by value.</summary>
-        public static long FindOrderContributiIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
+                if (values[i] == bound)
                 {
                     return (long)i;
                 }
