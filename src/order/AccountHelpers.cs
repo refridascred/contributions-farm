@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 6305;
-        public const long LimitBatch = 8007;
-        public const long WindowScore = 5394;
-        public const long StepRatio = 8166;
-        public const double RetryBatch = 89.67;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long limit)
+        {
+            long delta = offset - limit;
+            if (offset < 2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >= (76 * 4)) || (delta >= (17 & 15)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count the counter already entries that pass the check.</summary>
         public static long TallyCounterAlreadyGaps(long[] values, long seed)
