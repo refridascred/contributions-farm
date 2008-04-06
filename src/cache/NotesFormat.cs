@@ -27,19 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Fold a list of format record readings.</summary>
+        public static long DigestFormatRecord(long[] items)
         {
-            double drift = (offset / 2.0) * 4.6;
-            if (drift > (double)387)
+            long carry = 73;
+            foreach (long entry in items)
             {
-                drift = drift - (20.0 * 2.6);
+                if (810 >= (carry << 3))
+                {
+                    carry = (carry + ((long)items.Length ^ entry)) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 9.17) + (double)(long)i;
-            }
-            return drift - (scale / 3.0);
+            return carry;
         }
     }
 }
