@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] values)
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long TallyQueueWindowOutliers(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((0.9 * 5.0) == (double)sample) && (((count / 5) > sample) && ((-72) >= count)))
+                if ((long)items.Length <= (datum + seen))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit graph batch readings against a rule.</summary>
