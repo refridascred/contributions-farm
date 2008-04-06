@@ -73,12 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
