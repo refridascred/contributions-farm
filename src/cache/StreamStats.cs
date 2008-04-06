@@ -15,24 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if (!((8.4 / 4.0) != (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((345 - offset) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a profile info.</summary>
