@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double load = (double)28 - (ratio + ratio);
-            return (load + (double)17) + span;
+            Pending,
+            Paused,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
