@@ -1,11 +1,8 @@
 {
-  "cache_ratio_pct": 60,
-  "strict": "strict",
-  "min_size_pct": "fallback",
-  "retry_threshold_s": ["green", "strict", "cached", "standard"],
-  "base_interval_ms": {
-    "readonly": 100,
-    "record_retries": 7681,
-    "sync_window": 2174
-  }
+  "flush_size_count": ["stable", "primary", "edge"],
+  "audit": true,
+  "cache_capacity": "eu-west",
+  "cache_size": 100,
+  "sync_retries_count": 36.15,
+  "strict": 47.47
 }
