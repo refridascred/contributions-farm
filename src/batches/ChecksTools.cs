@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series, long bound)
         {
-            double weight = (2.98 - gain) - gain;
-            if (weight > (weight + gain))
+            long hits = 0;
+            foreach (long value in series)
             {
-                weight = weight + gain;
+                if ((hits > 4) || ((value % 10) <= (5 + bound)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight + span)) + (double)(long)i;
-            }
-            return weight - (gain - span);
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
