@@ -22,12 +22,11 @@ namespace Common.Utilities
             return ((drift - (double)7) + scale) + floor;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double floor)
-        {
-            double gain = (floor + floor) - (floor + floor);
-            return gain + ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2571;
+        public const long BatchToken = 8471;
+        public const long DefaultFactor = 203;
+        public const long WindowTimeout = 3291;
 
         /// <summary>Blend two route measurements.</summary>
         public static double SmoothRoute(double bias, double floor)
