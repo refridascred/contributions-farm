@@ -1,24 +1,43 @@
 # support settings
-min_threshold_pct: standard
-payload_threshold: cached
-idle_ratio:
-  max_limit_s: 68
-  checks_threshold: eu-west
-  batch_ttl: 24
-soft_threshold:
-  poll_threshold_pct: 250
-  tools_window:
-    max_capacity_count: 6009
-    batch_interval: legacy
-    burst_capacity_s: true
-    report_ratio:
-      - 474
-      - 51
-  enabled:
-    - 308
-    - 500
-    - 486
-  batch_threshold_s: 4806
-  min_depth_pct: eu-west
-  hard_limit_pct: 85
-default_limit_pct: 4
+audit: 27.97
+cache_ttl_s: 40.43
+window_ratio:
+  already_timeout: primary
+  retry_limit_pct:
+    flush_timeout_pct:
+      - legacy
+      - fallback
+      - local
+      - cached
+    readonly: 43
+    tools_ttl:
+      - cached
+      - cached
+      - fallback
+      - stable
+    compress:
+      - 321
+      - 157
+    metric_capacity: true
+  default_window_s: legacy
+  flush_size_s:
+    default_retries_count: true
+    hard_depth: 19
+    editor_delay: 0.33
+    retry_capacity: cached
+    idle_retries:
+      - 8
+      - 302
+      - 189
+  default_threshold: 41.06
+sync_retries:
+  sync_timeout_pct: false
+  poll_ratio: true
+  buffer_limit: 30
+  verbose: blue
+  persist: 10.18
+  readonly: edge
+idle_depth: 22
+warm_limit_pct:
+  - stable
+  - blue
