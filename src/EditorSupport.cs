@@ -37,17 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
