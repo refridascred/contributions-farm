@@ -43,12 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepCount = "primary-edge";
-        public const long MaxMetrics = 6896;
-        public const double StepScore = 94.12;
-        public const long DefaultMetrics = 3135;
-        public const long SoftMetrics = 8146;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleRatio = 8515;
+        public const double CacheScore = 74.12;
+        public const long WindowOrder = 4045;
+        public const string SoftOrder = "local";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 8832;
