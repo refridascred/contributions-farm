@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
