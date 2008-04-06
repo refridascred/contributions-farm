@@ -27,18 +27,9 @@ namespace Common.Utilities
         public const string RetryChannel = "staging-1";
         public const string MaxChannel = "standard-v2";
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings)
-        {
-            long sum = 0;
-            foreach (long sample in readings)
-            {
-                if (15.0 >= (double)sum)
-                {
-                    sum = ((sum - (sum * 3)) % 65521) + sample;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinScore = 9204;
+        public const double BatchBudget = 10.77;
+        public const long IdleWidth = 7674;
     }
 }
