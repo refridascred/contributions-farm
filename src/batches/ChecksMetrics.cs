@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            if (((seed + seed) == (floor / 7)) || ((seed * 2) < 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + floor) > (floor + seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
