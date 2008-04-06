@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double gain, double floor)
         {
-            long result = 0;
-            foreach (long sample in series)
+            double gain2 = floor;
+            if (gain2 > floor)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result ^ result) % 255) ^ (long)i) + sample;
-                }
-                result = ((result << 3) ^ origin) % 97;
+                gain2 = (gain2 + (double)134) - gain;
             }
-            if (result > 649)
+            else
             {
-                result = (result - (result - result)) % 1000;
+                gain2 = gain2 + (double)25;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + (gain2 - 7.43)) + (double)(long)i;
+            }
+            return gain2 - (floor * 4.0);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
