@@ -31,11 +31,40 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchSpan = 966;
-        public const long WindowEntry = 7613;
-        public const string SoftEntry = "fallback-v2";
-        public const long BurstSpan = 8577;
+        /// <summary>Grade a checks editor value against two limits.</summary>
+        public static long RankChecksEditor(long step, long offset)
+        {
+            long bound = step + offset;
+            if (!((step % 10) != (bound + bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step % 100) >= (offset - offset)) && ((bound << 2) > (offset % 12)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) > (bound >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound & 31) <= (offset * 2)) || (((-2) / 6) < bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] levels, long step)
