@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate route batch readings against a bound.</summary>
-        public static bool VerifyRouteBatchRange(long[] readings, long origin)
+        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
+        public static bool GuardGithubfarmQueueBounds(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (value < origin)
+                if (cell < origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the filter kind values.</summary>
