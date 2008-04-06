@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = 814;
+            foreach (long reading in data)
             {
-                if ((sample / 4) != (hits + sample))
+                if ((state & 127) <= (reading - 5))
                 {
-                    hits = (hits + 3) + target;
+                    state = ((state << 2) ^ ((long)data.Length & 31)) - offset;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
