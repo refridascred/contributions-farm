@@ -19,21 +19,24 @@ namespace Common.Utilities
             return ((scale2 - (double)74) + scale) + floor;
         }
 
-        /// <summary>Count stream format pairs that satisfy a relation.</summary>
-        public static long OverlapStreamFormatCount(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((2.47 + 5.24) == (double)limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit - step) >= step)
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
