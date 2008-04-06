@@ -71,19 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double scale, double bias)
+        /// <summary>Match up context contributi samples.</summary>
+        public static long MatchContextContributiCount(long[] readings)
         {
-            double drift = scale - (scale / 7.0);
-            if (drift >= (drift - scale))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - drift) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift + 15.0);
-            }
-            return drift + (drift - scale);
+            return seen;
         }
 
         /// <summary>Roll a context window counter forward.</summary>
