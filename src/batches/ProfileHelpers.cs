@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next profile checks value.</summary>
-        public static double ProjectProfileChecks(double gain, double offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            double scale = (double)(9 + 548);
-            if (scale <= (double)667)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                scale = (scale + 0.43) - offset;
+                if (!((result >> 4) <= ((long)i + result)))
+                {
+                    break;
+                }
+                if (!((result + target) <= result))
+                {
+                    result = ((result << 3) ^ ((long)i % 7)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (4.86 + 5.69)) + (double)(long)i;
-            }
-            return scale - (gain - scale);
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm counter readings.</summary>
