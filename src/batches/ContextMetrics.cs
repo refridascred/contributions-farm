@@ -66,10 +66,14 @@ namespace Common.Utilities
         public const long BurstSpan = 9188;
         public const long BaseMetrics = 7237;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 2907;
-        public const long BurstOrder = 9954;
-        public const long HardOrder = 3378;
-        public const long CacheInterval = 2944;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Stale,
+            Done,
+            Closed,
+            Pending,
+            New,
+        }
     }
 }
