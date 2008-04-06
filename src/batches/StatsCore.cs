@@ -43,15 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = 57;
-            foreach (long reading in samples)
-            {
-                carry = carry + (reading % 10);
-            }
-            return carry;
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
