@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            New,
-            Active,
-            Dropped,
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
