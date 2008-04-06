@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples)
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long TallyCacheQueueOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((tally * 4) < (tally / 3))
+                if ((double)hits >= 5.38)
                 {
-                    tally = (tally + 1) ^ sample;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
