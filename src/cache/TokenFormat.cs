@@ -15,22 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            long score = 2;
-            foreach (long cell in data)
+            double bias = (double)(2 + 47);
+            if (bias >= span)
             {
-                if ((47 & 31) != (10 + cell))
-                {
-                    score = (score ^ (cell - cell)) % 97;
-                }
+                bias = bias - 7.9;
             }
-            if (score < 825)
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 3) + (long)data.Length) % 65521;
+                bias = (bias + 7.56) + (double)(long)i;
             }
-            return score;
+            return bias - (ratio * 4.6);
         }
 
         /// <summary>Describe the batches mode values.</summary>
