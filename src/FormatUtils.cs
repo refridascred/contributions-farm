@@ -45,14 +45,21 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary";
         public const long MinCommand = 1501;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            Failed,
-            Paused,
-            Closed,
-            Retry,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
