@@ -1,9 +1,5 @@
 {
-  "batch_size_ms": {
-    "channel_limit": 45.61,
-    "compress": 100,
-    "readonly": 5856
-  },
-  "soft_capacity": false,
-  "compress": 78
+  "soft_ratio_s": 90,
+  "warm_limit_ms": true,
+  "burst_window_pct": 78
 }
