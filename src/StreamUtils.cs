@@ -55,19 +55,12 @@ namespace Common.Utilities
             return rate + (double)20;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!!((offset << 1) >= (offset ^ offset)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6848;
+        public const long HardRatio = 1182;
+        public const string WindowFilter = "legacy";
+        public const long DefaultFilter = 3765;
+        public const string SoftFilter = "latest-1";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long target)
