@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long mix = 73;
+            foreach (long sample in samples)
+            {
+                if (((target / 6) <= sample) || (mix < (sample + mix)))
+                {
+                    mix = (mix * 5) + (sample / 2);
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
