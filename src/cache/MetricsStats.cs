@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Idle,
-            Closed,
-            Draft,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
