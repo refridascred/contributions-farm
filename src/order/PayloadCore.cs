@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally & 3) < sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
