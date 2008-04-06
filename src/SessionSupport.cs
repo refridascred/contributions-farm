@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream already values into a single score.</summary>
-        public static long FoldStreamAlready(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long result = 10;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) <= datum)
-                {
-                    result = ((result * 5) + (datum * 2)) % 255;
-                }
-                else
-                {
-                    result = (result ^ result) % 101;
-                }
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
