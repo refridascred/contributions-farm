@@ -12,14 +12,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Idle,
-            Locked,
-            Pending,
-            Dropped,
-            Synced,
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
