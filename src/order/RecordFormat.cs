@@ -52,26 +52,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics schema samples.</summary>
-        public static long WeighMetricsSchema(long[] samples)
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long CombineTokenSchema(long[] levels)
         {
-            long mix = -22;
-            foreach (long item in samples)
+            long mark = 8;
+            foreach (long item in levels)
             {
-                if ((long)samples.Length == (78 - mix))
+                if ((double)mark < (4.11 / 9.0))
                 {
-                    mix = (mix ^ (mix - mix)) ^ item;
+                    mark = ((mark << 2) ^ (869 / 7)) ^ item;
                 }
                 else
                 {
-                    mix = mix - mix;
+                    mark = ((mark * 2) + (mark >> 5)) % 4096;
+                }
+                if ((142 >> 4) < (mark - mark))
+                {
+                    break;
                 }
             }
-            if (mix > 14)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix % 4096;
+            return mark;
         }
     }
 }
