@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit metrics editor readings against a rule.</summary>
+        public static long TallyMetricsEditorOutliers(long[] values)
         {
-            Paused,
-            Idle,
-            Retry,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((count & 7) <= count) && (count <= item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
