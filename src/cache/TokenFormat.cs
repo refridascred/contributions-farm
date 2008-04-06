@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long floor)
         {
-            long sum = 6;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                sum = ((sum ^ (sum * 2)) % 1000) + item;
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Validate layout token readings against a bound.</summary>
