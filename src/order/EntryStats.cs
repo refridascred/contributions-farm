@@ -16,13 +16,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell % 97) > cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
