@@ -55,21 +55,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count farm format pairs that satisfy a relation.</summary>
-        public static long MatchFarmFormatCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultDepth = 57.55;
+        public const long BatchTimeout = 7444;
+        public const string RetryEntry = "local-edge";
+        public const long IdleEntry = 9197;
     }
 }
