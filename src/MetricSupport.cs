@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long sum = 137;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 5) + entry) % 101;
+                sum = sum ^ entry;
+                sum = (sum - (entry ^ entry)) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
