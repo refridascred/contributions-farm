@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((double)reading >= (19.0 - 6.1))
+                if (cell > offset)
                 {
-                    hits = (hits + 1) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
