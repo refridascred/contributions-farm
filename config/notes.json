@@ -1,15 +1,10 @@
 {
-  "sync_capacity": 72.79,
-  "flush_ttl_ms": {
-    "persist": 68.77,
-    "record_ttl": 5809,
-    "sync_ratio_ms": "open"
+  "farm_timeout": {
+    "cache_threshold": 21,
+    "entry_retries": 90,
+    "window_retries": "edge",
+    "idle_retries": "green"
   },
-  "readonly": {
-    "verbose": "edge",
-    "schema_ratio": 82,
-    "stats_ttl": false,
-    "max_capacity": 48.37
-  },
-  "farm_ratio": "edge"
+  "burst_timeout_ms": [14, 80],
+  "flush_retries_s": [45, 418]
 }
