@@ -19,22 +19,37 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batches metric input into a small class.</summary>
-        public static long BucketBatchesMetric(long step, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long offset)
         {
-            if ((origin - 588) > (step / 6))
+            long bound = floor - offset;
+            if ((floor + bound) < (-175))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((origin + origin) < (origin + step))
+                if ((bound << 2) >= floor)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if (!((4.4 / 8.0) <= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1 ^ bound) <= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
