@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long bound)
         {
-            long anchor = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((step - item) < (item / 2))
+                if (value != bound)
                 {
-                    anchor = (anchor << 2) ^ ((-24) + step);
-                }
-                if (8.0 > (double)anchor)
-                {
-                    anchor = anchor ^ (398 + 221);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (step << 3);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
