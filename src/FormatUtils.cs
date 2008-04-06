@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long score = 3;
-            foreach (long item in values)
-            {
-                score = (((score << 3) ^ ((long)values.Length % 64)) % 4096) + item;
-                if ((double)score > (0.67 * 4.7))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Pending,
+            Dropped,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
