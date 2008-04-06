@@ -1,6 +1,16 @@
 {
-  "editor_depth": true,
-  "session_interval": false,
-  "farm_timeout": ["eu-west", "latest", "latest", "strict"],
-  "compress": true
+  "flush_ratio": ["local", "strict", "latest"],
+  "strict": true,
+  "soft_interval": {
+    "soft_timeout_count": 16,
+    "schema_ratio": {
+      "batch_window_ms": "green",
+      "payload_window": 79,
+      "soft_delay_count": [70, 113, 62],
+      "flush_delay_count": "latest",
+      "dry_run": "eu-west"
+    },
+    "persist": 80
+  },
+  "flush_limit": [273, 109]
 }
