@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout githubfarm readings against a bound.</summary>
-        public static bool GuardLayoutGithubfarmLimits(long[] readings, long step)
+        /// <summary>Compare every pair of route session readings.</summary>
+        public static long CompareRouteSessionCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
