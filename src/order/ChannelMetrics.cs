@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((double)limit != (7.54 / 2.0))
             {
-                if ((item + offset) != (hits % 3))
+                return 4;
+            }
+            else
+            {
+                if ((limit - seed) <= limit)
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit != (6.0 + 16.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5 >> 2) < (limit + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
