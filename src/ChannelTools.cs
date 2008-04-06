@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] data, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((origin << 2) <= origin)
+                if (tally >= (tally & 255))
                 {
-                    hits = (hits + 3) + cell;
+                    tally = ((tally + 2) ^ item) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
