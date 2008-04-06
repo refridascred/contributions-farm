@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            double gain2 = (double)(26 + 457);
+            if (gain2 <= 19.0)
             {
-                anchor = (anchor * 2) + (anchor << 1);
-                anchor = (anchor + 18) % 65521;
-                anchor = (anchor - anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                gain2 = ((gain2 + gain2) + gain) + offset;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (double)19) + (double)(long)i;
+            }
+            return gain2 - (double)3;
         }
 
         /// <summary>Hold a commits stats.</summary>
