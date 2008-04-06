@@ -39,38 +39,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            if ((double)step == (19.0 + 19.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= (898 / 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((551 - floor) == (floor << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor != (3.1 * 0.62)) && ((floor - floor) <= floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
