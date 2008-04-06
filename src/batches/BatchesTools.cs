@@ -23,16 +23,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long limit, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            long step = limit + seed;
+            if ((limit > (limit << 1)) || ((limit - 41) > limit))
             {
-                result = ((result << 2) ^ (result + step)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((step << 2) >= (step - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(7 < (seed * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step / 7) <= (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a buffer support figure with a bias.</summary>
