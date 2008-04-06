@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit graph batch readings against a rule.</summary>
+        public static long CountGraphBatchOutliers(long[] data)
         {
-            Draft,
-            Active,
-            New,
-            Queued,
-            Retry,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item << 2) > ((-95) - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the stream account entries that pass the check.</summary>
