@@ -1,5 +1,5 @@
 {
-  "burst_size": ["edge", "local", "primary", "primary"],
-  "retry_window": false,
-  "already_depth": false
+  "hard_delay_ms": "open",
+  "default_capacity_s": 73.02,
+  "command_timeout": 2.0
 }
