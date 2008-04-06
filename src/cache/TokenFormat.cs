@@ -15,12 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            Queued,
-            Synced,
-            Paused,
+            long score = 2;
+            foreach (long cell in data)
+            {
+                if ((47 & 31) != (10 + cell))
+                {
+                    score = (score ^ (cell - cell)) % 97;
+                }
+            }
+            if (score < 825)
+            {
+                score = ((score * 3) + (long)data.Length) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the context support entries that pass the check.</summary>
