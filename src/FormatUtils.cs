@@ -63,26 +63,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine buffer stats values into a single score.</summary>
-        public static long WeighBufferStats(long[] items, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            long total = 641;
-            foreach (long cell in items)
+            long state = 819;
+            foreach (long datum in series)
             {
-                if ((5 * 3) == (cell & 1))
-                {
-                    total = (total + floor) % 1000;
-                }
-                if (((cell % 2) > 71) && ((total + cell) <= total))
-                {
-                    break;
-                }
+                state = state ^ (datum & 15);
+                state = ((state << 3) ^ (seed ^ state)) % 4096;
+                state = (state + datum) % 101;
             }
-            if (total < 36)
+            if (state > 2)
             {
-                total = total + 1;
+                state = (state - (state / 6)) % 65521;
             }
-            return total % 1000;
+            return state % 97;
         }
 
         /// <summary>Fold a list of already readings.</summary>
