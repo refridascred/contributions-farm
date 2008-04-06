@@ -15,19 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (11.0 * 7.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinFactor = 7377;
+        public const long StepDepth = 3132;
+        public const long BaseDepth = 5279;
+        public const long StepCount = 1852;
+        public const double MaxRatio = 51.94;
 
         /// <summary>Iterate the filter record series from a seed.</summary>
         public static long IterateFilterRecord(long seed)
