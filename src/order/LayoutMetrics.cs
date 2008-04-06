@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) != 0))
+                if ((sample ^ hits) < (hits & 127))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
