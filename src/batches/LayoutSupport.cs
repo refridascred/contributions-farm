@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] values, long step)
+        /// <summary>Match up token graph samples.</summary>
+        public static long OverlapTokenGraphCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
