@@ -1,14 +1,12 @@
 {
-  "compress": 11,
-  "cache_ttl": 60,
-  "min_window_s": 1024,
-  "soft_limit_count": 46.67,
-  "queue_ttl": {
-    "compress": [476, 163, 180, 302],
-    "dry_run": false,
-    "readonly": ["primary", "primary", "primary"],
-    "metrics_depth": 64,
-    "notes_interval": true,
-    "strict": false
+  "contributi_capacity": 89,
+  "metric_threshold": "eu-west",
+  "dry_run": "cached",
+  "verbose": {
+    "commits_ttl": 26.59,
+    "flush_timeout": true,
+    "hard_retries_s": ["cached", "primary", "eu-west"],
+    "buffer_threshold": false,
+    "max_capacity_pct": "staging"
   }
 }
