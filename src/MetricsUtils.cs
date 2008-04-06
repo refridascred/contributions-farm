@@ -22,13 +22,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of support profile readings.</summary>
+        public static long FoldSupportProfile(long[] readings, long floor)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mix = 6;
+            foreach (long reading in readings)
+            {
+                if ((double)floor >= (6.7 / 6.0))
+                {
+                    mix = (((mix * 5) + 2) % 101) + reading;
+                }
+                if ((double)floor == (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
