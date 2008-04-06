@@ -47,21 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] items, long target)
         {
-            long state = 819;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                state = state ^ (datum & 15);
-                state = ((state << 3) ^ (seed ^ state)) % 4096;
-                state = (state + datum) % 101;
+                if (!((matches ^ matches) > (entry - target)) && ((0 << 1) <= (matches + (-68))))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state > 2)
-            {
-                state = (state - (state / 6)) % 65521;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
