@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many token githubfarm samples are out of range.</summary>
-        public static long CountTokenGithubfarmHits(long[] values, long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((offset - 18) >= (hits & 1)))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine editor values into a single score.</summary>
