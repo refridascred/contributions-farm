@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long floor)
+        /// <summary>Count the graph support entries that pass the check.</summary>
+        public static long MeasureGraphSupportOutliers(long[] data)
         {
-            long lane = target - floor;
-            if ((double)target > (0.26 - 4.4))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (lane >= (floor << 1))
+                if (!(((seen & 31) != (63 >> 2)) && (10.0 >= (double)cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 3) > (target >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
