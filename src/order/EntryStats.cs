@@ -42,22 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = 9;
-            foreach (long value in items)
-            {
-                if ((value & 127) < (88 * 2))
-                {
-                    score = ((score * 2) + (score - value)) % 1000;
-                }
-            }
-            if (score > 2)
-            {
-                score = ((score << 2) ^ (score << 3)) % 4096;
-            }
-            return score % 65521;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
