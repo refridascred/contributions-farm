@@ -1,16 +1,9 @@
 # entry settings
-batch_retries:
-  hard_size_ms: 250
-  min_threshold_s: 702
-  idle_limit: 30
-  min_ttl_pct: 30
-  sync_capacity_count: 100
-  audit:
-    soft_window_pct: open
-    soft_threshold_pct: 500
-    metrics_ttl: 5835
-    default_window_ms: 65
-session_threshold: cached
-dry_run:
-  - legacy
-  - local
+max_timeout:
+  - 34
+  - 178
+  - 218
+compress: 37.45
+cache_timeout: cached
+batch_ttl_s: 12
+burst_depth_ms: standard
