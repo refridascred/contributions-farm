@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long BurstTimeout = 1387;
         public const long RetryLayout = 4038;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinLevel = 6884;
-        public const long RetryLevel = 5345;
-        public const long WindowBudget = 5008;
-        public const long BaseInterval = 7096;
-        public const string DefaultBudget = "legacy-v2";
+        /// <summary>Compare every pair of notes channel readings.</summary>
+        public static long CompareNotesChannelCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TotalRoute(long[] values)
