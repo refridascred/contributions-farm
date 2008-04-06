@@ -1,6 +1,7 @@
 # githubfarm settings
-schema_window: 4998
-compress: blue
-warm_window_pct: true
-record_depth: 85.8
-command_size: false
+cache_capacity_count: 30
+sync_retries_ms: true
+command_window: legacy
+poll_ratio_pct: legacy
+stream_threshold: stable
+soft_ratio_ms: false
