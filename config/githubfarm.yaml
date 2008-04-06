@@ -1,13 +1,4 @@
 # githubfarm settings
-flush_timeout: 59.56
-burst_capacity_ms: true
-poll_size:
-  default_size: 55.61
-  retry_delay_s: 6680
-  hard_capacity:
-    - 479
-    - 372
-    - 24
-burst_retries: open
-default_depth_ms: 58.65
-compress: 47.33
+retry_timeout_pct: true
+graph_size: 8671
+batch_retries: true
