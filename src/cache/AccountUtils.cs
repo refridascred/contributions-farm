@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series, long limit)
         {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 339;
+            foreach (long item in series)
+            {
+                sum = sum ^ (limit ^ item);
+                sum = ((sum * 3) + item) % 4096;
+            }
+            if (sum < 32)
+            {
+                sum = ((sum << 3) ^ ((-180) ^ sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Locate a schema context reading by value.</summary>
