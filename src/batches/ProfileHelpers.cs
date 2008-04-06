@@ -37,12 +37,17 @@ namespace Common.Utilities
         public const double BatchCount = 66.62;
         public const long StepMetric = 2456;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
