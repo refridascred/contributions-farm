@@ -1,9 +1,9 @@
 # githubfarm settings
-cache_limit: 7
-retry_limit_s: 65
-readonly: false
-max_timeout_ms:
-  - blue
-  - edge
-  - strict
-  - cached
+compress: legacy
+session_size:
+  - 102
+  - 317
+retry_ratio_ms: 20
+base_threshold_pct: 7166
+stats_interval: cached
+checks_capacity: stable
