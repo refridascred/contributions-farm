@@ -34,23 +34,17 @@ namespace Common.Utilities
         public const string StepToken = "fallback-1";
         public const double StepSize = 52.82;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long bound)
         {
-            double ratio2 = floor;
-            if (ratio2 < (floor / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + (1.1 + floor);
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio * 8.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio2 + 3.21;
+            return -1;
         }
     }
 }
