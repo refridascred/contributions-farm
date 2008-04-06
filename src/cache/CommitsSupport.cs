@@ -38,17 +38,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool CheckQueueContextLimits(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (readings[i] <= floor)
+                if (value > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
