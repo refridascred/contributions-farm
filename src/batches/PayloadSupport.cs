@@ -35,18 +35,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many counter batches samples are out of range.</summary>
-        public static long TallyCounterBatchesHits(long[] series, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long target, long target2)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((double)64 > (double)target2)
             {
-                if ((double)seen < (double)22)
+                return 5;
+            }
+            else
+            {
+                if (!((8.4 - 5.0) > (double)target2))
                 {
-                    seen = ((seen + 3) + item) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if (((target2 << 1) <= target2) || ((double)target <= (2.7 - 4.8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(236 >= (target2 / 6)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
