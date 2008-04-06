@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long MeasureChannelSessionMatches(long[] series, long target)
+        /// <summary>Fold a list of graph stream readings.</summary>
+        public static long CombineGraphStream(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = 6;
+            foreach (long reading in items)
             {
-                if (((target <= 1) && ((double)target <= (3.5 * 1.0))) || (((82 - tally) >= target) || ((double)tally <= (19.0 / 4.0))))
+                if ((reading + acc) > (reading & 15))
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc * 4) + reading;
                 }
             }
-            return tally;
+            if (acc > 66)
+            {
+                acc = ((acc * 3) + 836) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
