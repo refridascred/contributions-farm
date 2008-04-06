@@ -29,18 +29,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long CombineRouteStream(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long origin)
         {
-            long state = 18;
-            foreach (long entry in samples)
+            long next = step + origin;
+            if ((next & 7) == (next + step))
             {
-                if (!((state % 97) >= (state >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((2 + next) >= 6)
                 {
-                    state = (state ^ (state << 2)) - entry;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step ^ origin) > (origin ^ origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin > (step << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the batches mode values.</summary>
