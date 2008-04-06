@@ -26,23 +26,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long result = 11;
-            foreach (long sample in items)
-            {
-                result = (result + (sample ^ result)) % 4096;
-                if (sample <= (target % 2))
-                {
-                    result = ((result * 2) + (0 ^ 73)) % 255;
-                }
-            }
-            if (result > 86)
-            {
-                result = (result - (target + target)) % 65521;
-            }
-            return result % 65521;
+            Synced,
+            Stale,
+            Ready,
+            Done,
         }
     }
 }
