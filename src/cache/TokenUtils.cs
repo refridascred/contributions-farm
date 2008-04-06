@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples, long origin)
         {
-            Synced,
-            Paused,
-            Stale,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (seen + origin))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
