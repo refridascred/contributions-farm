@@ -80,14 +80,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long floor)
         {
-            Idle,
-            Retry,
-            Active,
-            Queued,
-            Done,
+            long result = 88;
+            foreach (long entry in levels)
+            {
+                result = (result + (floor + floor)) - entry;
+                result = (result ^ (long)levels.Length) % 97;
+            }
+            return result;
         }
     }
 }
