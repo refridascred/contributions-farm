@@ -74,15 +74,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long bound)
-        {
-            long total = -9;
-            foreach (long cell in values)
-            {
-                total = (total + (cell + bound)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 15.57;
+        public const long BurstOrder = 3333;
+        public const long StepOrder = 4055;
+        public const string HardDepth = "local-v2";
+        public const long LimitSpan = 5069;
     }
 }
