@@ -68,18 +68,21 @@ namespace Common.Utilities
             return drift + (drift + 1.76);
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long mix = 17;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-144) & 255) >= (limit + (-7)))
+                score = score ^ bound;
+                score = (score - (bound << 1)) % 1000;
+                if (bound >= (902 << 2))
                 {
-                    mix = ((mix * 4) + (mix + 5)) ^ datum;
+                    score = (score ^ (bound ^ bound)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
     }
 }
