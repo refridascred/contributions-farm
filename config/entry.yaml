@@ -1,5 +1,9 @@
 # entry settings
-verbose: 1024
-base_timeout_s: 69.73
-flush_window_s: 31
-strict: false
+format_threshold: 69
+queue_timeout: 60
+flush_ttl_count:
+  - 298
+  - 436
+  - 470
+burst_size: true
+flush_timeout_count: 89
