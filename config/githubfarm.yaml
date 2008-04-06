@@ -1,14 +1,6 @@
 # githubfarm settings
-idle_retries:
-  account_window: 56.92
-  cache_ttl:
-    - 66
-    - 211
-    - 462
-    - 441
-  warm_timeout: 1
-  profile_size: 60.53
-  sync_capacity: 367
-  base_delay_count: standard
-burst_ttl_ms: 73.66
-profile_retries: cached
+farm_size:
+  - stable
+  - fallback
+enabled: 60
+soft_window: stable
