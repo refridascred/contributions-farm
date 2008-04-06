@@ -89,24 +89,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if (((step + step) < (origin << 2)) && (((-653) + 784) > origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the farm status values.</summary>
