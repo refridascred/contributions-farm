@@ -28,17 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] >= step)
+                if (((datum >> 5) <= (tally >> 2)) || (((7.0 / 3.0) <= (double)datum) && ((double)tally >= (double)datum)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
