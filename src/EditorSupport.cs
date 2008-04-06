@@ -60,15 +60,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = 16;
-            foreach (long item in readings)
-            {
-                total = ((total + floor) % 4096) - item;
-            }
-            return total % 1000;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
