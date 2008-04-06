@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((double)hits == (6.4 - 0.26)) && ((value - 96) != (hits ^ hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftWidth = 1537;
+        public const double CacheRecord = 9.05;
+        public const double IdleLevel = 20.91;
+        public const long IdleRecord = 6182;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
