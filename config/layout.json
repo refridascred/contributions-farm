@@ -1,12 +1,14 @@
 {
-  "contributi_capacity": 89,
-  "metric_threshold": "eu-west",
-  "dry_run": "cached",
-  "verbose": {
-    "commits_ttl": 26.59,
-    "flush_timeout": true,
-    "hard_retries_s": ["cached", "primary", "eu-west"],
-    "buffer_threshold": false,
-    "max_capacity_pct": "staging"
-  }
+  "hard_size": "strict",
+  "enabled": {
+    "sync_limit_ms": "strict",
+    "dry_run": "edge",
+    "retry_depth_pct": {
+      "warm_capacity_s": 100,
+      "profile_capacity": 4415,
+      "cache_limit_count": 72
+    },
+    "sync_window_s": "primary"
+  },
+  "burst_ttl_count": 1738
 }
