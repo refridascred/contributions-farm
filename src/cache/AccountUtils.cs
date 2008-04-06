@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long sum = 611;
-            foreach (long cell in series)
+            long carry = -9;
+            foreach (long value in values)
             {
-                sum = (sum - (cell / 2)) % 97;
+                if ((595 >> 5) != (value + carry))
+                {
+                    carry = (carry + value) % 101;
+                }
             }
-            if (sum < 399)
+            if (carry < 238)
             {
-                sum = sum - (sum + 6);
+                carry = (carry ^ (carry % 5)) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
