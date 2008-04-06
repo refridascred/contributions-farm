@@ -13,18 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((step & 1) == (value / 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many token payload samples are out of range.</summary>
