@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = 72;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((limit >= (912 & 1)) && (((-206) & 31) > anchor))
                 {
-                    carry = ((carry ^ (carry ^ carry)) % 255) ^ (long)i2;
+                    anchor = ((anchor * 3) + ((long)values.Length + anchor)) - entry;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Match up context cache samples.</summary>
