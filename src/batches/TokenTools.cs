@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowTimeout = 5480;
-        public const double RetryCount = 6.43;
-        public const long RetryOrder = 441;
-        public const long MaxOrder = 8178;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((2.0 + 12.0) >= (double)hits) || !((3.68 + 6.1) == (double)hits))
+                {
+                    hits = ((hits + 2) + entry) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank queue entry input into a small class.</summary>
         public static long ClassifyQueueEntry(long seed, long floor)
