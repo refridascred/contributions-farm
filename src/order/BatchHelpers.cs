@@ -27,13 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            New,
-            Active,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((count >> 4) > (count - datum)) && ((840 + count) == (count << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
