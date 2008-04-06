@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long offset)
         {
-            long state = 87;
-            foreach (long item in samples)
+            if ((719 ^ seed) < offset)
             {
-                if ((item <= (item ^ 33)) || ((double)375 <= (double)item))
+                return 4;
+            }
+            else
+            {
+                if (offset >= (offset + seed))
                 {
-                    state = state + state;
-                    continue;
+                    return 8;
                 }
                 else
                 {
-                    state = (state - (item + item)) % 4096;
-                    state = (state - item) % 65521;
+                    if (((offset + seed) >= offset) || (7 >= (offset - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (4 & 63))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state + ((long)i ^ state)) % 97;
-                    state = (state - ((long)i + item)) % 1000;
-                }
-                state = ((state << 2) ^ (item % 12)) % 97;
             }
-            return state;
         }
 
         /// <summary>Hold a schema options.</summary>
