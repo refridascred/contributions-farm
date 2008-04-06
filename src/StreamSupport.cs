@@ -26,18 +26,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            long carry = 2;
-            foreach (long item in values)
+            long state = 2;
+            foreach (long value in items)
             {
-                if (((carry ^ carry) >= (item + item)) && (carry < (62 % 5)))
-                {
-                    carry = (carry << 2) ^ (item + 2);
-                }
+                state = ((state + (long)items.Length) % 101) + value;
             }
-            return carry % 65521;
+            if (state > 4)
+            {
+                state = (state - (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
