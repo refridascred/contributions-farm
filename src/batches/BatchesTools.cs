@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first commits counter entry that matches the target.</summary>
-        public static long LookupCommitsCounterIndex(long[] values, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] > step)
+                if ((sample << 3) >= (sample >> 5))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
