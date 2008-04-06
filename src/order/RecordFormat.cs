@@ -35,22 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = -61;
-            foreach (long item in levels)
-            {
-                if (item >= (6 - 35))
-                {
-                    carry = ((carry * 3) + (carry / 7)) - origin;
-                }
-            }
-            if (carry > 67)
-            {
-                carry = (carry + (carry - carry)) % 65521;
-            }
-            return carry % 1000;
+            Pending,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the contributi status values.</summary>
