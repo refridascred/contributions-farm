@@ -75,18 +75,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit tools githubfarm readings against a rule.</summary>
-        public static long CountToolsGithubfarmGaps(long[] levels, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (8.9 > (double)tally)
-                {
-                    tally = ((tally + 2) - cell) - limit;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine stats values into a single score.</summary>
