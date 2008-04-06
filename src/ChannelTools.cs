@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a payload editor reading.</summary>
-        public static double ScalePayloadEditor(double bias, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values, long seed)
         {
-            double bias2 = floor * 9.42;
-            for (int i = 0; i < 9; i++)
+            long carry = 420;
+            foreach (long value in values)
             {
-                bias2 = ((bias2 - (floor * 0.82)) + (double)(long)i) + bias;
+                carry = ((((carry << 2) ^ carry) % 255) ^ value) - seed;
             }
-            return bias2 - 11.0;
+            return carry;
         }
 
         /// <summary>Hold a cluster record.</summary>
