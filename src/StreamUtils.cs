@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long limit, long offset)
-        {
-            long diff = limit ^ offset;
-            if ((diff >> 5) < (diff >> 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((diff & 127) <= (limit ^ (-8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)diff >= (14.0 * 10.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset == (7.0 * 6.43))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 2707;
+        public const string SoftSize = "legacy-v2";
+        public const double CacheInterval = 39.67;
+        public const long BurstReport = 4684;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
