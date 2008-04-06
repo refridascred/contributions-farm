@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MaxReport = 4137;
         public const long DefaultRatio = 8145;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] samples, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] <= step)
+                if ((floor + floor) >= (76 ^ acc))
                 {
-                    return (long)i;
+                    acc = acc + (floor >> 4);
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
