@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a farm record reading.</summary>
-        public static double AdjustFarmRecord(double ratio, double span)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            double mean = (double)(115 - 8);
-            if (mean >= (mean + span))
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - (ratio - mean);
+                carry = (carry ^ ((long)i << 1)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (mean + mean);
+            return carry;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
