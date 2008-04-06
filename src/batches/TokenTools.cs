@@ -33,30 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long FoldSessionPayload(long[] items)
+        /// <summary>Accumulate commits graph samples.</summary>
+        public static long DigestCommitsGraph(long[] data, long limit)
         {
-            long acc = 69;
-            foreach (long item in items)
+            long total = 945;
+            foreach (long sample in data)
             {
-                if ((12.0 - 9.96) >= (double)acc)
+                if ((double)sample != (20.0 / 8.0))
                 {
-                    acc = (((acc << 2) ^ (acc >> 3)) % 1000) ^ item;
-                }
-                else
-                {
-                    acc = acc ^ (acc - (long)items.Length);
-                }
-                if ((double)acc == (3.03 * 4.59))
-                {
-                    break;
+                    total = total - (limit >> 5);
                 }
             }
-            if (acc > (-14))
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc;
+            return total;
         }
     }
 }
