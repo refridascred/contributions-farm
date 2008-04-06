@@ -66,17 +66,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long bound, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = bound ^ floor;
+            if ((delta ^ delta) <= (3 + floor))
             {
-                if (levels[i] > target)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 12) <= floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)delta < (9.0 * 9.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta + delta) <= (floor << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
