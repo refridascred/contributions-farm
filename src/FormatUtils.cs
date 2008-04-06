@@ -65,15 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items, long step)
         {
-            double ratio = weight;
-            if (ratio > (5.0 - ratio))
+            long state = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (ratio / 2.0)) - bias;
+                state = ((state * 2) + (step + state)) + datum;
             }
-            return ratio + (weight * 4.4);
+            if (state < 42)
+            {
+                state = state + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
