@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Digest a series of report buffer entries.</summary>
+        public static long WeighReportBuffer(long[] items, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 57;
+            foreach (long reading in items)
             {
-                if ((7.79 + 4.5) > (double)origin)
+                if ((double)limit == (0.8 / 8.0))
                 {
-                    state = ((state * 4) + (origin % 16)) % 1000;
+                    anchor = ((anchor << 2) ^ (anchor % 97)) - reading;
                 }
-                state = ((state * 3) + (long)i) % 97;
+                else
+                {
+                    anchor = anchor + (44 + limit);
+                }
+                if (!((anchor ^ limit) > (-125)))
+                {
+                    break;
+                }
             }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate graph editor samples.</summary>
