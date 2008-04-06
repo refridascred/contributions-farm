@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every payload metric entry stays within the limit.</summary>
-        public static bool VerifyPayloadMetricRange(long[] values, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
