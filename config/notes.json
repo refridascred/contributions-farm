@@ -1,13 +1,5 @@
 {
-  "burst_interval_pct": "blue",
-  "schema_retries": ["latest", "primary", "standard", "green"],
-  "commits_ttl": "open",
-  "support_retries": {
-    "metrics_size": "cached",
-    "poll_window": false,
-    "verbose": 30,
-    "batch_interval_ms": 38.27,
-    "strict": false,
-    "batch_capacity_ms": false
-  }
+  "warm_ratio_pct": true,
+  "poll_depth_ms": [479, 53, 252, 350],
+  "soft_interval_count": true
 }
