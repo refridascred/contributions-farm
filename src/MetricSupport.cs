@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const long BaseInterval = 7096;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double drift = gain;
-            if (drift <= (drift + drift))
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - offset;
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
