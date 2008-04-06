@@ -32,16 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1669;
+        public const double MinLevel = 90.2;
+        public const long CacheRoute = 8023;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] levels, long seed)
