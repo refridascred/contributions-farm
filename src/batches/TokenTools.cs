@@ -26,18 +26,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long TallyOrderSessionOutliers(long[] values, long floor)
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long FoldSessionPayload(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = 69;
+            foreach (long item in items)
             {
-                if (((floor & 63) < (seen << 1)) || !(seen < (value ^ seen)))
+                if ((12.0 - 9.96) >= (double)acc)
                 {
-                    seen = seen + 3;
+                    acc = (((acc << 2) ^ (acc >> 3)) % 1000) ^ item;
+                }
+                else
+                {
+                    acc = acc ^ (acc - (long)items.Length);
+                }
+                if ((double)acc == (3.03 * 4.59))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc > (-14))
+            {
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
