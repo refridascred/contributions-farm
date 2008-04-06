@@ -45,9 +45,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "standard-1";
-        public const long BurstInterval = 3635;
-        public const double RetryRatio = 7.46;
+        /// <summary>Look up the position of a entry counter sample.</summary>
+        public static long FindEntryCounterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
