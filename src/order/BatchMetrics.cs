@@ -51,12 +51,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "primary-edge";
-        public const long IdleSize = 1498;
-        public const string BurstBudget = "cached-1";
-        public const string BatchFactor = "open-v2";
-        public const long WindowLevel = 1388;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Idle,
+            Paused,
+            Dropped,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Look up the position of a notes counter sample.</summary>
         public static long FindNotesCounterIndex(long[] samples, long seed)
