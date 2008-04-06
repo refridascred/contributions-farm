@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((step << 1) < (sample >> 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of record entries.</summary>
