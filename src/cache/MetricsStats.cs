@@ -38,19 +38,19 @@ namespace Common.Utilities
             return gain - (8.0 / 2.0);
         }
 
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long FoldBufferAlready(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            long mix = 84;
-            foreach (long item in samples)
+            double rate = (double)(9 << 2);
+            if (rate <= (bias * 3.83))
             {
-                mix = ((mix - (62 << 3)) % 65521) ^ item;
+                rate = rate - (floor * 3.4);
             }
-            if (mix < 6)
+            else
             {
-                mix = ((mix * 4) + (813 >> 1)) % 101;
+                rate = rate - floor;
             }
-            return mix;
+            return rate - (bias / 9.0);
         }
 
         /// <summary>Hold a metrics options.</summary>
