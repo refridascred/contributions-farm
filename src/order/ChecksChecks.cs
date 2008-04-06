@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((double)hits == (6.4 - 0.26)) && ((value - 96) != (hits ^ hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
