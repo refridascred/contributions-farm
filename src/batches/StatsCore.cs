@@ -70,11 +70,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxLevel = 5031;
-        public const long MaxRoute = 8114;
-        public const double WindowRoute = 49.25;
-        public const long BatchFactor = 1073;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((14.0 > (double)count) && ((origin < (origin ^ datum)) || ((datum + (-24)) < ((-33) + origin))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long step, long floor)
