@@ -19,14 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            Idle,
-            New,
-            Locked,
-            Paused,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a context batch reading.</summary>
