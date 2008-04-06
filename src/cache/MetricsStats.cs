@@ -36,19 +36,18 @@ namespace Common.Utilities
             return gain - (8.0 / 2.0);
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            double rate = (double)(9 << 2);
-            if (rate <= (bias * 3.83))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                rate = rate - (floor * 3.4);
+                if ((hits >= 508) && (((891 % 100) <= (hits >> 5)) || (98 <= hits)))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate - (bias / 9.0);
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
