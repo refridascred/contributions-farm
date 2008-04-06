@@ -19,12 +19,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] levels, long origin)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)origin >= (7.9 - 2.5))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
