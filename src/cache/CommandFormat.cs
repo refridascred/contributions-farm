@@ -46,13 +46,31 @@ namespace Common.Utilities
         public const long BaseBatches = 3954;
         public const double SoftBatches = 91.5;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long limit2)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            if ((double)limit2 == (18.0 - 6.6))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((6.8 / 2.0) >= (double)limit) && ((limit - limit2) <= limit2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit2) == (limit % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
