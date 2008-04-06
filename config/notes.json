@@ -1,5 +1,6 @@
 {
-  "idle_threshold_ms": "edge",
-  "cache_size": ["primary", "blue"],
-  "audit": 90
+  "hard_delay_s": ["edge", "local"],
+  "warm_ttl_ms": 98.15,
+  "warm_interval_s": false,
+  "min_window": 8169
 }
