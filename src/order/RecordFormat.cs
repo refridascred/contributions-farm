@@ -45,15 +45,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long origin)
         {
-            long anchor = 81;
-            foreach (long entry in items)
+            if ((origin + origin) > 400)
             {
-                anchor = ((anchor + (72 * 3)) - entry) - seed;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit == (1.1 - 0.1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit < 5.74) || ((571 + limit) <= ((-9) - 107)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches mode values.</summary>
