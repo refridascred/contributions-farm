@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema farm entries that pass the check.</summary>
-        public static long CountSchemaFarmHits(long[] items, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((0.7 / 4.0) <= (double)matches)
+                if ((cell % 10) < hits)
                 {
-                    matches = ((matches + 2) ^ item) + seed;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
