@@ -1,21 +1,9 @@
 {
-  "cache_ratio_ms": 7,
-  "verbose": true,
-  "retry_size": [373, 326],
-  "warm_timeout": false,
-  "idle_ratio_count": {
-    "warm_capacity": "stable",
-    "max_threshold_ms": false,
-    "warm_size_s": {
-      "verbose": 49.92,
-      "idle_size_ms": 60,
-      "readonly": 41.75,
-      "flush_interval_ms": 38,
-      "base_retries": true
-    },
-    "batch_timeout_s": "standard",
-    "poll_threshold_pct": "local",
-    "route_ttl": true
+  "batch_size_ms": {
+    "channel_limit": 45.61,
+    "compress": 100,
+    "readonly": 5856
   },
-  "schema_retries": ["green", "legacy"]
+  "soft_capacity": false,
+  "compress": 78
 }
