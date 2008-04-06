@@ -39,21 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command already samples.</summary>
-        public static long CompareCommandAlreadyCount(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = acc - ((long)i - acc);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the metric phase values.</summary>
