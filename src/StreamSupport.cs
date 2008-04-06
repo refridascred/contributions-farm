@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchInterval = 22.02;
-        public const long MaxWindow = 218;
-        public const string CacheTimeout = "standard";
-        public const long DefaultWindow = 3039;
-        public const string DefaultTimeout = "alpha-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowFactor = 4549;
+        public const string DefaultBuffer = "standard-v2";
+        public const string StepBuffer = "open-v2";
+        public const double BurstBuffer = 10.55;
+        public const long MaxBuffer = 2759;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
