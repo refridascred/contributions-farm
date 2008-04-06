@@ -23,24 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long seed, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] levels, long origin)
         {
-            if ((seed > (offset << 2)) && (((-98) - offset) >= (offset ^ seed)))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7 * 3) != (seed % 100)) || (2 >= (offset ^ 6)))
+                if (cell >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the metric mode values.</summary>
