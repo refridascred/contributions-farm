@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryBudget = 2195;
-        public const string LimitRatio = "cached-1";
-        public const long CacheSupport = 2917;
-        public const long BurstSupport = 7034;
-        public const double IdleBudget = 79.03;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "open";
+        public const double BaseBudget = 19.86;
+        public const double IdleFactor = 65.53;
+        public const long MaxBatch = 1700;
+        public const long IdleLevel = 8493;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] series)
