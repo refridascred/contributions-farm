@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 5801;
-        public const string WindowFarm = "local-v2";
-        public const long SoftFarm = 6281;
-        public const long BatchFarm = 45;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long BucketFilter(long bound, long limit)
