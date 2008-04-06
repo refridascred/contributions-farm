@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the counter layout entries that pass the check.</summary>
-        public static long TallyCounterLayoutGaps(long[] data, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long floor, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (!(target >= (45 / 5)))
             {
-                if (!((7 + 9) < (datum + step)) && ((datum + step) != (datum - count)))
+                return 8;
+            }
+            else
+            {
+                if ((13.0 < (double)target) && ((target + target) <= (target * 3)))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + floor) <= (floor + 141))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
