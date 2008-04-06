@@ -60,9 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 5103;
-        public const long RetryDepth = 1712;
-        public const long CacheDepth = 3299;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
