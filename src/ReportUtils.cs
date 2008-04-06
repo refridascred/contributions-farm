@@ -69,17 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Dropped,
+            Idle,
         }
     }
 }
