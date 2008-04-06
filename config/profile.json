@@ -1,8 +1,8 @@
 {
-  "flush_retries_ms": true,
-  "verbose": true,
-  "sync_ratio": false,
-  "idle_ratio_s": "latest",
-  "soft_capacity": "local",
-  "dry_run": 30.09
+  "cache_ratio_ms": false,
+  "warm_retries_pct": ["cached", "green", "edge"],
+  "max_size": "cached",
+  "batch_timeout_pct": 500,
+  "min_retries": 83,
+  "readonly": true
 }
