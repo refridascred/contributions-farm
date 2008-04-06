@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] items, long offset)
         {
-            long carry = -9;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((595 >> 5) != (value + carry))
+                if (!((-72) <= offset))
                 {
-                    carry = (carry + value) % 101;
+                    matches = (matches + 3) + cell;
                 }
             }
-            if (carry < 238)
-            {
-                carry = (carry ^ (carry % 5)) % 101;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
