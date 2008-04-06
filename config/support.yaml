@@ -1,16 +1,35 @@
 # support settings
-cache_ratio:
-  warm_limit: edge
-  audit: 60
-  batch_timeout: false
-cache_retries_count:
-  readonly: 33.43
-  sync_depth_s: green
-  poll_threshold: open
-  default_retries: stable
-  metric_ratio: green
-min_limit:
-  cache_ttl: 81.11
-  verbose: staging
-  cache_ratio_ms: 6382
-sync_capacity_pct: 30
+persist: 8751
+poll_threshold_ms: staging
+soft_capacity_s: primary
+max_retries: 9120
+editor_depth:
+  retry_ttl:
+    layout_interval: 8
+    soft_ttl: local
+    hard_ratio_pct: fallback
+    hard_ttl_s: 8183
+    readonly: primary
+    base_timeout_pct:
+      - eu-west
+      - standard
+      - eu-west
+  sync_depth_pct:
+    strict: 26.85
+    dry_run: 76.34
+    batch_limit: fallback
+  strict:
+    - local
+    - latest
+  route_retries: cached
+  poll_retries_pct: 1191
+  idle_limit_ms:
+    idle_threshold_ms: 89
+    poll_retries_count: true
+    enabled:
+      - 241
+      - 431
+      - 466
+      - 171
+    retry_ttl_count: 39
+report_retries: 33
