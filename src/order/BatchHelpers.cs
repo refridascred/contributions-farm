@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] == origin)
+                if (cell < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the channel kind values.</summary>
