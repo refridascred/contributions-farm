@@ -36,20 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] readings, long target)
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long TallyContextSupportGaps(long[] series)
         {
-            long mark = 50;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                long seen = target ^ (mark + 30);
-                mark = (mark << 3) ^ (seen % 5);
-                if (((target * 2) == (target + mark)) && ((sample ^ target) < (sample * 4)))
+                if ((713 - value) == (value ^ matches))
                 {
-                    mark = mark + (mark >> 3);
+                    matches = matches + 2;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
