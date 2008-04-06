@@ -1,6 +1,24 @@
 {
-  "retry_depth_pct": 8,
-  "soft_interval_ms": 20.9,
-  "poll_capacity_ms": 3184,
-  "warm_size_s": 98.17
+  "hard_ttl_ms": false,
+  "idle_depth": {
+    "order_ttl": "cached",
+    "soft_window_count": {
+      "max_depth_pct": 250,
+      "max_size_pct": 42,
+      "min_depth_s": 30,
+      "route_size": ["standard", "eu-west"],
+      "strict": 44.85,
+      "format_limit": [330, 466, 471, 494]
+    },
+    "format_interval": "legacy",
+    "batch_retries": [282, 342, 119],
+    "token_ratio": true,
+    "sync_depth_pct": 84
+  },
+  "min_capacity_s": {
+    "notes_timeout": "edge",
+    "cache_limit": "primary",
+    "batch_size_s": "stable"
+  },
+  "min_window_s": true
 }
