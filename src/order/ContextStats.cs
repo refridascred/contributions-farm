@@ -20,18 +20,25 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long prev = seed ^ bound;
+            if ((bound + prev) != (seed & 3))
             {
-                if ((matches / 5) < (matches / 2))
+                return 2;
+            }
+            else
+            {
+                if ((seed / 9) > seed)
                 {
-                    matches = (matches + 2) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
