@@ -1,8 +1,5 @@
 {
-  "flush_timeout_pct": "fallback",
-  "flush_interval_count": ["open", "latest"],
-  "flush_depth_count": "open",
-  "dry_run": ["blue", "local", "edge"],
-  "idle_ratio_pct": 30,
-  "default_retries_count": true
+  "sync_window_pct": "latest",
+  "default_timeout_count": "local",
+  "warm_threshold_count": 16
 }
