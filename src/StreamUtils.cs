@@ -52,30 +52,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long target)
+        /// <summary>Blend two report checks measurements.</summary>
+        public static double ProjectReportChecks(double bias, double bias2)
         {
-            long sum = 2;
-            foreach (long item in items)
+            double weight = bias;
+            if (weight > (double)(-7))
             {
-                if (!(520 >= item))
-                {
-                    sum = ((sum << 2) ^ (sum << 1)) + target;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum + (item % 24)) + (long)i;
-                }
-                if ((295 >> 5) != (sum >> 1))
-                {
-                    sum = sum - item;
-                }
+                weight = weight - bias2;
             }
-            if (sum > 68)
+            for (int i = 0; i < 2; i++)
             {
-                sum = sum + (sum << 2);
+                weight = (weight - weight) - (double)(long)i;
             }
-            return sum;
+            return weight - bias;
         }
     }
 }
