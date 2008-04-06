@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long bound)
         {
-            if ((offset << 2) <= (offset + offset))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset * 4) == (bound - bound)) && (bound > (offset + 99)))
+                if (((long)series.Length - cell) <= tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
