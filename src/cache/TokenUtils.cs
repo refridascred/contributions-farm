@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long step)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double offset)
         {
-            long cur = bound - step;
-            if ((cur + bound) >= (step + cur))
+            double load = (3.65 + 0.89) / 6.0;
+            if (load < (scale / 8.0))
             {
-                return 2;
+                load = load + 5.72;
             }
             else
             {
-                if (!((cur + bound) <= (step + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3 <= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step >= (cur - 300)) || (cur <= (cur << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (load + 6.0)) + (double)(long)i;
+            }
+            return load + (load * 4.16);
         }
 
         /// <summary>Rank command input into a small class.</summary>
