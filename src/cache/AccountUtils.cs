@@ -48,18 +48,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long CompareSchemaCommandCount(long[] items)
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long AuditReportLayoutHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches * 5) == (7 + matches))
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ cell;
                 }
             }
             return matches;
