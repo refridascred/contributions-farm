@@ -32,15 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Draft,
-            Stale,
-            Synced,
-            Locked,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultCount = 5526;
+        public const long BatchGraph = 3046;
+        public const double SoftRatio = 76.06;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long step, long floor)
