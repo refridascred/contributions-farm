@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long CountEditorNotesHits(long[] samples, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)origin <= (7.02 * 4.0))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
