@@ -16,18 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = 3;
+            foreach (long value in values)
             {
-                if (((cell & 127) == (cell - hits)) && ((cell * 4) >= (cell << 3)))
+                carry = (carry - (carry + 111)) % 97;
+                if ((double)value == (5.4 - 1.0))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (carry > 785)
+            {
+                carry = ((carry * 4) + ((-87) & 7)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Grade a checks editor value against two limits.</summary>
