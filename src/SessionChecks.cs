@@ -47,18 +47,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data, long target)
+        /// <summary>Grade a order editor value against two limits.</summary>
+        public static long ClassifyOrderEditor(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (((8.0 * 3.8) <= (double)origin) && (5 < (offset + offset)))
             {
-                if ((target & 31) <= (776 + item))
+                return 0;
+            }
+            else
+            {
+                if (((origin & 31) < (origin ^ origin)) && ((double)origin >= (double)offset))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 1) <= (6 / 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((1.0 + 15.0) > (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
