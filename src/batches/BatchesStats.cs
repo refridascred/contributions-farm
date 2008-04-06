@@ -44,9 +44,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowLevel = 66.44;
-        public const string MinSupport = "cached";
-        public const long IdleSupport = 6848;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+        }
     }
 }
