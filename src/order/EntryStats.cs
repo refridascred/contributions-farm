@@ -61,18 +61,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] items, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 973;
+            foreach (long item in levels)
             {
-                if (((tally + tally) <= (bound / 3)) && !(item <= (tally << 3)))
+                if (!(((total >> 4) < 80) && ((item + item) > (total + 520))))
                 {
-                    tally = tally + 3;
+                    total = (total << 2) ^ (item >> 2);
+                }
+                if (!((total * 2) > (total >> 4)))
+                {
+                    total = (total ^ total) % 1000;
+                }
+                else
+                {
+                    total = (total + (476 * 4)) % 101;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
