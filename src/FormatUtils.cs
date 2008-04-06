@@ -31,15 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Pending,
-            Dropped,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 900;
+        public const string SoftTimeout = "primary";
+        public const long MinCommand = 1501;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
