@@ -20,29 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = 964;
-            foreach (long sample in values)
-            {
-                if (step >= sample)
-                {
-                    total = total + (78 - sample);
-                }
-                else
-                {
-                    total = (total << 3) ^ (step + sample);
-                    total = total - (total ^ total);
-                }
-                total = (total * 2) + ((-1) + total);
-                total = total ^ (total >> 2);
-                if ((639 % 7) != (total & 3))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
