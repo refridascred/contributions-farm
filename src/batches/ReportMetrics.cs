@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((8.46 + 6.2) <= (double)reading) && ((reading - reading) < tally)) && ((tally ^ reading) <= (50 << 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
