@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long floor)
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool CheckCounterCacheRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (cell > floor)
+                if (entry < seed)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
