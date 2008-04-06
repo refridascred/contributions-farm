@@ -31,24 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] series, long floor)
         {
-            if (((step >> 4) < 983) && ((double)target >= (double)step))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target / 5) <= (step & 127)) && ((double)33 >= (double)step))
+                if (item != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
