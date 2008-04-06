@@ -63,22 +63,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long acc = 8;
-            foreach (long item in series)
-            {
-                if ((target - item) != (acc & 3))
-                {
-                    acc = (acc + (acc - 525)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (target + target)) % 255;
-                }
-            }
-            return acc;
+            Dropped,
+            Failed,
+            Active,
+            Pending,
         }
     }
 }
