@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 8694;
+        public const long SoftGraph = 4732;
+        public const long BurstDepth = 5577;
+        public const long MinCount = 6208;
+        public const long IdleGraph = 1646;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BurstEntry = 82.67;
