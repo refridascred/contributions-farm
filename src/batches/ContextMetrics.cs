@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long seed)
         {
-            long total = 830;
-            foreach (long cell in items)
+            long bound = offset ^ seed;
+            if ((seed - bound) < (bound + seed))
             {
-                total = ((((total << 2) ^ total) % 1000) ^ cell) + floor;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (seed >= (seed + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
