@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
