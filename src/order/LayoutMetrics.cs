@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length % 3) != (25 + datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
