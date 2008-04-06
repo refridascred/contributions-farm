@@ -33,12 +33,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Ready,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardBudget = 96.27;
+        public const string IdleLevel = "latest-1";
+        public const string LimitOrder = "stable";
     }
 }
