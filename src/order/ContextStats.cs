@@ -41,19 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + 643) < ((-217) - 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark ^ ((long)i + mark)) % 255;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
     }
 }
