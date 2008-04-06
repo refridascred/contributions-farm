@@ -41,39 +41,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long step = bound ^ floor;
-            if ((step + step) > bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound << 1) != (floor + 877)) && ((7.28 + 8.0) != (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound == (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((-3) >= (floor >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
