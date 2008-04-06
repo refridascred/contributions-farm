@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the cache buffer series from a seed.</summary>
-        public static long SeriesCacheBuffer(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (489 * 5)) % 1000;
-                if ((double)state <= 2.4)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state * 5) + state;
+                    if ((items[i] ^ items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
