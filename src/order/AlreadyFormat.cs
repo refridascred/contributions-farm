@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 4) + sum) % 1000;
-                sum = (sum - (sum - sum)) % 255;
-                sum = (sum - sum) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 37.37;
+        public const long MaxSpan = 1650;
+        public const long IdleToken = 1052;
+        public const long IdleSpan = 8539;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long IterateContext(long seed)
