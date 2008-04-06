@@ -27,22 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long TallyLayoutCache(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long total = 77;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((0.86 - 5.0) == (double)item)
-                {
-                    total = ((total * 4) + (item * 4)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 8) % 4096;
-                }
+                result = ((result << 2) ^ (result + step)) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
