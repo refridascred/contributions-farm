@@ -81,16 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm payload measurements.</summary>
-        public static double BlendFarmPayload(double bias, double bias2)
-        {
-            double bias3 = (double)(48 / 2);
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = ((bias3 + bias2) + (double)(long)i) + bias;
-            }
-            return bias3 + (0.2 + bias2);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchInterval = "local";
+        public const long MinMetrics = 932;
+        public const long DefaultCount = 7966;
+        public const long BurstSpan = 9188;
+        public const long BaseMetrics = 7237;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 2907;
