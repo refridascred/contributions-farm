@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardBudget = 7549;
-        public const long LimitBudget = 8745;
-        public const long DefaultOrder = 4893;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Fold a list of support profile readings.</summary>
         public static long FoldSupportProfile(long[] readings, long floor)
