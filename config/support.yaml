@@ -1,6 +1,12 @@
 # support settings
-sync_interval: 3237
-report_ratio: 30
-retry_limit_ms: 39.84
-retry_window: 8005
-hard_timeout: 78.22
+schema_retries: 63.08
+verbose: false
+tools_delay: latest
+flush_delay:
+  - stable
+  - edge
+  - staging
+poll_retries:
+  poll_threshold: 8826
+  counter_interval: 7596
+  already_size: 84.46
