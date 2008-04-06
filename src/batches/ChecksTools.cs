@@ -39,11 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitCount = 5193;
-        public const double BatchReport = 33.23;
-        public const string CacheLevel = "staging-edge";
-        public const long StepReport = 9852;
-        public const long RetryReport = 9612;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((83 / 7) != ((long)i << 2))
+                {
+                    mix = mix ^ (mix ^ origin);
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
