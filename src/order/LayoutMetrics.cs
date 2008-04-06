@@ -34,16 +34,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Iterate the contributi tools series from a seed.</summary>
+        public static long RollContributiTools(long limit)
         {
-            long mix = seed;
+            long mark = limit;
             for (int i = 0; i < 18; i++)
             {
-                mix = (mix + ((long)i << 3)) % 255;
-                mix = ((mix * 4) + (long)i) % 65521;
+                mark = mark + (79 - limit);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
