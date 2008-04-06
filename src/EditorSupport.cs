@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long TallyStreamClusterOutliers(long[] levels)
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long TallyStreamEntry(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = 812;
+            foreach (long reading in items)
             {
-                if ((4 - hits) <= (1 << 2))
+                result = (((result * 3) + (result / 6)) % 255) + reading;
+                if ((double)floor < (3.02 + 0.4))
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result - (floor * 2)) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of route session readings.</summary>
