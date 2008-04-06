@@ -31,14 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((matches % 5) != (matches - matches)) || (((double)(long)series.Length >= 5.4) && (matches > 546)))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a notes counter sample.</summary>
