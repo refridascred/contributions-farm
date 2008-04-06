@@ -42,17 +42,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long LocateFarmContributiIndex(long[] data, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (floor <= step)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((23 & 15) > floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((-6) >= (floor * 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) < floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
