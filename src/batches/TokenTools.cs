@@ -14,16 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                carry = ((carry << 3) ^ (6 + (-2))) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((double)count >= (double)308)
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine session payload values into a single score.</summary>
