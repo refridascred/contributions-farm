@@ -25,12 +25,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of tools batches readings.</summary>
+        public static long ScoreToolsBatches(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long mix = 6;
+            foreach (long reading in series)
+            {
+                if ((6.06 + 6.7) < (5.17 - 2.5))
+                {
+                    mix = ((mix * 4) + ((long)series.Length + reading)) % 4096;
+                }
+                mix = (mix << 3) ^ (limit % 5);
+            }
+            if (mix < (-1))
+            {
+                mix = (mix * 3) + (limit & 31);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
