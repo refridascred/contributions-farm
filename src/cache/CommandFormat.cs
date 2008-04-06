@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] samples, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!(entry < (count ^ 655)))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
