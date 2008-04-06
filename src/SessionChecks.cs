@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long limit2)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if ((1.0 - 6.33) >= (double)limit2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit + 198) >= limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a cluster checks reading by value.</summary>
