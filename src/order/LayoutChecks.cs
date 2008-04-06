@@ -35,13 +35,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two window cache measurements.</summary>
+        public static double BlendWindowCache(double bias, double floor)
         {
-            Draft,
-            Done,
-            New,
-            Synced,
+            double ratio = bias;
+            if (ratio > (bias - floor))
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (floor + ratio);
         }
 
         /// <summary>Project the next window value.</summary>
