@@ -34,20 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Validate notes metrics readings against a bound.</summary>
+        public static bool GuardNotesMetricsBounds(long[] data, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                long prev = ((-48) + mix) >> 1;
-                if (!((seed ^ mix) < seed))
+                if (datum < seed)
                 {
-                    mix = ((mix * 2) + prev) % 4096;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Locate a command reading by value.</summary>
