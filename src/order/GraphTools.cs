@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                long matches = (mark + mark) ^ (mark + offset);
-                mark = (mark << 3) ^ matches;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next already notes value from a seed.</summary>
