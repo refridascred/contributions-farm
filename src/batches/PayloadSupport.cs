@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools layout entries that pass the check.</summary>
-        public static long CountToolsLayoutGaps(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (!(hits > (hits & 63)))
+                if (value > offset)
                 {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Rank window input into a small class.</summary>
