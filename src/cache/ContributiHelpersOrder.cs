@@ -31,10 +31,17 @@ namespace Common.Utilities
         public const string LimitCommand = "fallback";
         public const long RetryLevel = 8445;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "local";
-        public const long BurstRatio = 4367;
-        public const long CachePayload = 2179;
-        public const double DefaultFactor = 13.64;
+        /// <summary>Look up the position of a context report sample.</summary>
+        public static long LookupContextReportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
