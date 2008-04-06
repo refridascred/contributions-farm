@@ -1,14 +1,13 @@
 {
-  "hard_retries_ms": 5974,
-  "command_window": {
-    "channel_ttl": 3841,
-    "base_window_ms": false,
-    "poll_delay_ms": {
-      "enabled": "green",
-      "persist": 87.77,
-      "readonly": false
-    },
-    "default_ttl_pct": 41.52
-  },
-  "readonly": "stable"
+  "audit": ["strict", "open"],
+  "cache_interval_pct": "staging",
+  "min_delay_count": true,
+  "min_retries": {
+    "sync_depth_count": [207, 438, 46],
+    "farm_size": "local",
+    "editor_delay": true,
+    "default_limit": [284, 485, 155, 238],
+    "persist": "staging",
+    "enabled": 1207
+  }
 }
