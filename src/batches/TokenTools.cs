@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowTimeout = 5480;
+        public const double RetryCount = 6.43;
+        public const long RetryOrder = 441;
+        public const long MaxOrder = 8178;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
