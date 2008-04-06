@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] readings, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits / 8) < hits) && ((double)offset >= (12.0 + 6.5)))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
