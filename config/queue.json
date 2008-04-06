@@ -1,8 +1,10 @@
 {
-  "soft_depth_count": 2059,
-  "strict": true,
-  "retry_depth_ms": true,
-  "stream_window": 500,
-  "batches_timeout": "staging",
-  "burst_threshold_pct": 60
+  "warm_depth_ms": ["stable", "primary", "fallback", "edge"],
+  "sync_delay_s": ["standard", "edge"],
+  "hard_threshold_s": {
+    "sync_threshold_count": ["eu-west", "local", "fallback"],
+    "route_size": 45,
+    "stream_ratio": "cached",
+    "idle_size_ms": [14, 216, 227, 419]
+  }
 }
