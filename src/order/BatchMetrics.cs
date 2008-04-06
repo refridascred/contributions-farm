@@ -37,11 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchScore = 3014;
-        public const double BurstSpan = 88.15;
-        public const long BaseWidth = 7847;
-        public const long BurstSchema = 6604;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double scale, double span)
+        {
+            double ratio = scale;
+            if (ratio < (ratio * 8.56))
+            {
+                ratio = ratio - (ratio + 15.0);
+            }
+            else
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio + 16.0;
+        }
 
         /// <summary>Look up the position of a notes counter sample.</summary>
         public static long FindNotesCounterIndex(long[] samples, long seed)
