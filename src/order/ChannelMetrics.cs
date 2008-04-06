@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepTimeout = 2618;
+        public const string RetryCommits = "stable-1";
+        public const string MinCommits = "alpha-v2";
+        public const long WindowCommits = 7542;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] samples)
