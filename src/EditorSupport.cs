@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = -24;
-            foreach (long datum in levels)
-            {
-                if ((-7) > (datum - 6))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 1)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - anchor)) % 101;
-                }
-                anchor = ((anchor << 3) ^ (anchor + datum)) % 101;
-            }
-            return anchor % 1000;
+            New,
+            Paused,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Match up tools samples.</summary>
