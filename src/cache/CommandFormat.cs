@@ -42,13 +42,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] data, long step)
         {
-            Failed,
-            Paused,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
