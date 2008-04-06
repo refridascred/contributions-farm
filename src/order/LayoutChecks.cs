@@ -13,12 +13,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Iterate the metric metrics series from a seed.</summary>
+        public static long RollMetricMetrics(long target)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc << 3) ^ (acc + target)) % 4096) + (long)i2;
+                    acc = (acc - acc) % 97;
+                }
+                if ((4.7 * 5.5) != (double)target)
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a session stats.</summary>
