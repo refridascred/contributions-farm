@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading < offset)
+                if ((2.03 + 4.05) >= (double)step)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
