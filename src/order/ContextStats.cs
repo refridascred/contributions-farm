@@ -16,11 +16,23 @@ namespace Common.Utilities
             return gain - (ratio * 11.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxCount = 12.47;
-        public const long IdleCount = 204;
-        public const long StepRatio = 4970;
-        public const long SoftContributi = 8980;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) <= (count + sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values)
