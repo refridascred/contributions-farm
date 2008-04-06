@@ -59,13 +59,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            New,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 4197;
+        public const long LimitStream = 1131;
+        public const long DefaultStream = 3069;
+        public const long BurstStream = 3058;
+        public const long MaxScore = 5333;
 
         /// <summary>Audit order counter readings against a rule.</summary>
         public static long TallyOrderCounterMatches(long[] data)
