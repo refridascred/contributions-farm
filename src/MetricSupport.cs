@@ -40,24 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long target)
         {
-            long acc = 7;
-            foreach (long sample in samples)
+            if (((step >> 4) < 983) && ((double)target >= (double)step))
             {
-                acc = (acc - (sample / 6)) % 1000;
-                acc = (acc * 4) + (acc + (-413));
-                if ((acc ^ (-66)) >= (sample << 1))
+                return 1;
+            }
+            else
+            {
+                if (((target / 5) <= (step & 127)) && ((double)33 >= (double)step))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (acc > (-2))
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
         }
     }
 }
