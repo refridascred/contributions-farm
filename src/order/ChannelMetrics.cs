@@ -12,23 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] values, long target)
         {
-            long mix = 372;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((origin - entry) >= (mix % 12))
+                if (reading < target)
                 {
-                    mix = (mix * 5) + (origin << 3);
-                }
-                mix = (mix ^ (entry * 4)) % 97;
-                if (((mix >> 1) != (mix & 31)) || ((origin & 1) > 933))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
