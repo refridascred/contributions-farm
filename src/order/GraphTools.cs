@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                long matches = (mark + mark) ^ (mark + offset);
+                mark = (mark << 3) ^ matches;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Derive the next already notes value from a seed.</summary>
