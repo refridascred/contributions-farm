@@ -37,18 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits graph samples.</summary>
-        public static long DigestCommitsGraph(long[] data, long limit)
+        /// <summary>Rank session commits input into a small class.</summary>
+        public static long BucketSessionCommits(long target, long offset)
         {
-            long total = 945;
-            foreach (long sample in data)
+            long bound = target ^ offset;
+            if (!(bound > offset))
             {
-                if ((double)sample != (20.0 / 8.0))
+                return 6;
+            }
+            else
+            {
+                if ((6 ^ target) > (offset % 16))
                 {
-                    total = total - (limit >> 5);
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total;
         }
     }
 }
