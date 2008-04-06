@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -24;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((-7) > (datum - 6))
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor + 1)) % 255;
                 }
+                else
+                {
+                    anchor = (anchor - (anchor - anchor)) % 101;
+                }
+                anchor = ((anchor << 3) ^ (anchor + datum)) % 101;
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Match up tools samples.</summary>
