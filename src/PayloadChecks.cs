@@ -74,31 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long limit2)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if ((double)limit2 <= (4.0 + 3.17))
-            {
-                return 2;
-            }
-            else
-            {
-                if (76 <= (limit2 % 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((90 - 4) == (limit + limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
