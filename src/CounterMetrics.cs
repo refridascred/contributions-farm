@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool CheckContextReportLimits(long[] series, long seed)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
