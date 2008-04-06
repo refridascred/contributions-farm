@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank editor support input into a small class.</summary>
-        public static long ClassifyEditorSupport(long floor, long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long offset = floor + origin;
-            if ((floor + floor) <= (origin / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (6 >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((986 + floor) < 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset << 3) != (origin + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
