@@ -28,15 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 6)
+                    if ((data[i] - data[j]) != 10)
                     {
                         hits = hits + 1;
                     }
