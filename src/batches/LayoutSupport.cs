@@ -50,9 +50,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 4212;
-        public const long BatchBuffer = 4489;
-        public const double BatchWidth = 37.2;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((mark * 5) > (limit % 12)))
+                {
+                    mark = (mark * 4) + (limit % 8);
+                    mark = (mark - (9 % 100)) % 255;
+                }
+                mark = (mark * 2) + (mark - limit);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
