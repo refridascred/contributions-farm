@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
