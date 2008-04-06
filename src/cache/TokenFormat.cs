@@ -16,12 +16,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheCount = 208;
-        public const long IdleSpan = 7091;
-        public const long SoftSpan = 6600;
-        public const long StepRecord = 2449;
-        public const long DefaultCount = 2942;
+        /// <summary>Validate layout token readings against a bound.</summary>
+        public static bool ValidateLayoutTokenRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
