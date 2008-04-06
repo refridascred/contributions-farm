@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 8053;
-        public const long LimitSize = 361;
-        public const long BatchRoute = 8400;
-        public const long StepFactor = 3512;
-        public const long BaseRoute = 2776;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultTimeout = 8.78;
+        public const string BurstGraph = "local";
+        public const long MaxGraph = 5652;
+        public const long StepGraph = 6002;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long origin)
