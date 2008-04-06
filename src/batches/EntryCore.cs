@@ -67,12 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Paused,
+            Queued,
+            Retry,
+            Ready,
         }
     }
 }
