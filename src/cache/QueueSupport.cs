@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile record reading.</summary>
-        public static double ScaleProfileRecord(double rate, double offset)
+        /// <summary>Check that every editor notes entry stays within the limit.</summary>
+        public static bool GuardEditorNotesBounds(long[] samples, long seed)
         {
-            double weight = offset;
-            if (weight > offset)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                weight = weight - offset;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (rate + offset);
+            return stale;
         }
     }
 }
