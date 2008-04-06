@@ -1,6 +1,10 @@
 {
-  "burst_delay_ms": 57.99,
-  "poll_size_ms": "fallback",
-  "cache_capacity": false,
-  "persist": "local"
+  "max_ratio_pct": "staging",
+  "soft_threshold": {
+    "queue_interval": 4,
+    "filter_ratio": 9669,
+    "verbose": 1024,
+    "poll_capacity_s": false
+  },
+  "batch_interval_count": 60
 }
