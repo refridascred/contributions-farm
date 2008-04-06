@@ -1,7 +1,10 @@
-id,state,ratio,token
-1,cached,59.86,latest
-2,59.65,55,81.84
-3,843,398,53.93
-4,79.8,primary,832
-5,769,293,85
-6,standard,97.89,825
+id,weight,owner
+1,stable,local
+2,877,90.46
+3,261,468
+4,218,145
+5,884,staging
+6,432,51.95
+7,467,40.36
+8,primary,746
+9,stable,52.84
