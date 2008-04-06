@@ -20,17 +20,19 @@ namespace Common.Utilities
             return weight + (double)(-756);
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long floor)
+        /// <summary>Scale a stream window figure with a bias.</summary>
+        public static double SmoothStreamWindow(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = 4.3;
+            if (scale2 > 0.3)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + scale) - bias;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            return scale2 + (scale2 + scale);
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
