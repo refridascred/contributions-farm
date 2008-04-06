@@ -1,9 +1,12 @@
 # entry settings
-queue_window: legacy
-commits_capacity: edge
-compress:
-  payload_depth: 2014
-  readonly: 60.16
-  audit: 5374
-  sync_interval_s: latest
-  dry_run: 46
+verbose: false
+default_ttl_s:
+  buffer_capacity: false
+  cache_delay: 3
+  enabled: 500
+cache_timeout_ms: 60
+max_threshold_count: true
+account_ratio:
+  - 260
+  - 281
+support_timeout: edge
