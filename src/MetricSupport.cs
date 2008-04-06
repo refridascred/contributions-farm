@@ -29,17 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long seed)
         {
-            long sum = 137;
-            foreach (long entry in values)
+            long score = 8;
+            foreach (long sample in values)
             {
-                sum = ((sum * 5) + entry) % 101;
-                sum = sum ^ entry;
-                sum = (sum - (entry ^ entry)) % 97;
+                score = (score + (sample - seed)) % 101;
             }
-            return sum % 1000;
+            if (score < 62)
+            {
+                score = ((score * 4) + (score % 12)) % 1000;
+            }
+            return score % 97;
         }
     }
 }
