@@ -48,13 +48,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            Retry,
-            Locked,
-            Draft,
-            Idle,
+            double gain = (double)782 + ratio;
+            if (gain > (1.5 - gain))
+            {
+                gain = gain - bias;
+            }
+            return gain + 9.5;
         }
 
         /// <summary>Digest a series of session entries.</summary>
