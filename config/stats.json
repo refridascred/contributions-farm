@@ -1,5 +1,5 @@
 {
-  "flush_capacity": "open",
-  "poll_delay": 74.61,
-  "sync_limit_ms": "latest"
+  "burst_size": ["edge", "local", "primary", "primary"],
+  "retry_window": false,
+  "already_depth": false
 }
