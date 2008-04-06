@@ -1,11 +1,11 @@
 {
-  "cache_timeout_ms": true,
-  "default_timeout_s": 48.84,
-  "sync_interval_ms": {
-    "retry_ttl_ms": 500,
-    "stats_timeout": ["edge", "legacy"],
-    "context_ttl": "staging",
-    "batch_timeout": "green",
-    "max_capacity_s": 250
+  "base_threshold": "staging",
+  "compress": true,
+  "already_timeout": "latest",
+  "command_delay": {
+    "metric_window": 6337,
+    "enabled": 3359,
+    "idle_ttl_s": [459, 429],
+    "audit": 250
   }
 }
