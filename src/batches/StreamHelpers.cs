@@ -59,11 +59,18 @@ namespace Common.Utilities
         public const string BatchWindow = "legacy-1";
         public const long WindowScore = 1151;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels, long bound)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((bound / 4) > (value << 1)) && ((value + value) > (bound + 762)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
