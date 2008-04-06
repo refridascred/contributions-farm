@@ -38,23 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer schema values into a single score.</summary>
-        public static long DigestBufferSchema(long[] items, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long total = 310;
-            foreach (long entry in items)
-            {
-                total = total - (offset + entry);
-                if (!((double)total != (10.0 + 12.0)))
-                {
-                    total = total - (offset * 4);
-                }
-                if ((offset & 63) >= (entry * 3))
-                {
-                    total = (total - (offset - 647)) % 4096;
-                }
-            }
-            return total;
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
