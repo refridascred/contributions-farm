@@ -38,21 +38,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of already readings.</summary>
