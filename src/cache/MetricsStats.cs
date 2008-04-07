@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
