@@ -77,15 +77,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            long carry = 75;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry - (carry + carry)) % 4096) + item;
+                if (20.0 >= (double)entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry % 97;
+            return tally;
         }
     }
 }
