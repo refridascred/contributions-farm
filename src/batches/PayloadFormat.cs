@@ -27,20 +27,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] data, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                sum = sum ^ (step ^ (long)i);
-                if (((6.6 - 0.7) >= (double)(long)i) && ((double)step <= (double)(long)i))
+                if (entry <= target)
                 {
-                    sum = (sum << 3) ^ step;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
