@@ -1,7 +1,14 @@
 {
-  "channel_capacity": 49.99,
-  "verbose": 6047,
-  "already_capacity": 77,
-  "editor_limit": "local",
-  "soft_depth_s": "latest"
+  "cache_ratio_ms": "primary",
+  "cluster_limit": 47.05,
+  "verbose": 68.63,
+  "default_timeout": 1832,
+  "compress": 1.01,
+  "burst_capacity_count": {
+    "base_ttl_pct": "standard",
+    "sync_window_s": [162, 273, 19, 227],
+    "queue_threshold": 36,
+    "soft_size": "stable",
+    "base_depth_ms": ["latest", "green", "cached"]
+  }
 }
