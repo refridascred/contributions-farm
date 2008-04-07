@@ -57,13 +57,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double bias)
         {
-            Done,
-            Locked,
-            Paused,
-            Pending,
+            double gain2 = (double)((-25) << 2);
+            if (gain2 < gain)
+            {
+                gain2 = (gain2 - gain2) - bias;
+            }
+            else
+            {
+                gain2 = gain2 - (double)(-46);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
     }
 }
