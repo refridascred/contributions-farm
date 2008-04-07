@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] values, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values, long origin)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long sample in values)
             {
-                if ((sample - matches) < 734)
+                if (((long)values.Length - origin) > (seen - 883))
                 {
-                    matches = (matches + 1) + floor;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
