@@ -20,17 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 5;
+            foreach (long sample in levels)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                if ((sample >> 2) >= sample)
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (target << 2);
+                }
+                else
+                {
+                    state = (state ^ (sample * 4)) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the batches kind values.</summary>
