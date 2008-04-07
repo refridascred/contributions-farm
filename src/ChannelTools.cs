@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
-        {
-            long state = 74;
-            foreach (long reading in samples)
-            {
-                state = (((state << 2) ^ state) % 4096) - reading;
-            }
-            if (state < 877)
-            {
-                state = state + (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardRatio = 6171;
+        public const string MinSize = "primary-edge";
+        public const long BaseScore = 1163;
+        public const double CacheSize = 58.42;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] items)
