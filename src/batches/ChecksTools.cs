@@ -20,13 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheInterval = 9188;
+        public const string StepCommand = "strict-v2";
+        public const long LimitCount = 1822;
 
         /// <summary>Find the first schema counter entry that matches the target.</summary>
         public static long LookupSchemaCounterIndex(long[] series, long target)
