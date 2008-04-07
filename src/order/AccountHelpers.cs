@@ -34,22 +34,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine route cluster values into a single score.</summary>
-        public static long TallyRouteCluster(long[] items)
+        /// <summary>Audit checks filter readings against a rule.</summary>
+        public static long CountChecksFilterGaps(long[] series, long origin)
         {
-            long total = 48;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((51 + reading) >= 2)
+                if ((sample - hits) < (hits % 5))
                 {
-                    total = total - (total ^ 20);
-                }
-                if (((total ^ total) >= total) && ((reading + reading) != (total >> 4)))
-                {
-                    break;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
