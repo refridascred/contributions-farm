@@ -1,6 +1,7 @@
-id,level,active,ratio,score
-1,501,568,staging,fallback
-2,open,994,latest,110
-3,21.85,60.0,465,local
-4,565,228,625,20.86
-5,8.82,331,824,228
+id,state,level
+1,76.02,94.69
+2,91.26,blue
+3,2.16,621
+4,latest,49.52
+5,28.09,primary
+6,76.22,standard
