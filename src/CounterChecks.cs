@@ -86,15 +86,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Combine batch counter values into a single score.</summary>
+        public static long FoldBatchCounter(long[] items, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long sum = 609;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (cell < (bound % 64))
+                {
+                    sum = (sum - (bound >> 3)) % 4096;
+                }
             }
-            return total;
+            if (sum > 278)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
