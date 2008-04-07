@@ -33,10 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardBudget = 44.75;
-        public const string BaseRatio = "legacy-v2";
-        public const long BaseBudget = 3887;
-        public const double LimitOrder = 15.69;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
