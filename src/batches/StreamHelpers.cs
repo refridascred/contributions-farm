@@ -73,19 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] samples, long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Match up tools samples.</summary>
