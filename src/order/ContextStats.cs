@@ -48,12 +48,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
