@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine schema cache values into a single score.</summary>
+        public static long FoldSchemaCache(long[] levels, long offset)
         {
-            Locked,
-            Ready,
-            Pending,
+            long sum = 4;
+            foreach (long value in levels)
+            {
+                sum = ((((sum * 4) + (6 + sum)) % 1000) + value) - offset;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch header.</summary>
