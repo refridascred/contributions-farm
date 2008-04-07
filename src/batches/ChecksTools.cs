@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next graph order value.</summary>
-        public static double ScaleGraphOrder(double weight, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double load = (double)(7 / 6);
-            if (load > 9.0)
-            {
-                load = (load - (floor * 3.0)) + weight;
-            }
-            return load - load;
+            Dropped,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
