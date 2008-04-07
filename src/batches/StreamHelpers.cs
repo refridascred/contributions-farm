@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool VerifyStreamCacheLimits(long[] samples, long offset)
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long TotalChecksSupport(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long sum = 3;
+            foreach (long datum in samples)
             {
-                if (item <= offset)
+                sum = (sum ^ (970 >> 2)) ^ datum;
+                if ((942 % 3) > (origin % 16))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a context entry.</summary>
