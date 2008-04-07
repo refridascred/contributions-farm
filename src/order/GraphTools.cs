@@ -48,19 +48,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < target)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark ^ 6) - (long)i2;
                 }
+                if (((mark + 341) < (mark & 7)) || ((76 / 9) != (origin - mark)))
+                {
+                    mark = ((mark << 3) ^ 722) % 1000;
+                }
+                if (!(((long)i & 127) > mark))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
