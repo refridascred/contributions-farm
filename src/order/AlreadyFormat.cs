@@ -13,20 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((14.0 / 4.0) <= (double)cell)
                 {
-                    carry = ((carry + (target % 100)) % 97) - (long)i2;
+                    hits = (hits + 3) - offset;
                 }
-                carry = ((carry << 2) ^ carry) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
