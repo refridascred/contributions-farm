@@ -50,23 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = 351;
-            foreach (long reading in series)
-            {
-                if ((double)state <= (double)reading)
-                {
-                    state = (state - state) % 101;
-                    state = ((state << 2) ^ (reading * 2)) % 65521;
-                }
-                if (reading >= floor)
-                {
-                    state = (state - (0 - 941)) % 1000;
-                }
-            }
-            return state % 1000;
+            Dropped,
+            Synced,
+            Locked,
         }
     }
 }
