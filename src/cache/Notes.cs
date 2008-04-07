@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstCount = "standard-1";
-        public const double IdleCount = 98.03;
-        public const double MinStream = 52.84;
-        public const long RetryStream = 3215;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5956;
+        public const long CacheMetric = 778;
+        public const long MaxMetric = 8413;
+        public const long CacheCount = 8369;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long DigestFarm(long[] series)
