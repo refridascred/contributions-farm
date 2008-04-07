@@ -51,17 +51,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the batch editor series from a seed.</summary>
-        public static long StepBatchEditor(long limit)
+        /// <summary>Look up the position of a order filter sample.</summary>
+        public static long FindOrderFilterIndex(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (38 - 4)) % 97;
-                mix = (mix ^ (limit + mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
