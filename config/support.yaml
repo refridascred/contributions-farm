@@ -1,5 +1,16 @@
 # support settings
-retry_ttl_ms: 7975
-batch_limit: 13
-poll_capacity_s: 14
-hard_window: 64
+batch_depth_s:
+  compress:
+    - cached
+    - edge
+    - blue
+  contributi_size:
+    - 383
+    - 240
+    - 436
+    - 242
+  cache_retries_pct: 30
+verbose: blue
+order_threshold: 95
+idle_delay_count: stable
+soft_interval_s: 500
