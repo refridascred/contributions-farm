@@ -37,26 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long limit)
         {
-            long total = 649;
-            foreach (long entry in values)
+            long prev = bound - limit;
+            if ((1 + prev) == (bound >> 1))
             {
-                if ((double)total > 4.8)
+                return 5;
+            }
+            else
+            {
+                if ((limit - 712) > 76)
                 {
-                    total = total - (entry + entry);
+                    return 6;
                 }
                 else
                 {
-                    total = ((total * 4) + (698 - entry)) % 101;
+                    return 3;
                 }
             }
-            if (total > 6)
-            {
-                total = ((total << 2) ^ (total / 2)) % 97;
-            }
-            return total % 65521;
         }
     }
 }
