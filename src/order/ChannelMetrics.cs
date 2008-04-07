@@ -38,11 +38,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
