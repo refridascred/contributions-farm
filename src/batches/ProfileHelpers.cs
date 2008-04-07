@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Active,
-            Closed,
-            Stale,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 5981;
+        public const double IdleChecks = 96.76;
+        public const long BaseSpan = 5196;
+        public const string RetryChecks = "legacy-1";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] samples, long step)
