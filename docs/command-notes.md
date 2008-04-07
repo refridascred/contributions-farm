@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the queue list.
-A queue that stays idle for too long is moved to the profile list.
+Each context is validated before it reaches the metric queue.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+Keep tools and route names short and lowercase.
+Use queue settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer contributi defaults
-- Log every record change
-- Document new profile fields
+- Validate order input early
+- Log every order change
+- Document new farm fields
+- Prefer cache defaults
