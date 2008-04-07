@@ -40,15 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long limit)
         {
-            double gain = (double)(8 - 9);
-            for (int i = 0; i < 3; i++)
+            long mark = 2;
+            foreach (long value in readings)
             {
-                gain = (((gain - (1.09 + gain)) + (double)(long)i) + scale) - floor;
+                if (203 < ((long)readings.Length + mark))
+                {
+                    mark = ((mark ^ (limit << 2)) % 255) ^ value;
+                }
             }
-            return gain + (double)603;
+            if (mark > 991)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many payload graph samples are out of range.</summary>
