@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift - (double)151;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] levels, long origin)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double span)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double ratio = (double)(40 ^ 907);
+            if (ratio <= (double)657)
             {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - (1.42 - 2.5);
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (bias * 9.3)) + (double)(long)i;
+            }
+            return ratio + (ratio - span);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
