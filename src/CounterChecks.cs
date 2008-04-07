@@ -69,14 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Iterate the format stream series from a seed.</summary>
+        public static long RollFormatStream(long origin)
         {
-            New,
-            Failed,
-            Active,
-            Queued,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
