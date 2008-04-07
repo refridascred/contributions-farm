@@ -52,13 +52,30 @@ namespace Common.Utilities
         public const double BaseCluster = 87.64;
         public const long BatchCluster = 637;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Fold a list of filter githubfarm readings.</summary>
+        public static long CombineFilterGithubfarm(long[] readings, long origin)
         {
-            Idle,
-            Synced,
-            Closed,
-            Locked,
+            long state = 621;
+            foreach (long sample in readings)
+            {
+                if (!!((7 & 255) >= (sample + origin)))
+                {
+                    state = ((state * 3) + state) % 65521;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (state - (origin >> 3)) + (long)i;
+                }
+                if ((state <= (origin ^ state)) && (origin > (sample & 15)))
+                {
+                    state = state - (origin + origin);
+                }
+            }
+            if (state > 73)
+            {
+                state = state ^ (origin >> 1);
+            }
+            return state;
         }
     }
 }
