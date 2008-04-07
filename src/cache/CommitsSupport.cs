@@ -53,12 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            Pending,
+            Stale,
+            Synced,
+            New,
         }
     }
 }
