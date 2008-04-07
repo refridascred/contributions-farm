@@ -34,11 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "latest";
-        public const string RetrySize = "cached-v2";
-        public const long RetryBudget = 3033;
-        public const long CacheWidth = 7402;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double gain, double bias)
