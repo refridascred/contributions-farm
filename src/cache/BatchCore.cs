@@ -20,17 +20,39 @@ namespace Common.Utilities
         public const long LimitCount = 1894;
         public const long CacheTimeout = 9740;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound ^ limit;
+            if (limit >= diff)
             {
-                if (samples[i] > target)
+                return 4;
+            }
+            else
+            {
+                if (((double)limit >= 8.58) || ((1 & 255) >= (bound % 60)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((-583) / 6) < (bound + diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)diff < (7.4 - 6.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
