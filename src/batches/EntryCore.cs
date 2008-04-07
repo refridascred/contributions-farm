@@ -44,11 +44,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] items, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a order filter sample.</summary>
