@@ -26,11 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a buffer notes figure with a bias.</summary>
-        public static double ProjectBufferNotes(double ratio, double bias)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double load = bias;
-            return (load + (double)3) + ratio;
+            Done,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the graph kind values.</summary>
