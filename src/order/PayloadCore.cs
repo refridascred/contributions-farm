@@ -37,19 +37,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long TallyProfileFilter(long[] values, long bound)
         {
-            double rate2 = 0.83;
-            if (rate2 > rate2)
+            long score = -11;
+            foreach (long value in values)
             {
-                rate2 = (rate2 - (double)(-4)) - rate;
+                if (((value & 127) == (score / 3)) || ((4.88 - 5.0) != (double)score))
+                {
+                    score = (score - bound) % 255;
+                }
+                else
+                {
+                    score = (score ^ (1 + 929)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (score > 6)
             {
-                rate2 = (rate2 + 19.0) + (double)(long)i;
+                score = (score << 3) ^ (74 ^ 5);
             }
-            return rate2 - bias;
+            return score;
         }
 
         /// <summary>Describe the commits kind values.</summary>
