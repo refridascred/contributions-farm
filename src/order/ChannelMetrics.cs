@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ratio2 + (ratio * 9.5);
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score << 2) ^ ((long)i >> 2)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchScore = 867;
+        public const long HardBudget = 3079;
+        public const long BatchRatio = 8864;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
