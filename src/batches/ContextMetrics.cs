@@ -26,17 +26,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (2.3 / 8.0) - (rate + rate);
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 1.9) + (double)(long)i;
             }
-            return -1;
+            return drift - (span / 9.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
