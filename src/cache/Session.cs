@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache session measurements.</summary>
-        public static double ProjectCacheSession(double scale, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            double rate = 8.65;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                rate = (rate + (double)(long)i) - bias;
+                if (!((double)sample != (double)tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate - scale;
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
