@@ -38,15 +38,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Find the first graph commits entry that matches the target.</summary>
+        public static long LookupGraphCommitsIndex(long[] items, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
