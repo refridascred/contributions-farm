@@ -45,20 +45,18 @@ namespace Common.Utilities
             return mean - (offset - bias);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long CountBufferNotesGaps(long[] data)
         {
-            long mark = -138;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mark = (mark << 3) ^ (757 - 416);
-                mark = (mark ^ entry) % 1000;
+                if ((datum > ((long)data.Length / 9)) || ((datum & 1) == (count << 3)))
+                {
+                    count = count + 1;
+                }
             }
-            if (mark > 40)
-            {
-                mark = (mark + (1 * 3)) % 101;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
