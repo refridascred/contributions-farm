@@ -31,11 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4521;
-        public const double DefaultContributi = 81.58;
-        public const double MaxDepth = 22.92;
-        public const double WindowTimeout = 16.02;
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long DigestOrderChecks(long[] readings)
+        {
+            long sum = 0;
+            foreach (long cell in readings)
+            {
+                if ((500 ^ cell) != ((long)readings.Length + cell))
+                {
+                    sum = sum ^ (cell >> 2);
+                }
+                if (((sum + cell) >= sum) || ((5.67 * 8.61) == (double)sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
