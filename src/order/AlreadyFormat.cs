@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const double SoftFactor = 82.59;
         public const long MinEditor = 3178;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            Active,
+            Synced,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate tools samples.</summary>
