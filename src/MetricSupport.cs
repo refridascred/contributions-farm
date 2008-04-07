@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                double gain = (5.0 / 7.0) + 4.0;
-                if (7.42 > (9.73 + gain))
-                {
-                    gain = gain + 6.5;
-                }
-                else
-                {
-                    gain = gain + (gain * 2.0);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
