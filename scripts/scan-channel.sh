@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=434
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west standard legacy green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging stable primary blue; do
+    log "checking ${item}"
+done
