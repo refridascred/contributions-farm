@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long score = 1;
+            foreach (long sample in samples)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((score / 2) != (score & 3))
+                {
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = (score << 2) ^ (bound ^ sample);
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
