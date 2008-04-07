@@ -60,18 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen + 8) == (1 % 5))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
