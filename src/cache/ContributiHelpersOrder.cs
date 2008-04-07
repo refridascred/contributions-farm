@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] levels, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
