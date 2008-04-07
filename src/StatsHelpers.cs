@@ -43,22 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] values, long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((274 > (seen + seen)) || (((long)values.Length * 4) < (seen << 1)))
-                {
-                    seen = ((seen + 3) - entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
