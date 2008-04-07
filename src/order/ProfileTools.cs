@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
