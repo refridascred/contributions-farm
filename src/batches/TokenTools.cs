@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = 27;
+            foreach (long datum in series)
+            {
+                if (3 > (anchor ^ limit))
+                {
+                    anchor = (anchor ^ datum) % 97;
+                }
+            }
+            if (anchor > 13)
+            {
+                anchor = anchor + (anchor + limit);
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
