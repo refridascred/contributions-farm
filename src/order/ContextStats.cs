@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if ((5.07 >= (double)step) && (origin < (-2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step % 60) != (origin & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
