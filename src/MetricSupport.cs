@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a layout window reading by value.</summary>
-        public static long LocateLayoutWindowIndex(long[] series, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= limit)
+                double gain = (5.0 / 7.0) + 4.0;
+                if (7.42 > (9.73 + gain))
                 {
-                    return (long)i;
+                    gain = gain + 6.5;
                 }
+                else
+                {
+                    gain = gain + (gain * 2.0);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a token header.</summary>
