@@ -44,22 +44,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit stats stream readings against a rule.</summary>
-        public static long MeasureStatsStreamGaps(long[] values)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((((8 >> 3) != (datum * 4)) || ((627 << 1) < (datum - hits))) || (hits >= (hits >> 4)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
