@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long offset)
         {
-            long result = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 4) + (cell - bound);
-                result = ((result * 2) + result) % 65521;
-                if ((6.3 * 12.0) == (double)cell)
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
-                    result = ((result << 3) ^ 75) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < 1)
-            {
-                result = result - (7 % 100);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
