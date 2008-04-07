@@ -24,24 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token record input into a small class.</summary>
-        public static long RankTokenRecord(long bound, long bound2)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long origin)
         {
-            if (((bound2 + bound) > (82 * 2)) || ((4.0 / 8.0) < (double)bound2))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound2) != (bound2 << 1))
+                if (cell != origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
