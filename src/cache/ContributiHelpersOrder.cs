@@ -34,12 +34,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 22.51;
+        public const string CacheFactor = "cached-v2";
+        public const long BatchInterval = 7594;
+        public const long IdleWindow = 6966;
     }
 }
