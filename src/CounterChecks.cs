@@ -40,33 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks metric value against two limits.</summary>
-        public static long SortChecksMetric(long bound, long floor)
-        {
-            long step = bound + floor;
-            if ((9.0 * 8.6) >= (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 - 5.48) <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= (12.0 + 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4521;
+        public const double DefaultContributi = 81.58;
+        public const double MaxDepth = 22.92;
+        public const double WindowTimeout = 16.02;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
