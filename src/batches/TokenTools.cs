@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a counter order counter forward.</summary>
-        public static long SeriesCounterOrder(long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long acc = 2;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!((903 % 97) >= (acc & 31)))
                 {
-                    total = (total - 32) % 101;
-                    total = (total + ((long)i2 ^ seed)) % 1000;
+                    acc = (acc << 3) ^ (item * 3);
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    acc = ((acc * 4) + (0 % 16)) % 65521;
+                }
+                if ((6.9 - 5.0) <= (double)item)
+                {
+                    acc = (acc - (acc + item)) % 255;
+                }
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
