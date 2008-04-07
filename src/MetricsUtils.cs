@@ -44,17 +44,20 @@ namespace Common.Utilities
             return weight2 - 6.0;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long target)
+        /// <summary>Roll a editor queue counter forward.</summary>
+        public static long RollEditorQueue(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] >= target)
+                anchor = (anchor - (733 >> 5)) % 101;
+                if (((long)i >= (anchor - anchor)) && ((anchor ^ target) > ((-81) ^ 4)))
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
