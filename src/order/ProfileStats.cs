@@ -22,19 +22,17 @@ namespace Common.Utilities
         public const long MaxBudget = 1197;
         public const long RetryFactor = 4260;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] values, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (origin < (origin - (long)i))
+                if (values[i] == origin)
                 {
-                    state = state + (origin << 3);
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
