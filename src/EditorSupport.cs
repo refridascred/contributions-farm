@@ -15,18 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit schema window readings against a rule.</summary>
-        public static long CountSchemaWindowGaps(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 2) > (cell & 127))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a support counter forward.</summary>
