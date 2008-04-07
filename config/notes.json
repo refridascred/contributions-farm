@@ -1,7 +1,5 @@
 {
-  "default_ttl_pct": 54.68,
-  "default_window_count": 89,
-  "batch_retries_s": 9029,
-  "metrics_window": ["eu-west", "latest", "latest", "edge"],
-  "warm_retries_ms": 55
+  "checks_timeout": "cached",
+  "report_timeout": "blue",
+  "poll_window_s": true
 }
