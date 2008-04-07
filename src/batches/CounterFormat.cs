@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long TallyAlreadyStats(long[] series)
         {
-            long total = 2;
-            foreach (long item in series)
+            long total = 86;
+            foreach (long value in series)
             {
-                total = (((total * 4) + 1) % 101) + item;
-            }
-            if (total > 6)
-            {
-                total = (total * 4) + 6;
+                if ((value << 1) < 1)
+                {
+                    continue;
+                }
+                if (((value - value) >= 2) || ((total - 57) < 485))
+                {
+                    total = ((total << 3) ^ (value + total)) % 97;
+                }
+                else
+                {
+                    total = (total - (value * 5)) % 4096;
+                }
+                total = (total ^ (total >> 5)) % 4096;
             }
             return total % 65521;
         }
