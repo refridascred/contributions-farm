@@ -23,12 +23,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long offset, long seed)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            if ((double)seed >= (20.0 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((9.5 / 4.0) > (double)seed) && ((17.0 + 6.4) != (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
