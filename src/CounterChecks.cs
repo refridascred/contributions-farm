@@ -20,18 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxBudget = 4023;
+        public const long BaseInterval = 6375;
+        public const double CacheCluster = 18.38;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double StepStats = 42.77;
