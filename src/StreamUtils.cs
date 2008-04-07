@@ -53,25 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix + mix) % 65521;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix + (long)i) - (long)i2;
-                }
-                if ((0.1 * 5.35) == (double)mix)
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 759;
+        public const long StepEditor = 2529;
+        public const long MinEditor = 4597;
+        public const string WindowDepth = "cached-v2";
+        public const long BaseEditor = 5353;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
