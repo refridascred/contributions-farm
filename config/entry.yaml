@@ -1,16 +1,5 @@
 # entry settings
-min_threshold_s:
-  context_threshold:
-    retry_depth_ms: green
-    retry_depth_count: 100
-    batches_size: strict
-    readonly: 500
-    warm_ttl: 1024
-    soft_depth: open
-  warm_retries_s: green
-  poll_capacity: 30
-  max_window_count: 100
-default_depth: legacy
-soft_capacity_pct: false
-retry_capacity_pct: false
-default_threshold: 70.31
+commits_limit: 30
+githubfarm_depth: edge
+warm_timeout_pct: stable
+support_window: 1099
