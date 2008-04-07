@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftRatio = 6467;
-        public const long SoftFormat = 1949;
-        public const long SoftInterval = 8697;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchRange(long[] levels, long limit)
