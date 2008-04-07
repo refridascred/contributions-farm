@@ -69,18 +69,14 @@ namespace Common.Utilities
         public const long CacheQueue = 4743;
         public const double LimitCount = 15.03;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 299;
-            foreach (long value in items)
-            {
-                if ((value + sum) >= (2 >> 3))
-                {
-                    sum = ((sum + (sum << 2)) % 1000) - floor;
-                }
-            }
-            return sum;
+            Failed,
+            Closed,
+            New,
+            Queued,
+            Synced,
         }
     }
 }
