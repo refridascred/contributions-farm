@@ -1,7 +1,6 @@
 {
-  "hard_capacity_pct": "stable",
-  "flush_capacity_ms": 4496,
-  "context_depth": 97.55,
-  "retry_window_pct": 100,
-  "verbose": ["standard", "open", "latest"]
+  "compress": ["open", "primary", "blue", "stable"],
+  "token_depth": "standard",
+  "schema_delay": "fallback",
+  "checks_ttl": 95.74
 }
