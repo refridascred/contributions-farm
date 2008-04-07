@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
