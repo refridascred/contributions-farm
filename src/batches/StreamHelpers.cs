@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next filter commits value from a seed.</summary>
-        public static long DeriveFilterCommits(long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            if ((step + step) == (floor ^ floor))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((floor ^ step) <= (781 + 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate contributi record readings against a bound.</summary>
