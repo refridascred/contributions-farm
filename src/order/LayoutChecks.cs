@@ -74,12 +74,20 @@ namespace Common.Utilities
         public const long BatchCount = 6079;
         public const long RetryCount = 9304;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheSize = 20.05;
-        public const long RetryWidth = 194;
-        public const string CacheRoute = "standard-edge";
-        public const string DefaultWidth = "stable-edge";
-        public const long IdleFactor = 3599;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
