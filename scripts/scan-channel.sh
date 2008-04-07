@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict cached edge eu-west; do
+for item in fallback strict staging legacy; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
