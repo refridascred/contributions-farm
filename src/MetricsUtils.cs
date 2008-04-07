@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            New,
-            Closed,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally ^ item) <= (tally * 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
