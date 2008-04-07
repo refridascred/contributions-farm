@@ -18,19 +18,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Check that every account layout entry stays within the limit.</summary>
+        public static bool ValidateAccountLayoutLimits(long[] samples, long step)
         {
-            long mark = 64;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                mark = mark - (mark & 255);
-                if ((sample - mark) < (8 % 3))
+                if (cell < step)
                 {
-                    mark = ((mark << 3) ^ (sample >> 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
