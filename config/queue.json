@@ -1,20 +1,7 @@
 {
-  "queue_size": 69.53,
-  "poll_delay": "stable",
-  "strict": 43,
-  "compress": "legacy",
-  "dry_run": {
-    "soft_size": 60,
-    "enabled": ["legacy", "open", "eu-west"],
-    "flush_limit_s": {
-      "hard_depth_count": 54.49,
-      "burst_ttl": 69.87,
-      "format_retries": 52.0,
-      "strict": false,
-      "compress": true,
-      "warm_delay_ms": 23.15
-    },
-    "stream_threshold": "green"
-  },
-  "route_delay": true
+  "hard_capacity_pct": "stable",
+  "flush_capacity_ms": 4496,
+  "context_depth": 97.55,
+  "retry_window_pct": 100,
+  "verbose": ["standard", "open", "latest"]
 }
