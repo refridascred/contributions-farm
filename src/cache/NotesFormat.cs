@@ -19,21 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 10)
+                    if ((values[i] + values[j]) == 3)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
