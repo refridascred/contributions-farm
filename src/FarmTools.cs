@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache record entries that pass the check.</summary>
-        public static long AuditCacheRecordGaps(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((sample > seen) || ((0 + seen) < 50)) && ((9.44 + 0.6) >= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate farm metrics readings against a bound.</summary>
