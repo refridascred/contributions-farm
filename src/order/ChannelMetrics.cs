@@ -33,21 +33,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long CompareSupportAccountCount(long[] readings)
+        /// <summary>Measure how many token queue samples are out of range.</summary>
+        public static long AuditTokenQueueHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((7.0 / 5.0) <= (double)cell)
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
