@@ -30,24 +30,18 @@ namespace Common.Utilities
             return ratio + (double)862;
         }
 
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long RankReportSession(long origin, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings, long bound)
         {
-            if (!((origin - offset) > (offset << 3)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.5 * 2.62) == (double)offset)
+                if (!!((double)bound <= (9.0 / 6.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context stats.</summary>
