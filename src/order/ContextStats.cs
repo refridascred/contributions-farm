@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (seed < (seed >> 4))
             {
-                if (levels[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ 10) != (541 / 2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed << 1) <= (step - step)) && ((461 & 63) > (seed << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
