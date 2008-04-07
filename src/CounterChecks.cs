@@ -46,13 +46,11 @@ namespace Common.Utilities
         public const double MaxDepth = 22.92;
         public const double WindowTimeout = 16.02;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Active,
-            Done,
-            Paused,
-            Synced,
+            Queued,
+            Failed,
             Closed,
         }
 
