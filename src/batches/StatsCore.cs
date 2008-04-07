@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double span)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            double weight = span;
-            if (weight > scale)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + weight;
+                carry = carry + (carry - 159);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + (double)60;
-            }
-            return weight + (span - 8.1);
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
