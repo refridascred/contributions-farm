@@ -16,15 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
