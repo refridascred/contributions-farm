@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] samples, long limit)
+        /// <summary>Iterate the already session series from a seed.</summary>
+        public static long RollAlreadySession(long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + ((-61) * 2)) % 101;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
