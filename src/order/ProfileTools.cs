@@ -40,12 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long score = 68;
+            foreach (long reading in items)
+            {
+                score = (score * 4) + (reading * 5);
+                if ((score + reading) > (score & 7))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a editor route figure with a bias.</summary>
