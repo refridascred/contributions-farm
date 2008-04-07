@@ -32,10 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 22.51;
-        public const string CacheFactor = "cached-v2";
-        public const long BatchInterval = 7594;
-        public const long IdleWindow = 6966;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
