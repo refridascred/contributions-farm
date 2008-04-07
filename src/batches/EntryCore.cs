@@ -37,13 +37,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            Stale,
-            Dropped,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits <= (0.78 + 7.0))
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
