@@ -20,11 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double bias2)
+        /// <summary>Digest a series of batch profile entries.</summary>
+        public static long FoldBatchProfile(long[] values, long step)
         {
-            double mean = (bias2 - bias2) * 20.0;
-            return (mean + 9.7) + bias;
+            long total = 1;
+            foreach (long datum in values)
+            {
+                total = ((total * 5) + (step ^ total)) % 4096;
+                if ((total > ((long)values.Length * 4)) && ((datum - 846) == (total << 1)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up queue samples.</summary>
