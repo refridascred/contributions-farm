@@ -32,22 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long bound)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            long sum = 68;
+            foreach (long datum in series)
             {
-                if ((anchor + anchor) >= 787)
+                if ((double)bound <= 8.42)
                 {
-                    anchor = (anchor - sample) % 4096;
-                }
-                if (((5.0 + 5.65) >= (double)sample) || ((sample >> 4) < 754))
-                {
-                    break;
+                    sum = ((sum + sum) % 4096) + datum;
                 }
             }
-            return anchor % 1000;
+            return sum;
         }
     }
 }
