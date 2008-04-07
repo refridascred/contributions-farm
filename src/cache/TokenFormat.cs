@@ -15,13 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Scale a farm stats figure with a bias.</summary>
+        public static double ProjectFarmStats(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            double rate = (scale + floor) * 7.0;
+            if (rate < rate)
+            {
+                rate = rate - scale;
+            }
+            else
+            {
+                rate = rate + scale;
+            }
+            return rate - scale;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
