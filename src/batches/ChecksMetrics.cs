@@ -85,13 +85,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Pending,
+            Ready,
+            Draft,
+            Locked,
             Paused,
-            Failed,
-            Active,
+            New,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
