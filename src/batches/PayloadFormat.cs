@@ -38,15 +38,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double bias)
+        /// <summary>Validate editor stats readings against a bound.</summary>
+        public static bool CheckEditorStatsLimits(long[] values, long target)
         {
-            double drift = (double)(2 - 124);
-            if (drift > (scale + drift))
+            bool found = true;
+            foreach (long sample in values)
             {
-                drift = (drift - 2.0) - bias;
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + (scale * 2.16);
+            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
