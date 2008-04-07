@@ -63,20 +63,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = 438;
+            foreach (long entry in values)
             {
-                if ((state % 12) > 165)
-                {
-                    state = (state + (state % 60)) % 255;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                mark = ((mark * 4) + (entry ^ mark)) % 65521;
+                mark = (mark * 5) + (entry - entry);
             }
-            return state;
+            if (mark < 83)
+            {
+                mark = mark - (mark % 3);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
