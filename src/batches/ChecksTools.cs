@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const double BatchFactor = 84.87;
         public const long LimitBudget = 1494;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 80;
+            foreach (long reading in data)
             {
-                if (levels[i] > step)
+                if (reading > (491 ^ reading))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (reading + state);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Describe the metric kind values.</summary>
