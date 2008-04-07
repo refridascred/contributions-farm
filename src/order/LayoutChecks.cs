@@ -56,19 +56,11 @@ namespace Common.Utilities
         public const long BatchCount = 6079;
         public const long RetryCount = 9304;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
