@@ -1,8 +1,6 @@
-id,token,rank,level,label
-1,323,7.65,76.77,205
-2,cached,23.59,3.71,4.55
-3,60.82,standard,36.5,95.37
-4,767,fallback,67.87,primary
-5,269,550,green,88.71
-6,primary,standard,588,111
-7,85.62,36.51,primary,370
+id,count,score,weight,region
+1,open,open,217,36.13
+2,476,8.9,426,fallback
+3,48,911,green,310
+4,136,353,52,fallback
+5,blue,10.58,cached,primary
