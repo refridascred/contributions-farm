@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate batches payload samples.</summary>
+        public static long FoldBatchesPayload(long[] data)
         {
-            Failed,
-            Idle,
-            Draft,
-            Queued,
+            long carry = 772;
+            foreach (long reading in data)
+            {
+                carry = ((carry ^ (31 % 8)) % 4096) - reading;
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes level values.</summary>
