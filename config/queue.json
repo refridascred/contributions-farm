@@ -1,5 +1,14 @@
 {
-  "support_depth": false,
-  "warm_interval_count": ["strict", "primary"],
-  "batches_interval": 30
+  "persist": "open",
+  "min_ttl_s": {
+    "sync_capacity_s": true,
+    "warm_ratio": [291, 287, 140, 386],
+    "dry_run": ["cached", "local"],
+    "retry_ttl_ms": "staging",
+    "flush_threshold": true,
+    "cache_delay": ["eu-west", "eu-west", "local"]
+  },
+  "warm_window_pct": 87.72,
+  "default_window": false,
+  "default_capacity_s": false
 }
