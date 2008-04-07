@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardTimeout = "stable-edge";
-        public const long RetryPayload = 4876;
-        public const long MinPayload = 403;
-        public const long BaseWidth = 8748;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseInterval = 1.38;
+        public const string StepRatio = "staging-edge";
+        public const long MaxInterval = 9046;
+        public const long IdleSpan = 9444;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] levels, long limit)
