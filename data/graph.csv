@@ -1,8 +1,8 @@
-id,token,weight,active,state
-1,116,20.48,legacy,988
-2,strict,open,83.78,strict
-3,staging,6.72,80.29,green
-4,114,752,805,legacy
-5,474,416,52.39,152
-6,473,600,strict,fallback
-7,417,547,70.41,25
+id,owner,count
+1,161,standard
+2,330,731
+3,standard,60.51
+4,local,4.98
+5,standard,531
+6,860,edge
+7,640,406
