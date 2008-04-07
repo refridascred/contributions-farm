@@ -70,16 +70,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total + (total - total);
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
