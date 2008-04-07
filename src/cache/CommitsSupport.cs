@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Queued,
-            New,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepTimeout = 8942;
+        public const long RetryBudget = 7541;
+        public const long BaseReport = 4082;
+        public const long LimitReport = 7813;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
