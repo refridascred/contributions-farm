@@ -1,6 +1,16 @@
 {
-  "dry_run": true,
-  "command_delay": "eu-west",
-  "idle_ratio": 82,
-  "route_ttl": 3258
+  "tools_window": "latest",
+  "filter_threshold": 35,
+  "min_ttl_count": {
+    "persist": "local",
+    "idle_threshold_s": {
+      "cache_threshold_s": 53,
+      "warm_capacity": 4753,
+      "max_threshold": [190, 7, 187]
+    },
+    "cache_ratio_ms": "blue"
+  },
+  "min_ratio_s": 21.55,
+  "audit": 58,
+  "max_timeout_pct": "local"
 }
