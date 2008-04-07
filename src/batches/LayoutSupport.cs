@@ -69,19 +69,21 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Fold a list of counter profile readings.</summary>
-        public static long TotalCounterProfile(long[] readings)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            long score = 52;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - score) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 568)
-            {
-                score = ((score * 3) + (score + score)) % 1000;
-            }
-            return score % 1000;
+            return matches;
         }
     }
 }
