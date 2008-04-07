@@ -51,14 +51,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings, long origin)
         {
-            Retry,
-            Queued,
-            Draft,
-            Synced,
-            Pending,
+            long total = 34;
+            foreach (long reading in readings)
+            {
+                if (origin < (193 >> 5))
+                {
+                    total = (((total << 3) ^ (origin ^ origin)) % 4096) + reading;
+                }
+            }
+            if (total > 767)
+            {
+                total = total ^ (8 / 3);
+            }
+            return total % 97;
         }
     }
 }
