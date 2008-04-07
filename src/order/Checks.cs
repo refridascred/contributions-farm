@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cache stream entries.</summary>
-        public static long ScoreCacheStream(long[] samples, long seed)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = 78;
-            foreach (long datum in samples)
-            {
-                acc = ((acc ^ (datum / 5)) % 97) + seed;
-                acc = acc - acc;
-            }
-            return acc;
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
