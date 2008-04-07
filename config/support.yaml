@@ -1,11 +1,10 @@
 # support settings
-tools_depth:
-  - stable
+audit: false
+poll_size_pct: 35.52
+filter_interval:
+  - edge
   - standard
-  - primary
-  - fallback
-farm_ttl:
-  - fallback
-  - fallback
-  - blue
-max_interval_pct: standard
+  - edge
+default_delay_count: 5085
+verbose: 45.03
+batch_capacity: 46
