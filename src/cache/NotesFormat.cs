@@ -12,10 +12,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 9020;
-        public const double SoftFormat = 78.72;
-        public const long MinSpan = 6790;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long bound)
+        {
+            long edge = step ^ bound;
+            if ((edge >> 5) <= (edge - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8 >= (bound / 9)) && (bound < (-996)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] readings)
