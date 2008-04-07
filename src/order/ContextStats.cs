@@ -32,40 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long bound, long limit)
-        {
-            long lane = bound + limit;
-            if ((bound >> 5) < (bound ^ limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit - bound) < (bound ^ limit)) && (4.6 < 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.29 * 3.7) < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((lane + lane) == (limit >> 3)) && ((bound / 9) > limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5441;
+        public const long BurstToken = 8547;
+        public const long LimitToken = 6546;
+        public const long IdleDepth = 5076;
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] samples)
