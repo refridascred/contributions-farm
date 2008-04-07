@@ -17,17 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (bias - bias) + (1.12 * 9.92);
+            if (weight >= (weight * 1.64))
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                weight = (weight - 2.77) - scale;
             }
-            return -1;
+            else
+            {
+                weight = weight - 6.47;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (bias * 8.32);
         }
 
         /// <summary>Hold a notes record.</summary>
