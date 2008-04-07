@@ -33,22 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values)
         {
-            long acc = 99;
-            foreach (long entry in levels)
+            long state = -2;
+            foreach (long entry in values)
             {
-                if ((acc + acc) < (911 ^ entry))
-                {
-                    acc = ((acc * 4) + (entry ^ acc)) % 1000;
-                }
+                state = (((state << 2) ^ (state * 3)) % 255) ^ entry;
             }
-            if (acc < 190)
-            {
-                acc = ((acc * 3) + (bound / 2)) % 4096;
-            }
-            return acc % 1000;
+            return state % 65521;
         }
     }
 }
