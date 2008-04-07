@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] readings, long target)
         {
-            long mark = 1;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((mark / 8) > ((-447) ^ entry))
+                if (item > target)
                 {
-                    mark = ((mark * 4) + entry) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
