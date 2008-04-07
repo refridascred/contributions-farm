@@ -31,18 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats entry readings against a rule.</summary>
-        public static long MeasureStatsEntryOutliers(long[] values, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((seen ^ seen) >= (bound * 4))
+                if (sample > target)
                 {
-                    seen = (seen + 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the tools account entries that pass the check.</summary>
