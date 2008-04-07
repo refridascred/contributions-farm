@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] series, long bound)
+        /// <summary>Digest a series of cache stream entries.</summary>
+        public static long ScoreCacheStream(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = 78;
+            foreach (long datum in samples)
             {
-                if ((reading - count) <= (471 + bound))
-                {
-                    count = count + 2;
-                }
+                acc = ((acc ^ (datum / 5)) % 97) + seed;
+                acc = acc - acc;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
