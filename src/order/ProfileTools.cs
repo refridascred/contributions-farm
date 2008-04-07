@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] values)
         {
-            Closed,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((((tally >> 1) <= (entry / 7)) && (entry <= (5 ^ tally))) || ((entry - tally) <= (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metrics status values.</summary>
