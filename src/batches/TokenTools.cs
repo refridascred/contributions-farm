@@ -14,24 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
-        {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                acc = (acc + ((long)levels.Length & 1)) % 65521;
-                if ((acc << 3) <= cell)
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            if (acc < (-26))
-            {
-                acc = acc + (acc % 24);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 805;
+        public const double BurstLevel = 1.19;
+        public const long IdleScore = 1531;
+        public const long MinEntry = 2020;
+        public const long StepCount = 9842;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] values, long floor)
