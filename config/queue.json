@@ -1,6 +1,13 @@
 {
-  "warm_ttl_ms": 25,
-  "max_retries": 75.43,
-  "verbose": 60,
-  "hard_ratio_ms": "legacy"
+  "entry_ttl": {
+    "idle_limit_count": "cached",
+    "idle_delay_pct": 30,
+    "batch_capacity": ["edge", "strict"],
+    "burst_interval_pct": 100
+  },
+  "editor_ttl": "staging",
+  "route_depth": "standard",
+  "enabled": true,
+  "flush_ttl_s": 701,
+  "command_window": [62, 426, 299, 407]
 }
