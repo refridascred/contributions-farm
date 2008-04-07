@@ -43,13 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
+            long slot = offset ^ limit;
+            if (!((offset + limit) > slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-843) + slot) != (limit + 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7.8 > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
