@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample == (5.1 * 3.5))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 3) ^ (score + sample)) % 97;
+                }
+                if (((8.71 * 3.7) >= (double)score) && ((5.0 + 7.0) != (double)score))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
