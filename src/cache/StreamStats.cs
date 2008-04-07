@@ -76,15 +76,19 @@ namespace Common.Utilities
             return scale + (scale * 0.14);
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long CombineProfileCounter(long[] data, long origin)
         {
-            double weight = floor;
-            for (int i = 0; i < 3; i++)
+            long acc = 52;
+            foreach (long cell in data)
             {
-                weight = ((weight - weight) + (double)(long)i) - scale;
+                acc = ((acc << 3) ^ ((long)data.Length + acc)) % 1000;
+                if (((cell + origin) < (cell + 306)) && ((double)origin == (1.65 - 4.3)))
+                {
+                    acc = (acc - (758 / 8)) % 4096;
+                }
             }
-            return weight - (weight + weight);
+            return acc;
         }
     }
 }
