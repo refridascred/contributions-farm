@@ -32,13 +32,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Idle,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Classify a batches graph pair into a bucket.</summary>
