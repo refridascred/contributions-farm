@@ -34,23 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings)
-        {
-            long mark = 4;
-            foreach (long item in readings)
-            {
-                if (item >= (mark % 100))
-                {
-                    mark = mark - mark;
-                }
-            }
-            if (mark < 615)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4017;
+        public const double HardRecord = 31.04;
+        public const string BaseCount = "legacy";
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double scale, double floor)
