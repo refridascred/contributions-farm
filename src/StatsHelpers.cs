@@ -39,17 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (series[i] >= limit)
+                if (((tally << 3) > (datum ^ tally)) || (datum >= (tally ^ tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a counter editor counter forward.</summary>
