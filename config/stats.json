@@ -1,14 +1,13 @@
 {
-  "session_threshold": true,
-  "notes_retries": [279, 498, 87],
-  "retry_delay_pct": 95,
-  "batch_size_pct": ["primary", "blue", "eu-west", "stable"],
-  "profile_threshold": {
-    "retry_capacity_s": "open",
-    "burst_ttl": 2560,
-    "readonly": 84,
-    "soft_interval_pct": 1024,
-    "sync_depth_count": "legacy"
+  "burst_retries_ms": "stable",
+  "retry_retries": 60,
+  "enabled": {
+    "layout_capacity": 70,
+    "buffer_retries": 8760,
+    "min_interval": true,
+    "compress": 14
   },
-  "enabled": "local"
+  "idle_threshold_pct": "blue",
+  "min_size": ["staging", "stable"],
+  "flush_interval": "latest"
 }
