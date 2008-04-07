@@ -1,15 +1,18 @@
 # githubfarm settings
-graph_limit: 34.98
-enabled: eu-west
-persist: 62
-order_ttl: 43.71
-poll_delay_pct:
-  githubfarm_threshold:
-    - 278
-    - 9
-    - 62
-  dry_run:
-    - green
-    - primary
-    - latest
-  command_capacity: 30
+hard_ttl_s: 13.62
+flush_ratio_pct:
+  - staging
+  - green
+  - eu-west
+  - strict
+editor_ratio: 51.33
+cache_ratio_ms:
+  - cached
+  - strict
+  - standard
+hard_window_ms:
+  - 57
+  - 379
+retry_ratio:
+  - 315
+  - 449
