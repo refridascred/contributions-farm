@@ -21,15 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long limit)
+        /// <summary>Count filter already pairs that satisfy a relation.</summary>
+        public static long OverlapFilterAlreadyCount(long[] levels)
         {
-            long total = 245;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ (limit >> 3)) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
