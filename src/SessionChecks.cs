@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (entry != origin)
+                if ((double)hits <= (20.0 * 0.2))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) + sample) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a cache entry.</summary>
