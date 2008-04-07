@@ -1,10 +1,14 @@
 # githubfarm settings
-poll_depth_s: 30
-min_retries: blue
-strict: stable
-idle_limit_s: edge
-burst_retries_count:
-  - 43
-  - 245
-  - 283
-sync_capacity_count: 59.5
+window_timeout: false
+burst_depth: 60
+poll_threshold_count:
+  max_depth: 59.65
+  min_limit_count: 31.86
+  idle_interval_s: 26
+retry_limit_pct: true
+warm_capacity_pct:
+  - 66
+  - 297
+  - 368
+  - 353
+flush_depth_ms: 98
