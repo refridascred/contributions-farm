@@ -26,15 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double drift = (double)(761 / 5);
-            if (drift > (weight / 8.0))
-            {
-                drift = (drift + drift) - offset;
-            }
-            return drift - drift;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the graph kind values.</summary>
