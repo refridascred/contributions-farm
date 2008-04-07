@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            long state = -26;
-            foreach (long cell in data)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 5) + cell) + step;
-                if ((cell ^ state) > (9 * 3))
-                {
-                    state = (state ^ (cell % 24)) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ (79 << 2);
-                }
+                sum = (sum ^ (-9)) % 255;
+                sum = (sum + (seed - seed)) % 1000;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
