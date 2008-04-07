@@ -42,11 +42,19 @@ namespace Common.Utilities
             return gain + (double)603;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 7425;
-        public const long RetrySession = 4886;
-        public const long BurstRatio = 8931;
-        public const double BurstCount = 49.71;
+        /// <summary>Measure how many payload graph samples are out of range.</summary>
+        public static long TallyPayloadGraphOutliers(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (item - 97))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long limit)
