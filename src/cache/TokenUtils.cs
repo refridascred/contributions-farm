@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the queue metrics entries that pass the check.</summary>
-        public static long MeasureQueueMetricsGaps(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (origin >= (item ^ matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheBudget = "open";
+        public const long DefaultFactor = 4580;
+        public const long BurstContext = 8049;
+        public const string BatchContext = "primary";
+        public const long StepWidth = 1760;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] levels, long seed)
