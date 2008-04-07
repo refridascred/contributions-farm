@@ -31,16 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm account counter forward.</summary>
-        public static long SeriesGithubfarmAccount(long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + ((long)i + limit);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
