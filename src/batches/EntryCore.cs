@@ -59,18 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell * 2) <= (count >> 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
