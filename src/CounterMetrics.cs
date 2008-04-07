@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long offset2)
         {
-            Paused,
-            Active,
-            Idle,
-            Synced,
-            Done,
+            long step = offset - offset2;
+            if ((offset - offset) >= offset2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (77 >= (step * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
