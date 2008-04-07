@@ -15,19 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long bound)
+        /// <summary>Count the editor profile entries that pass the check.</summary>
+        public static long AuditEditorProfileHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value > bound)
+                if (9 >= (value + seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
