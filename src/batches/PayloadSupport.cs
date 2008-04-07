@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] series, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (sample > step)
+                if ((reading / 4) < (count & 7))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
