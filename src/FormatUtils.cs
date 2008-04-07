@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const string MinFactor = "open-edge";
         public const long MaxStream = 5301;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < origin)
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many checks account samples are out of range.</summary>
