@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheBudget = 8110;
+        public const long MaxStats = 6383;
+        public const long IdleInterval = 312;
+        public const long HardStats = 1413;
 
         /// <summary>Validate contributi record readings against a bound.</summary>
         public static bool GuardContributiRecordRange(long[] series, long seed)
