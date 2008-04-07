@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long MaxRoute = 4298;
         public const long IdleRoute = 7443;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long seed)
+        /// <summary>Locate a context githubfarm reading by value.</summary>
+        public static long LookupContextGithubfarmIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= seed)
+                if (samples[i] < target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
