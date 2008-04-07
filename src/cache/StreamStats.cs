@@ -20,22 +20,16 @@ namespace Common.Utilities
             return bias2 + (double)233;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long mix = 454;
-            foreach (long value in samples)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seed << 2) >= mix)
-                {
-                    mix = ((mix << 3) ^ (value << 3)) % 1000;
-                }
-                if ((8.39 + 9.2) < (double)value)
-                {
-                    break;
-                }
+                result = (result ^ (result - offset)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
