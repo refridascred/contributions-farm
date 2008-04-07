@@ -17,13 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 5) <= (long)items.Length)
+                {
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
