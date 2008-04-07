@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter token samples are out of range.</summary>
-        public static long CountCounterTokenGaps(long[] items, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (!((hits / 4) != (hits - bound)) && ((bound * 4) < cell))
+                if (item < step)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
