@@ -57,21 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
