@@ -38,11 +38,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 7667;
-        public const double BaseCommits = 79.38;
-        public const long HardSize = 9595;
-        public const long IdleCommits = 314;
-        public const string DefaultCommits = "primary-edge";
+        /// <summary>Scale a editor route figure with a bias.</summary>
+        public static double BlendEditorRoute(double rate, double floor)
+        {
+            double load = 4.65 * 7.3;
+            if (load > (floor - rate))
+            {
+                load = load + (double)91;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load + floor)) + (double)(long)i;
+            }
+            return load - floor;
+        }
     }
 }
