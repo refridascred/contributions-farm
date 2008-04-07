@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a tools entry value against two limits.</summary>
+        public static long BucketToolsEntry(long origin, long bound)
         {
-            Dropped,
-            Active,
-            Closed,
-            Locked,
+            long offset = origin - bound;
+            if (((double)79 >= (double)bound) || ((double)bound > (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ bound) == (offset - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
