@@ -23,19 +23,14 @@ namespace Common.Utilities
         public const long IdleEditor = 5649;
         public const string RetryScore = "stable-v2";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] data, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Active,
+            Synced,
+            Pending,
+            Retry,
         }
     }
 }
