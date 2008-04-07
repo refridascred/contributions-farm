@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a channel profile pair into a bucket.</summary>
-        public static long SortChannelProfile(long target, long offset)
+        /// <summary>Look up the position of a command channel sample.</summary>
+        public static long LookupCommandChannelIndex(long[] values, long target)
         {
-            long lane = target ^ offset;
-            if ((419 / 7) == (target & 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 3) <= (lane / 5))
+                if (values[i] >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((lane ^ target) < (lane / 6)) || ((target ^ 2) >= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset <= lane)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
