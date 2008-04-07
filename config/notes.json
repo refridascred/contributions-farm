@@ -1,20 +1,8 @@
 {
-  "sync_timeout": [27, 129, 280, 390],
-  "cache_threshold_count": [159, 357, 8],
-  "verbose": "legacy",
-  "soft_ttl": {
-    "default_limit_count": true,
-    "compress": true,
-    "min_retries_pct": {
-      "burst_interval": 60,
-      "readonly": "cached",
-      "checks_ttl": 100,
-      "compress": 88.89,
-      "dry_run": ["blue", "blue", "edge", "strict"]
-    },
-    "sync_size_count": false,
-    "cache_ratio": 90.72,
-    "editor_delay": true
-  },
-  "sync_ratio": "strict"
+  "max_window_s": "latest",
+  "verbose": true,
+  "format_limit": true,
+  "strict": 6044,
+  "record_limit": 1552,
+  "editor_threshold": 9.82
 }
