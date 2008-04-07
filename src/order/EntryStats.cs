@@ -50,31 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            if (((double)floor < (double)origin) || ((floor + origin) >= (floor % 7)))
+            long state = 94;
+            foreach (long reading in samples)
             {
-                return 6;
+                state = ((state + (state ^ 98)) % 65521) - reading;
             }
-            else
-            {
-                if ((double)floor >= (4.0 / 3.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin / 2) == (9 / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Project the next cache value.</summary>
