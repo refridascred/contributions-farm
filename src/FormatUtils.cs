@@ -50,19 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the buffer level values.</summary>
