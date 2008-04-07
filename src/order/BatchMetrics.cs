@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long BatchFarm = 5748;
         public const double RetrySize = 52.27;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
