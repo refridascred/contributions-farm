@@ -74,12 +74,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 6.71;
+        public const double WindowRoute = 86.38;
+        public const double StepRoute = 55.09;
+        public const long SoftBudget = 49;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyHits(long[] data)
