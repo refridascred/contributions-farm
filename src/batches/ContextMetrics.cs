@@ -26,24 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long seed, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if (((step + seed) == (seed * 5)) && ((3 + seed) <= (22 / 8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)seed == (4.3 + 6.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Locate a metric schema reading by value.</summary>
