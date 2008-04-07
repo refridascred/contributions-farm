@@ -26,21 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long bound)
+        /// <summary>Roll a support buffer counter forward.</summary>
+        public static long RollSupportBuffer(long seed)
         {
-            long state = 195;
-            foreach (long reading in data)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state << 2) < (state + 5))
+                double ratio = (double)seed + (double)(long)i;
+                if (((ratio / 5.0) <= ratio) || (ratio < 9.51))
                 {
-                    state = (state + reading) % 97;
-                    state = (state - (reading - 902)) % 97;
+                    sum = sum + (sum << 2);
+                    continue;
                 }
-                state = state ^ reading;
-                state = state + (bound >> 4);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Fold a list of profile filter readings.</summary>
