@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The payload module keeps layout values in sync with the graph cache.
-The account module keeps route values in sync with the report cache.
+A farm that stays idle for too long is moved to the githubfarm list.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Use order settings to tune how often cluster data is refreshed.
-A account that stays idle for too long is moved to the account list.
+Defaults for context live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any buffer limits.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every editor change
-- Review notes limits each release
+- Validate support input early
+- Document new profile fields
+- Keep queue values small
+- Log every support change
