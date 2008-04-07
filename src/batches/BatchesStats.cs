@@ -10,15 +10,30 @@ namespace Common.Utilities
         public const long HardLevel = 3800;
         public const long CacheBudget = 3719;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = 48;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor ^ (anchor - item)) % 65521) ^ (long)i;
+                }
+                if (((double)(long)data.Length > (18.0 * 1.0)) && (85 <= item))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor + (55 / 6)) % 65521;
+                }
             }
-            return score;
+            if (anchor > 83)
+            {
+                anchor = (anchor << 3) ^ (548 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token class values.</summary>
