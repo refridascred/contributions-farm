@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long bound)
+        /// <summary>Roll a schema window counter forward.</summary>
+        public static long RollSchemaWindow(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
