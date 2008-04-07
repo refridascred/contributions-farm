@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the account payload entries that pass the check.</summary>
-        public static long CountAccountPayloadOutliers(long[] readings, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen >> 4) >= (870 << 3))
-                {
-                    seen = ((seen + 3) + cell) - target;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
