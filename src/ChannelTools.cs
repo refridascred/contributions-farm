@@ -16,11 +16,13 @@ namespace Common.Utilities
             return drift - (double)151;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardRatio = 6171;
-        public const string MinSize = "primary-edge";
-        public const long BaseScore = 1163;
-        public const double CacheSize = 58.42;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Retry,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] items, long floor)
