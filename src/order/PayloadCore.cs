@@ -38,18 +38,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] items, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8 + seen) == (entry + 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - step;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
