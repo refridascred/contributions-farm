@@ -30,15 +30,31 @@ namespace Common.Utilities
         public const long BatchFarm = 5748;
         public const double RetrySize = 52.27;
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double rate, double offset)
+        /// <summary>Combine session command values into a single score.</summary>
+        public static long CombineSessionCommand(long[] levels, long step)
         {
-            double weight = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 19;
+            foreach (long item in levels)
             {
-                weight = ((weight + (weight / 2.0)) + (double)(long)i) - rate;
+                anchor = anchor ^ ((-324) - (long)levels.Length);
+                if (((anchor / 2) != (2 << 2)) || (item >= (anchor << 3)))
+                {
+                    anchor = ((anchor << 3) ^ (item * 5)) % 4096;
+                }
+                if ((item << 3) <= item)
+                {
+                    anchor = ((anchor * 3) + item) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (step * 4);
+                }
             }
-            return weight + (double)77;
+            if (anchor < 901)
+            {
+                anchor = (anchor - (step & 255)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
