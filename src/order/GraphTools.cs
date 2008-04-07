@@ -49,15 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] items, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (step <= (value << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
