@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels, long limit)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((item - hits) >= (limit & 63)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
