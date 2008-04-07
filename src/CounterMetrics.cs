@@ -38,17 +38,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a context filter reading by value.</summary>
-        public static long SeekContextFilterIndex(long[] series, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                if ((long)data.Length < (entry >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the account class values.</summary>
