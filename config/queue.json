@@ -1,5 +1,5 @@
 {
-  "soft_ttl": ["standard", "eu-west", "staging", "local"],
-  "base_size": "edge",
-  "compress": "cached"
+  "max_window": 75,
+  "enabled": 20,
+  "readonly": ["edge", "green", "fallback", "strict"]
 }
