@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit stats graph readings against a rule.</summary>
-        public static long CountStatsGraphHits(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((double)seen != (2.5 + 16.0))
+                if (datum < step)
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate notes samples.</summary>
