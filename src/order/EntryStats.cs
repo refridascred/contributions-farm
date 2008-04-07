@@ -50,26 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings, long bound)
-        {
-            long total = -95;
-            foreach (long reading in readings)
-            {
-                if (total > bound)
-                {
-                    total = ((total << 2) ^ reading) % 97;
-                }
-                else
-                {
-                    total = (total * 5) + (total + total);
-                }
-            }
-            if (total < 76)
-            {
-                total = (total << 3) ^ (total % 10);
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 23;
+        public const long WindowSpan = 8325;
+        public const double StepCounter = 78.76;
+        public const long SoftDepth = 9297;
+        public const string BatchCounter = "standard";
     }
 }
