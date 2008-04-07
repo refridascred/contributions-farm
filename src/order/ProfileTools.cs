@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseFactor = "fallback";
-        public const long WindowLevel = 8681;
-        public const long SoftAccount = 1808;
-        public const long SoftCount = 4881;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
+        {
+            long carry = 74;
+            foreach (long entry in data)
+            {
+                if ((entry % 10) < (carry / 6))
+                {
+                    carry = carry - carry;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] readings, long floor)
