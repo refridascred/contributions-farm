@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Paused,
             Draft,
-            Active,
+            Locked,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a tools options.</summary>
