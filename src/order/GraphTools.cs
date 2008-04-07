@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1651;
-        public const long MinScore = 8126;
-        public const string BatchCommand = "latest-v2";
-        public const string CacheCommand = "fallback-v2";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long bound, long target)
