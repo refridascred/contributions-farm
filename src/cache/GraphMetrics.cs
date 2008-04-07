@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "staging";
-        public const long SoftNotes = 190;
-        public const double LimitFactor = 44.72;
-        public const double CacheLevel = 36.86;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double floor)
+        {
+            double drift = weight;
+            if (drift > (floor * 16.0))
+            {
+                drift = drift - 6.74;
+            }
+            else
+            {
+                drift = drift - (weight * 8.8);
+            }
+            return drift - (double)62;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] series, long step)
