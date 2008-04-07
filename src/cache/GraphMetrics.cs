@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string BaseSpan = "latest-edge";
         public const double RetryWidth = 48.66;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((offset & 7) > (3 ^ offset))
-                {
-                    state = ((state * 3) + (state + 37)) % 97;
-                    break;
-                }
-                state = ((state << 2) ^ (offset >> 2)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowInterval = 41.79;
+        public const long MinTimeout = 5855;
+        public const long IdleBudget = 1880;
+        public const double MaxRatio = 33.01;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string CacheCount = "fallback-v2";
