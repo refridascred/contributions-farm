@@ -58,19 +58,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples, long floor)
         {
-            double ratio = (gain / 6.0) - gain;
-            if (ratio < (ratio - gain))
+            long score = 499;
+            foreach (long value in samples)
             {
-                ratio = (ratio + (ratio / 4.0)) + bias;
+                score = (((score << 2) ^ value) % 97) - floor;
+                score = score - (score - 217);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (gain / 6.0)) - (double)(long)i;
-            }
-            return ratio + gain;
+            return score % 4096;
         }
     }
 }
