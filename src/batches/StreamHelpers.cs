@@ -67,19 +67,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double ratio = 9.81;
-            if (ratio < (double)79)
-            {
-                ratio = ((ratio + (2.25 * 20.0)) - scale) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (ratio * 5.89);
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
