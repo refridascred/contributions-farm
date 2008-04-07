@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits + 26) >= 97)
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 42.56;
+        public const long SoftDepth = 3125;
+        public const double IdleEditor = 52.26;
+        public const long BaseScore = 1986;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
