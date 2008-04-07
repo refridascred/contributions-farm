@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] series, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
