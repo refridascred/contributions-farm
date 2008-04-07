@@ -31,16 +31,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window batch values into a single score.</summary>
-        public static long TallyWindowBatch(long[] values, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long state = 572;
-            foreach (long cell in values)
-            {
-                state = ((((state * 4) + (5 ^ state)) % 101) + cell) - target;
-                state = (state + 346) % 97;
-            }
-            return state;
+            New,
+            Failed,
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
