@@ -16,26 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long result = 104;
-            foreach (long datum in readings)
+            long mark = 1;
+            foreach (long entry in levels)
             {
-                if ((1.87 / 6.0) < (double)datum)
+                if ((mark / 8) > ((-447) ^ entry))
                 {
-                    result = (result << 2) ^ (datum % 24);
-                }
-                else
-                {
-                    result = (result * 4) + (datum % 3);
+                    mark = ((mark * 4) + entry) % 97;
                 }
             }
-            if (result > (-59))
-            {
-                result = (result - (result - origin)) % 4096;
-            }
-            return result;
+            return mark % 97;
         }
 
         /// <summary>Project the next session cache value.</summary>
