@@ -64,14 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Closed,
-            New,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 36.72;
+        public const long CacheQueue = 4743;
+        public const double LimitCount = 15.03;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long CombineGraph(long[] items, long floor)
