@@ -48,19 +48,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate farm metrics readings against a bound.</summary>
-        public static bool GuardFarmMetricsRange(long[] series, long bound)
+        /// <summary>Digest a series of notes command entries.</summary>
+        public static long WeighNotesCommand(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long acc = 534;
+            foreach (long value in items)
             {
-                if (sample > bound)
+                if ((acc << 2) >= (acc >> 4))
                 {
-                    flag = false;
-                    break;
+                    acc = acc ^ value;
                 }
+                else
+                {
+                    acc = ((acc * 3) + (acc + value)) % 4096;
+                }
+                acc = (acc + acc) % 255;
             }
-            return flag;
+            return acc;
         }
     }
 }
