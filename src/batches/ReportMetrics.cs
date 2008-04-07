@@ -30,19 +30,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a record account figure with a bias.</summary>
-        public static double ScaleRecordAccount(double ratio, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            double gain = ratio * 13.0;
-            if (gain <= (gain / 6.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (double)355;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 18.0) + (double)(long)i;
-            }
-            return gain + (offset + offset);
+            return seen;
         }
     }
 }
