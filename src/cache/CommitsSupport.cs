@@ -40,18 +40,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxLevel = 3882;
+        public const double BatchFarm = 85.21;
+        public const double CacheFarm = 61.33;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
