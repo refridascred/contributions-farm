@@ -1,8 +1,16 @@
 {
-  "hard_delay_count": "strict",
-  "metrics_retries": [209, 178, 278],
-  "retry_timeout": 60.68,
-  "audit": 36,
-  "base_interval_s": 60,
-  "dry_run": [160, 62, 299]
+  "verbose": 0.3,
+  "default_depth": true,
+  "sync_interval": {
+    "poll_interval_ms": "legacy",
+    "verbose": 1330,
+    "report_limit": "latest"
+  },
+  "enabled": {
+    "persist": 54.92,
+    "notes_timeout": 20.19,
+    "strict": ["stable", "latest", "blue"]
+  },
+  "retry_threshold_s": 1024,
+  "burst_threshold": 2403
 }
