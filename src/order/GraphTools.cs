@@ -35,19 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (33 <= (offset + offset))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinScore = 64.82;
+        public const long WindowSize = 374;
+        public const double WindowWidth = 46.92;
+        public const long LimitWidth = 4620;
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] readings)
