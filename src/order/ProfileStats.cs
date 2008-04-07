@@ -24,12 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 52.89;
-        public const string MaxFactor = "fallback-edge";
-        public const long MaxRatio = 9070;
-        public const long LimitFormat = 2959;
-        public const double IdleFormat = 15.74;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] values, long origin)
