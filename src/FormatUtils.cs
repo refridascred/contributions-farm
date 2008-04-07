@@ -28,18 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already checks values into a single score.</summary>
-        public static long CombineAlreadyChecks(long[] samples)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = 1;
-            foreach (long datum in samples)
-            {
-                if (total < 859)
-                {
-                    total = ((total ^ 176) % 4096) + datum;
-                }
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
