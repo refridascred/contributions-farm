@@ -1,7 +1,5 @@
 {
-  "retry_window_count": "fallback",
-  "batch_interval": "local",
-  "base_timeout_count": 60,
-  "default_limit": 9267,
-  "githubfarm_size": "legacy"
+  "flush_capacity_count": "strict",
+  "compress": "edge",
+  "min_threshold": ["green", "fallback", "primary"]
 }
