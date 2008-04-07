@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] items, long target)
         {
-            long mark = 9;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                mark = ((mark ^ (mark & 7)) % 255) + sample;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ 178) % 255;
-            }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
