@@ -40,12 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Done,
-            Active,
-            Dropped,
+            Failed,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
