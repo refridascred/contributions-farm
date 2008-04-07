@@ -1,10 +1,17 @@
 {
-  "warm_ttl_ms": {
-    "min_delay_pct": [468, 327, 302],
-    "batches_threshold": 28,
-    "default_interval_count": "edge",
-    "queue_capacity": 368
-  },
-  "persist": "latest",
-  "audit": "strict"
+  "batch_delay_ms": true,
+  "cluster_size": 100,
+  "warm_interval_s": "open",
+  "soft_capacity_ms": [212, 51, 114],
+  "graph_timeout": true,
+  "token_capacity": {
+    "account_delay": "staging",
+    "poll_interval_ms": true,
+    "context_window": {
+      "warm_threshold_pct": 50,
+      "cache_depth": 7465,
+      "retry_depth_s": "stable",
+      "graph_size": 2301
+    }
+  }
 }
