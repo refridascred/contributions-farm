@@ -23,21 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((bound - bound) > mark)
-                {
-                    mark = (mark - (long)i) % 65521;
-                }
-                mark = (mark - bound) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 6437;
+        public const long BaseCache = 5045;
+        public const long LimitTimeout = 4787;
+        public const long LimitCache = 2742;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long step)
