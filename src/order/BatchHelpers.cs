@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double RetryBuffer = 57.88;
         public const string IdleTimeout = "legacy-1";
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardCount = 9210;
+        public const long DefaultTools = 7332;
+        public const double MinTools = 14.71;
+        public const long StepTools = 6267;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] readings, long offset)
