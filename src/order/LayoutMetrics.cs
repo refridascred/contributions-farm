@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank stats layout input into a small class.</summary>
-        public static long GradeStatsLayout(long limit, long limit2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (!(limit <= 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit < limit2) || ((limit ^ limit2) == (limit - limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a checks entry.</summary>
