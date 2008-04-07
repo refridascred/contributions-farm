@@ -48,16 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix ^ (mix % 8)) % 65521;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
