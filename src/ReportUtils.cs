@@ -37,10 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 33.88;
-        public const long RetrySpan = 1140;
-        public const double BatchSpan = 25.73;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
         public static long CountMetricReportOutliers(long[] samples)
