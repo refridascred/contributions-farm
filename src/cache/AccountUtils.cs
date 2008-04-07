@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] items, long offset)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool CheckToolsLayoutLimits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (!((-72) <= offset))
+                if (entry != seed)
                 {
-                    matches = (matches + 3) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate commits samples.</summary>
