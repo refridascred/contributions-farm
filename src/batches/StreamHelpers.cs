@@ -64,14 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Paused,
-            Active,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardDepth = "stable-edge";
+        public const long HardCount = 7132;
+        public const double WindowWidth = 24.99;
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] data)
