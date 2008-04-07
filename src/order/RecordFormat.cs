@@ -54,24 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batches graph pair into a bucket.</summary>
-        public static long ClassifyBatchesGraph(long origin, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            if (limit < (limit + limit))
+            long total = 21;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((634 + limit) != (470 - limit)) && ((limit % 97) == (origin ^ origin)))
+                if (total <= (value & 63))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    total = (total + ((long)items.Length + value)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Validate profile stats readings against a bound.</summary>
