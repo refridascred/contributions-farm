@@ -46,22 +46,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] readings, long origin)
+        /// <summary>Roll a counter editor counter forward.</summary>
+        public static long SeriesCounterEditor(long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((4.01 / 9.0) > (double)item)
+                carry = ((carry << 3) ^ ((long)i + 774)) % 4096;
+                if (((long)i ^ bound) > (6 + (long)i))
                 {
-                    seen = (seen + 1) + origin;
+                    carry = (carry << 3) ^ carry;
+                    carry = ((carry << 3) ^ bound) % 101;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
