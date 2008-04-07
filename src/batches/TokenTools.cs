@@ -30,24 +30,17 @@ namespace Common.Utilities
         public const long MinEntry = 2020;
         public const long StepCount = 9842;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            if ((bound * 3) >= (seed + 27))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + bound) > bound)
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
