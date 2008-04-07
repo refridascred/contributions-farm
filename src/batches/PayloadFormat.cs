@@ -35,13 +35,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values)
         {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long total = 649;
+            foreach (long entry in values)
+            {
+                if ((double)total > 4.8)
+                {
+                    total = total - (entry + entry);
+                }
+                else
+                {
+                    total = ((total * 4) + (698 - entry)) % 101;
+                }
+            }
+            if (total > 6)
+            {
+                total = ((total << 2) ^ (total / 2)) % 97;
+            }
+            return total % 65521;
         }
     }
 }
