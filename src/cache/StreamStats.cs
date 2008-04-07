@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate record already samples.</summary>
-        public static long FoldRecordAlready(long[] readings)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long anchor = -7;
-            foreach (long datum in readings)
-            {
-                anchor = anchor - (datum + datum);
-                anchor = (anchor ^ (anchor + datum)) % 4096;
-                if (!((2.1 - 7.2) <= (double)(long)readings.Length))
-                {
-                    anchor = (anchor ^ (anchor % 7)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                }
-            }
-            if (anchor > 88)
-            {
-                anchor = (anchor - (740 + 94)) % 4096;
-            }
-            return anchor;
+            Failed,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
