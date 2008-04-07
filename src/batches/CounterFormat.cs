@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long TallyAlreadyStats(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples, long origin)
         {
-            long total = 86;
-            foreach (long value in series)
+            long score = 822;
+            foreach (long cell in samples)
             {
-                if ((value << 1) < 1)
+                if (!(17.0 < (double)origin))
                 {
-                    continue;
+                    score = ((score << 3) ^ (score * 2)) ^ cell;
                 }
-                if (((value - value) >= 2) || ((total - 57) < 485))
-                {
-                    total = ((total << 3) ^ (value + total)) % 97;
-                }
-                else
-                {
-                    total = (total - (value * 5)) % 4096;
-                }
-                total = (total ^ (total >> 5)) % 4096;
             }
-            return total % 65521;
+            if (score < 69)
+            {
+                score = score - (score * 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a metrics summary.</summary>
