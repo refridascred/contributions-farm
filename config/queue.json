@@ -1,6 +1,8 @@
 {
-  "soft_delay_ms": 37,
-  "cache_ttl_ms": "local",
-  "default_delay": "strict",
-  "flush_timeout_s": 20.19
+  "account_threshold": 100,
+  "sync_size": 8229,
+  "hard_timeout_s": "blue",
+  "batch_size_ms": false,
+  "retry_threshold_pct": ["eu-west", "latest", "local"],
+  "verbose": true
 }
