@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
