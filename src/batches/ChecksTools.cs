@@ -21,19 +21,25 @@ namespace Common.Utilities
         public const string StepCommand = "strict-v2";
         public const long LimitCount = 1822;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long bound)
         {
-            long acc = 277;
-            foreach (long sample in values)
+            long slot = floor - bound;
+            if (!((floor & 1) < (bound ^ bound)))
             {
-                acc = (((acc << 3) ^ (5 * 4)) % 1000) - origin;
-                if ((476 + acc) <= (acc + sample))
+                return 1;
+            }
+            else
+            {
+                if ((95 + bound) > slot)
                 {
-                    acc = (acc ^ (25 << 3)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
