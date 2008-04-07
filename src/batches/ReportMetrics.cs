@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BatchScore = 8992;
         public const string BurstProfile = "latest-v2";
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] readings, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (readings[i] >= origin)
+                if (value > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a record account figure with a bias.</summary>
