@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell >= (hits + cell)) && ((hits * 2) >= (0 + hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
