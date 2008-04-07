@@ -21,15 +21,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Synced,
-            Done,
-            Closed,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "fallback-v2";
+        public const long CacheBuffer = 1153;
+        public const long MaxBuffer = 5072;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
