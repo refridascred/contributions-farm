@@ -1,8 +1,4 @@
 # entry settings
-flush_limit_s: local
-poll_size_s:
-  - local
-  - blue
-  - strict
-buffer_limit: 932
-cache_timeout: false
+dry_run: true
+burst_limit_count: 80
+farm_delay: 51
