@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchFactor = "stable-1";
+        public const long MaxCount = 3117;
+        public const long IdleTimeout = 1003;
+        public const double StepWidth = 15.04;
+        public const double LimitLevel = 32.14;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long floor)
