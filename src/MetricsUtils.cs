@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((limit >> 1) <= (mark << 1))
+                {
+                    mark = (mark * 2) + (mark + limit);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the already state values.</summary>
