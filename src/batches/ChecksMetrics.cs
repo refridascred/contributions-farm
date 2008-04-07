@@ -41,20 +41,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5648;
+        public const string RetryCommits = "local-edge";
+        public const long DefaultRatio = 7070;
+        public const long RetryScore = 126;
+        public const double BurstSize = 41.65;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
