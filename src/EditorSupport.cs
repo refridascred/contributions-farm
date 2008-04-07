@@ -26,14 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of queue stream entries.</summary>
+        public static long TallyQueueStream(long[] values, long limit)
         {
-            New,
-            Locked,
-            Pending,
-            Failed,
-            Paused,
+            long mark = 988;
+            foreach (long sample in values)
+            {
+                if ((mark & 127) > (limit & 1))
+                {
+                    mark = (mark + (limit % 2)) % 255;
+                }
+                if ((sample ^ mark) < mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
