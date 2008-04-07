@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long CountLayoutEntryGaps(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits > datum) && ((double)datum == (4.0 * 9.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
