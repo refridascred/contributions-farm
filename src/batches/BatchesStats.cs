@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)count > (4.2 - 0.71)))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 1) + item) + target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
