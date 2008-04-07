@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const string StepCount = "local-1";
         public const double BurstContext = 78.58;
 
-        /// <summary>Combine buffer payload values into a single score.</summary>
-        public static long DigestBufferPayload(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long score = -566;
-            foreach (long cell in data)
-            {
-                if ((double)21 > (double)score)
-                {
-                    score = ((score - (690 + 7)) % 255) + cell;
-                }
-            }
-            if (score > 9)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
