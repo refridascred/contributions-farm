@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long BatchFarm = 5748;
         public const double RetrySize = 52.27;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5.1 * 7.18) < (double)cell) || ((cell > (cell * 5)) && ((cell - (-5)) < (cell + cell))))
+                if (data[i] < offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
