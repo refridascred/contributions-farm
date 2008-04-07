@@ -1,6 +1,5 @@
 {
-  "enabled": "strict",
-  "batch_delay": false,
-  "compress": "edge",
-  "stats_capacity": 100
+  "readonly": 6198,
+  "context_delay": false,
+  "audit": "eu-west"
 }
