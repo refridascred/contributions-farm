@@ -25,12 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 3639;
-        public const long StepReport = 7475;
-        public const double IdleReport = 20.94;
-        public const double WindowReport = 35.47;
-        public const string RetryReport = "alpha-v2";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)step == (12.0 + 4.0))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
