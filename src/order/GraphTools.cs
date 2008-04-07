@@ -20,39 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] readings, long offset)
         {
-            long diff = bound - target;
-            if (!((diff >> 3) == (422 << 2)))
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((diff % 12) > diff) || ((double)bound != (9.2 - 7.05)))
+                if (sample <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff - diff) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)diff < (1.0 + 10.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit metric graph readings against a rule.</summary>
