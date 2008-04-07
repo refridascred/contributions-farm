@@ -26,12 +26,12 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
