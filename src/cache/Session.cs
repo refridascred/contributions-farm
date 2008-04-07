@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)sample != (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
