@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] data, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long result = -5;
+            foreach (long reading in items)
             {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 5) + (79 - result)) % 101) + reading;
             }
-            return ready;
+            return result % 1000;
         }
 
         /// <summary>Describe the counter mode values.</summary>
