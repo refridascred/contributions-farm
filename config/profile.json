@@ -1,6 +1,7 @@
 {
-  "readonly": 95,
-  "hard_depth_count": "primary",
-  "enabled": "standard",
-  "sync_ttl_ms": 85
+  "base_size_pct": true,
+  "context_size": 17,
+  "cluster_window": "blue",
+  "buffer_delay": 79,
+  "readonly": 65.08
 }
