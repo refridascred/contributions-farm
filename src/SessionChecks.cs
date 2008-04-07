@@ -53,13 +53,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            Idle,
+            Active,
+            Stale,
+            Dropped,
         }
     }
 }
