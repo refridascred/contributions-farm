@@ -62,9 +62,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepScore = 3443;
-        public const string WindowInterval = "strict-1";
-        public const long WindowFactor = 1116;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits % 10) > (seed ^ entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
