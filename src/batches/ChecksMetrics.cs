@@ -28,10 +28,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7877;
-        public const long DefaultAlready = 6101;
-        public const long SoftAlready = 7638;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long floor)
+        {
+            long prev = offset - floor;
+            if ((offset - offset) > (floor - prev))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 4) <= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (8.45 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
