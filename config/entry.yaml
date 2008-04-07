@@ -1,7 +1,19 @@
 # entry settings
-compress: stable
-strict: 62
-sync_depth: staging
-dry_run: 79
-retry_limit_pct: 30
-persist: blue
+min_threshold_ms: 6983
+command_timeout:
+  - latest
+  - blue
+default_timeout: true
+idle_ttl_s: standard
+enabled: cached
+batch_window_count:
+  metrics_depth: cached
+  warm_depth_s: open
+  contributi_capacity: 30
+  warm_ttl_count:
+    warm_ratio_count: eu-west
+    min_ratio_pct: staging
+    commits_window: 88.71
+    default_window_count: true
+    hard_limit: 1024
+  base_capacity: 6949
