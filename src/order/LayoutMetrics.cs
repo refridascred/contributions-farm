@@ -32,10 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3127;
-        public const long SoftStream = 2475;
-        public const long StepBudget = 1323;
-        public const long DefaultRatio = 1126;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Stale,
+            Ready,
+            New,
+        }
     }
 }
