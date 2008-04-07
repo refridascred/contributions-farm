@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (seen >= value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinSize = "strict-edge";
+        public const long IdleScore = 2303;
+        public const string WindowOrder = "legacy";
+        public const long CacheInterval = 3446;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] readings)
