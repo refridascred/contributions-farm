@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long diff = seed - floor;
-            if (((8.0 + 15.0) != (double)floor) && ((85 & 3) > (diff + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)53 <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff + seed) < (12 - diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((1.0 / 8.0) != (double)diff) || ((floor + floor) < 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
