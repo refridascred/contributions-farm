@@ -33,22 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 7809;
+        public const double BatchNotes = 60.97;
+        public const long MaxBudget = 1197;
+        public const long RetryFactor = 4260;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long origin)
