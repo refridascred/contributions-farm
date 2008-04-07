@@ -49,23 +49,15 @@ namespace Common.Utilities
         public const double BaseQueue = 1.14;
         public const double HardQueue = 8.91;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            double load = bias;
-            if (load >= (span * 8.0))
+            double ratio = (gain - gain) * 20.0;
+            if (ratio > 1.5)
             {
-                load = load - (8.5 / 9.0);
+                ratio = (ratio + ratio) - span;
             }
-            else
-            {
-                load = load - (bias - 0.3);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + span;
+            return ratio + (double)40;
         }
     }
 }
