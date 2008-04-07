@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const double WindowReport = 35.47;
         public const string RetryReport = "alpha-v2";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
