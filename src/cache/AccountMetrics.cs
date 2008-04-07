@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit command record readings against a rule.</summary>
-        public static long CountCommandRecordGaps(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample <= (double)15)
+                if (levels[i] == target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
