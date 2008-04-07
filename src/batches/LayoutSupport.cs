@@ -27,17 +27,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a checks layout sample.</summary>
-        public static long FindChecksLayoutIndex(long[] samples, long seed)
+        /// <summary>Roll a route commits counter forward.</summary>
+        public static long DeriveRouteCommits(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] < seed)
+                if (carry >= (9 ^ carry))
                 {
-                    return (long)i;
+                    carry = (carry - step) % 1000;
                 }
+                else
+                {
+                    carry = (carry << 3) ^ step;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
