@@ -30,11 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
