@@ -28,9 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitScore = 6731;
-        public const long SoftSchema = 4168;
-        public const double CacheLevel = 12.64;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
