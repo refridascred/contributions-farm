@@ -37,14 +37,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items, long target)
         {
-            Pending,
-            Ready,
-            Active,
-            Done,
-            Dropped,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count < (29 + count)) && ((0.17 + 1.8) >= (double)target))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
