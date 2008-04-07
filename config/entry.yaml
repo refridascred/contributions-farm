@@ -1,15 +1,7 @@
 # entry settings
-soft_interval_s: 8810
-compress: true
-flush_ttl:
-  filter_interval: primary
-  default_ttl_s: 87
-  session_depth:
-    poll_threshold: 48
-    flush_capacity: green
-    base_ttl: true
-    hard_size_ms: 61
-  flush_ratio_s: false
-  batch_limit_ms: true
-  buffer_delay: false
-min_capacity_pct: 2831
+support_limit: 96.9
+min_retries: 59.2
+token_ttl: true
+soft_threshold_s: local
+stats_threshold: 69.99
+readonly: 70.61
