@@ -29,19 +29,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long TotalEntryContext(long[] values)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long sum = 1;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (((sum << 3) ^ (cell + cell)) % 255) ^ (long)i;
-                }
-                sum = ((sum << 3) ^ cell) % 255;
-            }
-            return sum % 65521;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
