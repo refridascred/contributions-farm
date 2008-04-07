@@ -62,11 +62,10 @@ namespace Common.Utilities
         public const double BurstLevel = 87.06;
         public const long BatchSupport = 6121;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 8015;
+        public const long IdleBudget = 630;
+        public const double SoftFactor = 1.54;
+        public const long CacheRatio = 2529;
     }
 }
