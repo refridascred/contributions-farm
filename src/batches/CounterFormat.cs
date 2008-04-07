@@ -30,20 +30,17 @@ namespace Common.Utilities
         public const long IdleEditor = 5649;
         public const string RetryScore = "stable-v2";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long seed)
         {
-            long state = -97;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state + 452) - cell) - offset;
-                state = state ^ (state << 2);
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 782)
-            {
-                state = ((state * 2) + (74 ^ state)) % 65521;
-            }
-            return state % 4096;
+            return -1;
         }
     }
 }
