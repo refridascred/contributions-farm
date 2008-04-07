@@ -78,9 +78,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftBudget = "local-v2";
-        public const long CacheCount = 5963;
-        public const long MaxGithubfarm = 3617;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + hits) != (13 - offset))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
