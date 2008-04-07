@@ -37,18 +37,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long AuditGraphMetricHits(long[] values, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((double)step < (double)entry) && ((entry & 1) >= 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Ready,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the editor state values.</summary>
