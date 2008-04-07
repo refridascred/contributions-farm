@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "stable-edge";
+        public const double MaxCommand = 42.38;
+        public const long WindowCommand = 4897;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] levels, long target)
