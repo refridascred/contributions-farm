@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultGraph = 9936;
         public const double CacheGraph = 18.39;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (6.9 >= (double)(long)levels.Length)
+                if ((tally / 2) <= tally)
                 {
-                    seen = (seen + 1) ^ reading;
+                    tally = ((tally + 3) + sample) - floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
