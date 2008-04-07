@@ -52,12 +52,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Pending,
-            Retry,
-            Locked,
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
