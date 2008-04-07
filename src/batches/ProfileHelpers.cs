@@ -64,14 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] series, long seed)
         {
-            Synced,
-            Done,
-            Ready,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((seed ^ 7) <= (81 << 2)) || ((3.5 / 5.0) != (double)tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
