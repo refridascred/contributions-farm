@@ -40,10 +40,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxLevel = 3882;
-        public const double BatchFarm = 85.21;
-        public const double CacheFarm = 61.33;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ bound) > (seen % 8))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
