@@ -48,9 +48,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxCounter = 86.78;
-        public const long RetryCounter = 5417;
-        public const long SoftLevel = 8790;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
