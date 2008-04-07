@@ -47,24 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = mark ^ (long)i;
-                if ((3.1 * 4.19) <= (double)mark)
-                {
-                    mark = (mark + floor) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ floor;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
