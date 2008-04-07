@@ -1,8 +1,6 @@
 {
-  "warm_capacity_pct": 88,
-  "min_capacity_pct": "green",
-  "order_capacity": true,
-  "min_capacity_count": 55.35,
-  "warm_ratio_ms": "cached",
-  "flush_limit_s": "green"
+  "hard_timeout": 6750,
+  "stream_capacity": true,
+  "min_delay_count": 3710,
+  "default_capacity_s": "strict"
 }
