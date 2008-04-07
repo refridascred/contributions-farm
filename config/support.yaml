@@ -1,19 +1,9 @@
 # support settings
-flush_interval_pct: eu-west
-record_window: 85.64
-farm_delay: blue
-idle_window_pct:
-  account_ttl: 1838
-  cache_capacity_s: blue
-  poll_delay: 1
-  strict: 7566
-  min_threshold_ms:
-    sync_delay_pct: 19
-    idle_delay_s: cached
-    retry_size_ms:
-      - 215
-      - 359
-      - 388
-      - 182
-    hard_delay_count: fallback
-readonly: 43.81
+dry_run: 4890
+retry_threshold_pct: stable
+cache_ttl:
+  burst_limit_pct: 100
+  sync_ratio_s: legacy
+  batch_capacity_s: 89
+  warm_threshold_s: 62
+sync_ratio_count: local
