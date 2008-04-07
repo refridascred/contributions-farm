@@ -1,7 +1,8 @@
 {
-  "command_size": ["green", "primary"],
-  "max_depth": ["local", "green", "latest"],
-  "soft_delay_count": [247, 59, 245, 451],
-  "max_limit_pct": ["edge", "cached", "strict"],
-  "editor_timeout": "edge"
+  "readonly": 500,
+  "persist": "latest",
+  "retry_timeout_s": false,
+  "flush_ratio": 8,
+  "report_interval": [82, 231, 135],
+  "min_ttl_ms": 21
 }
