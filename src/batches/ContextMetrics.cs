@@ -41,18 +41,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.9 - 3.0) <= (double)count)
-                {
-                    count = (count + 1) ^ reading;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
