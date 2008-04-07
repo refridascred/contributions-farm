@@ -53,25 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long offset)
+        /// <summary>Measure how many entry tools samples are out of range.</summary>
+        public static long AuditEntryToolsGaps(long[] samples, long step)
         {
-            long delta = limit ^ offset;
-            if (delta > (limit % 3))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit >= (delta + 55))
+                if (((double)matches > (9.3 / 7.0)) && ((step + item) == (matches + item)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
