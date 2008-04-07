@@ -48,38 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((floor > (offset + offset)) && (546 <= (floor - offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((105 - floor) >= (7 % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > (2 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((134 & 31) <= (offset / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Closed,
         }
     }
 }
