@@ -26,26 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            long result = 64;
-            foreach (long sample in values)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)limit > 8.5)
+                if ((floor + (long)i) <= sum)
                 {
-                    result = result ^ (limit - result);
+                    sum = sum - (floor & 7);
                 }
-                else
+                for (int i3 = 0; i3 < 9; i3++)
                 {
-                    result = result + (sample << 1);
+                    sum = sum - ((long)i - floor);
+                    sum = (sum + ((long)i3 + floor)) % 101;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (result < 369)
-            {
-                result = (result - (result >> 5)) % 1000;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Accumulate stats samples.</summary>
