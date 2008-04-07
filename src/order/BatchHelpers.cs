@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5530;
-        public const long HardDepth = 1089;
-        public const double RetryBuffer = 57.88;
-        public const string IdleTimeout = "legacy-1";
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] samples)
