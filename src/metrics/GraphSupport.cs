@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit schema format readings against a rule.</summary>
+        public static long MeasureSchemaFormatHits(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen << 2) >= seen)
+                {
+                    seen = ((seen + 1) ^ entry) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate entry route readings against a bound.</summary>
