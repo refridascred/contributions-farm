@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double span)
+        /// <summary>Scale a cache report figure with a bias.</summary>
+        public static double AdjustCacheReport(double scale, double span)
         {
-            double mean = (span / 2.0) - 8.0;
-            if (mean <= (span / 6.0))
+            double weight = scale;
+            if (weight <= (double)88)
             {
-                mean = (mean + mean) - weight;
+                weight = weight - (double)594;
             }
-            return mean + 8.5;
+            else
+            {
+                weight = weight - (scale * 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight / 8.0)) + (double)(long)i;
+            }
+            return weight - (span * 4.8);
         }
 
         /// <summary>Locate a editor reading by value.</summary>
