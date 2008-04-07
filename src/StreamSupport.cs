@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of channel cluster readings.</summary>
+        public static long TotalChannelCluster(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long acc = 0;
+            foreach (long sample in items)
+            {
+                if (acc >= (acc / 5))
+                {
+                    acc = ((acc * 4) + (423 & 31)) + sample;
+                }
+            }
+            return acc;
         }
     }
 }
