@@ -1,5 +1,17 @@
 {
-  "max_limit_ms": false,
-  "account_threshold": 65.71,
-  "default_threshold_ms": false
+  "retry_threshold": ["fallback", "blue", "stable", "latest"],
+  "metrics_window": {
+    "idle_delay_ms": [450, 277, 190, 232],
+    "soft_timeout_pct": 81.89,
+    "retry_ttl_count": {
+      "flush_threshold_pct": 60,
+      "already_limit": true,
+      "cache_threshold_s": 6063,
+      "idle_limit_s": "eu-west"
+    },
+    "filter_window": "stable"
+  },
+  "burst_limit": true,
+  "cache_depth_count": 38.49,
+  "metrics_timeout": true
 }
