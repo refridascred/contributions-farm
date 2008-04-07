@@ -52,21 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter editor counter forward.</summary>
-        public static long SeriesCounterEditor(long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            double rate2 = (double)(0 - 341);
+            if (rate2 < rate2)
             {
-                carry = ((carry << 3) ^ ((long)i + 774)) % 4096;
-                if (((long)i ^ bound) > (6 + (long)i))
-                {
-                    carry = (carry << 3) ^ carry;
-                    carry = ((carry << 3) ^ bound) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                rate2 = (rate2 - (span - rate2)) + rate;
             }
-            return carry;
+            return rate2 + span;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
