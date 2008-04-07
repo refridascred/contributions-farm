@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double bias)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            double ratio2 = (double)(7 % 5);
-            if (ratio2 > (ratio / 3.0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 + (bias / 7.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio * 9.5);
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
