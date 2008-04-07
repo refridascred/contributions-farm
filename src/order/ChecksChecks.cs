@@ -31,11 +31,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
