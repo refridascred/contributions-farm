@@ -13,21 +13,30 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -741;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell / 8) < cell)
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result ^ (target / 8);
+                }
+                if (!((0.62 / 5.0) <= (double)result))
+                {
+                    result = ((result * 4) + (cell / 6)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 5) + (result + target)) % 1000;
                 }
             }
-            return matches;
+            if (result > 7)
+            {
+                result = (result ^ (target << 3)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
