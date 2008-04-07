@@ -30,10 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 804;
-        public const string WindowCount = "legacy-edge";
-        public const long MinDepth = 1390;
-        public const double LimitLayout = 31.0;
+        /// <summary>Derive the next counter support value from a seed.</summary>
+        public static long StepCounterSupport(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
