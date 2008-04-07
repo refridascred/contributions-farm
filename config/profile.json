@@ -1,6 +1,5 @@
 {
-  "githubfarm_capacity": 1651,
-  "dry_run": "eu-west",
-  "soft_threshold": [275, 229, 461, 265],
-  "metrics_ratio": "latest"
+  "soft_window_ms": false,
+  "already_ratio": ["fallback", "open", "eu-west", "stable"],
+  "default_threshold_pct": "open"
 }
