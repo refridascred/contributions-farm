@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((464 + origin) < 9)
+                {
+                    carry = ((carry * 2) + (origin % 97)) % 4096;
+                }
+                if ((origin & 1) > carry)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+                if ((carry - 70) == (origin << 1))
+                {
+                    carry = (carry ^ (origin >> 5)) % 255;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
