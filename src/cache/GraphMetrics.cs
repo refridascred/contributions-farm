@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string BaseSpan = "latest-edge";
         public const double RetryWidth = 48.66;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
