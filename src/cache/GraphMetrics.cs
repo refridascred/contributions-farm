@@ -17,13 +17,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Derive the next record metric value from a seed.</summary>
+        public static long RollRecordMetric(long bound)
         {
-            Ready,
-            New,
-            Idle,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total + (9 & 31);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload state values.</summary>
