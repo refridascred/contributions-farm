@@ -1,8 +1,11 @@
 {
-  "readonly": 500,
-  "persist": "latest",
-  "retry_timeout_s": false,
-  "flush_ratio": 8,
-  "report_interval": [82, 231, 135],
-  "min_ttl_ms": 21
+  "enabled": ["stable", "blue"],
+  "dry_run": 26.98,
+  "sync_interval_s": {
+    "base_retries_ms": 42,
+    "command_ttl": "latest",
+    "poll_retries_count": "staging",
+    "max_limit": [265, 221],
+    "burst_window_s": 1789
+  }
 }
