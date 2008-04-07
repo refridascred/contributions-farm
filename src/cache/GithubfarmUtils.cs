@@ -29,21 +29,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -7;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix + (mix * 5)) % 4096;
+                if ((mix <= (item * 2)) && ((double)mix == (2.0 - 5.95)))
                 {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (item - item)) % 255;
+                }
+                if ((item >> 3) > (383 + mix))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 952)
+            {
+                mix = (mix * 2) + 2;
+            }
+            return mix % 1000;
         }
     }
 }
