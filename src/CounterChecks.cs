@@ -41,15 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long anchor = 30;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                anchor = (anchor << 3) ^ (datum * 4);
+                if ((limit & 7) < (datum * 5))
+                {
+                    anchor = anchor ^ (datum >> 3);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (datum + 9);
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a payload header.</summary>
