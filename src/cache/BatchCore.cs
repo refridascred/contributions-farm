@@ -48,14 +48,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate checks order readings against a bound.</summary>
+        public static bool GuardChecksOrderRange(long[] series, long bound)
         {
-            Retry,
-            Queued,
-            Paused,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
