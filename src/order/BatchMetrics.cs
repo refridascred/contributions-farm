@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a support metric reading by value.</summary>
-        public static long LookupSupportMetricIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultRatio = 1340;
+        public const double MinScore = 46.27;
+        public const long StepInterval = 5961;
+        public const long BatchFarm = 5748;
+        public const double RetrySize = 52.27;
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double rate, double offset)
