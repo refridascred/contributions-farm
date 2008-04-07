@@ -20,11 +20,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 94.27;
-        public const long WindowStats = 1577;
-        public const long WindowSize = 6169;
-        public const long IdleWidth = 1596;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double span)
+        {
+            double bias = rate / 3.0;
+            if (bias > 4.76)
+            {
+                bias = (bias + rate) - span;
+            }
+            return bias - rate;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
