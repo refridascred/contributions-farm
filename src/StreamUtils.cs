@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)hits == (6.0 / 7.0))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
