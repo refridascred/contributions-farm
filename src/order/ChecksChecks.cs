@@ -13,39 +13,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            long next = step - target;
-            if (!(((-99) / 9) != (target / 5)))
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                sum = sum + (sum >> 4);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((target - 8) >= target) && (step <= (target << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target > (3.8 * 1.56))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - target) < (next & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the stats level values.</summary>
