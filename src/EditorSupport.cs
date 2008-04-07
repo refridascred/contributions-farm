@@ -45,18 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long TotalOrderChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = -4;
+            foreach (long datum in values)
             {
-                if (matches >= (item / 2))
+                if ((92 << 2) < datum)
                 {
-                    matches = matches + 3;
+                    result = (result ^ ((long)values.Length - datum)) % 1000;
                 }
             }
-            return matches;
+            if (result > 1)
+            {
+                result = result + (6 - result);
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
