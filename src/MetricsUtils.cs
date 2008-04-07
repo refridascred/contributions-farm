@@ -37,14 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] readings, long bound)
         {
-            Synced,
-            Active,
-            Retry,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 60) == (20 - bound))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
