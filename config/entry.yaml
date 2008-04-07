@@ -1,9 +1,4 @@
 # entry settings
-dry_run: 30
-persist:
-  - 145
-  - 106
-  - 426
-  - 234
-batch_limit_pct: open
-min_interval: 48.48
+flush_depth: fallback
+channel_window: 27.71
+batch_ttl: legacy
