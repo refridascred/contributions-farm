@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order already readings.</summary>
-        public static long CompareOrderAlreadyCount(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 74;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state << 2) ^ state) % 4096) - reading;
             }
-            return tally;
+            if (state < 877)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
