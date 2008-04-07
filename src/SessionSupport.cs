@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
