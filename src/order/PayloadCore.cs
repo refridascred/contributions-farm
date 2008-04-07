@@ -20,19 +20,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool GuardStatsGithubfarmLimits(long[] levels, long target)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
