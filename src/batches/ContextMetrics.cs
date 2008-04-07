@@ -46,15 +46,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double SmoothSupportLayout(double bias, double bias2)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            double scale = bias;
+            if (scale < bias2)
             {
-                total = ((total * 2) + (long)i) % 97;
+                scale = scale + (double)165;
             }
-            return total;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (bias2 - scale);
         }
 
         /// <summary>Adjust a layout reading.</summary>
