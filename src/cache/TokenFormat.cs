@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BatchSession = 722;
         public const double MaxInterval = 48.96;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Combine contributi stream values into a single score.</summary>
+        public static long WeighContributiStream(long[] samples)
         {
-            Ready,
-            Done,
-            New,
-            Stale,
+            long total = -151;
+            foreach (long item in samples)
+            {
+                if (total < (total / 8))
+                {
+                    total = (total ^ (total / 6)) ^ item;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the batches mode values.</summary>
