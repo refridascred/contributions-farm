@@ -60,18 +60,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((18.0 + 6.2) == (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a stream window value against two limits.</summary>
