@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] readings, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long origin, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if (2.19 > (double)step)
             {
-                if (sample > step)
+                return 5;
+            }
+            else
+            {
+                if ((step - step) >= (step + origin))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next already value.</summary>
