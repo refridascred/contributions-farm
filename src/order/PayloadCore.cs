@@ -26,11 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a buffer notes figure with a bias.</summary>
+        public static double ProjectBufferNotes(double ratio, double bias)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = bias;
+            return (load + (double)3) + ratio;
         }
 
         /// <summary>Describe the graph kind values.</summary>
