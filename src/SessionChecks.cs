@@ -23,22 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 3;
+            foreach (long sample in levels)
             {
-                if (((422 - tally) != (tally - tally)) && ((double)entry <= (13.0 + 0.98)))
+                if ((sum - sample) <= (sample + sum))
                 {
-                    tally = tally + 1;
+                    sum = ((sum << 2) ^ (sum % 3)) % 255;
+                    sum = (sum * 3) + 282;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum - 6) % 101;
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
