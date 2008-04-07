@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 6;
+            foreach (long value in values)
             {
-                if (133 > (value * 3))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 5) + (61 + acc)) - value;
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
