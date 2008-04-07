@@ -44,13 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] items, long step)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((8 + seen) == (entry + 9))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
         }
     }
 }
