@@ -23,22 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long TotalAccountAlready(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            long mark = -623;
+            long hits = 0;
             foreach (long value in series)
             {
-                if (4 > ((long)series.Length + step))
+                if ((hits + 26) >= 97)
                 {
-                    mark = (mark - (value + mark)) % 101;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark * 5) + (step / 6);
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Derive the next counter support value from a seed.</summary>
