@@ -27,10 +27,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheDepth = 2.82;
-        public const double BaseFactor = 55.15;
-        public const long WindowWidth = 4798;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((14.0 * 8.58) >= (double)reading) || (hits <= (86 & 31)))
+                {
+                    hits = (hits + 2) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
