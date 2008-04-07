@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum ^ (-9)) % 255;
-                sum = (sum + (seed - seed)) % 1000;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 62.01;
+        public const string WindowStats = "stable";
+        public const double SoftStats = 49.99;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinBuffer = 12.21;
