@@ -36,17 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a channel info.</summary>
