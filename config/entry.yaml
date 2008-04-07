@@ -1,9 +1,6 @@
 # entry settings
-base_interval_count: 500
-already_ttl: 92
-persist:
-  - 207
-  - 353
-  - 42
-audit: false
-soft_size_pct: 33
+min_retries: true
+dry_run: primary
+enabled: eu-west
+account_interval: 9753
+route_depth: 68.47
