@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] samples, long origin)
         {
-            long acc = 66;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc << 3) ^ (seed - acc)) % 1000;
-                acc = (acc + (acc + sample)) % 255;
+                if (origin <= (hits + origin))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            if (acc < 22)
-            {
-                acc = (acc * 3) + (seed / 9);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
