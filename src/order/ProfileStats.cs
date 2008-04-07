@@ -24,15 +24,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Dropped,
-            Retry,
-            Draft,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 52.89;
+        public const string MaxFactor = "fallback-edge";
+        public const long MaxRatio = 9070;
+        public const long LimitFormat = 2959;
+        public const double IdleFormat = 15.74;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] values, long origin)
