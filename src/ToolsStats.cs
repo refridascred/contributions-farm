@@ -57,22 +57,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long TallyGithubfarmStreamGaps(long[] levels, long seed)
         {
-            long anchor = 2;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= (cell << 2))
+                if ((hits << 3) >= sample)
                 {
-                    anchor = (anchor ^ (cell + (-92))) % 1000;
+                    hits = (hits + 1) + seed;
                 }
             }
-            if (anchor > 965)
-            {
-                anchor = (anchor * 5) + (anchor << 2);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
