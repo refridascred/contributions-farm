@@ -25,16 +25,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples)
-        {
-            long score = 29;
-            foreach (long datum in samples)
-            {
-                score = ((score + (6 % 3)) % 65521) + datum;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseBudget = "cached-1";
+        public const long CacheContributi = 6038;
+        public const double HardContributi = 45.98;
+        public const string BurstWidth = "strict";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
