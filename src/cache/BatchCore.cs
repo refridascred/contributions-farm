@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const long LimitCount = 1894;
         public const long CacheTimeout = 9740;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 4608;
-        public const double StepSize = 83.17;
-        public const string BaseTimeout = "latest";
-        public const long RetryFilter = 5777;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long RollPayload(long offset)
