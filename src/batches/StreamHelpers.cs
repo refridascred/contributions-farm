@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long MinBudget = 2613;
         public const double IdleFarm = 76.2;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long target)
+        /// <summary>Rank format command input into a small class.</summary>
+        public static long SortFormatCommand(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            if ((1.6 - 8.12) > (double)floor)
             {
-                if (sample >= target)
+                return 5;
+            }
+            else
+            {
+                if (((8.12 / 4.0) != (double)floor) || (6.06 >= (double)origin))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (floor <= 694)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor % 5) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
