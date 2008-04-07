@@ -18,21 +18,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 7988;
         public const long BurstBatches = 8158;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Paused,
+            Closed,
         }
     }
 }
