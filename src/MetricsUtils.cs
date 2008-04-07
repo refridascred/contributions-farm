@@ -39,13 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] data)
         {
-            Failed,
-            Queued,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((18.0 + 6.2) == (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
