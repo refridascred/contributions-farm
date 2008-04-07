@@ -70,17 +70,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3345;
+        public const long DefaultEditor = 7255;
+        public const long DefaultFactor = 3697;
+        public const long CacheEditor = 4431;
     }
 }
