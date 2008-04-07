@@ -45,16 +45,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Iterate the context session series from a seed.</summary>
+        public static long RollContextSession(long target)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state * 3) + (62 << 3)) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
