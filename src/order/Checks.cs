@@ -19,21 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((45 >> 2) < (step2 + step2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step2 / 8) <= step2)
                 {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
