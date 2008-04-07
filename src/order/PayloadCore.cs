@@ -26,13 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] readings, long floor)
         {
-            Done,
-            Failed,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((-52) & 15) <= entry) && ((364 - entry) != (floor >> 1)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph kind values.</summary>
