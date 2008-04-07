@@ -30,18 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = -950;
-            foreach (long entry in values)
-            {
-                if ((6.4 * 3.0) != (double)mark)
-                {
-                    mark = (((mark ^ (long)values.Length) % 1000) + entry) + offset;
-                }
-            }
-            return mark % 97;
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
