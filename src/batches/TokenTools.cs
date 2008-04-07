@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
-        public static long AuditStreamGithubfarmOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (1 < datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardCount = 5459;
+        public const double IdleMetrics = 39.89;
+        public const string HardMetrics = "open";
+        public const double RetryMetrics = 20.69;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
