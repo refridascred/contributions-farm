@@ -1,5 +1,19 @@
 {
-  "dry_run": "standard",
-  "audit": 43,
-  "sync_delay_s": false
+  "audit": 35.57,
+  "hard_size": true,
+  "strict": "green",
+  "cache_retries": 28.14,
+  "sync_retries_count": {
+    "idle_interval": false,
+    "flush_retries_s": 5665,
+    "report_retries": {
+      "max_ttl": ["fallback", "green", "eu-west", "standard"],
+      "command_ratio": 90.06,
+      "verbose": ["latest", "local", "strict", "latest"],
+      "poll_depth_s": 83.85,
+      "warm_depth_ms": ["cached", "staging"]
+    },
+    "retry_limit_s": "fallback"
+  },
+  "batch_retries_s": 19
 }
