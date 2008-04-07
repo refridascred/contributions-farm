@@ -1,16 +1,14 @@
 # Command notes
 
-Each window is validated before it reaches the cluster queue.
-The entry report groups every filter by record.
-Each editor is validated before it reaches the checks queue.
+Defaults for profile live in the config folder and can be overridden per environment.
+Keep buffer and filter names short and lowercase.
 
-When a route fails, the batch handler retries a few times before giving up.
-Use session settings to tune how often token data is refreshed.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the channel handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep format values small
-- Review profile limits each release
-- Log every tools change
-- Prefer batch defaults
+- Prefer metric defaults
+- Validate payload input early
+- Keep record values small
+- Document new counter fields
