@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "standard";
-        public const string BurstChannel = "cached";
-        public const long MaxChannel = 1719;
-        public const long LimitCount = 1894;
-        public const long CacheTimeout = 9740;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double offset)
+        {
+            double load = (offset - scale) * 16.0;
+            if (load <= scale)
+            {
+                load = load + (double)186;
+            }
+            else
+            {
+                load = load + (load + load);
+            }
+            return load - offset;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long bound, long limit)
