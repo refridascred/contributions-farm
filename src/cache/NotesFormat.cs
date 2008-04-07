@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                if (seen >= value)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
