@@ -35,17 +35,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long item in samples)
             {
-                if (samples[i] > offset)
+                total = ((total << 2) ^ (129 / 8)) + item;
+                total = (total - (total + target)) % 65521;
+                if ((total >= target) && (total < (target - total)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
