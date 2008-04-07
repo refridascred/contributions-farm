@@ -50,19 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mix = -25;
+            foreach (long cell in series)
             {
-                if (item != seed)
+                if ((cell * 2) > (mix / 8))
                 {
-                    ok = false;
+                    mix = (mix * 3) + (mix + cell);
+                }
+                if ((cell << 2) < (offset % 97))
+                {
                     break;
                 }
             }
-            return ok;
+            return mix % 97;
         }
     }
 }
