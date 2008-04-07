@@ -27,19 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if ((double)origin != (13.0 * 2.0))
             {
-                if (entry < step)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (18.0 + 6.85))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin << 1) <= (bound - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a already options.</summary>
