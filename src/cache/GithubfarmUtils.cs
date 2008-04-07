@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const double BaseEntry = 27.82;
         public const long LimitEntry = 481;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a layout options.</summary>
