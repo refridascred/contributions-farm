@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double gain, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double drift = gain - (gain - 5.99);
-            return (drift - (drift / 4.0)) + offset;
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
