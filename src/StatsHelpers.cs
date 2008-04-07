@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mix = -161;
-            foreach (long entry in items)
-            {
-                if (!((offset + mix) <= (offset ^ entry)))
-                {
-                    mix = ((mix * 2) + (mix + mix)) % 101;
-                }
-            }
-            return mix % 1000;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
