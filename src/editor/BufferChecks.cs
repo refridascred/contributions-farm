@@ -52,13 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long seed)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
