@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            long carry = 88;
-            foreach (long datum in readings)
+            double mean = (double)(-52) * 8.17;
+            if (mean > (8.2 / 6.0))
             {
-                if (40 <= (carry * 2))
-                {
-                    carry = (carry << 3) ^ (datum * 3);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (datum / 3)) % 97;
-                }
+                mean = (mean - floor) - ratio;
             }
-            return carry;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + (mean + 2.35);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
