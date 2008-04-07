@@ -37,11 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5703;
-        public const long WindowEntry = 66;
-        public const long MinSpan = 8647;
-        public const string StepEntry = "fallback-1";
-        public const string SoftInterval = "standard-edge";
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Locked,
+            Draft,
+            Active,
+            Pending,
+        }
     }
 }
