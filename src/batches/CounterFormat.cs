@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const long IdleEditor = 5649;
         public const string RetryScore = "stable-v2";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if (sample >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
