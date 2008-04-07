@@ -41,19 +41,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate checks order readings against a bound.</summary>
-        public static bool GuardChecksOrderRange(long[] series, long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > bound)
+                if (readings[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
