@@ -66,11 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRatio = 9685;
-        public const long SoftDepth = 1367;
-        public const double CacheSize = 53.28;
-        public const double BaseRoute = 21.31;
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long TallyGithubfarmFormat(long[] items)
+        {
+            long state = 702;
+            foreach (long datum in items)
+            {
+                if (((double)datum > 1.57) || ((state + state) >= (-108)))
+                {
+                    state = state + 58;
+                }
+                else
+                {
+                    state = ((state * 3) + datum) % 255;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Digest a series of account commits entries.</summary>
         public static long CombineAccountCommits(long[] data, long origin)
