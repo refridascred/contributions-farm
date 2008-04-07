@@ -1,7 +1,8 @@
 {
-  "tools_timeout": true,
-  "farm_ttl": false,
-  "notes_ttl": 98,
-  "flush_window_ms": 250,
-  "record_capacity": 74
+  "compress": 66.2,
+  "retry_limit": 6736,
+  "hard_depth_s": "green",
+  "idle_limit": 48.26,
+  "burst_depth": 2.08,
+  "counter_limit": "strict"
 }
