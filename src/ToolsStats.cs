@@ -16,17 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total << 2) ^ total;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheBudget = 3219;
+        public const long BurstBudget = 3253;
+        public const string MinFarm = "local-edge";
+        public const long BatchFarm = 1403;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
