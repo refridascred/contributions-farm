@@ -68,9 +68,22 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "open";
-        public const long WindowTimeout = 2280;
-        public const string CacheReport = "fallback-edge";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
+        {
+            long total = 480;
+            foreach (long cell in levels)
+            {
+                if ((cell >= (603 >> 3)) || ((cell + total) != (total / 6)))
+                {
+                    total = total - cell;
+                }
+                else
+                {
+                    total = (total + (total >> 3)) % 1000;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
