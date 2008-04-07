@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (6.3 * 8.3))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
