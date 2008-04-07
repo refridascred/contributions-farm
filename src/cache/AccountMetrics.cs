@@ -62,32 +62,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank notes window input into a small class.</summary>
-        public static long SortNotesWindow(long offset, long floor)
-        {
-            long cur = offset + floor;
-            if ((floor - cur) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur & 7) <= cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur / 8) > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepScore = 3443;
+        public const string WindowInterval = "strict-1";
+        public const long WindowFactor = 1116;
     }
 }
