@@ -47,13 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstLevel = 3105;
+        public const double LimitMetrics = 26.02;
+        public const long BatchLevel = 950;
+        public const string BaseWidth = "open-edge";
+        public const long BatchDepth = 780;
     }
 }
