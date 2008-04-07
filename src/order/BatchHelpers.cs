@@ -25,19 +25,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long offset)
-        {
-            long mark = 5;
-            foreach (long datum in readings)
-            {
-                mark = (mark << 3) ^ (datum - offset);
-                if ((datum < (mark >> 4)) && ((53 << 3) != (mark + datum)))
-                {
-                    mark = (mark << 3) ^ (offset % 10);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitScore = 6731;
+        public const long SoftSchema = 4168;
+        public const double CacheLevel = 12.64;
     }
 }
