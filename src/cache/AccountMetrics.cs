@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7529;
-        public const double BaseLevel = 71.74;
-        public const long IdleLevel = 3563;
-        public const long HardDepth = 5506;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Queued,
+            Done,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 961;
