@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string RetryAlready = "local-v2";
         public const double MaxDepth = 96.95;
 
-        /// <summary>Accumulate stream token samples.</summary>
-        public static long FoldStreamToken(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = 3;
-            foreach (long reading in series)
-            {
-                score = (score - (reading - reading)) % 101;
-            }
-            if (score < 80)
-            {
-                score = ((score * 2) + (score / 6)) % 1000;
-            }
-            return score;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
