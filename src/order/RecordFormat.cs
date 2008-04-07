@@ -41,14 +41,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a batches graph pair into a bucket.</summary>
+        public static long ClassifyBatchesGraph(long origin, long limit)
         {
-            Dropped,
-            Stale,
-            Done,
-            Active,
-            Ready,
+            if (limit < (limit + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((634 + limit) != (470 - limit)) && ((limit % 97) == (origin ^ origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the token status values.</summary>
