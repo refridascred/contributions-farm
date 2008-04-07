@@ -28,18 +28,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long offset = origin - step;
+            if ((3.7 / 7.0) >= (double)offset)
             {
-                if ((4.6 - 10.0) <= (double)value)
+                return 1;
+            }
+            else
+            {
+                if (step >= (step - 86))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
