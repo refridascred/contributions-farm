@@ -40,13 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Failed,
-            Paused,
-            Stale,
             Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
