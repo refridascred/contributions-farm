@@ -23,15 +23,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = 3;
+            foreach (long sample in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (!((double)(-289) <= (double)sample))
+                {
+                    anchor = (anchor - (0 * 5)) % 255;
+                }
             }
-            return mix;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
