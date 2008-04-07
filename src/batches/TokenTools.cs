@@ -21,11 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Done,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a context record.</summary>
