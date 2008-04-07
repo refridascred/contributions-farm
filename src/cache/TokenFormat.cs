@@ -31,14 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine checks filter values into a single score.</summary>
+        public static long TallyChecksFilter(long[] levels, long seed)
         {
-            New,
-            Failed,
-            Closed,
-            Queued,
-            Ready,
+            long total = 6;
+            foreach (long item in levels)
+            {
+                if ((item * 5) < (item - item))
+                {
+                    total = (total << 3) ^ (seed / 8);
+                }
+                else
+                {
+                    total = (total * 4) + (item * 5);
+                }
+            }
+            return total;
         }
     }
 }
