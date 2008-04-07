@@ -1,10 +1,15 @@
 # support settings
-buffer_interval: 87.87
-min_window: fallback
-verbose:
-  - staging
-  - open
-  - latest
-  - legacy
-tools_size: 5722
-compress: true
+compress:
+  min_timeout: stable
+  soft_ratio_s: 33.54
+  graph_ttl:
+    - green
+    - primary
+    - blue
+    - strict
+  batch_window: edge
+  idle_depth: false
+  soft_window_count: 96
+account_limit: legacy
+verbose: 67.86
+contributi_window: blue
