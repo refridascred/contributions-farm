@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(reading > (reading + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 4402;
+        public const long IdleMetrics = 547;
+        public const string MaxMetrics = "standard-edge";
+        public const string DefaultScore = "staging-edge";
 
         /// <summary>Fold a list of metrics session readings.</summary>
         public static long CombineMetricsSession(long[] series, long floor)
