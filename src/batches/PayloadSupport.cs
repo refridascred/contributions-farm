@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryLevel = 64.21;
-        public const long WindowTimeout = 2245;
-        public const long WindowFactor = 5880;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Paused,
+            Draft,
+            Active,
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
