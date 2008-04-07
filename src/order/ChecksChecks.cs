@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] items, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
