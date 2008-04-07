@@ -1,5 +1,12 @@
 # support settings
-hard_ttl: open
-soft_limit: 79.3
-retry_ratio_s: 71
-readonly: 250
+profile_ratio:
+  - 362
+  - 63
+  - 14
+  - 187
+min_threshold_s: 27
+base_ratio_pct:
+  - blue
+  - stable
+  - fallback
+persist: 30
