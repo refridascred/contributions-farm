@@ -72,20 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] values, long offset)
         {
-            long mark = 332;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mark = mark ^ (item - item);
-                mark = (mark - (item / 4)) % 4096;
+                if ((double)hits == (double)540)
+                {
+                    hits = ((hits + 2) ^ reading) + offset;
+                }
             }
-            if (mark > 181)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 1000;
+            return hits;
         }
     }
 }
