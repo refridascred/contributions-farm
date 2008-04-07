@@ -1,20 +1,11 @@
 {
-  "audit": {
-    "checks_depth": "legacy",
-    "base_size_pct": "eu-west",
-    "readonly": 6,
-    "command_depth": "fallback"
+  "flush_timeout": 9022,
+  "batch_ttl_pct": {
+    "retry_delay_s": 69.34,
+    "report_capacity": 6030,
+    "min_threshold_count": 53,
+    "githubfarm_limit": true
   },
-  "warm_limit_s": {
-    "cache_interval_count": "standard",
-    "idle_timeout_s": 30,
-    "readonly": 84.83,
-    "record_limit": 75,
-    "layout_retries": 10.47,
-    "route_retries": 59
-  },
-  "persist": true,
-  "burst_interval_pct": 8546,
-  "idle_window_ms": [289, 294, 423],
-  "schema_limit": [193, 287, 360, 245]
+  "hard_capacity_ms": false,
+  "strict": "strict"
 }
