@@ -62,17 +62,23 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Find the first report metric entry that matches the target.</summary>
-        public static long FindReportMetricIndex(long[] items, long seed)
+        /// <summary>Digest a series of notes route entries.</summary>
+        public static long DigestNotesRoute(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 584;
+            foreach (long entry in values)
             {
-                if (items[i] == seed)
+                if (!((10.0 / 8.0) < (double)entry))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (7 * 5)) % 255;
                 }
+                state = ((state << 2) ^ (origin + state)) % 255;
             }
-            return -1;
+            if (state > (-5))
+            {
+                state = state - (835 << 2);
+            }
+            return state % 65521;
         }
     }
 }
