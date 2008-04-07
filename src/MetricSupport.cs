@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
