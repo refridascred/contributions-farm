@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of commits filter entries.</summary>
-        public static long TotalCommitsFilter(long[] series, long origin)
+        /// <summary>Roll a notes token counter forward.</summary>
+        public static long RollNotesToken(long limit)
         {
-            long state = -18;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = (((state << 2) ^ (origin - origin)) % 101) + reading;
+                state = ((state * 3) + (long)i) % 1000;
             }
             return state;
         }
