@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long AuditContributiTokenMatches(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((reading % 5) <= (53 & 3))
+                if (matches > (matches / 5))
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 2) ^ cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next token metrics value from a seed.</summary>
