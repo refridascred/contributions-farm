@@ -20,40 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long origin)
-        {
-            long offset = limit - origin;
-            if ((0.4 - 7.83) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset == (14.0 / 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)limit <= (16.0 + 5.56)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 479;
+        public const long IdleSpan = 2720;
+        public const long MinBatch = 3742;
+        public const long DefaultInterval = 3546;
 
         /// <summary>Compare every pair of queue buffer readings.</summary>
         public static long PairQueueBufferCount(long[] readings)
