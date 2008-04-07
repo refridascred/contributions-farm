@@ -43,11 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((53 / 4) == (hits * 3))
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
