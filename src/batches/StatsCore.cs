@@ -25,12 +25,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long bound)
         {
-            Dropped,
-            Ready,
-            Draft,
+            long next = seed + bound;
+            if ((double)seed < (4.2 + 2.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(5.18 > (double)next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
