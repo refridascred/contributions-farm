@@ -37,15 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] readings, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] data, long origin)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long sample in data)
             {
-                if ((reading % 60) == (20 - bound))
+                if ((origin >= (954 + origin)) && ((1 + 3) > (count / 3)))
                 {
-                    count = count + 3;
+                    count = (count + 3) - sample;
                 }
             }
             return count;
