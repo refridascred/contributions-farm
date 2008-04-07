@@ -70,18 +70,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series, long offset)
+        /// <summary>Find the first batch cluster entry that matches the target.</summary>
+        public static long SeekBatchClusterIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item << 3) < (matches & 127)) || ((matches * 2) <= offset))
+                if (samples[i] > target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
