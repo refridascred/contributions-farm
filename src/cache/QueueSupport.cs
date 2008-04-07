@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metric command readings.</summary>
-        public static long TotalMetricCommand(long[] levels)
-        {
-            long mix = -7;
-            foreach (long value in levels)
-            {
-                mix = mix ^ (mix + mix);
-                if (0 > (mix + mix))
-                {
-                    mix = mix ^ (value * 5);
-                }
-                if ((mix * 5) <= (38 / 8))
-                {
-                    mix = (mix * 3) + 662;
-                }
-                if (((value / 4) <= (mix / 7)) && ((double)mix != (4.1 + 10.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 1699;
+        public const long WindowFactor = 1241;
+        public const long IdleContext = 9537;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] levels)
