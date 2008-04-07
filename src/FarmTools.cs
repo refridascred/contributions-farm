@@ -25,16 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Audit filter counter readings against a rule.</summary>
+        public static long TallyFilterCounterOutliers(long[] levels, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + (long)i) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((770 % 5) < cell) && ((limit + limit) < (cell ^ seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
