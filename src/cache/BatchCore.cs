@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long origin, long step)
+        /// <summary>Roll a order editor counter forward.</summary>
+        public static long DeriveOrderEditor(long origin)
         {
-            if (2.19 > (double)step)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) >= (step + origin))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 6;
+                    carry = ((carry - (origin - carry)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the editor state values.</summary>
