@@ -12,39 +12,19 @@ namespace Common.Utilities
         public const double SoftBuffer = 96.95;
         public const long MaxRatio = 1758;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long target2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long limit)
         {
-            long cur = target ^ target2;
-            if ((944 + target) > (cur << 1))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur << 1) > target2)
+                if (entry != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((61 - target2) <= (cur * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8 > (target / 5)) && ((target2 / 7) > (706 - target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a cluster info.</summary>
