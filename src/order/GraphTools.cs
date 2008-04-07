@@ -20,19 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long target)
         {
-            double ratio = (double)(38 + 494);
-            if (ratio <= offset)
+            long diff = bound - target;
+            if (!((diff >> 3) == (422 << 2)))
             {
-                ratio = (ratio + (ratio * 0.6)) - scale;
+                return 2;
             }
             else
             {
-                ratio = ratio + ratio;
+                if (((diff % 12) > diff) || ((double)bound != (9.2 - 7.05)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff - diff) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)diff < (1.0 + 10.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio + (offset - ratio);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
