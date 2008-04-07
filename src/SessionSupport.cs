@@ -28,25 +28,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            long offset = origin - step;
-            if ((3.7 / 7.0) >= (double)offset)
+            double drift = gain - (double)19;
+            if (drift > 9.0)
             {
-                return 1;
+                drift = drift + (gain - gain);
             }
             else
             {
-                if (step >= (step - 86))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = drift + gain;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
