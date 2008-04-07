@@ -1,9 +1,12 @@
 # support settings
-dry_run: 4890
-retry_threshold_pct: stable
-cache_ttl:
-  burst_limit_pct: 100
-  sync_ratio_s: legacy
-  batch_capacity_s: 89
-  warm_threshold_s: 62
-sync_ratio_count: local
+verbose:
+  - eu-west
+  - primary
+  - stable
+  - staging
+filter_delay:
+  - 5
+  - 51
+  - 207
+min_limit_s: blue
+flush_delay_s: 88.31
