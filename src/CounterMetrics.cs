@@ -25,19 +25,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every schema route entry stays within the limit.</summary>
-        public static bool GuardSchemaRouteRange(long[] items, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double scale = bias;
+            if (scale < (bias2 / 4.0))
             {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - bias2;
             }
-            return ok;
+            return scale - bias2;
         }
 
         /// <summary>Describe the account class values.</summary>
