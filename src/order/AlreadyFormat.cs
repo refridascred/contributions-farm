@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7250;
-        public const long StepGithubfarm = 8840;
-        public const long IdleGithubfarm = 9132;
-        public const double MinGithubfarm = 33.98;
-        public const long BaseGithubfarm = 4384;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseEditor = "primary-edge";
