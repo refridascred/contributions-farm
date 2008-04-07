@@ -38,18 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] data, long target)
+        /// <summary>Check that every schema route entry stays within the limit.</summary>
+        public static bool GuardSchemaRouteRange(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((long)data.Length < (entry >> 5))
+                if (value > bound)
                 {
-                    matches = (matches + 2) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the account class values.</summary>
