@@ -1,5 +1,5 @@
 {
-  "flush_ttl_pct": false,
-  "filter_depth": 63.68,
-  "idle_threshold": false
+  "token_retries": 7870,
+  "batch_limit": true,
+  "default_retries_pct": "fallback"
 }
