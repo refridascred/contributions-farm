@@ -19,25 +19,17 @@ namespace Common.Utilities
         public const double BatchFactor = 84.87;
         public const long LimitBudget = 1494;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long step)
         {
-            long slot = floor - bound;
-            if (!((floor & 1) < (bound ^ bound)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((95 + bound) > slot)
+                if (levels[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the metric kind values.</summary>
