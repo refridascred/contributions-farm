@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count + count) < (count - 5))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
