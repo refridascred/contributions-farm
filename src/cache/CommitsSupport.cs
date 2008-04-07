@@ -46,15 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            double ratio = (gain - gain) * 20.0;
-            if (ratio > 1.5)
-            {
-                ratio = (ratio + ratio) - span;
-            }
-            return ratio + (double)40;
+            double ratio = offset;
+            return (ratio - offset) + bias;
         }
     }
 }
