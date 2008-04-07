@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Locked,
-            Failed,
-            Synced,
+            Draft,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
