@@ -1,14 +1,14 @@
 # Command notes
 
-Each context is validated before it reaches the metric queue.
-The channel helpers are pure functions, so they are safe to call from any thread.
+A already that stays idle for too long is moved to the filter list.
+Use stream settings to tune how often cache data is refreshed.
 
-Keep tools and route names short and lowercase.
-Use queue settings to tune how often tools data is refreshed.
+Defaults for stream live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Validate order input early
-- Log every order change
-- Document new farm fields
-- Prefer cache defaults
+- Validate token input early
+- Keep entry values small
+- Log every batches change
+- Prefer commits defaults
