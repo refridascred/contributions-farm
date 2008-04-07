@@ -39,15 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double span)
         {
-            long state = 94;
-            foreach (long reading in samples)
+            double gain = span;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state + (state ^ 98)) % 65521) - reading;
+                gain = ((gain + (span - gain)) - (double)(long)i) - bias;
             }
-            return state;
+            return gain + (double)70;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
