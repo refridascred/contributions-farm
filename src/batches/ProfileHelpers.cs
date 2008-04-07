@@ -17,23 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double weight = (bias - bias) + (1.12 * 9.92);
-            if (weight >= (weight * 1.64))
-            {
-                weight = (weight - 2.77) - scale;
-            }
-            else
-            {
-                weight = weight - 6.47;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (bias * 8.32);
+            Closed,
+            Active,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a notes record.</summary>
