@@ -53,18 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally ^ tally) != (cell + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
