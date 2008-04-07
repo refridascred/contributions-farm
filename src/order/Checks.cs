@@ -54,11 +54,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 101;
-        public const long IdleFilter = 1542;
-        public const double RetrySpan = 40.11;
-        public const double BaseCount = 74.81;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 5311;
+        public const string DefaultMetrics = "latest-edge";
+        public const long SoftScore = 1278;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long target)
