@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of batch profile entries.</summary>
