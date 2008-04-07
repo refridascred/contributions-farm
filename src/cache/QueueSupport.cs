@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "legacy-1";
-        public const double BurstDepth = 44.38;
-        public const long MinLayout = 9034;
-        public const long HardTimeout = 6870;
-        public const long CacheLayout = 3677;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((limit << 1) <= (tally + reading)) && (limit <= reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] levels)
