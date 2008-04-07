@@ -27,31 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            if ((double)origin != (13.0 * 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (18.0 + 6.85))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin << 1) <= (bound - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Hold a already options.</summary>
