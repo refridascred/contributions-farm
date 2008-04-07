@@ -43,10 +43,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "fallback-v2";
-        public const long BatchCount = 6079;
-        public const long RetryCount = 9304;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheFactor = 345;
+        public const double HardCommits = 66.25;
+        public const long MaxCommits = 138;
+        public const long SoftCommits = 5500;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleTimeout = 7456;
