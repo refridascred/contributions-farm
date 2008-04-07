@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long state = 67;
-            foreach (long entry in readings)
-            {
-                if (40 >= (state + state))
-                {
-                    state = ((state + state) % 97) + entry;
-                }
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
