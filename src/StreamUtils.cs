@@ -44,22 +44,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long lane = step - floor;
+            if (9.0 <= (double)floor)
             {
-                if (((matches / 5) <= matches) || ((floor / 2) >= (floor >> 1)))
+                return 0;
+            }
+            else
+            {
+                if (((step + lane) == (39 + 85)) && ((lane + step) <= floor))
                 {
-                    matches = (matches + 1) - item;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
