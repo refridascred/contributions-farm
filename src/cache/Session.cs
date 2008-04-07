@@ -47,11 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstLevel = 3105;
-        public const double LimitMetrics = 26.02;
-        public const long BatchLevel = 950;
-        public const string BaseWidth = "open-edge";
-        public const long BatchDepth = 780;
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long CountGithubfarmBatchOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)tally > 7.72)
+                {
+                    tally = ((tally + 2) - cell) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
