@@ -32,15 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter support value from a seed.</summary>
-        public static long StepCounterSupport(long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Ready,
+            Synced,
+            Failed,
         }
     }
 }
