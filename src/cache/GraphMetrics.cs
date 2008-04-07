@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit record command readings against a rule.</summary>
+        public static long AuditRecordCommandGaps(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)matches < 4.4) && ((cell << 1) >= (32 ^ 44)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks entry.</summary>
