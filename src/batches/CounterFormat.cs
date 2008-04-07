@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (829 < (count - entry))
+                if (reading > target)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
