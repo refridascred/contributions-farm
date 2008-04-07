@@ -48,13 +48,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            Retry,
+            Queued,
+            Paused,
+            Failed,
+            Stale,
         }
     }
 }
