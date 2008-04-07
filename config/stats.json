@@ -1,7 +1,12 @@
 {
-  "filter_delay": "edge",
-  "warm_size_s": "blue",
-  "warm_size": "blue",
-  "base_ttl_ms": "strict",
-  "commits_window": false
+  "batch_interval_count": "primary",
+  "retry_size_ms": ["edge", "primary", "staging"],
+  "enabled": "legacy",
+  "min_interval_s": "eu-west",
+  "base_delay_ms": {
+    "layout_ttl": 23,
+    "route_limit": "local",
+    "batch_threshold": "local"
+  },
+  "soft_depth_ms": 100
 }
