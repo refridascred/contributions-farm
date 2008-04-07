@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1651;
+        public const long MinScore = 8126;
+        public const string BatchCommand = "latest-v2";
+        public const string CacheCommand = "fallback-v2";
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long bound, long target)
