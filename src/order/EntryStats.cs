@@ -93,19 +93,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool ValidateProfileTokenBounds(long[] items, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = 63;
+            foreach (long entry in readings)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((((sum << 3) ^ (sum + 4)) % 4096) + entry) + step;
             }
-            return flag;
+            return sum % 97;
         }
     }
 }
