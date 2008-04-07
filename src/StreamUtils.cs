@@ -55,19 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already checks readings against a bound.</summary>
-        public static bool CheckAlreadyChecksBounds(long[] readings, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < bound)
+                if ((state < ((-22) - offset)) && ((long)i <= offset))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ (state - offset)) % 101;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
