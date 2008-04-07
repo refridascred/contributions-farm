@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
         {
-            long result = 6;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.48 * 1.18) > (double)result)
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    result = (result - (value >> 1)) % 101;
-                }
-                result = (result + (value + result)) % 255;
-                if ((result << 1) < result)
-                {
-                    result = (result * 4) + result;
-                }
-                if ((0.89 * 5.53) <= (double)value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < (-30))
-            {
-                result = ((result * 5) + 52) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
