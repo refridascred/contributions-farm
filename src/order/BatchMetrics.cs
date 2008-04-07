@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 1500;
         public const long MinQueue = 5333;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long floor)
         {
-            double drift = weight;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (drift * 3.88)) + (double)(long)i;
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - floor;
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
