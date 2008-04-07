@@ -52,11 +52,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
