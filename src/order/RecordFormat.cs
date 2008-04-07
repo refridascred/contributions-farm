@@ -32,13 +32,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Pending,
-            Retry,
-            Locked,
-            Done,
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the contributi status values.</summary>
