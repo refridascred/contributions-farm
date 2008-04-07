@@ -1,12 +1,11 @@
 # Command notes
 
-Run the filter check before changing any editor limits.
-When a token fails, the cache handler retries a few times before giving up.
-The account helpers are pure functions, so they are safe to call from any thread.
+The session report groups every cache by format.
+Use payload settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new notes fields
-- Review token limits each release
-- Log every batch change
+- Review counter limits each release
+- Validate tools input early
+- Keep commits values small
+- Log every filter change
