@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6936;
-        public const string HardDepth = "stable";
-        public const long RetryScore = 8609;
-        public const double BaseCounter = 96.48;
-        public const double LimitCounter = 71.45;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
+        {
+            long anchor = 467;
+            foreach (long value in series)
+            {
+                anchor = (anchor - (anchor << 2)) % 255;
+                anchor = (anchor * 3) + value;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
