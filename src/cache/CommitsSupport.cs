@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
-            {
-                bias2 = bias2 - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 * 1.66)) - (double)(long)i;
-            }
-            return bias2 - 3.0;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
