@@ -1,12 +1,11 @@
 {
-  "githubfarm_size": "eu-west",
-  "counter_ratio": [294, 437],
-  "soft_ttl_pct": {
-    "readonly": "standard",
-    "soft_delay": 70.15,
-    "batch_depth": 250,
-    "sync_timeout": "primary",
-    "default_ttl_pct": 9307
-  },
-  "dry_run": "latest"
+  "cluster_ttl": 1024,
+  "dry_run": "local",
+  "context_capacity": {
+    "flush_retries_count": ["latest", "local", "standard"],
+    "readonly": [215, 149, 168, 398],
+    "idle_window": "fallback",
+    "stats_threshold": 30,
+    "audit": 72
+  }
 }
