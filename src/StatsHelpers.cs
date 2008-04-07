@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Validate payload filter readings against a bound.</summary>
+        public static bool GuardPayloadFilterRange(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample != bound)
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
