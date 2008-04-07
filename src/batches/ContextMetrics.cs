@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long bound = offset ^ seed;
-            if ((seed - bound) < (bound + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (seed + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Closed,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
