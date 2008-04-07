@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] items, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (8.9 >= (1.57 / 6.0))
-                {
-                    seen = ((seen + 1) ^ datum) + offset;
-                }
-            }
-            return seen;
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a route commits counter forward.</summary>
