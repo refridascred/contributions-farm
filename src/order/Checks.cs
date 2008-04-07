@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] series, long target)
+        /// <summary>Digest a series of queue tools entries.</summary>
+        public static long TallyQueueTools(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = 743;
+            foreach (long cell in data)
             {
-                if ((tally - target) == (target << 1))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
+                mix = (((mix ^ (37 + (long)data.Length)) % 101) - cell) + seed;
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Describe the record status values.</summary>
