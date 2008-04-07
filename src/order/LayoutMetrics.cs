@@ -32,22 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values, long origin)
-        {
-            long score = 8;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (6.8 + 16.0))
-                {
-                    score = ((score * 4) + (origin - score)) % 101;
-                }
-            }
-            if (score < 44)
-            {
-                score = (score ^ origin) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3127;
+        public const long SoftStream = 2475;
+        public const long StepBudget = 1323;
+        public const long DefaultRatio = 1126;
     }
 }
