@@ -20,13 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Idle,
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (((anchor << 3) ^ floor) % 101) ^ (long)i2;
+                    anchor = ((anchor * 4) + ((-18) - anchor)) % 101;
+                }
+                if ((951 + floor) <= (floor & 3))
+                {
+                    anchor = (anchor + (floor * 4)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
