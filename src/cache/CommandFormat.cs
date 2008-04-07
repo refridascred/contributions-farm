@@ -24,27 +24,14 @@ namespace Common.Utilities
             return scale + (20.0 + scale);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 25;
-            foreach (long datum in samples)
-            {
-                state = ((state ^ state) % 1000) + datum;
-                if ((state << 3) <= 981)
-                {
-                    state = (state ^ 506) % 97;
-                }
-                else
-                {
-                    state = (state + (state * 5)) % 4096;
-                }
-            }
-            if (state < 1)
-            {
-                state = ((state * 2) + state) % 4096;
-            }
-            return state;
+            Dropped,
+            Draft,
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
