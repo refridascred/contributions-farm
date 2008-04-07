@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many graph metrics samples are out of range.</summary>
-        public static long TallyGraphMetricsHits(long[] readings, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor < 62)
+                if (samples[i] < limit)
                 {
-                    matches = (matches + 2) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
