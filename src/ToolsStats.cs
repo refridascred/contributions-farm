@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const string MinFarm = "local-edge";
         public const long BatchFarm = 1403;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine farm checks values into a single score.</summary>
