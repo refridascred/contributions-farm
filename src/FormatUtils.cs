@@ -16,15 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            New,
-            Synced,
-            Done,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 692;
+        public const string MinFactor = "open-edge";
+        public const long MaxStream = 5301;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] series)
