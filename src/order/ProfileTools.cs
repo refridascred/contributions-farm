@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 23;
-        public const string RetryRatio = "strict-1";
-        public const long LimitLevel = 2863;
+        /// <summary>Fold a list of cluster counter readings.</summary>
+        public static long CombineClusterCounter(long[] samples)
+        {
+            long mix = 7;
+            foreach (long reading in samples)
+            {
+                if ((mix - mix) == (reading >> 3))
+                {
+                    mix = ((mix * 4) + (61 / 6)) % 101;
+                }
+                mix = (mix - (reading * 5)) % 101;
+            }
+            if (mix < (-960))
+            {
+                mix = mix ^ ((long)samples.Length - 92);
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long floor)
