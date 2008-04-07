@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            Active,
-            Draft,
-            Pending,
-            Retry,
+            long score = 29;
+            foreach (long datum in samples)
+            {
+                score = ((score + (6 % 3)) % 65521) + datum;
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a order counter forward.</summary>
