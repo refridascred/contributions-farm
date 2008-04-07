@@ -1,22 +1,5 @@
 {
-  "counter_capacity": {
-    "format_limit": [379, 122, 156],
-    "counter_retries": "fallback",
-    "filter_size": {
-      "flush_interval_ms": true,
-      "dry_run": "latest",
-      "command_limit": 1612
-    },
-    "readonly": {
-      "poll_ttl_s": "local",
-      "max_delay": 1024,
-      "compress": "strict",
-      "counter_window": false,
-      "hard_threshold": false
-    },
-    "support_retries": "staging"
-  },
-  "warm_ttl": "open",
-  "batch_ratio_pct": "strict",
-  "burst_ttl_ms": ["green", "edge", "legacy", "primary"]
+  "flush_delay_count": 78.75,
+  "compress": false,
+  "githubfarm_threshold": 9642
 }
