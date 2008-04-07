@@ -23,12 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Look up the position of a batches format sample.</summary>
+        public static long LookupBatchesFormatIndex(long[] levels, long target)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
