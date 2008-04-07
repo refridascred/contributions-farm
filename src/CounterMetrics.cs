@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((double)reading == (double)tally) && ((tally ^ tally) >= 24))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
