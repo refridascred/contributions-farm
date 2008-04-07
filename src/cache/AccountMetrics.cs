@@ -63,19 +63,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor report samples.</summary>
-        public static long WeighEditorReport(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long total = 8;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item + item) < (40 & 31))
+                if ((state % 12) > 165)
                 {
+                    state = (state + (state % 60)) % 255;
                     break;
                 }
-                total = (total - 3) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
