@@ -53,17 +53,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first channel stats entry that matches the target.</summary>
-        public static long SeekChannelStatsIndex(long[] values, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
