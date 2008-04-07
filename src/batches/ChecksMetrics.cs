@@ -32,12 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((((matches + datum) != (842 + datum)) || ((datum - 93) > matches)) && (((double)(long)readings.Length >= 2.0) || ((matches * 2) < (matches + datum))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
