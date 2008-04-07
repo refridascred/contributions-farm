@@ -1,8 +1,12 @@
 {
-  "max_capacity_ms": 17.76,
-  "min_interval": "local",
-  "flush_threshold": 250,
-  "dry_run": 49,
-  "queue_window": "standard",
-  "filter_depth": "eu-west"
+  "poll_capacity_count": {
+    "min_limit_ms": 8123,
+    "warm_threshold_count": "fallback",
+    "audit": 29.7,
+    "flush_window": 250,
+    "dry_run": "standard",
+    "already_ratio": "eu-west"
+  },
+  "burst_delay": true,
+  "hard_interval_count": "open"
 }
