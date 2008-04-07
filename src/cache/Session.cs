@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardWidth = 7232;
+        public const double WindowLevel = 19.95;
+        public const double DefaultOrder = 13.67;
+        public const long MinOrder = 5334;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long seed)
