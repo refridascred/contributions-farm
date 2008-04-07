@@ -1,11 +1,12 @@
 # Command notes
 
-Keep format and stats names short and lowercase.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any editor limits.
+When a token fails, the cache handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every window change
-- Document new metrics fields
-- Review cache limits each release
+- Prefer profile defaults
+- Document new notes fields
+- Review token limits each release
+- Log every batch change
