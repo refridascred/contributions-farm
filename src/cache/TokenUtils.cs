@@ -45,14 +45,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long seed)
         {
-            New,
-            Paused,
-            Ready,
-            Dropped,
-            Idle,
+            long diff = limit + seed;
+            if (((-48) + seed) < (limit - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed / 3) != (diff * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit * 4) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
