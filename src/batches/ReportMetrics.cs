@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (value < (offset & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter already readings.</summary>
