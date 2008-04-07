@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long MeasureFormatRecordOutliers(long[] readings, long origin)
+        /// <summary>Audit commits queue readings against a rule.</summary>
+        public static long CountCommitsQueueGaps(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)entry == (5.09 / 3.0))
+                if (!((seed << 3) <= (seed / 6)))
                 {
-                    hits = (hits + 3) - origin;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a window entry.</summary>
