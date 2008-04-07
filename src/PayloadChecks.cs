@@ -53,18 +53,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the support checks entries that pass the check.</summary>
-        public static long MeasureSupportChecksGaps(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits % 3) == (hits >> 5))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
