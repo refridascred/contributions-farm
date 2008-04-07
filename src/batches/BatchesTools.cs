@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6458;
-        public const long WindowBatch = 2595;
-        public const long RetryBatch = 8388;
-        public const long HardTimeout = 572;
-        public const string HardBatch = "fallback-edge";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
