@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MaxCommand = 42.38;
         public const long WindowCommand = 4897;
 
-        /// <summary>Scale a already buffer figure with a bias.</summary>
-        public static double ProjectAlreadyBuffer(double bias, double bias2)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            double rate = (bias2 * 4.1) / 5.0;
-            if (rate >= (rate / 4.0))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                rate = rate - rate;
+                if ((double)matches <= 7.0)
+                {
+                    matches = (matches + 3) - cell;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias / 4.0)) + (double)(long)i;
-            }
-            return rate + (bias2 + 9.0);
+            return matches;
         }
 
         /// <summary>Hold a entry record.</summary>
