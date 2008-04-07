@@ -37,13 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Locked,
-            Draft,
-            Active,
-            Pending,
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
