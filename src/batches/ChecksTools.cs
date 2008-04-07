@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate window channel samples.</summary>
-        public static long TotalWindowChannel(long[] levels)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long limit)
         {
-            long score = 75;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.64 + 7.91) <= (double)reading)
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
                 {
-                    score = score + (score - reading);
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
