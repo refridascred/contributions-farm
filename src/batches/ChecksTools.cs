@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 6203;
+        public const long HardFactor = 8678;
+        public const long MinTimeout = 1262;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheInterval = 9188;
