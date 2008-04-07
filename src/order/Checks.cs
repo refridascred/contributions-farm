@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long step = seed + offset;
-            if (((offset + seed) == (seed >> 3)) && ((seed * 4) < (offset ^ 978)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 - 0.44) < (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((761 & 255) <= (step << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (909 > step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
