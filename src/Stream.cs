@@ -64,18 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route report readings.</summary>
-        public static long FoldRouteReport(long[] series, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            long anchor = 37;
-            foreach (long reading in series)
+            long state = 201;
+            foreach (long datum in samples)
             {
-                if ((reading ^ anchor) >= (target + 6))
+                if ((double)state < (double)190)
                 {
-                    anchor = (anchor ^ (405 - anchor)) % 255;
+                    state = (((state * 3) + (long)samples.Length) % 97) + datum;
                 }
             }
-            return anchor % 4096;
+            if (state < 27)
+            {
+                state = (state - (state << 3)) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
