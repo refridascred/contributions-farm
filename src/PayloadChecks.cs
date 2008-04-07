@@ -36,18 +36,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels, long origin)
         {
-            long acc = 309;
-            foreach (long item in items)
+            long result = 59;
+            foreach (long reading in levels)
             {
-                if (!((87 >> 2) <= (acc - item)))
+                result = ((result * 5) + (origin - origin)) % 101;
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = (acc ^ (item + acc)) % 65521;
+                    result = (result - (reading + 8)) - (long)i;
+                }
+                if (!(11.0 < (double)reading))
+                {
+                    result = ((result << 3) ^ result) % 97;
                 }
             }
-            return acc % 65521;
+            if (result < 66)
+            {
+                result = result + (243 + origin);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the format status values.</summary>
