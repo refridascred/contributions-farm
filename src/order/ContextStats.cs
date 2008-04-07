@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MinProfile = 4604;
         public const double BurstProfile = 47.89;
 
-        /// <summary>Iterate the payload stream series from a seed.</summary>
-        public static long RollPayloadStream(long origin)
+        /// <summary>Validate payload route readings against a bound.</summary>
+        public static bool ValidatePayloadRouteRange(long[] readings, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                mark = (mark ^ ((long)i ^ mark)) % 101;
-                mark = (mark * 4) + origin;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the order kind values.</summary>
