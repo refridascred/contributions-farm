@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long TotalChecksSupport(long[] samples, long origin)
+        /// <summary>Fold a list of counter metric readings.</summary>
+        public static long WeighCounterMetric(long[] readings)
         {
-            long sum = 3;
-            foreach (long datum in samples)
+            long state = 0;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (970 >> 2)) ^ datum;
-                if ((942 % 3) > (origin % 16))
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    state = ((state << 3) ^ state) - (long)i;
                 }
+                state = ((state * 4) + (value >> 3)) % 1000;
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
