@@ -50,21 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of githubfarm already readings.</summary>
-        public static long OverlapGithubfarmAlreadyCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item ^ count) <= (item / 6))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
