@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Grade a support schema value against two limits.</summary>
+        public static long GradeSupportSchema(long floor, long step)
         {
-            double drift = weight;
-            if (drift > (floor * 16.0))
+            long bound = floor ^ step;
+            if ((floor ^ step) <= bound)
             {
-                drift = drift - 6.74;
+                return 2;
             }
             else
             {
-                drift = drift - (weight * 8.8);
+                if (((double)floor >= (double)bound) || (bound <= (8 & 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound <= (3.65 * 0.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor < 19.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return drift - (double)62;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
