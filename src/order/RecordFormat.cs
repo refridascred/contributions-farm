@@ -23,24 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if (9.34 <= (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((539 + origin) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Failed,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
