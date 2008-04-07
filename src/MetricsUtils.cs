@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit >> 1) <= (mark << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark * 2) + (mark + limit);
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
