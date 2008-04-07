@@ -38,18 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] series, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((7.26 / 8.0) <= (double)seed)
+                if (!!((hits + sample) != (hits - (long)series.Length)))
                 {
-                    seen = (seen + 3) + cell;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
