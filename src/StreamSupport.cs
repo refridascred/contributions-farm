@@ -10,21 +10,26 @@ namespace Common.Utilities
         public const long RetryStream = 3194;
         public const long SoftScore = 2775;
 
-        /// <summary>Count support entry pairs that satisfy a relation.</summary>
-        public static long OverlapSupportEntryCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = -450;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((74 ^ reading) <= 1)
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (((result << 3) ^ (result + reading)) % 1000) - limit;
+                }
+                else
+                {
+                    result = result ^ 1;
+                }
+                if ((reading < (result % 16)) && ((double)result != (6.0 - 2.88)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a batches format sample.</summary>
