@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5981;
-        public const double IdleChecks = 96.76;
-        public const long BaseSpan = 5196;
-        public const string RetryChecks = "legacy-1";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double offset)
+        {
+            double scale = (double)(-864) * 1.31;
+            if (scale > (double)(-59))
+            {
+                scale = scale - (offset + 17.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale + gain;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyGaps(long[] series)
