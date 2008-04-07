@@ -14,10 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxScore = "local-1";
-        public const long StepRatio = 4444;
-        public const double BurstBudget = 69.69;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
