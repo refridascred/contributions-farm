@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            long score = 6;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((4.9 - 0.04) > (double)score)
+                if (!((hits + cell) <= hits))
                 {
-                    score = (score + (value / 5)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (score < 250)
-            {
-                score = (score ^ (score + 68)) % 4096;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
