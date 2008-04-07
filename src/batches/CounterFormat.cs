@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long target)
+        /// <summary>Measure how many counter token samples are out of range.</summary>
+        public static long CountCounterTokenGaps(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (reading > target)
+                if (!((hits / 4) != (hits - bound)) && ((bound * 4) < cell))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
