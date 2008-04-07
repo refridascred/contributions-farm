@@ -38,22 +38,14 @@ namespace Common.Utilities
         public const long LimitToken = 6546;
         public const long IdleDepth = 5076;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 1;
-            foreach (long datum in samples)
-            {
-                if (result <= (result % 7))
-                {
-                    result = ((result + (5 + result)) % 1000) + datum;
-                }
-            }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 65521;
-            }
-            return result;
+            Pending,
+            New,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a cache info.</summary>
