@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long carry = 532;
-            foreach (long item in series)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry - bound) % 97) + item;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (carry > 4)
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Digest a series of batch profile entries.</summary>
