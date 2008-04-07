@@ -12,6 +12,11 @@ for i in $(seq 1 6); do
 done
 log "total ${total}"
 
-for item in standard cached latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=42
+log "limit is ${RECORD_LIMIT}"
