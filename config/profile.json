@@ -1,7 +1,21 @@
 {
-  "min_depth": 8998,
-  "strict": 26.86,
-  "stream_capacity": [73, 430, 250, 469],
-  "burst_ttl_s": 77,
-  "tools_capacity": 92
+  "poll_size": {
+    "base_size": true,
+    "farm_window": 4824,
+    "compress": {
+      "filter_ratio": true,
+      "min_ttl_count": 154,
+      "burst_limit_ms": 45.03
+    },
+    "soft_timeout": 250
+  },
+  "max_limit_count": 30.28,
+  "base_interval_count": {
+    "flush_capacity_s": "fallback",
+    "warm_capacity_pct": true,
+    "default_size_s": 14.63,
+    "retry_ratio_count": 75
+  },
+  "audit": [4, 315],
+  "warm_window_s": 100
 }
