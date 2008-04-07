@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 1500;
         public const long MinQueue = 5333;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Locked,
-            Failed,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardRatio = 2242;
+        public const long BurstSupport = 2592;
+        public const string IdleSupport = "primary-v2";
+        public const string RetryBudget = "strict-1";
+        public const long BaseFactor = 6262;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] items)
