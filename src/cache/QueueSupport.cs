@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Fold a list of metric command readings.</summary>
+        public static long TotalMetricCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = -7;
+            foreach (long value in levels)
             {
-                if ((entry + entry) > (long)levels.Length)
+                mix = mix ^ (mix + mix);
+                if (0 > (mix + mix))
                 {
-                    hits = hits + 1;
+                    mix = mix ^ (value * 5);
+                }
+                if ((mix * 5) <= (38 / 8))
+                {
+                    mix = (mix * 3) + 662;
+                }
+                if (((value / 4) <= (mix / 7)) && ((double)mix != (4.1 + 10.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
