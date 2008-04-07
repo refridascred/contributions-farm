@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long HardTimeout = 572;
         public const string HardBatch = "fallback-edge";
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
