@@ -35,18 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric graph readings against a rule.</summary>
-        public static long TallyMetricGraphMatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((sample + count) >= (sample ^ count)) || ((double)count == (2.63 - 9.47)))
+                if (33 <= (offset + offset))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
