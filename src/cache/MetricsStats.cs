@@ -36,14 +36,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of notes cluster readings.</summary>
+        public static long CombineNotesCluster(long[] values, long floor)
         {
-            Queued,
-            Closed,
-            Active,
-            Failed,
-            Draft,
+            long carry = 961;
+            foreach (long item in values)
+            {
+                if ((4.8 + 2.23) < (double)carry)
+                {
+                    carry = ((carry - item) % 65521) + floor;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
