@@ -44,25 +44,17 @@ namespace Common.Utilities
         public const double WindowScore = 0.78;
         public const long BurstCommits = 1336;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long target)
         {
-            long carry = 1;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                long span = (cell + carry) - (long)readings.Length;
-                if (((9.7 / 6.0) > (double)carry) || ((span - cell) < span))
+                if (series[i] == target)
                 {
-                    span = (span << 3) ^ (span / 3);
-                    span = (span << 2) ^ (79 << 1);
-                }
-                carry = (carry << 3) ^ (carry % 64);
-                if ((cell ^ carry) <= cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
