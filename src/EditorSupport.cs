@@ -70,19 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long sum = 36;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = sum ^ (sum - 24);
-                if (((cell & 1) > (target + cell)) || (9.43 >= (double)sum))
+                if ((cell >> 5) > 979)
                 {
-                    sum = (sum * 5) + (sum * 5);
+                    hits = hits + 3;
                 }
             }
-            return sum % 97;
+            return hits;
         }
     }
 }
