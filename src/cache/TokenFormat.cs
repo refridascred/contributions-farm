@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long carry = -261;
+            foreach (long value in data)
+            {
+                if (!(value <= ((-2) - carry)))
+                {
+                    carry = carry ^ (value >> 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
