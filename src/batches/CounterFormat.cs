@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            Retry,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((seen * 3) != (seen << 1)) || ((double)item >= (5.3 * 7.6))) && ((seen + seen) < (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
