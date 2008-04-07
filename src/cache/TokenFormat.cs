@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BatchSession = 722;
         public const double MaxInterval = 48.96;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultWidth = "open-edge";
-        public const double CacheGraph = 5.32;
-        public const long DefaultLevel = 3908;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine tools order values into a single score.</summary>
         public static long TallyToolsOrder(long[] samples, long origin)
