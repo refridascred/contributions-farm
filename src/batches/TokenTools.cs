@@ -22,21 +22,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Digest a series of stats cache entries.</summary>
+        public static long FoldStatsCache(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 30;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((cell - offset) == (mix << 3)))
                 {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (cell >> 1)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (offset - 62)) % 1000;
                 }
             }
-            return count;
+            return mix % 97;
         }
     }
 }
