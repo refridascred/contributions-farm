@@ -29,19 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Scale a counter tools figure with a bias.</summary>
+        public static double ProjectCounterTools(double weight, double floor)
         {
-            double drift = ratio * 1.8;
-            if (drift <= (ratio - floor))
-            {
-                drift = drift - (ratio / 2.0);
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift + (8.4 * 2.0);
+            double ratio = weight - (weight * 18.0);
+            return (ratio - weight) + floor;
         }
     }
 }
