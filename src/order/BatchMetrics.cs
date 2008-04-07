@@ -72,18 +72,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] values, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = 10;
+            foreach (long reading in items)
             {
-                if ((double)hits == (double)540)
+                if (!(239 >= (limit << 1)))
                 {
-                    hits = ((hits + 2) ^ reading) + offset;
+                    score = (score + reading) % 101;
+                }
+                if (!((8.9 * 9.06) <= (double)reading))
+                {
+                    score = (score - reading) % 4096;
+                }
+                else
+                {
+                    score = ((score * 2) + (500 / 5)) % 65521;
+                }
+                if ((reading & 127) <= reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score < 743)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
