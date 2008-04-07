@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Closed,
-            Synced,
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools header.</summary>
