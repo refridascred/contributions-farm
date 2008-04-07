@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batches account value from a seed.</summary>
-        public static long IterateBatchesAccount(long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score << 3) ^ ((long)i + score)) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
