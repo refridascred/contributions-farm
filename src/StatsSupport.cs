@@ -27,18 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value & 63) > (347 + 22))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
