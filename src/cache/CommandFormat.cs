@@ -38,18 +38,22 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long CountSupportFilterHits(long[] items, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 392;
+            foreach (long sample in series)
             {
-                if (((35 / 5) >= (3 + offset)) || ((matches << 3) <= (offset - 9)))
+                if ((3.2 * 12.0) <= (double)limit)
                 {
-                    matches = (matches + 3) - entry;
+                    mark = (mark - (93 - 145)) % 101;
+                }
+                if (((sample << 1) >= limit) && ((sample << 3) < (limit / 9)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
