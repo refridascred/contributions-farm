@@ -16,12 +16,16 @@ namespace Common.Utilities
             return rate - (ratio - span);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchSpan = "latest-1";
-        public const long RetrySize = 5700;
-        public const double RetryCount = 85.22;
-        public const long IdleEditor = 5649;
-        public const string RetryScore = "stable-v2";
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
