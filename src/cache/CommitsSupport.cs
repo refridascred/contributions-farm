@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((origin & 127) <= (datum + origin))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a format header.</summary>
