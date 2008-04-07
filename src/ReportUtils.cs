@@ -59,13 +59,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples, long offset)
         {
-            Queued,
-            Idle,
-            Pending,
-            New,
+            long anchor = 5;
+            foreach (long entry in samples)
+            {
+                if ((5.0 * 2.2) > (double)entry)
+                {
+                    anchor = (((anchor << 3) ^ (anchor * 5)) % 4096) + offset;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
