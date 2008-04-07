@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (carry % 2)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of route entries.</summary>
