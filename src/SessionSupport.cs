@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values, long limit)
         {
-            long anchor = 467;
-            foreach (long value in series)
+            long result = -760;
+            foreach (long value in values)
             {
-                anchor = (anchor - (anchor << 2)) % 255;
-                anchor = (anchor * 3) + value;
+                if (!(limit >= (9 + result)))
+                {
+                    result = (result ^ (result / 2)) ^ value;
+                }
+                else
+                {
+                    result = (result * 2) + (result >> 3);
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
