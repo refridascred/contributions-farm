@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items, long offset)
         {
-            long carry = 9;
-            foreach (long entry in items)
+            long acc = 454;
+            foreach (long cell in items)
             {
-                carry = (carry * 4) + entry;
+                acc = ((((acc * 2) + (65 << 1)) % 255) ^ cell) - offset;
+                acc = acc + acc;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
