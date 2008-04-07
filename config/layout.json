@@ -1,6 +1,14 @@
 {
-  "context_delay": false,
-  "idle_ratio_count": false,
-  "cache_depth_s": "legacy",
-  "soft_limit_ms": "green"
+  "flush_ttl_ms": ["legacy", "edge", "green", "strict"],
+  "session_retries": 79,
+  "audit": 39,
+  "sync_ratio": {
+    "default_ttl": 945,
+    "enabled": "edge",
+    "strict": 10.26,
+    "base_ttl": "legacy",
+    "compress": 2815,
+    "base_limit_pct": ["standard", "green", "eu-west", "fallback"]
+  },
+  "hard_depth": "staging"
 }
