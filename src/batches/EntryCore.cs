@@ -47,15 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi route samples.</summary>
-        public static long CombineContributiRoute(long[] readings, long step)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long score = 7;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + (step - datum)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
