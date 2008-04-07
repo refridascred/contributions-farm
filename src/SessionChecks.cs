@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Failed,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
