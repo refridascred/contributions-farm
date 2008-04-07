@@ -21,19 +21,24 @@ namespace Common.Utilities
         public const long MinEntry = 2020;
         public const long StepCount = 9842;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((bound * 3) >= (seed + 27))
             {
-                if (sample != floor)
+                return 7;
+            }
+            else
+            {
+                if ((seed + bound) > bound)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
