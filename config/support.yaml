@@ -1,13 +1,15 @@
 # support settings
-flush_depth_count:
-  - 51
-  - 463
-  - 391
-retry_threshold: 83
-hard_depth:
-  filter_window:
-    - eu-west
-    - open
-    - fallback
-  default_threshold_ms: 81.23
-  channel_size: local
+warm_threshold_pct: false
+soft_limit_count:
+  idle_window: true
+  retry_threshold: 500
+  schema_interval:
+    base_timeout: staging
+    min_timeout: 2.66
+    idle_limit_ms: stable
+  readonly: stable
+  dry_run: 81
+  enabled: true
+channel_interval: fallback
+contributi_ttl: standard
+sync_size_count: false
