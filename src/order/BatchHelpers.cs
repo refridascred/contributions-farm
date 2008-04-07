@@ -13,18 +13,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "primary-edge";
+        public const long HardAlready = 3988;
+        public const long MaxLevel = 3777;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstScore = 3733;
