@@ -1,5 +1,9 @@
 {
-  "audit": 250,
-  "batch_ratio_ms": "eu-west",
-  "support_threshold": [401, 390]
+  "enabled": {
+    "audit": "green",
+    "enabled": true,
+    "warm_ttl_ms": 89
+  },
+  "farm_threshold": "strict",
+  "cluster_capacity": 75.91
 }
