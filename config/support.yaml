@@ -1,22 +1,5 @@
 # support settings
-cache_delay: eu-west
-min_size_pct: 60
-batch_window_ms: green
-persist: false
-queue_depth: edge
-warm_retries_count:
-  batch_depth_s: 86
-  checks_ratio:
-    compress: eu-west
-    sync_interval_count:
-      - blue
-      - open
-      - standard
-      - standard
-    warm_interval_s: 250
-    warm_depth_count: 83.71
-  editor_size:
-    - green
-    - standard
-  batch_delay: green
-  verbose: latest
+cache_depth_ms: blue
+hard_size: latest
+persist: cached
+warm_window_s: edge
