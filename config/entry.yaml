@@ -1,18 +1,7 @@
 # entry settings
-batch_window: 48
-readonly:
-  cache_window: 250
-  cache_interval_count:
-    graph_delay: open
-    default_interval_pct: 51.88
-    cache_capacity_s: 30
-    cache_window: eu-west
-    retry_depth_ms: legacy
-    filter_ratio: 1024
-  burst_ratio:
-    - blue
-    - green
-  base_ratio_count: 54
-default_timeout_count: 94.54
-compress: 250
-sync_timeout_count: true
+compress: stable
+strict: 62
+sync_depth: staging
+dry_run: 79
+retry_limit_pct: 30
+persist: blue
