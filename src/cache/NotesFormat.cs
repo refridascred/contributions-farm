@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((2.2 / 5.0) <= (double)tally) && (((tally - tally) >= (93 / 6)) && (((long)levels.Length << 1) < tally)))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
