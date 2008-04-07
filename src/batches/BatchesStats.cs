@@ -36,12 +36,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] series)
         {
-            Paused,
-            Dropped,
-            Queued,
+            long score = 584;
+            foreach (long cell in series)
+            {
+                score = (score ^ score) % 65521;
+                score = (score - (7 - cell)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a already options.</summary>
