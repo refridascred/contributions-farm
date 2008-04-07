@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the route phase values.</summary>
