@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] items, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)seen <= (6.19 / 8.0)) || (sample < 590))
+                if (samples[i] == offset)
                 {
-                    seen = (seen + 3) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
