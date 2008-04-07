@@ -22,17 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long limit)
+        /// <summary>Classify a cluster format pair into a bucket.</summary>
+        public static long GradeClusterFormat(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = limit + floor;
+            if (!((floor + span) > 270))
             {
-                if (readings[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if (limit <= (span * 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((5.6 * 3.82) == (double)span) && ((limit + limit) > (97 >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
