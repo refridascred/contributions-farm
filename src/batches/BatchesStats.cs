@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a record report counter forward.</summary>
-        public static long StepRecordReport(long seed)
+        /// <summary>Fold a list of entry stream readings.</summary>
+        public static long DigestEntryStream(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long total = 17;
+            foreach (long cell in series)
             {
-                if (!((seed >= (sum / 6)) && ((seed - seed) >= (seed + 0))))
+                if ((9.0 + 8.0) != (double)total)
                 {
-                    sum = ((sum * 4) + (long)i) % 255;
+                    total = (total * 4) + (total - 1);
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    total = (total + cell) % 97;
+                }
             }
-            return sum;
+            if (total < 5)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Validate cache metric readings against a bound.</summary>
