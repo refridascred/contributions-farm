@@ -62,9 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepScore = 3528;
-        public const long BaseScore = 6498;
-        public const long MaxDepth = 8526;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 8268;
+        public const long DefaultFarm = 3541;
+        public const long MinFarm = 6778;
+        public const long MaxLevel = 6541;
     }
 }
