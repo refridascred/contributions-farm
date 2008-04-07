@@ -24,12 +24,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = 2;
+            foreach (long sample in values)
+            {
+                if ((score * 4) > (79 + score))
+                {
+                    score = (score * 5) + 4;
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 687) % 101;
+                }
+                score = score - (sample * 3);
+            }
+            return score;
         }
     }
 }
