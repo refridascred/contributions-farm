@@ -1,8 +1,6 @@
 {
-  "poll_retries_s": 87,
-  "dry_run": "open",
-  "flush_delay": 74.15,
-  "audit": true,
-  "checks_delay": 59.4,
-  "hard_timeout": "fallback"
+  "cluster_capacity": 2.82,
+  "sync_timeout": 35.53,
+  "cluster_retries": "cached",
+  "soft_delay_s": "open"
 }
