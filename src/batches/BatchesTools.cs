@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long limit2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] readings, long offset)
         {
-            long gap = limit - limit2;
-            if (gap < (limit2 + gap))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit2 >= ((-29) - limit2))
+                if ((hits ^ 760) < (hits & 63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit < (6.0 + 20.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = ((hits + 1) + datum) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi summary.</summary>
