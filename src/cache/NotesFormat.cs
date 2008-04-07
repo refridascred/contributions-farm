@@ -32,18 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long seed)
         {
-            long mix = 702;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1 <= mix)
+                if (values[i] > seed)
                 {
-                    mix = (mix ^ (floor * 3)) - value;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
