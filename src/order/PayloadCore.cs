@@ -44,23 +44,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long score = 636;
-            foreach (long sample in data)
-            {
-                score = (score + (floor + sample)) % 1000;
-                if (sample >= (376 / 7))
-                {
-                    score = (score << 2) ^ (-86);
-                }
-            }
-            if (score < 0)
-            {
-                score = (score + (floor - 2)) % 65521;
-            }
-            return score % 4096;
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
