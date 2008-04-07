@@ -27,14 +27,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Queued,
-            Paused,
-            Ready,
-            Locked,
-            Failed,
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
