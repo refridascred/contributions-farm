@@ -26,15 +26,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long entry in samples)
             {
-                if ((double)step == (12.0 + 4.0))
+                if (!((matches + entry) >= (entry & 7)))
                 {
-                    matches = (matches + 2) + cell;
+                    matches = matches + 1;
                 }
             }
             return matches;
