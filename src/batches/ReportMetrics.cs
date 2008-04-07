@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Dropped,
-            Retry,
-            Stale,
-            Closed,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
