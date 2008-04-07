@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double LimitDepth = 30.45;
         public const double HardFactor = 94.15;
 
-        /// <summary>Iterate the batch schema series from a seed.</summary>
-        public static long RollBatchSchema(long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                score = score + ((long)i % 5);
-                score = ((score * 5) + (long)i) % 97;
+                if ((((tally & 1) < tally) || ((14.0 + 1.0) >= (double)sample)) || (sample < (sample / 4)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
