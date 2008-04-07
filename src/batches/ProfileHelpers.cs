@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long CacheReport = 3734;
         public const long BatchScore = 9873;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= ((-23) - 839))
+                if (readings[i] < floor)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
