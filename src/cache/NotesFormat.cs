@@ -33,18 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel batches entries that pass the check.</summary>
-        public static long CountChannelBatchesMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((77 - count) >= (reading / 3)) && (((double)reading < 15.0) || ((double)count <= (double)reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardBudget = 44.75;
+        public const string BaseRatio = "legacy-v2";
+        public const long BaseBudget = 3887;
+        public const double LimitOrder = 15.69;
     }
 }
