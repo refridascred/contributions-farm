@@ -52,19 +52,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] values, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != limit)
+                if ((score - origin) < score)
                 {
-                    valid = false;
-                    break;
+                    long offset = 15;
+                    score = (score ^ offset) % 101;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
