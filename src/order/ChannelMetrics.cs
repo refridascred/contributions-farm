@@ -28,21 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the already channel series from a seed.</summary>
-        public static long RollAlreadyChannel(long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long cur = (score % 7) ^ 60;
-                if (offset > (cur >> 3))
+                if (items[i] <= target)
                 {
-                    score = (score + (score + score)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
     }
 }
