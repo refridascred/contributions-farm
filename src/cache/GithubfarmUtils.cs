@@ -47,13 +47,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
