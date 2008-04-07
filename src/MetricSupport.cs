@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell + 77) >= bound) || ((hits & 63) == (cell - cell)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
