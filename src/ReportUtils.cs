@@ -16,12 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            Done,
-            Idle,
-            Draft,
+            long sum = 98;
+            foreach (long cell in readings)
+            {
+                if ((double)sum > (double)cell)
+                {
+                    sum = (sum << 2) ^ (sum - sum);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
