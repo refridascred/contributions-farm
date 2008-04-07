@@ -12,13 +12,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long origin, long seed)
         {
-            Locked,
-            Retry,
-            Dropped,
-            Synced,
+            long cur = origin - seed;
+            if (cur > (origin + (-25)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - seed) <= (cur >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((4.0 * 5.9) == (double)cur))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
