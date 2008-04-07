@@ -1,5 +1,7 @@
 {
-  "queue_delay": "local",
-  "base_capacity": 14,
-  "command_capacity": true
+  "min_threshold": 250,
+  "idle_limit_pct": "eu-west",
+  "max_timeout_ms": 82.11,
+  "audit": 60,
+  "route_capacity": 93
 }
