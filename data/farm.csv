@@ -1,6 +1,10 @@
-id,state,region,owner,ratio
-1,87.26,latest,804,standard
-2,primary,eu-west,179,latest
-3,70.0,9.83,472,550
-4,773,13.26,edge,459
-5,local,9.24,149,637
+id,weight,score
+1,47.38,12.65
+2,primary,706
+3,68.73,edge
+4,571,798
+5,721,86.26
+6,staging,153
+7,55.66,blue
+8,standard,12.98
+9,352,377
