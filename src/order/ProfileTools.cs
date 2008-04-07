@@ -26,18 +26,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] samples)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double drift = bias;
+            if (drift < bias)
             {
-                if (!((matches + entry) >= (entry & 7)))
-                {
-                    matches = matches + 1;
-                }
+                drift = (drift - (drift + 20.0)) + ratio;
             }
-            return matches;
+            return drift + bias;
         }
 
         /// <summary>Hold a cluster entry.</summary>
