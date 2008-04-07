@@ -68,11 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Done,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Iterate the format stream series from a seed.</summary>
