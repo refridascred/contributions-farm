@@ -69,12 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
