@@ -68,19 +68,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate profile stats readings against a bound.</summary>
-        public static bool GuardProfileStatsBounds(long[] levels, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long limit, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long cur = limit ^ offset;
+            if (limit >= (offset + limit))
             {
-                if (cell > offset)
+                return 4;
+            }
+            else
+            {
+                if ((offset / 2) > (cur << 3))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
     }
 }
