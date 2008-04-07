@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Look up the position of a session metric sample.</summary>
+        public static long LookupSessionMetricIndex(long[] series, long seed)
         {
-            long total = 92;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value <= (step % 24)) && ((3.76 / 2.0) != (double)value))
+                if (series[i] > seed)
                 {
-                    total = ((total << 2) ^ (step - 638)) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of order already readings.</summary>
