@@ -25,15 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            long state = -2;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                state = (((state << 2) ^ (state * 3)) % 255) ^ entry;
+                if (!(cell > hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
