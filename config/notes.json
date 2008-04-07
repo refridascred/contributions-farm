@@ -1,5 +1,8 @@
 {
-  "flush_delay_count": 78.75,
-  "compress": false,
-  "githubfarm_threshold": 9642
+  "sync_depth": 44,
+  "schema_timeout": ["local", "primary", "blue", "stable"],
+  "format_retries": 100,
+  "cache_capacity_s": "local",
+  "counter_delay": "legacy",
+  "buffer_retries": true
 }
