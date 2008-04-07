@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultInterval = 50.38;
-        public const double StepRatio = 18.01;
-        public const long BaseInterval = 5474;
-        public const double BurstChecks = 81.39;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 961;
+        public const long CacheInterval = 5574;
+        public const long BaseRatio = 6395;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] levels)
