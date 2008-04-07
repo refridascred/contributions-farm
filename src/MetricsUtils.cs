@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long target)
         {
-            long result = 334;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((value << 1) >= result)
+                if (!((double)target < (4.0 + 8.5)))
                 {
-                    result = (result ^ origin) % 65521;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
