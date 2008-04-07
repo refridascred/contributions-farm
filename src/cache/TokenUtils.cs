@@ -11,38 +11,22 @@ namespace Common.Utilities
         public const long MinPayload = 403;
         public const long BaseWidth = 8748;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long floor, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels, long limit)
         {
-            if (5.2 < (double)floor)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) <= floor)
+                if (hits < 591)
                 {
-                    return 3;
+                    hits = ((hits + 3) + sample) - limit;
                 }
                 else
                 {
-                    if ((origin + floor) > ((-6) + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > (origin % 60))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
