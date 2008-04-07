@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item >= 6.83)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine channel graph values into a single score.</summary>
