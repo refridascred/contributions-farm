@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items, long bound)
+        /// <summary>Compare every pair of editor batch readings.</summary>
+        public static long PairEditorBatchCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally << 3) > (datum ^ tally)) || (datum >= (tally ^ tally)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + bound;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a counter editor counter forward.</summary>
