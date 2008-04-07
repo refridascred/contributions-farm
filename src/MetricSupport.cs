@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string IdleScore = "strict-edge";
         public const string SoftQueue = "primary-v2";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (item > target)
+                if ((double)sample >= (1.0 - 14.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Derive the next counter support value from a seed.</summary>
