@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long MinBatch = 3742;
         public const long DefaultInterval = 3546;
 
-        /// <summary>Compare every pair of queue buffer readings.</summary>
-        public static long PairQueueBufferCount(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > step)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
