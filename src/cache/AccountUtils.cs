@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((count ^ count) > (count + (-316))) && (((10.0 / 9.0) == (double)count) || (value > 23)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
