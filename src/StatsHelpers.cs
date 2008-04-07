@@ -33,13 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long MeasureStatsStreamGaps(long[] values)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((8 >> 3) != (datum * 4)) || ((627 << 1) < (datum - hits))) || (hits >= (hits >> 4)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
