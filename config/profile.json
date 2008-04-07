@@ -1,13 +1,5 @@
 {
-  "dry_run": {
-    "cache_ttl": 34.32,
-    "layout_size": "staging",
-    "poll_retries_ms": 5136,
-    "format_capacity": 70,
-    "counter_window": [209, 482, 173, 4],
-    "compress": "blue"
-  },
-  "sync_interval_ms": "primary",
-  "idle_retries_pct": "primary",
-  "readonly": [367, 395]
+  "session_limit": "local",
+  "min_delay_pct": "primary",
+  "soft_threshold": 20.16
 }
