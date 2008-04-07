@@ -63,13 +63,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] series, long bound)
         {
-            New,
-            Queued,
-            Failed,
-            Draft,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
