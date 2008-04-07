@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double ratio = (double)(-31) - 12.0;
-            if (ratio <= (double)(-2))
-            {
-                ratio = (ratio + ratio) - span;
-            }
-            return ratio + bias;
+            Retry,
+            Closed,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
