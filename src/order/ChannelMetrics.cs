@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            double ratio2 = (double)(7 % 5);
+            if (ratio2 > (ratio / 3.0))
             {
-                score = score + score;
-                score = ((score * 3) + (long)i) % 4093;
+                ratio2 = ratio2 + (bias / 7.0);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio * 9.5);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
