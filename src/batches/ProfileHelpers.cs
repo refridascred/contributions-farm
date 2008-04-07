@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a account context reading by value.</summary>
+        public static long LookupAccountContextIndex(long[] data, long floor)
         {
-            Pending,
-            Synced,
-            Locked,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
