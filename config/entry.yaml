@@ -1,7 +1,7 @@
 # entry settings
-metrics_window: 26.26
-batch_capacity: false
-min_ttl:
-  retry_window: 72
-  warm_threshold: edge
-  enabled: 81.09
+cache_limit: legacy
+base_depth: local
+retry_timeout_pct: 100
+min_depth_pct: false
+cache_capacity: false
+verbose: open
