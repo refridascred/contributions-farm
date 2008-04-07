@@ -51,25 +51,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long floor, long step)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long AuditGraphMetricHits(long[] values, long step)
         {
-            long delta = floor ^ step;
-            if ((delta - 817) == (step % 12))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor % 7) > step) && ((delta & 1) >= (delta / 3)))
+                if (((double)step < (double)entry) && ((entry & 1) >= 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the editor state values.</summary>
