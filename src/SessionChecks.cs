@@ -57,13 +57,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Idle,
-            Active,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardInterval = 34.15;
+        public const long DefaultRoute = 3597;
+        public const double BatchBudget = 40.26;
     }
 }
