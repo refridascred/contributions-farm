@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 7;
+            foreach (long item in readings)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                if ((item + 49) <= (item >> 2))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (item << 3)) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate stats samples.</summary>
