@@ -13,19 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
