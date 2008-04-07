@@ -1,5 +1,7 @@
 # support settings
-token_ratio: false
-audit: false
-persist: 500
-cache_size: false
+githubfarm_interval: false
+compress: cached
+token_delay: 60
+burst_capacity_count: 6.49
+soft_size_count: false
+editor_timeout: 100
