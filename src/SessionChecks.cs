@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long mark = 1;
-            foreach (long reading in levels)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                mark = mark + (reading + 1);
-                if (((10.0 + 9.43) <= (double)mark) && ((0.1 - 14.0) >= (double)mark))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (mark & 7);
-                }
-                if ((mark + reading) != (reading / 6))
-                {
-                    mark = (mark + (reading * 5)) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (mark < (-30))
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-            }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
