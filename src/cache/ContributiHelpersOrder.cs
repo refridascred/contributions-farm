@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (0.4 * 5.0))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
