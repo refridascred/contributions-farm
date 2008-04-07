@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] items, long origin)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin > (1.8 / 6.0))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
