@@ -54,12 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            Closed,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)reading == (double)tally) && ((tally ^ tally) >= 24))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
