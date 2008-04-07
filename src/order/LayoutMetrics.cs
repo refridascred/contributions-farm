@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double LimitDepth = 30.45;
         public const double HardFactor = 94.15;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 3398;
-        public const long SoftBatches = 9663;
-        public const long DefaultSpan = 7988;
-        public const long BurstBatches = 8158;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double scale, double offset)
