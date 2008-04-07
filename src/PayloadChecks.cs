@@ -77,28 +77,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long bound2)
         {
-            if ((bound + bound) >= bound)
+            if ((555 & 255) <= (bound2 + bound2))
             {
                 return 6;
             }
             else
             {
-                if ((double)seed != (6.23 - 2.3))
+                if ((bound * 4) < (93 + bound))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound > (19.0 - 1.0))
+                    if ((5.1 + 9.73) >= (double)bound2)
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
