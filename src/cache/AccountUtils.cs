@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "legacy-v2";
+        public const string WindowReport = "fallback-edge";
+        public const double StepReport = 68.3;
+        public const long MaxReport = 7511;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsGaps(long[] levels, long floor)
