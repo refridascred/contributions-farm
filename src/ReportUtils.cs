@@ -52,19 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((((2.21 - 6.6) != (double)sample) && ((double)sample == (5.47 * 12.0))) && (((long)readings.Length <= (count >> 1)) || ((double)sample > 10.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 0.73;
+        public const double BatchWidth = 90.86;
+        public const string RetryFormat = "cached-1";
+        public const long LimitSpan = 7442;
+        public const long LimitInterval = 9225;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] samples, long offset)
