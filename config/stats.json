@@ -1,6 +1,10 @@
 {
-  "hard_timeout": 6750,
-  "stream_capacity": true,
-  "min_delay_count": 3710,
-  "default_capacity_s": "strict"
+  "soft_capacity_pct": "primary",
+  "metrics_limit": {
+    "strict": ["eu-west", "eu-west", "latest", "strict"],
+    "warm_limit": false,
+    "idle_ratio_s": ["staging", "standard", "primary"],
+    "batches_threshold": 250
+  },
+  "min_ttl": ["fallback", "fallback", "primary", "open"]
 }
