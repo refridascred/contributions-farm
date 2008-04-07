@@ -23,15 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Locked,
-            Active,
-            Pending,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultInterval = 50.38;
+        public const double StepRatio = 18.01;
+        public const long BaseInterval = 5474;
+        public const double BurstChecks = 81.39;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] levels)
