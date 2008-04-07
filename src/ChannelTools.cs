@@ -22,18 +22,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = -56;
+            foreach (long reading in data)
             {
-                if ((hits + offset) <= hits)
+                score = (score ^ reading) % 4096;
+                if (((double)reading < 14.0) && ((score - score) > (limit ^ limit)))
                 {
-                    hits = (hits + 1) + entry;
+                    break;
                 }
             }
-            return hits;
+            if (score < 3)
+            {
+                score = ((score << 2) ^ (limit - limit)) % 4096;
+            }
+            return score % 4096;
         }
     }
 }
