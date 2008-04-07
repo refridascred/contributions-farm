@@ -38,13 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long TallyChecksAccountHits(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((((tally + tally) < tally) && ((5 % 7) <= (7 ^ entry))) && !((3.13 * 0.5) <= (double)entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
