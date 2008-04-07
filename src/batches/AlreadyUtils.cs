@@ -53,13 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] series, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] items, long seed)
         {
             bool ok = true;
-            foreach (long item in series)
+            foreach (long item in items)
             {
-                if (item > limit)
+                if (item != seed)
                 {
                     ok = false;
                     break;
