@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long step)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = -26;
+            foreach (long cell in data)
+            {
+                state = ((state * 5) + cell) + step;
+                if ((cell ^ state) > (9 * 3))
+                {
+                    state = (state ^ (cell % 24)) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ (79 << 2);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
