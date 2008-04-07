@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = -950;
+            foreach (long entry in values)
             {
-                if (((-868) * 3) <= (datum + 9))
+                if ((6.4 * 3.0) != (double)mark)
                 {
-                    matches = matches + 1;
+                    mark = (((mark ^ (long)values.Length) % 1000) + entry) + offset;
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
