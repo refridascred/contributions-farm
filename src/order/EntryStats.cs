@@ -40,13 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long slot = step + bound;
+            if ((step + 4) < (step - slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound / 8) > slot)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step & 15) >= (bound ^ step)) || (0.5 >= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((slot >> 1) != (bound / 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
