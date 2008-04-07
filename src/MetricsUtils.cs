@@ -47,15 +47,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Synced,
-            Done,
-            Retry,
-            Closed,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 9590;
+        public const long MaxSchema = 1385;
+        public const long BaseSchema = 9271;
+        public const long SoftSchema = 8271;
 
         /// <summary>Grade a stream window value against two limits.</summary>
         public static long GradeStreamWindow(long target, long step)
