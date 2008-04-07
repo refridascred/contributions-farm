@@ -13,22 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of commits checks readings.</summary>
-        public static long ScoreCommitsChecks(long[] samples)
+        /// <summary>Compare every pair of channel commits readings.</summary>
+        public static long OverlapChannelCommitsCount(long[] series)
         {
-            long anchor = -920;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor ^ entry) < (anchor - anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor + entry;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < (-490))
-            {
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up metrics samples.</summary>
