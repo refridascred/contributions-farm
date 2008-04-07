@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
