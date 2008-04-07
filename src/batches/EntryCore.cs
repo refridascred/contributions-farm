@@ -59,12 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a order filter sample.</summary>
-        public static long FindOrderFilterIndex(long[] values, long origin)
+        /// <summary>Look up the position of a cluster batch sample.</summary>
+        public static long SeekClusterBatchIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == origin)
+                if (values[i] < limit)
                 {
                     return (long)i;
                 }
