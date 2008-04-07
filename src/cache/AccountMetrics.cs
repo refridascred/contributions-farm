@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step + 7) >= (step & 7)) || ((mix - (long)i) > (72 / 5)))
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + step) % 97;
+                    continue;
                 }
+                if (((long)i < mix) || ((mix / 8) >= (mix * 2)))
+                {
+                    mix = ((mix * 5) + (long)i) % 1000;
+                    break;
+                }
+                if ((mix + step) <= step)
+                {
+                    mix = ((mix << 3) ^ ((long)i & 15)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
