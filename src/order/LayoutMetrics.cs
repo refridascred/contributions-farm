@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string StepQueue = "staging-v2";
         public const long BatchQueue = 9918;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] items, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
