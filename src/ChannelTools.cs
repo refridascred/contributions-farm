@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long TallyContributiRouteMatches(long[] samples, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((18.0 * 4.01) < (double)seen)
+                if ((hits + offset) <= hits)
                 {
-                    seen = ((seen + 2) - item) + offset;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
