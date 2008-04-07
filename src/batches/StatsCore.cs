@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const double IdleFactor = 97.84;
         public const string BaseRatio = "local";
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = carry + (carry - 159);
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultDepth = 5361;
+        public const double SoftSupport = 55.99;
+        public const double IdleSupport = 32.57;
+        public const long LimitSupport = 7571;
+        public const long BatchSupport = 5741;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] values)
