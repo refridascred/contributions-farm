@@ -23,13 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Project the next format profile value.</summary>
+        public static double ProjectFormatProfile(double weight, double offset)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            double rate = 5.0;
+            return ((rate + (double)0) + weight) + offset;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
