@@ -70,14 +70,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series, long offset)
         {
-            Active,
-            Done,
-            Locked,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((item << 3) < (matches & 127)) || ((matches * 2) <= offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
