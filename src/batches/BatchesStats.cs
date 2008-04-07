@@ -26,18 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item + item) <= item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a farm stats.</summary>
