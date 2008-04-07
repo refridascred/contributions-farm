@@ -41,10 +41,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 9162;
-        public const long BatchLayout = 2795;
-        public const string MaxSpan = "primary-1";
-        public const long LimitBudget = 9894;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Paused,
+            Synced,
+            Done,
+            Locked,
+            Closed,
+        }
     }
 }
