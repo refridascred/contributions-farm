@@ -47,23 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels, long offset)
-        {
-            long total = 3;
-            foreach (long entry in levels)
-            {
-                if ((offset % 10) < (total + total))
-                {
-                    total = (total ^ (offset + entry)) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + entry;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheSize = 20.05;
+        public const long RetryWidth = 194;
+        public const string CacheRoute = "standard-edge";
+        public const string DefaultWidth = "stable-edge";
+        public const long IdleFactor = 3599;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
