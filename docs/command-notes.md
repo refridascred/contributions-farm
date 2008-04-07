@@ -1,13 +1,11 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep token and session names short and lowercase.
-
-Use profile settings to tune how often farm data is refreshed.
-Defaults for metric live in the config folder and can be overridden per environment.
+Use filter settings to tune how often contributi data is refreshed.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep metric and buffer names short and lowercase.
 
 ## Guidelines
 
-- Keep metrics values small
-- Review session limits each release
-- Log every session change
+- Keep checks values small
+- Validate githubfarm input early
+- Document new graph fields
