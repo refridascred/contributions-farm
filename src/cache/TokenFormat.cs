@@ -36,19 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already session entry stays within the limit.</summary>
-        public static bool GuardAlreadySessionRange(long[] samples, long limit)
+        /// <summary>Locate a order report reading by value.</summary>
+        public static long FindOrderReportIndex(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < limit)
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
