@@ -1,15 +1,11 @@
 # Command notes
 
-The buffer report groups every metric by report.
-Use window settings to tune how often checks data is refreshed.
-The checks helpers are pure functions, so they are safe to call from any thread.
-
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The notes module keeps session values in sync with the counter cache.
-The contributi module keeps queue values in sync with the layout cache.
+The profile module keeps tools values in sync with the metric cache.
+Keep layout and order names short and lowercase.
+Run the command check before changing any session limits.
 
 ## Guidelines
 
-- Prefer order defaults
-- Validate checks input early
-- Document new context fields
+- Validate token input early
+- Keep window values small
+- Review metric limits each release
