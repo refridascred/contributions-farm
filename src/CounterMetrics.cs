@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long score = 896;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item > (2.7 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 3) ^ (score / 3)) % 4096;
-                }
-                else
-                {
-                    score = (score + (offset - item)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
