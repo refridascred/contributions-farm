@@ -47,18 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count < (29 + count)) && ((0.17 + 1.8) >= (double)target))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
