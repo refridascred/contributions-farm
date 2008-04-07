@@ -32,11 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultRatio = 9066;
+        public const long MinLevel = 1570;
+        public const string CacheInterval = "primary";
+        public const long BatchBudget = 3977;
+        public const double LimitCount = 37.34;
     }
 }
