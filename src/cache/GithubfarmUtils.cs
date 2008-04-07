@@ -57,12 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
