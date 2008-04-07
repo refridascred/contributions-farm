@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSize = 2059;
-        public const double MinSpan = 54.19;
-        public const double MaxScore = 27.81;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 1413;
