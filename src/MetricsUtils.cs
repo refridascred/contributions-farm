@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long offset = bound - limit;
+            if ((double)limit != (13.0 + 2.0))
             {
-                if (!((double)target < (4.0 + 8.5)))
+                return 1;
+            }
+            else
+            {
+                if ((bound + offset) != (961 & 3))
                 {
-                    hits = (hits + 1) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a contributi token reading.</summary>
