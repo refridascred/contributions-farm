@@ -45,12 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            Dropped,
-            Active,
-            Stale,
+            double drift = (bias / 7.0) / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - (double)(-15)) + (double)(long)i) - weight;
+            }
+            return drift + (bias / 3.0);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
