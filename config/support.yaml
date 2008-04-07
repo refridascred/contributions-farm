@@ -1,31 +1,10 @@
 # support settings
-flush_retries_count:
-  persist: 1076
-  payload_limit:
-    - legacy
-    - legacy
-    - open
-    - standard
-  base_delay_count:
-    - 30
-    - 391
-    - 245
-    - 136
-  poll_depth: 500
-  strict: cached
-session_depth: fallback
-max_interval:
-  - 464
-  - 80
-  - 176
-  - 41
-cache_window_count: true
-counter_interval:
-  persist: false
-  batch_delay_pct:
-    - 489
-    - 134
-  idle_limit_ms: 50
-  sync_window_pct: false
-  farm_timeout: 4147
-sync_depth_ms: local
+retry_size: latest
+readonly: 2775
+buffer_retries: false
+soft_threshold: open
+support_limit:
+  - local
+  - fallback
+  - fallback
+strict: true
