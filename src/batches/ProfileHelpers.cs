@@ -48,12 +48,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long floor)
         {
-            Pending,
-            New,
-            Stale,
+            long score = 8;
+            foreach (long value in readings)
+            {
+                bool ok = (5 > floor) || (score <= 533);
+                if ((floor < score) && ok)
+                {
+                    score = ((score << 3) ^ (value * 3)) % 4096;
+                }
+                if (floor <= (1 / 5))
+                {
+                    score = (score ^ (285 + score)) % 1000;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
