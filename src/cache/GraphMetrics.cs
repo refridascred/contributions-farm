@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string BaseSpan = "latest-edge";
         public const double RetryWidth = 48.66;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double weight, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            double ratio = span;
-            if (ratio <= span)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio - (double)(-228)) - weight;
+                if ((offset & 7) > (3 ^ offset))
+                {
+                    state = ((state * 3) + (state + 37)) % 97;
+                    break;
+                }
+                state = ((state << 2) ^ (offset >> 2)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return ratio - 7.59;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
