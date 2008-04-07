@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary standard; do
+RECORD_LIMIT=161
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging legacy stable green; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
