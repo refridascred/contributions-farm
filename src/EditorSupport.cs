@@ -48,22 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long TotalOrderChecks(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = -4;
-            foreach (long datum in values)
-            {
-                if ((92 << 2) < datum)
-                {
-                    result = (result ^ ((long)values.Length - datum)) % 1000;
-                }
-            }
-            if (result > 1)
-            {
-                result = result + (6 - result);
-            }
-            return result;
+            Ready,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
