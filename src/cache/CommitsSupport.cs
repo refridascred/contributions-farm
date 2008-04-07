@@ -20,13 +20,10 @@ namespace Common.Utilities
         public const long BaseReport = 4082;
         public const long LimitReport = 7813;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheDepth = 2.82;
+        public const double BaseFactor = 55.15;
+        public const long WindowWidth = 4798;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
