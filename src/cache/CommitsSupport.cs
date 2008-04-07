@@ -44,10 +44,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 891;
-        public const double BaseQueue = 1.14;
-        public const double HardQueue = 8.91;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Stale,
+            Paused,
+            New,
+            Done,
+            Synced,
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double ScaleAccount(double gain, double span)
