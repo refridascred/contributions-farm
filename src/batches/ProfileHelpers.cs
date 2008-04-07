@@ -56,12 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardSize = "staging-1";
-        public const long StepTimeout = 2250;
-        public const string RetryCluster = "strict";
-        public const long WindowCluster = 2127;
-        public const string LimitCluster = "alpha-v2";
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
