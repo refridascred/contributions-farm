@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a order editor counter forward.</summary>
-        public static long DeriveOrderEditor(long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((6.0 + 0.82) < (double)offset))
                 {
-                    carry = ((carry - (origin - carry)) % 4096) ^ (long)i2;
+                    hits = (hits + 3) + entry;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
