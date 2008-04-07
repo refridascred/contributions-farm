@@ -1,6 +1,10 @@
 {
-  "cache_ttl": "primary",
-  "strict": "edge",
-  "order_timeout": 35.4,
-  "command_depth": 94
+  "warm_ttl_ms": {
+    "min_delay_pct": [468, 327, 302],
+    "batches_threshold": 28,
+    "default_interval_count": "edge",
+    "queue_capacity": 368
+  },
+  "persist": "latest",
+  "audit": "strict"
 }
