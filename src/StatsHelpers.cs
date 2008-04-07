@@ -44,13 +44,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long state = -5;
+            foreach (long reading in data)
+            {
+                if ((bound <= 51) && ((state << 2) > (state + reading)))
+                {
+                    state = state ^ (reading * 5);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a metric entry.</summary>
