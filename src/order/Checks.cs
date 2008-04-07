@@ -41,22 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 101;
+        public const long IdleFilter = 1542;
+        public const double RetrySpan = 40.11;
+        public const double BaseCount = 74.81;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long SeriesProfile(long target)
