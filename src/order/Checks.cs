@@ -13,18 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell <= (cell >> 4)) || ((double)(-404) >= (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a batch record.</summary>
