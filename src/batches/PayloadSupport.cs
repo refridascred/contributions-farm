@@ -34,12 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long offset)
         {
-            Queued,
-            Ready,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
