@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 42.56;
-        public const long SoftDepth = 3125;
-        public const double IdleEditor = 52.26;
-        public const long BaseScore = 1986;
+        /// <summary>Count the notes record entries that pass the check.</summary>
+        public static long AuditNotesRecordOutliers(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((2.3 - 7.0) == (double)target)
+                {
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
