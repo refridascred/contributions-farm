@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a schema window counter forward.</summary>
-        public static long RollSchemaWindow(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((reading - count) <= (471 + bound))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
