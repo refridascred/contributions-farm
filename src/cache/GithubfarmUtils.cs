@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const double BaseEntry = 27.82;
         public const long LimitEntry = 481;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long seed)
         {
-            Ready,
-            Locked,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
