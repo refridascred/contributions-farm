@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long StepGraph = 5248;
         public const string StepBudget = "fallback-1";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long limit)
         {
-            Stale,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((-638) <= ((long)samples.Length & 127)))
+                {
+                    tally = ((tally + 1) + datum) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
