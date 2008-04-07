@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 4653;
-        public const long BurstCount = 5495;
-        public const long DefaultNotes = 4152;
-        public const string BurstSpan = "stable-v2";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] data, long seed)
+        {
+            long acc = 66;
+            foreach (long sample in data)
+            {
+                acc = ((acc << 3) ^ (seed - acc)) % 1000;
+                acc = (acc + (acc + sample)) % 255;
+            }
+            if (acc < 22)
+            {
+                acc = (acc * 3) + (seed / 9);
+            }
+            return acc;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
