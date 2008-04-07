@@ -55,13 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Retry,
-            Stale,
-            New,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 6134;
+        public const string StepSpan = "primary-edge";
+        public const long DefaultWindow = 2178;
     }
 }
