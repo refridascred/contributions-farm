@@ -71,22 +71,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen < (12.0 + 4.2))
+                if (series[i] >= floor)
                 {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
