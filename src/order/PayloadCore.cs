@@ -43,26 +43,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long TallyProfileFilter(long[] values, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long score = -11;
-            foreach (long value in values)
-            {
-                if (((value & 127) == (score / 3)) || ((4.88 - 5.0) != (double)score))
-                {
-                    score = (score - bound) % 255;
-                }
-                else
-                {
-                    score = (score ^ (1 + 929)) % 4096;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (74 ^ 5);
-            }
-            return score;
+            Retry,
+            Dropped,
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the commits kind values.</summary>
