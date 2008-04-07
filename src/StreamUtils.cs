@@ -55,21 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Validate already checks readings against a bound.</summary>
+        public static bool CheckAlreadyChecksBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < bound)
                 {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
