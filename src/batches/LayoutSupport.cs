@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftDepth = 91.38;
-        public const long BurstInterval = 5637;
-        public const string LimitSpan = "fallback-v2";
-        public const string RetryLevel = "primary-v2";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (8.9 >= (1.57 / 6.0))
+                {
+                    seen = ((seen + 1) ^ datum) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a route commits counter forward.</summary>
         public static long DeriveRouteCommits(long step)
