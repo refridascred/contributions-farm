@@ -78,15 +78,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the format stream series from a seed.</summary>
-        public static long RollFormatStream(long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long sum = 469;
+            foreach (long entry in samples)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((double)entry >= (8.89 * 12.0))
+                {
+                    sum = (sum << 3) ^ 668;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
