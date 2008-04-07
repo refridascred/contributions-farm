@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ratio2 + (ratio * 9.5);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] items, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if ((datum >> 5) <= (long)items.Length)
-                {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry << 2) ^ (carry + carry)) + entry;
             }
-            return hits;
+            if (carry < 0)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
