@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the notes record entries that pass the check.</summary>
-        public static long AuditNotesRecordOutliers(long[] levels, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((2.3 - 7.0) == (double)target)
+                if ((matches >= (limit - limit)) || ((limit - matches) < (limit + matches)))
                 {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
