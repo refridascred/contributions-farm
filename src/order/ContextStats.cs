@@ -59,21 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count session schema pairs that satisfy a relation.</summary>
-        public static long PairSessionSchemaCount(long[] samples)
+        /// <summary>Count the format filter entries that pass the check.</summary>
+        public static long AuditFormatFilterMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen > 171)
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) ^ datum) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
