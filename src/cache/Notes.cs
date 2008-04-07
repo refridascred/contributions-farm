@@ -53,22 +53,13 @@ namespace Common.Utilities
         public const long HardOrder = 2863;
         public const double MaxOrder = 27.11;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings, long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long total = 34;
-            foreach (long reading in readings)
-            {
-                if (origin < (193 >> 5))
-                {
-                    total = (((total << 3) ^ (origin ^ origin)) % 4096) + reading;
-                }
-            }
-            if (total > 767)
-            {
-                total = total ^ (8 / 3);
-            }
-            return total % 97;
+            Idle,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
