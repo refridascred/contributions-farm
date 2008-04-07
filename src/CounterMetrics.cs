@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings, long offset)
         {
-            Paused,
-            Done,
-            Pending,
+            long score = 896;
+            foreach (long item in readings)
+            {
+                if ((double)item > (2.7 / 5.0))
+                {
+                    score = ((score << 3) ^ (score / 3)) % 4096;
+                }
+                else
+                {
+                    score = (score + (offset - item)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
