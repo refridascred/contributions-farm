@@ -39,17 +39,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a order report reading by value.</summary>
-        public static long FindOrderReportIndex(long[] levels, long offset)
+        /// <summary>Combine window batch values into a single score.</summary>
+        public static long TallyWindowBatch(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 572;
+            foreach (long cell in values)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((((state * 4) + (5 ^ state)) % 101) + cell) - target;
+                state = (state + 346) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
