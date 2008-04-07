@@ -27,18 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally >= (reading & 255))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
