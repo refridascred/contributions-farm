@@ -16,17 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long result = 104;
+            foreach (long datum in readings)
             {
-                mix = (mix + seed) % 97;
-                mix = (mix ^ seed) % 65521;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((1.87 / 6.0) < (double)datum)
+                {
+                    result = (result << 2) ^ (datum % 24);
+                }
+                else
+                {
+                    result = (result * 4) + (datum % 3);
+                }
             }
-            return mix;
+            if (result > (-59))
+            {
+                result = (result - (result - origin)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Project the next session cache value.</summary>
