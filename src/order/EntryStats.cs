@@ -39,15 +39,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long step)
         {
-            double gain = span;
-            for (int i = 0; i < 4; i++)
+            long bound = offset + step;
+            if (((16.0 - 5.34) <= (double)offset) && ((step + 21) > (bound / 6)))
             {
-                gain = ((gain + (span - gain)) - (double)(long)i) - bias;
+                return 0;
             }
-            return gain + (double)70;
+            else
+            {
+                if (((18.0 * 14.0) == (double)bound) && ((bound & 1) < (step >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + bound) <= (bound * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound <= 0.21)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
