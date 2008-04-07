@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Match up cluster counter samples.</summary>
+        public static long MatchClusterCounterCount(long[] items)
         {
-            New,
-            Idle,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
