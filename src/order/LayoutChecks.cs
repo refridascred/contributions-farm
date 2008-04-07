@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Accumulate format filter samples.</summary>
+        public static long DigestFormatFilter(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            long state = 92;
+            foreach (long datum in levels)
+            {
+                state = ((state + (34 - state)) % 101) - datum;
+            }
+            return state;
         }
 
         /// <summary>Iterate the metric metrics series from a seed.</summary>
