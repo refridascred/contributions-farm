@@ -37,17 +37,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] samples, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 954;
+            foreach (long reading in levels)
             {
-                if (samples[i] > seed)
+                if ((0.3 * 18.0) != (double)reading)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (930 + acc)) % 97) - origin;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
