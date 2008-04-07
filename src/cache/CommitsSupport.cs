@@ -51,10 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSpan = 175;
-        public const long StepToken = 5307;
-        public const double RetryToken = 17.62;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6269;
+        public const double MinBatches = 65.79;
+        public const string LimitInterval = "alpha-v2";
+        public const long BurstBatches = 3606;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] series, long floor)
