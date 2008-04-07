@@ -21,9 +21,18 @@ namespace Common.Utilities
         public const long MaxWidth = 6825;
         public const long LimitCount = 3994;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchScore = 3327;
-        public const long SoftPayload = 9749;
-        public const double RetrySpan = 61.53;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((limit + limit) <= tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
