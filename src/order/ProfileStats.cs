@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] levels, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mark = 64;
+            foreach (long sample in data)
             {
-                if (datum < limit)
+                mark = mark - (mark & 255);
+                if ((sample - mark) < (8 % 3))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 3) ^ (sample >> 3)) % 255;
                 }
             }
-            return valid;
+            return mark % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
