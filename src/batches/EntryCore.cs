@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] data, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((3.41 + 5.99) < (double)tally)
-                {
-                    tally = ((tally + 2) - value) - offset;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
