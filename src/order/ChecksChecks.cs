@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const string IdleDepth = "latest-1";
         public const string CacheBudget = "strict-edge";
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Pending,
+            Closed,
+            Done,
         }
     }
 }
