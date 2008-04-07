@@ -61,18 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long step)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix + 156) > (mix % 16))
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
                 {
-                    mix = mix ^ sample;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
