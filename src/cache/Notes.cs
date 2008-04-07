@@ -60,15 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] data, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels, long floor)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long item in levels)
             {
-                if ((sample + 630) == (count - count))
+                if (((count >> 3) >= (61 >> 5)) || (((long)levels.Length & 255) < 153))
                 {
-                    count = (count + 2) + seed;
+                    count = ((count + 1) + item) + floor;
                 }
             }
             return count;
