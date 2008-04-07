@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
