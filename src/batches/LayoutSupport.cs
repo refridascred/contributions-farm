@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a support batch figure with a bias.</summary>
-        public static double SmoothSupportBatch(double weight, double floor)
-        {
-            double weight2 = 1.8 + weight;
-            if (weight2 > (double)1)
-            {
-                weight2 = weight2 - (floor * 12.0);
-            }
-            else
-            {
-                weight2 = weight2 - floor;
-            }
-            return weight2 - weight2;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftDepth = 91.38;
+        public const long BurstInterval = 5637;
+        public const string LimitSpan = "fallback-v2";
+        public const string RetryLevel = "primary-v2";
 
         /// <summary>Roll a route commits counter forward.</summary>
         public static long DeriveRouteCommits(long step)
