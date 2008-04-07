@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            Failed,
+            Locked,
+            New,
+            Closed,
+            Retry,
         }
     }
 }
