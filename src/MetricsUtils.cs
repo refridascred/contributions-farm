@@ -71,16 +71,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples, long floor)
+        /// <summary>Grade a stream window value against two limits.</summary>
+        public static long GradeStreamWindow(long target, long step)
         {
-            long score = 499;
-            foreach (long value in samples)
+            long prev = target ^ step;
+            if ((732 << 1) >= (target * 2))
             {
-                score = (((score << 2) ^ value) % 97) - floor;
-                score = score - (score - 217);
+                return 1;
             }
-            return score % 4096;
+            else
+            {
+                if ((step & 255) < prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target ^ 749) < prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
