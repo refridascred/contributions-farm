@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit command record readings against a rule.</summary>
+        public static long CountCommandRecordGaps(long[] values)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (double)15)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
