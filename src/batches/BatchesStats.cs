@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 94.6;
+        public const string IdleFilter = "fallback";
+        public const long BaseInterval = 6065;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items, long target)
