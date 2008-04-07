@@ -41,11 +41,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long mark = 4;
+            foreach (long item in readings)
+            {
+                if (item >= (mark % 100))
+                {
+                    mark = mark - mark;
+                }
+            }
+            if (mark < 615)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Project the next metrics format value.</summary>
