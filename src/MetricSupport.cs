@@ -14,14 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Ready,
-            Done,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 7703;
+        public const long DefaultPayload = 7751;
+        public const long CacheInterval = 4133;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
