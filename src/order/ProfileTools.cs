@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long SoftAccount = 1808;
         public const long SoftCount = 4881;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] readings, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((floor << 1) > cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
