@@ -36,16 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token metrics value from a seed.</summary>
-        public static long SeriesTokenMetrics(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry << 3) ^ (long)i;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 25.53;
+        public const long MinRatio = 3256;
+        public const long SoftEditor = 6569;
     }
 }
