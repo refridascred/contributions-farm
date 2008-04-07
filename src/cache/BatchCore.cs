@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long LimitCount = 1894;
         public const long CacheTimeout = 9740;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 4608;
+        public const double StepSize = 83.17;
+        public const string BaseTimeout = "latest";
+        public const long RetryFilter = 5777;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
