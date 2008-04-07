@@ -60,10 +60,19 @@ namespace Common.Utilities
         public const double BurstLevel = 87.06;
         public const long BatchSupport = 6121;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 8015;
-        public const long IdleBudget = 630;
-        public const double SoftFactor = 1.54;
-        public const long CacheRatio = 2529;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift >= drift)
+            {
+                drift = (drift - (double)8) - offset;
+            }
+            else
+            {
+                drift = drift + (ratio + 18.0);
+            }
+            return drift - drift;
+        }
     }
 }
