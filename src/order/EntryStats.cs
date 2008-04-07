@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = 215;
+            foreach (long value in values)
             {
-                if (entry >= target)
+                if ((state >= origin) && ((state & 255) != (origin - state)))
                 {
-                    stale = false;
-                    break;
+                    state = state - origin;
+                }
+                else
+                {
+                    state = ((state << 2) ^ value) % 97;
                 }
             }
-            return stale;
+            if (state > 44)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a commits stats.</summary>
