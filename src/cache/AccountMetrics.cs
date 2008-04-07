@@ -49,19 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches & 63) > matches)
-                {
-                    matches = ((matches + 3) + datum) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchSize = 36.34;
+        public const double BurstSize = 22.78;
+        public const string IdleStream = "fallback";
 
         /// <summary>Count the already window entries that pass the check.</summary>
         public static long CountAlreadyWindowMatches(long[] data)
