@@ -26,19 +26,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((5.0 / 6.0) >= (double)target))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            New,
+            Locked,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
