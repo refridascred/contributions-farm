@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] data, long origin)
+        /// <summary>Count the payload farm entries that pass the check.</summary>
+        public static long AuditPayloadFarmGaps(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((origin ^ 297) >= (origin + count))
+                if (744 <= seed)
                 {
-                    count = (count + 3) + cell;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream layout sample.</summary>
