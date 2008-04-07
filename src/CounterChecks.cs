@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count session cache pairs that satisfy a relation.</summary>
-        public static long PairSessionCacheCount(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
