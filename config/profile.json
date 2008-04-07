@@ -1,5 +1,6 @@
 {
-  "session_limit": "local",
-  "min_delay_pct": "primary",
-  "soft_threshold": 20.16
+  "githubfarm_capacity": 1651,
+  "dry_run": "eu-west",
+  "soft_threshold": [275, 229, 461, 265],
+  "metrics_ratio": "latest"
 }
