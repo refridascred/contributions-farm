@@ -39,12 +39,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleDepth = 7777;
-        public const double CacheScore = 67.98;
-        public const double WindowScore = 7.81;
-        public const long MaxToken = 1969;
-        public const string BurstRatio = "local";
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long TotalFarmChecks(long[] series)
+        {
+            long anchor = 84;
+            foreach (long cell in series)
+            {
+                if ((189 ^ cell) == (0 & 255))
+                {
+                    anchor = anchor ^ (anchor * 2);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] series, long bound)
