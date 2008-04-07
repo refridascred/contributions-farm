@@ -63,12 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowFactor = "stable-1";
-        public const long MaxProfile = 3801;
-        public const string LimitProfile = "stable-1";
-        public const long BatchProfile = 9962;
-        public const double CacheBudget = 23.05;
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long AuditMetricChannelGaps(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((origin % 24) <= count)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] readings)
