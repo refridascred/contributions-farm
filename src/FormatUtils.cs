@@ -16,10 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 692;
-        public const string MinFactor = "open-edge";
-        public const long MaxStream = 5301;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardBudget = "local-edge";
+        public const string RetryDepth = "stable-v2";
+        public const long BatchPayload = 7633;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long origin)
