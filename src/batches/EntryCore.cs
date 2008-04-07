@@ -24,19 +24,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long step)
+        /// <summary>Adjust a already editor reading.</summary>
+        public static double BlendAlreadyEditor(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double weight2 = weight - (4.8 / 8.0);
+            if (weight2 < weight2)
             {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 - bias;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - 1.9) + (double)(long)i;
+            }
+            return weight2 + (4.93 / 2.0);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
