@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BatchSession = 722;
         public const double MaxInterval = 48.96;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double bias = (double)(2 + 47);
-            if (bias >= span)
-            {
-                bias = bias - 7.9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + 7.56) + (double)(long)i;
-            }
-            return bias - (ratio * 4.6);
+            Ready,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the batches mode values.</summary>
