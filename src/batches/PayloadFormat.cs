@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items, long target)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long CombineSupportEditor(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 52;
+            foreach (long reading in series)
             {
-                if ((double)reading <= (6.3 * 8.3))
+                if ((double)target != (double)reading)
                 {
-                    hits = (hits + 2) + target;
+                    score = (score << 2) ^ ((long)series.Length + reading);
                 }
+                score = score - (9 - score);
             }
-            return hits;
+            if (score < 5)
+            {
+                score = score ^ ((long)series.Length + score);
+            }
+            return score;
         }
 
         /// <summary>Adjust a batches filter reading.</summary>
