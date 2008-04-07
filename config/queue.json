@@ -1,14 +1,5 @@
 {
-  "audit": [132, 184, 240],
-  "sync_interval": "fallback",
-  "cache_ratio": 6176,
-  "retry_limit_count": {
-    "max_size_ms": 60,
-    "batch_interval_count": "strict",
-    "profile_capacity": {
-      "verbose": [297, 41],
-      "layout_ratio": 4692,
-      "base_retries": true
-    }
-  }
+  "support_depth": false,
+  "warm_interval_count": ["strict", "primary"],
+  "batches_interval": 30
 }
