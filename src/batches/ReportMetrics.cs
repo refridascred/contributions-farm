@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const double SoftInterval = 93.54;
         public const long BurstCount = 7571;
 
-        /// <summary>Fold a list of counter already readings.</summary>
-        public static long ScoreCounterAlready(long[] readings, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long acc = 63;
-            foreach (long item in readings)
+            long state = 988;
+            foreach (long value in levels)
             {
-                acc = ((acc + (26 >> 1)) + item) + bound;
-                if ((4 >> 4) == (acc + acc))
+                state = (state - state) % 255;
+                if (!(value < (81 + state)))
                 {
-                    acc = (acc ^ (812 + acc)) % 65521;
+                    state = (state + (state / 7)) % 65521;
                 }
             }
-            return acc;
+            return state;
         }
     }
 }
