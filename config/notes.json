@@ -1,5 +1,5 @@
 {
-  "checks_timeout": "cached",
-  "report_timeout": "blue",
-  "poll_window_s": true
+  "base_ratio_s": "local",
+  "hard_ratio": 13,
+  "sync_depth": "open"
 }
