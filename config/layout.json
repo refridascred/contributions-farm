@@ -1,7 +1,5 @@
 {
-  "poll_delay": "green",
-  "verbose": "blue",
-  "audit": 95.95,
-  "cache_retries": 100,
-  "base_window": 0.37
+  "queue_delay": "local",
+  "base_capacity": 14,
+  "command_capacity": true
 }
