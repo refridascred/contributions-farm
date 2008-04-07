@@ -13,13 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
