@@ -15,19 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits ^ 760) < (hits & 63))
-                {
-                    hits = ((hits + 1) + datum) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 2.13;
+        public const long BatchSpan = 4807;
+        public const string HardScore = "local";
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] levels)
