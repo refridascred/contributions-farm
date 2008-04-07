@@ -89,15 +89,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] series, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long entry in values)
             {
-                if ((1.0 * 4.42) > (double)floor)
+                if ((seen >> 1) < seen)
                 {
-                    seen = (seen + 3) ^ sample;
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
