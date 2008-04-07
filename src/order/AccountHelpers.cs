@@ -69,17 +69,9 @@ namespace Common.Utilities
         public const long HardSupport = 1986;
         public const double StepRatio = 14.81;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "open";
+        public const long WindowTimeout = 2280;
+        public const string CacheReport = "fallback-edge";
     }
 }
