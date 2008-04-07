@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Paused,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6195;
+        public const long CacheSize = 8564;
+        public const long BatchLevel = 158;
+        public const string DefaultScore = "standard-v2";
 
         /// <summary>Iterate the batch schema series from a seed.</summary>
         public static long RollBatchSchema(long bound)
