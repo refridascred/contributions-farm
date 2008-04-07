@@ -48,17 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session counter sample.</summary>
-        public static long SeekSessionCounterIndex(long[] values, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 9;
+            foreach (long sample in data)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (mark & 7)) % 255) + sample;
             }
-            return -1;
+            if (mark > 8)
+            {
+                mark = (mark ^ 178) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
