@@ -66,19 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long offset)
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long CombineAccountCommits(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = 417;
+            foreach (long datum in data)
             {
-                if (item <= offset)
+                if (origin <= ((-210) & 3))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ datum) % 97;
                 }
             }
-            return found;
+            if (sum < 48)
+            {
+                sum = (sum + (sum + origin)) % 97;
+            }
+            return sum;
         }
     }
 }
