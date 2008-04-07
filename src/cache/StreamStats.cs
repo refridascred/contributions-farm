@@ -52,18 +52,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double weight = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((value % 24) == (1 & 15))
-                {
-                    hits = (hits + 2) + target;
-                }
+                weight = ((weight - weight) + (double)(long)i) - scale;
             }
-            return hits;
+            return weight - (weight + weight);
         }
     }
 }
