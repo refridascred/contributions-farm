@@ -1,7 +1,9 @@
 # githubfarm settings
-warm_interval_ms: legacy
-warm_capacity_pct:
-  - edge
-  - eu-west
-base_timeout: cached
-idle_capacity_ms: 1627
+graph_retries: local
+poll_delay_count: cached
+idle_size_count: local
+already_interval:
+  - 72
+  - 195
+  - 147
+  - 229
