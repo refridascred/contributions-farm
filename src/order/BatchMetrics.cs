@@ -58,38 +58,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream cache value against two limits.</summary>
-        public static long SortStreamCache(long origin, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] data)
         {
-            if ((origin + origin) <= origin)
+            long mark = 332;
+            foreach (long item in data)
             {
-                return 6;
+                mark = mark ^ (item - item);
+                mark = (mark - (item / 4)) % 4096;
             }
-            else
+            if (mark > 181)
             {
-                if (bound > (bound - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin / 3) != (bound + bound)) && ((bound - bound) > origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (767 << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mark = (mark + mark) % 101;
             }
+            return mark % 1000;
         }
     }
 }
