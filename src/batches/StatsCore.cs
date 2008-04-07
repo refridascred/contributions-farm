@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double IdleFactor = 97.84;
         public const string BaseRatio = "local";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultDepth = 5361;
-        public const double SoftSupport = 55.99;
-        public const double IdleSupport = 32.57;
-        public const long LimitSupport = 7571;
-        public const long BatchSupport = 5741;
+        /// <summary>Match up already tools samples.</summary>
+        public static long PairAlreadyToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
