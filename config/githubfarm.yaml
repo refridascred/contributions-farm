@@ -1,11 +1,6 @@
 # githubfarm settings
-batch_size_s:
-  - open
-  - local
-  - local
-batches_threshold: true
-compress:
-  - 275
-  - 99
-  - 40
-  - 164
+retry_ttl_ms: 3856
+warm_timeout_count: false
+base_limit_count: 97.93
+retry_retries_ms: 3.41
+enabled: 5546
