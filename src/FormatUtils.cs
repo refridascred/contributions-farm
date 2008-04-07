@@ -24,19 +24,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double bias)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double scale = (double)(4 / 4);
-            if (scale > scale)
-            {
-                scale = ((scale - (double)0) + gain) - bias;
-            }
-            else
-            {
-                scale = scale + (double)946;
-            }
-            return scale + 8.83;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
