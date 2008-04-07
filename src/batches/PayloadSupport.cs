@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values, long origin)
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long AuditMetricsBatchesHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((long)values.Length - origin) > (seen - 883))
+                if ((42 + datum) >= datum)
                 {
-                    seen = (seen + 3) + sample;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
