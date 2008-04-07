@@ -60,21 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Compare every pair of queue buffer readings.</summary>
+        public static long PairQueueBufferCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 4)
+                    if ((readings[i] + readings[j]) != 2)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the format filter entries that pass the check.</summary>
