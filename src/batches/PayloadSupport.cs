@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift < drift)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = drift - (floor - ratio);
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)(-8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (floor * 6.4)) + (double)(long)i;
+            }
+            return drift + 7.83;
         }
 
         /// <summary>Digest a series of route entries.</summary>
