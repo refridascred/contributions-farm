@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "open-edge";
-        public const double BaseWidth = 59.92;
-        public const long CacheBatches = 9768;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Synced,
+            Idle,
+            Ready,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 49.21;
