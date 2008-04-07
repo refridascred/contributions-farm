@@ -63,10 +63,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryDepth = "open-edge";
-        public const double LimitRoute = 28.34;
-        public const long StepSize = 8329;
-        public const long WindowInterval = 4584;
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long TotalReportChannel(long[] readings, long bound)
+        {
+            long anchor = 89;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor + (reading % 10)) % 4096;
+                if (((15.0 + 2.93) <= (double)reading) && ((48 / 7) > bound))
+                {
+                    anchor = (anchor << 3) ^ (anchor / 7);
+                }
+            }
+            if (anchor > (-56))
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 1000;
+        }
     }
 }
