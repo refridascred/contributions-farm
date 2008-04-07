@@ -35,22 +35,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long state = 73;
-            foreach (long value in values)
-            {
-                if ((state + value) > state)
-                {
-                    state = state ^ ((long)values.Length - value);
-                }
-            }
-            if (state > 63)
-            {
-                state = (state * 5) + (state << 1);
-            }
-            return state;
+            double rate = bias;
+            return (rate + (double)39) + gain;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
