@@ -37,12 +37,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
             public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
         }
     }
 }
