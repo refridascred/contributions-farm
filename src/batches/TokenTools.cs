@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long CacheBuffer = 1153;
         public const long MaxBuffer = 5072;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool CheckLayoutWindowRange(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
