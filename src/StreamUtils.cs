@@ -40,17 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
