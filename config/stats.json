@@ -1,11 +1,9 @@
 {
-  "enabled": ["stable", "blue"],
-  "dry_run": 26.98,
-  "sync_interval_s": {
-    "base_retries_ms": 42,
-    "command_ttl": "latest",
-    "poll_retries_count": "staging",
-    "max_limit": [265, 221],
-    "burst_window_s": 1789
+  "burst_ratio": true,
+  "cache_depth": false,
+  "cache_size_ms": {
+    "route_limit": 30,
+    "soft_interval_ms": 63,
+    "min_retries": "edge"
   }
 }
