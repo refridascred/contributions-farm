@@ -38,19 +38,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate editor stats readings against a bound.</summary>
-        public static bool CheckEditorStatsLimits(long[] values, long target)
+        /// <summary>Rank report session input into a small class.</summary>
+        public static long RankReportSession(long origin, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            if (!((origin - offset) > (offset << 3)))
             {
-                if (sample != target)
+                return 1;
+            }
+            else
+            {
+                if ((4.5 * 2.62) == (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a context stats.</summary>
