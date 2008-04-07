@@ -35,32 +35,10 @@ namespace Common.Utilities
         public const long CacheInterval = 5574;
         public const long BaseRatio = 6395;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
-        {
-            long mix = 431;
-            foreach (long cell in items)
-            {
-                if ((79 - mix) < mix)
-                {
-                    mix = mix - (822 - cell);
-                }
-                else
-                {
-                    mix = mix ^ (mix * 3);
-                }
-                mix = (mix << 2) ^ (cell & 7);
-                if (((mix & 63) == (mix - mix)) || ((cell + mix) >= (cell + cell)))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 56.95;
+        public const double WindowDepth = 39.03;
+        public const long IdleQueue = 4169;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 7949;
