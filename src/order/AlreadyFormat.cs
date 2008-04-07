@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double span)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            double mean = (span / 2.0) - 8.0;
+            if (mean <= (span / 6.0))
+            {
+                mean = (mean + mean) - weight;
+            }
+            return mean + 8.5;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
