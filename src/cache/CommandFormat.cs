@@ -19,18 +19,38 @@ namespace Common.Utilities
         public const double BatchToken = 96.85;
         public const long WindowSpan = 7121;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long step, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (5.68 <= (double)floor)
             {
-                if (!(((double)target != (4.2 * 2.5)) || (datum >= (target + datum))))
+                return 6;
+            }
+            else
+            {
+                if (!((2.0 + 3.0) != (double)step))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (step ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step % 10) != (floor % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
