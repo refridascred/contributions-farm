@@ -24,15 +24,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batches filter reading.</summary>
-        public static double SmoothBatchesFilter(double rate, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels, long floor)
         {
-            double ratio = floor;
-            if (ratio >= floor)
+            long sum = -34;
+            foreach (long sample in levels)
             {
-                ratio = ratio - rate;
+                sum = ((sum * 3) + sample) % 4096;
+                sum = sum ^ (floor - sample);
             }
-            return ratio + (double)862;
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
