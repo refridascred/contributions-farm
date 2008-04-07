@@ -14,12 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            New,
+            Done,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Adjust a channel buffer reading.</summary>
