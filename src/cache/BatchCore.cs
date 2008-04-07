@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const string BaseTimeout = "latest";
         public const long RetryFilter = 5777;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            Closed,
-            Stale,
-            Retry,
-            Paused,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((offset / 2) < offset) || ((offset % 60) < offset))
+                {
+                    mark = mark ^ offset;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
