@@ -63,20 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = 438;
-            foreach (long entry in values)
-            {
-                mark = ((mark * 4) + (entry ^ mark)) % 65521;
-                mark = (mark * 5) + (entry - entry);
-            }
-            if (mark < 83)
-            {
-                mark = mark - (mark % 3);
-            }
-            return mark % 4096;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
