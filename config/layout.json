@@ -1,7 +1,10 @@
 {
-  "compress": [398, 398, 118],
-  "batch_threshold": 500,
-  "readonly": 7.03,
-  "batch_ttl_ms": false,
-  "stream_ttl": 11.86
+  "flush_window": true,
+  "sync_ttl_count": 8684,
+  "batch_ratio": "primary",
+  "soft_window_pct": {
+    "burst_timeout": "legacy",
+    "hard_threshold": 89.34,
+    "buffer_ratio": true
+  }
 }
