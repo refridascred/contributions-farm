@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 70.63;
+        public const long StepSize = 8955;
+        public const long BatchScore = 8992;
+        public const string BurstProfile = "latest-v2";
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] readings, long origin)
