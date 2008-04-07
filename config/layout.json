@@ -1,10 +1,7 @@
 {
-  "flush_window": true,
-  "sync_ttl_count": 8684,
-  "batch_ratio": "primary",
-  "soft_window_pct": {
-    "burst_timeout": "legacy",
-    "hard_threshold": 89.34,
-    "buffer_ratio": true
-  }
+  "poll_delay": "green",
+  "verbose": "blue",
+  "audit": 95.95,
+  "cache_retries": 100,
+  "base_window": 0.37
 }
