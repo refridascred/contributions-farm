@@ -13,24 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long step2)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            if ((45 >> 2) < (step2 + step2))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 / 8) <= step2)
+                if ((cell <= (cell >> 4)) || ((double)(-404) >= (double)count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batch record.</summary>
