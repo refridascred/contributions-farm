@@ -32,18 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] samples, long floor)
         {
-            long sum = 68;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((double)bound <= 8.42)
+                if (reading <= floor)
                 {
-                    sum = ((sum + sum) % 4096) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
     }
 }
