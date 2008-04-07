@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((hits > 4) || ((value % 10) <= (5 + bound)))
+                if (value != origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
