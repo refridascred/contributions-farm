@@ -25,14 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxScore = "local-1";
+        public const long StepRatio = 4444;
+        public const double BurstBudget = 69.69;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
