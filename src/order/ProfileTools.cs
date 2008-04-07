@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit commits queue readings against a rule.</summary>
-        public static long CountCommitsQueueGaps(long[] values, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((seed << 3) <= (seed / 6)))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
