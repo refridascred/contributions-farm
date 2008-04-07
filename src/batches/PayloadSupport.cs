@@ -36,27 +36,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long mark = 9;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ ((-65) / 2)) - floor;
-                if ((2.0 + 10.0) == (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark * 4) + (620 % 100);
-                }
-                else
-                {
-                    mark = mark + ((-7) >> 2);
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 4)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            return tally;
         }
     }
 }
