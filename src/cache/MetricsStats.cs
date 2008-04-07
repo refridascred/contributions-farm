@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const double HardContributi = 45.98;
         public const string BurstWidth = "strict";
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] series, long target)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (585 < tally)
+                {
+                    tally = ((tally + 2) - value) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
