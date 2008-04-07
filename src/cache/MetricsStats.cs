@@ -62,15 +62,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long origin)
         {
-            long mark = -6;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (reading - mark)) % 65521;
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
