@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < step)
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
