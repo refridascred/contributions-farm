@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (levels[i] > origin)
+                if ((3.41 + 5.99) < (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - value) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
