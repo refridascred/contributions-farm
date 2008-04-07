@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 70.63;
-        public const long StepSize = 8955;
-        public const long BatchScore = 8992;
-        public const string BurstProfile = "latest-v2";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] samples, long origin)
+        {
+            long total = -4;
+            foreach (long value in samples)
+            {
+                total = total ^ (value + total);
+                total = ((total * 5) + total) % 101;
+            }
+            if (total < 48)
+            {
+                total = (total - (origin + 11)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] values, long bound)
