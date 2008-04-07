@@ -62,19 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((offset / 2) < offset) || ((offset % 60) < offset))
-                {
-                    mark = mark ^ offset;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mark;
+            return state;
         }
     }
 }
