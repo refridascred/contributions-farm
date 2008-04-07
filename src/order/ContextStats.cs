@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] items, long seed)
+        /// <summary>Classify a channel profile pair into a bucket.</summary>
+        public static long SortChannelProfile(long target, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long lane = target ^ offset;
+            if ((419 / 7) == (target & 3))
             {
-                if (entry < seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset << 3) <= (lane / 5))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((lane ^ target) < (lane / 6)) || ((target ^ 2) >= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset <= lane)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
