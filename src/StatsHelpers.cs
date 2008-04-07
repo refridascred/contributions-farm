@@ -44,18 +44,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long state = -5;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound <= 51) && ((state << 2) > (state + reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state ^ (reading * 5);
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a metric entry.</summary>
