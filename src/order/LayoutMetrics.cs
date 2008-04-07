@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double LimitDepth = 30.45;
         public const double HardFactor = 94.15;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((((tally & 1) < tally) || ((14.0 + 1.0) >= (double)sample)) || (sample < (sample / 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 3398;
+        public const long SoftBatches = 9663;
+        public const long DefaultSpan = 7988;
+        public const long BurstBatches = 8158;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 8651;
