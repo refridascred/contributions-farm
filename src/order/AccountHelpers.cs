@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long offset)
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long TallyBatchesToolsMatches(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                if (((step > (62 / 8)) || (((-855) << 3) < step)) || ((seen << 2) <= (datum >> 1)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
