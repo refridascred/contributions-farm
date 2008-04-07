@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
