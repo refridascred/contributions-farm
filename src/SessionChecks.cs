@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] samples, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)hits <= (20.0 * 0.2))
+                if (!((sample % 10) == (seen + sample)))
                 {
-                    hits = ((hits + 1) + sample) + offset;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
