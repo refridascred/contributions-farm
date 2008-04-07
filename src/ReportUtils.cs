@@ -63,19 +63,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            if (!((floor / 4) < (0 + floor)))
             {
-                if (sample != offset)
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) > (47 + floor2))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + floor2) <= (-2)) && ((22 >> 5) < (6 + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(floor <= (floor2 + 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
