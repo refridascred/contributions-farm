@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((step + 7) >= (step & 7)) || ((mix - (long)i) > (72 / 5)))
-                {
-                    mix = ((mix * 5) + step) % 97;
-                    continue;
-                }
-                if (((long)i < mix) || ((mix / 8) >= (mix * 2)))
-                {
-                    mix = ((mix * 5) + (long)i) % 1000;
-                    break;
-                }
-                if ((mix + step) <= step)
-                {
-                    mix = ((mix << 3) ^ ((long)i & 15)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7529;
+        public const double BaseLevel = 71.74;
+        public const long IdleLevel = 3563;
+        public const long HardDepth = 5506;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 961;
