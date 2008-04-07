@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = 64;
+            foreach (long sample in readings)
             {
-                if ((value + count) <= (count ^ value))
-                {
-                    count = count + 2;
-                }
+                result = ((result << 2) ^ (7 + 414)) ^ sample;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
