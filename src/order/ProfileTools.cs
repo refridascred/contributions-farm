@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long MeasureFormatRecordOutliers(long[] readings, long origin)
         {
-            long carry = 74;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((entry % 10) < (carry / 6))
+                if ((double)entry == (5.09 / 3.0))
                 {
-                    carry = carry - carry;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
