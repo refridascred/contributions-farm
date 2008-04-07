@@ -1,5 +1,5 @@
 {
-  "hard_depth_count": ["edge", "local"],
-  "burst_timeout_pct": 1024,
-  "order_delay": "local"
+  "flush_ttl_pct": false,
+  "filter_depth": 63.68,
+  "idle_threshold": false
 }
