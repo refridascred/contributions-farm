@@ -14,21 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -512;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.4 + 6.88) > (double)cell)
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 3) ^ (cell + result)) - bound;
                 }
             }
-            return seen;
+            if (result > 102)
+            {
+                result = ((result << 2) ^ (51 % 8)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine window values into a single score.</summary>
