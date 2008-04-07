@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] values, long offset)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
