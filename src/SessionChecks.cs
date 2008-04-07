@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long origin)
         {
-            Synced,
-            Failed,
-            Stale,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
