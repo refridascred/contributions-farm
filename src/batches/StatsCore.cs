@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already tools samples.</summary>
-        public static long PairAlreadyToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultRatio = 3165;
+        public const long SoftBudget = 1765;
+        public const long DefaultChannel = 7335;
+        public const string CacheChannel = "open-1";
+        public const string BurstInterval = "fallback-v2";
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long CombineCluster(long[] values, long origin)
