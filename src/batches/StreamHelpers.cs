@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 18.59;
-        public const long MinBudget = 2613;
-        public const double IdleFarm = 76.2;
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items)
+        {
+            long anchor = 95;
+            foreach (long sample in items)
+            {
+                if ((anchor <= (79 + anchor)) && ((double)sample <= (0.63 + 2.0)))
+                {
+                    anchor = anchor - (811 + anchor);
+                }
+            }
+            if (anchor > 85)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank format command input into a small class.</summary>
         public static long SortFormatCommand(long origin, long floor)
