@@ -61,18 +61,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] readings, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits <= datum)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
