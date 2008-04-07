@@ -47,22 +47,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] levels)
         {
-            long carry = -771;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((value - value) > (35 - carry))
+                if ((50 ^ 81) < matches)
                 {
-                    carry = carry ^ (value - carry);
-                }
-                else
-                {
-                    carry = (carry - (value - 4)) % 65521;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
