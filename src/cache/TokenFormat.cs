@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Locked,
-            Queued,
-            Retry,
-            Ready,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepFactor = "latest-v2";
+        public const long HardFactor = 312;
+        public const double MaxBatches = 97.74;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long limit)
