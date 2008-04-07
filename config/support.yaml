@@ -1,13 +1,13 @@
 # support settings
-strict:
-  - 108
-  - 470
-  - 217
-max_timeout: 78.1
-soft_window_ms:
-  - edge
-  - standard
-  - standard
-  - open
-support_capacity: legacy
-cache_limit: open
+flush_depth_count:
+  - 51
+  - 463
+  - 391
+retry_threshold: 83
+hard_depth:
+  filter_window:
+    - eu-west
+    - open
+    - fallback
+  default_threshold_ms: 81.23
+  channel_size: local
