@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long result = 308;
-            foreach (long entry in samples)
-            {
-                result = (((result << 2) ^ step) % 97) ^ entry;
-            }
-            if (result > (-1))
-            {
-                result = ((result << 3) ^ 651) % 97;
-            }
-            return result;
+            Pending,
+            Queued,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
