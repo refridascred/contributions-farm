@@ -1,13 +1,7 @@
 {
-  "strict": 27.9,
-  "compress": 96.69,
-  "queue_depth": 100,
-  "hard_depth_ms": {
-    "base_ratio_pct": "cached",
-    "layout_threshold": 30,
-    "compress": [494, 438],
-    "enabled": ["standard", "blue", "open"]
-  },
-  "token_limit": ["stable", "eu-west"],
-  "hard_ttl_s": 779
+  "warm_limit_ms": "blue",
+  "layout_capacity": ["cached", "blue"],
+  "session_delay": "open",
+  "verbose": true,
+  "record_ttl": ["staging", "open", "local", "legacy"]
 }
