@@ -25,17 +25,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a checks notes reading by value.</summary>
-        public static long LookupChecksNotesIndex(long[] samples, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Locked,
+            Active,
+            Synced,
         }
     }
 }
