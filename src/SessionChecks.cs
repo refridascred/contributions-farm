@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSize = 2059;
+        public const double MinSpan = 54.19;
+        public const double MaxScore = 27.81;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 1413;
