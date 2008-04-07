@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double span)
+        /// <summary>Measure how many window record samples are out of range.</summary>
+        public static long CountWindowRecordOutliers(long[] data)
         {
-            double drift = span;
-            if (drift < (double)7)
+            long count = 0;
+            foreach (long datum in data)
             {
-                drift = drift - (double)63;
+                if ((double)count <= (8.2 - 1.3))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift - rate)) + (double)(long)i;
-            }
-            return drift + 1.9;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
