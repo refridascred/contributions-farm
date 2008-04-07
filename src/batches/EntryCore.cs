@@ -24,19 +24,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a already editor reading.</summary>
-        public static double BlendAlreadyEditor(double weight, double bias)
+        /// <summary>Project the next contributi channel value.</summary>
+        public static double BlendContributiChannel(double ratio, double span)
         {
-            double weight2 = weight - (4.8 / 8.0);
-            if (weight2 < weight2)
+            double gain = ratio;
+            if (gain <= (ratio * 9.67))
             {
-                weight2 = weight2 - bias;
+                gain = gain + (13.0 / 9.0);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight2 = (weight2 - 1.9) + (double)(long)i;
+                gain = gain + gain;
             }
-            return weight2 + (4.93 / 2.0);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - (double)258;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
