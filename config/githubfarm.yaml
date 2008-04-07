@@ -1,4 +1,7 @@
 # githubfarm settings
-max_threshold_ms: strict
-base_timeout_ms: legacy
-hard_delay: false
+hard_threshold_s: false
+cache_ratio: 9.7
+farm_ttl:
+  - strict
+  - local
+  - legacy
