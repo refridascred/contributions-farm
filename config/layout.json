@@ -1,16 +1,7 @@
 {
-  "verbose": 0.3,
-  "default_depth": true,
-  "sync_interval": {
-    "poll_interval_ms": "legacy",
-    "verbose": 1330,
-    "report_limit": "latest"
-  },
-  "enabled": {
-    "persist": 54.92,
-    "notes_timeout": 20.19,
-    "strict": ["stable", "latest", "blue"]
-  },
-  "retry_threshold_s": 1024,
-  "burst_threshold": 2403
+  "compress": [398, 398, 118],
+  "batch_threshold": 500,
+  "readonly": 7.03,
+  "batch_ttl_ms": false,
+  "stream_ttl": 11.86
 }
