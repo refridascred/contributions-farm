@@ -27,18 +27,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit checks filter readings against a rule.</summary>
-        public static long CountChecksFilterGaps(long[] series, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample - hits) < (hits % 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - origin;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
