@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            double drift = weight - 9.0;
-            if (drift >= (span / 8.0))
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (drift * 13.0);
+                total = ((total << 2) ^ total) % 4096;
+                total = (total + (total >> 2)) % 65521;
+                total = (total ^ total) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift / 3.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Hold a window record.</summary>
