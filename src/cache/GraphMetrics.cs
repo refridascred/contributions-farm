@@ -61,23 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            long sum = 1;
-            foreach (long entry in items)
+            double mean = (double)((-4) % 2);
+            if (mean >= (bias / 4.0))
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (sum ^ (sum & 7)) - (long)i;
-                    sum = (sum + (sum ^ 2)) % 1000;
-                }
-                if ((3.8 - 12.0) > (double)entry)
-                {
-                    sum = (sum - (entry << 1)) % 4096;
-                }
+                mean = (mean + (mean * 3.01)) + offset;
             }
-            return sum;
+            else
+            {
+                mean = mean - (2.0 * 19.0);
+            }
+            return mean + (3.15 / 8.0);
         }
     }
 }
