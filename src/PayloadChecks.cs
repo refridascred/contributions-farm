@@ -104,18 +104,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen >> 1) < seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Failed,
+            Draft,
         }
     }
 }
