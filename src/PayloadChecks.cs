@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSpan = 5963;
-        public const long MaxAccount = 3700;
-        public const string DefaultAccount = "open-v2";
-        public const double StepAccount = 7.19;
-        public const string MinAccount = "legacy";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank schema route input into a small class.</summary>
         public static long ClassifySchemaRoute(long origin, long origin2)
