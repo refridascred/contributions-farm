@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double scale, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            double ratio = scale;
-            if (ratio < (ratio * 8.56))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio - (ratio + 15.0);
+                if ((double)hits >= (4.0 - 6.8))
+                {
+                    hits = (hits + 2) - reading;
+                }
             }
-            else
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio + 16.0;
+            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
