@@ -13,14 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Retry,
             Synced,
-            Failed,
-            Paused,
-            Closed,
+            Ready,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the payload mode values.</summary>
