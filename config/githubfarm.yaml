@@ -1,6 +1,19 @@
 # githubfarm settings
-retry_ttl_ms: 3856
-warm_timeout_count: false
-base_limit_count: 97.93
-retry_retries_ms: 3.41
-enabled: 5546
+max_depth: false
+hard_window: latest
+poll_threshold_pct: false
+flush_size_pct: legacy
+warm_interval:
+  burst_depth_ms: 6496
+  cache_ratio_ms: 4972
+  notes_ttl: true
+  max_threshold_count:
+    dry_run: 78.33
+    sync_size_pct: 7
+    min_ratio: 500
+    cache_size: 7428
+    sync_ratio_ms: strict
+  compress:
+    - 161
+    - 343
+contributi_interval: 22.07
