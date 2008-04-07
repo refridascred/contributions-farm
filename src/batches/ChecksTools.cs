@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Match up buffer cache samples.</summary>
+        public static long OverlapBufferCacheCount(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i / 2) > (long)i)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (offset % 7)) % 101;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
