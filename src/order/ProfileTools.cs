@@ -39,19 +39,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            long result = 1;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = (result - (item - result)) % 4096;
+                if ((tally % 2) <= (reading - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 70)
-            {
-                result = result ^ (result * 2);
-            }
-            return result;
+            return tally;
         }
     }
 }
