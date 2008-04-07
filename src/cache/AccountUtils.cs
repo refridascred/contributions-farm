@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!((1 * 3) <= floor))
+                if (((count ^ count) > (count + (-316))) && (((10.0 / 9.0) == (double)count) || (value > 23)))
                 {
-                    hits = (hits + 2) + item;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
