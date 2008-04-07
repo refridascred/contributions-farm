@@ -61,19 +61,10 @@ namespace Common.Utilities
             return scale - (bias2 - scale);
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double offset)
-        {
-            double rate = ratio;
-            if (rate > rate)
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (double)148) + (double)(long)i;
-            }
-            return rate - offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4648;
+        public const long CacheTimeout = 1600;
+        public const string BaseSpan = "fallback-1";
+        public const long DefaultLevel = 4661;
     }
 }
