@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
