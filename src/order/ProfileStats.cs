@@ -48,16 +48,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix << 3) ^ ((long)i - bound);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSpan = 1352;
+        public const double IdleSpan = 9.43;
+        public const long WindowCache = 668;
+        public const double RetryCache = 84.57;
     }
 }
