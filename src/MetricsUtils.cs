@@ -22,22 +22,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of support profile readings.</summary>
-        public static long FoldSupportProfile(long[] readings, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = 6;
-            foreach (long reading in readings)
-            {
-                if ((double)floor >= (6.7 / 6.0))
-                {
-                    mix = (((mix * 5) + 2) % 101) + reading;
-                }
-                if ((double)floor == (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Synced,
+            Active,
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the stats phase values.</summary>
