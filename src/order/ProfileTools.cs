@@ -19,18 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] readings, long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor << 1) > cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
