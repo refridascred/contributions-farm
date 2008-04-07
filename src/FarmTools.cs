@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const double SoftBuffer = 96.95;
         public const long MaxRatio = 1758;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (long)i) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a cluster info.</summary>
