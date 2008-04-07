@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] readings, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step - step) > (datum << 2))
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
