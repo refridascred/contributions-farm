@@ -28,38 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            if (((18.0 / 3.0) < (9.8 * 2.1)) || ((double)limit <= (0.75 * 1.0)))
+            long result = 4;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(2 <= (seed * 4)))
+                result = ((result << 3) ^ (datum + datum)) % 65521;
+                if ((double)datum != (5.0 - 7.8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - 237) != (seed & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-516) - 7) >= (limit & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
