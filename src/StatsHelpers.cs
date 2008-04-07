@@ -31,19 +31,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine channel graph values into a single score.</summary>
-        public static long FoldChannelGraph(long[] values)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long limit)
         {
-            long carry = 9;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (item % 10)) % 97;
-                if (item < (item >> 1))
+                if (series[i] >= limit)
                 {
-                    carry = (carry << 3) ^ (item ^ item);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Roll a counter editor counter forward.</summary>
