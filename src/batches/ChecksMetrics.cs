@@ -47,14 +47,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Ready,
-            Draft,
-            Locked,
-            Paused,
-            New,
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
