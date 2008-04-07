@@ -1,16 +1,5 @@
 # entry settings
-retry_timeout_pct:
-  batch_timeout_pct: blue
-  min_window_pct: 2806
-  filter_depth:
-    - 288
-    - 296
-    - 381
-retry_depth:
-  - 344
-  - 120
-  - 261
-  - 335
-record_depth: 100
-graph_size: 3401
-record_ttl: true
+poll_limit_s: open
+filter_ratio: strict
+metrics_interval: true
+enabled: strict
