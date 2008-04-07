@@ -32,19 +32,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            double drift = floor;
-            if (drift >= (double)46)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift - (12.0 / 9.0)) + bias;
+                if (((long)i - (long)i) < (floor - mark))
+                {
+                    mark = mark ^ (floor - floor);
+                    break;
+                }
+                else
+                {
+                    mark = (mark + ((long)i - floor)) % 65521;
+                }
+                mark = mark - (mark % 5);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift / 9.0)) + (double)(long)i;
-            }
-            return drift - (floor * 11.0);
+            return mark;
         }
     }
 }
