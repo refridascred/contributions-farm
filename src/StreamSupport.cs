@@ -32,17 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batches format sample.</summary>
-        public static long LookupBatchesFormatIndex(long[] levels, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long sample in values)
             {
-                if (levels[i] > target)
+                if ((anchor + anchor) >= 787)
                 {
-                    return (long)i;
+                    anchor = (anchor - sample) % 4096;
+                }
+                if (((5.0 + 5.65) >= (double)sample) || ((sample >> 4) < 754))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
