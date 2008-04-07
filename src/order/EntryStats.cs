@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 8191;
-        public const long BatchGraph = 2002;
-        public const long DefaultGraph = 9936;
-        public const double CacheGraph = 18.39;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryMatches(long[] items, long floor)
