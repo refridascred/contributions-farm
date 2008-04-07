@@ -45,12 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > origin)
+                if (series[i] >= limit)
                 {
                     return (long)i;
                 }
