@@ -46,17 +46,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] data, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = step + offset;
+            if ((double)542 != (double)step)
             {
-                if (data[i] < offset)
+                return 6;
+            }
+            else
+            {
+                if ((74 >> 3) <= (step ^ offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (step < slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
