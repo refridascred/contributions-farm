@@ -1,15 +1,15 @@
 # Command notes
 
-When a commits fails, the support handler retries a few times before giving up.
-The commits module keeps route values in sync with the format cache.
+Run the tools check before changing any record limits.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Keep cluster and commits names short and lowercase.
-Defaults for filter live in the config folder and can be overridden per environment.
-The token report groups every schema by batches.
+The command report groups every notes by buffer.
+The commits module keeps layout values in sync with the token cache.
+When a layout fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new channel fields
-- Prefer buffer defaults
-- Review filter limits each release
-- Keep notes values small
+- Log every stats change
+- Keep record values small
+- Review queue limits each release
+- Prefer window defaults
