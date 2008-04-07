@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 334;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value << 1) >= result)
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ origin) % 65521;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
