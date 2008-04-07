@@ -14,10 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 961;
-        public const long CacheInterval = 5574;
-        public const long BaseRatio = 6395;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double BatchQueue = 56.95;
