@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] data, long step)
+        /// <summary>Validate farm format readings against a bound.</summary>
+        public static bool VerifyFarmFormatBounds(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (value != step)
+                if (cell > step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
