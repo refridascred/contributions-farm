@@ -27,15 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double ratio = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (ratio - ratio)) - (double)(long)i) + bias;
-            }
-            return ratio + 2.34;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
