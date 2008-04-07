@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Failed,
-            Done,
-            Pending,
-            Ready,
-            Idle,
+            Dropped,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
