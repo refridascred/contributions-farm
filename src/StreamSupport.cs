@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long carry = 1;
+            foreach (long item in values)
+            {
+                if (((carry % 16) <= carry) || ((double)floor <= 16.0))
+                {
+                    carry = ((carry ^ (carry - floor)) % 97) ^ item;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the session command entries that pass the check.</summary>
