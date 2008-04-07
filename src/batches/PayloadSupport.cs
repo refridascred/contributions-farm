@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const long StepMetric = 1097;
         public const string BatchMetric = "open";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
-        {
-            double drift = ratio;
-            if (drift < drift)
-            {
-                drift = drift - (floor - ratio);
-            }
-            else
-            {
-                drift = drift - (double)(-8);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (floor * 6.4)) + (double)(long)i;
-            }
-            return drift + 7.83;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxDepth = 6494;
+        public const long SoftFilter = 6486;
+        public const long LimitLevel = 5811;
+        public const long MinFilter = 8848;
+        public const string BurstFilter = "cached-edge";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] data, long floor)
