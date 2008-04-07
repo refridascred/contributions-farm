@@ -42,15 +42,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long score = 6;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - (item + item)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
