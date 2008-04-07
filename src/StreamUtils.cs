@@ -85,17 +85,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
