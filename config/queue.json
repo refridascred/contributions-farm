@@ -1,5 +1,8 @@
 {
-  "readonly": 6198,
-  "context_delay": false,
-  "audit": "eu-west"
+  "min_timeout_count": 5.17,
+  "record_ratio": false,
+  "min_interval_count": 100,
+  "base_interval": [453, 52, 166, 201],
+  "default_threshold_s": "green",
+  "readonly": "primary"
 }
