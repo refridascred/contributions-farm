@@ -47,12 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "fallback-v2";
+        public const long BatchCount = 6079;
+        public const long RetryCount = 9304;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double CacheSize = 20.05;
