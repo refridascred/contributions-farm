@@ -51,11 +51,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6269;
-        public const double MinBatches = 65.79;
-        public const string LimitInterval = "alpha-v2";
-        public const long BurstBatches = 3606;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] series, long floor)
