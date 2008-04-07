@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches >= (limit - limit)) || ((limit - matches) < (limit + matches)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
