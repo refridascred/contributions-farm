@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data)
-        {
-            long carry = -285;
-            foreach (long datum in data)
-            {
-                if (((carry ^ datum) < datum) || ((datum * 4) > carry))
-                {
-                    carry = (carry - datum) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry << 2)) % 255;
-                }
-                if ((datum - carry) > (carry - (long)data.Length))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheCount = 2185;
+        public const long BatchPayload = 7262;
+        public const double MaxInterval = 77.94;
+        public const long WindowPayload = 2554;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaRange(long[] items, long floor)
