@@ -49,13 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] items, long step)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (step <= (value << 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
