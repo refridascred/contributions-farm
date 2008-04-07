@@ -64,22 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + cell) <= (cell % 60))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
