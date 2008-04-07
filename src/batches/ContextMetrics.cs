@@ -46,21 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > limit)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
