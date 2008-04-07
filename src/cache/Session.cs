@@ -49,19 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double span)
+        /// <summary>Count context support pairs that satisfy a relation.</summary>
+        public static long OverlapContextSupportCount(long[] samples)
         {
-            double weight = (gain / 7.0) + (gain - 2.37);
-            if (weight < gain)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (weight - gain);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (span - 3.6)) + (double)(long)i;
-            }
-            return weight - (double)2;
+            return count;
         }
     }
 }
