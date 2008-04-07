@@ -1,5 +1,8 @@
 # entry settings
-commits_limit: 30
-githubfarm_depth: edge
-warm_timeout_pct: stable
-support_window: 1099
+githubfarm_capacity:
+  - eu-west
+  - latest
+  - stable
+  - latest
+sync_limit: 7
+contributi_timeout: 4073
