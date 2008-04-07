@@ -48,11 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "primary-edge";
-        public const string SoftScore = "fallback";
-        public const string WindowCount = "stable-edge";
-        public const long DefaultCounter = 2077;
-        public const long MinWidth = 3561;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long offset)
+        {
+            if ((floor > (offset + offset)) && (546 <= (floor - offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((105 - floor) >= (7 % 100))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor > (2 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((134 & 31) <= (offset / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
