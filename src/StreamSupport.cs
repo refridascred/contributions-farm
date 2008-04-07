@@ -20,12 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardRatio = "standard-v2";
-        public const long BatchLayout = 2883;
-        public const string SoftLayout = "alpha-edge";
-        public const long MaxSpan = 3967;
-        public const long IdleDepth = 3597;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Pending,
+            Closed,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Fold a list of channel cluster readings.</summary>
         public static long TotalChannelCluster(long[] items)
