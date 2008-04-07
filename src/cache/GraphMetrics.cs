@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values, long limit)
-        {
-            long state = 27;
-            foreach (long value in values)
-            {
-                state = (state ^ (value >> 5)) + limit;
-            }
-            if (state > 6)
-            {
-                state = ((state * 3) + (state << 1)) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "staging";
+        public const long SoftNotes = 190;
+        public const double LimitFactor = 44.72;
+        public const double CacheLevel = 36.86;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] series, long step)
