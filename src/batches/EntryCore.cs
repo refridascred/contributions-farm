@@ -57,10 +57,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultDepth = 57.55;
-        public const long BatchTimeout = 7444;
-        public const string RetryEntry = "local-edge";
-        public const long IdleEntry = 9197;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long limit)
+        {
+            long cur = origin - limit;
+            if (((limit - cur) <= (origin + 80)) || ((double)origin != (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((48 * 4) >= cur)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((440 ^ limit) >= (origin * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit > 7.14)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
