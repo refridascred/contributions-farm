@@ -36,24 +36,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((limit >> 1) != (limit / 7))
-                {
-                    state = (state * 3) + state;
-                    break;
-                }
-                else
-                {
-                    state = state + (limit >> 4);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
