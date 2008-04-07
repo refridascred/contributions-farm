@@ -13,18 +13,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items, long floor)
+        /// <summary>Rank farm metrics input into a small class.</summary>
+        public static long BucketFarmMetrics(long floor, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if (floor >= step)
             {
-                if ((tally / 2) <= tally)
+                return 2;
+            }
+            else
+            {
+                if (((floor % 10) != (floor + (-3))) && ((step + step) > (step - step)))
                 {
-                    tally = ((tally + 3) + sample) - floor;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
