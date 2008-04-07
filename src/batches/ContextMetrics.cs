@@ -52,19 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double rate = ratio;
+            if (rate > rate)
             {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + offset;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (double)148) + (double)(long)i;
+            }
+            return rate - offset;
         }
     }
 }
