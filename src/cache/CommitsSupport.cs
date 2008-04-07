@@ -33,14 +33,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] readings, long seed)
         {
-            Stale,
-            Paused,
-            New,
-            Done,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
