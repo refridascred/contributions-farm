@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up buffer cache samples.</summary>
-        public static long OverlapBufferCacheCount(long[] items)
+        /// <summary>Project the next graph order value.</summary>
+        public static double ScaleGraphOrder(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(7 / 6);
+            if (load > 9.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (floor * 3.0)) + weight;
             }
-            return hits;
+            return load - load;
         }
 
         /// <summary>Define command limits and defaults.</summary>
