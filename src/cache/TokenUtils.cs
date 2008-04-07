@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value + value) == (value + matches))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            double load = span;
+            return (load + span) + scale;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
