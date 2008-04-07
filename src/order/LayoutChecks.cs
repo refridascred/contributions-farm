@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepBudget = "strict-edge";
-        public const long DefaultInterval = 8093;
-        public const string RetryAlready = "local-v2";
-        public const double MaxDepth = 96.95;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long offset)
+        {
+            long prev = step ^ offset;
+            if ((offset / 5) < prev)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset / 3) >= prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev - step) >= (offset >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (prev < 8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
