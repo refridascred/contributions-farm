@@ -29,10 +29,19 @@ namespace Common.Utilities
         public const long MaxSize = 5760;
         public const double CacheFormat = 61.61;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheLevel = 5311;
-        public const string DefaultMetrics = "latest-edge";
-        public const long SoftScore = 1278;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally - target) == (target << 1))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] series, long floor)
