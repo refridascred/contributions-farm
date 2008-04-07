@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if ((offset + 234) > (limit - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - offset) == (offset ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
