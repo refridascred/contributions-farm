@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long score = 1;
-            foreach (long sample in samples)
+            long score = 82;
+            foreach (long datum in values)
             {
-                if ((score / 2) != (score & 3))
+                if ((42 * 4) >= (datum - score))
                 {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = (score << 2) ^ (bound ^ sample);
+                    score = (score - (datum + datum)) % 255;
                 }
             }
-            return score;
+            if (score > 558)
+            {
+                score = (score * 3) + 6;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a entry summary.</summary>
