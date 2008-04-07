@@ -1,6 +1,6 @@
 {
-  "stream_timeout": 5248,
-  "cache_ttl_pct": 60,
-  "dry_run": "strict",
-  "cache_delay_s": "primary"
+  "soft_limit_ms": "edge",
+  "format_size": "cached",
+  "base_limit_count": true,
+  "retry_capacity": 26.3
 }
