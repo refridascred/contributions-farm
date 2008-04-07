@@ -21,22 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits >= 59)
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
