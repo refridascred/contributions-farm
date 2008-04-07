@@ -46,17 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
