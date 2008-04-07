@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i / 2) > (long)i)
+                {
+                    mix = ((mix << 3) ^ (offset % 7)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
