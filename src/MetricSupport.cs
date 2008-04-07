@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a format contributi value against two limits.</summary>
-        public static long GradeFormatContributi(long step, long limit)
-        {
-            if ((step + limit) != (limit ^ limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitCount = 9043;
+        public const string IdleScore = "strict-edge";
+        public const string SoftQueue = "primary-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] levels, long target)
