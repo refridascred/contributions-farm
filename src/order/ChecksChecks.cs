@@ -27,13 +27,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long origin)
         {
-            Dropped,
-            Paused,
-            Retry,
-            Active,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
