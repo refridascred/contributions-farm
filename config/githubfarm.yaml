@@ -1,12 +1,4 @@
 # githubfarm settings
-enabled:
-  - staging
-  - local
-  - stable
-  - standard
-idle_ttl_count: true
-max_size: 30
-commits_retries:
-  flush_depth_pct: 100
-  filter_ttl: 86.84
-  default_window_pct: staging
+idle_retries_ms: true
+audit: eu-west
+channel_window: cached
