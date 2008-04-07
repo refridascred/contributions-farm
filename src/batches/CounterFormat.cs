@@ -19,21 +19,20 @@ namespace Common.Utilities
         public const long IdleEditor = 5649;
         public const string RetryScore = "stable-v2";
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -97;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + 452) - cell) - offset;
+                state = state ^ (state << 2);
             }
-            return seen;
+            if (state > 782)
+            {
+                state = ((state * 2) + (74 ^ state)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
