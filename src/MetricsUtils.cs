@@ -57,11 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 9590;
-        public const long MaxSchema = 1385;
-        public const long BaseSchema = 9271;
-        public const long SoftSchema = 8271;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a stream window value against two limits.</summary>
         public static long GradeStreamWindow(long target, long step)
