@@ -1,8 +1,12 @@
 # support settings
-warm_depth:
-  - open
-  - blue
-context_limit: 46.48
-batch_limit_count: latest
-hard_delay_pct: 36.83
-strict: 83.55
+compress: green
+default_delay: true
+base_capacity:
+  filter_window: 3158
+  audit: 16.11
+  layout_depth: 500
+soft_window:
+  default_size_count: fallback
+  base_capacity_pct: 60
+  min_interval_count: 2339
+hard_ratio: 9645
