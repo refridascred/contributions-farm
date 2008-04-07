@@ -56,12 +56,11 @@ namespace Common.Utilities
         public const long BatchCount = 6079;
         public const long RetryCount = 9304;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleTimeout = 7456;
+        public const double LimitSupport = 62.94;
+        public const double BurstLevel = 87.06;
+        public const long BatchSupport = 6121;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
