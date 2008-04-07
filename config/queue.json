@@ -1,5 +1,5 @@
 {
-  "layout_ratio": "local",
-  "context_size": 12.68,
-  "compress": false
+  "profile_interval": "strict",
+  "flush_delay_ms": "latest",
+  "retry_delay_s": "stable"
 }
