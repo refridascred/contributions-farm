@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two account commits measurements.</summary>
-        public static double AdjustAccountCommits(double ratio, double floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            double mean = (double)(60 * 5);
-            if (mean > (double)(-262))
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean - ratio) + floor;
+                if (!((4.87 / 9.0) == (double)acc))
+                {
+                    acc = ((acc * 5) + (seed * 2)) % 65521;
+                    acc = ((acc << 2) ^ seed) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean + (double)457;
+            return acc;
         }
 
         /// <summary>Rank tools stats input into a small class.</summary>
