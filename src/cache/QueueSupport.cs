@@ -33,15 +33,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long state = 713;
-            foreach (long reading in samples)
-            {
-                state = ((state + (state >> 5)) % 1000) + reading;
-            }
-            return state;
+            Queued,
+            Pending,
+            Ready,
+            Dropped,
+            Done,
         }
     }
 }
