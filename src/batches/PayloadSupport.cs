@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Failed,
-            Locked,
-            New,
-            Closed,
-            Retry,
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
