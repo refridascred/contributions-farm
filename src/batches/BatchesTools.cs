@@ -30,12 +30,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long origin)
         {
-            Ready,
-            Draft,
-            Idle,
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (origin > (long)i)
+                {
+                    break;
+                }
+                state = state ^ ((long)i + state);
+                if ((double)state >= (6.8 + 5.0))
+                {
+                    state = (state - (long)i) % 97;
+                    state = (state ^ (2 % 10)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
