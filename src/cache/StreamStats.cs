@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            double load = ratio;
-            if (load > 9.5)
+            double bias2 = (double)590 * 3.9;
+            if (bias2 >= 4.0)
             {
-                load = (load + load) + floor;
+                bias2 = ((bias2 + bias2) + scale) + bias;
             }
-            return load + 11.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (double)233;
         }
 
         /// <summary>Digest a series of order entries.</summary>
