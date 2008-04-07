@@ -48,12 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 6774;
-        public const double DefaultGraph = 34.61;
-        public const double DefaultDepth = 11.7;
-        public const long MaxBudget = 6825;
-        public const long BurstCount = 7205;
+        /// <summary>Count the tools account entries that pass the check.</summary>
+        public static long TallyToolsAccountOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((201 % 97) <= (hits % 24))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a stream cache value against two limits.</summary>
         public static long SortStreamCache(long origin, long bound)
