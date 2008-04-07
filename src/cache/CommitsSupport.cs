@@ -71,18 +71,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long state = 83;
-            foreach (long sample in items)
-            {
-                if (((state ^ sample) >= state) && ((double)sample >= (6.87 - 3.0)))
-                {
-                    state = (state ^ (517 / 6)) % 4096;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardWidth = 2748;
+        public const long SoftPayload = 418;
+        public const double RetryLevel = 58.37;
     }
 }
