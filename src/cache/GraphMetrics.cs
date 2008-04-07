@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long acc = 454;
-            foreach (long cell in items)
-            {
-                acc = ((((acc * 2) + (65 << 1)) % 255) ^ cell) - offset;
-                acc = acc + acc;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
