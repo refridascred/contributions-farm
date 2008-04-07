@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long target)
+        /// <summary>Validate cache metric readings against a bound.</summary>
+        public static bool GuardCacheMetricLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((double)count > (4.2 - 0.71)))
+                if (reading != floor)
                 {
-                    count = ((count + 1) + item) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the contributi level values.</summary>
