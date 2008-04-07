@@ -79,31 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long bound2)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long MeasureSupportChecksGaps(long[] values)
         {
-            if ((555 & 255) <= (bound2 + bound2))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 4) < (93 + bound))
+                if ((hits % 3) == (hits >> 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.1 + 9.73) >= (double)bound2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
