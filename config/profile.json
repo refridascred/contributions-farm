@@ -1,6 +1,7 @@
 {
-  "poll_interval_count": false,
-  "verbose": "fallback",
-  "farm_interval": false,
-  "graph_retries": 1
+  "sync_threshold_ms": "eu-west",
+  "sync_capacity_pct": "stable",
+  "poll_window": 30,
+  "min_delay_ms": 72.69,
+  "buffer_ttl": 100
 }
