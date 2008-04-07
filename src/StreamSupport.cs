@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardFactor = 4252;
-        public const long HardEditor = 5154;
-        public const string BatchEditor = "strict-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 4036;
+        public const long RetryStream = 3194;
+        public const long SoftScore = 2775;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] levels, long bound)
