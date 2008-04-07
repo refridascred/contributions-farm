@@ -1,24 +1,7 @@
 # githubfarm settings
-compress: true
-account_threshold:
-  enabled: 4582
-  hard_threshold_s: green
-  flush_depth_pct: 1024
-  cache_delay_s: strict
-  sync_ratio_ms: 1024
-contributi_depth: strict
-base_limit_s: cached
-burst_capacity:
-  readonly:
-    hard_ratio: true
-    soft_ratio: 92.68
-    persist: local
-  strict: legacy
-  dry_run:
-    - 499
-    - 341
-farm_threshold:
-  - 367
-  - 199
-  - 62
-  - 361
+max_depth_s: false
+poll_threshold_count: 250
+compress:
+  - legacy
+  - fallback
+  - cached
