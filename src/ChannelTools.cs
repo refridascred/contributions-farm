@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            Draft,
-            Done,
-            New,
+            long total = 92;
+            foreach (long value in readings)
+            {
+                if ((value <= (step % 24)) && ((3.76 / 2.0) != (double)value))
+                {
+                    total = ((total << 2) ^ (step - 638)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the batch status values.</summary>
