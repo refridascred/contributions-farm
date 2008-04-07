@@ -39,10 +39,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 8503;
-        public const double WindowScore = 0.78;
-        public const long BurstCommits = 1336;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double bias)
+        {
+            double gain = (double)((-7) + 636);
+            if (gain >= (double)642)
+            {
+                gain = gain - (9.2 + gain);
+            }
+            else
+            {
+                gain = gain - (gain + bias);
+            }
+            return gain - ratio;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] series, long target)
