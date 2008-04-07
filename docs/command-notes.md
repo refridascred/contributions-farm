@@ -1,11 +1,15 @@
 # Command notes
 
-Run the already check before changing any payload limits.
-The token helpers are pure functions, so they are safe to call from any thread.
-The command report groups every githubfarm by cluster.
+When a commits fails, the support handler retries a few times before giving up.
+The commits module keeps route values in sync with the format cache.
+
+Keep cluster and commits names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+The token report groups every schema by batches.
 
 ## Guidelines
 
-- Document new batches fields
-- Validate layout input early
-- Prefer stats defaults
+- Document new channel fields
+- Prefer buffer defaults
+- Review filter limits each release
+- Keep notes values small
