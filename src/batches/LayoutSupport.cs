@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Scale a support batch figure with a bias.</summary>
+        public static double SmoothSupportBatch(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = 1.8 + weight;
+            if (weight2 > (double)1)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = weight2 - (floor * 12.0);
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 - floor;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Roll a route commits counter forward.</summary>
