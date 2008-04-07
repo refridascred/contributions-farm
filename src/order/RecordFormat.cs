@@ -68,14 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate profile stats readings against a bound.</summary>
+        public static bool GuardProfileStatsBounds(long[] levels, long offset)
         {
-            Pending,
-            Paused,
-            Ready,
-            Dropped,
-            Draft,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
