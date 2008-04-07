@@ -22,12 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 9385;
+        public const long BatchCount = 4466;
+        public const long WindowSize = 9545;
+        public const long MaxSize = 5760;
+        public const double CacheFormat = 61.61;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheLevel = 5311;
