@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 3021;
-        public const long MaxInterval = 4889;
-        public const long RetryMetrics = 9528;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long bound, long limit)
