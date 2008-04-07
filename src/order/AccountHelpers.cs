@@ -56,11 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinLevel = 5.28;
-        public const double BaseSupport = 62.69;
-        public const long HardSupport = 1986;
-        public const double StepRatio = 14.81;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 6529;
+        public const string BatchCache = "cached-v2";
+        public const long WindowWidth = 4278;
+        public const long RetryCache = 8312;
+        public const long HardCache = 9403;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxReport = "open";
