@@ -66,18 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 2;
+            foreach (long cell in levels)
             {
-                if ((item / 4) < item)
+                if (cell >= (cell << 2))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor ^ (cell + (-92))) % 1000;
                 }
             }
-            return seen;
+            if (anchor > 965)
+            {
+                anchor = (anchor * 5) + (anchor << 2);
+            }
+            return anchor;
         }
     }
 }
