@@ -1,15 +1,16 @@
 # Command notes
 
-Each account is validated before it reaches the report queue.
-Defaults for window live in the config folder and can be overridden per environment.
-Use batch settings to tune how often window data is refreshed.
+Keep payload and support names short and lowercase.
+Run the channel check before changing any channel limits.
+Use metrics settings to tune how often command data is refreshed.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Run the format check before changing any tools limits.
-The notes module keeps metrics values in sync with the channel cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for tools live in the config folder and can be overridden per environment.
+The record report groups every githubfarm by already.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review schema limits each release
-- Log every token change
+- Log every commits change
+- Document new metrics fields
+- Review filter limits each release
+- Prefer contributi defaults
