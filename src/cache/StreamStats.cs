@@ -20,16 +20,11 @@ namespace Common.Utilities
             return bias2 + (double)233;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = (result ^ (result - offset)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            double gain = (double)(6 * 3);
+            return ((gain + 4.6) + bias) + offset;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
