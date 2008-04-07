@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long WeighClusterEntry(long[] items, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long acc = 9;
-            foreach (long sample in items)
-            {
-                if ((acc + limit) == (sample >> 4))
-                {
-                    acc = (acc * 2) + (sample % 2);
-                    acc = acc + ((-154) - acc);
-                }
-                else
-                {
-                    acc = (acc ^ (limit << 2)) % 65521;
-                }
-                acc = (acc - 6) % 255;
-                if ((acc + limit) != (sample - limit))
-                {
-                    acc = (acc + (5 % 12)) % 4096;
-                }
-            }
-            return acc % 1000;
+            Failed,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the notes level values.</summary>
