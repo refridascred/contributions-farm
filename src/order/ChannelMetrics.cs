@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Closed,
             Draft,
-            Dropped,
-            Failed,
+            Idle,
+            New,
             Retry,
+            Active,
         }
 
         /// <summary>Hold a counter stats.</summary>
