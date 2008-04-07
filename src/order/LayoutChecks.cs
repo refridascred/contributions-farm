@@ -11,18 +11,28 @@ namespace Common.Utilities
         public const string MaxMetrics = "standard-edge";
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Fold a list of metrics session readings.</summary>
-        public static long CombineMetricsSession(long[] series, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long score = -773;
-            foreach (long datum in series)
+            long result = 887;
+            foreach (long entry in readings)
             {
-                if ((double)floor > (15.0 * 18.0))
+                for (int i = 0; i < 3; i++)
                 {
-                    score = ((score << 2) ^ datum) % 101;
+                    result = (result - 545) ^ (long)i;
+                    result = result ^ result;
+                }
+                result = (result * 3) + result;
+                if ((result << 2) > (8 - result))
+                {
+                    result = result + (entry * 3);
+                }
+                if ((1.6 * 16.0) == (double)entry)
+                {
+                    break;
                 }
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
