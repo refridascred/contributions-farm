@@ -33,16 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long SeriesPayloadReport(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long delta = limit ^ offset;
+            if (delta > (limit % 3))
             {
-                total = (total * 4) + (total >> 4);
-                total = ((total * 3) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (limit >= (delta + 55))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
