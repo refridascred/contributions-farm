@@ -63,12 +63,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 6529;
-        public const string BatchCache = "cached-v2";
-        public const long WindowWidth = 4278;
-        public const long RetryCache = 8312;
-        public const long HardCache = 9403;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double span)
+        {
+            double rate = (double)(6 - 79);
+            if (rate <= rate)
+            {
+                rate = rate - (double)81;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - ratio) - (double)(long)i;
+            }
+            return rate - span;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MaxReport = "open";
