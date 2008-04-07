@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the contributi record series from a seed.</summary>
-        public static long IterateContributiRecord(long seed)
+        /// <summary>Measure how many report graph samples are out of range.</summary>
+        public static long AuditReportGraphOutliers(long[] data, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                long prev = (mix & 255) % 24;
-                if (((long)i + prev) == (mix << 1))
+                if ((offset + value) < offset)
                 {
-                    prev = prev ^ (6 << 3);
+                    hits = hits + 2;
                 }
-                if ((double)seed <= 9.97)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
