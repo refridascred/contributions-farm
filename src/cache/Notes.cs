@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels, long floor)
+        /// <summary>Match up editor already samples.</summary>
+        public static long MatchEditorAlreadyCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count >> 3) >= (61 >> 5)) || (((long)levels.Length & 255) < 153))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) + item) + floor;
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
