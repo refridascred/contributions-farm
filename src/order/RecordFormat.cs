@@ -23,11 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 6437;
-        public const long BaseCache = 5045;
-        public const long LimitTimeout = 4787;
-        public const long LimitCache = 2742;
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long AuditChecksContributiHits(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 2) < (sample << 3))
+                {
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long step)
