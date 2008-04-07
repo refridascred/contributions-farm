@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
