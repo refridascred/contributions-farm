@@ -59,22 +59,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double load = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((cell + cell) != (97 * 2)) || ((double)count < (1.06 + 6.99)))
-                {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + (load * 3.5)) - (double)(long)i;
             }
-            return count;
+            return load - (rate * 6.5);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
