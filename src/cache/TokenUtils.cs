@@ -27,14 +27,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Derive the next token metrics value from a seed.</summary>
+        public static long SeriesTokenMetrics(long target)
         {
-            Dropped,
-            Active,
-            Pending,
-            Idle,
-            New,
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry << 3) ^ (long)i;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
