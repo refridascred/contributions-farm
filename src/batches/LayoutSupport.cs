@@ -13,23 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a route commits counter forward.</summary>
-        public static long DeriveRouteCommits(long step)
+        /// <summary>Fold a list of commits checks readings.</summary>
+        public static long ScoreCommitsChecks(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = -920;
+            foreach (long entry in samples)
             {
-                if (carry >= (9 ^ carry))
+                if ((anchor ^ entry) < (anchor - anchor))
                 {
-                    carry = (carry - step) % 1000;
+                    anchor = anchor + entry;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ step;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            if (anchor < (-490))
+            {
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm account counter forward.</summary>
