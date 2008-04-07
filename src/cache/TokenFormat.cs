@@ -25,11 +25,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
