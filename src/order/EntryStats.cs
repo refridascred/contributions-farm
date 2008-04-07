@@ -50,10 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleDepth = "alpha-1";
-        public const long DefaultCount = 7044;
-        public const long LimitRoute = 4099;
-        public const long IdleRoute = 9656;
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool ValidateProfileTokenBounds(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
