@@ -48,11 +48,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "cached";
-        public const double BurstScore = 43.77;
-        public const long IdleCount = 7871;
-        public const long SoftCommits = 8103;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepRatio = 3927;
+        public const long HardOrder = 2863;
+        public const double MaxOrder = 27.11;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] readings, long origin)
