@@ -19,25 +19,18 @@ namespace Common.Utilities
         public const double BatchToken = 96.85;
         public const long WindowSpan = 7121;
 
-        /// <summary>Roll a schema support counter forward.</summary>
-        public static long IterateSchemaSupport(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                total = (total + ((long)i - total)) % 65521;
-                if ((((long)i % 7) != (origin ^ origin)) || (6.0 <= (double)origin))
+                if (!(((double)target != (4.2 * 2.5)) || (datum >= (target + datum))))
                 {
-                    total = (total + ((long)i + 465)) % 101;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    total = (total ^ (origin - origin)) % 97;
-                    total = total + (origin << 3);
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
