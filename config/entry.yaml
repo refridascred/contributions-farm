@@ -1,7 +1,23 @@
 # entry settings
-cache_limit: legacy
-base_depth: local
-retry_timeout_pct: 100
-min_depth_pct: false
-cache_capacity: false
-verbose: open
+commits_depth:
+  flush_capacity_pct: 8664
+  cache_timeout_s: open
+  batches_size: 100
+  soft_delay_pct:
+    sync_ratio_s: 48.33
+    poll_size_pct: 95.47
+    notes_timeout:
+      - 147
+      - 57
+      - 59
+      - 242
+  poll_threshold_count:
+    - 213
+    - 207
+    - 40
+    - 481
+  audit: standard
+persist: staging
+route_size: fallback
+batch_interval: 9.8
+poll_timeout_count: edge
