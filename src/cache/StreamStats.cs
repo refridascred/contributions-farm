@@ -29,23 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double ScaleFilterEditor(double weight, double bias)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double scale = (weight - weight) - (double)852;
-            if (scale > scale)
-            {
-                scale = (scale + weight) - bias;
-            }
-            else
-            {
-                scale = scale - (double)912;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 5.14)) - (double)(long)i;
-            }
-            return scale + (scale * 0.14);
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Digest a series of profile counter entries.</summary>
