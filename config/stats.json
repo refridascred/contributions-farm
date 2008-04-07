@@ -1,5 +1,7 @@
 {
-  "burst_retries": "cached",
-  "enabled": "staging",
-  "strict": "latest"
+  "command_limit": 55,
+  "base_threshold_count": false,
+  "persist": 66,
+  "commits_limit": "open",
+  "batch_limit_s": "cached"
 }
