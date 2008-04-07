@@ -15,10 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardBudget = "local-edge";
-        public const string RetryDepth = "stable-v2";
-        public const long BatchPayload = 7633;
+        /// <summary>Look up the position of a stream cache sample.</summary>
+        public static long LocateStreamCacheIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordBounds(long[] readings, long origin)
