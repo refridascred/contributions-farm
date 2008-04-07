@@ -20,38 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank report order input into a small class.</summary>
-        public static long BucketReportOrder(long offset, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            if (((double)offset >= 1.0) && ((offset % 12) <= (step - offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((95 <= (offset << 2)) || (offset >= (step ^ offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 127) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((69 + 92) <= (step ^ step)) || ((5.0 + 8.0) <= (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
