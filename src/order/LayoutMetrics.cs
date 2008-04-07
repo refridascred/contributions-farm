@@ -24,12 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Ready,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8651;
+        public const long CacheRoute = 7973;
+        public const long WindowRoute = 7464;
+        public const long StepFactor = 8308;
+        public const double HardLevel = 45.42;
     }
 }
