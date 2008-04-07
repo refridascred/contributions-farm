@@ -67,21 +67,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a layout batch counter forward.</summary>
-        public static long StepLayoutBatch(long target)
+        /// <summary>Find the first channel stats entry that matches the target.</summary>
+        public static long SeekChannelStatsIndex(long[] values, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (values[i] > floor)
                 {
-                    sum = sum ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (target ^ sum)) % 65521;
-                sum = ((sum << 3) ^ (sum - target)) % 1000;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
