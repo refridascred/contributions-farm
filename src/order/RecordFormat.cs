@@ -58,19 +58,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long state = 532;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (target / 2)) % 255) - item;
-                if (((target - state) == (target / 2)) && ((double)state < (1.69 * 4.6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + (79 << 1)) % 65521;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
