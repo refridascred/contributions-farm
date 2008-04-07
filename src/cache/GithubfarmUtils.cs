@@ -42,32 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long delta = origin - offset;
-            if ((40 % 24) >= (origin >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + offset) <= delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta + offset) != (delta * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
