@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm format readings against a bound.</summary>
-        public static bool VerifyFarmFormatBounds(long[] samples, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double span)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double weight = (gain / 7.0) + (gain - 2.37);
+            if (weight < gain)
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (weight - gain);
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (span - 3.6)) + (double)(long)i;
+            }
+            return weight - (double)2;
         }
     }
 }
