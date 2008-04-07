@@ -47,22 +47,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally % 2) <= (reading - tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 9192;
+        public const long WindowMetrics = 7649;
+        public const long StepWidth = 3534;
     }
 }
