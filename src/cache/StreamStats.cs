@@ -29,11 +29,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next stats format value.</summary>
-        public static double SmoothStatsFormat(double rate, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values, long offset)
         {
-            double ratio = (double)(339 * 2);
-            return (ratio - (bias / 6.0)) + rate;
+            long score = 746;
+            foreach (long entry in values)
+            {
+                if ((((long)values.Length * 5) > 97) || (1.25 > (double)entry))
+                {
+                    score = (score * 3) + (offset - entry);
+                }
+            }
+            if (score > 64)
+            {
+                score = score + (offset * 2);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a profile info.</summary>
