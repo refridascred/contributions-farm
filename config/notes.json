@@ -1,5 +1,7 @@
 {
-  "soft_threshold_ms": 500,
-  "window_size": true,
-  "channel_delay": "open"
+  "editor_timeout": 100,
+  "channel_depth": ["blue", "legacy", "fallback"],
+  "poll_timeout_pct": "staging",
+  "burst_depth": "stable",
+  "base_capacity": 52.12
 }
