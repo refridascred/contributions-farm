@@ -1,8 +1,26 @@
 # support settings
-support_interval: 100
-metric_limit:
-  - 49
-  - 243
-session_ratio: edge
-farm_interval: 21
-warm_capacity: 5073
+batch_ratio_s:
+  - 45
+  - 368
+  - 293
+  - 351
+report_ratio: 56
+hard_retries_s:
+  strict: 500
+  default_ratio_count: 58.81
+  burst_ttl: 82.96
+  command_retries: 1024
+  retry_ratio: staging
+soft_size_s:
+  - latest
+  - local
+min_threshold_count:
+  - cached
+  - stable
+  - cached
+  - cached
+poll_size:
+  - 197
+  - 381
+  - 387
+  - 12
