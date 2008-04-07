@@ -48,24 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a metrics order value against two limits.</summary>
-        public static long ClassifyMetricsOrder(long floor, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] data)
         {
-            if (!((target >> 5) >= (target + target)))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 255) == (target + target))
+                if ((61 & 7) == (datum * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
