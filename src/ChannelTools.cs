@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a session metric sample.</summary>
-        public static long LookupSessionMetricIndex(long[] series, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
