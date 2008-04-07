@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((double)limit <= (18.0 * 14.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 5) == (seed << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed ^ seed) < (452 >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
