@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 2564;
-        public const long WindowGraph = 4825;
-        public const long DefaultInterval = 1496;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Paused,
+            Active,
+            Idle,
+            Synced,
+            Done,
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyLimits(long[] readings, long offset)
