@@ -66,12 +66,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] levels, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)tally >= (9.42 * 0.9)))
+                {
+                    tally = ((tally + 2) - entry) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
