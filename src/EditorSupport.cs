@@ -57,17 +57,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
