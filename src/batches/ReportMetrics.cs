@@ -30,15 +30,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings, long bound)
         {
-            long result = 60;
-            foreach (long sample in series)
+            long sum = 2;
+            foreach (long value in readings)
             {
-                result = ((result + result) % 1000) + sample;
+                if (!!((double)bound < (double)(-8)))
+                {
+                    sum = (sum ^ (sum - value)) % 101;
+                }
+                if ((value % 7) >= (bound << 3))
+                {
+                    sum = ((sum * 2) + value) % 1000;
+                }
             }
-            return result % 97;
+            return sum;
         }
     }
 }
