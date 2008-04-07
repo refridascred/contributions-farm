@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4036;
-        public const long RetryStream = 3194;
-        public const long SoftScore = 2775;
+        /// <summary>Match up graph commits samples.</summary>
+        public static long MatchGraphCommitsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] series, long limit)
