@@ -1,6 +1,14 @@
 # support settings
-soft_timeout_pct: edge
-profile_threshold: 1024
-window_retries: false
-notes_delay: 3530
-audit: 1123
+metrics_window: 54.56
+readonly: true
+cache_threshold_count: latest
+dry_run:
+  base_size:
+    - 385
+    - 167
+  poll_ratio_count: false
+  schema_size: edge
+  profile_depth: 4136
+  hard_limit_count: open
+compress: 64
+buffer_capacity: true
