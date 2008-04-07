@@ -21,16 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Measure how many account commits samples are out of range.</summary>
+        public static long AuditAccountCommitsMatches(long[] series, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = (state << 2) ^ (state - bound);
-                state = ((state * 4) + (long)i) % 1000;
+                if (target <= (target & 1))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
