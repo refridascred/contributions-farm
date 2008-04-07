@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double rate = span * 20.0;
+            if (rate > (rate + ratio))
             {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - 0.32;
             }
-            return stale;
+            return rate - rate;
         }
 
         /// <summary>Define window limits and defaults.</summary>
