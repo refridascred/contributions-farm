@@ -79,18 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((reading / 9) >= (tally >> 1)) || ((tally >> 1) >= (620 ^ (long)levels.Length))) && ((tally + 81) != (500 - 41)))
+                if (((value + count) < (count >> 2)) && !((count - value) <= count))
                 {
-                    tally = (tally + 1) - step;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
