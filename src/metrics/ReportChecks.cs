@@ -69,15 +69,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            double rate = gain * 2.0;
+            long result = step;
             for (int i = 0; i < 9; i++)
             {
-                rate = ((rate - (rate * 2.4)) + (double)(long)i) - floor;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return rate - rate;
+            return result;
         }
     }
 }
