@@ -1,5 +1,6 @@
 {
-  "flush_limit_count": 78,
-  "strict": 7348,
-  "compress": 8618
+  "cache_ttl": "primary",
+  "strict": "edge",
+  "order_timeout": 35.4,
+  "command_depth": 94
 }
