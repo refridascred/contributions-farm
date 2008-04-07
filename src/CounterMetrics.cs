@@ -35,26 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long DigestEditorGithubfarm(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long target)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix << 3) < (mix + 8))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
-                    mix = (mix - (mix << 1)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (cell * 4)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 82)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a payload record.</summary>
