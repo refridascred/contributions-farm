@@ -31,15 +31,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long total = 3;
+            foreach (long item in values)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                total = ((total << 2) ^ (98 / 5)) ^ item;
             }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Hold a channel info.</summary>
