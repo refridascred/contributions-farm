@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.33 * 3.16) < (double)sample)
+                if (series[i] >= floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a context filter reading by value.</summary>
