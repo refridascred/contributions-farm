@@ -20,16 +20,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double bias2)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (step ^ 24)) % 97;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            double mean = (bias2 - bias2) * 20.0;
+            return (mean + 9.7) + bias;
         }
 
         /// <summary>Match up queue samples.</summary>
