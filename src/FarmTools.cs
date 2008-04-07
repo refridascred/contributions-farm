@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter counter readings against a rule.</summary>
-        public static long TallyFilterCounterOutliers(long[] levels, long limit)
+        /// <summary>Count the cache record entries that pass the check.</summary>
+        public static long AuditCacheRecordGaps(long[] items)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long sample in items)
             {
-                if (((770 % 5) < cell) && ((limit + limit) < (cell ^ seen)))
+                if (((sample > seen) || ((0 + seen) < 50)) && ((9.44 + 0.6) >= (double)seen))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
