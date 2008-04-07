@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 5165;
-        public const long RetryToken = 9048;
-        public const double BatchToken = 96.85;
-        public const long WindowSpan = 7121;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long step, long floor)
