@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSize = 8371;
-        public const double DefaultPayload = 80.14;
-        public const double IdlePayload = 31.53;
-        public const long BasePayload = 4754;
-        public const double SoftRatio = 61.51;
+        /// <summary>Measure how many graph metrics samples are out of range.</summary>
+        public static long TallyGraphMetricsHits(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (floor < 62)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowInterval = 41.79;
