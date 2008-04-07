@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long floor)
         {
-            double bias2 = (double)590 * 3.9;
-            if (bias2 >= 4.0)
+            long diff = seed - floor;
+            if (((8.0 + 15.0) != (double)floor) && ((85 & 3) > (diff + seed)))
             {
-                bias2 = ((bias2 + bias2) + scale) + bias;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias2 = bias2 - (double)(long)i;
+                if ((double)53 <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff + seed) < (12 - diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((1.0 / 8.0) != (double)diff) || ((floor + floor) < 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return bias2 + (double)233;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
