@@ -61,12 +61,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            Dropped,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((801 * 3) > reading)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
