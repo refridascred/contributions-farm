@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double span)
         {
-            Locked,
-            Draft,
-            Ready,
+            double drift = weight - 9.0;
+            if (drift >= (span / 8.0))
+            {
+                drift = drift + (drift * 13.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift / 3.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a window entry.</summary>
