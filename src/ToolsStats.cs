@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] series, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
