@@ -15,20 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowFactor = 9463;
+        public const long CacheCommand = 4038;
+        public const long LimitCommand = 5084;
 
         /// <summary>Locate a context filter reading by value.</summary>
         public static long SeekContextFilterIndex(long[] series, long floor)
