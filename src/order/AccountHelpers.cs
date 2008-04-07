@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
+            Draft,
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the metric state values.</summary>
