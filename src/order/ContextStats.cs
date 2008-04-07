@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 479;
-        public const long IdleSpan = 2720;
-        public const long MinBatch = 3742;
-        public const long DefaultInterval = 3546;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] data, long step)
