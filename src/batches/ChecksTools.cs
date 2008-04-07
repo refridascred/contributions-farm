@@ -38,22 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter profile entries that pass the check.</summary>
-        public static long TallyCounterProfileHits(long[] series)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double weight = bias * 5.9;
+            if (weight > (weight * 12.0))
             {
-                if (7.24 > (double)entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight - (double)572;
             }
-            return seen;
+            else
+            {
+                weight = weight + (weight - ratio);
+            }
+            return weight + (weight + 3.0);
         }
     }
 }
