@@ -20,18 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)hits >= (4.0 - 6.8))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
