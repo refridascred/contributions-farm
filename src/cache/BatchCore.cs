@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
