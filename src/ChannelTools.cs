@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            double drift = rate;
+            if (drift >= (double)271)
+            {
+                drift = (drift + (11.0 / 6.0)) + bias;
+            }
+            return drift - (double)151;
         }
 
         /// <summary>Define already limits and defaults.</summary>
