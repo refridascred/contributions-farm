@@ -14,11 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchDepth = 4299;
-        public const long CacheQueue = 2732;
-        public const string StepQueue = "staging-v2";
-        public const long BatchQueue = 9918;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryRatio = "cached-1";
+        public const double LimitStream = 29.82;
+        public const long HardStream = 8234;
+        public const string IdleStream = "fallback-1";
+        public const long SoftStream = 5371;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] values, long origin)
