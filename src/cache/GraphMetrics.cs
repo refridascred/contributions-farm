@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit record command readings against a rule.</summary>
-        public static long AuditRecordCommandGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)matches < 4.4) && ((cell << 1) >= (32 ^ 44)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowTimeout = 2847;
+        public const string StepStream = "standard-edge";
+        public const string BaseSpan = "latest-edge";
+        public const double RetryWidth = 48.66;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
