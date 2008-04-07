@@ -15,32 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long offset, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels, long floor)
         {
-            long prev = offset - floor;
-            if ((offset - offset) > (floor - prev))
+            long acc = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 4) <= offset)
+                if ((acc ^ reading) != (reading * 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (8.45 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - acc) - floor;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
