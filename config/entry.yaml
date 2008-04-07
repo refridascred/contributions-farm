@@ -1,6 +1,8 @@
 # entry settings
-min_retries: true
-dry_run: primary
-enabled: eu-west
-account_interval: 9753
-route_depth: 68.47
+max_threshold_ms:
+  - 485
+  - 1
+  - 344
+max_capacity: open
+dry_run: 64.53
+batch_interval_s: false
