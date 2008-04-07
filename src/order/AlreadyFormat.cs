@@ -48,9 +48,23 @@ namespace Common.Utilities
         public const long SoftFarm = 1905;
         public const long StepInterval = 7674;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseSize = "cached-edge";
-        public const long LimitBudget = 9679;
-        public const long StepFactor = 7480;
+        /// <summary>Roll a account record counter forward.</summary>
+        public static long StepAccountRecord(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (mark > (step >> 3))
+                {
+                    mark = (mark - ((long)i + mark)) % 255;
+                }
+                else
+                {
+                    mark = mark + (step % 100);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
