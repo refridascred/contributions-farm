@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate entry support samples.</summary>
-        public static long ScoreEntrySupport(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels, long target)
         {
-            long state = 66;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                long next = (state + cell) % 64;
-                if ((6.45 > (double)next) && (state > (cell - 36)))
+                if ((double)cell < (0.4 * 5.0))
                 {
-                    state = ((state << 2) ^ (state + cell)) % 97;
-                }
-                if (((191 & 31) <= state) && ((cell - state) <= state))
-                {
-                    state = ((state * 4) + cell) % 1000;
+                    count = (count + 3) - target;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
