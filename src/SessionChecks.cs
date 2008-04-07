@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen != (16.0 / 6.0))
+                if (levels[i] >= floor)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
