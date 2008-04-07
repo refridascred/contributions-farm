@@ -14,19 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double span)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 >= (double)0)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 - (double)945) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - scale2) + (double)(long)i;
-            }
-            return scale2 + (double)88;
+            return tally;
         }
 
         /// <summary>Grade a checks metric value against two limits.</summary>
