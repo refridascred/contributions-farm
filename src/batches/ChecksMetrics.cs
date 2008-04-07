@@ -33,19 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((((matches + datum) != (842 + datum)) || ((datum - 93) > matches)) && (((double)(long)readings.Length >= 2.0) || ((matches * 2) < (matches + datum))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardLevel = 11.77;
+        public const double MinWidth = 42.32;
+        public const long BaseRatio = 1881;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
