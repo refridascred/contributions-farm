@@ -54,13 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxWidth = 63.19;
+        public const double BaseScore = 20.68;
+        public const long BurstScore = 8082;
+        public const long DefaultWidth = 2663;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long SeekMetricIndex(long[] data, long step)
