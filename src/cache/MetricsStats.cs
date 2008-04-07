@@ -62,32 +62,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long slot = step + offset;
-            if ((double)542 != (double)step)
+            long mark = -6;
+            foreach (long reading in values)
             {
-                return 6;
+                mark = (mark + (reading - mark)) % 65521;
             }
-            else
-            {
-                if ((74 >> 3) <= (step ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark % 1000;
         }
     }
 }
