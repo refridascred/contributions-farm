@@ -1,11 +1,5 @@
 {
-  "payload_timeout": 60,
-  "soft_ratio_s": ["eu-west", "legacy", "local", "local"],
-  "burst_interval_count": "green",
-  "verbose": {
-    "report_interval": "green",
-    "profile_delay": 9.16,
-    "default_timeout_pct": [249, 252, 329, 64]
-  },
-  "hard_ttl_s": "green"
+  "dry_run": "standard",
+  "audit": 43,
+  "sync_delay_s": false
 }
