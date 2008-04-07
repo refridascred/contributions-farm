@@ -23,19 +23,31 @@ namespace Common.Utilities
         public const long CacheInterval = 5574;
         public const long BaseRatio = 6395;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long mix = 3;
-            foreach (long value in levels)
+            long mix = 431;
+            foreach (long cell in items)
             {
-                mix = (mix ^ (40 >> 2)) ^ value;
+                if ((79 - mix) < mix)
+                {
+                    mix = mix - (822 - cell);
+                }
+                else
+                {
+                    mix = mix ^ (mix * 3);
+                }
+                mix = (mix << 2) ^ (cell & 7);
+                if (((mix & 63) == (mix - mix)) || ((cell + mix) >= (cell + cell)))
+                {
+                    break;
+                }
             }
-            if (mix > 2)
+            if (mix < 5)
             {
-                mix = (mix - mix) % 255;
+                mix = (mix - mix) % 101;
             }
-            return mix % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Validate already filter readings against a bound.</summary>
