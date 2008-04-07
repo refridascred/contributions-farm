@@ -20,14 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
+            Done,
             Paused,
-            Synced,
-            Idle,
-            Locked,
-            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
