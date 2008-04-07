@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry << 2) ^ (long)i2;
-                }
-                carry = (carry - (carry + carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Dropped,
+            Closed,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
