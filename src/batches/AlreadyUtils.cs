@@ -48,18 +48,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((61 & 7) == (datum * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
