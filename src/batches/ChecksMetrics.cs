@@ -41,19 +41,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long floor, long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long delta = floor ^ step;
+            if ((delta - 817) == (step % 12))
             {
-                if (sample <= seed)
+                return 8;
+            }
+            else
+            {
+                if (((floor % 7) > step) && ((delta & 1) >= (delta / 3)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the cache kind values.</summary>
