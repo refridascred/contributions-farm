@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Roll a session context counter forward.</summary>
+        public static long IterateSessionContext(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)score < (13.0 / 8.0))
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ (step + (long)i)) % 255;
+                    score = (score + score) % 65521;
                 }
+                long prev = (score << 1) ^ (long)i;
+                if ((prev >> 2) >= (96 / 7))
+                {
+                    score = score + (step * 2);
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a stream options.</summary>
