@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long seed, long bound)
-        {
-            if ((bound / 6) > (-8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + seed) != (50 % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (1.0 * 7.58))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed * 5) >= bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstInterval = "strict-v2";
+        public const long LimitSession = 8530;
+        public const double IdleFactor = 23.39;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
