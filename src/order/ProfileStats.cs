@@ -24,11 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 7809;
-        public const double BatchNotes = 60.97;
-        public const long MaxBudget = 1197;
-        public const long RetryFactor = 4260;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Dropped,
+            Retry,
+            Draft,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] values, long origin)
