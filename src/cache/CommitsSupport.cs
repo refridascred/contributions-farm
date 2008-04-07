@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6569;
+        public const long BaseReport = 9784;
+        public const long LimitReport = 1990;
+        public const double DefaultFactor = 73.15;
+        public const long IdleReport = 1197;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] samples, long target)
