@@ -14,17 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            double scale2 = scale;
+            if (scale2 >= (double)0)
             {
-                anchor = anchor - (seed - 523);
-                anchor = anchor - (3 + 49);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                scale2 = (scale2 - (double)945) - span;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - scale2) + (double)(long)i;
+            }
+            return scale2 + (double)88;
         }
 
         /// <summary>Grade a checks metric value against two limits.</summary>
