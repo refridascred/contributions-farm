@@ -1,14 +1,16 @@
 # entry settings
-batch_ratio: local
-dry_run: open
-cache_delay_s: 8235
-verbose:
-  persist: true
-  enabled:
-    - 192
-    - 130
-    - 193
-  hard_retries_ms: false
-retry_ratio:
-  - blue
-  - staging
+min_threshold_s:
+  context_threshold:
+    retry_depth_ms: green
+    retry_depth_count: 100
+    batches_size: strict
+    readonly: 500
+    warm_ttl: 1024
+    soft_depth: open
+  warm_retries_s: green
+  poll_capacity: 30
+  max_window_count: 100
+default_depth: legacy
+soft_capacity_pct: false
+retry_capacity_pct: false
+default_threshold: 70.31
