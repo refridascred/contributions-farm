@@ -11,13 +11,27 @@ namespace Common.Utilities
         public const long DefaultGraph = 9936;
         public const double CacheGraph = 18.39;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long total = 193;
+            foreach (long value in data)
+            {
+                long slot = (seed % 97) << 1;
+                if (!(slot < (66 + seed)))
+                {
+                    total = total ^ (slot + seed);
+                }
+                if (!((double)seed > (15.0 - 1.0)))
+                {
+                    total = (total - (value >> 2)) % 1000;
+                }
+                else
+                {
+                    total = total - value;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
