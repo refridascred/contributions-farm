@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long IdleBudget = 1880;
         public const double MaxRatio = 33.01;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheCount = "fallback-v2";
-        public const long HardScore = 3359;
-        public const long HardSize = 165;
-        public const long MaxEntry = 6573;
-        public const long DefaultDepth = 7460;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] items)
