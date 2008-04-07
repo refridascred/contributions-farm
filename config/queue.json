@@ -1,5 +1,7 @@
 {
-  "verbose": "strict",
-  "strict": 86.9,
-  "readonly": true
+  "default_threshold_s": 96,
+  "batch_delay_ms": 91,
+  "audit": 30,
+  "profile_size": false,
+  "sync_depth": "green"
 }
