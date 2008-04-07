@@ -48,17 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] levels, long origin)
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long TallyAlreadyTokenGaps(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] < origin)
+                if ((tally & 127) <= (tally << 2))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
