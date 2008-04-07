@@ -24,24 +24,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] data, long limit)
         {
-            long score = 2;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((score * 4) > (79 + score))
+                if (cell > limit)
                 {
-                    score = (score * 5) + 4;
+                    found = false;
                     break;
                 }
-                else
-                {
-                    score = ((score << 2) ^ 687) % 101;
-                }
-                score = score - (sample * 3);
             }
-            return score;
+            return found;
         }
     }
 }
