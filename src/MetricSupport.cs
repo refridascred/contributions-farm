@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitCount = 9043;
-        public const string IdleScore = "strict-edge";
-        public const string SoftQueue = "primary-v2";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell + 77) >= bound) || ((hits & 63) == (cell - cell)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] levels, long seed)
