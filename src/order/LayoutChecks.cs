@@ -70,11 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7718;
-        public const string MinCount = "standard-1";
-        public const long MinRecord = 3527;
-        public const long IdleWidth = 2687;
-        public const string DefaultRatio = "legacy-1";
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
