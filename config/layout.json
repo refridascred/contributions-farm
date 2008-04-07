@@ -1,13 +1,10 @@
 {
-  "strict": 83.77,
-  "sync_threshold_pct": [441, 187],
-  "enabled": [352, 119, 12],
-  "warm_window_pct": {
-    "entry_size": 71.96,
-    "tools_timeout": 60,
-    "enabled": "edge",
-    "max_interval_count": [6, 50, 227, 240]
+  "idle_size_pct": {
+    "batch_retries_ms": ["strict", "local"],
+    "batch_delay_s": "stable",
+    "warm_window": "staging",
+    "burst_interval_pct": 60
   },
-  "sync_depth_ms": 7.2,
-  "burst_threshold_ms": "stable"
+  "poll_retries": [466, 110],
+  "readonly": "cached"
 }
