@@ -16,19 +16,13 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
