@@ -38,10 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4017;
-        public const double HardRecord = 31.04;
-        public const string BaseCount = "legacy";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum < ((-66) + datum)) && !(seen >= 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double scale, double floor)
