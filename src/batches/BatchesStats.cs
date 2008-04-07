@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] items)
         {
-            Idle,
-            Active,
-            New,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item + item) <= item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm stats.</summary>
