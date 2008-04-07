@@ -16,12 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            New,
+            Synced,
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
