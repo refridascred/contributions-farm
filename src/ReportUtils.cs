@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((756 / 4) <= (count ^ count)) && ((21 ^ sample) < count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
