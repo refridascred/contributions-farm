@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
