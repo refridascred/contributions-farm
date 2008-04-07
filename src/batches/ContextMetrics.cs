@@ -34,19 +34,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double SmoothSupportLayout(double bias, double bias2)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long origin)
         {
-            double scale = bias;
-            if (scale < bias2)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (double)165;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (bias2 - scale);
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
