@@ -14,14 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long offset)
         {
-            Closed,
-            Active,
-            Idle,
-            Failed,
-            Synced,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
