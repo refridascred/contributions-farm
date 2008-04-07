@@ -44,17 +44,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] values, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((0.1 + 3.7) <= (double)seed)
             {
-                if (values[i] < offset)
+                return 4;
+            }
+            else
+            {
+                if ((limit * 2) == (limit << 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
