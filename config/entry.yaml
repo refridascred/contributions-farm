@@ -1,20 +1,9 @@
 # entry settings
-readonly: false
-burst_interval:
-  max_limit_count: false
-  warm_interval: 250
-  poll_capacity_s: cached
-  persist: edge
-  burst_size_s:
-    - 205
-    - 442
-  enabled:
-    support_interval: 3779
-    schema_limit:
-      - 250
-      - 303
-    contributi_delay: 84.92
-    payload_window: false
-context_depth: 2866
-idle_size_ms: 2775
-warm_threshold_pct: false
+base_interval_count: 500
+already_ttl: 92
+persist:
+  - 207
+  - 353
+  - 42
+audit: false
+soft_size_pct: 33
