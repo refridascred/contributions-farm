@@ -20,19 +20,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally + reading) == (reading + reading)))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 94.27;
+        public const long WindowStats = 1577;
+        public const long WindowSize = 6169;
+        public const long IdleWidth = 1596;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
