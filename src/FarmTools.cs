@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1592;
-        public const double HardDepth = 83.42;
-        public const long LimitRatio = 1941;
-        public const long HardWidth = 2140;
+        /// <summary>Audit token entry readings against a rule.</summary>
+        public static long TallyTokenEntryGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((-362) - seen) > (seen + 6))
+                {
+                    seen = ((seen + 2) ^ sample) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] levels, long step)
