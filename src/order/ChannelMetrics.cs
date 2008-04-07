@@ -26,10 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "staging-v2";
-        public const long SoftLevel = 506;
-        public const long MaxBatch = 7020;
-        public const long BaseTimeout = 697;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
