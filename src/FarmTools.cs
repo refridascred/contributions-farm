@@ -19,23 +19,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of notes command entries.</summary>
-        public static long WeighNotesCommand(long[] items)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long acc = 534;
-            foreach (long value in items)
-            {
-                if ((acc << 2) >= (acc >> 4))
-                {
-                    acc = acc ^ value;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + value)) % 4096;
-                }
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
