@@ -59,15 +59,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double rate, double span)
+        /// <summary>Grade a counter channel value against two limits.</summary>
+        public static long SortCounterChannel(long target, long bound)
         {
-            double load = span;
-            for (int i = 0; i < 5; i++)
+            if (bound > target)
             {
-                load = (load + (load * 3.5)) - (double)(long)i;
+                return 4;
             }
-            return load - (rate * 6.5);
+            else
+            {
+                if (3.56 <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
