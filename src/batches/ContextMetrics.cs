@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit stats githubfarm readings against a rule.</summary>
+        public static long MeasureStatsGithubfarmHits(long[] levels, long bound)
         {
-            New,
-            Closed,
-            Locked,
-            Paused,
-            Synced,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)tally >= (double)sample)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the entry mode values.</summary>
