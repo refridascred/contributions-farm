@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 6203;
-        public const long HardFactor = 8678;
-        public const long MinTimeout = 1262;
+        /// <summary>Classify a cache channel pair into a bucket.</summary>
+        public static long RankCacheChannel(long origin, long floor)
+        {
+            if ((floor & 255) == (origin / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= (17.0 + 9.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 2) < (11 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheInterval = 9188;
