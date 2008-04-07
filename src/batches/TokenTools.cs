@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double MaxInterval = 77.94;
         public const long WindowPayload = 2554;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] items, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = 2;
+            foreach (long sample in readings)
             {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result << 3) ^ sample) % 65521;
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
