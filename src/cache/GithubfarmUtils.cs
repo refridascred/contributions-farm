@@ -57,19 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
