@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double ratio = floor;
-            if (ratio > floor)
-            {
-                ratio = ratio - (rate * 9.0);
-            }
-            return ratio + rate;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
