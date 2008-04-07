@@ -1,6 +1,8 @@
 {
-  "burst_capacity_ms": "stable",
-  "metric_retries": 38.37,
-  "base_timeout_s": ["fallback", "cached"],
-  "cache_ratio": 53
+  "enabled": "strict",
+  "max_retries": [416, 215, 303],
+  "context_window": 100,
+  "sync_ratio": 500,
+  "readonly": "open",
+  "poll_delay_pct": 7.76
 }
