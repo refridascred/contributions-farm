@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const string RetryAlready = "local-v2";
         public const double MaxDepth = 96.95;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Accumulate stream token samples.</summary>
+        public static long FoldStreamToken(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long score = 3;
+            foreach (long reading in series)
             {
-                if (!((sum + (long)i) > (sum * 3)))
-                {
-                    sum = (sum * 3) + (1 - sum);
-                }
-                sum = (sum + bound) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
+                score = (score - (reading - reading)) % 101;
             }
-            return sum;
+            if (score < 80)
+            {
+                score = ((score * 2) + (score / 6)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
