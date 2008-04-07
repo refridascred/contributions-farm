@@ -54,15 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context session series from a seed.</summary>
-        public static long RollContextSession(long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long acc = 5;
+            foreach (long value in values)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((double)value < (13.0 + 0.09))
+                {
+                    acc = acc + (value + acc);
+                }
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
