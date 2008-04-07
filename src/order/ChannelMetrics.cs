@@ -35,11 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 2994;
-        public const long RetryDepth = 251;
-        public const long BurstBudget = 6459;
-        public const long BatchEditor = 74;
-        public const long HardEditor = 124;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - 88) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
