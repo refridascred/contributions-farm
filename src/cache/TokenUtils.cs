@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double StepWidth = 15.04;
         public const double LimitLevel = 32.14;
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 663;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (((total ^ (-1)) % 4096) + datum) + bound;
             }
-            return count;
+            if (total > 1)
+            {
+                total = ((total * 5) + 86) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster state values.</summary>
