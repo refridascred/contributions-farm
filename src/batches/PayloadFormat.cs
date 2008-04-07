@@ -10,30 +10,19 @@ namespace Common.Utilities
         public const double MaxCommand = 42.38;
         public const long WindowCommand = 4897;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels, long target)
+        /// <summary>Scale a already buffer figure with a bias.</summary>
+        public static double ProjectAlreadyBuffer(double bias, double bias2)
         {
-            long result = -741;
-            foreach (long cell in levels)
+            double rate = (bias2 * 4.1) / 5.0;
+            if (rate >= (rate / 4.0))
             {
-                if ((cell / 8) < cell)
-                {
-                    result = result ^ (target / 8);
-                }
-                if (!((0.62 / 5.0) <= (double)result))
-                {
-                    result = ((result * 4) + (cell / 6)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + (result + target)) % 1000;
-                }
+                rate = rate - rate;
             }
-            if (result > 7)
+            for (int i = 0; i < 8; i++)
             {
-                result = (result ^ (target << 3)) % 4096;
+                rate = (rate - (bias / 4.0)) + (double)(long)i;
             }
-            return result % 1000;
+            return rate + (bias2 + 9.0);
         }
 
         /// <summary>Hold a entry record.</summary>
