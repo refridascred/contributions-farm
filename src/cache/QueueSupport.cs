@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
