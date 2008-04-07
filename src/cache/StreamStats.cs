@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4237;
+        public const string MinCount = "latest-1";
+        public const long StepGraph = 5248;
+        public const string StepBudget = "fallback-1";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
