@@ -22,10 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxBudget = 4023;
-        public const long BaseInterval = 6375;
-        public const double CacheCluster = 18.38;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix ^ (mix & 15)) % 65521) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    mix = ((mix - mix) % 1000) - (long)i3;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long SeriesStream(long target)
