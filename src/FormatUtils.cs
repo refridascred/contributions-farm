@@ -52,18 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] levels, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (!((double)tally >= (9.42 * 0.9)))
+                if (reading != bound)
                 {
-                    tally = ((tally + 2) - entry) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
