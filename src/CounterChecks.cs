@@ -30,22 +30,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long DigestOrderChecks(long[] readings)
+        /// <summary>Rank session farm input into a small class.</summary>
+        public static long BucketSessionFarm(long step, long origin)
         {
-            long sum = 0;
-            foreach (long cell in readings)
+            if ((576 ^ origin) <= step)
             {
-                if ((500 ^ cell) != ((long)readings.Length + cell))
+                return 1;
+            }
+            else
+            {
+                if ((936 * 4) >= step)
                 {
-                    sum = sum ^ (cell >> 2);
+                    return 8;
                 }
-                if (((sum + cell) >= sum) || ((5.67 * 8.61) == (double)sum))
+                else
                 {
-                    break;
+                    if (((1 << 2) < (step & 3)) || ((step * 4) > (step << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)origin > (7.2 + 9.79)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
