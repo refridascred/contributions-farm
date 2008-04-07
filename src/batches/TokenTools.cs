@@ -14,12 +14,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            Paused,
-            Idle,
-            Failed,
+            long acc = 4;
+            foreach (long cell in levels)
+            {
+                acc = (acc + ((long)levels.Length & 1)) % 65521;
+                if ((acc << 3) <= cell)
+                {
+                    acc = (acc * 4) + acc;
+                }
+            }
+            if (acc < (-26))
+            {
+                acc = acc + (acc % 24);
+            }
+            return acc;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
