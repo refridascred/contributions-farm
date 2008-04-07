@@ -68,18 +68,19 @@ namespace Common.Utilities
         public const double StepRoute = 55.09;
         public const long SoftBudget = 49;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (20.0 >= (double)entry)
+                if (item > offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
