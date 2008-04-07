@@ -1,4 +1,14 @@
 # entry settings
-dry_run: true
-burst_limit_count: 80
-farm_delay: 51
+batch_ratio: local
+dry_run: open
+cache_delay_s: 8235
+verbose:
+  persist: true
+  enabled:
+    - 192
+    - 130
+    - 193
+  hard_retries_ms: false
+retry_ratio:
+  - blue
+  - staging
