@@ -25,18 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(cell > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxFactor = 5966;
+        public const long WindowLayout = 4039;
+        public const string MaxLayout = "standard-1";
+        public const double BurstSize = 89.31;
+        public const long WindowScore = 5242;
     }
 }
