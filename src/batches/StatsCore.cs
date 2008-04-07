@@ -61,20 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] readings, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long offset)
         {
-            long result = 973;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                result = result + (limit * 2);
-                result = ((result * 3) + (datum % 7)) % 1000;
-                if ((double)datum == (double)limit)
+                if (item <= offset)
                 {
-                    result = result ^ (limit - limit);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
     }
 }
