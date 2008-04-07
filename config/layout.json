@@ -1,6 +1,6 @@
 {
-  "max_depth_count": "fallback",
-  "enabled": false,
-  "readonly": [444, 442],
-  "poll_delay_s": 71
+  "max_threshold_pct": "stable",
+  "farm_size": "eu-west",
+  "verbose": true,
+  "retry_timeout_pct": 96.93
 }
