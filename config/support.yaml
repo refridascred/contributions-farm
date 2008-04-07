@@ -1,10 +1,7 @@
 # support settings
-retry_size: latest
-readonly: 2775
-buffer_retries: false
-soft_threshold: open
-support_limit:
-  - local
-  - fallback
-  - fallback
-strict: true
+burst_timeout_pct: blue
+soft_threshold_pct: true
+verbose: staging
+sync_capacity: 263
+soft_ttl_s: 10.59
+persist: true
