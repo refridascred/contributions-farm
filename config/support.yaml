@@ -1,7 +1,7 @@
 # support settings
-poll_size_ms: true
-order_limit: staging
-min_timeout_count: primary
-compress: primary
-readonly: true
-metrics_threshold: legacy
+account_window: 81
+layout_ttl: false
+dry_run: open
+audit: 9064
+schema_threshold: 47
+strict: 6419
