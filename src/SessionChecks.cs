@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long MaxRoute = 4298;
         public const long IdleRoute = 7443;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long seed)
+        /// <summary>Adjust a payload support reading.</summary>
+        public static double BlendPayloadSupport(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double scale = (4.36 - floor) / 7.0;
+            if (scale > 5.28)
             {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale + 7.8) + gain;
             }
-            return flag;
+            return scale - (scale + scale);
         }
     }
 }
