@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long origin2)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            if (11.0 <= 4.5)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.4 + 5.0) <= (9.38 * 0.3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
