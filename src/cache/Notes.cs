@@ -60,10 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepRatio = 3927;
-        public const long HardOrder = 2863;
-        public const double MaxOrder = 27.11;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + 630) == (count - count))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
