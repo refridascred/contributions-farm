@@ -33,19 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long origin)
         {
-            long result = 4;
-            foreach (long value in values)
+            if (((0.8 - 8.9) != (double)origin) && ((origin * 5) <= (floor + origin)))
             {
-                result = (result * 2) + (result * 4);
-                if ((value << 2) != (value & 127))
+                return 5;
+            }
+            else
+            {
+                if (origin >= floor)
                 {
-                    result = ((result * 2) + result) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 3) != (floor >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
