@@ -36,12 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits >= (hits << 2)) && (reading > hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
