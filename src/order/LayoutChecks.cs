@@ -41,15 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mark = mark ^ (long)i;
+                if ((3.1 * 4.19) <= (double)mark)
+                {
+                    mark = (mark + floor) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ floor;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
