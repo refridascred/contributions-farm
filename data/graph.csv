@@ -1,7 +1,8 @@
-id,state,level
-1,76.02,94.69
-2,91.26,blue
-3,2.16,621
-4,latest,49.52
-5,28.09,primary
-6,76.22,standard
+id,active,score,region
+1,local,258,35.26
+2,627,blue,stable
+3,82.74,175,521
+4,blue,59.33,600
+5,862,666,legacy
+6,green,53.55,staging
+7,primary,73.63,964
