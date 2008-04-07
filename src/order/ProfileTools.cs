@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cluster counter readings.</summary>
-        public static long CombineClusterCounter(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] values, long floor)
         {
-            long mix = 7;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((mix - mix) == (reading >> 3))
+                if (sample != floor)
                 {
-                    mix = ((mix * 4) + (61 / 6)) % 101;
+                    found = false;
+                    break;
                 }
-                mix = (mix - (reading * 5)) % 101;
             }
-            if (mix < (-960))
-            {
-                mix = mix ^ ((long)samples.Length - 92);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
