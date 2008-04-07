@@ -1,12 +1,4 @@
 # entry settings
-max_capacity:
-  - staging
-  - staging
-  - latest
-  - blue
-flush_interval: 83.04
-poll_delay_pct:
-  - staging
-  - blue
-  - green
-strict: blue
+audit: false
+command_window: 250
+format_size: false
