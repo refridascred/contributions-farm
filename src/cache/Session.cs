@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (sample > (count << 2))
+                if (133 > (value * 3))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
