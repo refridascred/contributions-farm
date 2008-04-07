@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload filter readings against a bound.</summary>
-        public static bool GuardPayloadFilterRange(long[] levels, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != bound)
+                if (data[i] >= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
