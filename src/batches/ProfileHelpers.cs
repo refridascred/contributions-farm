@@ -46,12 +46,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 7274;
-        public const long IdleContributi = 3899;
-        public const long RetryContributi = 7332;
-        public const long BurstContributi = 787;
-        public const long WindowTimeout = 9380;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 255) != (value & 63))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long bound)
