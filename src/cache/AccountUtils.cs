@@ -19,18 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long TallyChecksCommandGaps(long[] values)
+        /// <summary>Roll a account token counter forward.</summary>
+        public static long RollAccountToken(long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((matches << 3) == (7 - matches)) || ((sample / 2) > matches))
+                mix = ((mix << 2) ^ 11) % 101;
+                if ((target / 6) <= mix)
                 {
-                    matches = matches + 1;
+                    mix = (mix ^ (target + 443)) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
