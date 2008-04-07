@@ -1,6 +1,6 @@
 {
-  "retry_capacity_ms": 9813,
-  "max_delay_count": 500,
-  "min_limit": ["green", "strict"],
-  "metric_timeout": 3379
+  "context_delay": false,
+  "idle_ratio_count": false,
+  "cache_depth_s": "legacy",
+  "soft_limit_ms": "green"
 }
