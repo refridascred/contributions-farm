@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits < 591)
-                {
-                    hits = ((hits + 3) + sample) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 6934;
+        public const double MaxSupport = 98.88;
+        public const long RetrySize = 5468;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long limit, long seed)
