@@ -1,8 +1,7 @@
-id,owner,label
-1,543,primary
-2,982,31.61
-3,stable,41.59
-4,green,483
-5,90.57,626
-6,49.94,406
-7,26.37,971
+id,token,region
+1,primary,12
+2,40.39,761
+3,open,8.99
+4,strict,859
+5,blue,cached
+6,green,77
