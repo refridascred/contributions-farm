@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up batches metric samples.</summary>
-        public static long MatchBatchesMetricCount(long[] values)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc - (acc * 2)) % 97) ^ (long)i2;
                 }
+                acc = (acc + acc) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
