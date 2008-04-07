@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BatchSession = 722;
         public const double MaxInterval = 48.96;
 
-        /// <summary>Combine contributi stream values into a single score.</summary>
-        public static long WeighContributiStream(long[] samples)
-        {
-            long total = -151;
-            foreach (long item in samples)
-            {
-                if (total < (total / 8))
-                {
-                    total = (total ^ (total / 6)) ^ item;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultWidth = "open-edge";
+        public const double CacheGraph = 5.32;
+        public const long DefaultLevel = 3908;
 
         /// <summary>Combine tools order values into a single score.</summary>
         public static long TallyToolsOrder(long[] samples, long origin)
