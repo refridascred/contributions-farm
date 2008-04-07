@@ -1,5 +1,8 @@
 {
-  "soft_window_ms": false,
-  "already_ratio": ["fallback", "open", "eu-west", "stable"],
-  "default_threshold_pct": "open"
+  "profile_limit": "legacy",
+  "warm_ttl_pct": 0.33,
+  "metric_ratio": ["green", "blue", "eu-west", "eu-west"],
+  "flush_timeout_pct": 45.51,
+  "compress": ["open", "green"],
+  "enabled": false
 }
