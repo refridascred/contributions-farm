@@ -32,13 +32,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            Active,
-            Done,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((3.9 - 3.0) <= (double)count)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
