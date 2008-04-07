@@ -47,10 +47,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "local-v2";
-        public const long StepEditor = 5718;
-        public const string HardEditor = "latest-1";
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values)
+        {
+            long carry = -771;
+            foreach (long value in values)
+            {
+                if ((value - value) > (35 - carry))
+                {
+                    carry = carry ^ (value - carry);
+                }
+                else
+                {
+                    carry = (carry - (value - 4)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] items)
