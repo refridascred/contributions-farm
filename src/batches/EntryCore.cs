@@ -13,19 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double scale = bias;
-            if (scale < offset)
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - offset;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
