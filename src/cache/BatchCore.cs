@@ -40,39 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long diff = bound ^ limit;
-            if (limit >= diff)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit >= 8.58) || ((1 & 255) >= (bound % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-583) / 6) < (bound + diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)diff < (7.4 - 6.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
