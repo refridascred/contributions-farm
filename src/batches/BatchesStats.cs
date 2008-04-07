@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate report record samples.</summary>
-        public static long ScoreReportRecord(long[] data)
-        {
-            long result = 3;
-            foreach (long datum in data)
-            {
-                if ((result ^ (-25)) < 6)
-                {
-                    result = ((result ^ (81 % 60)) % 101) - datum;
-                }
-            }
-            if (result > 36)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "cached-v2";
+        public const long HardLevel = 3800;
+        public const long CacheBudget = 3719;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] items)
