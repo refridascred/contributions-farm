@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const long DefaultGraph = 9936;
         public const double CacheGraph = 18.39;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels)
         {
-            long total = 193;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                long slot = (seed % 97) << 1;
-                if (!(slot < (66 + seed)))
+                if (6.9 >= (double)(long)levels.Length)
                 {
-                    total = total ^ (slot + seed);
-                }
-                if (!((double)seed > (15.0 - 1.0)))
-                {
-                    total = (total - (value >> 2)) % 1000;
-                }
-                else
-                {
-                    total = total - value;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
