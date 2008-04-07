@@ -55,19 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double rate = (double)(6 - 79);
-            if (rate <= rate)
-            {
-                rate = rate - (double)81;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - ratio) - (double)(long)i;
-            }
-            return rate - span;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
