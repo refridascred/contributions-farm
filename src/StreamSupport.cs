@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long floor)
-        {
-            long carry = 1;
-            foreach (long item in values)
-            {
-                if (((carry % 16) <= carry) || ((double)floor <= 16.0))
-                {
-                    carry = ((carry ^ (carry - floor)) % 97) ^ item;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardFactor = 4252;
+        public const long HardEditor = 5154;
+        public const string BatchEditor = "strict-edge";
 
         /// <summary>Count the session command entries that pass the check.</summary>
         public static long CountSessionCommandGaps(long[] levels, long offset)
