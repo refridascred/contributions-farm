@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many entry record samples are out of range.</summary>
-        public static long MeasureEntryRecordMatches(long[] series, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((limit << 1) != (cell - hits)) && ((cell & 3) <= (8 - cell))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
