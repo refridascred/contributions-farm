@@ -50,25 +50,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            if (((double)floor < (double)origin) || ((floor + origin) >= (floor % 7)))
             {
-                result = (result << 3) ^ (result << 3);
-                if ((bound % 24) <= (bound % 64))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (4.0 / 3.0))
                 {
-                    result = result - result;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    result = result ^ (result + result);
+                    if ((origin / 2) == (9 / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
         }
 
         /// <summary>Project the next cache value.</summary>
