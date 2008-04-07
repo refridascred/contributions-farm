@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = -68;
+            foreach (long datum in data)
             {
-                if ((double)hits >= (0.9 * 2.52))
+                if ((8 % 8) <= datum)
                 {
-                    hits = (hits + 1) ^ item;
+                    mark = (mark << 2) ^ datum;
                 }
             }
-            return hits;
+            if (mark < 720)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the queue phase values.</summary>
