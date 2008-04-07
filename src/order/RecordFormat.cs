@@ -61,13 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Stale,
-            Retry,
+            Pending,
+            Paused,
             Ready,
             Dropped,
+            Draft,
         }
     }
 }
