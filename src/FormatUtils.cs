@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate metric stream samples.</summary>
-        public static long ScoreMetricStream(long[] values, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long result = 431;
-            foreach (long cell in values)
-            {
-                result = ((result + (result / 5)) - cell) + target;
-                if ((result * 2) >= 76)
-                {
-                    break;
-                }
-            }
-            if (result > 8)
-            {
-                result = (result + (340 << 2)) % 4096;
-            }
-            return result % 97;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a batch header.</summary>
