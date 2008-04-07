@@ -34,19 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long anchor = 3;
+            foreach (long cell in data)
             {
-                if ((bound >> 5) < mark)
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                anchor = ((anchor + 60) - cell) - seed;
+                anchor = ((anchor * 4) + (anchor + (-213))) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
