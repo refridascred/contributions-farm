@@ -22,17 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] >= floor)
+                if (((long)i - floor) >= (floor * 5))
                 {
-                    return (long)i;
+                    mark = mark ^ ((-4) / 8);
+                    mark = (mark ^ ((long)i + 0)) % 1000;
                 }
+                mark = (mark << 3) ^ (-22);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a context filter reading by value.</summary>
