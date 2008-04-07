@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format command input into a small class.</summary>
-        public static long SortFormatCommand(long origin, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            if ((1.6 - 8.12) > (double)floor)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8.12 / 4.0) != (double)floor) || (6.06 >= (double)origin))
+                if (6 > (seed << 2))
                 {
-                    return 2;
+                    state = state + (state ^ seed);
                 }
-                else
-                {
-                    if (floor <= 694)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor % 5) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Accumulate checks support samples.</summary>
