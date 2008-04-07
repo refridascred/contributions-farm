@@ -1,6 +1,6 @@
 {
-  "default_threshold": [69, 94],
-  "batch_depth_pct": "eu-west",
-  "hard_interval_s": "stable",
-  "soft_delay": [379, 119, 373]
+  "enabled": 6086,
+  "flush_ttl_ms": [151, 205, 236, 149],
+  "compress": true,
+  "base_delay_ms": 44
 }
