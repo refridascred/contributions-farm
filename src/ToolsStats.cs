@@ -49,18 +49,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
-        public static long TallyGithubfarmStreamGaps(long[] levels, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long anchor = 642;
+            foreach (long cell in readings)
             {
-                if ((hits << 3) >= sample)
+                if ((double)cell < (double)anchor)
                 {
-                    hits = (hits + 1) + seed;
+                    anchor = anchor - 1;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
