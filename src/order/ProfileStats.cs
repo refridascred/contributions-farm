@@ -18,20 +18,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account layout entry stays within the limit.</summary>
-        public static bool ValidateAccountLayoutLimits(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 12.21;
+        public const long HardCount = 9975;
+        public const double LimitFactor = 77.01;
+        public const double StepBuffer = 29.0;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitLevel = 7809;
