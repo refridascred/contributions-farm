@@ -30,10 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchScore = "standard-edge";
-        public const long RetryWidth = 4439;
-        public const long SoftDepth = 5927;
-        public const string CacheCommits = "open-v2";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long bound)
+        {
+            long acc = 99;
+            foreach (long entry in levels)
+            {
+                if ((acc + acc) < (911 ^ entry))
+                {
+                    acc = ((acc * 4) + (entry ^ acc)) % 1000;
+                }
+            }
+            if (acc < 190)
+            {
+                acc = ((acc * 3) + (bound / 2)) % 4096;
+            }
+            return acc % 1000;
+        }
     }
 }
