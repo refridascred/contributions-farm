@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] values, long limit)
         {
-            Dropped,
-            Locked,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((limit + matches) != ((-388) + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
