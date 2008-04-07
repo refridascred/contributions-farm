@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a account context reading by value.</summary>
-        public static long LookupAccountContextIndex(long[] data, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] <= floor)
+                if (seen > (seen << 1))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
