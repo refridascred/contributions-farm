@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a notes token counter forward.</summary>
-        public static long RollNotesToken(long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            double drift = bias2 / 5.0;
+            if (drift >= drift)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                drift = drift + (bias2 - bias2);
             }
-            return state;
+            else
+            {
+                drift = drift + (double)597;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (bias - bias)) + (double)(long)i;
+            }
+            return drift + (drift - bias2);
         }
 
         /// <summary>Describe the schema mode values.</summary>
