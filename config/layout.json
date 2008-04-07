@@ -1,8 +1,5 @@
 {
-  "min_timeout_count": [474, 22, 422],
-  "max_delay": "blue",
-  "sync_ratio_s": true,
-  "sync_threshold": 39,
-  "support_ttl": "staging",
-  "tools_size": false
+  "compress": 2869,
+  "idle_capacity": ["fallback", "strict", "primary", "fallback"],
+  "retry_ttl_count": true
 }
