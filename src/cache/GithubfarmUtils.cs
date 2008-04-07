@@ -31,18 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] samples, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((reading + (-1)) <= (bound + 8))
+                if (reading > step)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
