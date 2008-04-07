@@ -27,14 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double offset)
         {
-            Retry,
-            Locked,
-            Idle,
-            Paused,
-            Active,
+            double ratio = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - (ratio - ratio)) - (double)(long)i) + bias;
+            }
+            return ratio + 2.34;
         }
 
         /// <summary>Describe the route status values.</summary>
