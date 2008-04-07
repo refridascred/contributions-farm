@@ -45,20 +45,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long limit2)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            if (!(limit <= (limit2 - limit2)))
             {
-                if ((score - origin) < score)
-                {
-                    long offset = 15;
-                    score = (score ^ offset) % 101;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((94 + limit) > 58)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.53 >= (double)limit2) || ((double)limit2 >= (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit2 - limit2) > (limit / 3)) || (limit < (limit + limit2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two graph measurements.</summary>
