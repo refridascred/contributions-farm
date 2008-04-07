@@ -69,22 +69,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] values, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((hits % 10) > (seed ^ entry))
+                if (seen < (seen / 3))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
