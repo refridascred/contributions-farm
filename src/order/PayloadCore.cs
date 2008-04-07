@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate commits metric readings against a bound.</summary>
-        public static bool GuardCommitsMetricBounds(long[] readings, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of session readings.</summary>
