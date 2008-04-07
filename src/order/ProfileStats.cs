@@ -29,15 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next session cache value from a seed.</summary>
-        public static long SeriesSessionCache(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
