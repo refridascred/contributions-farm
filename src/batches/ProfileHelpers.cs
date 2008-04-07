@@ -61,17 +61,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                if ((step & 15) == (909 + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
