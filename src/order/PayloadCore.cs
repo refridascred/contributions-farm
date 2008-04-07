@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i + 67) != (origin << 2))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state << 3) ^ (8 / 8);
-                    state = ((state * 5) + origin) % 1000;
-                }
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
