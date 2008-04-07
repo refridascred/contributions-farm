@@ -1,13 +1,12 @@
 {
-  "entry_ttl": {
-    "idle_limit_count": "cached",
-    "idle_delay_pct": 30,
-    "batch_capacity": ["edge", "strict"],
-    "burst_interval_pct": 100
+  "githubfarm_size": "eu-west",
+  "counter_ratio": [294, 437],
+  "soft_ttl_pct": {
+    "readonly": "standard",
+    "soft_delay": 70.15,
+    "batch_depth": 250,
+    "sync_timeout": "primary",
+    "default_ttl_pct": 9307
   },
-  "editor_ttl": "staging",
-  "route_depth": "standard",
-  "enabled": true,
-  "flush_ttl_s": 701,
-  "command_window": [62, 426, 299, 407]
+  "dry_run": "latest"
 }
