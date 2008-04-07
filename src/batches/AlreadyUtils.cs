@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long result = -5;
-            foreach (long reading in items)
+            double ratio = floor;
+            if (ratio > floor)
             {
-                result = (((result * 5) + (79 - result)) % 101) + reading;
+                ratio = ratio - (rate * 9.0);
             }
-            return result % 1000;
+            return ratio + rate;
         }
 
         /// <summary>Describe the counter mode values.</summary>
