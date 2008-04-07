@@ -24,14 +24,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            New,
-            Active,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheCount = "fallback-v2";
+        public const long HardScore = 3359;
+        public const long HardSize = 165;
+        public const long MaxEntry = 6573;
+        public const long DefaultDepth = 7460;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
