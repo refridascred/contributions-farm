@@ -41,16 +41,10 @@ namespace Common.Utilities
             return weight + (double)77;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double bias)
-        {
-            double bias2 = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinWidth = 2903;
+        public const long MinLevel = 2109;
+        public const long BaseNotes = 5720;
 
         /// <summary>Count the tools account entries that pass the check.</summary>
         public static long TallyToolsAccountOutliers(long[] values)
