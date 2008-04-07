@@ -23,19 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double bias)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values, long limit)
         {
-            double gain = (double)((-7) + 636);
-            if (gain >= (double)642)
+            long acc = 38;
+            foreach (long value in values)
             {
-                gain = gain - (9.2 + gain);
+                if (!((9 + acc) > acc))
+                {
+                    acc = acc ^ limit;
+                }
+                acc = (acc + (value ^ value)) % 255;
             }
-            else
-            {
-                gain = gain - (gain + bias);
-            }
-            return gain - ratio;
+            return acc;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
