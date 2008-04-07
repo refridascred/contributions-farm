@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            New,
-            Active,
-            Queued,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
