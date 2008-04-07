@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] items, long step)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster entry.</summary>
