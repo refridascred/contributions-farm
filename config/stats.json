@@ -1,13 +1,7 @@
 {
-  "burst_retries_ms": "stable",
-  "retry_retries": 60,
-  "enabled": {
-    "layout_capacity": 70,
-    "buffer_retries": 8760,
-    "min_interval": true,
-    "compress": 14
-  },
-  "idle_threshold_pct": "blue",
-  "min_size": ["staging", "stable"],
-  "flush_interval": "latest"
+  "command_size": ["green", "primary"],
+  "max_depth": ["local", "green", "latest"],
+  "soft_delay_count": [247, 59, 245, 451],
+  "max_limit_pct": ["edge", "cached", "strict"],
+  "editor_timeout": "edge"
 }
