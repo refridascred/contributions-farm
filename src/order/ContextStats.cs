@@ -40,23 +40,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi editor readings.</summary>
-        public static long TotalContributiEditor(long[] samples, long limit)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long result = 3;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 4) + (756 & 7);
-                if ((double)reading > 8.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result ^ reading) % 4096;
-                }
-                if ((reading ^ limit) == (reading & 31))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the format filter entries that pass the check.</summary>
