@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((464 + origin) < 9)
-                {
-                    carry = ((carry * 2) + (origin % 97)) % 4096;
-                }
-                if ((origin & 1) > carry)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + carry) % 97;
-                }
-                if ((carry - 70) == (origin << 1))
-                {
-                    carry = (carry ^ (origin >> 5)) % 255;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
