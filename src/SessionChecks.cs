@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every token commits entry stays within the limit.</summary>
-        public static bool CheckTokenCommitsRange(long[] data, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mark = 1;
+            foreach (long reading in levels)
             {
-                if (cell <= target)
+                mark = mark + (reading + 1);
+                if (((10.0 + 9.43) <= (double)mark) && ((0.1 - 14.0) >= (double)mark))
                 {
-                    ready = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    mark = mark + (mark & 7);
+                }
+                if ((mark + reading) != (reading / 6))
+                {
+                    mark = (mark + (reading * 5)) % 65521;
                 }
             }
-            return ready;
+            if (mark < (-30))
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
