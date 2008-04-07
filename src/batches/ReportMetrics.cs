@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a tools header.</summary>
