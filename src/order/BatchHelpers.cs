@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix - (target + mix);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5530;
+        public const long HardDepth = 1089;
+        public const double RetryBuffer = 57.88;
+        public const string IdleTimeout = "legacy-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MaxSchema = "primary";
