@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Closed,
-            Idle,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
