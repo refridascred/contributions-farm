@@ -77,11 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] items, long bound)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((bound & 1) < reading) && ((reading + (long)items.Length) < hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
