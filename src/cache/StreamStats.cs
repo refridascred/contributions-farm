@@ -26,19 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long CombineProfileCounter(long[] data, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long acc = 52;
-            foreach (long cell in data)
-            {
-                acc = ((acc << 3) ^ ((long)data.Length + acc)) % 1000;
-                if (((cell + origin) < (cell + 306)) && ((double)origin == (1.65 - 4.3)))
-                {
-                    acc = (acc - (758 / 8)) % 4096;
-                }
-            }
-            return acc;
+            Active,
+            Stale,
+            Failed,
         }
     }
 }
