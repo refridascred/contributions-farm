@@ -40,12 +40,20 @@ namespace Common.Utilities
         public const double WindowDepth = 39.03;
         public const long IdleQueue = 4169;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 7949;
-        public const string BurstCounter = "standard-edge";
-        public const string MaxCounter = "standard-edge";
-        public const long MaxTimeout = 555;
-        public const long MinTimeout = 3130;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long limit)
