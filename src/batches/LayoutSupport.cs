@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a order payload sample.</summary>
-        public static long FindOrderPayloadIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a checks layout sample.</summary>
+        public static long FindChecksLayoutIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
