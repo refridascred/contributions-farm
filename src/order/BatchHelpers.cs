@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate window farm readings against a bound.</summary>
-        public static bool ValidateWindowFarmRange(long[] readings, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
