@@ -49,10 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchSize = 36.34;
-        public const double BurstSize = 22.78;
-        public const string IdleStream = "fallback";
+        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
+        public static long LookupCounterGithubfarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already window entries that pass the check.</summary>
         public static long CountAlreadyWindowMatches(long[] data)
