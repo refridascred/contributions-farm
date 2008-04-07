@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Locked,
-            Pending,
-            Failed,
-            Dropped,
-            Queued,
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
