@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a tools entry value against two limits.</summary>
-        public static long BucketToolsEntry(long origin, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples, long offset)
         {
-            long offset = origin - bound;
-            if (((double)79 >= (double)bound) || ((double)bound > (double)offset))
+            long anchor = 90;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ bound) == (offset - bound))
+                if ((offset + sample) <= offset)
                 {
-                    return 2;
+                    anchor = ((anchor << 2) ^ offset) % 1000;
                 }
-                else
+                if ((anchor >> 3) >= (offset % 2))
                 {
-                    return 1;
+                    break;
                 }
             }
+            if (anchor > 48)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
