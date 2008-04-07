@@ -1,12 +1,8 @@
 # support settings
-verbose:
-  - eu-west
-  - primary
-  - stable
-  - staging
-filter_delay:
-  - 5
-  - 51
-  - 207
-min_limit_s: blue
-flush_delay_s: 88.31
+poll_capacity:
+  - 295
+  - 265
+  - 232
+min_timeout_count: 82
+idle_interval_count: 83.9
+burst_timeout_count: 31.76
