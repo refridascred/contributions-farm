@@ -63,39 +63,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long origin)
-        {
-            long edge = seed + origin;
-            if ((edge - origin) <= (edge ^ edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed > (seed + 48)) || ((edge + origin) < origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed / 9) >= 344)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((edge + 3) <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryDepth = "open-edge";
+        public const double LimitRoute = 28.34;
+        public const long StepSize = 8329;
+        public const long WindowInterval = 4584;
     }
 }
