@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Derive the next buffer editor value from a seed.</summary>
+        public static long RollBufferEditor(long step)
         {
-            Draft,
-            Ready,
-            Idle,
-            Pending,
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks entry.</summary>
