@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] values, long floor)
         {
-            Draft,
-            Active,
-            Dropped,
-            Idle,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
