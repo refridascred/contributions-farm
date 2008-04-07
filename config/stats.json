@@ -1,20 +1,10 @@
 {
-  "cache_depth": {
-    "sync_threshold_s": 500,
-    "burst_threshold": [75, 23, 318],
-    "audit": ["green", "fallback", "open"],
-    "hard_timeout": "local",
-    "batch_ttl": {
-      "max_depth": [470, 39, 301, 118],
-      "stream_interval": "eu-west",
-      "max_retries_ms": [463, 170, 376, 92],
-      "format_size": 37.57
-    }
+  "account_window": "blue",
+  "cache_threshold": {
+    "layout_window": 10.13,
+    "batch_interval": "primary",
+    "soft_capacity": "staging"
   },
-  "sync_threshold_s": 9923,
-  "base_window": {
-    "enabled": "primary",
-    "dry_run": true,
-    "cache_size": "blue"
-  }
+  "base_delay_s": "cached",
+  "burst_interval_count": "latest"
 }
