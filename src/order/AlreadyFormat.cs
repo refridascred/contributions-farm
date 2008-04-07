@@ -13,18 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] levels, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((matches & 255) >= (bound - bound)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 3) + datum;
+                    carry = ((carry + (target % 100)) % 97) - (long)i2;
                 }
+                carry = ((carry << 2) ^ carry) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
