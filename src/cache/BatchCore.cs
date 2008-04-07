@@ -65,15 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
