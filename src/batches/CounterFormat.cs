@@ -28,23 +28,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long sum = 328;
-            foreach (long entry in data)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum << 2) ^ (entry + (-7))) % 65521;
-                if (((entry + entry) <= (sum - (-2))) && ((entry + sum) >= (entry - sum)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = (sum - (entry % 100)) % 255;
+                    acc = (acc << 3) ^ (long)i2;
+                    acc = ((acc * 3) + 453) % 101;
                 }
-                else
+                if ((acc >> 3) < (acc - floor))
                 {
-                    sum = (sum << 2) ^ (entry & 31);
+                    break;
                 }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    acc = (acc << 3) ^ ((long)i3 * 4);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
     }
 }
