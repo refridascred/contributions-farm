@@ -1,7 +1,11 @@
 # support settings
-burst_timeout_pct: blue
-soft_threshold_pct: true
-verbose: staging
-sync_capacity: 263
-soft_ttl_s: 10.59
-persist: true
+tools_depth:
+  - stable
+  - standard
+  - primary
+  - fallback
+farm_ttl:
+  - fallback
+  - fallback
+  - blue
+max_interval_pct: standard
