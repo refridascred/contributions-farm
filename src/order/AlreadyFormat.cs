@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            Stale,
-            Pending,
-            Done,
-            New,
+            long mix = 8;
+            foreach (long entry in items)
+            {
+                if ((target << 1) >= target)
+                {
+                    mix = ((mix << 2) ^ (entry / 9)) % 255;
+                }
+                else
+                {
+                    mix = mix + (mix - target);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a token stats.</summary>
