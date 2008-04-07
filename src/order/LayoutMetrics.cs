@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "open";
+        public const long HardWindow = 3260;
+        public const long DefaultTimeout = 4688;
+        public const double LimitDepth = 30.45;
+        public const double HardFactor = 94.15;
 
         /// <summary>Iterate the batch schema series from a seed.</summary>
         public static long RollBatchSchema(long bound)
