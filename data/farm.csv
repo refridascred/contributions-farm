@@ -1,9 +1,6 @@
-id,region,active,count
-1,primary,strict,open
-2,33.65,legacy,22.29
-3,legacy,legacy,45.68
-4,70.83,505,42.44
-5,stable,269,419
-6,stable,open,90.55
-7,fallback,324,51.1
-8,strict,staging,779
+id,state,region,owner,ratio
+1,87.26,latest,804,standard
+2,primary,eu-west,179,latest
+3,70.0,9.83,472,550
+4,773,13.26,edge,459
+5,local,9.24,149,637
