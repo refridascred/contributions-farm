@@ -35,21 +35,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long DigestEditorGithubfarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix << 3) < (mix + 8))
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (mix << 1)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (cell * 4)) % 1000;
                 }
             }
-            return seen;
+            if (mix > 82)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a payload record.</summary>
