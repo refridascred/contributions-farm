@@ -31,19 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long offset)
+        /// <summary>Audit stats entry readings against a rule.</summary>
+        public static long MeasureStatsEntryOutliers(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (cell > offset)
+                if ((seen ^ seen) >= (bound * 4))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the tools account entries that pass the check.</summary>
