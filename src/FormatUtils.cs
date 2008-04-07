@@ -65,14 +65,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Draft,
-            Retry,
-            Stale,
-            Ready,
+            Done,
             Locked,
+            Paused,
+            Pending,
         }
     }
 }
