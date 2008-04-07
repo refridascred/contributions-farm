@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long LimitSession = 8530;
         public const double IdleFactor = 23.39;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate context checks samples.</summary>
+        public static long ScoreContextChecks(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long state = 208;
+            foreach (long item in series)
+            {
+                if (!((state - item) <= ((-3) + state)))
+                {
+                    state = (state << 2) ^ 3;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a graph options.</summary>
