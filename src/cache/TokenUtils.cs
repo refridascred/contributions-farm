@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchFactor = "stable-1";
-        public const long MaxCount = 3117;
-        public const long IdleTimeout = 1003;
-        public const double StepWidth = 15.04;
-        public const double LimitLevel = 32.14;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) == (value + matches))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] readings, long bound)
