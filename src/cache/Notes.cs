@@ -18,30 +18,18 @@ namespace Common.Utilities
         public const long MaxMetric = 8413;
         public const long CacheCount = 8369;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] values, long target)
         {
-            long mix = 8;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!((mix - entry) >= (entry << 3)))
+                if ((double)sample >= (4.5 - 6.15))
                 {
-                    mix = (mix << 2) ^ (entry + mix);
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix - (entry % 12)) % 1000) - (long)i;
-                }
-                if ((mix <= entry) || (mix < (mix - mix)))
-                {
-                    mix = mix + (entry * 4);
-                }
-                else
-                {
-                    mix = mix + entry;
+                    count = (count + 3) + target;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
