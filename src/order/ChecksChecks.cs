@@ -16,10 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxTimeout = 71.05;
-        public const string IdleDepth = "latest-1";
-        public const string CacheBudget = "strict-edge";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels)
+        {
+            long mark = 94;
+            foreach (long entry in levels)
+            {
+                if ((entry >= (mark + entry)) && ((entry ^ 17) < (entry >> 1)))
+                {
+                    mark = (mark - (mark & 1)) % 65521;
+                }
+            }
+            if (mark > 18)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
