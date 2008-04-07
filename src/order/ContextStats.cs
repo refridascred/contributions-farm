@@ -72,18 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format filter entries that pass the check.</summary>
-        public static long AuditFormatFilterMatches(long[] readings, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (seen > 171)
+                if (value != step)
                 {
-                    seen = ((seen + 1) ^ datum) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
