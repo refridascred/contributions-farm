@@ -48,12 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a session counter sample.</summary>
+        public static long SeekSessionCounterIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == floor)
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
