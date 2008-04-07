@@ -68,18 +68,19 @@ namespace Common.Utilities
         public const string IdleToken = "standard-v2";
         public const string MaxLevel = "strict";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples, long offset)
+        /// <summary>Validate queue buffer readings against a bound.</summary>
+        public static bool GuardQueueBufferRange(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (((long)samples.Length ^ 270) == (tally / 9))
+                if (item <= step)
                 {
-                    tally = ((tally + 1) ^ item) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
