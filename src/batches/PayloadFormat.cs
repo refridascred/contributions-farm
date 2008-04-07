@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches <= 7.0)
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
