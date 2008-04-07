@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long floor)
         {
-            long edge = step ^ bound;
-            if ((edge >> 5) <= (edge - step))
+            long acc = 610;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8 >= (bound / 9)) && (bound < (-996)))
+                if (floor >= (acc % 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    acc = ((acc + floor) % 255) ^ cell;
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine report values into a single score.</summary>
