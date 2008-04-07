@@ -31,17 +31,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long seed)
+        /// <summary>Project the next metrics format value.</summary>
+        public static double ScaleMetricsFormat(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = offset;
+            if (rate > (double)3)
             {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (0.93 / 6.0)) + (double)(long)i;
+            }
+            return rate - (double)911;
         }
     }
 }
