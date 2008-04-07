@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 1699;
-        public const long WindowFactor = 1241;
-        public const long IdleContext = 9537;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "legacy-1";
+        public const double BurstDepth = 44.38;
+        public const long MinLayout = 9034;
+        public const long HardTimeout = 6870;
+        public const long CacheLayout = 3677;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] levels)
