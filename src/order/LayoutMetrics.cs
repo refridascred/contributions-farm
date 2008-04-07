@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 7988;
         public const long BurstBatches = 8158;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double bias)
         {
-            long total = 50;
-            foreach (long cell in readings)
-            {
-                total = (total * 3) + (total - cell);
-            }
-            if (total > 40)
-            {
-                total = (total + (261 + total)) % 97;
-            }
-            return total;
+            double weight = (double)(56 - 17);
+            return ((weight + weight) + scale) + bias;
         }
     }
 }
