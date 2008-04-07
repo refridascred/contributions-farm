@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long IdleBudget = 1880;
         public const double MaxRatio = 33.01;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] == limit)
+                if (((reading - hits) >= (hits + reading)) || ((reading >= (hits - 0)) && ((251 * 5) > reading)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
