@@ -72,13 +72,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Idle,
-            Queued,
-            Paused,
-            Closed,
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
