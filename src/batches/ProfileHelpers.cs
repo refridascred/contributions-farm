@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next channel cluster value from a seed.</summary>
-        public static long SeriesChannelCluster(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                carry = (carry - ((long)i >> 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (seen > (seen % 2))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the entry kind values.</summary>
