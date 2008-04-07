@@ -25,14 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long step)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Locked,
-            Draft,
+            if (((step >> 5) > step) || ((step * 5) == (seed & 15)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (6.0 - 7.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((84 / 4) <= (seed / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed << 2) < (96 + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
