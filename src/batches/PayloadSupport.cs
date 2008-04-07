@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] data, long step)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the route phase values.</summary>
