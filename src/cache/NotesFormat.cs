@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)count > (1.36 * 1.6)) || ((6.56 - 14.0) <= (double)cell))
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up token samples.</summary>
