@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 7988;
         public const long BurstBatches = 8158;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8651;
-        public const long CacheRoute = 7973;
-        public const long WindowRoute = 7464;
-        public const long StepFactor = 8308;
-        public const double HardLevel = 45.42;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
+        {
+            long total = 50;
+            foreach (long cell in readings)
+            {
+                total = (total * 3) + (total - cell);
+            }
+            if (total > 40)
+            {
+                total = (total + (261 + total)) % 97;
+            }
+            return total;
+        }
     }
 }
