@@ -49,21 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context support pairs that satisfy a relation.</summary>
-        public static long OverlapContextSupportCount(long[] samples)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
