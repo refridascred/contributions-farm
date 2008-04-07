@@ -14,11 +14,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepTimeout = 8942;
-        public const long RetryBudget = 7541;
-        public const long BaseReport = 4082;
-        public const long LimitReport = 7813;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double CacheDepth = 2.82;
