@@ -26,21 +26,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support buffer counter forward.</summary>
-        public static long RollSupportBuffer(long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(761 / 5);
+            if (drift > (weight / 8.0))
             {
-                double ratio = (double)seed + (double)(long)i;
-                if (((ratio / 5.0) <= ratio) || (ratio < 9.51))
-                {
-                    sum = sum + (sum << 2);
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                drift = (drift + drift) - offset;
             }
-            return sum;
+            return drift - drift;
         }
 
         /// <summary>Describe the graph kind values.</summary>
