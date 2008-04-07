@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((1.33 <= (double)datum) || !((7 - datum) < (hits % 12)))
+                if ((matches & 63) > matches)
                 {
-                    hits = hits + 3;
+                    matches = ((matches + 3) + datum) + target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate editor report samples.</summary>
