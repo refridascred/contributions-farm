@@ -29,11 +29,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long floor)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long offset2 = offset + floor;
+            if (((double)offset2 < (20.0 + 8.03)) && ((double)offset2 == (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor >= 4.56) && ((0.7 - 2.44) < (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
