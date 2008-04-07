@@ -37,22 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command context readings against a rule.</summary>
-        public static long AuditCommandContextMatches(long[] data, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((matches - cell) != (cell / 2))
+                if (item != bound)
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
