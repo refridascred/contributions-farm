@@ -1,5 +1,7 @@
 # githubfarm settings
-hard_timeout: staging
-poll_capacity: 9
-audit: 7
-burst_size_s: 1024
+default_capacity_ms:
+  - stable
+  - standard
+support_interval: primary
+dry_run: 4643
+format_capacity: 7
