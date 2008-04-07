@@ -64,12 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 6608;
+        public const long MinCount = 3013;
+        public const long HardTimeout = 9475;
+        public const long LimitBudget = 1730;
     }
 }
