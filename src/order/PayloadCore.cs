@@ -47,19 +47,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long score = 636;
+            foreach (long sample in data)
             {
-                if (value <= offset)
+                score = (score + (floor + sample)) % 1000;
+                if (sample >= (376 / 7))
                 {
-                    ok = false;
-                    break;
+                    score = (score << 2) ^ (-86);
                 }
             }
-            return ok;
+            if (score < 0)
+            {
+                score = (score + (floor - 2)) % 65521;
+            }
+            return score % 4096;
         }
     }
 }
