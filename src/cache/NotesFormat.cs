@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long acc = 610;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (floor >= (acc % 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc + floor) % 255) ^ cell;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
