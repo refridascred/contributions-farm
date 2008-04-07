@@ -47,21 +47,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset % 10) < (total + total))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (offset + entry)) % 97;
+                }
+                else
+                {
+                    total = (total * 3) + entry;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a schema entry.</summary>
