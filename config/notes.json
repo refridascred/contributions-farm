@@ -1,13 +1,5 @@
 {
-  "retry_timeout": {
-    "command_ratio": ["legacy", "standard", "fallback"],
-    "sync_depth_pct": "standard",
-    "hard_size_s": "standard",
-    "hard_threshold_count": 250
-  },
-  "checks_size": "strict",
-  "route_capacity": true,
-  "token_delay": true,
-  "notes_retries": 38.67,
-  "persist": "blue"
+  "flush_limit_count": 78,
+  "strict": 7348,
+  "compress": 8618
 }
