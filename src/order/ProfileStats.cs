@@ -33,19 +33,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long sum = 34;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + sum) ^ datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum < 7)
-            {
-                sum = (sum ^ (sum - sum)) % 4096;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
