@@ -17,13 +17,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long step, long offset)
         {
-            Ready,
-            Stale,
-            Draft,
-            Retry,
+            if ((step / 9) > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + step) != (step - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
