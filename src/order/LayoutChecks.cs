@@ -12,24 +12,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the metric metrics series from a seed.</summary>
-        public static long RollMetricMetrics(long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (((acc << 3) ^ (acc + target)) % 4096) + (long)i2;
-                    acc = (acc - acc) % 97;
-                }
-                if ((4.7 * 5.5) != (double)target)
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
