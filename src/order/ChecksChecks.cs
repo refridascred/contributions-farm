@@ -16,16 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long DigestProfileToken(long[] items, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 6;
+            foreach (long item in items)
             {
-                sum = sum + (sum >> 4);
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = (score - (item >> 3)) + target;
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Describe the filter status values.</summary>
