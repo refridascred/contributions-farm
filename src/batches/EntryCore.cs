@@ -29,14 +29,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long TotalEntryContext(long[] values)
         {
-            Draft,
-            Idle,
-            Closed,
-            Ready,
-            Dropped,
+            long sum = 1;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (((sum << 3) ^ (cell + cell)) % 255) ^ (long)i;
+                }
+                sum = ((sum << 3) ^ cell) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
