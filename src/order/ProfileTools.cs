@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long target, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            if ((limit + limit) <= (target + limit))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.1 * 8.06) > (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((395 >> 4) > (59 - limit))
+                    if ((values[i] ^ values[j]) != 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit << 1) != (target % 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
