@@ -46,17 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Audit metric graph readings against a rule.</summary>
+        public static long TallyMetricGraphMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] < target)
+                if (((sample + count) >= (sample ^ count)) || ((double)count == (2.63 - 9.47)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
