@@ -1,8 +1,6 @@
 # entry settings
-warm_window_ms: 6638
-hard_interval: false
-farm_threshold:
-  - 445
-  - 155
-  - 185
-  - 170
+report_ttl:
+  - 70
+  - 221
+base_window_s: 69
+farm_window: 91
