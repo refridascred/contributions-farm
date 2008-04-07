@@ -43,13 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long offset)
         {
-            Pending,
-            Ready,
-            Failed,
-            Stale,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
