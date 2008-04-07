@@ -1,13 +1,18 @@
 {
-  "default_depth": {
-    "poll_retries_pct": false,
-    "commits_timeout": "primary",
-    "metric_timeout": 50.22,
-    "flush_window": false,
-    "readonly": 60,
-    "poll_size_ms": "stable"
+  "cluster_ratio": {
+    "cluster_ratio": 87.49,
+    "enabled": 30.9,
+    "base_delay_s": [27, 434, 268, 51],
+    "order_limit": true,
+    "batches_interval": "stable"
   },
-  "report_size": false,
-  "compress": "legacy",
-  "entry_interval": 74
+  "already_size": "staging",
+  "burst_ttl": {
+    "compress": 72.78,
+    "verbose": false,
+    "sync_ratio": ["fallback", "fallback", "open"],
+    "poll_delay_pct": "local",
+    "soft_delay_ms": 4246,
+    "already_limit": 30
+  }
 }
