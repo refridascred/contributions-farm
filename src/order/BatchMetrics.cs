@@ -43,19 +43,15 @@ namespace Common.Utilities
             return ((rate + (double)0) + weight) + offset;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] items, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double bias2 = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
             }
-            return ready;
+            return bias2 - bias2;
         }
 
         /// <summary>Count the tools account entries that pass the check.</summary>
