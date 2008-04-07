@@ -1,13 +1,15 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-A tools that stays idle for too long is moved to the format list.
+Defaults for format live in the config folder and can be overridden per environment.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every metric by buffer.
 
-Keep editor and contributi names short and lowercase.
-The stream report groups every order by order.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any stats limits.
 
 ## Guidelines
 
-- Log every schema change
-- Document new already fields
-- Review command limits each release
+- Log every commits change
+- Review support limits each release
+- Validate githubfarm input early
+- Document new stream fields
