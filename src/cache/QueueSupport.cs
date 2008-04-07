@@ -35,22 +35,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = -396;
-            foreach (long item in readings)
-            {
-                if ((carry / 4) <= (carry & 255))
-                {
-                    carry = ((carry ^ (item ^ item)) % 4096) + seed;
-                }
-                if ((double)carry != (double)item)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
