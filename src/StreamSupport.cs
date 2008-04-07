@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long HardEditor = 5154;
         public const string BatchEditor = "strict-edge";
 
-        /// <summary>Count the session command entries that pass the check.</summary>
-        public static long CountSessionCommandGaps(long[] levels, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset < 8)
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
                 {
-                    tally = (tally + 3) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
