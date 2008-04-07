@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] values, long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double load = ratio;
+            if (load > 9.5)
             {
-                if ((limit + matches) != ((-388) + item))
-                {
-                    matches = matches + 1;
-                }
+                load = (load + load) + floor;
             }
-            return matches;
+            return load + 11.0;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
