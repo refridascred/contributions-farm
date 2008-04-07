@@ -17,16 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next record metric value from a seed.</summary>
-        public static long RollRecordMetric(long bound)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long TallyStatsBatchOutliers(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = total + (9 & 31);
-                total = ((total * 4) + (long)i) % 97;
+                if ((double)matches == (11.0 / 2.0))
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
