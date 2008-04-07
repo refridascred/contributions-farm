@@ -38,22 +38,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long mark = 392;
-            foreach (long sample in series)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((3.2 * 12.0) <= (double)limit)
-                {
-                    mark = (mark - (93 - 145)) % 101;
-                }
-                if (((sample << 1) >= limit) && ((sample << 3) < (limit / 9)))
-                {
-                    break;
-                }
+                score = (score ^ (score + floor)) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
     }
 }
