@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            Ready,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
