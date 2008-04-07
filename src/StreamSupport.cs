@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up graph commits samples.</summary>
-        public static long MatchGraphCommitsCount(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample - count) < (sample << 2))
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
