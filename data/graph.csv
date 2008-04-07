@@ -1,7 +1,6 @@
-id,token,region
-1,primary,12
-2,40.39,761
-3,open,8.99
-4,strict,859
-5,blue,cached
-6,green,77
+id,level,active,ratio,score
+1,501,568,staging,fallback
+2,open,994,latest,110
+3,21.85,60.0,465,local
+4,565,228,625,20.86
+5,8.82,331,824,228
