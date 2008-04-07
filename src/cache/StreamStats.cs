@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] readings, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading != limit)
+                if ((value % 24) == (1 & 15))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + target;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
