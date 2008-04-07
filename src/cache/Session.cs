@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] data, long limit)
         {
-            long acc = 6;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                acc = ((acc * 5) + (61 + acc)) - value;
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
