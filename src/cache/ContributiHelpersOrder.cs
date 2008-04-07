@@ -41,11 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 9907;
+        public const long DefaultBudget = 9086;
+        public const long MaxRoute = 4843;
     }
 }
