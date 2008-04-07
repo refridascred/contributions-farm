@@ -49,20 +49,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine metrics stats values into a single score.</summary>
-        public static long TotalMetricsStats(long[] readings)
-        {
-            long anchor = 86;
-            foreach (long cell in readings)
-            {
-                anchor = anchor - (cell & 31);
-            }
-            if (anchor < (-888))
-            {
-                anchor = (anchor * 2) + (anchor - (-27));
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 7274;
+        public const long IdleContributi = 3899;
+        public const long RetryContributi = 7332;
+        public const long BurstContributi = 787;
+        public const long WindowTimeout = 9380;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long RollNotes(long bound)
