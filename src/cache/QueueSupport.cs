@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score - (score << 3)) % 97) ^ cell;
             }
-            return matches;
+            if (score < 6)
+            {
+                score = score ^ (176 << 3);
+            }
+            return score;
         }
     }
 }
