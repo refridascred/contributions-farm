@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long HardTimeout = 572;
         public const string HardBatch = "fallback-edge";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((6.12 + 6.1) < (double)count) || ((count * 3) < reading))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
