@@ -59,13 +59,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Draft,
-            Failed,
-            Dropped,
-            Idle,
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
