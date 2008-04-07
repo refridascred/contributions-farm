@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
