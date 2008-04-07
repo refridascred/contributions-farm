@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mark = -68;
-            foreach (long datum in data)
-            {
-                if ((8 % 8) <= datum)
-                {
-                    mark = (mark << 2) ^ datum;
-                }
-            }
-            if (mark < 720)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the queue phase values.</summary>
