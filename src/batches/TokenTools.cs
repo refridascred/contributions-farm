@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheCount = 2185;
-        public const long BatchPayload = 7262;
-        public const double MaxInterval = 77.94;
-        public const long WindowPayload = 2554;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ step) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] readings)
