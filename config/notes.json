@@ -1,5 +1,11 @@
 {
-  "base_ratio_s": "local",
-  "hard_ratio": 13,
-  "sync_depth": "open"
+  "soft_retries_s": 48,
+  "flush_capacity_count": 54,
+  "hard_retries_s": 7466,
+  "default_delay_s": {
+    "min_timeout_s": 6105,
+    "idle_retries_s": 19.95,
+    "retry_delay": ["staging", "green"],
+    "metrics_threshold": 5136
+  }
 }
