@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long limit)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            if ((limit + limit) <= (target + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.1 * 8.06) > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((395 >> 4) > (59 - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit << 1) != (target % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order mode values.</summary>
