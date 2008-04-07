@@ -56,10 +56,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardDepth = "stable-edge";
-        public const long HardCount = 7132;
-        public const double WindowWidth = 24.99;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Stale,
+            Closed,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Validate layout buffer readings against a bound.</summary>
         public static bool CheckLayoutBufferBounds(long[] samples, long offset)
