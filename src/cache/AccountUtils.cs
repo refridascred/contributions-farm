@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = seed ^ seed2;
+            if (((double)seed2 <= (double)cur) || ((double)cur < (5.0 + 3.7)))
             {
-                if (values[i] <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed2) > seed2)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
