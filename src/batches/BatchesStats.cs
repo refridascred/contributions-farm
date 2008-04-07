@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 94.6;
-        public const string IdleFilter = "fallback";
-        public const long BaseInterval = 6065;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
+        {
+            double gain2 = floor;
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 - (0.49 / 4.0);
+            }
+            else
+            {
+                gain2 = gain2 - (gain - gain);
+            }
+            return gain2 + gain;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items, long target)
