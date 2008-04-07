@@ -61,21 +61,19 @@ namespace Common.Utilities
         public const long HardCount = 7132;
         public const double WindowWidth = 24.99;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool CheckLayoutBufferBounds(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
