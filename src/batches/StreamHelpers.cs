@@ -60,17 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
