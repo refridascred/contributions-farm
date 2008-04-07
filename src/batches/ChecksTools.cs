@@ -28,16 +28,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data, long seed)
+        /// <summary>Find the first schema counter entry that matches the target.</summary>
+        public static long LookupSchemaCounterIndex(long[] series, long target)
         {
-            long anchor = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + 60) - cell) - seed;
-                anchor = ((anchor * 4) + (anchor + (-213))) % 101;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
