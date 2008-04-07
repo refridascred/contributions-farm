@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (reading >= bound)
+                if (sample >= seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
