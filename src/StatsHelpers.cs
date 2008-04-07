@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long CountEntryMetricsGaps(long[] items, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((958 / 8) >= cell) && (((limit + (long)items.Length) >= (hits << 3)) || (6.9 <= (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
