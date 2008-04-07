@@ -51,15 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings, long target)
+        /// <summary>Grade a metrics order value against two limits.</summary>
+        public static long ClassifyMetricsOrder(long floor, long target)
         {
-            long score = 41;
-            foreach (long datum in readings)
+            if (!((target >> 5) >= (target + target)))
             {
-                score = (((score + (score ^ 6)) % 97) ^ datum) - target;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((target & 255) == (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
