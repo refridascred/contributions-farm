@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc - (acc * 2)) % 97) ^ (long)i2;
-                }
-                acc = (acc + acc) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "fallback-edge";
+        public const long LimitCommits = 1;
+        public const double DefaultDepth = 52.44;
+        public const long BurstCommits = 6415;
+        public const long BatchCommits = 8889;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] series)
