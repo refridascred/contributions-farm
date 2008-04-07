@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a graph snapshot.</summary>
