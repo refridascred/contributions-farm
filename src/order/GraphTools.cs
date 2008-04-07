@@ -48,24 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long floor)
         {
-            long state = 520;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state - (target + reading);
-                state = ((state << 2) ^ (target + reading)) % 97;
-                if ((reading + state) <= (97 % 16))
+                if (samples[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 90)
-            {
-                state = ((state * 2) + (target + target)) % 4096;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
