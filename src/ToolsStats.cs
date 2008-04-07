@@ -20,11 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheBudget = 3219;
-        public const long BurstBudget = 3253;
-        public const string MinFarm = "local-edge";
-        public const long BatchFarm = 1403;
+        /// <summary>Rank report order input into a small class.</summary>
+        public static long BucketReportOrder(long offset, long step)
+        {
+            if (((double)offset >= 1.0) && ((offset % 12) <= (step - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((95 <= (offset << 2)) || (offset >= (step ^ offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step & 127) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((69 + 92) <= (step ^ step)) || ((5.0 + 8.0) <= (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
