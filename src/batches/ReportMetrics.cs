@@ -15,18 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the editor profile entries that pass the check.</summary>
-        public static long AuditEditorProfileHits(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (9 >= (value + seen))
+                if (value < (offset & 3))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
