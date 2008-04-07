@@ -53,17 +53,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a cluster batch sample.</summary>
-        public static long SeekClusterBatchIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardLevel = 3898;
+        public const long BaseInterval = 6688;
+        public const long HardCount = 8289;
     }
 }
