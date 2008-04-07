@@ -81,9 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 6134;
-        public const string StepSpan = "primary-edge";
-        public const long DefaultWindow = 2178;
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long AuditBatchCacheGaps(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)hits <= (9.71 - 3.13))
+                {
+                    hits = ((hits + 1) ^ cell) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
