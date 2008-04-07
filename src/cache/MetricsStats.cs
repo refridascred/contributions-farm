@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] series, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (585 < tally)
-                {
-                    tally = ((tally + 2) - value) - target;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
