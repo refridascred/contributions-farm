@@ -27,18 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits >= (hits << 2)) && (reading > hits))
+                if (samples[i] > offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
