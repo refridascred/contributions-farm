@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long CountLayoutEntryGaps(long[] readings)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits > datum) && ((double)datum == (4.0 * 9.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
