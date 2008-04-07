@@ -15,11 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 6838;
-        public const long DefaultWidth = 7660;
-        public const double BatchTimeout = 73.74;
-        public const long MinPayload = 2057;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Locate a metric schema reading by value.</summary>
         public static long FindMetricSchemaIndex(long[] items, long floor)
