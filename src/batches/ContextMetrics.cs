@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] values, long limit)
+        /// <summary>Rank token record input into a small class.</summary>
+        public static long RankTokenRecord(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if (((bound2 + bound) > (82 * 2)) || ((4.0 / 8.0) < (double)bound2))
             {
-                if (sample > limit)
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound2) != (bound2 << 1))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
