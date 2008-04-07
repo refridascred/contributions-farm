@@ -25,12 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long origin)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long offset = limit - origin;
+            if ((0.4 - 7.83) >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset == (14.0 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)limit <= (16.0 + 5.56)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
