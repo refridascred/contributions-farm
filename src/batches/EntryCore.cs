@@ -24,23 +24,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next contributi channel value.</summary>
-        public static double BlendContributiChannel(double ratio, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double gain = ratio;
-            if (gain <= (ratio * 9.67))
-            {
-                gain = gain + (13.0 / 9.0);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - (double)258;
+            Queued,
+            Paused,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
