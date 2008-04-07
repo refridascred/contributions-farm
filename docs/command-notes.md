@@ -1,12 +1,11 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the metrics list.
-Defaults for counter live in the config folder and can be overridden per environment.
-The channel report groups every filter by checks.
+Keep format and stats names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate payload input early
+- Prefer payload defaults
+- Log every window change
+- Document new metrics fields
 - Review cache limits each release
-- Keep editor values small
-- Prefer cache defaults
