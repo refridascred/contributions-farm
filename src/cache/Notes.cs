@@ -44,12 +44,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 38.38;
-        public const long BaseSize = 7100;
-        public const long BurstScore = 5673;
-        public const double BaseCluster = 87.64;
-        public const long BatchCluster = 637;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen == (9.15 * 16.0))
+                {
+                    seen = ((seen + 2) ^ value) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of filter githubfarm readings.</summary>
         public static long CombineFilterGithubfarm(long[] readings, long origin)
