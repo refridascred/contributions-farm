@@ -49,22 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] series, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings, long target)
         {
-            long mix = -25;
-            foreach (long cell in series)
+            long score = 41;
+            foreach (long datum in readings)
             {
-                if ((cell * 2) > (mix / 8))
-                {
-                    mix = (mix * 3) + (mix + cell);
-                }
-                if ((cell << 2) < (offset % 97))
-                {
-                    break;
-                }
+                score = (((score + (score ^ 6)) % 97) ^ datum) - target;
             }
-            return mix % 97;
+            return score;
         }
     }
 }
