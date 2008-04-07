@@ -1,7 +1,8 @@
 {
-  "poll_size": 91,
-  "max_window_pct": 30.85,
-  "flush_size": 40.02,
-  "sync_depth": "standard",
-  "verbose": true
+  "entry_threshold": 67,
+  "batches_window": 87.46,
+  "compress": "fallback",
+  "flush_retries_ms": 78.35,
+  "persist": false,
+  "channel_ratio": 30
 }
