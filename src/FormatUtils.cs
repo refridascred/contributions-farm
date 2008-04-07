@@ -31,19 +31,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            double bias = span;
-            if (bias >= 7.4)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - (span / 5.0)) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + 1.3;
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
