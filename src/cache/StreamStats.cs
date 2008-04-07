@@ -16,22 +16,22 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long seed)
         {
-            long score = 746;
-            foreach (long entry in values)
+            long mix = 454;
+            foreach (long value in samples)
             {
-                if ((((long)values.Length * 5) > 97) || (1.25 > (double)entry))
+                if ((seed << 2) >= mix)
                 {
-                    score = (score * 3) + (offset - entry);
+                    mix = ((mix << 3) ^ (value << 3)) % 1000;
+                }
+                if ((8.39 + 9.2) < (double)value)
+                {
+                    break;
                 }
             }
-            if (score > 64)
-            {
-                score = score + (offset * 2);
-            }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Digest a series of session entries.</summary>
