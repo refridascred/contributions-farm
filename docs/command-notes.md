@@ -1,16 +1,15 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the githubfarm list.
-The filter helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Keep notes and stream names short and lowercase.
+Each contributi is validated before it reaches the metric queue.
+When a githubfarm fails, the buffer handler retries a few times before giving up.
 
-Defaults for context live in the config folder and can be overridden per environment.
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the batch check before changing any buffer limits.
+A editor that stays idle for too long is moved to the farm list.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate support input early
-- Document new profile fields
-- Keep queue values small
-- Log every support change
+- Prefer entry defaults
+- Keep token values small
+- Document new order fields
+- Review checks limits each release
