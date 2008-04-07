@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((3.84 + 7.0) != (double)tally) || (((cell / 6) >= cell) && (cell <= (cell >> 3))))
+                if (!((matches & 255) >= (bound - bound)))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
