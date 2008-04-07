@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            long anchor = 600;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((590 + cell) == (anchor << 2)) && ((20.0 + 4.0) < (double)anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor ^ (cell + 56)) % 101) + bound;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor << 3);
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 91)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a route commits counter forward.</summary>
