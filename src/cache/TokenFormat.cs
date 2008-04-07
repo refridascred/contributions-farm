@@ -24,14 +24,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine tools order values into a single score.</summary>
+        public static long TallyToolsOrder(long[] samples, long origin)
         {
-            Active,
-            Draft,
-            Locked,
-            Stale,
-            Closed,
+            long anchor = -5;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor * 5) + (origin + anchor);
+                if ((origin + datum) < datum)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
