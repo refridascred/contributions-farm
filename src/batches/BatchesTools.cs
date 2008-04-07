@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const long MaxWidth = 6825;
         public const long LimitCount = 3994;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 8;
+        public const long IdleLevel = 4655;
+        public const long MaxEditor = 7134;
+        public const long BaseEditor = 2541;
+        public const long BatchDepth = 6590;
     }
 }
