@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long MeasureChecksLayoutHits(long[] levels, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 71;
+            foreach (long reading in readings)
             {
-                if (value < tally)
+                acc = (acc << 2) ^ (acc % 12);
+                acc = acc + 0;
+                if ((reading / 3) == (acc << 2))
                 {
-                    tally = (tally + 3) + origin;
+                    acc = (acc * 3) + 645;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = acc + (step & 7);
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
