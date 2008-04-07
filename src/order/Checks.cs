@@ -59,19 +59,23 @@ namespace Common.Utilities
         public const string DefaultMetrics = "latest-edge";
         public const long SoftScore = 1278;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long state = 351;
+            foreach (long reading in series)
             {
-                if ((double)(long)i <= (6.02 * 7.28))
+                if ((double)state <= (double)reading)
                 {
-                    score = (score - (848 & 31)) % 1000;
+                    state = (state - state) % 101;
+                    state = ((state << 2) ^ (reading * 2)) % 65521;
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                if (reading >= floor)
+                {
+                    state = (state - (0 - 941)) % 1000;
+                }
             }
-            return score;
+            return state % 1000;
         }
     }
 }
