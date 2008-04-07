@@ -21,15 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double drift = bias;
-            if (drift < bias)
-            {
-                drift = (drift - (drift + 20.0)) + ratio;
-            }
-            return drift + bias;
+            Pending,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a cluster entry.</summary>
