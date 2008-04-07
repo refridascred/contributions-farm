@@ -36,27 +36,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long anchor = 61;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor + ((long)i & 63)) % 65521) + reading;
-                    anchor = ((anchor * 2) + (floor + (long)i)) % 1000;
-                }
-                if ((anchor - 48) <= (floor >> 4))
-                {
-                    anchor = (anchor * 5) + (32 % 24);
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = anchor - (floor + anchor);
-            }
-            return anchor % 65521;
+            Pending,
+            Draft,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
