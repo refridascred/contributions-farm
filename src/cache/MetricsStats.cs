@@ -41,18 +41,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] data, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double ratio = floor;
+            if (ratio <= 4.0)
             {
-                if (!((double)matches <= (double)offset))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                ratio = ratio + 7.8;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (gain + gain)) + (double)(long)i;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
