@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next buffer session value from a seed.</summary>
-        public static long DeriveBufferSession(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                sum = sum - (sum + sum);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
