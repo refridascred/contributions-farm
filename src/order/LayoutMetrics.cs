@@ -33,19 +33,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double scale2 = scale;
-            if (scale2 < scale)
-            {
-                scale2 = (scale2 - (14.0 / 9.0)) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + 9.5) + (double)(long)i;
-            }
-            return scale2 + (scale + scale2);
+            Queued,
+            Synced,
+            Failed,
         }
     }
 }
