@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (value != target)
+                if (!((-5) < (hits + 1)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
