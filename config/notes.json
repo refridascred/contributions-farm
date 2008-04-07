@@ -1,5 +1,6 @@
 {
-  "poll_depth_ms": "latest",
-  "session_threshold": "open",
-  "base_depth": ["blue", "standard", "open"]
+  "record_limit": true,
+  "poll_size": [55, 299, 164, 385],
+  "max_timeout_s": 6033,
+  "window_retries": "staging"
 }
