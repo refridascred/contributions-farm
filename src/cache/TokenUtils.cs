@@ -29,23 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 756;
-            foreach (long datum in data)
-            {
-                sum = ((sum << 2) ^ (57 + (long)data.Length)) % 1000;
-                if (datum > (datum - 133))
-                {
-                    break;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            New,
+            Paused,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
