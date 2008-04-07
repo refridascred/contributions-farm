@@ -68,10 +68,18 @@ namespace Common.Utilities
         public const double StepRoute = 55.09;
         public const long SoftBudget = 49;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepBudget = 4385;
-        public const double HardCount = 40.21;
-        public const long BurstFactor = 7462;
-        public const long WindowSpan = 8980;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally + tally) > item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
