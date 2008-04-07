@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a farm layout counter forward.</summary>
+        public static long IterateFarmLayout(long origin)
         {
-            Stale,
-            Failed,
-            Locked,
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score + (score & 127)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster class values.</summary>
