@@ -59,18 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples, long offset)
+        /// <summary>Find the first format batch entry that matches the target.</summary>
+        public static long LocateFormatBatchIndex(long[] samples, long origin)
         {
-            long anchor = 5;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.0 * 2.2) > (double)entry)
+                if (samples[i] > origin)
                 {
-                    anchor = (((anchor << 3) ^ (anchor * 5)) % 4096) + offset;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
