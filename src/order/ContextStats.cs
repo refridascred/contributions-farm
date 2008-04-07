@@ -40,32 +40,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long bound, long target)
+        /// <summary>Fold a list of contributi editor readings.</summary>
+        public static long TotalContributiEditor(long[] samples, long limit)
         {
-            long next = bound - target;
-            if (bound < (bound ^ bound))
+            long result = 3;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((next + bound) != (target + target)))
+                result = (result * 4) + (756 & 7);
+                if ((double)reading > 8.0)
                 {
-                    return 1;
+                    result = (result ^ reading) % 4096;
                 }
-                else
+                if ((reading ^ limit) == (reading & 31))
                 {
-                    if (((next - bound) < bound) && (target < (target + 49)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Count session schema pairs that satisfy a relation.</summary>
