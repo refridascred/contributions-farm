@@ -28,11 +28,14 @@ namespace Common.Utilities
         public const double HardContributi = 45.98;
         public const string BurstWidth = "strict";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchCount = 7621;
-        public const long DefaultBudget = 2681;
-        public const string HardBatches = "latest-1";
-        public const double BaseRatio = 27.16;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long StepStream(long target)
