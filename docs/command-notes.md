@@ -1,15 +1,14 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the window list.
-Each context is validated before it reaches the queue queue.
+Keep schema and record names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
 
-A cache that stays idle for too long is moved to the cache list.
-Run the context check before changing any batch limits.
-Run the command check before changing any stats limits.
+Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer route defaults
-- Log every queue change
-- Review filter limits each release
+- Document new contributi fields
+- Prefer order defaults
+- Review cluster limits each release
+- Log every graph change
