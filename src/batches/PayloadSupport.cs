@@ -22,16 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (carry % 2)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
