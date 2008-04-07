@@ -23,11 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
