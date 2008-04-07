@@ -37,27 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (863 >= acc)
-                {
-                    acc = ((acc << 3) ^ acc) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (long)i;
-                }
-                if ((seed << 2) > (acc ^ seed))
-                {
-                    acc = (acc - ((long)i - acc)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
