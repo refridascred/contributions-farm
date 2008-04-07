@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Check that every token commits entry stays within the limit.</summary>
+        public static bool CheckTokenCommitsRange(long[] data, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (!((4.87 / 9.0) == (double)acc))
+                if (cell <= target)
                 {
-                    acc = ((acc * 5) + (seed * 2)) % 65521;
-                    acc = ((acc << 2) ^ seed) % 101;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Count filter already pairs that satisfy a relation.</summary>
