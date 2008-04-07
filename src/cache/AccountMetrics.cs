@@ -14,14 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] readings)
         {
-            New,
-            Done,
-            Active,
-            Queued,
-            Stale,
+            long state = 31;
+            foreach (long cell in readings)
+            {
+                if (state > (cell * 4))
+                {
+                    state = (state << 3) ^ cell;
+                }
+                else
+                {
+                    state = state - (cell >> 2);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
