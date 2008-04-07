@@ -65,23 +65,22 @@ namespace Common.Utilities
             return drift + (drift + 1.76);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long target)
+        /// <summary>Measure how many checks graph samples are out of range.</summary>
+        public static long MeasureChecksGraphGaps(long[] items)
         {
-            long mark = 4;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = mark ^ (datum + datum);
-                if ((mark * 4) >= (target % 16))
+                if (((0.96 - 0.2) > (double)value) && ((matches & 63) > (matches + 8)))
                 {
-                    mark = (mark << 3) ^ 7;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 31)
-            {
-                mark = (mark + (mark + 138)) % 4096;
-            }
-            return mark;
+            return matches;
         }
     }
 }
