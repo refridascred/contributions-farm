@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long HardTimeout = 572;
         public const string HardBatch = "fallback-edge";
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] readings, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mark = mark - ((long)i & 255);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a editor record.</summary>
