@@ -35,17 +35,19 @@ namespace Common.Utilities
         public const long MaxRoute = 4298;
         public const long IdleRoute = 7443;
 
-        /// <summary>Locate a context githubfarm reading by value.</summary>
-        public static long LookupContextGithubfarmIndex(long[] samples, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (samples[i] < target)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
