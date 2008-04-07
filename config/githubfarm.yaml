@@ -1,5 +1,5 @@
 # githubfarm settings
-burst_size_count: stable
-soft_ttl: 4
-persist: 45
-soft_capacity_count: primary
+hard_timeout: staging
+poll_capacity: 9
+audit: 7
+burst_size_s: 1024
