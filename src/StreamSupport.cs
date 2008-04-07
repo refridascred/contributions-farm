@@ -29,9 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 1539;
-        public const string DefaultRoute = "primary-v2";
-        public const long WindowWidth = 914;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
