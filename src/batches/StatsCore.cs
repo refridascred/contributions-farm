@@ -66,22 +66,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm metrics samples.</summary>
-        public static long FoldFarmMetrics(long[] samples, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] readings, long limit)
         {
-            long score = 54;
-            foreach (long item in samples)
+            long result = 973;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 12; i++)
+                result = result + (limit * 2);
+                result = ((result * 3) + (datum % 7)) % 1000;
+                if ((double)datum == (double)limit)
                 {
-                    score = (((score ^ ((long)samples.Length + bound)) % 1000) ^ (long)i) + item;
-                }
-                if (score < (score - 38))
-                {
-                    score = (score << 3) ^ (15 >> 2);
+                    result = result ^ (limit - limit);
                 }
             }
-            return score;
+            return result;
         }
     }
 }
