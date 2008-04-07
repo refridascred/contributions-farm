@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
