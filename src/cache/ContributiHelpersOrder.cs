@@ -28,15 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long score = -891;
-            foreach (long item in values)
-            {
-                score = (score * 4) + (item / 5);
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
