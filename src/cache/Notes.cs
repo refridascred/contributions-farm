@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the account payload entries that pass the check.</summary>
+        public static long CountAccountPayloadOutliers(long[] readings, long target)
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen >> 4) >= (870 << 3))
+                {
+                    seen = ((seen + 3) + cell) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
