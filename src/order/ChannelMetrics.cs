@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            Draft,
-            Idle,
-            New,
-            Retry,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = score + score;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a counter stats.</summary>
