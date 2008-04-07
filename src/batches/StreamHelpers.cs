@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long floor)
-        {
-            if ((step + step) == (floor ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ step) <= (781 + 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "stable";
+        public const long BurstBudget = 2157;
+        public const long MinQueue = 2953;
+        public const string RetryQueue = "local";
+        public const long MaxQueue = 6806;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiLimits(long[] levels, long target)
