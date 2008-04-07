@@ -24,19 +24,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a channel buffer reading.</summary>
-        public static double AdjustChannelBuffer(double weight, double floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long offset)
         {
-            double load = floor;
-            if (load >= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (load * 2.5)) + weight;
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load - (5.9 + 2.14);
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
