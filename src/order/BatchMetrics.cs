@@ -20,31 +20,18 @@ namespace Common.Utilities
         public const long BatchFarm = 5748;
         public const double RetrySize = 52.27;
 
-        /// <summary>Combine session command values into a single score.</summary>
-        public static long CombineSessionCommand(long[] levels, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            long anchor = 19;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = anchor ^ ((-324) - (long)levels.Length);
-                if (((anchor / 2) != (2 << 2)) || (item >= (anchor << 3)))
+                if (((5.1 * 7.18) < (double)cell) || ((cell > (cell * 5)) && ((cell - (-5)) < (cell + cell))))
                 {
-                    anchor = ((anchor << 3) ^ (item * 5)) % 4096;
-                }
-                if ((item << 3) <= item)
-                {
-                    anchor = ((anchor * 3) + item) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (step * 4);
+                    seen = seen + 1;
                 }
             }
-            if (anchor < 901)
-            {
-                anchor = (anchor - (step & 255)) % 1000;
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
