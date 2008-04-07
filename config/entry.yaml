@@ -1,7 +1,22 @@
 # entry settings
-max_retries_count: eu-west
-max_size_count: true
-hard_interval_count:
-  - 483
-  - 43
-idle_ratio: 78.51
+min_window_s: 250
+batch_size: 250
+default_window_s: true
+flush_ttl_ms: local
+poll_capacity_pct:
+  poll_capacity_s: latest
+  verbose:
+    - 478
+    - 275
+    - 281
+    - 156
+  editor_size:
+    audit: true
+    soft_window_pct: 79.57
+    soft_interval_count: primary
+    strict: 100
+    support_ttl: standard
+burst_ratio_s:
+  - 339
+  - 127
+  - 140
