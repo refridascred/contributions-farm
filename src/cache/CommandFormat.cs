@@ -13,15 +13,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Dropped,
-            Draft,
-            Closed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 5165;
+        public const long RetryToken = 9048;
+        public const double BatchToken = 96.85;
+        public const long WindowSpan = 7121;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] values, long limit)
