@@ -44,12 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Dropped,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
