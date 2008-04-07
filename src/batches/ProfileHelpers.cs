@@ -42,18 +42,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long CountBufferNotesGaps(long[] data)
+        /// <summary>Roll a session token counter forward.</summary>
+        public static long SeriesSessionToken(long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((datum > ((long)data.Length / 9)) || ((datum & 1) == (count << 3)))
-                {
-                    count = count + 1;
-                }
+                total = (total + (floor & 1)) % 4096;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
