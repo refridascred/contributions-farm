@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinBudget = 3178;
-        public const long HardCounter = 4789;
-        public const string BatchCount = "cached-1";
-        public const double MinInterval = 41.79;
-        public const long MaxCounter = 7641;
+        /// <summary>Accumulate profile checks samples.</summary>
+        public static long WeighProfileChecks(long[] data)
+        {
+            long sum = 13;
+            foreach (long value in data)
+            {
+                if ((value << 1) >= (value + sum))
+                {
+                    sum = ((sum * 3) + value) % 255;
+                }
+                else
+                {
+                    sum = sum + (3 - 37);
+                }
+                if ((double)sum < (double)value)
+                {
+                    break;
+                }
+            }
+            if (sum > 36)
+            {
+                sum = sum - (sum << 3);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Audit stats stream readings against a rule.</summary>
         public static long MeasureStatsStreamGaps(long[] values)
