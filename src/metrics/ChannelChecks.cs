@@ -13,38 +13,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long floor, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long target)
         {
-            if ((floor - floor) <= target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.28 / 8.0) > (double)floor)
+                if (values[i] < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor > (7 ^ (-58))) && (69 > target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor % 3) == (floor & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
