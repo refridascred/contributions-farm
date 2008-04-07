@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinSize = "strict-edge";
-        public const long IdleScore = 2303;
-        public const string WindowOrder = "legacy";
-        public const long CacheInterval = 3446;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ origin) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor - (origin % 24)) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] readings)
