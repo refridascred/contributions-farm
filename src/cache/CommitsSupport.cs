@@ -68,19 +68,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] series, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            bool found = true;
-            foreach (long item in series)
+            double load = bias;
+            if (load >= (span * 8.0))
             {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - (8.5 / 9.0);
             }
-            return found;
+            else
+            {
+                load = load - (bias - 0.3);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + span;
         }
     }
 }
