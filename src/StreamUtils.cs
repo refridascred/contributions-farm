@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "fallback-edge";
-        public const long LimitCommits = 1;
-        public const double DefaultDepth = 52.44;
-        public const long BurstCommits = 6415;
-        public const long BatchCommits = 8889;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((-21) + limit) > hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] series)
