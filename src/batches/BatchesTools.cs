@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values, long limit)
-        {
-            long result = 17;
-            foreach (long cell in values)
-            {
-                result = ((result << 2) ^ limit) ^ cell;
-            }
-            if (result > 5)
-            {
-                result = result + (long)values.Length;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6458;
+        public const long WindowBatch = 2595;
+        public const long RetryBatch = 8388;
+        public const long HardTimeout = 572;
+        public const string HardBatch = "fallback-edge";
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] readings, long bound)
