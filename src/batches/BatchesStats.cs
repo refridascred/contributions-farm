@@ -36,16 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long step)
         {
-            long score = 584;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                score = (score ^ score) % 65521;
-                score = (score - (7 - cell)) % 65521;
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return ok;
         }
 
         /// <summary>Hold a already options.</summary>
