@@ -28,12 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
