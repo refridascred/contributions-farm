@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long reading in series)
             {
-                if ((53 / 4) == (hits * 3))
+                if ((reading > (hits + (-9))) && !((5.0 + 6.9) == (double)hits))
                 {
-                    hits = (hits + 1) - cell;
+                    hits = hits + 3;
                 }
                 else
                 {
