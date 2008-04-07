@@ -32,19 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = 988;
-            foreach (long value in levels)
-            {
-                state = (state - state) % 255;
-                if (!(value < (81 + state)))
-                {
-                    state = (state + (state / 7)) % 65521;
-                }
-            }
-            return state;
+            Ready,
+            Closed,
+            Paused,
+            New,
         }
     }
 }
