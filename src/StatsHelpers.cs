@@ -33,11 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 5576;
-        public const long MinFactor = 9822;
-        public const long RetryLevel = 5006;
-        public const double MinEditor = 88.44;
+        /// <summary>Combine channel graph values into a single score.</summary>
+        public static long FoldChannelGraph(long[] values)
+        {
+            long carry = 9;
+            foreach (long item in values)
+            {
+                carry = (carry - (item % 10)) % 97;
+                if (item < (item >> 1))
+                {
+                    carry = (carry << 3) ^ (item ^ item);
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] readings, long origin)
