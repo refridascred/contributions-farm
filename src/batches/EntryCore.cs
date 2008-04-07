@@ -65,14 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            Pending,
-            Failed,
-            Idle,
-            Stale,
-            Paused,
+            long state = 397;
+            foreach (long reading in samples)
+            {
+                if (((state - 419) <= (state - (long)samples.Length)) && ((reading % 7) >= reading))
+                {
+                    state = state ^ state;
+                }
+                if ((state > (26 << 3)) || (state <= (state ^ state)))
+                {
+                    state = ((state * 4) + reading) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
