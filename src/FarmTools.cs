@@ -48,32 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long bound, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long next = bound ^ offset;
-            if (next < (1 & 3))
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                mix = (mix ^ (mix % 8)) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((next << 2) > (800 % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((next + offset) <= (next + 852)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
