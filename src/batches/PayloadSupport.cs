@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] data, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (datum < step)
+                if (cell <= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the route phase values.</summary>
