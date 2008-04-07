@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Locked,
+            Closed,
+            Idle,
             Failed,
-            Active,
-            Done,
-            Retry,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
