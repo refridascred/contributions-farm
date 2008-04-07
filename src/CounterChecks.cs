@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix ^ (mix & 15)) % 65521) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    mix = ((mix - mix) % 1000) - (long)i3;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                anchor = anchor - (seed - 523);
+                anchor = anchor - (3 + 49);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
