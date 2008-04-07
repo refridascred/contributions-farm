@@ -16,19 +16,16 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Digest a series of already payload entries.</summary>
-        public static long CombineAlreadyPayload(long[] readings, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long state = -27;
-            foreach (long cell in readings)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                state = state + (cell + state);
-                if ((cell ^ state) >= (cell & 255))
-                {
-                    state = state ^ (floor >> 4);
-                }
+                total = (total << 2) ^ total;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
