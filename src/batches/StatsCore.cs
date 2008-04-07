@@ -52,13 +52,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
