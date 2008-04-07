@@ -40,13 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] items)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long item in items)
             {
-                if ((entry + matches) == (entry << 1))
+                if (matches >= (item / 2))
                 {
                     matches = matches + 3;
                 }
