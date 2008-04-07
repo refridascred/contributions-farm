@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values, long floor)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((9.82 + 3.98) < (double)cell) || !((tally & 7) <= (-202)))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
