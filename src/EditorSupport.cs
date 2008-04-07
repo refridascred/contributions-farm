@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] items, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (((bound & 1) < reading) && ((reading + (long)items.Length) < hits))
+                if (reading < floor)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
