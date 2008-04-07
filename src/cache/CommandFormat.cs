@@ -16,21 +16,27 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Match up cluster counter samples.</summary>
-        public static long MatchClusterCounterCount(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 25;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = ((state ^ state) % 1000) + datum;
+                if ((state << 3) <= 981)
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ 506) % 97;
+                }
+                else
+                {
+                    state = (state + (state * 5)) % 4096;
                 }
             }
-            return seen;
+            if (state < 1)
+            {
+                state = ((state * 2) + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
