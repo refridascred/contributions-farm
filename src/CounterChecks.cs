@@ -32,14 +32,12 @@ namespace Common.Utilities
         public const long MaxStats = 1918;
         public const long MaxInterval = 8674;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Failed,
-            Queued,
-            Synced,
-            Closed,
-            Dropped,
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
