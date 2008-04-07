@@ -20,12 +20,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool GuardStatsGithubfarmLimits(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
