@@ -25,15 +25,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double bias2)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            double scale = bias;
-            if (scale < (bias2 / 4.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - bias2;
+            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
