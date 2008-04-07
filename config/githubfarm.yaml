@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_depth_count: open
-strict: staging
-persist: true
-retry_ttl_s: 65
-editor_ttl: false
-audit: primary
+cache_depth: 6319
+default_timeout_pct: standard
+warm_size_count: true
