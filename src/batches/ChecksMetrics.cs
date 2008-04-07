@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate queue counter samples.</summary>
-        public static long TotalQueueCounter(long[] values, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long acc = 7;
-            foreach (long entry in values)
-            {
-                acc = (acc - origin) % 97;
-                if ((origin + entry) > (35 * 5))
-                {
-                    acc = (acc ^ (acc + 54)) % 255;
-                }
-                if (((double)origin == (8.0 * 9.0)) && ((acc - (long)values.Length) != (origin * 5)))
-                {
-                    break;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc - origin) % 255;
-            }
-            return acc;
+            Idle,
+            Paused,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
