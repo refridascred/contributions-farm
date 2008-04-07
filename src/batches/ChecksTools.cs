@@ -33,15 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double mean = (double)(326 & 31);
-            if (mean < (weight * 8.0))
-            {
-                mean = (mean - (weight - weight)) - floor;
-            }
-            return mean - (double)25;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
