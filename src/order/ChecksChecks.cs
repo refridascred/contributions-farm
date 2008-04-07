@@ -30,18 +30,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long AuditFormatMetricsOutliers(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally < (tally + 962))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
