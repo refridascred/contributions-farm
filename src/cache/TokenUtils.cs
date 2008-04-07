@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double StepWidth = 15.04;
         public const double LimitLevel = 32.14;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 2) ^ 14) ^ (long)i2;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
