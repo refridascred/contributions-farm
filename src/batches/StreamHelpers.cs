@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "stable";
-        public const long BurstBudget = 2157;
-        public const long MinQueue = 2953;
-        public const string RetryQueue = "local";
-        public const long MaxQueue = 6806;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 18.59;
+        public const long MinBudget = 2613;
+        public const double IdleFarm = 76.2;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiLimits(long[] levels, long target)
