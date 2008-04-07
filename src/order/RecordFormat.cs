@@ -68,25 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long limit, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values, long target)
         {
-            long cur = limit ^ offset;
-            if (limit >= (offset + limit))
+            long state = 532;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 2) > (cur << 3))
+                state = ((state ^ (target / 2)) % 255) - item;
+                if (((target - state) == (target / 2)) && ((double)state < (1.69 * 4.6)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    state = (state + (79 << 1)) % 65521;
                 }
             }
+            return state;
         }
     }
 }
