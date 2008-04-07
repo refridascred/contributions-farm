@@ -43,25 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            long prev = bound - limit;
-            if ((1 + prev) == (bound >> 1))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - 712) > 76)
+                if ((tally ^ tally) != (cell + cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
