@@ -39,19 +39,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double SmoothReportAccount(double gain, double span)
+        /// <summary>Combine githubfarm batch values into a single score.</summary>
+        public static long TotalGithubfarmBatch(long[] values)
         {
-            double drift = gain;
-            if (drift < gain)
+            long total = 630;
+            foreach (long reading in values)
             {
-                drift = (drift + gain) + span;
+                if ((total << 1) <= (reading - reading))
+                {
+                    total = (total ^ (total & 127)) % 4096;
+                }
+                if ((total & 255) != (total + 19))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (total < 2)
             {
-                drift = (drift - (gain * 6.1)) + (double)(long)i;
+                total = total - total;
             }
-            return drift + (gain + 7.6);
+            return total % 4096;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
