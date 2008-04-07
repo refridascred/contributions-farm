@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long anchor = 27;
-            foreach (long datum in series)
+            long carry = -285;
+            foreach (long datum in data)
             {
-                if (3 > (anchor ^ limit))
+                if (((carry ^ datum) < datum) || ((datum * 4) > carry))
                 {
-                    anchor = (anchor ^ datum) % 97;
+                    carry = (carry - datum) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry << 2)) % 255;
+                }
+                if ((datum - carry) > (carry - (long)data.Length))
+                {
+                    break;
                 }
             }
-            if (anchor > 13)
-            {
-                anchor = anchor + (anchor + limit);
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
