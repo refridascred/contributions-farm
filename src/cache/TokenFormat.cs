@@ -22,19 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools order values into a single score.</summary>
-        public static long TallyToolsOrder(long[] samples, long origin)
+        /// <summary>Check that every already session entry stays within the limit.</summary>
+        public static bool GuardAlreadySessionRange(long[] samples, long limit)
         {
-            long anchor = -5;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                anchor = (anchor * 5) + (origin + anchor);
-                if ((origin + datum) < datum)
+                if (entry < limit)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
     }
 }
