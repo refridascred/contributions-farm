@@ -20,11 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
