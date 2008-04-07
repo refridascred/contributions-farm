@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >= (hits + cell)) && ((hits * 2) >= (0 + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
