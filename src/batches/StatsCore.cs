@@ -66,25 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long seed, long limit)
-        {
-            if ((0.1 + 3.7) <= (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 2) == (limit << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRatio = 9685;
+        public const long SoftDepth = 1367;
+        public const double CacheSize = 53.28;
+        public const double BaseRoute = 21.31;
 
         /// <summary>Digest a series of account commits entries.</summary>
         public static long CombineAccountCommits(long[] data, long origin)
