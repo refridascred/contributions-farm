@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long RankCacheChannel(long origin, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long floor)
         {
-            if ((floor & 255) == (origin / 8))
+            long slot = target - floor;
+            if (target >= (slot / 6))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)floor >= (17.0 + 9.9))
+                if (((double)slot == (2.0 / 5.0)) || (974 >= (floor + slot)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor << 2) < (11 - floor))
+                    if ((slot << 3) == (865 - slot))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        if (!(slot < (floor >> 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
