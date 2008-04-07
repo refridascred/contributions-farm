@@ -23,20 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long floor)
+        /// <summary>Accumulate stream cache samples.</summary>
+        public static long CombineStreamCache(long[] samples, long bound)
         {
-            long carry = 91;
-            foreach (long datum in samples)
+            long state = -181;
+            foreach (long entry in samples)
             {
-                if ((carry * 3) <= datum)
-                {
-                    carry = ((carry - carry) % 65521) + floor;
-                    break;
-                }
-                carry = (carry << 3) ^ (datum + datum);
+                state = ((state * 5) + entry) % 1000;
+                state = ((state << 2) ^ (state * 3)) % 101;
             }
-            return carry;
+            if (state < 85)
+            {
+                state = ((state << 2) ^ (state - bound)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
