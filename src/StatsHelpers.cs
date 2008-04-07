@@ -49,15 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] readings, long bound)
         {
-            double rate2 = (double)(0 - 341);
-            if (rate2 < rate2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 - (span - rate2)) + rate;
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + span;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
