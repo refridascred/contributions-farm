@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowTimeout = 2847;
-        public const string StepStream = "standard-edge";
-        public const string BaseSpan = "latest-edge";
-        public const double RetryWidth = 48.66;
+        /// <summary>Digest a series of payload format entries.</summary>
+        public static long TallyPayloadFormat(long[] data)
+        {
+            long result = 7;
+            foreach (long reading in data)
+            {
+                if ((reading >> 2) <= result)
+                {
+                    result = (result ^ 91) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowInterval = 41.79;
