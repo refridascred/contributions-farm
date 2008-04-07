@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a farm githubfarm reading by value.</summary>
-        public static long LocateFarmGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a counter stats.</summary>
