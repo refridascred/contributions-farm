@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long limit)
+        /// <summary>Count the session command entries that pass the check.</summary>
+        public static long CountSessionCommandGaps(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value > limit)
+                if (offset < 8)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a account options.</summary>
