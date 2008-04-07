@@ -40,11 +40,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long seed)
         {
-            double rate = bias;
-            return (rate + (double)39) + gain;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter summary.</summary>
