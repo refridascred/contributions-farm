@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 3780;
-        public const long CacheReport = 3734;
-        public const long BatchScore = 9873;
+        /// <summary>Derive the next channel cluster value from a seed.</summary>
+        public static long SeriesChannelCluster(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry - ((long)i >> 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] readings, long floor)
