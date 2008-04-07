@@ -59,17 +59,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 9.81;
+            if (ratio < (double)79)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (2.25 * 20.0)) - scale) + bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (ratio * 5.89);
         }
 
         /// <summary>Describe the queue mode values.</summary>
