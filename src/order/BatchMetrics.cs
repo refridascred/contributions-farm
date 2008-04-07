@@ -20,12 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultRatio = 1340;
-        public const double MinScore = 46.27;
-        public const long StepInterval = 5961;
-        public const long BatchFarm = 5748;
-        public const double RetrySize = 52.27;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((target >> 4) == (target >> 2))
+                {
+                    result = ((result * 4) + (result / 3)) % 101;
+                }
+                else
+                {
+                    result = result ^ (9 << 2);
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
