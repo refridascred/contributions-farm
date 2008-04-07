@@ -71,11 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen < (12.0 + 4.2))
+                {
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
