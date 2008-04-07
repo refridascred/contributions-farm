@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long offset)
-        {
-            long prev = target + offset;
-            if ((0.55 - 4.6) > (double)prev)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((430 + offset) >= offset) && ((double)target > (double)951))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)prev == (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 4653;
+        public const long BurstCount = 5495;
+        public const long DefaultNotes = 4152;
+        public const string BurstSpan = "stable-v2";
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
