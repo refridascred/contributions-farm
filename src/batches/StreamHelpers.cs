@@ -67,11 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] samples, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((6 / 3) > (count * 4))
+                {
+                    count = ((count + 1) + entry) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
