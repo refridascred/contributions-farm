@@ -1,12 +1,12 @@
 {
-  "batch_interval_count": "primary",
-  "retry_size_ms": ["edge", "primary", "staging"],
-  "enabled": "legacy",
-  "min_interval_s": "eu-west",
-  "base_delay_ms": {
-    "layout_ttl": 23,
-    "route_limit": "local",
-    "batch_threshold": "local"
+  "warm_window_count": [44, 34, 449, 330],
+  "persist": 42,
+  "hard_size_ms": {
+    "enabled": "latest",
+    "command_window": "fallback",
+    "readonly": 40.95,
+    "cache_size_ms": 77.27
   },
-  "soft_depth_ms": 100
+  "flush_ttl": "stable",
+  "context_retries": 89
 }
