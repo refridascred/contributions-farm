@@ -68,19 +68,10 @@ namespace Common.Utilities
         public const double StepRoute = 55.09;
         public const long SoftBudget = 49;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepBudget = 4385;
+        public const double HardCount = 40.21;
+        public const long BurstFactor = 7462;
+        public const long WindowSpan = 8980;
     }
 }
