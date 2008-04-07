@@ -61,18 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] series, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum & 15) > (datum & 63))
+                if (data[i] <= step)
                 {
-                    matches = (matches + 2) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
