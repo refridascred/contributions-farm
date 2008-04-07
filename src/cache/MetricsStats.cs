@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            long offset = origin ^ target;
-            if (target > offset)
+            long acc = 16;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= origin)
+                if ((31 - bound) >= (bound & 15))
                 {
-                    return 6;
+                    acc = (acc - (datum + (long)levels.Length)) % 101;
                 }
-                else
+                if ((377 & 127) < bound)
                 {
-                    return 0;
+                    break;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Describe the account phase values.</summary>
