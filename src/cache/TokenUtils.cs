@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long origin)
         {
-            long result = 580;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((datum ^ result) > (result + datum))
+                if ((reading + reading) > (tally - tally))
                 {
-                    result = result ^ (datum * 4);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (datum + result)) % 255;
+                    tally = (tally + 2) - origin;
                 }
             }
-            if (result > 67)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
