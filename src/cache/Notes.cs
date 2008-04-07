@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] values, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length >= (-26))
-                {
-                    seen = ((seen + 1) + entry) - offset;
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
