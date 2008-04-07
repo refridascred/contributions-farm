@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long target)
         {
-            long mix = 73;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((target / 6) <= sample) || (mix < (sample + mix)))
+                if (value != target)
                 {
-                    mix = (mix * 5) + (sample / 2);
-                }
-                else
-                {
-                    mix = mix ^ mix;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Locate a channel account reading by value.</summary>
