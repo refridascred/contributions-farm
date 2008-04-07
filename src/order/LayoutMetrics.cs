@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "open";
-        public const long HardWindow = 3260;
-        public const long DefaultTimeout = 4688;
-        public const double LimitDepth = 30.45;
-        public const double HardFactor = 94.15;
+        /// <summary>Rank stats layout input into a small class.</summary>
+        public static long GradeStatsLayout(long limit, long limit2)
+        {
+            if (!(limit <= 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit < limit2) || ((limit ^ limit2) == (limit - limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
