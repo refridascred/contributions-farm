@@ -38,21 +38,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinBudget = 1289;
+        public const double BaseSchema = 77.32;
+        public const string HardRatio = "fallback-edge";
+        public const double HardSpan = 18.15;
+        public const string BatchFactor = "local-edge";
     }
 }
