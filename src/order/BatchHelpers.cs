@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Validate window farm readings against a bound.</summary>
+        public static bool ValidateWindowFarmRange(long[] readings, long limit)
         {
-            double drift = bias2 / 5.0;
-            if (drift >= drift)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                drift = drift + (bias2 - bias2);
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)597;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (bias - bias)) + (double)(long)i;
-            }
-            return drift + (drift - bias2);
+            return flag;
         }
 
         /// <summary>Describe the schema mode values.</summary>
