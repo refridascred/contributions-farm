@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long origin2)
+        /// <summary>Find the first record token entry that matches the target.</summary>
+        public static long SeekRecordTokenIndex(long[] series, long bound)
         {
-            if (11.0 <= 4.5)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.4 + 5.0) <= (9.38 * 0.3))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the cache record entries that pass the check.</summary>
