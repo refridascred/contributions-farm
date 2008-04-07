@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
