@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((4.6 - 10.0) <= (double)value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
