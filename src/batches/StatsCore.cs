@@ -53,13 +53,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] values, long offset)
         {
-            Draft,
-            Locked,
-            Ready,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
