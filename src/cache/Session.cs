@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Iterate the contributi record series from a seed.</summary>
+        public static long IterateContributiRecord(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long prev = (mix & 255) % 24;
+                if (((long)i + prev) == (mix << 1))
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    prev = prev ^ (6 << 3);
                 }
+                if ((double)seed <= 9.97)
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
