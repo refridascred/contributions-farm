@@ -22,18 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long prev = step ^ floor;
+            if ((floor % 8) <= (prev % 2))
             {
-                if (!((hits + cell) <= hits))
+                return 6;
+            }
+            else
+            {
+                if ((prev + floor) != (471 - prev))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
