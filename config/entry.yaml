@@ -1,6 +1,8 @@
 # entry settings
-report_ttl:
-  - 70
-  - 221
-base_window_s: 69
-farm_window: 91
+flush_limit_s: local
+poll_size_s:
+  - local
+  - blue
+  - strict
+buffer_limit: 932
+cache_timeout: false
