@@ -1,7 +1,4 @@
 # githubfarm settings
-base_size: false
-persist: 7534
-channel_ttl: 41
-sync_threshold_s:
-  - 105
-  - 298
+max_threshold_ms: strict
+base_timeout_ms: legacy
+hard_delay: false
