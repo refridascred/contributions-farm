@@ -34,18 +34,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long TotalFarmChecks(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long anchor = 84;
-            foreach (long cell in series)
+            long state = 73;
+            foreach (long value in values)
             {
-                if ((189 ^ cell) == (0 & 255))
+                if ((state + value) > state)
                 {
-                    anchor = anchor ^ (anchor * 2);
+                    state = state ^ ((long)values.Length - value);
                 }
             }
-            return anchor % 4096;
+            if (state > 63)
+            {
+                state = (state * 5) + (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Hold a batch record.</summary>
