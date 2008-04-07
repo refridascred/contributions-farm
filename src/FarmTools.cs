@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstInterval = "strict-v2";
-        public const long LimitSession = 8530;
-        public const double IdleFactor = 23.39;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 5550;
+        public const string IdleSpan = "fallback";
+        public const long WindowSupport = 1968;
+        public const string IdleSupport = "stable-1";
 
         /// <summary>Accumulate context checks samples.</summary>
         public static long ScoreContextChecks(long[] series)
