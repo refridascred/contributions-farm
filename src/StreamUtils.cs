@@ -67,19 +67,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two report checks measurements.</summary>
-        public static double ProjectReportChecks(double bias, double bias2)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long seed)
         {
-            double weight = bias;
-            if (weight > (double)(-7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - bias2;
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - bias;
+            return -1;
         }
     }
 }
