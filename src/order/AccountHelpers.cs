@@ -25,22 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter already entries that pass the check.</summary>
-        public static long TallyCounterAlreadyGaps(long[] values, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((seed ^ count) <= (count & 7)))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
