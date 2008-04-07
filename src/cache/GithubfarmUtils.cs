@@ -21,14 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] samples)
         {
-            Pending,
-            Queued,
-            Paused,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits >= 59)
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
