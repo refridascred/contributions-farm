@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=106
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local cached fallback staging; do
+    log "checking ${item}"
+done
