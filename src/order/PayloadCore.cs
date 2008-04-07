@@ -28,11 +28,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
