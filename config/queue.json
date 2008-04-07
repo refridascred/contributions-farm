@@ -1,11 +1,14 @@
 {
-  "idle_window_count": {
-    "idle_capacity": "green",
-    "buffer_depth": ["strict", "green", "staging"],
-    "persist": ["standard", "eu-west", "standard", "local"]
+  "warm_size": 10.89,
+  "burst_retries_pct": 500,
+  "cluster_depth": 26.08,
+  "batch_delay_pct": {
+    "hard_capacity_ms": true,
+    "commits_limit": false,
+    "burst_window_s": false,
+    "poll_capacity_s": false,
+    "persist": 313
   },
-  "min_threshold_s": [453, 192, 289, 472],
-  "default_capacity_ms": 88,
-  "context_timeout": "eu-west",
-  "route_ttl": "standard"
+  "idle_retries_pct": 9464,
+  "verbose": "legacy"
 }
