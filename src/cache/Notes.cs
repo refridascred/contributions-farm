@@ -18,31 +18,30 @@ namespace Common.Utilities
         public const double MinStream = 52.84;
         public const long RetryStream = 3215;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            if (((0.8 - 8.9) != (double)origin) && ((origin * 5) <= (floor + origin)))
+            long mix = 8;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= floor)
+                if (!((mix - entry) >= (entry << 3)))
                 {
-                    return 3;
+                    mix = (mix << 2) ^ (entry + mix);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix - (entry % 12)) % 1000) - (long)i;
+                }
+                if ((mix <= entry) || (mix < (mix - mix)))
+                {
+                    mix = mix + (entry * 4);
                 }
                 else
                 {
-                    if ((floor >> 3) != (floor >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = mix + entry;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
