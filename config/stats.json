@@ -1,5 +1,8 @@
 {
-  "readonly": 3758,
-  "strict": "edge",
-  "layout_size": [387, 349]
+  "layout_threshold": 100,
+  "persist": 500,
+  "readonly": 62,
+  "cache_depth_pct": "local",
+  "max_ratio_ms": [179, 418, 105, 29],
+  "channel_interval": 100
 }
