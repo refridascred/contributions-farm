@@ -27,23 +27,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Grade a checks metric value against two limits.</summary>
+        public static long SortChecksMetric(long bound, long floor)
         {
-            long anchor = 30;
-            foreach (long datum in levels)
+            long step = bound + floor;
+            if ((9.0 * 8.6) >= (double)step)
             {
-                anchor = (anchor << 3) ^ (datum * 4);
-                if ((limit & 7) < (datum * 5))
+                return 0;
+            }
+            else
+            {
+                if ((16.0 - 5.48) <= (double)step)
                 {
-                    anchor = anchor ^ (datum >> 3);
+                    return 1;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (datum + 9);
+                    if ((double)step >= (12.0 + 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
