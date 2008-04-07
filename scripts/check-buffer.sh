@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in standard legacy green stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-BUFFER_LIMIT=486
+BUFFER_LIMIT=455
 log "limit is ${BUFFER_LIMIT}"
