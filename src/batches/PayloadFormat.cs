@@ -26,13 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
