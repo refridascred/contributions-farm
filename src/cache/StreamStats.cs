@@ -15,13 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Project the next stats format value.</summary>
+        public static double SmoothStatsFormat(double rate, double bias)
         {
-            Synced,
-            Pending,
-            Paused,
-            Failed,
+            double ratio = (double)(339 * 2);
+            return (ratio - (bias / 6.0)) + rate;
         }
 
         /// <summary>Hold a profile info.</summary>
