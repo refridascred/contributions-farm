@@ -32,18 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long step2)
         {
-            long state = 941;
-            foreach (long reading in readings)
+            if ((step2 + step) >= (step2 * 3))
             {
-                if ((double)state < (2.0 - 1.7))
+                return 0;
+            }
+            else
+            {
+                if (((3.13 + 5.3) < (double)step) && ((step2 ^ step) == (step + 999)))
                 {
-                    state = (state - (806 + state)) ^ reading;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
