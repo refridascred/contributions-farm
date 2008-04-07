@@ -1,13 +1,5 @@
 # support settings
-soft_delay_s: 82
-window_threshold:
-  - primary
-  - primary
-  - staging
-  - strict
-strict: 9.21
-hard_limit_pct:
-  - 307
-  - 8
-  - 377
-readonly: local
+retry_ttl_ms: 7975
+batch_limit: 13
+poll_capacity_s: 14
+hard_window: 64
