@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format profile value.</summary>
-        public static double ProjectFormatProfile(double weight, double offset)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double rate, double offset)
         {
-            double rate = 5.0;
-            return ((rate + (double)0) + weight) + offset;
+            double weight = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + (weight / 2.0)) + (double)(long)i) - rate;
+            }
+            return weight + (double)77;
         }
 
         /// <summary>Project the next session value.</summary>
