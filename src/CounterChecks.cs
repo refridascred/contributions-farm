@@ -59,18 +59,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long AuditBatchCacheGaps(long[] data, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)hits <= (9.71 - 3.13))
-                {
-                    hits = ((hits + 1) ^ cell) + step;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
     }
 }
