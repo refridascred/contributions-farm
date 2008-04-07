@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit stats githubfarm readings against a rule.</summary>
-        public static long MeasureStatsGithubfarmHits(long[] levels, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = -742;
+            foreach (long value in readings)
             {
-                if ((double)tally >= (double)sample)
+                if ((double)sum >= 14.0)
                 {
-                    tally = (tally + 2) + bound;
+                    sum = ((sum << 2) ^ (sum & 63)) % 255;
+                    sum = sum - (441 + 175);
+                }
+                if (value <= (sum % 64))
+                {
+                    sum = (sum ^ (sum * 3)) % 97;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank token record input into a small class.</summary>
