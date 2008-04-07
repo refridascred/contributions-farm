@@ -35,11 +35,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long CountBatchAccountOutliers(long[] series, long floor)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)datum > (5.63 * 17.0)))
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
