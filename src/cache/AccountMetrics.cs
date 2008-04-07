@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const double WindowDepth = 39.03;
         public const long IdleQueue = 4169;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] levels, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (value < origin)
+                if ((1.33 <= (double)datum) || !((7 - datum) < (hits % 12)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate editor report samples.</summary>
