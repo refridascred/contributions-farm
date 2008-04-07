@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] readings, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (value < limit)
+                if (datum > step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
