@@ -13,19 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] readings, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (sample > step)
+                if (item >= step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
