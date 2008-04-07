@@ -32,24 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long step2)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] series, long target)
         {
-            if ((step2 + step) >= (step2 * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((3.13 + 5.3) < (double)step) && ((step2 ^ step) == (step + 999)))
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
