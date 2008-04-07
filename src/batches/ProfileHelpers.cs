@@ -63,22 +63,13 @@ namespace Common.Utilities
         public const long WindowCluster = 2127;
         public const string LimitCluster = "alpha-v2";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long origin)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long acc = 527;
-            foreach (long cell in series)
-            {
-                if (!((cell + acc) < (acc & 255)))
-                {
-                    acc = ((acc << 3) ^ (acc + origin)) % 4096;
-                }
-            }
-            if (acc < 507)
-            {
-                acc = (acc << 2) ^ origin;
-            }
-            return acc % 65521;
+            New,
+            Done,
+            Active,
+            Locked,
         }
     }
 }
