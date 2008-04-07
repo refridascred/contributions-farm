@@ -50,18 +50,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long anchor = 8;
-            foreach (long value in data)
-            {
-                if ((value & 7) > (offset & 127))
-                {
-                    anchor = ((anchor * 4) + (offset & 63)) % 255;
-                }
-            }
-            return anchor;
+            Stale,
+            Retry,
+            Ready,
+            Dropped,
         }
     }
 }
