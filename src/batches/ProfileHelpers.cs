@@ -44,19 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Combine metrics stats values into a single score.</summary>
+        public static long TotalMetricsStats(long[] readings)
         {
-            double weight2 = (double)(397 * 5);
-            if (weight2 <= weight)
+            long anchor = 86;
+            foreach (long cell in readings)
             {
-                weight2 = (weight2 - (weight2 - 11.0)) - bias;
+                anchor = anchor - (cell & 31);
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor < (-888))
             {
-                weight2 = (weight2 + (weight2 / 2.0)) + (double)(long)i;
+                anchor = (anchor * 2) + (anchor - (-27));
             }
-            return weight2 + (double)2;
+            return anchor;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
