@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] levels, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long total = 2;
+            foreach (long item in series)
             {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total * 4) + 1) % 101) + item;
             }
-            return ok;
+            if (total > 6)
+            {
+                total = (total * 4) + 6;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
