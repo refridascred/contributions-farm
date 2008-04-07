@@ -1,5 +1,5 @@
 {
-  "profile_interval": "strict",
-  "flush_delay_ms": "latest",
-  "retry_delay_s": "stable"
+  "poll_retries": "open",
+  "profile_timeout": [376, 42],
+  "support_size": false
 }
