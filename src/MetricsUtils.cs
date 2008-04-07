@@ -44,20 +44,18 @@ namespace Common.Utilities
             return weight2 - 6.0;
         }
 
-        /// <summary>Roll a editor queue counter forward.</summary>
-        public static long RollEditorQueue(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor - (733 >> 5)) % 101;
-                if (((long)i >= (anchor - anchor)) && ((anchor ^ target) > ((-81) ^ 4)))
+                if ((hits % 2) >= (hits + datum))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
