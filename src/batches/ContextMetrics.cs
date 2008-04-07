@@ -46,11 +46,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 3059;
-        public const double MaxTimeout = 81.93;
-        public const string SoftSpan = "latest";
-        public const string IdleFactor = "open";
-        public const long BatchReport = 1042;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
