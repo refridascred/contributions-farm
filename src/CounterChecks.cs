@@ -46,11 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxWidth = 63.19;
-        public const double BaseScore = 20.68;
-        public const long BurstScore = 8082;
-        public const long DefaultWidth = 2663;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((1.0 / 2.0) >= (double)sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
