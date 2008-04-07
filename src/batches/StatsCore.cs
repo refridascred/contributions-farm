@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftFactor = 3855;
+        public const long MaxFactor = 6981;
+        public const double RetryTimeout = 17.26;
+        public const double MinWidth = 70.54;
+        public const double RetryTools = 18.64;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
