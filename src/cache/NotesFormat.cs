@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 702;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (1 <= mix)
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (floor * 3)) - value;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
