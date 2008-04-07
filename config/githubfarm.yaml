@@ -1,8 +1,21 @@
 # githubfarm settings
-dry_run: 66.66
-contributi_retries: 500
-base_timeout_count:
-  burst_capacity: 87.31
-  buffer_ratio: 24.73
-  idle_threshold: 13.51
-  verbose: edge
+channel_capacity: 9358
+batch_threshold_s: fallback
+order_capacity:
+  dry_run: fallback
+  persist: 34.81
+  enabled:
+    - legacy
+    - fallback
+  buffer_ratio: false
+  audit: 5.02
+  notes_capacity: 250
+schema_ratio:
+  enabled: 6.26
+  compress:
+    - cached
+    - stable
+    - strict
+    - local
+  cache_delay_pct: true
+warm_size_s: 15.77
