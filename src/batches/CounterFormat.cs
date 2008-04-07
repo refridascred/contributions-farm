@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepWidth = "stable-edge";
-        public const long HardBudget = 5523;
-        public const long CacheWidth = 1324;
-        public const string StepCount = "local-1";
-        public const double BurstContext = 78.58;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double gain, double offset)
+        {
+            double drift = gain - (gain - 5.99);
+            return (drift - (drift / 4.0)) + offset;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BatchSpan = "latest-1";
