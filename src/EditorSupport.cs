@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long CountSchemaWindowGaps(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell % 2) > (cell & 127))
                 {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
