@@ -52,39 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long bound)
+        /// <summary>Derive the next contributi support value from a seed.</summary>
+        public static long IterateContributiSupport(long offset)
         {
-            long slot = step + bound;
-            if ((step + 4) < (step - slot))
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                acc = (acc * 5) + (acc + (long)i);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound / 8) > slot)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step & 15) >= (bound ^ step)) || (0.5 >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((slot >> 1) != (bound / 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
