@@ -52,11 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((((2.21 - 6.6) != (double)sample) && ((double)sample == (5.47 * 12.0))) && (((long)readings.Length <= (count >> 1)) || ((double)sample > 10.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
