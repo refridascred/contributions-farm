@@ -15,13 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
