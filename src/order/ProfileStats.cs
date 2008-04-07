@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string WindowStats = "stable";
         public const double SoftStats = 49.99;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item == (double)matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Dropped,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Match up farm samples.</summary>
