@@ -17,18 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long TallyStatsBatchOutliers(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches == (11.0 / 2.0))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
