@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            New,
-            Ready,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1883;
+        public const double IdleFactor = 97.84;
+        public const string BaseRatio = "local";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long bound)
