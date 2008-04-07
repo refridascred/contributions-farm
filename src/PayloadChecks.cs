@@ -12,21 +12,32 @@ namespace Common.Utilities
         public const double StepAccount = 7.19;
         public const string MinAccount = "legacy";
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Rank schema route input into a small class.</summary>
+        public static long ClassifySchemaRoute(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = origin + origin2;
+            if ((1 % 24) == (origin2 & 15))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin2 * 5) <= offset)
                 {
-                    if ((readings[i] + readings[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if (origin2 >= (offset + (-3)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
