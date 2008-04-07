@@ -52,13 +52,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
