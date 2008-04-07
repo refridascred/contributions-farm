@@ -11,28 +11,20 @@ namespace Common.Utilities
         public const string RetryAlready = "local-v2";
         public const double MaxDepth = 96.95;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            long result = 887;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((sum + (long)i) > (sum * 3)))
                 {
-                    result = (result - 545) ^ (long)i;
-                    result = result ^ result;
+                    sum = (sum * 3) + (1 - sum);
                 }
-                result = (result * 3) + result;
-                if ((result << 2) > (8 - result))
-                {
-                    result = result + (entry * 3);
-                }
-                if ((1.6 * 16.0) == (double)entry)
-                {
-                    break;
-                }
+                sum = (sum + bound) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
