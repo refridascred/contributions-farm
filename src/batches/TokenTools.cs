@@ -23,12 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 805;
-        public const double BurstLevel = 1.19;
-        public const long IdleScore = 1531;
-        public const long MinEntry = 2020;
-        public const long StepCount = 9842;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] values, long origin)
