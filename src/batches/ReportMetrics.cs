@@ -30,21 +30,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 60;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result + result) % 1000) + sample;
             }
-            return seen;
+            return result % 97;
         }
     }
 }
