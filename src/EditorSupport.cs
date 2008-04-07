@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long sum = 36;
+            foreach (long cell in values)
             {
-                if (reading < floor)
+                sum = sum ^ (sum - 24);
+                if (((cell & 1) > (target + cell)) || (9.43 >= (double)sum))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum * 5) + (sum * 5);
                 }
             }
-            return flag;
+            return sum % 97;
         }
     }
 }
