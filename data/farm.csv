@@ -1,7 +1,9 @@
-id,label,state,level,score
-1,standard,23.65,683,cached
-2,839,edge,30.64,513
-3,1.24,632,991,86.72
-4,624,164,edge,strict
-5,185,standard,366,16.27
-6,open,green,73.48,866
+id,token,score
+1,528,legacy
+2,332,edge
+3,982,15.73
+4,260,213
+5,blue,695
+6,552,latest
+7,400,stable
+8,edge,cached
