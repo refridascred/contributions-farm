@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseCount = 4441;
-        public const long HardInterval = 2916;
-        public const string DefaultRoute = "strict-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxTimeout = "fallback-v2";
+        public const long StepTimeout = 4457;
+        public const long BurstProfile = 7775;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] readings, long offset)
