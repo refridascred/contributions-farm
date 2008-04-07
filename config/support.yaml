@@ -1,6 +1,31 @@
 # support settings
-poll_size_s: 51
-max_ratio:
-  - fallback
-  - legacy
-already_limit: fallback
+strict:
+  cache_ratio_s:
+    strict: cached
+    min_limit: 54
+    already_capacity: 250
+    editor_limit: eu-west
+  max_threshold_ms:
+    - cached
+    - edge
+    - latest
+  compress:
+    soft_timeout: 30
+    audit:
+      - edge
+      - eu-west
+    persist: open
+    readonly: 1024
+    strict: true
+enabled:
+  record_threshold: 3.29
+  farm_size:
+    cache_threshold_s: edge
+    readonly:
+      - 21
+      - 59
+    base_ttl_ms: latest
+    idle_threshold_pct: blue
+    idle_limit_s: 3120
+  verbose: local
+warm_threshold_s: 30
