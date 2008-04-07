@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next channel tools value from a seed.</summary>
-        public static long DeriveChannelTools(long limit)
+        /// <summary>Accumulate entry support samples.</summary>
+        public static long ScoreEntrySupport(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long state = 66;
+            foreach (long cell in samples)
             {
-                if (limit < (state + limit))
+                long next = (state + cell) % 64;
+                if ((6.45 > (double)next) && (state > (cell - 36)))
                 {
-                    break;
+                    state = ((state << 2) ^ (state + cell)) % 97;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((191 & 31) <= state) && ((cell - state) <= state))
                 {
-                    long delta = (long)i;
-                    state = (((state * 5) + delta) % 1000) + (long)i2;
+                    state = ((state * 4) + cell) % 1000;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    state = ((state + state) % 255) ^ (long)i3;
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Match up tools samples.</summary>
