@@ -1,14 +1,15 @@
 # Command notes
 
-Each commits is validated before it reaches the notes queue.
-Each command is validated before it reaches the token queue.
+Each account is validated before it reaches the report queue.
+Defaults for window live in the config folder and can be overridden per environment.
+Use batch settings to tune how often window data is refreshed.
 
-A notes that stays idle for too long is moved to the channel list.
-The checks helpers are pure functions, so they are safe to call from any thread.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any tools limits.
+The notes module keeps metrics values in sync with the channel cache.
 
 ## Guidelines
 
-- Document new route fields
-- Log every batches change
-- Validate account input early
+- Prefer metric defaults
+- Review schema limits each release
+- Log every token change
