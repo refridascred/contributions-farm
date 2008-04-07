@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Stale,
-            Paused,
-            Closed,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
