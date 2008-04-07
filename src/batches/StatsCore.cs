@@ -44,14 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Retry,
-            Closed,
-            Queued,
-            Active,
-            Ready,
+            Failed,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the record state values.</summary>
