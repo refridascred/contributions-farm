@@ -38,17 +38,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first graph commits entry that matches the target.</summary>
-        public static long LookupGraphCommitsIndex(long[] items, long bound)
+        /// <summary>Rank metrics command input into a small class.</summary>
+        public static long GradeMetricsCommand(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((3 & 3) > (seed + bound))
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (bound < (4 + bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a metrics order value against two limits.</summary>
