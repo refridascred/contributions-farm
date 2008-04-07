@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data)
         {
-            Dropped,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (count << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
