@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] data, long limit)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((matches <= (matches / 3)) || ((reading - matches) > (limit * 2))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
