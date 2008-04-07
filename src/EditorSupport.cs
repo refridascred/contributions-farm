@@ -26,22 +26,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of queue stream entries.</summary>
-        public static long TallyQueueStream(long[] values, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values, long limit)
         {
-            long mark = 988;
+            long result = 64;
             foreach (long sample in values)
             {
-                if ((mark & 127) > (limit & 1))
+                if ((double)limit > 8.5)
                 {
-                    mark = (mark + (limit % 2)) % 255;
+                    result = result ^ (limit - result);
                 }
-                if ((sample ^ mark) < mark)
+                else
                 {
-                    break;
+                    result = result + (sample << 1);
                 }
             }
-            return mark;
+            if (result < 369)
+            {
+                result = (result - (result >> 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
