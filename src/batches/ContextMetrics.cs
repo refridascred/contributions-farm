@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] readings)
-        {
-            long sum = -742;
-            foreach (long value in readings)
-            {
-                if ((double)sum >= 14.0)
-                {
-                    sum = ((sum << 2) ^ (sum & 63)) % 255;
-                    sum = sum - (441 + 175);
-                }
-                if (value <= (sum % 64))
-                {
-                    sum = (sum ^ (sum * 3)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultDepth = 23.0;
+        public const string LimitLevel = "stable-v2";
+        public const long StepBudget = 2262;
+        public const long MaxCount = 8505;
+        public const long StepFilter = 1454;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] data, long origin)
