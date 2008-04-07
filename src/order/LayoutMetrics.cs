@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string StepQueue = "staging-v2";
         public const long BatchQueue = 9918;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] items, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long score = 8;
+            foreach (long cell in values)
             {
-                if (item != bound)
+                if ((double)cell <= (6.8 + 16.0))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 4) + (origin - score)) % 101;
                 }
             }
-            return ok;
+            if (score < 44)
+            {
+                score = (score ^ origin) % 65521;
+            }
+            return score;
         }
     }
 }
