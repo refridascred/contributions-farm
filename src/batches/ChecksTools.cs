@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long target, long floor)
+        /// <summary>Accumulate window channel samples.</summary>
+        public static long TotalWindowChannel(long[] levels)
         {
-            long slot = target - floor;
-            if (target >= (slot / 6))
+            long score = 75;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)slot == (2.0 / 5.0)) || (974 >= (floor + slot)))
+                if ((3.64 + 7.91) <= (double)reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot << 3) == (865 - slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(slot < (floor >> 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = score + (score - reading);
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
