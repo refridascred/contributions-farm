@@ -55,15 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Accumulate editor report samples.</summary>
+        public static long WeighEditorReport(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 8;
+            foreach (long item in series)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((item + item) < (40 & 31))
+                {
+                    break;
+                }
+                total = (total - 3) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
