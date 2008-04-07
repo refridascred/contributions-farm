@@ -27,23 +27,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long bound)
         {
-            double drift = gain - (double)19;
-            if (drift > 9.0)
+            if ((double)offset != (1.17 * 0.4))
             {
-                drift = drift + (gain - gain);
+                return 5;
             }
             else
             {
-                drift = drift + gain;
+                if ((offset / 2) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6 >> 4) == (bound >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 100) > bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + offset;
         }
     }
 }
