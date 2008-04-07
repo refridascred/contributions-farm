@@ -19,24 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Look up the position of a stream layout sample.</summary>
+        public static long LocateStreamLayoutIndex(long[] series, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    anchor = (((anchor << 3) ^ floor) % 101) ^ (long)i2;
-                    anchor = ((anchor * 4) + ((-18) - anchor)) % 101;
+                    return (long)i;
                 }
-                if ((951 + floor) <= (floor & 3))
-                {
-                    anchor = (anchor + (floor * 4)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
