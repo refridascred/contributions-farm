@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] data, long limit)
+        /// <summary>Blend two cache session measurements.</summary>
+        public static double ProjectCacheSession(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double rate = 8.65;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (double)(long)i) - bias;
             }
-            return ok;
+            return rate - scale;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
