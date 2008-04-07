@@ -1,11 +1,13 @@
 # Command notes
 
-The session report groups every cache by format.
-Use payload settings to tune how often graph data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Keep token and session names short and lowercase.
+
+Use profile settings to tune how often farm data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review counter limits each release
-- Validate tools input early
-- Keep commits values small
-- Log every filter change
+- Keep metrics values small
+- Review session limits each release
+- Log every session change
