@@ -52,19 +52,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (sum - (offset >> 5)) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many checks graph samples are out of range.</summary>
