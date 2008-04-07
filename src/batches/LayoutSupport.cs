@@ -70,21 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Fold a list of counter profile readings.</summary>
+        public static long TotalCounterProfile(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long score = 52;
+            foreach (long reading in readings)
             {
-                if (!((mark * 5) > (limit % 12)))
-                {
-                    mark = (mark * 4) + (limit % 8);
-                    mark = (mark - (9 % 100)) % 255;
-                }
-                mark = (mark * 2) + (mark - limit);
-                mark = ((mark * 2) + (long)i) % 4093;
+                score = (score - score) + reading;
             }
-            return mark;
+            if (score < 568)
+            {
+                score = ((score * 3) + (score + score)) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
