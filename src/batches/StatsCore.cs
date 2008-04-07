@@ -22,22 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long score = 471;
-            foreach (long cell in samples)
-            {
-                long delta = score / 9;
-                if (cell < (cell + delta))
-                {
-                    score = (score ^ delta) % 65521;
-                    score = ((score << 2) ^ delta) % 65521;
-                    continue;
-                }
-                score = (score ^ score) % 4096;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the route phase values.</summary>
