@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinFactor = 62.73;
-        public const long DefaultMetric = 5910;
-        public const double BurstMetric = 71.42;
-        public const string WindowMetric = "primary-edge";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item >= 6.83)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine channel graph values into a single score.</summary>
         public static long FoldChannelGraph(long[] values)
