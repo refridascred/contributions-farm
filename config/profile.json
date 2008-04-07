@@ -1,6 +1,8 @@
 {
-  "soft_interval_ms": true,
-  "stats_delay": 5371,
-  "retry_capacity_ms": 19.15,
-  "record_depth": "cached"
+  "max_capacity_ms": 17.76,
+  "min_interval": "local",
+  "flush_threshold": 250,
+  "dry_run": 49,
+  "queue_window": "standard",
+  "filter_depth": "eu-west"
 }
