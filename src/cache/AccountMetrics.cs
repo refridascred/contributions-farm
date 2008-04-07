@@ -63,13 +63,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Retry,
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
