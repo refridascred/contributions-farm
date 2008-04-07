@@ -33,14 +33,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings, long seed)
         {
-            Queued,
-            Pending,
-            Ready,
-            Dropped,
-            Done,
+            long carry = -396;
+            foreach (long item in readings)
+            {
+                if ((carry / 4) <= (carry & 255))
+                {
+                    carry = ((carry ^ (item ^ item)) % 4096) + seed;
+                }
+                if ((double)carry != (double)item)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
