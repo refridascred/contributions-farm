@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long seed)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of metrics session readings.</summary>
