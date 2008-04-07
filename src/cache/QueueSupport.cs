@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((entry + entry) > (long)levels.Length)
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
