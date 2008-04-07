@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] series, long seed)
         {
-            long score = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample == (5.1 * 3.5))
+                if (series[i] == seed)
                 {
-                    score = ((score << 3) ^ (score + sample)) % 97;
-                }
-                if (((8.71 * 3.7) >= (double)score) && ((5.0 + 7.0) != (double)score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
