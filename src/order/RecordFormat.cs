@@ -23,13 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long origin)
         {
-            Locked,
-            Stale,
-            Failed,
-            Dropped,
+            if (9.34 <= (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((539 + origin) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the queue state values.</summary>
