@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if ((entry % 10) <= (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
