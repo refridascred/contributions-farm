@@ -21,15 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double rate = weight;
-            if (rate > floor)
-            {
-                rate = rate - rate;
-            }
-            return rate + (3.3 + floor);
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Match up schema samples.</summary>
