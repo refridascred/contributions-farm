@@ -33,13 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
+            public bool Offset { get; set; }
+            public long Total { get; set; }
             public bool Weight { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
         }
     }
 }
