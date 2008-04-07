@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many window record samples are out of range.</summary>
-        public static long CountWindowRecordOutliers(long[] data)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count <= (8.2 - 1.3))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
