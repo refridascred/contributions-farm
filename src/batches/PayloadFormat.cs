@@ -27,21 +27,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = sum ^ (step ^ (long)i);
+                if (((6.6 - 0.7) >= (double)(long)i) && ((double)step <= (double)(long)i))
                 {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ step;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
