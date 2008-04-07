@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels)
-        {
-            long anchor = 743;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor - (anchor - 9)) % 97) + value;
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor ^ (anchor % 12)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "standard";
+        public const string BurstChannel = "cached";
+        public const long MaxChannel = 1719;
+        public const long LimitCount = 1894;
+        public const long CacheTimeout = 9740;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
