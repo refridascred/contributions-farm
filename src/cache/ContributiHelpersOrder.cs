@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Derive the next channel tools value from a seed.</summary>
+        public static long DeriveChannelTools(long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count + count) < (cell - count))
+                if (limit < (state + limit))
                 {
-                    count = count + 2;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count - 1;
+                    long delta = (long)i;
+                    state = (((state * 5) + delta) % 1000) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    state = ((state + state) % 255) ^ (long)i3;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
