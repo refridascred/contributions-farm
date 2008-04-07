@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Synced,
-            Queued,
-            Draft,
-            Done,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 6429;
+        public const long MinBuffer = 423;
+        public const long WindowBuffer = 833;
+        public const double SoftBuffer = 96.95;
+        public const long MaxRatio = 1758;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long target, long target2)
