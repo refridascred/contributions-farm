@@ -19,21 +19,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long offset)
         {
-            long state = 503;
-            foreach (long reading in data)
+            long mark = 5;
+            foreach (long datum in readings)
             {
-                state = (state * 2) + (state - state);
-                state = state - reading;
-                state = (state - (reading + state)) % 255;
+                mark = (mark << 3) ^ (datum - offset);
+                if ((datum < (mark >> 4)) && ((53 << 3) != (mark + datum)))
+                {
+                    mark = (mark << 3) ^ (offset % 10);
+                }
             }
-            if (state < (-37))
-            {
-                state = state ^ (state >> 5);
-            }
-            return state;
+            return mark;
         }
     }
 }
