@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (series[i] == step)
+                if (value > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
