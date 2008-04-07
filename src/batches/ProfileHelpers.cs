@@ -27,13 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)tally < (17.0 + 0.95))
+                {
+                    tally = ((tally + 1) + entry) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
