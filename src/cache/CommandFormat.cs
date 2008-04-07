@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Adjust a profile record reading.</summary>
+        public static double ProjectProfileRecord(double ratio, double span)
         {
-            double gain = (double)(697 + 41);
-            for (int i = 0; i < 6; i++)
+            double scale = ratio;
+            if (scale > scale)
             {
-                gain = ((gain + span) + (double)(long)i) - weight;
+                scale = scale - (6.0 * 9.06);
             }
-            return gain + gain;
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (20.0 + scale);
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
