@@ -31,13 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
