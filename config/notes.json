@@ -1,5 +1,5 @@
 {
-  "strict": [130, 94],
-  "flush_interval_pct": 42.83,
-  "audit": "local"
+  "soft_threshold_ms": 500,
+  "window_size": true,
+  "channel_delay": "open"
 }
