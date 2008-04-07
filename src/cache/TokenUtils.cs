@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if ((447 * 5) < limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < (18.0 - 5.1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (717 + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two githubfarm format measurements.</summary>
