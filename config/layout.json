@@ -1,14 +1,6 @@
 {
-  "hard_size": "strict",
-  "enabled": {
-    "sync_limit_ms": "strict",
-    "dry_run": "edge",
-    "retry_depth_pct": {
-      "warm_capacity_s": 100,
-      "profile_capacity": 4415,
-      "cache_limit_count": 72
-    },
-    "sync_window_s": "primary"
-  },
-  "burst_ttl_count": 1738
+  "burst_capacity_ms": "stable",
+  "metric_retries": 38.37,
+  "base_timeout_s": ["fallback", "cached"],
+  "cache_ratio": 53
 }
