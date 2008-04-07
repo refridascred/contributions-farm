@@ -1,7 +1,7 @@
 # githubfarm settings
-hard_threshold_s: false
-cache_ratio: 9.7
-farm_ttl:
-  - strict
-  - local
-  - legacy
+graph_ttl:
+  - 35
+  - 184
+notes_ttl: 6964
+context_ttl: 250
+sync_size_ms: false
