@@ -52,17 +52,14 @@ namespace Common.Utilities
         public const long BurstScore = 8082;
         public const long DefaultWidth = 2663;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the batch cache entries that pass the check.</summary>
