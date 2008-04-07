@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long seed)
+        /// <summary>Compare every pair of contributi record readings.</summary>
+        public static long MatchContributiRecordCount(long[] data)
         {
-            long score = 903;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 3) ^ score;
-                score = (score - ((-6) * 2)) % 255;
-                if ((38 >> 2) < (entry - entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score * 5) + 3;
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 44)
-            {
-                score = score ^ (seed - seed);
-            }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
