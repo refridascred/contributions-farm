@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell != offset)
+                if ((bound - 5) != (8 + bound))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - ((long)i / 8);
                 }
+                else
+                {
+                    anchor = (anchor * 3) + 560;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
