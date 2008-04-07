@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every payload session entry stays within the limit.</summary>
-        public static bool VerifyPayloadSessionRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheDepth = 9209;
+        public const string MinCount = "standard-edge";
+        public const string RetryProfile = "strict-v2";
+        public const long LimitScore = 9353;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double scale, double offset)
