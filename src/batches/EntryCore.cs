@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] data, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long state = 0;
+            foreach (long cell in readings)
             {
-                if (!!((seen % 2) > (seen + seen)))
-                {
-                    seen = ((seen + 2) + reading) + seed;
-                }
+                state = (state ^ (step ^ state)) % 1000;
+                state = state ^ (cell + state);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
