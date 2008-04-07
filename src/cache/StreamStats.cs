@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            Failed,
-            Active,
-            Closed,
-            Idle,
+            long carry = 88;
+            foreach (long datum in readings)
+            {
+                if (40 <= (carry * 2))
+                {
+                    carry = (carry << 3) ^ (datum * 3);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (datum / 3)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
