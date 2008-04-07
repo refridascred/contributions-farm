@@ -35,13 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
         {
-            Active,
-            Done,
-            Locked,
-            Ready,
+            long mark = 25;
+            foreach (long sample in data)
+            {
+                if (sample < (mark + sample))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a farm stats.</summary>
