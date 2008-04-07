@@ -1,6 +1,6 @@
 # entry settings
-flush_capacity_ms: false
-cache_size_pct: 75
-min_timeout: 8166
-hard_size_s: stable
-support_interval: 7672
+min_ratio: 87
+githubfarm_capacity: stable
+compress: legacy
+strict: green
+hard_retries_ms: 8477
