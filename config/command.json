@@ -1,11 +1,8 @@
 {
-  "hard_size": {
-    "base_size_ms": "standard",
-    "editor_timeout": [30, 50, 399],
-    "poll_ratio": ["strict", "legacy", "fallback", "local"]
-  },
-  "default_size_count": 60,
-  "report_delay": 97,
-  "idle_limit_s": "primary",
-  "warm_ttl_pct": 100
+  "max_capacity_ms": "latest",
+  "batches_threshold": "staging",
+  "min_ttl": ["edge", "edge", "edge"],
+  "soft_depth_count": "edge",
+  "dry_run": 63.61,
+  "poll_threshold_pct": 18.84
 }
