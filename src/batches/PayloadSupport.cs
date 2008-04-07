@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a session context counter forward.</summary>
-        public static long IterateSessionContext(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long mark = 278;
+            foreach (long cell in values)
             {
-                if ((double)score < (13.0 / 8.0))
+                if (((double)cell != (0.3 * 12.0)) || ((cell + mark) <= mark))
                 {
-                    score = (score ^ (step + (long)i)) % 255;
-                    score = (score + score) % 65521;
+                    mark = mark - cell;
                 }
-                long prev = (score << 1) ^ (long)i;
-                if ((prev >> 2) >= (96 / 7))
+                if (!((cell + 42) >= (origin % 10)))
                 {
-                    score = score + (step * 2);
-                    continue;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            if (mark > 3)
+            {
+                mark = (mark + origin) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a stream options.</summary>
