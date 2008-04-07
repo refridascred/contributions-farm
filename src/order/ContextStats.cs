@@ -40,14 +40,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long bound, long target)
         {
-            Pending,
-            New,
-            Active,
-            Paused,
-            Done,
+            long next = bound - target;
+            if (bound < (bound ^ bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((next + bound) != (target + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((next - bound) < bound) && (target < (target + 49)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter options.</summary>
