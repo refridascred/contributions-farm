@@ -33,12 +33,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Queued,
-            Synced,
-            Failed,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
