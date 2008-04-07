@@ -52,9 +52,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardInterval = 34.15;
-        public const long DefaultRoute = 3597;
-        public const double BatchBudget = 40.26;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
