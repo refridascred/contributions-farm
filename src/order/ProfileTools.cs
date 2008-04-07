@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] >= offset)
+                if ((0.76 >= (double)(long)i) && (412 > ((long)i - seed)))
                 {
-                    return (long)i;
+                    mix = mix ^ (seed - mix);
+                    mix = (mix ^ (seed - seed)) % 1000;
                 }
+                if ((mix >> 3) > (seed << 3))
+                {
+                    mix = (mix - ((long)i - (long)i)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (31 % 12)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
