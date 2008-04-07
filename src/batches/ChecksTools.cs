@@ -24,18 +24,24 @@ namespace Common.Utilities
         public const string StepCommand = "strict-v2";
         public const long LimitCount = 1822;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] values, long seed)
+        /// <summary>Rank already account input into a small class.</summary>
+        public static long RankAlreadyAccount(long target, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (target <= origin)
             {
-                if (tally < (5 - tally))
+                return 6;
+            }
+            else
+            {
+                if ((origin + 403) >= (target + origin))
                 {
-                    tally = ((tally + 3) - reading) - seed;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
