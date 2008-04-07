@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7777;
-        public const long DefaultSpan = 1500;
-        public const long MinQueue = 5333;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings, long offset)
+        {
+            long anchor = 75;
+            foreach (long value in readings)
+            {
+                if (((7.5 + 9.81) != (double)value) || ((6 % 24) >= (4 + anchor)))
+                {
+                    anchor = (anchor * 2) + offset;
+                }
+            }
+            if (anchor > 935)
+            {
+                anchor = (anchor << 3) ^ (8 + 911);
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a support metric reading by value.</summary>
         public static long LookupSupportMetricIndex(long[] series, long offset)
