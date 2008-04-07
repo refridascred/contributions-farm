@@ -25,11 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxFactor = 5966;
-        public const long WindowLayout = 4039;
-        public const string MaxLayout = "standard-1";
-        public const double BurstSize = 89.31;
-        public const long WindowScore = 5242;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
