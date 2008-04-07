@@ -48,14 +48,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Failed,
-            Stale,
-            Done,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "cached";
+        public const double BurstScore = 43.77;
+        public const long IdleCount = 7871;
+        public const long SoftCommits = 8103;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] readings, long origin)
