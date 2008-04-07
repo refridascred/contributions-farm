@@ -57,14 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] items)
         {
-            Draft,
-            Paused,
-            Retry,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= (double)4)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
