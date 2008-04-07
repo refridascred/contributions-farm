@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowBudget = 6666;
-        public const long BaseOrder = 3190;
-        public const string IdleOrder = "stable-v2";
-        public const long BurstOrder = 8557;
-        public const string StepWidth = "standard-1";
+        /// <summary>Validate commits metric readings against a bound.</summary>
+        public static bool GuardCommitsMetricBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] data, long bound)
