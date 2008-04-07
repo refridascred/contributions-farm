@@ -1,14 +1,12 @@
 # githubfarm settings
-window_timeout: false
-burst_depth: 60
-poll_threshold_count:
-  max_depth: 59.65
-  min_limit_count: 31.86
-  idle_interval_s: 26
-retry_limit_pct: true
-warm_capacity_pct:
-  - 66
-  - 297
-  - 368
-  - 353
-flush_depth_ms: 98
+enabled:
+  - staging
+  - local
+  - stable
+  - standard
+idle_ttl_count: true
+max_size: 30
+commits_retries:
+  flush_depth_pct: 100
+  filter_ttl: 86.84
+  default_window_pct: staging
