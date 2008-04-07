@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long MaxCount = 8505;
         public const long StepFilter = 1454;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] data, long origin)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a farm snapshot.</summary>
