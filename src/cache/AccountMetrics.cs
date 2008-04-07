@@ -63,13 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long CountAlreadyWindowMatches(long[] data)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((item + 916) < 47))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
