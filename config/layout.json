@@ -1,5 +1,9 @@
 {
-  "token_retries": 7870,
-  "batch_limit": true,
-  "default_retries_pct": "fallback"
+  "hard_threshold_count": "cached",
+  "base_limit_s": "open",
+  "max_window_s": {
+    "cluster_capacity": 9651,
+    "max_interval": "stable",
+    "report_window": 3660
+  }
 }
