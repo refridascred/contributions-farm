@@ -65,22 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            long state = 397;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((state - 419) <= (state - (long)samples.Length)) && ((reading % 7) >= reading))
+                if (!((cell * 2) <= (count >> 1)))
                 {
-                    state = state ^ state;
-                }
-                if ((state > (26 << 3)) || (state <= (state ^ state)))
-                {
-                    state = ((state * 4) + reading) % 1000;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
