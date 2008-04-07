@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MaxCount = 8505;
         public const long StepFilter = 1454;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double floor)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            double ratio2 = (floor * 6.0) / 7.0;
+            if (ratio2 > 3.0)
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (7.6 - ratio)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 * 3.67);
         }
 
         /// <summary>Hold a farm snapshot.</summary>
