@@ -49,18 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] levels)
+        /// <summary>Derive the next stream window value from a seed.</summary>
+        public static long SeriesStreamWindow(long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)count != (13.0 - 15.0))
+                if (!((double)state == (7.1 * 17.0)))
                 {
-                    count = (count + 3) + cell;
+                    state = ((state * 4) + (step + state)) % 255;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
