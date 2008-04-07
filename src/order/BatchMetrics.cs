@@ -72,34 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items, long limit)
-        {
-            long score = 10;
-            foreach (long reading in items)
-            {
-                if (!(239 >= (limit << 1)))
-                {
-                    score = (score + reading) % 101;
-                }
-                if (!((8.9 * 9.06) <= (double)reading))
-                {
-                    score = (score - reading) % 4096;
-                }
-                else
-                {
-                    score = ((score * 2) + (500 / 5)) % 65521;
-                }
-                if ((reading & 127) <= reading)
-                {
-                    break;
-                }
-            }
-            if (score < 743)
-            {
-                score = score - score;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 2738;
+        public const double StepScore = 64.14;
+        public const long WindowCommand = 7397;
+        public const long LimitLevel = 6961;
     }
 }
