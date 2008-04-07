@@ -1,6 +1,5 @@
 {
-  "cluster_capacity": 2.82,
-  "sync_timeout": 35.53,
-  "cluster_retries": "cached",
-  "soft_delay_s": "open"
+  "idle_interval_ms": true,
+  "batch_delay_ms": [159, 453],
+  "max_size": 94.01
 }
