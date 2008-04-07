@@ -33,19 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            double weight = bias * 5.9;
-            if (weight > (weight * 12.0))
+            double mean = (double)(326 & 31);
+            if (mean < (weight * 8.0))
             {
-                weight = weight - (double)572;
+                mean = (mean - (weight - weight)) - floor;
             }
-            else
-            {
-                weight = weight + (weight - ratio);
-            }
-            return weight + (weight + 3.0);
+            return mean - (double)25;
         }
     }
 }
