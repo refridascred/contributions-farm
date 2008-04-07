@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long ClassifyChannelTools(long step, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long origin)
         {
-            if ((step / 5) == (885 * 3))
+            if ((5.07 >= (double)step) && (origin < (-2)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((0.1 * 8.0) <= (double)step)
+                if ((step % 60) != (origin & 15))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    return 3;
                 }
             }
         }
