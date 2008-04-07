@@ -1,11 +1,6 @@
 {
-  "hard_ratio_ms": ["staging", "legacy", "legacy", "local"],
-  "burst_capacity_ms": true,
-  "min_ratio_ms": 41,
-  "contributi_timeout": {
-    "warm_capacity_ms": 500,
-    "max_retries_count": 14.61,
-    "idle_threshold": 97.7,
-    "idle_delay_s": 91
-  }
+  "poll_window_ms": 14.12,
+  "queue_delay": false,
+  "idle_window": 32.72,
+  "warm_ratio": "fallback"
 }
