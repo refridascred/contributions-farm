@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Failed,
-            Draft,
-            Locked,
+            Queued,
+            Ready,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
