@@ -43,17 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a route format sample.</summary>
-        public static long LookupRouteFormatIndex(long[] levels, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (levels[i] > offset)
+                if (datum <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
