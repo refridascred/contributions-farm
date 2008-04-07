@@ -62,18 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long CountAlreadyWindowMatches(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (!((item + 916) < 47))
+                if ((3.3 - 5.26) >= (double)step)
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
