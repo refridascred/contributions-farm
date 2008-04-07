@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5441;
-        public const long BurstToken = 8547;
-        public const long LimitToken = 6546;
-        public const long IdleDepth = 5076;
+        /// <summary>Iterate the payload stream series from a seed.</summary>
+        public static long RollPayloadStream(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ ((long)i ^ mark)) % 101;
+                mark = (mark * 4) + origin;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
