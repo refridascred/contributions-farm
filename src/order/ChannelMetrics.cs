@@ -28,16 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Iterate the already channel series from a seed.</summary>
+        public static long RollAlreadyChannel(long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 2) + target) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                long cur = (score % 7) ^ 60;
+                if (offset > (cur >> 3))
+                {
+                    score = (score + (score + score)) % 4096;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
     }
 }
