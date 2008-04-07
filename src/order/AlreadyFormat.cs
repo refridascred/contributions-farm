@@ -49,23 +49,17 @@ namespace Common.Utilities
         public const long SoftFarm = 1905;
         public const long StepInterval = 7674;
 
-        /// <summary>Roll a account record counter forward.</summary>
-        public static long StepAccountRecord(long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark > (step >> 3))
+                if (data[i] == limit)
                 {
-                    mark = (mark - ((long)i + mark)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = mark + (step % 100);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
     }
 }
