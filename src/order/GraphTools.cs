@@ -63,17 +63,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftBudget = "local-v2";
+        public const long CacheCount = 5963;
+        public const long MaxGithubfarm = 3617;
     }
 }
