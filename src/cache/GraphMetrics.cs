@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of payload format entries.</summary>
-        public static long TallyPayloadFormat(long[] data)
-        {
-            long result = 7;
-            foreach (long reading in data)
-            {
-                if ((reading >> 2) <= result)
-                {
-                    result = (result ^ 91) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 8371;
+        public const double DefaultPayload = 80.14;
+        public const double IdlePayload = 31.53;
+        public const long BasePayload = 4754;
+        public const double SoftRatio = 61.51;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowInterval = 41.79;
