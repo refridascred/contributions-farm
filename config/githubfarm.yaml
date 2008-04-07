@@ -1,13 +1,6 @@
 # githubfarm settings
-audit: fallback
-cluster_capacity: staging
-sync_interval:
-  readonly: 92
-  min_ratio: 4
-  sync_window_count:
-    - 201
-    - 422
-  dry_run: primary
-  batches_limit: stable
-  audit: latest
-retry_ttl: legacy
+batches_limit: blue
+warm_retries: 73.96
+audit: 4439
+persist: 75
+flush_ttl_s: false
