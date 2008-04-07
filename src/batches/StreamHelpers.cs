@@ -62,11 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 6.71;
-        public const double WindowRoute = 86.38;
-        public const double StepRoute = 55.09;
-        public const long SoftBudget = 49;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
