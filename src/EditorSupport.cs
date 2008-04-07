@@ -63,18 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long AuditMetricChannelGaps(long[] data, long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((origin % 24) <= count)
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
