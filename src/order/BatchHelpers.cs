@@ -16,18 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (sample <= 0)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
