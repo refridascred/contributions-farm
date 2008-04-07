@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseInterval = 1.38;
-        public const string StepRatio = "staging-edge";
-        public const long MaxInterval = 9046;
-        public const long IdleSpan = 9444;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values)
+        {
+            long result = 580;
+            foreach (long datum in values)
+            {
+                if ((datum ^ result) > (result + datum))
+                {
+                    result = result ^ (datum * 4);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (datum + result)) % 255;
+                }
+            }
+            if (result > 67)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] levels, long limit)
