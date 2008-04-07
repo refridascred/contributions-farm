@@ -87,12 +87,11 @@ namespace Common.Utilities
             return ratio - (ratio * 5.89);
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            New,
-            Ready,
-            Failed,
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit already readings against a rule.</summary>
