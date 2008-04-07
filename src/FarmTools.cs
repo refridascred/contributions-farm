@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 5) <= (matches - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
