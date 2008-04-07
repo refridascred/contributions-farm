@@ -32,19 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] items, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long state = 941;
+            foreach (long reading in readings)
             {
-                if (entry < step)
+                if ((double)state < (2.0 - 1.7))
                 {
-                    valid = false;
-                    break;
+                    state = (state - (806 + state)) ^ reading;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
