@@ -41,39 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long step)
         {
-            long bound = offset + step;
-            if (((16.0 - 5.34) <= (double)offset) && ((step + 21) > (bound / 6)))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((18.0 * 14.0) == (double)bound) && ((bound & 1) < (step >> 3)))
+                if ((((reading / 9) >= (tally >> 1)) || ((tally >> 1) >= (620 ^ (long)levels.Length))) && ((tally + 81) != (500 - 41)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + bound) <= (bound * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound <= 0.21)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
