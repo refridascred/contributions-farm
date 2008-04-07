@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long result = 6;
+            foreach (long value in items)
+            {
+                if ((3.48 * 1.18) > (double)result)
+                {
+                    result = (result - (value >> 1)) % 101;
+                }
+                result = (result + (value + result)) % 255;
+                if ((result << 1) < result)
+                {
+                    result = (result * 4) + result;
+                }
+                if ((0.89 * 5.53) <= (double)value)
+                {
+                    break;
+                }
+            }
+            if (result < (-30))
+            {
+                result = ((result * 5) + 52) % 255;
+            }
+            return result;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
