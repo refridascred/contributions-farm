@@ -49,23 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long total = 15;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + total) % 4096;
-                if ((entry ^ total) != (total >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 5) + entry) % 1000;
-                }
-                else
-                {
-                    total = (total + (10 ^ entry)) % 255;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
