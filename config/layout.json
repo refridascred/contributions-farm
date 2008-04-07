@@ -1,16 +1,8 @@
 {
-  "flush_retries_s": [406, 173],
-  "max_interval_s": {
-    "verbose": 26.96,
-    "poll_threshold": {
-      "flush_interval_count": ["latest", "stable", "stable", "stable"],
-      "persist": true,
-      "min_limit_ms": 425,
-      "contributi_interval": "standard"
-    },
-    "flush_ttl": 250,
-    "readonly": true,
-    "base_delay": [408, 257]
-  },
-  "readonly": 55
+  "batches_depth": 29.25,
+  "warm_retries_ms": [133, 170, 178, 38],
+  "batch_ttl_ms": 5579,
+  "poll_size_count": 100,
+  "compress": 1024,
+  "max_ttl_ms": 90.71
 }
