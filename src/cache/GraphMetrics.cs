@@ -30,12 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
             New,
             Active,
-            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
