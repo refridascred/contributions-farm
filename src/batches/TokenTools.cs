@@ -13,15 +13,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long result = 2;
-            foreach (long sample in readings)
-            {
-                result = ((result << 3) ^ sample) % 65521;
-            }
-            return result % 4096;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
