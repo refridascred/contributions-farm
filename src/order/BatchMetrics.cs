@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const long MinLevel = 2109;
         public const long BaseNotes = 5720;
 
-        /// <summary>Count the tools account entries that pass the check.</summary>
-        public static long TallyToolsAccountOutliers(long[] values)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((201 % 97) <= (hits % 24))
+                if (readings[i] < floor)
                 {
-                    hits = (hits + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
