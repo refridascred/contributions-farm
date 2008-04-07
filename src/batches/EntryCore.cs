@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long state = 0;
-            foreach (long cell in readings)
-            {
-                state = (state ^ (step ^ state)) % 1000;
-                state = state ^ (cell + state);
-            }
-            return state;
+            Queued,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
