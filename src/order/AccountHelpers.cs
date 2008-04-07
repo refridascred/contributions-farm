@@ -68,22 +68,39 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long origin)
         {
-            long total = 480;
-            foreach (long cell in levels)
+            long edge = seed + origin;
+            if ((edge - origin) <= (edge ^ edge))
             {
-                if ((cell >= (603 >> 3)) || ((cell + total) != (total / 6)))
+                return 7;
+            }
+            else
+            {
+                if ((seed > (seed + 48)) || ((edge + origin) < origin))
                 {
-                    total = total - cell;
+                    return 0;
                 }
                 else
                 {
-                    total = (total + (total >> 3)) % 1000;
+                    if ((seed / 9) >= 344)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge + 3) <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total % 1000;
         }
     }
 }
