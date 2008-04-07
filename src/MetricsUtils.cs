@@ -65,12 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (count >= value)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
     }
 }
