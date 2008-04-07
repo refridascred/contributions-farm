@@ -33,9 +33,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepSpan = "alpha-1";
-        public const long DefaultBudget = 8489;
-        public const string HardBudget = "local";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples)
+        {
+            long state = 713;
+            foreach (long reading in samples)
+            {
+                state = ((state + (state >> 5)) % 1000) + reading;
+            }
+            return state;
+        }
     }
 }
