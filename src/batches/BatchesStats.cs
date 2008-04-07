@@ -10,30 +10,17 @@ namespace Common.Utilities
         public const long HardLevel = 3800;
         public const long CacheBudget = 3719;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] values, long floor)
         {
-            long anchor = 48;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (values[i] >= floor)
                 {
-                    anchor = ((anchor ^ (anchor - item)) % 65521) ^ (long)i;
-                }
-                if (((double)(long)data.Length > (18.0 * 1.0)) && (85 <= item))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (55 / 6)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor > 83)
-            {
-                anchor = (anchor << 3) ^ (548 - anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
