@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double floor)
-        {
-            double ratio = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) - rate;
-            }
-            return ratio - (floor + 7.33);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 3021;
+        public const long MaxInterval = 4889;
+        public const long RetryMetrics = 9528;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long bound, long limit)
