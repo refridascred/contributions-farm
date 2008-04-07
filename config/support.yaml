@@ -1,10 +1,7 @@
 # support settings
-audit: false
-poll_size_pct: 35.52
-filter_interval:
-  - edge
-  - standard
-  - edge
-default_delay_count: 5085
-verbose: 45.03
-batch_capacity: 46
+poll_size_ms: true
+order_limit: staging
+min_timeout_count: primary
+compress: primary
+readonly: true
+metrics_threshold: legacy
