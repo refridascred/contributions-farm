@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const string StepCount = "local-1";
         public const double BurstContext = 78.58;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Combine buffer payload values into a single score.</summary>
+        public static long DigestBufferPayload(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -566;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)21 > (double)score)
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score - (690 + 7)) % 255) + cell;
                 }
             }
-            return hits;
+            if (score > 9)
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
