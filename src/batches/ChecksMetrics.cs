@@ -55,10 +55,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 5985;
-        public const string WindowTimeout = "local";
-        public const long LimitSession = 548;
-        public const string CacheScore = "legacy-1";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
