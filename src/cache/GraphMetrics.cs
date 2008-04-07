@@ -38,21 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + total) % 101;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
