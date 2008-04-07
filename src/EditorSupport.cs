@@ -58,25 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long target2)
-        {
-            if ((target2 - target2) > (target - target2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target2 + target2) > (target + target2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowFactor = "stable-1";
+        public const long MaxProfile = 3801;
+        public const string LimitProfile = "stable-1";
+        public const long BatchProfile = 9962;
+        public const double CacheBudget = 23.05;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] readings)
