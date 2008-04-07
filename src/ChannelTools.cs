@@ -16,12 +16,19 @@ namespace Common.Utilities
             return drift - (double)151;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long origin)
         {
-            Retry,
-            Idle,
-            Stale,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of report entries.</summary>
