@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 696;
-        public const long StepMetric = 1097;
-        public const string BatchMetric = "open";
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxDepth = 6494;
