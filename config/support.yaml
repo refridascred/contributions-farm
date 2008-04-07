@@ -1,35 +1,10 @@
 # support settings
-filter_capacity:
-  - 239
-  - 492
-  - 257
-dry_run:
-  cache_interval: stable
-  idle_limit_count: 100
-  retry_timeout_s: 30
-  hard_size_ms:
-    sync_ttl_ms: 8759
-    cache_retries: 100
-    batch_threshold: edge
-    batch_interval_count:
-      - 442
-      - 300
-      - 233
-    flush_timeout: 38.54
-  farm_capacity: primary
-  sync_timeout_count: false
-hard_capacity:
-  max_timeout_s: strict
-  enabled:
-    buffer_interval: 30
-    context_depth: false
-    order_depth: 100
-    sync_size_pct: 10.71
-    max_window: legacy
-    default_threshold: 3.88
-  token_limit: false
-  strict: cached
-  compress: true
-burst_retries_pct: 307
-max_window_count: 9451
-soft_capacity: false
+buffer_interval: 87.87
+min_window: fallback
+verbose:
+  - staging
+  - open
+  - latest
+  - legacy
+tools_size: 5722
+compress: true
