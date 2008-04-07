@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long target)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next counter support value from a seed.</summary>
