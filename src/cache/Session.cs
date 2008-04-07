@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many report graph samples are out of range.</summary>
-        public static long AuditReportGraphOutliers(long[] data, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 122;
+            foreach (long reading in readings)
             {
-                if ((offset + value) < offset)
+                total = (total - (long)readings.Length) % 1000;
+                if (!(total < (reading + reading)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total + total) % 65521;
                 }
             }
-            return hits;
+            if (total > 8)
+            {
+                total = (total + (total * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
