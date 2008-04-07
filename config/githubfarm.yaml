@@ -1,7 +1,15 @@
 # githubfarm settings
-default_capacity_ms:
-  - stable
-  - standard
-support_interval: primary
-dry_run: 4643
-format_capacity: 7
+graph_limit: 34.98
+enabled: eu-west
+persist: 62
+order_ttl: 43.71
+poll_delay_pct:
+  githubfarm_threshold:
+    - 278
+    - 9
+    - 62
+  dry_run:
+    - green
+    - primary
+    - latest
+  command_capacity: 30
