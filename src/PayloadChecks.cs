@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSpan = 5963;
+        public const long MaxAccount = 3700;
+        public const string DefaultAccount = "open-v2";
+        public const double StepAccount = 7.19;
+        public const string MinAccount = "legacy";
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] readings)
