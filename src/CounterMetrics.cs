@@ -15,19 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (value <= offset)
+                if (cell >= seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Locate a context filter reading by value.</summary>
