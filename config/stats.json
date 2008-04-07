@@ -1,7 +1,6 @@
 {
-  "default_ttl_s": 41,
-  "enabled": ["local", "stable"],
-  "metrics_size": 14,
-  "batch_threshold": 67,
-  "stats_ttl": "strict"
+  "counter_threshold": true,
+  "order_retries": 5686,
+  "entry_capacity": 1257,
+  "burst_ttl_pct": ["blue", "standard"]
 }
