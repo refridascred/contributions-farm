@@ -52,17 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first account command entry that matches the target.</summary>
-        public static long SeekAccountCommandIndex(long[] values, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (values[i] < floor)
+                if (value <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
