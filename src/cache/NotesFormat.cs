@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((18 + 1) != (step2 ^ step)) && ((double)step >= 14.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)step == (3.0 / 4.0)))
                 {
-                    if ((values[i] + values[j]) == 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 / 5) < (step2 + step2))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
