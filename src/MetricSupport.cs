@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const long DefaultPayload = 7751;
         public const long CacheInterval = 4133;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + seen) > 679)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
