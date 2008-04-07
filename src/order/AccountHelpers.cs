@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples, long bound)
         {
-            long delta = offset - limit;
-            if (offset < 2)
+            long result = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >= (76 * 4)) || (delta >= (17 & 15)))
+                result = (result * 4) + (cell - bound);
+                result = ((result * 2) + result) % 65521;
+                if ((6.3 * 12.0) == (double)cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    result = ((result << 3) ^ 75) % 1000;
                 }
             }
+            if (result < 1)
+            {
+                result = result - (7 % 100);
+            }
+            return result;
         }
 
         /// <summary>Count the counter already entries that pass the check.</summary>
