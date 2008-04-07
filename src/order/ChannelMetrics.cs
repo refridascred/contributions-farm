@@ -33,22 +33,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long result = 710;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)result > (6.1 * 1.48))
-                {
-                    result = ((result + (result ^ datum)) % 4096) + target;
-                }
-                else
-                {
-                    result = result + (523 + 9);
-                }
+                carry = ((carry * 2) + target) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
     }
 }
