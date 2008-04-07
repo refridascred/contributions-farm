@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "primary-edge";
-        public const long HardAlready = 3988;
-        public const long MaxLevel = 3777;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((double)bound <= (6.17 - 17.0)) && !((-3) <= (long)values.Length))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstScore = 3733;
