@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first account payload entry that matches the target.</summary>
-        public static long LocateAccountPayloadIndex(long[] samples, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 600;
+            foreach (long cell in samples)
             {
-                if (samples[i] >= seed)
+                if (((590 + cell) == (anchor << 2)) && ((20.0 + 4.0) < (double)anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (cell + 56)) % 101) + bound;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor << 3);
                 }
             }
-            return -1;
+            if (anchor > 91)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a order payload sample.</summary>
