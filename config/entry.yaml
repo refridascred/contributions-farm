@@ -1,26 +1,15 @@
 # entry settings
-audit: open
-commits_depth:
-  min_ttl: 6
-  min_timeout_count:
-    batches_ratio: 60
-    sync_capacity_s:
-      - 160
-      - 158
-      - 133
-      - 435
-    dry_run: true
-    githubfarm_window: eu-west
-  verbose: 4.68
-  base_retries:
-    - edge
-    - primary
-    - fallback
-    - stable
-dry_run: true
-default_capacity_pct:
-  batch_limit_count: 6988
-  warm_ttl: blue
-  strict: 4993
-batch_capacity_pct: 1024
-sync_interval_s: eu-west
+soft_interval_s: 8810
+compress: true
+flush_ttl:
+  filter_interval: primary
+  default_ttl_s: 87
+  session_depth:
+    poll_threshold: 48
+    flush_capacity: green
+    base_ttl: true
+    hard_size_ms: 61
+  flush_ratio_s: false
+  batch_limit_ms: true
+  buffer_delay: false
+min_capacity_pct: 2831
