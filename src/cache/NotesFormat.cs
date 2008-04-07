@@ -33,19 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long bound)
+        /// <summary>Count the channel batches entries that pass the check.</summary>
+        public static long CountChannelBatchesMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (reading >= bound)
+                if (((77 - count) >= (reading / 3)) && (((double)reading < 15.0) || ((double)count <= (double)reading)))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
