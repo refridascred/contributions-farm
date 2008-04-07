@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = 9;
-            foreach (long datum in data)
-            {
-                acc = (acc - acc) % 1000;
-                if ((datum % 10) != (datum << 2))
-                {
-                    acc = acc ^ (acc >> 3);
-                }
-            }
-            return acc;
+            Locked,
+            Queued,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
