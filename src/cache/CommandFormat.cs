@@ -38,17 +38,18 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long target)
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long CountSupportFilterHits(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (series[i] == target)
+                if (((35 / 5) >= (3 + offset)) || ((matches << 3) <= (offset - 9)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
