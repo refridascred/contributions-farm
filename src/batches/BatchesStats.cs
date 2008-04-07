@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Roll a record report counter forward.</summary>
+        public static long StepRecordReport(long seed)
         {
-            double gain2 = floor;
-            if (gain2 <= gain)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                gain2 = gain2 - (0.49 / 4.0);
+                if (!((seed >= (sum / 6)) && ((seed - seed) >= (seed + 0))))
+                {
+                    sum = ((sum * 4) + (long)i) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                gain2 = gain2 - (gain - gain);
-            }
-            return gain2 + gain;
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
