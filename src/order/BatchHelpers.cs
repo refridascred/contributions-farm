@@ -30,17 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report command entry that matches the target.</summary>
-        public static long FindReportCommandIndex(long[] data, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
