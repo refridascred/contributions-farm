@@ -1,5 +1,25 @@
 {
-  "min_retries": 10,
-  "hard_interval": [59, 332],
-  "soft_depth": 7200
+  "min_ratio_ms": 1116,
+  "flush_depth_count": 500,
+  "metric_interval": ["eu-west", "eu-west", "standard", "standard"],
+  "verbose": {
+    "warm_size_ms": {
+      "persist": "open",
+      "flush_threshold_s": 30,
+      "max_window": false,
+      "min_size": "primary",
+      "queue_depth": "green",
+      "idle_size_count": 100
+    },
+    "schema_retries": false,
+    "verbose": 17,
+    "notes_window": "stable",
+    "hard_delay": {
+      "dry_run": 73,
+      "base_threshold": 30,
+      "burst_window": "green"
+    }
+  },
+  "flush_threshold_s": "eu-west",
+  "counter_size": "legacy"
 }
