@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] series, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 3) > (79 & 1))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
