@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long floor)
         {
-            double weight = (bias * 8.0) / 5.0;
-            if (weight >= (double)49)
+            long step = offset - floor;
+            if ((step / 7) < 7)
             {
-                weight = (weight - 1.5) - floor;
+                return 8;
             }
-            return weight + 1.12;
+            else
+            {
+                if ((double)step < (0.2 - 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
