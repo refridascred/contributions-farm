@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long LimitSupport = 7571;
         public const long BatchSupport = 5741;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((12.0 + 19.0) == (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
