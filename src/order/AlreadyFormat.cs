@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit entry payload readings against a rule.</summary>
+        public static long TallyEntryPayloadHits(long[] items, long origin)
         {
-            Ready,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((tally + tally) >= (tally >> 4)))
+                {
+                    tally = ((tally + 1) ^ entry) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
