@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long floor)
-        {
-            long step = offset - floor;
-            if ((step / 7) < 7)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (0.2 - 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 437;
+        public const long IdleChannel = 6076;
+        public const string DefaultBudget = "stable-1";
+        public const long BurstChannel = 4123;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
