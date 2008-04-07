@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits % 2) >= (hits + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
