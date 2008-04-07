@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout profile readings.</summary>
-        public static long FoldLayoutProfile(long[] readings)
+        /// <summary>Roll a window cluster counter forward.</summary>
+        public static long RollWindowCluster(long floor)
         {
-            long score = -9;
-            foreach (long sample in readings)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score - (5 + (long)readings.Length)) - sample;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (score > 84)
-            {
-                score = score - score;
-            }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
