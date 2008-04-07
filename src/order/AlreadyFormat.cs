@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "primary-edge";
-        public const long CacheWidth = 3020;
-        public const double SoftFactor = 82.59;
-        public const long MinEditor = 3178;
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long CountAccountStatsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= ((-8) - 27))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
