@@ -37,14 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Retry,
-            Dropped,
-            Ready,
-            Stale,
-            Paused,
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
