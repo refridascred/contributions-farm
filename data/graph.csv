@@ -1,8 +1,8 @@
-id,owner,count
-1,161,standard
-2,330,731
-3,standard,60.51
-4,local,4.98
-5,standard,531
-6,860,edge
-7,640,406
+id,rank,region
+1,57.56,latest
+2,85.59,65.84
+3,93.34,813
+4,cached,742
+5,open,strict
+6,open,79.84
+7,91.78,109
