@@ -31,23 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            double gain = span;
-            if (gain >= (rate + 9.0))
+            long sum = 328;
+            foreach (long entry in data)
             {
-                gain = gain + gain;
+                sum = ((sum << 2) ^ (entry + (-7))) % 65521;
+                if (((entry + entry) <= (sum - (-2))) && ((entry + sum) >= (entry - sum)))
+                {
+                    sum = (sum - (entry % 100)) % 255;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (entry & 31);
+                }
             }
-            else
-            {
-                gain = gain - (9.17 + span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + 5.88;
+            return sum;
         }
     }
 }
