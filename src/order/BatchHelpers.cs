@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score << 3) ^ (limit + score)) % 101;
+                score = (score + (score << 3)) % 255;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
