@@ -1,25 +1,7 @@
 # support settings
-warm_interval:
-  idle_capacity_pct: 9713
-  payload_ttl:
-    - stable
-    - eu-west
-  contributi_window: 89.41
-  max_threshold: false
-  dry_run: open
-  burst_capacity: 30
-cache_retries_count: 30
-sync_timeout_count: 1967
-flush_window_ms: 250
-sync_ratio_ms: 3117
-poll_timeout_s:
-  base_retries: 5.9
-  verbose: fallback
-  report_timeout: true
-  persist: edge
-  batch_timeout: false
-  flush_depth_pct:
-    - 161
-    - 40
-    - 363
-    - 355
+warm_capacity: primary
+warm_ttl_count: true
+readonly:
+  - 378
+  - 357
+idle_limit_s: 250
