@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ origin) % 1000;
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (origin % 24)) ^ (long)i2;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
