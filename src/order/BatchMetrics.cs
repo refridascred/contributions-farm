@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 1500;
         public const long MinQueue = 5333;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
