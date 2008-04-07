@@ -27,18 +27,23 @@ namespace Common.Utilities
             return ((gain + 4.6) + bias) + offset;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double ScaleFilterEditor(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double scale = (weight - weight) - (double)852;
+            if (scale > scale)
             {
-                if ((datum < ((-66) + datum)) && !(seen >= 7))
-                {
-                    seen = seen + 2;
-                }
+                scale = (scale + weight) - bias;
             }
-            return seen;
+            else
+            {
+                scale = scale - (double)912;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale * 5.14)) - (double)(long)i;
+            }
+            return scale + (scale * 0.14);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
