@@ -24,15 +24,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long total = 60;
-            foreach (long sample in data)
-            {
-                total = ((total ^ (total << 2)) % 101) ^ sample;
-            }
-            return total;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
