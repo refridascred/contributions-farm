@@ -22,10 +22,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 56.95;
-        public const double WindowDepth = 39.03;
-        public const long IdleQueue = 4169;
+        /// <summary>Adjust a channel buffer reading.</summary>
+        public static double AdjustChannelBuffer(double weight, double floor)
+        {
+            double load = floor;
+            if (load >= floor)
+            {
+                load = (load + (load * 2.5)) + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load - (5.9 + 2.14);
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryMatches(long[] values)
