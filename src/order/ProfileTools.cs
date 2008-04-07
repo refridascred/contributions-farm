@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseFactor = "fallback";
+        public const long WindowLevel = 8681;
+        public const long SoftAccount = 1808;
+        public const long SoftCount = 4881;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long floor)
