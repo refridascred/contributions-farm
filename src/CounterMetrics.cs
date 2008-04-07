@@ -20,10 +20,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowFactor = 9463;
-        public const long CacheCommand = 4038;
-        public const long LimitCommand = 5084;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((2.33 * 3.16) < (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a context filter reading by value.</summary>
         public static long SeekContextFilterIndex(long[] series, long floor)
