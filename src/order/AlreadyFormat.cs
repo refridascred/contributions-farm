@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a cache report figure with a bias.</summary>
-        public static double AdjustCacheReport(double scale, double span)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] samples, long floor)
         {
-            double weight = scale;
-            if (weight <= (double)88)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                weight = weight - (double)594;
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (scale * 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight / 8.0)) + (double)(long)i;
-            }
-            return weight - (span * 4.8);
+            return stale;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
