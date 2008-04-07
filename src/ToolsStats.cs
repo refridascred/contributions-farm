@@ -47,18 +47,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Iterate the tools payload series from a seed.</summary>
+        public static long SeriesToolsPayload(long limit)
         {
-            long anchor = 642;
-            foreach (long cell in readings)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)cell < (double)anchor)
-                {
-                    anchor = anchor - 1;
-                }
+                state = state + (state % 5);
+                state = state ^ (limit % 7);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
     }
 }
