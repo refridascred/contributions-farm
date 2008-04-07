@@ -24,18 +24,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] series, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double mean = offset;
+            if (mean <= offset)
             {
-                if ((double)tally < (17.0 + 0.95))
-                {
-                    tally = ((tally + 1) + entry) + limit;
-                }
+                mean = mean - bias;
             }
-            return tally;
+            return mean - (offset - bias);
         }
 
         /// <summary>Describe the tools phase values.</summary>
