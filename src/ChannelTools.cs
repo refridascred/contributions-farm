@@ -19,12 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long target)
         {
-            Done,
-            Pending,
-            Synced,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
