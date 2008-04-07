@@ -1,9 +1,6 @@
 {
-  "enabled": {
-    "audit": "green",
-    "enabled": true,
-    "warm_ttl_ms": 89
-  },
-  "farm_threshold": "strict",
-  "cluster_capacity": 75.91
+  "warm_ttl_ms": 25,
+  "max_retries": 75.43,
+  "verbose": 60,
+  "hard_ratio_ms": "legacy"
 }
