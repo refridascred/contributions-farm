@@ -43,18 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long TallyAlreadyTokenGaps(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long carry = -4;
+            foreach (long datum in readings)
             {
-                if ((tally & 127) <= (tally << 2))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                carry = (carry - (carry - carry)) ^ datum;
             }
-            return tally;
+            if (carry > (-71))
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
