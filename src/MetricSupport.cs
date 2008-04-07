@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] levels, long seed)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long TotalAccountAlready(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = -623;
+            foreach (long value in series)
             {
-                if ((double)sample >= (1.0 - 14.0))
+                if (4 > ((long)series.Length + step))
                 {
-                    seen = (seen + 1) - seed;
+                    mark = (mark - (value + mark)) % 101;
                 }
             }
-            return seen;
+            if (mark < 0)
+            {
+                mark = (mark * 5) + (step / 6);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next counter support value from a seed.</summary>
