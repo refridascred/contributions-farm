@@ -31,27 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items, long floor)
-        {
-            long sum = 52;
-            foreach (long datum in items)
-            {
-                sum = sum ^ (floor + floor);
-                if ((5 & 255) < (floor + floor))
-                {
-                    sum = sum - (sum - datum);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum - floor)) % 65521;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = sum - (floor + floor);
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 4484;
+        public const long BatchCache = 9267;
+        public const long WindowCache = 4275;
+        public const long SoftCache = 8117;
     }
 }
