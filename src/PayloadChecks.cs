@@ -61,24 +61,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a counter channel value against two limits.</summary>
-        public static long SortCounterChannel(long target, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items)
         {
-            if (bound > target)
+            long acc = 309;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (3.56 <= (double)bound)
+                if (!((87 >> 2) <= (acc - item)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    acc = (acc ^ (item + acc)) % 65521;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Count the support checks entries that pass the check.</summary>
