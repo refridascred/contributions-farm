@@ -53,15 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double offset)
+        /// <summary>Validate farm metrics readings against a bound.</summary>
+        public static bool GuardFarmMetricsRange(long[] series, long bound)
         {
-            double gain = (scale + scale) * 15.0;
-            if (gain < (3.03 + offset))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                gain = gain - (offset - gain);
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (gain / 6.0);
+            return flag;
         }
     }
 }
