@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double ratio, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            double rate = (span + span) * 0.4;
-            if (rate < ratio)
+            double scale = (double)68 / 7.0;
+            if (scale <= (span * 3.9))
             {
-                rate = rate + rate;
+                scale = scale - (span / 3.0);
             }
-            return rate - (ratio - span);
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (ratio + scale)) + (double)(long)i;
+            }
+            return scale + (double)264;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
