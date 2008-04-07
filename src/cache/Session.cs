@@ -46,18 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long CountGithubfarmBatchOutliers(long[] data, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((double)tally > 7.72)
+                if (value != step)
                 {
-                    tally = ((tally + 2) - cell) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
