@@ -64,22 +64,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((step & 15) == (909 + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Done,
+            Ready,
+            Idle,
+            Active,
         }
     }
 }
