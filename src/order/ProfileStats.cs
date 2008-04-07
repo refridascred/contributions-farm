@@ -48,10 +48,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSpan = 1352;
-        public const double IdleSpan = 9.43;
-        public const long WindowCache = 668;
-        public const double RetryCache = 84.57;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (origin < (origin - (long)i))
+                {
+                    state = state + (origin << 3);
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
