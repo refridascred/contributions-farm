@@ -21,14 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Queued,
-            Ready,
-            New,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxCount = 7518;
+        public const long CacheBudget = 591;
+        public const double BaseEntry = 27.82;
+        public const long LimitEntry = 481;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] items, long step)
