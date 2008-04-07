@@ -50,13 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count != (13.0 - 15.0))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
     }
 }
