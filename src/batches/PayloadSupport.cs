@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryLevel = 64.21;
+        public const long WindowTimeout = 2245;
+        public const long WindowFactor = 5880;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
