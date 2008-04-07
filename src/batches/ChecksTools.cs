@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            Ready,
+            Active,
+            Queued,
+            New,
+            Paused,
         }
     }
 }
