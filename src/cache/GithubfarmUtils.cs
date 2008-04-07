@@ -45,18 +45,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long delta = origin - offset;
+            if ((40 % 24) >= (origin >> 1))
             {
-                if (((long)data.Length + offset) >= offset)
+                return 6;
+            }
+            else
+            {
+                if ((origin + offset) <= delta)
                 {
-                    hits = (hits + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((delta + offset) != (delta * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
