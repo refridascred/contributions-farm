@@ -49,17 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
