@@ -1,6 +1,7 @@
 {
-  "audit": 4500,
-  "default_capacity_pct": "primary",
-  "warm_ratio_count": 500,
-  "soft_timeout_ms": 72.25
+  "stream_interval": "fallback",
+  "poll_retries_pct": 93.07,
+  "warm_depth_count": ["staging", "green", "legacy"],
+  "counter_depth": false,
+  "compress": 250
 }
