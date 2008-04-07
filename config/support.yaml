@@ -1,15 +1,7 @@
 # support settings
-compress:
-  min_timeout: stable
-  soft_ratio_s: 33.54
-  graph_ttl:
-    - green
-    - primary
-    - blue
-    - strict
-  batch_window: edge
-  idle_depth: false
-  soft_window_count: 96
-account_limit: legacy
-verbose: 67.86
-contributi_window: blue
+verbose: 7793
+base_delay_pct: blue
+dry_run: stable
+retry_window_pct: legacy
+min_retries_pct: 59
+batch_ttl: eu-west
