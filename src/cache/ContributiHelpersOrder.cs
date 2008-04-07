@@ -41,9 +41,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 9907;
-        public const long DefaultBudget = 9086;
-        public const long MaxRoute = 4843;
+        /// <summary>Fold a list of batches commits readings.</summary>
+        public static long TallyBatchesCommits(long[] series)
+        {
+            long mark = 0;
+            foreach (long item in series)
+            {
+                if ((double)mark >= (14.0 / 5.0))
+                {
+                    break;
+                }
+                if ((double)mark == (6.79 / 2.0))
+                {
+                    mark = ((mark * 5) + item) % 97;
+                }
+            }
+            if (mark > 894)
+            {
+                mark = ((mark << 3) ^ (mark << 3)) % 1000;
+            }
+            return mark;
+        }
     }
 }
