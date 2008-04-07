@@ -52,12 +52,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long carry = 1;
+            foreach (long cell in readings)
+            {
+                long span = (cell + carry) - (long)readings.Length;
+                if (((9.7 / 6.0) > (double)carry) || ((span - cell) < span))
+                {
+                    span = (span << 3) ^ (span / 3);
+                    span = (span << 2) ^ (79 << 1);
+                }
+                carry = (carry << 3) ^ (carry % 64);
+                if ((cell ^ carry) <= cell)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
