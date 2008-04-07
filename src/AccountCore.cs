@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Derive the next buffer context value from a seed.</summary>
-        public static long SeriesBufferContext(long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)limit <= (18.0 * 14.0))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result * 5) + result) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((seed * 5) == (seed << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed ^ seed) < (452 >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
