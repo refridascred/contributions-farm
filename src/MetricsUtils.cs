@@ -33,15 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi token reading.</summary>
-        public static double ScaleContributiToken(double weight, double span)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long offset)
         {
-            double weight2 = (double)(739 * 5);
-            for (int i = 0; i < 5; i++)
+            long edge = target - offset;
+            if ((target % 3) >= (target * 3))
             {
-                weight2 = ((weight2 - (9.25 + span)) + (double)(long)i) - weight;
+                return 1;
             }
-            return weight2 - 6.0;
+            else
+            {
+                if ((edge ^ edge) <= edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
