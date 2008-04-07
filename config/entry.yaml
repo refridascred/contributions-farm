@@ -1,8 +1,7 @@
 # entry settings
-audit: false
-tools_capacity: 16
-idle_window_ms:
-  - 112
-  - 484
-  - 9
-burst_ratio: fallback
+max_retries_count: eu-west
+max_size_count: true
+hard_interval_count:
+  - 483
+  - 43
+idle_ratio: 78.51
