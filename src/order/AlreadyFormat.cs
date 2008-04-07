@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit entry payload readings against a rule.</summary>
-        public static long TallyEntryPayloadHits(long[] items, long origin)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((tally + tally) >= (tally >> 4)))
-                {
-                    tally = ((tally + 1) ^ entry) - origin;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
