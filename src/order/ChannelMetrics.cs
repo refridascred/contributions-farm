@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 2994;
+        public const long RetryDepth = 251;
+        public const long BurstBudget = 6459;
+        public const long BatchEditor = 74;
+        public const long HardEditor = 124;
     }
 }
