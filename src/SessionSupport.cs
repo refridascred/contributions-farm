@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            New,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 2336;
+        public const double SoftCommits = 96.47;
+        public const long BatchCommits = 7556;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] readings)
