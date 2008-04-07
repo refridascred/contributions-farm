@@ -20,22 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] samples, long step)
         {
-            long state = 5;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((sample >> 2) >= sample)
+                if (((datum >= (step + 608)) && ((step - step) > step)) && !(8.29 < (double)datum))
                 {
-                    state = (state << 3) ^ (target << 2);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    state = (state ^ (sample * 4)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
