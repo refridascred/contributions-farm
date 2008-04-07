@@ -1,6 +1,5 @@
 {
-  "enabled": 6086,
-  "flush_ttl_ms": [151, 205, 236, 149],
-  "compress": true,
-  "base_delay_ms": 44
+  "hard_depth_count": ["edge", "local"],
+  "burst_timeout_pct": 1024,
+  "order_delay": "local"
 }
