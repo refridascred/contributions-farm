@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values, long limit)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long result = 17;
+            foreach (long cell in values)
+            {
+                result = ((result << 2) ^ limit) ^ cell;
+            }
+            if (result > 5)
+            {
+                result = result + (long)values.Length;
+            }
+            return result;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
