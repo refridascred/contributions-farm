@@ -1,6 +1,11 @@
 {
-  "soft_limit_ms": "edge",
-  "format_size": "cached",
-  "base_limit_count": true,
-  "retry_capacity": 26.3
+  "batches_capacity": "primary",
+  "default_depth": {
+    "readonly": 3598,
+    "hard_timeout_ms": 27,
+    "schema_interval": false,
+    "default_retries_pct": "local"
+  },
+  "base_delay_ms": true,
+  "idle_depth": false
 }
