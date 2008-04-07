@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items, long limit)
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long AuditContributiTokenMatches(long[] levels)
         {
-            long anchor = -5;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                anchor = (anchor - (sample / 3)) % 1000;
-                anchor = anchor + (limit & 255);
+                if ((reading % 5) <= (53 & 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next token metrics value from a seed.</summary>
