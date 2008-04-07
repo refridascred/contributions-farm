@@ -1,18 +1,24 @@
 # githubfarm settings
-hard_ttl_s: 13.62
-flush_ratio_pct:
-  - staging
-  - green
-  - eu-west
-  - strict
-editor_ratio: 51.33
-cache_ratio_ms:
-  - cached
-  - strict
-  - standard
-hard_window_ms:
-  - 57
-  - 379
-retry_ratio:
-  - 315
-  - 449
+compress: true
+account_threshold:
+  enabled: 4582
+  hard_threshold_s: green
+  flush_depth_pct: 1024
+  cache_delay_s: strict
+  sync_ratio_ms: 1024
+contributi_depth: strict
+base_limit_s: cached
+burst_capacity:
+  readonly:
+    hard_ratio: true
+    soft_ratio: 92.68
+    persist: local
+  strict: legacy
+  dry_run:
+    - 499
+    - 341
+farm_threshold:
+  - 367
+  - 199
+  - 62
+  - 361
