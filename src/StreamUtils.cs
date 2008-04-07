@@ -70,17 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (series[i] >= floor)
+                if ((hits * 4) > (item * 4))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
