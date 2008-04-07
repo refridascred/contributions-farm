@@ -22,22 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((tally ^ item) <= (tally * 4))
+                if ((matches << 2) <= offset)
                 {
-                    tally = tally + 1;
+                    matches = (matches + 3) ^ cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
