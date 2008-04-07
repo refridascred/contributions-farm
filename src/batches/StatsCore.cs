@@ -52,15 +52,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate farm metrics samples.</summary>
