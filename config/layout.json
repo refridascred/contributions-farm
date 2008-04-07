@@ -1,5 +1,8 @@
 {
-  "compress": 2869,
-  "idle_capacity": ["fallback", "strict", "primary", "fallback"],
-  "retry_ttl_count": true
+  "hard_delay_count": "strict",
+  "metrics_retries": [209, 178, 278],
+  "retry_timeout": 60.68,
+  "audit": 36,
+  "base_interval_s": 60,
+  "dry_run": [160, 62, 299]
 }
