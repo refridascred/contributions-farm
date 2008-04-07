@@ -82,15 +82,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long sum = 63;
-            foreach (long entry in readings)
-            {
-                sum = ((((sum << 3) ^ (sum + 4)) % 4096) + entry) + step;
-            }
-            return sum % 97;
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
