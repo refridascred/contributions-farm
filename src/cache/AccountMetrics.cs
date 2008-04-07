@@ -47,19 +47,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 555;
         public const long MinTimeout = 3130;
 
-        /// <summary>Adjust a cluster queue reading.</summary>
-        public static double BlendClusterQueue(double weight, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            double mean = weight;
-            if (mean < (8.6 - bias))
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean - mean;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - bias;
+            return score;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
