@@ -12,33 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long origin, long seed)
-        {
-            long cur = origin - seed;
-            if (cur > (origin + (-25)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - seed) <= (cur >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((4.0 * 5.9) == (double)cur))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstCount = "standard-1";
+        public const double IdleCount = 98.03;
+        public const double MinStream = 52.84;
+        public const long RetryStream = 3215;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long floor, long origin)
