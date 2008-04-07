@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen / 2) < seen)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    state = ((state << 2) ^ 14) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the cluster state values.</summary>
