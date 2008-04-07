@@ -1,7 +1,12 @@
 # entry settings
-support_limit: 96.9
-min_retries: 59.2
-token_ttl: true
-soft_threshold_s: local
-stats_threshold: 69.99
-readonly: 70.61
+max_capacity:
+  - staging
+  - staging
+  - latest
+  - blue
+flush_interval: 83.04
+poll_delay_pct:
+  - staging
+  - blue
+  - green
+strict: blue
