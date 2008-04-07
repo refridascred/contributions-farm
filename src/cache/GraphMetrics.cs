@@ -49,21 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor;
+            if (drift >= (double)46)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (12.0 / 9.0)) + bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift / 9.0)) + (double)(long)i;
+            }
+            return drift - (floor * 11.0);
         }
     }
 }
