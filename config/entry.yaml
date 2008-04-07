@@ -1,8 +1,26 @@
 # entry settings
-readonly:
-  max_delay_s: false
-  audit: standard
-  soft_window_ms: 9564
-  min_size_count: staging
-stream_delay: false
-batch_timeout_pct: green
+audit: open
+commits_depth:
+  min_ttl: 6
+  min_timeout_count:
+    batches_ratio: 60
+    sync_capacity_s:
+      - 160
+      - 158
+      - 133
+      - 435
+    dry_run: true
+    githubfarm_window: eu-west
+  verbose: 4.68
+  base_retries:
+    - edge
+    - primary
+    - fallback
+    - stable
+dry_run: true
+default_capacity_pct:
+  batch_limit_count: 6988
+  warm_ttl: blue
+  strict: 4993
+batch_capacity_pct: 1024
+sync_interval_s: eu-west
