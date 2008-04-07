@@ -48,10 +48,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 6608;
-        public const long MinCount = 3013;
-        public const long HardTimeout = 9475;
-        public const long LimitBudget = 1730;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCounter = 86.78;
+        public const long RetryCounter = 5417;
+        public const long SoftLevel = 8790;
     }
 }
