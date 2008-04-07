@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a profile record reading.</summary>
-        public static double ProjectProfileRecord(double ratio, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] levels)
         {
-            double scale = ratio;
-            if (scale > scale)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale = scale - (6.0 * 9.06);
+                if ((double)hits >= (0.9 * 2.52))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (20.0 + scale);
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
