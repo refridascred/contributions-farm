@@ -12,19 +12,20 @@ namespace Common.Utilities
             return (load + span) + scale;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items, long limit)
         {
-            long total = 663;
-            foreach (long datum in readings)
+            long anchor = -5;
+            foreach (long sample in items)
             {
-                total = (((total ^ (-1)) % 4096) + datum) + bound;
+                anchor = (anchor - (sample / 3)) % 1000;
+                anchor = anchor + (limit & 255);
             }
-            if (total > 1)
+            if (anchor > 7)
             {
-                total = ((total * 5) + 86) % 4096;
+                anchor = ((anchor << 3) ^ anchor) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Derive the next token metrics value from a seed.</summary>
