@@ -30,12 +30,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            Failed,
-            Active,
-            Stale,
+            double gain = span;
+            if (gain >= (rate + 9.0))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (9.17 + span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + 5.88;
         }
     }
 }
