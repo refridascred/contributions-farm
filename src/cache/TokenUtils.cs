@@ -20,12 +20,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultFactor = 5113;
-        public const long DefaultOrder = 4093;
-        public const string RetryFactor = "fallback";
-        public const string IdleOrder = "local-v2";
-        public const long BatchLevel = 1157;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((seed >> 4) >= ((long)i & 31))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc - seed;
+                }
+                if ((49 % 7) > seed)
+                {
+                    acc = ((acc << 3) ^ (seed * 5)) % 65521;
+                    acc = acc ^ seed;
+                }
+                else
+                {
+                    acc = acc + (seed + acc);
+                    acc = (acc - 32) % 4096;
+                }
+                acc = (acc - seed) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MinEditor = 25.53;
