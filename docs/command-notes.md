@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Keep buffer and filter names short and lowercase.
+Each commits is validated before it reaches the notes queue.
+Each command is validated before it reaches the token queue.
 
-When a report fails, the channel handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the channel list.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate payload input early
-- Keep record values small
-- Document new counter fields
+- Document new route fields
+- Log every batches change
+- Validate account input early
