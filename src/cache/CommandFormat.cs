@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double gain = (double)(697 + 41);
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = ((gain + span) + (double)(long)i) - weight;
             }
-            return ready;
+            return gain + gain;
         }
 
         /// <summary>Match up cluster counter samples.</summary>
