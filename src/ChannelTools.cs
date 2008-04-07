@@ -18,22 +18,27 @@ namespace Common.Utilities
         public const long BaseScore = 1163;
         public const double CacheSize = 58.42;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = 52;
+            foreach (long datum in items)
             {
-                if (reading > hits)
+                sum = sum ^ (floor + floor);
+                if ((5 & 255) < (floor + floor))
                 {
-                    hits = hits + 2;
+                    sum = sum - (sum - datum);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum * 3) + (sum - floor)) % 65521;
                 }
             }
-            return hits;
+            if (sum > 9)
+            {
+                sum = sum - (floor + floor);
+            }
+            return sum;
         }
     }
 }
