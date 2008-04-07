@@ -24,18 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
-        public static long TallyCacheGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Count the already metric entries that pass the check.</summary>
+        public static long AuditAlreadyMetricHits(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (origin >= ((-810) * 4))
+                if ((datum >= (tally >> 3)) || ((datum + datum) <= (tally << 3)))
                 {
-                    seen = (seen + 3) - item;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
