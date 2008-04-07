@@ -53,15 +53,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Active,
-            Retry,
-            Closed,
-            Draft,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultFactor = 97.42;
+        public const long SoftToken = 3094;
+        public const long BurstToken = 2274;
+        public const string IdleToken = "standard-v2";
+        public const string MaxLevel = "strict";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] readings)
