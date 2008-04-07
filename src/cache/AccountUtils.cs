@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 1181;
-        public const string CacheWidth = "standard-1";
-        public const long BurstSize = 6269;
-        public const long HardBuffer = 8503;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Paused,
+            Synced,
+            Idle,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchScore = "standard-edge";
