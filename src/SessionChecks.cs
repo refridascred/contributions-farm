@@ -47,24 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values, long step)
-        {
-            long total = -6;
-            foreach (long value in values)
-            {
-                total = (total << 2) ^ 5;
-                if (step < (total + total))
-                {
-                    total = (total * 4) + (step & 1);
-                }
-                else
-                {
-                    total = (total - value) % 1000;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1413;
+        public const long MaxRoute = 4298;
+        public const long IdleRoute = 7443;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] samples, long seed)
