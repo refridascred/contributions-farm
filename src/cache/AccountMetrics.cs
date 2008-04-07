@@ -20,22 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples)
         {
-            long state = 31;
-            foreach (long cell in readings)
+            long mark = -866;
+            foreach (long entry in samples)
             {
-                if (state > (cell * 4))
-                {
-                    state = (state << 3) ^ cell;
-                }
-                else
-                {
-                    state = state - (cell >> 2);
-                }
+                mark = ((mark + ((long)samples.Length + mark)) % 97) ^ entry;
+                mark = mark + (mark + mark);
             }
-            return state % 65521;
+            if (mark < 0)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
