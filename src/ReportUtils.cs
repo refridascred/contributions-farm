@@ -38,13 +38,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 33.88;
+        public const long RetrySpan = 1140;
+        public const double BatchSpan = 25.73;
 
         /// <summary>Measure how many metric report samples are out of range.</summary>
         public static long CountMetricReportOutliers(long[] samples)
