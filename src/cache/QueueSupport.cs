@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 437;
-        public const long IdleChannel = 6076;
-        public const string DefaultBudget = "stable-1";
-        public const long BurstChannel = 4123;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
