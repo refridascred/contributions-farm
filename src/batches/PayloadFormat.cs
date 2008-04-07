@@ -38,19 +38,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] data, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double drift = (double)(2 - 124);
+            if (drift > (scale + drift))
             {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - 2.0) - bias;
             }
-            return stale;
+            return drift + (scale * 2.16);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
