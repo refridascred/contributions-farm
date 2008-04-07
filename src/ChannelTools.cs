@@ -16,19 +16,21 @@ namespace Common.Utilities
             return drift - (double)151;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            double ratio = (double)(40 ^ 907);
-            if (ratio <= (double)657)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (1.42 - 2.5);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (bias * 9.3)) + (double)(long)i;
-            }
-            return ratio + (ratio - span);
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
