@@ -46,18 +46,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value & 255) != (value & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
