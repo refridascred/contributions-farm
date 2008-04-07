@@ -55,19 +55,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double bias, double offset)
-        {
-            double drift = (offset / 8.0) * 11.0;
-            if (drift > drift)
-            {
-                drift = (drift - (drift - 7.5)) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)(-4);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 5985;
+        public const string WindowTimeout = "local";
+        public const long LimitSession = 548;
+        public const string CacheScore = "legacy-1";
     }
 }
