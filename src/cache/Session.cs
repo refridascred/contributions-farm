@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many cluster payload samples are out of range.</summary>
-        public static long MeasureClusterPayloadMatches(long[] values)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches & 255) < (cell - 9))
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
