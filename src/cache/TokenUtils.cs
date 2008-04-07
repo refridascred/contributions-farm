@@ -13,12 +13,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen / 2) < seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two githubfarm format measurements.</summary>
