@@ -28,18 +28,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of channel cluster readings.</summary>
-        public static long TotalChannelCluster(long[] items)
-        {
-            long acc = 0;
-            foreach (long sample in items)
-            {
-                if (acc >= (acc / 5))
-                {
-                    acc = ((acc * 4) + (423 & 31)) + sample;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 1539;
+        public const string DefaultRoute = "primary-v2";
+        public const long WindowWidth = 914;
     }
 }
