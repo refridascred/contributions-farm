@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
