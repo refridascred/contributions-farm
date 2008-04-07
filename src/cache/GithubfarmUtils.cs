@@ -21,11 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxCount = 7518;
-        public const long CacheBudget = 591;
-        public const double BaseEntry = 27.82;
-        public const long LimitEntry = 481;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 2) ^ (state - bound);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] samples, long seed)
