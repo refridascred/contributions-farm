@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long WindowSupport = 1968;
         public const string IdleSupport = "stable-1";
 
-        /// <summary>Accumulate context checks samples.</summary>
-        public static long ScoreContextChecks(long[] series)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            long state = 208;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((state - item) <= ((-3) + state)))
+                if (levels[i] < step)
                 {
-                    state = (state << 2) ^ 3;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
