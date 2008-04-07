@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "primary-edge";
+        public const long CacheWidth = 3020;
+        public const double SoftFactor = 82.59;
+        public const long MinEditor = 3178;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
