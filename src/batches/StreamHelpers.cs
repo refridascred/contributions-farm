@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long limit)
         {
-            long anchor = 95;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor <= (79 + anchor)) && ((double)sample <= (0.63 + 2.0)))
+                if (levels[i] < limit)
                 {
-                    anchor = anchor - (811 + anchor);
+                    return (long)i;
                 }
             }
-            if (anchor > 85)
-            {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank format command input into a small class.</summary>
