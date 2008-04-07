@@ -51,14 +51,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Failed,
-            Closed,
-            New,
+            Retry,
             Queued,
+            Draft,
             Synced,
+            Pending,
         }
     }
 }
