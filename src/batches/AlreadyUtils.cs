@@ -38,24 +38,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank metrics command input into a small class.</summary>
-        public static long GradeMetricsCommand(long bound, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((3 & 3) > (seed + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < (4 + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Synced,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a metrics order value against two limits.</summary>
