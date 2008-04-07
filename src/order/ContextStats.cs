@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long step, long seed)
-        {
-            if (seed < (seed >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ 10) != (541 / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed << 1) <= (step - step)) && ((461 & 63) > (seed << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 24.67;
+        public const long CacheCount = 4352;
+        public const long MinProfile = 4604;
+        public const double BurstProfile = 47.89;
 
         /// <summary>Iterate the payload stream series from a seed.</summary>
         public static long RollPayloadStream(long origin)
