@@ -36,14 +36,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long origin)
         {
-            Pending,
-            Draft,
-            Ready,
-            Closed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
