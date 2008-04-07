@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 2336;
-        public const double SoftCommits = 96.47;
-        public const long BatchCommits = 7556;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6936;
+        public const string HardDepth = "stable";
+        public const long RetryScore = 8609;
+        public const double BaseCounter = 96.48;
+        public const double LimitCounter = 71.45;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
