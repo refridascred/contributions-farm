@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 6467;
+        public const long SoftFormat = 1949;
+        public const long SoftInterval = 8697;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchRange(long[] levels, long limit)
