@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum ^ (-1)) % 97;
+                if (((0.5 + 20.0) == (double)sum) && ((17.0 - 9.0) < (double)(long)i))
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (sum + bound);
+                    break;
                 }
+                sum = sum ^ (bound % 24);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the report kind values.</summary>
