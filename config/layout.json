@@ -1,10 +1,16 @@
 {
-  "idle_size_pct": {
-    "batch_retries_ms": ["strict", "local"],
-    "batch_delay_s": "stable",
-    "warm_window": "staging",
-    "burst_interval_pct": 60
+  "flush_retries_s": [406, 173],
+  "max_interval_s": {
+    "verbose": 26.96,
+    "poll_threshold": {
+      "flush_interval_count": ["latest", "stable", "stable", "stable"],
+      "persist": true,
+      "min_limit_ms": 425,
+      "contributi_interval": "standard"
+    },
+    "flush_ttl": 250,
+    "readonly": true,
+    "base_delay": [408, 257]
   },
-  "poll_retries": [466, 110],
-  "readonly": "cached"
+  "readonly": 55
 }
