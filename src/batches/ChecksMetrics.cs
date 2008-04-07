@@ -56,12 +56,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 4540;
-        public const double SoftDepth = 15.27;
-        public const long StepStats = 2610;
-        public const string IdleStats = "standard-edge";
-        public const double BurstSpan = 29.62;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Pending,
+            Paused,
+            Failed,
+            Active,
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double bias, double offset)
