@@ -46,30 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter githubfarm readings.</summary>
-        public static long CombineFilterGithubfarm(long[] readings, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long bound)
         {
-            long state = 621;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((7 & 255) >= (sample + origin)))
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    state = ((state * 3) + state) % 65521;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    state = (state - (origin >> 3)) + (long)i;
-                }
-                if ((state <= (origin ^ state)) && (origin > (sample & 15)))
-                {
-                    state = state - (origin + origin);
+                    return (long)i;
                 }
             }
-            if (state > 73)
-            {
-                state = state ^ (origin >> 1);
-            }
-            return state;
+            return -1;
         }
     }
 }
