@@ -36,23 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] series, long floor)
         {
-            long anchor = -84;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((double)value > 13.0) && (anchor <= (anchor - 6)))
+                if (entry < floor)
                 {
-                    anchor = anchor + (562 >> 1);
+                    stale = false;
+                    break;
                 }
-                anchor = (anchor + (value >> 1)) % 101;
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            return stale;
         }
     }
 }
