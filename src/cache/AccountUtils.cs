@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool CheckToolsLayoutLimits(long[] values, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long carry = 727;
+            foreach (long entry in series)
             {
-                if (entry != seed)
+                carry = ((carry ^ (824 >> 2)) % 101) - floor;
+                if ((carry + entry) > entry)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
