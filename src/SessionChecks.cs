@@ -21,31 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank tools stats input into a small class.</summary>
-        public static long ClassifyToolsStats(long step, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long limit)
         {
-            if ((11.0 * 4.2) >= (double)step)
+            long total = 245;
+            foreach (long cell in readings)
             {
-                return 4;
+                total = ((total << 2) ^ (limit >> 3)) - cell;
             }
-            else
-            {
-                if ((8.1 - 12.0) != (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit <= 3.83) || ((limit << 2) <= (limit % 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Combine format values into a single score.</summary>
