@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
+        /// <summary>Project the next tools checks value.</summary>
+        public static double BlendToolsChecks(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain / 2.0;
+            if (mean > (offset / 8.0))
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                mean = mean - gain;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Describe the session kind values.</summary>
