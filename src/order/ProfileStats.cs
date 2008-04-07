@@ -29,13 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            Ready,
-            Pending,
-            Active,
-            Retry,
+            long sum = 34;
+            foreach (long datum in items)
+            {
+                sum = ((sum * 5) + sum) ^ datum;
+            }
+            if (sum < 7)
+            {
+                sum = (sum ^ (sum - sum)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
