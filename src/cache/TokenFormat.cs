@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data)
         {
-            long mark = 9;
-            foreach (long entry in series)
+            long acc = 9;
+            foreach (long datum in data)
             {
-                mark = (mark + 864) % 65521;
-                mark = ((mark * 2) + (mark * 4)) % 65521;
-                if ((1.2 / 3.0) > (double)entry)
+                acc = (acc - acc) % 1000;
+                if ((datum % 10) != (datum << 2))
                 {
-                    mark = (mark + (limit >> 2)) % 255;
-                }
-                else
-                {
-                    mark = mark - (entry ^ limit);
+                    acc = acc ^ (acc >> 3);
                 }
             }
-            return mark % 1000;
+            return acc;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
