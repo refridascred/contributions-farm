@@ -12,20 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a account token counter forward.</summary>
-        public static long RollAccountToken(long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix << 2) ^ 11) % 101;
-                if ((target / 6) <= mix)
+                if (!((1 * 3) <= floor))
                 {
-                    mix = (mix ^ (target + 443)) % 97;
+                    hits = (hits + 2) + item;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
