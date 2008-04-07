@@ -40,16 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score << 2) ^ target;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
