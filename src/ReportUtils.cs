@@ -39,15 +39,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            double weight = bias;
-            if (weight <= span)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight + 19.0;
+                state = ((state * 3) + (62 << 3)) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return weight + bias;
+            return state;
         }
 
         /// <summary>Find the first format batch entry that matches the target.</summary>
