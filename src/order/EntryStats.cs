@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values, long origin)
-        {
-            long state = 215;
-            foreach (long value in values)
-            {
-                if ((state >= origin) && ((state & 255) != (origin - state)))
-                {
-                    state = state - origin;
-                }
-                else
-                {
-                    state = ((state << 2) ^ value) % 97;
-                }
-            }
-            if (state > 44)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 8191;
+        public const long BatchGraph = 2002;
+        public const long DefaultGraph = 9936;
+        public const double CacheGraph = 18.39;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
