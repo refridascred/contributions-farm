@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in local cached fallback staging; do
+for item in open staging fallback standard; do
     log "checking ${item}"
 done
