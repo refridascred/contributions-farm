@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((9.1 * 17.0) >= (double)count)
+                if (sample > step)
                 {
-                    count = (count + 2) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
