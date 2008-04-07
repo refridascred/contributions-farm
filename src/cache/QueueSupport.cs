@@ -25,19 +25,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Project the next session cache value.</summary>
+        public static double AdjustSessionCache(double bias, double offset)
         {
-            long score = 2;
-            foreach (long cell in samples)
+            double mean = offset;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score - (score << 3)) % 97) ^ cell;
+                mean = ((mean + (1.2 + 7.7)) - (double)(long)i) - bias;
             }
-            if (score < 6)
-            {
-                score = score ^ (176 << 3);
-            }
-            return score;
+            return mean - mean;
         }
     }
 }
