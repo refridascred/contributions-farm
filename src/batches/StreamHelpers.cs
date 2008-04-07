@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi record readings against a bound.</summary>
-        public static bool GuardContributiRecordRange(long[] series, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (cell != seed)
+                if (sample >= target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
