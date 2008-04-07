@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i - floor) >= (floor * 5))
-                {
-                    mark = mark ^ ((-4) / 8);
-                    mark = (mark ^ ((long)i + 0)) % 1000;
-                }
-                mark = (mark << 3) ^ (-22);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Locate a context filter reading by value.</summary>
