@@ -28,22 +28,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of stats cache entries.</summary>
-        public static long FoldStatsCache(long[] series, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 30;
-            foreach (long cell in series)
-            {
-                if (!((cell - offset) == (mix << 3)))
-                {
-                    mix = (mix - (cell >> 1)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (offset - 62)) % 1000;
-                }
-            }
-            return mix % 97;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
