@@ -1,5 +1,12 @@
 {
-  "batch_retries": 78.7,
-  "idle_delay": 57,
-  "persist": 0.2
+  "sync_interval_ms": false,
+  "default_size_s": [389, 76, 44],
+  "hard_limit_s": false,
+  "cache_capacity_ms": 29.91,
+  "token_size": {
+    "enabled": "green",
+    "flush_depth_count": "standard",
+    "tools_retries": 58
+  },
+  "dry_run": 250
 }
