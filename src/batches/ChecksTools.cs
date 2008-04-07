@@ -45,14 +45,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long bound)
         {
-            Ready,
-            Active,
-            Queued,
-            New,
-            Paused,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
