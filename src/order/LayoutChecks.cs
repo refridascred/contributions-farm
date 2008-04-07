@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 4402;
-        public const long IdleMetrics = 547;
-        public const string MaxMetrics = "standard-edge";
-        public const string DefaultScore = "staging-edge";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((58 + target) == (2 * 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + ((long)i + (long)i)) % 4096;
+                }
+                long prev = 69;
+                if ((prev >> 1) > (target * 4))
+                {
+                    prev = (prev ^ prev) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] readings)
