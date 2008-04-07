@@ -27,11 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultRatio = 9066;
-        public const long MinLevel = 1570;
-        public const string CacheInterval = "primary";
-        public const long BatchBudget = 3977;
-        public const double LimitCount = 37.34;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Idle,
+            Retry,
+            Draft,
+            Locked,
+        }
     }
 }
