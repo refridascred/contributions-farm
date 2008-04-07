@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series, long bound)
+        /// <summary>Blend two account commits measurements.</summary>
+        public static double AdjustAccountCommits(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double mean = (double)(60 * 5);
+            if (mean > (double)(-262))
             {
-                if (!(((long)series.Length >= (datum - (long)series.Length)) && ((bound & 7) <= (datum * 2))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - ratio) + floor;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + ratio) - (double)(long)i;
+            }
+            return mean + (double)457;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
