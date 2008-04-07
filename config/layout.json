@@ -1,7 +1,6 @@
 {
-  "soft_threshold_count": "blue",
-  "poll_ttl": [262, 58, 52],
-  "default_window_count": "strict",
-  "persist": 35,
-  "strict": 79
+  "retry_capacity_ms": 9813,
+  "max_delay_count": 500,
+  "min_limit": ["green", "strict"],
+  "metric_timeout": 3379
 }
