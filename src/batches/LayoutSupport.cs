@@ -56,18 +56,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long TallyPayloadGraphOutliers(long[] readings, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long gap = step + seed;
+            if (!((22 - (-482)) == (gap % 97)))
             {
-                if (item >= (item - 97))
+                return 8;
+            }
+            else
+            {
+                if ((double)gap <= 15.0)
                 {
-                    count = (count + 1) + seed;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of counter profile readings.</summary>
