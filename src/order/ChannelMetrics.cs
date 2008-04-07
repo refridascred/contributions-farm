@@ -26,17 +26,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "staging-v2";
+        public const long SoftLevel = 506;
+        public const long MaxBatch = 7020;
+        public const long BaseTimeout = 697;
     }
 }
