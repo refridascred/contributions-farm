@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] samples, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (origin <= (hits + origin))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
