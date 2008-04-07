@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] series)
         {
-            long acc = -97;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((-336) >= (step >> 4))
+                if (!(((756 / 4) <= (count ^ count)) && ((21 ^ sample) < count)))
                 {
-                    acc = (acc << 3) ^ (datum + step);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc < (-388))
-            {
-                acc = (acc - (step - acc)) % 255;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
