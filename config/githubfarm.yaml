@@ -1,9 +1,10 @@
 # githubfarm settings
-graph_retries: local
-poll_delay_count: cached
-idle_size_count: local
-already_interval:
-  - 72
-  - 195
-  - 147
-  - 229
+poll_depth_s: 30
+min_retries: blue
+strict: stable
+idle_limit_s: edge
+burst_retries_count:
+  - 43
+  - 245
+  - 283
+sync_capacity_count: 59.5
