@@ -43,17 +43,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first metric cache entry that matches the target.</summary>
-        public static long LookupMetricCacheIndex(long[] items, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (items[i] <= offset)
+                if ((1.8 + 1.9) >= (double)limit)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
