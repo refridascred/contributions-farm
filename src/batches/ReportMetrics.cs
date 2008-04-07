@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheTimeout = 8693;
-        public const long BatchMetric = 5851;
-        public const long MinTimeout = 1973;
-        public const double DefaultInterval = 98.92;
-        public const long IdleInterval = 4675;
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long TallyCacheGithubfarmOutliers(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (origin >= ((-810) * 4))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
     }
 }
