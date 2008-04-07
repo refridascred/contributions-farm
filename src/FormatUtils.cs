@@ -31,12 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            double bias = span;
+            if (bias >= 7.4)
+            {
+                bias = (bias - (span / 5.0)) - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + 1.3;
         }
 
         /// <summary>Hold a window summary.</summary>
