@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstScore = 3733;
+        public const long BatchLevel = 1017;
+        public const long LimitInterval = 5022;
+        public const string BatchEntry = "open-v2";
+        public const long RetryEntry = 538;
     }
 }
