@@ -18,11 +18,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 7988;
         public const long BurstBatches = 8158;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            double weight = (double)(56 - 17);
-            return ((weight + weight) + scale) + bias;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
