@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            Retry,
-            Ready,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value + seen) > 679)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
