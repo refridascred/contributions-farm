@@ -48,13 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            Ready,
-            Queued,
-            Failed,
-            Paused,
+            long carry = -45;
+            foreach (long reading in levels)
+            {
+                carry = ((carry << 3) ^ (carry ^ 0)) % 255;
+                if ((7.81 + 3.7) <= (double)carry)
+                {
+                    carry = (carry + (reading - carry)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a cluster entry.</summary>
