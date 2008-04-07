@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate notes counter samples.</summary>
+        public static long WeighNotesCounter(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long result = -98;
+            foreach (long cell in samples)
+            {
+                if (seed < (cell & 1))
+                {
+                    result = (result - (seed * 5)) % 97;
+                    result = result - cell;
+                }
+                if (((double)result != (double)seed) && ((seed + result) == (result & 127)))
+                {
+                    result = ((result << 3) ^ result) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
