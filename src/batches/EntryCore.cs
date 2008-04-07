@@ -24,13 +24,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long step)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
