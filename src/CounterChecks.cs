@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of tools account readings.</summary>
-        public static long CombineToolsAccount(long[] values, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long anchor = 9;
-            foreach (long entry in values)
-            {
-                if (32 >= (origin - origin))
-                {
-                    anchor = (anchor << 3) ^ (entry + entry);
-                }
-                if (!((double)anchor <= (double)origin))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
