@@ -1,31 +1,11 @@
 # support settings
-sync_interval_count:
-  graph_interval: 89
-  dry_run: true
-  min_depth_ms:
-    layout_ttl:
-      - 183
-      - 452
-      - 170
-      - 135
-    warm_window_s: 250
-    flush_retries: false
-    min_size_pct: 500
-    verbose: strict
-  support_interval: 98
-batch_ttl_pct:
-  sync_ratio: fallback
-  readonly: 44.64
-  stats_capacity:
-    warm_ttl_s: fallback
-    hard_retries_s: false
-    contributi_window:
-      - 148
-      - 366
-      - 403
-  poll_size_ms: green
-  burst_retries_count: 85
-  batch_timeout: 608
-soft_ttl: 30
-soft_depth_count: fallback
-sync_size_ms: 37
+tools_delay: 30
+profile_depth:
+  - primary
+  - primary
+report_depth:
+  - edge
+  - open
+  - cached
+  - green
+commits_limit: false
