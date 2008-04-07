@@ -60,22 +60,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks graph samples are out of range.</summary>
-        public static long MeasureChecksGraphGaps(long[] items)
+        /// <summary>Accumulate farm metrics samples.</summary>
+        public static long FoldFarmMetrics(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = 54;
+            foreach (long item in samples)
             {
-                if (((0.96 - 0.2) > (double)value) && ((matches & 63) > (matches + 8)))
+                for (int i = 0; i < 12; i++)
                 {
-                    matches = matches + 1;
+                    score = (((score ^ ((long)samples.Length + bound)) % 1000) ^ (long)i) + item;
                 }
-                else
+                if (score < (score - 38))
                 {
-                    matches = matches - 1;
+                    score = (score << 3) ^ (15 >> 2);
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
