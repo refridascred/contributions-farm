@@ -20,15 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
