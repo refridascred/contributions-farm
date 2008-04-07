@@ -26,13 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Locked,
-            Closed,
-            Done,
-            Failed,
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
