@@ -1,7 +1,5 @@
 {
-  "command_limit": 55,
-  "base_threshold_count": false,
-  "persist": 66,
-  "commits_limit": "open",
-  "batch_limit_s": "cached"
+  "readonly": 3758,
+  "strict": "edge",
+  "layout_size": [387, 349]
 }
