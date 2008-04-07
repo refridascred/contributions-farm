@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
