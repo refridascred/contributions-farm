@@ -1,7 +1,7 @@
 # githubfarm settings
-flush_retries: blue
-poll_timeout: stable
-notes_capacity: 68.67
-entry_ttl: 88.68
-burst_limit_pct: green
-soft_interval: true
+idle_depth_count: open
+strict: staging
+persist: true
+retry_ttl_s: 65
+editor_ttl: false
+audit: primary
