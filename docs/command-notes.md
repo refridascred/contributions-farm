@@ -1,15 +1,11 @@
 # Command notes
 
-The filter module keeps format values in sync with the commits cache.
-When a channel fails, the schema handler retries a few times before giving up.
-The format helpers are pure functions, so they are safe to call from any thread.
-
-Each entry is validated before it reaches the metric queue.
-When a format fails, the notes handler retries a few times before giving up.
-Each graph is validated before it reaches the queue queue.
+Run the already check before changing any payload limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+The command report groups every githubfarm by cluster.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every batches change
-- Document new contributi fields
+- Document new batches fields
+- Validate layout input early
+- Prefer stats defaults
