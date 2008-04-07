@@ -59,16 +59,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ ((long)i >> 1)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
