@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a window cluster counter forward.</summary>
-        public static long RollWindowCluster(long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
