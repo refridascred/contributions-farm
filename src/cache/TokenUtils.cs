@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (matches > (matches / 5))
-                {
-                    matches = ((matches + 2) ^ cell) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultFactor = 5113;
+        public const long DefaultOrder = 4093;
+        public const string RetryFactor = "fallback";
+        public const string IdleOrder = "local-v2";
+        public const long BatchLevel = 1157;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MinEditor = 25.53;
