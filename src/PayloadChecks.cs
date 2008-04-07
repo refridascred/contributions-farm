@@ -53,27 +53,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels, long origin)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long result = 59;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (origin - origin)) % 101;
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (reading + 8)) - (long)i;
-                }
-                if (!(11.0 < (double)reading))
-                {
-                    result = ((result << 3) ^ result) % 97;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 66)
-            {
-                result = result + (243 + origin);
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Find the first batch cluster entry that matches the target.</summary>
