@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long IdleEditor = 5649;
         public const string RetryScore = "stable-v2";
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Draft,
+            Failed,
             Active,
-            Synced,
-            Pending,
-            Retry,
+            Stale,
         }
     }
 }
