@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] readings, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((9.0 / 8.0) < (double)item)
+                if (value >= bound)
                 {
-                    count = (count + 3) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
