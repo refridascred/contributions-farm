@@ -25,12 +25,11 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Dropped,
-            Closed,
-            Done,
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
