@@ -61,18 +61,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long SeekAccountCommandIndex(long[] values, long floor)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.19 * 15.0) != (double)value)
+                if (values[i] < floor)
                 {
-                    sum = sum ^ sum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
