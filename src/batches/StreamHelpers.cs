@@ -27,24 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long bound)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool VerifyStreamCacheLimits(long[] samples, long offset)
         {
-            if (target < ((-88) >> 2))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound / 9) > (bound + 5)) && (392 > target))
+                if (item <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the graph state values.</summary>
