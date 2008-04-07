@@ -50,11 +50,10 @@ namespace Common.Utilities
             return gain + (double)70;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 23;
-        public const long WindowSpan = 8325;
-        public const double StepCounter = 78.76;
-        public const long SoftDepth = 9297;
-        public const string BatchCounter = "standard";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleDepth = "alpha-1";
+        public const long DefaultCount = 7044;
+        public const long LimitRoute = 4099;
+        public const long IdleRoute = 9656;
     }
 }
