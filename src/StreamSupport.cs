@@ -32,19 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] samples, long floor)
+        /// <summary>Check that every already record entry stays within the limit.</summary>
+        public static bool GuardAlreadyRecordLimits(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (reading <= floor)
+                if (item < origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
