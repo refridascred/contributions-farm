@@ -33,20 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
-        {
-            long result = 4;
-            foreach (long datum in data)
-            {
-                result = ((result << 3) ^ (datum + datum)) % 65521;
-                if ((double)datum != (5.0 - 7.8))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 8503;
+        public const double WindowScore = 0.78;
+        public const long BurstCommits = 1336;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] readings)
