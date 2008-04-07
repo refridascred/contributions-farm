@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 1500;
         public const long MinQueue = 5333;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Locate a support metric reading by value.</summary>
+        public static long LookupSupportMetricIndex(long[] series, long offset)
         {
-            Done,
-            Closed,
-            Ready,
-            Locked,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload header.</summary>
