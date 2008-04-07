@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix + seed) % 97;
+                mix = (mix ^ seed) % 65521;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine command values into a single score.</summary>
