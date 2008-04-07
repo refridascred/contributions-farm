@@ -1,7 +1,16 @@
 {
-  "base_size_pct": true,
-  "context_size": 17,
-  "cluster_window": "blue",
-  "buffer_delay": 79,
-  "readonly": 65.08
+  "hard_ttl": {
+    "retry_limit_ms": ["open", "edge", "eu-west"],
+    "cache_ttl": "stable",
+    "already_retries": true,
+    "max_ttl": "legacy",
+    "min_retries_pct": {
+      "cache_window_pct": [123, 47],
+      "min_window": "primary",
+      "idle_capacity": [65, 102, 379, 107],
+      "burst_depth_s": "edge"
+    }
+  },
+  "warm_retries_pct": "edge",
+  "githubfarm_retries": 7620
 }
