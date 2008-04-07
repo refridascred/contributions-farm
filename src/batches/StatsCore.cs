@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] values, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            if ((offset + 234) > (limit - limit))
             {
-                if (cell > offset)
+                return 7;
+            }
+            else
+            {
+                if ((limit - offset) == (offset ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
