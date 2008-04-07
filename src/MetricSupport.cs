@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] values, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark ^ origin) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
