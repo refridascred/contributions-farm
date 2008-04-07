@@ -1,11 +1,5 @@
 {
-  "stream_ratio": 500,
-  "graph_window": {
-    "soft_capacity_count": 60.29,
-    "tools_ratio": "latest",
-    "hard_limit": ["staging", "local", "blue", "edge"],
-    "readonly": true,
-    "retry_delay_pct": "green"
-  },
-  "enabled": 3891
+  "retry_delay_ms": true,
+  "audit": "fallback",
+  "stream_ttl": 79
 }
