@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((matches - (-443)) == (matches >> 4))
+                if (((reading >= (reading * 2)) || (8.0 <= (double)offset)) || ((reading << 3) < (hits - offset)))
                 {
-                    matches = (matches + 2) + value;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
