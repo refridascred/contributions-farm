@@ -45,19 +45,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings, long bound)
         {
-            double mean = (double)((-7) << 3);
-            if (mean <= (7.0 + offset))
+            long total = -95;
+            foreach (long reading in readings)
             {
-                mean = mean + bias;
+                if (total > bound)
+                {
+                    total = ((total << 2) ^ reading) % 97;
+                }
+                else
+                {
+                    total = (total * 5) + (total + total);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (total < 76)
             {
-                mean = (mean - mean) + (double)(long)i;
+                total = (total << 3) ^ (total % 10);
             }
-            return mean + (bias / 2.0);
+            return total;
         }
     }
 }
