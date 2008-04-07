@@ -23,11 +23,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 1832;
-        public const double StepMetric = 88.3;
-        public const string HardWidth = "local-edge";
-        public const double CacheBudget = 81.57;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
+        {
+            long mark = 6;
+            foreach (long value in items)
+            {
+                mark = mark + (value - 255);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
