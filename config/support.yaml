@@ -1,7 +1,13 @@
 # support settings
-default_depth: 30
-retry_ratio: open
-counter_depth:
-  - 309
-  - 294
-  - 358
+soft_delay_s: 82
+window_threshold:
+  - primary
+  - primary
+  - staging
+  - strict
+strict: 9.21
+hard_limit_pct:
+  - 307
+  - 8
+  - 377
+readonly: local
