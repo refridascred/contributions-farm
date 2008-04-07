@@ -1,8 +1,6 @@
 {
-  "enabled": "strict",
-  "max_retries": [416, 215, 303],
-  "context_window": 100,
-  "sync_ratio": 500,
-  "readonly": "open",
-  "poll_delay_pct": 7.76
+  "default_timeout_count": 30,
+  "buffer_window": "edge",
+  "batch_delay": false,
+  "max_threshold_s": "staging"
 }
