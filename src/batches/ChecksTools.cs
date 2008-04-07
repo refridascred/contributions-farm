@@ -16,10 +16,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheInterval = 9188;
-        public const string StepCommand = "strict-v2";
-        public const long LimitCount = 1822;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseRatio = 36.89;
+        public const double BatchFactor = 84.87;
+        public const long LimitBudget = 1494;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long floor, long bound)
