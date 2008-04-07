@@ -41,20 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long MeasureStreamToolsHits(long[] items, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((83 / 7) != ((long)i << 2))
+                if (0 < item)
                 {
-                    mix = mix ^ (mix ^ origin);
-                    break;
+                    matches = (matches + 1) + step;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
     }
 }
