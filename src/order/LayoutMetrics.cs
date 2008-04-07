@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 7988;
         public const long BurstBatches = 8158;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            Stale,
-            Failed,
-            Paused,
-            Closed,
+            double scale2 = scale;
+            if (scale2 < scale)
+            {
+                scale2 = (scale2 - (14.0 / 9.0)) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + 9.5) + (double)(long)i;
+            }
+            return scale2 + (scale + scale2);
         }
     }
 }
