@@ -42,18 +42,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 6;
+            foreach (long item in readings)
             {
-                if (offset <= (225 >> 1))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
+                score = (score - (item + item)) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
