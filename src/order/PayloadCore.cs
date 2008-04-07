@@ -13,18 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] readings, long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((((-52) & 15) <= entry) && ((364 - entry) != (floor >> 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
