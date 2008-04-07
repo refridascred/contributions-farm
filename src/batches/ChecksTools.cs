@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long MeasureStreamToolsHits(long[] items, long step)
+        /// <summary>Count the counter profile entries that pass the check.</summary>
+        public static long TallyCounterProfileHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (0 < item)
+                if (7.24 > (double)entry)
                 {
-                    matches = (matches + 1) + step;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
