@@ -52,19 +52,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two filter already measurements.</summary>
-        public static double ScaleFilterAlready(double rate, double span)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            double drift = (9.9 / 4.0) - (rate + span);
-            if (drift > (6.0 - 9.0))
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift + rate;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (sum - (offset >> 5)) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + (drift + 1.76);
+            return sum;
         }
 
         /// <summary>Measure how many checks graph samples are out of range.</summary>
