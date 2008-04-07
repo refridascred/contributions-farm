@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            Retry,
-            Closed,
-            Failed,
-            Ready,
-            Done,
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
