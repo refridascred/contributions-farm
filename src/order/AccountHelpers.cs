@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long TallyBatchesToolsMatches(long[] readings, long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((step > (62 / 8)) || (((-855) << 3) < step)) || ((seen << 2) <= (datum >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
