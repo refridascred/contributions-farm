@@ -1,11 +1,13 @@
 {
-  "cluster_ttl": 1024,
-  "dry_run": "local",
-  "context_capacity": {
-    "flush_retries_count": ["latest", "local", "standard"],
-    "readonly": [215, 149, 168, 398],
-    "idle_window": "fallback",
-    "stats_threshold": 30,
-    "audit": 72
-  }
+  "default_depth": {
+    "poll_retries_pct": false,
+    "commits_timeout": "primary",
+    "metric_timeout": 50.22,
+    "flush_window": false,
+    "readonly": 60,
+    "poll_size_ms": "stable"
+  },
+  "report_size": false,
+  "compress": "legacy",
+  "entry_interval": 74
 }
