@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a support schema value against two limits.</summary>
-        public static long GradeSupportSchema(long floor, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long bound = floor ^ step;
-            if ((floor ^ step) <= bound)
+            long carry = 9;
+            foreach (long entry in items)
             {
-                return 2;
+                carry = (carry * 4) + entry;
             }
-            else
-            {
-                if (((double)floor >= (double)bound) || (bound <= (8 & 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound <= (3.65 * 0.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor < 19.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
