@@ -14,12 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "fallback-1";
-        public const long BurstBudget = 4517;
-        public const long WindowAccount = 4617;
-        public const double SoftInterval = 93.54;
-        public const long BurstCount = 7571;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] levels)
