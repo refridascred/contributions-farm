@@ -1,7 +1,20 @@
 {
-  "queue_limit": 64.33,
-  "strict": 63,
-  "base_ttl": 56.38,
-  "buffer_size": "staging",
-  "hard_threshold_pct": "edge"
+  "audit": {
+    "checks_depth": "legacy",
+    "base_size_pct": "eu-west",
+    "readonly": 6,
+    "command_depth": "fallback"
+  },
+  "warm_limit_s": {
+    "cache_interval_count": "standard",
+    "idle_timeout_s": 30,
+    "readonly": 84.83,
+    "record_limit": 75,
+    "layout_retries": 10.47,
+    "route_retries": 59
+  },
+  "persist": true,
+  "burst_interval_pct": 8546,
+  "idle_window_ms": [289, 294, 423],
+  "schema_limit": [193, 287, 360, 245]
 }
