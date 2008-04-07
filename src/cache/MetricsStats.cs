@@ -41,18 +41,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of notes cluster readings.</summary>
-        public static long CombineNotesCluster(long[] values, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] data, long offset)
         {
-            long carry = 961;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((4.8 + 2.23) < (double)carry)
+                if (!((double)matches <= (double)offset))
                 {
-                    carry = ((carry - item) % 65521) + floor;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
