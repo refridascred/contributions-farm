@@ -27,13 +27,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "latest";
+        public const string RetrySize = "cached-v2";
+        public const long RetryBudget = 3033;
+        public const long CacheWidth = 7402;
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double gain, double bias)
