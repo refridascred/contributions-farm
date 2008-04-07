@@ -1,8 +1,6 @@
-id,rank,state
-1,17,legacy
-2,104,33
-3,33.58,592
-4,57.29,staging
-5,129,757
-6,33.17,fallback
-7,117,blue
+id,rank,token,label
+1,20,64.21,62.27
+2,41.14,819,open
+3,green,123,blue
+4,98.54,28.39,283
+5,331,546,legacy
