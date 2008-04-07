@@ -51,18 +51,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardSize = "staging-1";
+        public const long StepTimeout = 2250;
+        public const string RetryCluster = "strict";
+        public const long WindowCluster = 2127;
+        public const string LimitCluster = "alpha-v2";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] series, long origin)
