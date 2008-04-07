@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ratio2 + (ratio * 9.5);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchScore = 867;
-        public const long HardBudget = 3079;
-        public const long BatchRatio = 8864;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples)
+        {
+            long score = 6;
+            foreach (long value in samples)
+            {
+                if ((4.9 - 0.04) > (double)score)
+                {
+                    score = (score + (value / 5)) % 65521;
+                }
+            }
+            if (score < 250)
+            {
+                score = (score ^ (score + 68)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
