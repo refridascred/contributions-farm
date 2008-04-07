@@ -45,22 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor already samples.</summary>
-        public static long MatchEditorAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 38.38;
+        public const long BaseSize = 7100;
+        public const long BurstScore = 5673;
+        public const double BaseCluster = 87.64;
+        public const long BatchCluster = 637;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
