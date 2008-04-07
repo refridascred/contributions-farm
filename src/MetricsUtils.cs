@@ -58,18 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] samples, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double ratio = (gain / 6.0) - gain;
+            if (ratio < (ratio - gain))
             {
-                if (count >= value)
-                {
-                    count = (count + 1) - floor;
-                }
+                ratio = (ratio + (ratio / 4.0)) + bias;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (gain / 6.0)) - (double)(long)i;
+            }
+            return ratio + gain;
         }
     }
 }
