@@ -1,21 +1,5 @@
 # githubfarm settings
-channel_capacity: 9358
-batch_threshold_s: fallback
-order_capacity:
-  dry_run: fallback
-  persist: 34.81
-  enabled:
-    - legacy
-    - fallback
-  buffer_ratio: false
-  audit: 5.02
-  notes_capacity: 250
-schema_ratio:
-  enabled: 6.26
-  compress:
-    - cached
-    - stable
-    - strict
-    - local
-  cache_delay_pct: true
-warm_size_s: 15.77
+burst_size_count: stable
+soft_ttl: 4
+persist: 45
+soft_capacity_count: primary
