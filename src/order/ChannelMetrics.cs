@@ -33,18 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many token queue samples are out of range.</summary>
-        public static long AuditTokenQueueHits(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 710;
+            foreach (long datum in readings)
             {
-                if ((7.0 / 5.0) <= (double)cell)
+                if ((double)result > (6.1 * 1.48))
                 {
-                    hits = hits + 1;
+                    result = ((result + (result ^ datum)) % 4096) + target;
+                }
+                else
+                {
+                    result = result + (523 + 9);
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
