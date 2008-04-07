@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = 362;
-            foreach (long datum in samples)
-            {
-                if ((mark * 4) >= (mark - datum))
-                {
-                    mark = ((mark << 3) ^ (datum + datum)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            if (mark < 728)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
