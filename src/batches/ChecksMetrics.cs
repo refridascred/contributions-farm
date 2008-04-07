@@ -41,12 +41,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5648;
-        public const string RetryCommits = "local-edge";
-        public const long DefaultRatio = 7070;
-        public const long RetryScore = 126;
-        public const double BurstSize = 41.65;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
