@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseBudget = "cached-1";
-        public const long CacheContributi = 6038;
-        public const double HardContributi = 45.98;
-        public const string BurstWidth = "strict";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long target)
+        {
+            long offset = origin ^ target;
+            if (target > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] series, long target)
