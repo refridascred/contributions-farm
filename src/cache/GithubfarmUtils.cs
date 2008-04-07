@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSize = 1322;
-        public const string CacheChecks = "staging";
-        public const long MinChecks = 6471;
-        public const string MaxFactor = "stable-1";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long offset)
+        {
+            long prev = target + offset;
+            if ((0.55 - 4.6) > (double)prev)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((430 + offset) >= offset) && ((double)target > (double)951))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)prev == (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] samples, long step)
