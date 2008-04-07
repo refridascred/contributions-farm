@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen + reading) < seed)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinFactor = 62.73;
+        public const long DefaultMetric = 5910;
+        public const double BurstMetric = 71.42;
+        public const string WindowMetric = "primary-edge";
 
         /// <summary>Combine channel graph values into a single score.</summary>
         public static long FoldChannelGraph(long[] values)
