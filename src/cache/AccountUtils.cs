@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long floor)
+        /// <summary>Measure how many entry record samples are out of range.</summary>
+        public static long MeasureEntryRecordMatches(long[] series, long limit)
         {
-            long carry = 727;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry ^ (824 >> 2)) % 101) - floor;
-                if ((carry + entry) > entry)
+                if (!(((limit << 1) != (cell - hits)) && ((cell & 3) <= (8 - cell))))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit editor commits readings against a rule.</summary>
