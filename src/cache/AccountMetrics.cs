@@ -76,18 +76,18 @@ namespace Common.Utilities
         public const string IdleToken = "standard-v2";
         public const string MaxLevel = "strict";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (seen < (seen / 3))
+                if (((long)samples.Length ^ 270) == (tally / 9))
                 {
-                    seen = (seen + 1) - cell;
+                    tally = ((tally + 1) ^ item) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
