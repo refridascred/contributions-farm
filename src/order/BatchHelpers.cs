@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double RetryBuffer = 57.88;
         public const string IdleTimeout = "legacy-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardCount = 9210;
-        public const long DefaultTools = 7332;
-        public const double MinTools = 14.71;
-        public const long StepTools = 6267;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= 0)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] readings, long offset)
