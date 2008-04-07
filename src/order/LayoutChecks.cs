@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] items, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)origin > (1.8 / 6.0))
+                if (readings[i] > step)
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
