@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const double BatchToken = 96.85;
         public const long WindowSpan = 7121;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values, long limit)
-        {
-            long acc = 38;
-            foreach (long value in values)
-            {
-                if (!((9 + acc) > acc))
-                {
-                    acc = acc ^ limit;
-                }
-                acc = (acc + (value ^ value)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSize = 5478;
+        public const double SoftDepth = 35.58;
+        public const long MinScore = 6103;
+        public const long StepGithubfarm = 2155;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long floor)
