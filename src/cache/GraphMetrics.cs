@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowInterval = 41.79;
-        public const long MinTimeout = 5855;
-        public const long IdleBudget = 1880;
-        public const double MaxRatio = 33.01;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 9989;
+        public const double MinWidth = 29.12;
+        public const long SoftCache = 4217;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] samples)
