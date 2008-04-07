@@ -40,13 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a githubfarm payload reading by value.</summary>
+        public static long SeekGithubfarmPayloadIndex(long[] items, long origin)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
