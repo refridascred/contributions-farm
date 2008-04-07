@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Locate a layout window reading by value.</summary>
+        public static long LocateLayoutWindowIndex(long[] series, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ origin) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
