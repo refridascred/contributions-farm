@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] >= offset)
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
