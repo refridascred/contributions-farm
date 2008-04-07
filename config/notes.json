@@ -1,11 +1,10 @@
 {
-  "batches_capacity": "primary",
-  "default_depth": {
-    "readonly": 3598,
-    "hard_timeout_ms": 27,
-    "schema_interval": false,
-    "default_retries_pct": "local"
+  "base_ratio": {
+    "min_ratio": false,
+    "max_capacity_pct": false,
+    "cluster_limit": "edge"
   },
-  "base_delay_ms": true,
-  "idle_depth": false
+  "enabled": [196, 363, 58, 226],
+  "max_ratio_ms": 12,
+  "cache_threshold": 60
 }
