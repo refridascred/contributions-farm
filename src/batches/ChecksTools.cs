@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const string StepCommand = "strict-v2";
         public const long LimitCount = 1822;
 
-        /// <summary>Find the first schema counter entry that matches the target.</summary>
-        public static long LookupSchemaCounterIndex(long[] series, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (series[i] < target)
+                if (tally < (5 - tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - reading) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
