@@ -46,17 +46,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                anchor = (anchor + (long)i) % 255;
-                anchor = (anchor ^ (anchor - target)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (8.62 >= (double)cell)
+                {
+                    tally = (tally + 3) + step;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
