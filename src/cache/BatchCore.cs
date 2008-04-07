@@ -20,27 +20,17 @@ namespace Common.Utilities
         public const long LimitCount = 1894;
         public const long CacheTimeout = 9740;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long origin)
         {
-            long state = -41;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - reading;
-                if (!((state ^ reading) <= state))
+                if (data[i] >= origin)
                 {
-                    state = state - (reading - 199);
-                }
-                else
-                {
-                    state = (state << 3) ^ (state * 5);
+                    return (long)i;
                 }
             }
-            if (state < (-39))
-            {
-                state = (state * 5) + (658 / 3);
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
