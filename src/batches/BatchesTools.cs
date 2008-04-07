@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Locked,
-            Closed,
-            Idle,
-            Ready,
-            Draft,
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
