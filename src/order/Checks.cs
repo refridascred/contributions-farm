@@ -35,14 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] readings, long origin)
         {
-            New,
-            Failed,
-            Locked,
-            Done,
-            Draft,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
