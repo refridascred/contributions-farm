@@ -32,17 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long step)
+        /// <summary>Rank commits layout input into a small class.</summary>
+        public static long BucketCommitsLayout(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin << 3) == (floor + 621))
             {
-                if (levels[i] > step)
+                return 4;
+            }
+            else
+            {
+                if (floor > (floor >> 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)floor <= (16.0 - 7.6)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin - floor) <= floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
