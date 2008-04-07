@@ -25,13 +25,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Locate a checks notes reading by value.</summary>
+        public static long LookupChecksNotesIndex(long[] samples, long floor)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
