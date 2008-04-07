@@ -58,9 +58,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8832;
-        public const long RetryQueue = 3300;
-        public const double IdleSpan = 33.83;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i <= (6.02 * 7.28))
+                {
+                    score = (score - (848 & 31)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
