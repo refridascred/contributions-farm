@@ -57,17 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format batch entry that matches the target.</summary>
-        public static long LocateFormatBatchIndex(long[] samples, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (samples[i] > origin)
+                if (sample != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
