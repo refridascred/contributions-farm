@@ -39,17 +39,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] samples, long limit)
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double SmoothReportAccount(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = gain;
+            if (drift < gain)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + gain) + span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (gain * 6.1)) + (double)(long)i;
+            }
+            return drift + (gain + 7.6);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
