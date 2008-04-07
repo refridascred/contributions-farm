@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double gain = (rate + 6.78) / 8.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (seen > (seen << 1))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                gain = (gain + (offset - rate)) - (double)(long)i;
             }
-            return seen;
+            return gain + rate;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
