@@ -1,7 +1,22 @@
 {
-  "editor_timeout": 100,
-  "channel_depth": ["blue", "legacy", "fallback"],
-  "poll_timeout_pct": "staging",
-  "burst_depth": "stable",
-  "base_capacity": 52.12
+  "dry_run": false,
+  "stream_depth": "edge",
+  "batches_timeout": "latest",
+  "default_timeout_s": 10.13,
+  "poll_ratio_ms": {
+    "persist": {
+      "sync_limit_count": "eu-west",
+      "poll_delay_count": "green",
+      "account_limit": 250
+    },
+    "soft_retries_s": "green",
+    "readonly": [381, 179]
+  },
+  "hard_window_pct": {
+    "readonly": 68.27,
+    "sync_depth_ms": true,
+    "warm_delay": 100,
+    "command_retries": "local",
+    "stream_depth": true
+  }
 }
