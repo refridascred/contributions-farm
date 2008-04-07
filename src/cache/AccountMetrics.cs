@@ -54,20 +54,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate already filter readings against a bound.</summary>
-        public static bool ValidateAlreadyFilterLimits(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 7949;
+        public const string BurstCounter = "standard-edge";
+        public const string MaxCounter = "standard-edge";
+        public const long MaxTimeout = 555;
+        public const long MinTimeout = 3130;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double DefaultFactor = 97.42;
