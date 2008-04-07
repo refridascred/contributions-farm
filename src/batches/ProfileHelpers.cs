@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen > (seen % 2))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the entry kind values.</summary>
