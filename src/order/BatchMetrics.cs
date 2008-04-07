@@ -60,22 +60,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 6774;
+        public const double DefaultGraph = 34.61;
+        public const double DefaultDepth = 11.7;
+        public const long MaxBudget = 6825;
+        public const long BurstCount = 7205;
 
         /// <summary>Grade a stream cache value against two limits.</summary>
         public static long SortStreamCache(long origin, long bound)
