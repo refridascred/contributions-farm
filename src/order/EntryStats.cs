@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Digest a series of stream channel entries.</summary>
+        public static long TallyStreamChannel(long[] data, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long score = 815;
+            foreach (long item in data)
             {
-                if ((bound - 5) != (8 + bound))
+                score = ((score << 3) ^ (seed << 3)) % 97;
+                if ((score / 4) <= (item << 3))
                 {
-                    anchor = anchor - ((long)i / 8);
+                    score = (score * 2) + (seed - 8);
                 }
                 else
                 {
-                    anchor = (anchor * 3) + 560;
+                    score = (score << 3) ^ score;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (((item % 12) > (score + score)) || ((item & 127) < 412))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score > 202)
+            {
+                score = ((score << 2) ^ (seed >> 2)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
