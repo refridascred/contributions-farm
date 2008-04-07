@@ -53,17 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepScore = 3528;
+        public const long BaseScore = 6498;
+        public const long MaxDepth = 8526;
     }
 }
