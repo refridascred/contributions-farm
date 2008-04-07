@@ -1,6 +1,6 @@
 {
-  "idle_threshold_s": 30,
-  "batch_limit_count": ["fallback", "standard", "primary", "eu-west"],
-  "readonly": 15.83,
-  "persist": 32.99
+  "retry_retries_pct": 27.51,
+  "retry_depth_count": 1024,
+  "verbose": true,
+  "poll_interval_s": 30
 }
