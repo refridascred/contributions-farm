@@ -1,17 +1,7 @@
 # githubfarm settings
-default_interval_pct: true
-enabled:
-  retry_size_count:
-    verbose: 4205
-    graph_threshold: staging
-    default_timeout_count: 100
-    min_window_ms:
-      - 455
-      - 70
-      - 316
-      - 186
-    enabled: 23.71
-  batch_capacity: 6726
-  idle_delay_count: 250
-  metric_depth: stable
-poll_window: edge
+warm_interval_ms: legacy
+warm_capacity_pct:
+  - edge
+  - eu-west
+base_timeout: cached
+idle_capacity_ms: 1627
