@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] samples, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = -4;
-            foreach (long value in samples)
-            {
-                total = total ^ (value + total);
-                total = ((total * 5) + total) % 101;
-            }
-            if (total < 48)
-            {
-                total = (total - (origin + 11)) % 65521;
-            }
-            return total;
+            New,
+            Retry,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
