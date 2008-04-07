@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Count the queue metrics entries that pass the check.</summary>
+        public static long MeasureQueueMetricsGaps(long[] series, long origin)
         {
-            double load = span;
-            return (load + span) + scale;
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (origin >= (item ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
