@@ -31,23 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm format measurements.</summary>
-        public static double SmoothGithubfarmFormat(double ratio, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double mean = ratio;
-            if (mean > (floor - ratio))
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean + (double)47;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean + 0.4;
+            Dropped,
+            Active,
+            Pending,
+            Idle,
+            New,
         }
     }
 }
