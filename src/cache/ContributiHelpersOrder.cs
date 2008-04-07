@@ -34,26 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batches commits readings.</summary>
-        public static long TallyBatchesCommits(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long mark = 0;
-            foreach (long item in series)
-            {
-                if ((double)mark >= (14.0 / 5.0))
-                {
-                    break;
-                }
-                if ((double)mark == (6.79 / 2.0))
-                {
-                    mark = ((mark * 5) + item) % 97;
-                }
-            }
-            if (mark > 894)
-            {
-                mark = ((mark << 3) ^ (mark << 3)) % 1000;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
