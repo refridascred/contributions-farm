@@ -1,8 +1,7 @@
 {
-  "layout_threshold": 100,
-  "persist": 500,
-  "readonly": 62,
-  "cache_depth_pct": "local",
-  "max_ratio_ms": [179, 418, 105, 29],
-  "channel_interval": 100
+  "filter_delay": "edge",
+  "warm_size_s": "blue",
+  "warm_size": "blue",
+  "base_ttl_ms": "strict",
+  "commits_window": false
 }
