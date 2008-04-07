@@ -22,11 +22,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long seed)
         {
-            double mean = bias;
-            return (mean + (bias - bias)) + span;
+            if (((18.0 / 3.0) < (9.8 * 2.1)) || ((double)limit <= (0.75 * 1.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(2 <= (seed * 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - 237) != (seed & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-516) - 7) >= (limit & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
