@@ -67,23 +67,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double bias)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool ValidateCounterContextRange(long[] samples, long floor)
         {
-            double gain2 = (double)((-25) << 2);
-            if (gain2 < gain)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                gain2 = (gain2 - gain2) - bias;
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)(-46);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return valid;
         }
     }
 }
