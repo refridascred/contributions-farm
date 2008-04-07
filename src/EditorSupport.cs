@@ -57,18 +57,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long target2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((target2 - target2) > (target - target2))
             {
-                if ((19.0 - 6.1) < (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (!((target2 + target2) > (target + target2)))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
