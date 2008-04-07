@@ -82,11 +82,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long bound)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((bound + bound) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (6.23 - 2.3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound > (19.0 - 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
