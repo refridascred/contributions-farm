@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double offset)
-        {
-            double scale = (double)(-864) * 1.31;
-            if (scale > (double)(-59))
-            {
-                scale = scale - (offset + 17.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 3780;
+        public const long CacheReport = 3734;
+        public const long BatchScore = 9873;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyGaps(long[] series)
