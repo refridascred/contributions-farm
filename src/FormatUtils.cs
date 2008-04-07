@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine schema cache values into a single score.</summary>
-        public static long FoldSchemaCache(long[] levels, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long sum = 4;
-            foreach (long value in levels)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                sum = ((((sum * 4) + (6 + sum)) % 1000) + value) - offset;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry << 2) ^ (long)i2;
+                }
+                carry = (carry - (carry + carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
