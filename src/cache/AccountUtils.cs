@@ -20,13 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long AuditEditorCommitsOutliers(long[] series)
         {
-            Done,
-            Paused,
-            Retry,
-            Active,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((7.0 * 2.01) > (double)count) || ((count - count) < (count + entry)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
