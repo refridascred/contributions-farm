@@ -24,11 +24,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long total = 60;
+            foreach (long sample in data)
+            {
+                total = ((total ^ (total << 2)) % 101) ^ sample;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
