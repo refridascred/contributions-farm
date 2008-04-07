@@ -18,10 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 6934;
-        public const double MaxSupport = 98.88;
-        public const long RetrySize = 5468;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long limit)
+        {
+            if ((447 * 5) < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (18.0 - 5.1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (717 + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two githubfarm format measurements.</summary>
         public static double SmoothGithubfarmFormat(double ratio, double floor)
