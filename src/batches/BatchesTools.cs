@@ -28,11 +28,9 @@ namespace Common.Utilities
         public const long MaxWidth = 6825;
         public const long LimitCount = 3994;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 8;
-        public const long IdleLevel = 4655;
-        public const long MaxEditor = 7134;
-        public const long BaseEditor = 2541;
-        public const long BatchDepth = 6590;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchScore = 3327;
+        public const long SoftPayload = 9749;
+        public const double RetrySpan = 61.53;
     }
 }
