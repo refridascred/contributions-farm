@@ -27,12 +27,16 @@ namespace Common.Utilities
         public const long BaseInterval = 6375;
         public const double CacheCluster = 18.38;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 42.77;
-        public const double RetryStats = 18.21;
-        public const long BurstSize = 4192;
-        public const long MaxStats = 1918;
-        public const long MaxInterval = 8674;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
