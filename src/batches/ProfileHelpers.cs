@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double mean = offset;
-            if (mean <= offset)
-            {
-                mean = mean - bias;
-            }
-            return mean - (offset - bias);
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the buffer notes entries that pass the check.</summary>
