@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of stream channel entries.</summary>
-        public static long TallyStreamChannel(long[] data, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            long score = 815;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                score = ((score << 3) ^ (seed << 3)) % 97;
-                if ((score / 4) <= (item << 3))
+                if ((sample + count) < sample)
                 {
-                    score = (score * 2) + (seed - 8);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-                if (((item % 12) > (score + score)) || ((item & 127) < 412))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (score > 202)
-            {
-                score = ((score << 2) ^ (seed >> 2)) % 4096;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Rank farm metrics input into a small class.</summary>
