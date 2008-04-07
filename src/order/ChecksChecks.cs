@@ -34,13 +34,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long AuditFormatMetricsOutliers(long[] items)
         {
-            New,
-            Pending,
-            Closed,
-            Done,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally < (tally + 962))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
     }
 }
