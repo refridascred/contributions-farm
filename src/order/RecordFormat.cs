@@ -23,20 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream cache samples.</summary>
-        public static long CombineStreamCache(long[] samples, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long bound)
         {
-            long state = -181;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                state = ((state * 5) + entry) % 1000;
-                state = ((state << 2) ^ (state * 3)) % 101;
+                if ((bound - bound) > mark)
+                {
+                    mark = (mark - (long)i) % 65521;
+                }
+                mark = (mark - bound) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (state < 85)
-            {
-                state = ((state << 2) ^ (state - bound)) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
