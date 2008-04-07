@@ -1,14 +1,13 @@
 # support settings
-metrics_window: 54.56
-readonly: true
-cache_threshold_count: latest
-dry_run:
-  base_size:
-    - 385
-    - 167
-  poll_ratio_count: false
-  schema_size: edge
-  profile_depth: 4136
-  hard_limit_count: open
-compress: 64
-buffer_capacity: true
+strict:
+  - 108
+  - 470
+  - 217
+max_timeout: 78.1
+soft_window_ms:
+  - edge
+  - standard
+  - standard
+  - open
+support_capacity: legacy
+cache_limit: open
