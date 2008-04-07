@@ -1,5 +1,15 @@
 {
-  "idle_interval_ms": true,
-  "batch_delay_ms": [159, 453],
-  "max_size": 94.01
+  "compress": ["edge", "standard", "legacy", "eu-west"],
+  "persist": ["green", "blue"],
+  "layout_threshold": {
+    "retry_ratio_count": 654,
+    "report_ttl": {
+      "payload_window": "stable",
+      "stream_delay": true,
+      "dry_run": "cached"
+    },
+    "verbose": false,
+    "commits_size": true,
+    "min_timeout_pct": false
+  }
 }
