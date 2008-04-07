@@ -57,22 +57,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] items, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)target < 8.91))
+                if ((data[i] <= offset) && ((data[i] % 5) == 0))
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
