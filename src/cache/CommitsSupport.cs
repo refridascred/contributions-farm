@@ -44,39 +44,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long limit2)
-        {
-            if (!(limit <= (limit2 - limit2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((94 + limit) > 58)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.53 >= (double)limit2) || ((double)limit2 >= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit2 - limit2) > (limit / 3)) || (limit < (limit + limit2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 891;
+        public const double BaseQueue = 1.14;
+        public const double HardQueue = 8.91;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double bias, double span)
