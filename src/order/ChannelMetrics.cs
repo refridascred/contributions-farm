@@ -32,16 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - 88) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
