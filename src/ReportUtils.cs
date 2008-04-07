@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long MeasureChecksLayoutHits(long[] levels, long origin)
         {
-            long result = 64;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = ((result << 2) ^ (7 + 414)) ^ sample;
+                if (value < tally)
+                {
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
