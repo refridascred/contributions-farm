@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class BatchCore
     {
         /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long offset)
+        public static long TallySessionHits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((6.0 + 0.82) < (double)offset))
+                if ((origin ^ 297) >= (origin + count))
                 {
-                    hits = (hits + 3) + entry;
+                    count = (count + 3) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
