@@ -40,12 +40,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Locked,
-            Draft,
-            Retry,
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
