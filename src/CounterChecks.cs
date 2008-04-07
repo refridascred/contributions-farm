@@ -42,13 +42,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
