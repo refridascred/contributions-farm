@@ -59,11 +59,16 @@ namespace Common.Utilities
             return weight2 + (double)2;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 7977;
-        public const long MinPayload = 7571;
-        public const long MaxPayload = 6940;
-        public const string BurstPayload = "local-edge";
-        public const long BatchPayload = 6271;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state ^ ((long)i >> 1)) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
