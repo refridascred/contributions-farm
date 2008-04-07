@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (bias * 8.0) / 5.0;
+            if (weight >= (double)49)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight - 1.5) - floor;
             }
-            return -1;
+            return weight + 1.12;
         }
 
         /// <summary>Hold a counter record.</summary>
