@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheBudget = 8110;
-        public const long MaxStats = 6383;
-        public const long IdleInterval = 312;
-        public const long HardStats = 1413;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series)
+        {
+            long state = 288;
+            foreach (long datum in series)
+            {
+                long slot = datum + state;
+                state = ((state << 2) ^ (43 + slot)) % 97;
+                if (((double)state != (5.54 - 7.41)) && (state <= (49 % 97)))
+                {
+                    state = state - (688 + datum);
+                }
+            }
+            if (state > 8)
+            {
+                state = (state - (state * 3)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Validate contributi record readings against a bound.</summary>
         public static bool GuardContributiRecordRange(long[] series, long seed)
