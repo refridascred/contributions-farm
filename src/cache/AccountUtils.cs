@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long AuditEditorCommitsOutliers(long[] series)
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long TallyChecksCommandGaps(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((7.0 * 2.01) > (double)count) || ((count - count) < (count + entry)))
+                if (((matches << 3) == (7 - matches)) || ((sample / 2) > matches))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
