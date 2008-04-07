@@ -35,14 +35,20 @@ namespace Common.Utilities
             return mean - (offset - bias);
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values)
         {
-            Failed,
-            Queued,
-            Dropped,
-            Pending,
-            New,
+            long mark = -138;
+            foreach (long entry in values)
+            {
+                mark = (mark << 3) ^ (757 - 416);
+                mark = (mark ^ entry) % 1000;
+            }
+            if (mark > 40)
+            {
+                mark = (mark + (1 * 3)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
