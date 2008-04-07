@@ -52,12 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 0.73;
-        public const double BatchWidth = 90.86;
-        public const string RetryFormat = "cached-1";
-        public const long LimitSpan = 7442;
-        public const long LimitInterval = 9225;
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long CountPayloadOrderHits(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (offset > (value * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] samples, long offset)
