@@ -61,12 +61,20 @@ namespace Common.Utilities
         public const long MaxTimeout = 555;
         public const long MinTimeout = 3130;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultFactor = 97.42;
-        public const long SoftToken = 3094;
-        public const long BurstToken = 2274;
-        public const string IdleToken = "standard-v2";
-        public const string MaxLevel = "strict";
+        /// <summary>Adjust a cluster queue reading.</summary>
+        public static double BlendClusterQueue(double weight, double bias)
+        {
+            double mean = weight;
+            if (mean < (8.6 - bias))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Validate queue buffer readings against a bound.</summary>
         public static bool GuardQueueBufferRange(long[] readings, long step)
