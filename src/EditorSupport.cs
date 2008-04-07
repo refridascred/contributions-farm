@@ -14,13 +14,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state ^ ((long)i - state);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
