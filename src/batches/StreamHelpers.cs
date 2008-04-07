@@ -74,13 +74,24 @@ namespace Common.Utilities
             return ratio - (ratio * 5.89);
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long target, long target2)
         {
-            Stale,
-            Closed,
-            Retry,
-            Draft,
+            if (((6.5 / 4.0) >= (double)target) && ((double)target2 >= (5.2 * 9.7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((12.0 * 3.3) != (double)target) || ((target2 % 5) >= (target ^ target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
