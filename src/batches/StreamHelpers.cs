@@ -68,18 +68,13 @@ namespace Common.Utilities
         public const double StepRoute = 55.09;
         public const long SoftBudget = 49;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally + tally) > item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Paused,
+            Closed,
         }
     }
 }
