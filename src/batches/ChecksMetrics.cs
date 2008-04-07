@@ -38,23 +38,12 @@ namespace Common.Utilities
         public const double MinWidth = 42.32;
         public const long BaseRatio = 1881;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double ratio = floor - (bias * 7.37);
-            if (ratio <= (ratio * 8.8))
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio - (floor / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - (15.0 + bias);
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count token entry pairs that satisfy a relation.</summary>
