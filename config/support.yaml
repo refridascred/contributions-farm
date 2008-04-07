@@ -1,7 +1,8 @@
 # support settings
-githubfarm_interval: false
-compress: cached
-token_delay: 60
-burst_capacity_count: 6.49
-soft_size_count: false
-editor_timeout: 100
+support_interval: 100
+metric_limit:
+  - 49
+  - 243
+session_ratio: edge
+farm_interval: 21
+warm_capacity: 5073
