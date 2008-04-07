@@ -1,7 +1,6 @@
 {
-  "sync_threshold_ms": "eu-west",
-  "sync_capacity_pct": "stable",
-  "poll_window": 30,
-  "min_delay_ms": 72.69,
-  "buffer_ttl": 100
+  "poll_delay": [70, 12],
+  "idle_capacity_s": "stable",
+  "warm_depth_ms": [149, 374],
+  "readonly": "primary"
 }
