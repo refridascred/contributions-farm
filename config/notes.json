@@ -1,20 +1,5 @@
 {
-  "batch_capacity_s": 20,
-  "schema_capacity": 4131,
-  "retry_size_s": [318, 496],
-  "batch_capacity_ms": 30,
-  "poll_timeout_ms": {
-    "max_ttl_ms": 79.88,
-    "idle_size_pct": {
-      "entry_threshold": false,
-      "batches_window": 5455,
-      "readonly": 62,
-      "min_retries": true,
-      "verbose": [177, 223, 271, 425]
-    },
-    "max_delay": "latest",
-    "compress": 9574,
-    "verbose": false,
-    "soft_window": "stable"
-  }
+  "strict": [130, 94],
+  "flush_interval_pct": 42.83,
+  "audit": "local"
 }
