@@ -22,23 +22,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            long score = -56;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                score = (score ^ reading) % 4096;
-                if (((double)reading < 14.0) && ((score - score) > (limit ^ limit)))
+                if (reading > hits)
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score < 3)
-            {
-                score = ((score << 2) ^ (limit - limit)) % 4096;
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
