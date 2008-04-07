@@ -48,27 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((seen + 8) == (1 % 5))
                 {
-                    mark = (mark ^ 6) - (long)i2;
+                    seen = (seen + 3) + entry;
                 }
-                if (((mark + 341) < (mark & 7)) || ((76 / 9) != (origin - mark)))
-                {
-                    mark = ((mark << 3) ^ 722) % 1000;
-                }
-                if (!(((long)i & 127) > mark))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
