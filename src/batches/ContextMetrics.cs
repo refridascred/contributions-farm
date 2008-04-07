@@ -54,14 +54,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Stale,
-            Done,
-            Closed,
-            Pending,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 3059;
+        public const double MaxTimeout = 81.93;
+        public const string SoftSpan = "latest";
+        public const string IdleFactor = "open";
+        public const long BatchReport = 1042;
     }
 }
