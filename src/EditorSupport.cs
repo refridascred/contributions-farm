@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            New,
-            Paused,
-            Dropped,
-            Synced,
-            Closed,
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
