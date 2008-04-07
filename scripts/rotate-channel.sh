@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging fallback cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+CHANNEL_LIMIT=260
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
