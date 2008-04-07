@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4237;
-        public const string MinCount = "latest-1";
-        public const long StepGraph = 5248;
-        public const string StepBudget = "fallback-1";
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] samples, long limit)
