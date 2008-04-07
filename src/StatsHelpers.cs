@@ -62,10 +62,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 8268;
-        public const long DefaultFarm = 3541;
-        public const long MinFarm = 6778;
-        public const long MaxLevel = 6541;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long bound)
+        {
+            if (69 >= (step >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= (step + 67))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
