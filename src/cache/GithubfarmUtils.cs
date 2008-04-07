@@ -35,27 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long offset)
         {
-            long mix = -7;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = (mix + (mix * 5)) % 4096;
-                if ((mix <= (item * 2)) && ((double)mix == (2.0 - 5.95)))
+                if (((long)data.Length + offset) >= offset)
                 {
-                    mix = (mix + (item - item)) % 255;
-                }
-                if ((item >> 3) > (383 + mix))
-                {
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            if (mix < 952)
-            {
-                mix = (mix * 2) + 2;
-            }
-            return mix % 1000;
+            return hits;
         }
     }
 }
