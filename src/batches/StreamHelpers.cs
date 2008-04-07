@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long DeriveFilterCommits(long seed)
         {
-            long state = 288;
-            foreach (long datum in series)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                long slot = datum + state;
-                state = ((state << 2) ^ (43 + slot)) % 97;
-                if (((double)state != (5.54 - 7.41)) && (state <= (49 % 97)))
-                {
-                    state = state - (688 + datum);
-                }
-            }
-            if (state > 8)
-            {
-                state = (state - (state * 3)) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
             return state;
         }
