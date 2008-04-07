@@ -36,26 +36,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine githubfarm batch values into a single score.</summary>
-        public static long TotalGithubfarmBatch(long[] values)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long total = 630;
-            foreach (long reading in values)
-            {
-                if ((total << 1) <= (reading - reading))
-                {
-                    total = (total ^ (total & 127)) % 4096;
-                }
-                if ((total & 255) != (total + 19))
-                {
-                    break;
-                }
-            }
-            if (total < 2)
-            {
-                total = total - total;
-            }
-            return total % 4096;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
