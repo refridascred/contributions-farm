@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            double ratio = 3.4;
-            for (int i = 0; i < 8; i++)
+            long mark = 362;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio - span) + (double)(long)i) + rate;
+                if ((mark * 4) >= (mark - datum))
+                {
+                    mark = ((mark << 3) ^ (datum + datum)) % 97;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                }
             }
-            return ratio - (ratio - span);
+            if (mark < 728)
+            {
+                mark = mark - mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
