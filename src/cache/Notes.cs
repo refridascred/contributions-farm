@@ -42,10 +42,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 36.72;
-        public const long CacheQueue = 4743;
-        public const double LimitCount = 15.03;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Failed,
+            Stale,
+            Done,
+            Synced,
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
