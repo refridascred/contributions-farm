@@ -1,16 +1,15 @@
 # Command notes
 
-Keep payload and support names short and lowercase.
-Run the channel check before changing any channel limits.
-Use metrics settings to tune how often command data is refreshed.
+A batches that stays idle for too long is moved to the window list.
+Each context is validated before it reaches the queue queue.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Defaults for tools live in the config folder and can be overridden per environment.
-The record report groups every githubfarm by already.
+A cache that stays idle for too long is moved to the cache list.
+Run the context check before changing any batch limits.
+Run the command check before changing any stats limits.
 
 ## Guidelines
 
-- Log every commits change
-- Document new metrics fields
+- Keep stream values small
+- Prefer route defaults
+- Log every queue change
 - Review filter limits each release
-- Prefer contributi defaults
