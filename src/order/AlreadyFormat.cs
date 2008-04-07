@@ -37,19 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window already readings.</summary>
-        public static long DigestWindowAlready(long[] readings)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum ^ (sum & 127)) % 255) - value;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 56)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
