@@ -60,17 +60,13 @@ namespace Common.Utilities
         public const long SoftFarm = 1905;
         public const long StepInterval = 7674;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
