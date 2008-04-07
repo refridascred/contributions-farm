@@ -43,18 +43,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((1.8 + 1.9) >= (double)limit)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Retry,
+            Paused,
+            Locked,
         }
     }
 }
