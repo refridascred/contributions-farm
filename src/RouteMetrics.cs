@@ -53,24 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long step)
+        /// <summary>Scale a metric session figure with a bias.</summary>
+        public static double ScaleMetricSession(double rate, double bias)
         {
-            if (14.0 > (double)origin)
+            double drift = (double)(489 & 7);
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                drift = (drift - (bias / 2.0)) + (double)(long)i;
             }
-            else
-            {
-                if (!((step + step) == (6 + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift + rate;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
