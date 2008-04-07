@@ -22,12 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 9385;
-        public const long BatchCount = 4466;
-        public const long WindowSize = 9545;
-        public const long MaxSize = 5760;
-        public const double CacheFormat = 61.61;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamGaps(long[] series, long target)
