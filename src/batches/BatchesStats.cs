@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "cached-v2";
-        public const long HardLevel = 3800;
-        public const long CacheBudget = 3719;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchSize = 67.81;
+        public const long BatchStats = 2194;
+        public const long DefaultStats = 1235;
+        public const double SoftStats = 17.57;
+        public const long IdleTimeout = 5286;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] items)
