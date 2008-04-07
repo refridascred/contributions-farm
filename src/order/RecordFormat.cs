@@ -20,22 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] samples, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum >= (step + 608)) && ((step - step) > step)) && !(8.29 < (double)datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the batches kind values.</summary>
