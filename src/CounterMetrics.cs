@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches payload samples.</summary>
-        public static long FoldBatchesPayload(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series, long bound)
         {
-            long carry = 772;
-            foreach (long reading in data)
+            long carry = 532;
+            foreach (long item in series)
             {
-                carry = ((carry ^ (31 % 8)) % 4096) - reading;
+                carry = ((carry - bound) % 97) + item;
             }
-            return carry;
+            if (carry > 4)
+            {
+                carry = (carry - carry) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the notes level values.</summary>
