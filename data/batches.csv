@@ -1,10 +1,7 @@
-id,rank,count,state,ratio
-1,25.05,latest,32.86,915
-2,legacy,standard,456,61.95
-3,57.0,57.59,611,43
-4,50.24,5.65,909,95.25
-5,49.27,302,fallback,16.34
-6,cached,819,690,59.32
-7,345,60.19,stable,857
-8,120,blue,891,fallback
-9,107,45.71,130,17.33
+id,ratio,count,token,rank
+1,357,390,edge,706
+2,307,stable,38.12,674
+3,41.7,79.15,72.28,80.14
+4,latest,edge,65.36,195
+5,standard,291,41.36,84.28
+6,842,40.15,legacy,90.22
