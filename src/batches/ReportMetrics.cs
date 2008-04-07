@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (sample < seed)
+                if (((double)seen <= (6.19 / 8.0)) || (sample < 590))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
