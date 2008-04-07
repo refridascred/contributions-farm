@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Grade a format contributi value against two limits.</summary>
+        public static long GradeFormatContributi(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step + limit) != (limit ^ limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit > (double)step)
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
