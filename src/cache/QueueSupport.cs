@@ -15,38 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((((-410) * 3) != (target - floor)) || ((6.2 + 9.3) > (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-33) + floor) != (floor & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((27 > (floor / 9)) || (floor >= (86 % 97)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4 / 7) == (target - 671))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine command values into a single score.</summary>
