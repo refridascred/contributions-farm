@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheBudget = "open";
-        public const long DefaultFactor = 4580;
-        public const long BurstContext = 8049;
-        public const string BatchContext = "primary";
-        public const long StepWidth = 1760;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] levels, long seed)
