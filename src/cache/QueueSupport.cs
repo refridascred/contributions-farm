@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] readings, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
