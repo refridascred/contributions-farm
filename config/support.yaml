@@ -1,6 +1,5 @@
 # support settings
-hard_window_count: strict
-min_delay: 515
-base_retries_pct: 98.05
-notes_timeout: staging
-enabled: 1024
+token_ratio: false
+audit: false
+persist: 500
+cache_size: false
