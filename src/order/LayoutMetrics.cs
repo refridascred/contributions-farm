@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6195;
-        public const long CacheSize = 8564;
-        public const long BatchLevel = 158;
-        public const string DefaultScore = "standard-v2";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the batch schema series from a seed.</summary>
         public static long RollBatchSchema(long bound)
