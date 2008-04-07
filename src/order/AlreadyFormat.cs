@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((14.0 / 4.0) <= (double)cell)
+                if ((step - step) > (datum << 2))
                 {
-                    hits = (hits + 3) - offset;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of window already readings.</summary>
