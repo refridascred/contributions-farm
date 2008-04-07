@@ -63,12 +63,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] items, long target)
         {
-            Closed,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((double)target < 8.91))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
