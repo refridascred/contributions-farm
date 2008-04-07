@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            New,
-            Retry,
-            Paused,
-            Draft,
-            Failed,
+            Idle,
+            Dropped,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count the editor profile entries that pass the check.</summary>
