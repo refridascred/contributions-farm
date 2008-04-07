@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] levels, long step)
         {
-            double rate = span * 20.0;
-            if (rate > (rate + ratio))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                rate = rate - 0.32;
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - rate;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
