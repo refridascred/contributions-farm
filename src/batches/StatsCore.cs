@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1883;
-        public const double IdleFactor = 97.84;
-        public const string BaseRatio = "local";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) <= cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up already tools samples.</summary>
         public static long PairAlreadyToolsCount(long[] readings)
