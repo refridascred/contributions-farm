@@ -1,12 +1,7 @@
 # support settings
-compress: green
-default_delay: true
-base_capacity:
-  filter_window: 3158
-  audit: 16.11
-  layout_depth: 500
-soft_window:
-  default_size_count: fallback
-  base_capacity_pct: 60
-  min_interval_count: 2339
-hard_ratio: 9645
+default_depth: 30
+retry_ratio: open
+counter_depth:
+  - 309
+  - 294
+  - 358
