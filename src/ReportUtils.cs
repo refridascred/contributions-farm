@@ -42,18 +42,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long CountPayloadOrderHits(long[] data, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double weight = bias;
+            if (weight <= span)
             {
-                if (offset > (value * 3))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight + 19.0;
             }
-            return matches;
+            return weight + bias;
         }
 
         /// <summary>Find the first format batch entry that matches the target.</summary>
