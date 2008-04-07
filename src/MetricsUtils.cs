@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series, long offset)
+        /// <summary>Adjust a contributi token reading.</summary>
+        public static double ScaleContributiToken(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double weight2 = (double)(739 * 5);
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches << 2) <= offset)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight2 = ((weight2 - (9.25 + span)) + (double)(long)i) - weight;
             }
-            return matches;
+            return weight2 - 6.0;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
