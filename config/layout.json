@@ -1,8 +1,13 @@
 {
-  "metrics_interval": "eu-west",
-  "max_ttl": 92,
-  "retry_retries_count": 19,
-  "counter_ttl": 98,
-  "audit": "strict",
-  "base_interval_count": false
+  "strict": 83.77,
+  "sync_threshold_pct": [441, 187],
+  "enabled": [352, 119, 12],
+  "warm_window_pct": {
+    "entry_size": 71.96,
+    "tools_timeout": 60,
+    "enabled": "edge",
+    "max_interval_count": [6, 50, 227, 240]
+  },
+  "sync_depth_ms": 7.2,
+  "burst_threshold_ms": "stable"
 }
