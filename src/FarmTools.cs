@@ -13,35 +13,35 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long limit, long limit2)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long target2)
         {
-            long span = limit - limit2;
-            if (limit2 <= (span * 2))
+            long cur = target ^ target2;
+            if ((944 + target) > (cur << 1))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((7.0 - 2.0) > (double)span)
+                if ((cur << 1) > target2)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((span < (span + limit)) && (span > limit))
+                    if (!((61 - target2) <= (cur * 2)))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((4.3 + 19.0) <= (double)limit2)
+                        if ((8 > (target / 5)) && ((target2 / 7) > (706 - target)))
                         {
-                            return 5;
+                            return 2;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
