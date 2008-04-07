@@ -40,22 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = 2;
-            foreach (long value in readings)
-            {
-                if (203 < ((long)readings.Length + mark))
-                {
-                    mark = ((mark ^ (limit << 2)) % 255) ^ value;
-                }
-            }
-            if (mark > 991)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            Locked,
+            Synced,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many payload graph samples are out of range.</summary>
