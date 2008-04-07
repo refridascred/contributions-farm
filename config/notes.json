@@ -1,11 +1,5 @@
 {
-  "flush_ttl_pct": {
-    "sync_limit": [8, 285],
-    "idle_ttl_pct": 1.38,
-    "readonly": "standard"
-  },
-  "burst_interval_ms": "legacy",
-  "compress": "stable",
-  "base_timeout": true,
-  "cache_capacity_pct": "green"
+  "entry_threshold": 254,
+  "strict": "standard",
+  "hard_capacity_ms": 34.13
 }
