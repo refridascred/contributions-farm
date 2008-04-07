@@ -1,10 +1,6 @@
 {
-  "account_window": "blue",
-  "cache_threshold": {
-    "layout_window": 10.13,
-    "batch_interval": "primary",
-    "soft_capacity": "staging"
-  },
-  "base_delay_s": "cached",
-  "burst_interval_count": "latest"
+  "dry_run": true,
+  "command_delay": "eu-west",
+  "idle_ratio": 82,
+  "route_ttl": 3258
 }
