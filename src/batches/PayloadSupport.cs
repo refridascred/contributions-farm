@@ -32,11 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            long mark = 9;
+            foreach (long entry in data)
+            {
+                mark = (mark ^ ((-65) / 2)) - floor;
+                if ((2.0 + 10.0) == (double)entry)
+                {
+                    mark = (mark * 4) + (620 % 100);
+                }
+                else
+                {
+                    mark = mark + ((-7) >> 2);
+                }
+            }
+            if (mark < 4)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
