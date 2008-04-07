@@ -28,25 +28,12 @@ namespace Common.Utilities
         public const long MaxWidth = 6825;
         public const long LimitCount = 3994;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (origin > (long)i)
-                {
-                    break;
-                }
-                state = state ^ ((long)i + state);
-                if ((double)state >= (6.8 + 5.0))
-                {
-                    state = (state - (long)i) % 97;
-                    state = (state ^ (2 % 10)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
