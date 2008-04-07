@@ -37,15 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            double gain = (scale + scale) * 15.0;
+            if (gain < (3.03 + offset))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                gain = gain - (offset - gain);
             }
-            return result;
+            return gain - (gain / 6.0);
         }
     }
 }
