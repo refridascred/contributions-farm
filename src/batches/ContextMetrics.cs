@@ -37,10 +37,38 @@ namespace Common.Utilities
             return drift - (span / 9.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4648;
-        public const long CacheTimeout = 1600;
-        public const string BaseSpan = "fallback-1";
-        public const long DefaultLevel = 4661;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long seed, long offset)
+        {
+            if ((seed ^ seed) > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)837 == (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset < (6.0 * 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
