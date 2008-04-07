@@ -64,18 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] series, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long acc = 527;
+            foreach (long cell in series)
             {
-                if (((seed ^ 7) <= (81 << 2)) || ((3.5 / 5.0) != (double)tally))
+                if (!((cell + acc) < (acc & 255)))
                 {
-                    tally = (tally + 1) + datum;
+                    acc = ((acc << 3) ^ (acc + origin)) % 4096;
                 }
             }
-            return tally;
+            if (acc < 507)
+            {
+                acc = (acc << 2) ^ origin;
+            }
+            return acc % 65521;
         }
     }
 }
