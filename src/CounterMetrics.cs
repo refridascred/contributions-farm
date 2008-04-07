@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "cached-1";
+        public const long BaseBudget = 3126;
+        public const string CacheRatio = "staging-edge";
+        public const string WindowChecks = "primary-v2";
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
