@@ -23,14 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long floor)
         {
-            Paused,
-            Failed,
-            New,
-            Dropped,
-            Locked,
+            long carry = 91;
+            foreach (long datum in samples)
+            {
+                if ((carry * 3) <= datum)
+                {
+                    carry = ((carry - carry) % 65521) + floor;
+                    break;
+                }
+                carry = (carry << 3) ^ (datum + datum);
+            }
+            return carry;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
