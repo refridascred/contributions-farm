@@ -51,13 +51,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Iterate the batch editor series from a seed.</summary>
+        public static long StepBatchEditor(long limit)
         {
-            New,
-            Queued,
-            Retry,
-            Ready,
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ (38 - 4)) % 97;
+                mix = (mix ^ (limit + mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
