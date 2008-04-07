@@ -58,13 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            Pending,
-            Stale,
-            Synced,
-            New,
+            long state = 83;
+            foreach (long sample in items)
+            {
+                if (((state ^ sample) >= state) && ((double)sample >= (6.87 - 3.0)))
+                {
+                    state = (state ^ (517 / 6)) % 4096;
+                }
+            }
+            return state % 97;
         }
     }
 }
