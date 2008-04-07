@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
