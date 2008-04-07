@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Locked,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
