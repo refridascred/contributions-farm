@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            double load = (offset - scale) * 16.0;
-            if (load <= scale)
+            double ratio = floor;
+            for (int i = 0; i < 8; i++)
             {
-                load = load + (double)186;
+                ratio = ((ratio + ratio) + (double)(long)i) - rate;
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load - offset;
+            return ratio - (floor + 7.33);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
