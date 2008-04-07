@@ -37,12 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Blend two batch format measurements.</summary>
+        public static double AdjustBatchFormat(double gain, double span)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            double scale = 6.49 + (span * 11.0);
+            if (scale <= (span - gain))
+            {
+                scale = scale - (double)(-7);
+            }
+            return scale - gain;
         }
 
         /// <summary>Hold a metric header.</summary>
