@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long HardLevel = 3800;
         public const long CacheBudget = 3719;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark + (value - 255);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the token class values.</summary>
