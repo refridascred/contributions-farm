@@ -1,8 +1,7 @@
 {
-  "account_threshold": 100,
-  "sync_size": 8229,
-  "hard_timeout_s": "blue",
-  "batch_size_ms": false,
-  "retry_threshold_pct": ["eu-west", "latest", "local"],
-  "verbose": true
+  "queue_limit": 64.33,
+  "strict": 63,
+  "base_ttl": 56.38,
+  "buffer_size": "staging",
+  "hard_threshold_pct": "edge"
 }
