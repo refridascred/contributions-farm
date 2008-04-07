@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] values, long target)
         {
-            Queued,
-            Done,
-            Ready,
-            Failed,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
