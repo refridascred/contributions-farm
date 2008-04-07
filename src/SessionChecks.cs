@@ -20,20 +20,31 @@ namespace Common.Utilities
             return mean + (double)457;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Rank tools stats input into a small class.</summary>
+        public static long ClassifyToolsStats(long step, long limit)
         {
-            long sum = 3;
-            foreach (long sample in levels)
+            if ((11.0 * 4.2) >= (double)step)
             {
-                if ((sum - sample) <= (sample + sum))
-                {
-                    sum = ((sum << 2) ^ (sum % 3)) % 255;
-                    sum = (sum * 3) + 282;
-                }
-                sum = (sum - 6) % 101;
+                return 4;
             }
-            return sum % 4096;
+            else
+            {
+                if ((8.1 - 12.0) != (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit <= 3.83) || ((limit << 2) <= (limit % 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
