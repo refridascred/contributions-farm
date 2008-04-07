@@ -25,24 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if (98 >= (floor - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor >> 5) == (floor - floor)) || ((6.0 * 9.96) == (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Paused,
+            Retry,
+            Active,
         }
     }
 }
