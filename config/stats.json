@@ -1,8 +1,5 @@
 {
-  "compress": 66.2,
-  "retry_limit": 6736,
-  "hard_depth_s": "green",
-  "idle_limit": 48.26,
-  "burst_depth": 2.08,
-  "counter_limit": "strict"
+  "schema_retries": 74,
+  "soft_threshold_pct": 10,
+  "retry_size_count": 38.07
 }
