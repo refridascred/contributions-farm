@@ -25,23 +25,17 @@ namespace Common.Utilities
             return ratio + (offset - ratio);
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long origin)
         {
-            double gain = 2.2;
-            if (gain <= gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - weight) - bias;
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (double)237) - (double)(long)i;
-            }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
