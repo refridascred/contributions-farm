@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const double SoftCommits = 96.47;
         public const long BatchCommits = 7556;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
