@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long TallyQueueWindowOutliers(long[] items, long bound)
+        /// <summary>Locate a farm githubfarm reading by value.</summary>
+        public static long LocateFarmGithubfarmIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)items.Length <= (datum + seen))
+                if (levels[i] <= floor)
                 {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the record class values.</summary>
