@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data, long limit)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit << 1) <= (tally + reading)) && (limit <= reading))
+                if (readings[i] > seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
