@@ -55,12 +55,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count token entry pairs that satisfy a relation.</summary>
+        public static long MatchTokenEntryCount(long[] data)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every counter already entry stays within the limit.</summary>
