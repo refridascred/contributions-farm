@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long mark = 9;
+            foreach (long entry in series)
             {
-                if (datum > offset)
+                mark = (mark + 864) % 65521;
+                mark = ((mark * 2) + (mark * 4)) % 65521;
+                if ((1.2 / 3.0) > (double)entry)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark + (limit >> 2)) % 255;
+                }
+                else
+                {
+                    mark = mark - (entry ^ limit);
                 }
             }
-            return flag;
+            return mark % 1000;
         }
 
         /// <summary>Hold a context stats.</summary>
