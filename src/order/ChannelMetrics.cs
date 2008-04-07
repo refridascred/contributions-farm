@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ratio2 + (ratio * 9.5);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long floor)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry << 2) ^ (carry + carry)) + entry;
+                score = ((score << 2) ^ ((long)i >> 2)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (carry < 0)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
