@@ -28,28 +28,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc << 3) ^ (long)i2;
-                    acc = ((acc * 3) + 453) % 101;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((acc >> 3) < (acc - floor))
-                {
-                    break;
-                }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    acc = (acc << 3) ^ ((long)i3 * 4);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
     }
 }
