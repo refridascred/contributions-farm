@@ -14,12 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryRatio = "cached-1";
-        public const double LimitStream = 29.82;
-        public const long HardStream = 8234;
-        public const string IdleStream = "fallback-1";
-        public const long SoftStream = 5371;
+        /// <summary>Iterate the batch schema series from a seed.</summary>
+        public static long RollBatchSchema(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score + ((long)i % 5);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] values, long origin)
