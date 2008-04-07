@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxDepth = 6494;
-        public const long SoftFilter = 6486;
-        public const long LimitLevel = 5811;
-        public const long MinFilter = 8848;
-        public const string BurstFilter = "cached-edge";
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public bool Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] data, long floor)
