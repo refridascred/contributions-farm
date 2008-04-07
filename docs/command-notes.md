@@ -1,12 +1,12 @@
 # Command notes
 
-Run the editor check before changing any counter limits.
-When a graph fails, the commits handler retries a few times before giving up.
-Run the graph check before changing any schema limits.
+Defaults for queue live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the queue list.
+A queue that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every metrics change
-- Keep batch values small
-- Prefer channel defaults
+- Keep farm values small
+- Prefer contributi defaults
+- Log every record change
+- Document new profile fields
