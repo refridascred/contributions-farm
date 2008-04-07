@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)92 == (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ ((long)i << 3)) % 1000;
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
