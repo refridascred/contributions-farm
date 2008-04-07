@@ -1,17 +1,6 @@
 # support settings
-verbose: 3754
-max_window_s: true
-githubfarm_window:
-  soft_interval_count: eu-west
-  retry_timeout_s:
-    poll_limit_pct: 1024
-    cluster_ratio: primary
-    filter_delay: 60
-    flush_depth: latest
-  contributi_depth:
-    - cached
-    - blue
-    - primary
-    - stable
-  readonly: 59
-  persist: 250
+poll_ratio_ms: blue
+burst_depth_count: legacy
+entry_ttl: primary
+flush_capacity_s: 17.7
+metrics_delay: cached
