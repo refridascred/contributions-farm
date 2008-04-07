@@ -34,13 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
