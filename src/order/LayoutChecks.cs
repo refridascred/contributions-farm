@@ -43,11 +43,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheFactor = 345;
-        public const double HardCommits = 66.25;
-        public const long MaxCommits = 138;
-        public const long SoftCommits = 5500;
+        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
+        public static long AuditLayoutGithubfarmHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!!((13.0 * 7.6) <= (double)matches))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleTimeout = 7456;
