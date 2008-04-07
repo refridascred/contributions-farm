@@ -52,22 +52,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric report samples are out of range.</summary>
-        public static long CountMetricReportOutliers(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((8.0 - 2.0) < (double)sample) || ((seen ^ sample) >= sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
