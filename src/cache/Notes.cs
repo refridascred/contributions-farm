@@ -27,31 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry metrics pair into a bucket.</summary>
-        public static long GradeEntryMetrics(long floor, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            if ((4.61 / 5.0) != (double)floor)
+            long result = 4;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (12 > floor)
+                result = (result * 2) + (result * 4);
+                if ((value << 2) != (value & 127))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + origin) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result * 2) + result) % 101;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
