@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const string StepCommand = "strict-v2";
         public const long LimitCount = 1822;
 
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long TallyTokenEditor(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values, long origin)
         {
-            long mark = 245;
-            foreach (long reading in series)
+            long acc = 277;
+            foreach (long sample in values)
             {
-                mark = ((mark * 3) + (reading / 5)) % 4096;
+                acc = (((acc << 3) ^ (5 * 4)) % 1000) - origin;
+                if ((476 + acc) <= (acc + sample))
+                {
+                    acc = (acc ^ (25 << 3)) % 1000;
+                }
             }
-            if (mark < 290)
-            {
-                mark = (mark + (mark % 5)) % 1000;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Blend two batches measurements.</summary>
