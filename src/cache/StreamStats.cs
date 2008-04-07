@@ -22,32 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster format pair into a bucket.</summary>
-        public static long GradeClusterFormat(long limit, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long span = limit + floor;
-            if (!((floor + span) > 270))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (span * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.6 * 3.82) == (double)span) && ((limit + limit) > (97 >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
