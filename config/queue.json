@@ -1,8 +1,11 @@
 {
-  "max_ttl_count": 30,
-  "batch_ratio": 500,
-  "retry_threshold": false,
-  "enabled": [11, 207, 132, 457],
-  "flush_ttl": 17.4,
-  "default_retries_ms": 46
+  "idle_window_count": {
+    "idle_capacity": "green",
+    "buffer_depth": ["strict", "green", "staging"],
+    "persist": ["standard", "eu-west", "standard", "local"]
+  },
+  "min_threshold_s": [453, 192, 289, 472],
+  "default_capacity_ms": 88,
+  "context_timeout": "eu-west",
+  "route_ttl": "standard"
 }
