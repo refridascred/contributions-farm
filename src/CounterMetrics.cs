@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long offset2)
+        /// <summary>Fold a list of layout profile readings.</summary>
+        public static long FoldLayoutProfile(long[] readings)
         {
-            long step = offset - offset2;
-            if ((offset - offset) >= offset2)
+            long score = -9;
+            foreach (long sample in readings)
             {
-                return 8;
+                score = (score - (5 + (long)readings.Length)) - sample;
             }
-            else
+            if (score > 84)
             {
-                if (77 >= (step * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                score = score - score;
             }
+            return score % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
