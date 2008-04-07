@@ -21,12 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] samples, long bound)
         {
-            Closed,
-            Failed,
-            Retry,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + (-1)) <= (bound + 8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
