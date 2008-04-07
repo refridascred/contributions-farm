@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter metric readings.</summary>
-        public static long WeighCounterMetric(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            long state = 0;
-            foreach (long value in readings)
+            long sum = 235;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state << 3) ^ state) - (long)i;
-                }
-                state = ((state * 4) + (value >> 3)) % 1000;
+                sum = (((sum * 3) + 13) % 4096) - value;
             }
-            return state % 65521;
+            if (sum < 90)
+            {
+                sum = ((sum * 3) + (sum / 5)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
