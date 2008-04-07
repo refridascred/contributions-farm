@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double mean = (double)(-52) * 8.17;
-            if (mean > (8.2 / 6.0))
-            {
-                mean = (mean - floor) - ratio;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (mean + 2.35);
+            Dropped,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
