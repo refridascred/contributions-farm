@@ -1,9 +1,11 @@
 {
-  "default_depth_ms": {
-    "buffer_size": "open",
-    "window_retries": true,
-    "soft_capacity_pct": 60
+  "hard_size": {
+    "base_size_ms": "standard",
+    "editor_timeout": [30, 50, 399],
+    "poll_ratio": ["strict", "legacy", "fallback", "local"]
   },
-  "batch_limit": 29,
-  "max_limit_ms": 69.48
+  "default_size_count": 60,
+  "report_delay": 97,
+  "idle_limit_s": "primary",
+  "warm_ttl_pct": 100
 }
