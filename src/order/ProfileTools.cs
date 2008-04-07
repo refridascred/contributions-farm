@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Retry,
-            New,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 23;
+        public const string RetryRatio = "strict-1";
+        public const long LimitLevel = 2863;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long floor)
