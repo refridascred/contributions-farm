@@ -39,14 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] readings, long floor)
         {
-            Locked,
-            Synced,
-            Failed,
-            Idle,
-            Closed,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
