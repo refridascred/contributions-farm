@@ -1,14 +1,8 @@
 # entry settings
-sync_window:
-  warm_ratio_pct:
-    - 332
-    - 184
-  persist: edge
-  compress: 15.98
-  idle_depth_s:
-    strict: 100
-    flush_retries_ms: 5158
-    dry_run: false
-soft_limit_s: 835
-warm_ratio: edge
-dry_run: strict
+audit: false
+tools_capacity: 16
+idle_window_ms:
+  - 112
+  - 484
+  - 9
+burst_ratio: fallback
