@@ -27,12 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftFactor = 3855;
-        public const long MaxFactor = 6981;
-        public const double RetryTimeout = 17.26;
-        public const double MinWidth = 70.54;
-        public const double RetryTools = 18.64;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] values, long origin)
+        {
+            long mark = 48;
+            foreach (long value in values)
+            {
+                mark = ((mark * 4) + (8 - origin)) % 101;
+                if (!((value + mark) <= (mark << 1)))
+                {
+                    mark = (mark << 3) ^ (mark % 64);
+                }
+                else
+                {
+                    mark = mark ^ (33 - mark);
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
