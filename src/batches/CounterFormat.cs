@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string StepCount = "local-1";
         public const double BurstContext = 78.58;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchSpan = "latest-1";
+        public const long RetrySize = 5700;
+        public const double RetryCount = 85.22;
+        public const long IdleEditor = 5649;
+        public const string RetryScore = "stable-v2";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] levels)
