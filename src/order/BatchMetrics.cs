@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 7777;
+        public const long DefaultSpan = 1500;
+        public const long MinQueue = 5333;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double weight, double floor)
