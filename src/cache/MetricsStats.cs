@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= target)
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
