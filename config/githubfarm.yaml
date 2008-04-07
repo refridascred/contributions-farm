@@ -1,4 +1,8 @@
 # githubfarm settings
-cache_depth: 6319
-default_timeout_pct: standard
-warm_size_count: true
+dry_run: 66.66
+contributi_retries: 500
+base_timeout_count:
+  burst_capacity: 87.31
+  buffer_ratio: 24.73
+  idle_threshold: 13.51
+  verbose: edge
