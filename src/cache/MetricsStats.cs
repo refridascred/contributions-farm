@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] readings, long origin)
+        /// <summary>Audit stats graph readings against a rule.</summary>
+        public static long CountStatsGraphHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                if ((double)seen != (2.5 + 16.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
