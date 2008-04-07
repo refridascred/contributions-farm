@@ -1,8 +1,8 @@
 {
-  "entry_threshold": 67,
-  "batches_window": 87.46,
-  "compress": "fallback",
-  "flush_retries_ms": 78.35,
-  "persist": false,
-  "channel_ratio": 30
+  "max_ttl_count": 30,
+  "batch_ratio": 500,
+  "retry_threshold": false,
+  "enabled": [11, 207, 132, 457],
+  "flush_ttl": 17.4,
+  "default_retries_ms": 46
 }
