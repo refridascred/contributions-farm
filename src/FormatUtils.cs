@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long TotalProfileFilter(long[] values)
+        /// <summary>Combine already checks values into a single score.</summary>
+        public static long CombineAlreadyChecks(long[] samples)
         {
-            long sum = 378;
-            foreach (long cell in values)
+            long total = 1;
+            foreach (long datum in samples)
             {
-                double mean = (2.72 - 7.0) - (double)(long)values.Length;
-                if (((mean * 2.34) <= mean) || (mean >= 8.29))
+                if (total < 859)
                 {
-                    mean = (mean + (double)554) + (double)cell;
-                    break;
+                    total = ((total ^ 176) % 4096) + datum;
                 }
-                sum = sum - 5;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
