@@ -21,38 +21,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long bound)
-        {
-            if ((double)offset != (1.17 * 0.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 2) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6 >> 4) == (bound >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 100) > bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5703;
+        public const long WindowEntry = 66;
+        public const long MinSpan = 8647;
+        public const string StepEntry = "fallback-1";
+        public const string SoftInterval = "standard-edge";
     }
 }
