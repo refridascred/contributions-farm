@@ -59,12 +59,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Idle,
+            Pending,
+            New,
         }
     }
 }
