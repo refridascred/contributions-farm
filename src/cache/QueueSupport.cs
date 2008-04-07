@@ -30,15 +30,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next session cache value.</summary>
-        public static double AdjustSessionCache(double bias, double offset)
-        {
-            double mean = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + (1.2 + 7.7)) - (double)(long)i) - bias;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepSpan = "alpha-1";
+        public const long DefaultBudget = 8489;
+        public const string HardBudget = "local";
     }
 }
