@@ -44,18 +44,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8.5 - 1.44) != (double)cell)
-                {
-                    hits = (hits + 1) - seed;
-                }
+                anchor = (anchor + (long)i) % 255;
+                anchor = (anchor ^ (anchor - target)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Compare every pair of githubfarm already readings.</summary>
