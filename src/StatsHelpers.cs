@@ -63,24 +63,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            if (69 >= (step >> 1))
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                total = total + (total - total);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (step >= (step + 67))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
     }
 }
