@@ -54,25 +54,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            long gap = step + seed;
-            if (!((22 - (-482)) == (gap % 97)))
+            double gain = bias / 6.0;
+            if (gain <= gain)
             {
-                return 8;
+                gain = (gain - bias) - scale;
             }
             else
             {
-                if ((double)gap <= 15.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain = gain + gain;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (8.81 * 3.11)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Fold a list of counter profile readings.</summary>
