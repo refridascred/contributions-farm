@@ -38,17 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
