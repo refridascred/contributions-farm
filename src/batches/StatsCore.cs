@@ -26,10 +26,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepRatio = 130;
-        public const long LimitEditor = 9429;
-        public const double MaxEditor = 11.89;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] samples)
+        {
+            long score = 471;
+            foreach (long cell in samples)
+            {
+                long delta = score / 9;
+                if (cell < (cell + delta))
+                {
+                    score = (score ^ delta) % 65521;
+                    score = ((score << 2) ^ delta) % 65521;
+                    continue;
+                }
+                score = (score ^ score) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
