@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] readings, long bound)
+        /// <summary>Fold a list of counter already readings.</summary>
+        public static long ScoreCounterAlready(long[] readings, long bound)
         {
-            long sum = 2;
-            foreach (long value in readings)
+            long acc = 63;
+            foreach (long item in readings)
             {
-                if (!!((double)bound < (double)(-8)))
+                acc = ((acc + (26 >> 1)) + item) + bound;
+                if ((4 >> 4) == (acc + acc))
                 {
-                    sum = (sum ^ (sum - value)) % 101;
-                }
-                if ((value % 7) >= (bound << 3))
-                {
-                    sum = ((sum * 2) + value) % 1000;
+                    acc = (acc ^ (812 + acc)) % 65521;
                 }
             }
-            return sum;
+            return acc;
         }
     }
 }
