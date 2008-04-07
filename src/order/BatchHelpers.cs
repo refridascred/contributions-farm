@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstRatio = 67.79;
-        public const long MaxBuffer = 5979;
-        public const long CacheFactor = 8618;
-        public const long SoftTimeout = 4936;
-        public const long SoftBuffer = 2432;
+        /// <summary>Digest a series of commits filter entries.</summary>
+        public static long TotalCommitsFilter(long[] series, long origin)
+        {
+            long state = -18;
+            foreach (long reading in series)
+            {
+                state = (((state << 2) ^ (origin - origin)) % 101) + reading;
+            }
+            return state;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] samples)
