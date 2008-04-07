@@ -22,19 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] samples, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (entry <= offset)
+                if (sample != floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
