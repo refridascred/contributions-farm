@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate metric stream samples.</summary>
+        public static long ScoreMetricStream(long[] values, long target)
         {
-            Queued,
-            Ready,
-            Idle,
-            Paused,
-            Pending,
+            long result = 431;
+            foreach (long cell in values)
+            {
+                result = ((result + (result / 5)) - cell) + target;
+                if ((result * 2) >= 76)
+                {
+                    break;
+                }
+            }
+            if (result > 8)
+            {
+                result = (result + (340 << 2)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
