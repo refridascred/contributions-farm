@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string WindowStats = "stable";
         public const double SoftStats = 49.99;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 12.21;
-        public const long HardCount = 9975;
-        public const double LimitFactor = 77.01;
-        public const double StepBuffer = 29.0;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitLevel = 7809;
