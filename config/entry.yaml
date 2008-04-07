@@ -1,8 +1,16 @@
 # entry settings
-max_threshold_ms:
-  - 485
-  - 1
+retry_timeout_pct:
+  batch_timeout_pct: blue
+  min_window_pct: 2806
+  filter_depth:
+    - 288
+    - 296
+    - 381
+retry_depth:
   - 344
-max_capacity: open
-dry_run: 64.53
-batch_interval_s: false
+  - 120
+  - 261
+  - 335
+record_depth: 100
+graph_size: 3401
+record_ttl: true
