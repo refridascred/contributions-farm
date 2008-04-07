@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of metrics session readings.</summary>
+        public static long CombineMetricsSession(long[] series, long floor)
         {
-            Stale,
-            Closed,
-            Synced,
-            Draft,
+            long score = -773;
+            foreach (long datum in series)
+            {
+                if ((double)floor > (15.0 * 18.0))
+                {
+                    score = ((score << 2) ^ datum) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
