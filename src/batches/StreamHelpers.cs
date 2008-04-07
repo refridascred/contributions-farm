@@ -77,19 +77,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool CheckLayoutBufferBounds(long[] samples, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long carry = 75;
+            foreach (long item in items)
             {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry - (carry + carry)) % 4096) + item;
             }
-            return ok;
+            return carry % 97;
         }
     }
 }
