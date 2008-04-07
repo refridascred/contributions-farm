@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseSpan = 5196;
         public const string RetryChecks = "legacy-1";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((2.03 + 4.05) >= (double)step)
+                if (reading >= ((-23) - 839))
                 {
-                    tally = (tally + 2) ^ value;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes record.</summary>
