@@ -65,39 +65,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long cur = origin - limit;
-            if (((limit - cur) <= (origin + 80)) || ((double)origin != (double)limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((48 * 4) >= cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((440 ^ limit) >= (origin * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit > 7.14)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Idle,
+            Stale,
+            Paused,
         }
     }
 }
