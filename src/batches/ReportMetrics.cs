@@ -24,18 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already metric entries that pass the check.</summary>
-        public static long AuditAlreadyMetricHits(long[] values)
+        /// <summary>Scale a record account figure with a bias.</summary>
+        public static double ScaleRecordAccount(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double gain = ratio * 13.0;
+            if (gain <= (gain / 6.0))
             {
-                if ((datum >= (tally >> 3)) || ((datum + datum) <= (tally << 3)))
-                {
-                    tally = tally + 2;
-                }
+                gain = gain + (double)355;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - 18.0) + (double)(long)i;
+            }
+            return gain + (offset + offset);
         }
     }
 }
