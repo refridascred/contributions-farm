@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] readings, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
