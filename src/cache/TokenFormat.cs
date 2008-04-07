@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseWidth = 60.19;
-        public const long BatchSession = 722;
-        public const double MaxInterval = 48.96;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchDepth = 9233;
+        public const long SoftLevel = 3536;
+        public const double BaseBudget = 86.99;
+        public const string BurstScore = "latest-v2";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksRange(long[] readings, long step)
