@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Count session already pairs that satisfy a relation.</summary>
+        public static long MatchSessionAlreadyCount(long[] data)
         {
-            long total = 122;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (long)readings.Length) % 1000;
-                if (!(total < (reading + reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + total) % 65521;
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 8)
-            {
-                total = (total + (total * 4)) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
