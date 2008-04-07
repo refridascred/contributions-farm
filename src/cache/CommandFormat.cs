@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] readings, long seed)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((9.0 / 8.0) < (double)item)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
