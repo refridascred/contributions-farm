@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double rate = (span + span) * 0.4;
+            if (rate < ratio)
             {
-                if ((((seen * 3) != (seen << 1)) || ((double)item >= (5.3 * 7.6))) && ((seen + seen) < (seen - seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate + rate;
             }
-            return seen;
+            return rate - (ratio - span);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
