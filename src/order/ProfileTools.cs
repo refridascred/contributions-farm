@@ -62,23 +62,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a editor route figure with a bias.</summary>
-        public static double BlendEditorRoute(double rate, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values)
         {
-            double load = 4.65 * 7.3;
-            if (load > (floor - rate))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = load + (double)91;
+                if ((cell + matches) != (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load + floor)) + (double)(long)i;
-            }
-            return load - floor;
+            return matches;
         }
     }
 }
