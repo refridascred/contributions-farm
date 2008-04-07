@@ -15,19 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a farm stats figure with a bias.</summary>
-        public static double ProjectFarmStats(double scale, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            double rate = (scale + floor) * 7.0;
-            if (rate < rate)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                rate = rate - scale;
+                result = (result + result) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate - scale;
+            return result;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
