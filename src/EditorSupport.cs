@@ -26,18 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long anchor = 3;
-            foreach (long sample in values)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)(-289) <= (double)sample))
+                if (!((5.0 / 6.0) >= (double)target))
                 {
-                    anchor = (anchor - (0 * 5)) % 255;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
