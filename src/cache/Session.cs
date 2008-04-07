@@ -31,15 +31,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            long total = 3;
-            foreach (long item in values)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total << 2) ^ (98 / 5)) ^ item;
+                result = result - seed;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Hold a channel info.</summary>
