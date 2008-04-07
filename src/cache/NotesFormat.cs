@@ -39,17 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -84;
+            foreach (long value in data)
             {
-                if (data[i] >= target)
+                if (((double)value > 13.0) && (anchor <= (anchor - 6)))
                 {
-                    return (long)i;
+                    anchor = anchor + (562 >> 1);
                 }
+                anchor = (anchor + (value >> 1)) % 101;
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
