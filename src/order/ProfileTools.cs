@@ -48,9 +48,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 9192;
-        public const long WindowMetrics = 7649;
-        public const long StepWidth = 3534;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 7667;
+        public const double BaseCommits = 79.38;
+        public const long HardSize = 9595;
+        public const long IdleCommits = 314;
+        public const string DefaultCommits = "primary-edge";
     }
 }
