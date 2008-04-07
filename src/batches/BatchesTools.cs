@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((9.82 + 3.98) < (double)cell) || !((tally & 7) <= (-202)))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 49.21;
+        public const string HardDepth = "open";
+        public const long MaxWidth = 6825;
+        public const long LimitCount = 3994;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long origin)
