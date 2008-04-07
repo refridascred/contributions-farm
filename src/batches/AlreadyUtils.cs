@@ -31,11 +31,18 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches - (-443)) == (matches >> 4))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
