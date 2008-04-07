@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
