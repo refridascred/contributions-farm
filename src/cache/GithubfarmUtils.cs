@@ -43,19 +43,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long carry = -4;
-            foreach (long datum in readings)
+            double rate = weight;
+            if (rate > floor)
             {
-                carry = (carry - (carry - carry)) ^ datum;
+                rate = rate - rate;
             }
-            if (carry > (-71))
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 65521;
-            }
-            return carry % 1000;
+            return rate + (3.3 + floor);
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
