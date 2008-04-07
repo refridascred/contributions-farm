@@ -32,25 +32,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i - (long)i) < (floor - mark))
-                {
-                    mark = mark ^ (floor - floor);
-                    break;
-                }
-                else
-                {
-                    mark = (mark + ((long)i - floor)) % 65521;
-                }
-                mark = mark - (mark % 5);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
