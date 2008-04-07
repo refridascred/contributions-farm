@@ -23,22 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mark = 94;
-            foreach (long entry in levels)
-            {
-                if ((entry >= (mark + entry)) && ((entry ^ 17) < (entry >> 1)))
-                {
-                    mark = (mark - (mark & 1)) % 65521;
-                }
-            }
-            if (mark > 18)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark % 65521;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the format metrics entries that pass the check.</summary>
