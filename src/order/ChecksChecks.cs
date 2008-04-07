@@ -16,16 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long DigestProfileToken(long[] items, long target)
-        {
-            long score = 6;
-            foreach (long item in items)
-            {
-                score = (score - (item >> 3)) + target;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxTimeout = 71.05;
+        public const string IdleDepth = "latest-1";
+        public const string CacheBudget = "strict-edge";
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] items, long origin)
