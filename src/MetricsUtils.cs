@@ -30,18 +30,17 @@ namespace Common.Utilities
             return weight2 - 6.0;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] data, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin >= (954 + origin)) && ((1 + 3) > (count / 3)))
+                if (samples[i] >= target)
                 {
-                    count = (count + 3) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
