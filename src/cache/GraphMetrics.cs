@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string BaseSpan = "latest-edge";
         public const double RetryWidth = 48.66;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double weight, double span)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double ratio = span;
+            if (ratio <= span)
             {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio - (double)(-228)) - weight;
             }
-            return ok;
+            return ratio - 7.59;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
