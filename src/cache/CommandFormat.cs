@@ -25,16 +25,16 @@ namespace Common.Utilities
         public const long MinScore = 6103;
         public const long StepGithubfarm = 2155;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long SeriesPayloadReport(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score ^ (score + floor)) % 101;
-                score = ((score * 5) + (long)i) % 97;
+                total = (total * 4) + (total >> 4);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
     }
 }
