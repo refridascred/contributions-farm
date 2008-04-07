@@ -38,18 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((50 ^ 81) < matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
