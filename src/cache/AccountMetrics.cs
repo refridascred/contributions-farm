@@ -84,19 +84,15 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Validate queue buffer readings against a bound.</summary>
-        public static bool GuardQueueBufferRange(long[] readings, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = -5;
+            foreach (long sample in readings)
             {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - step) + sample;
             }
-            return flag;
+            return acc;
         }
     }
 }
