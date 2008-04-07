@@ -1,16 +1,9 @@
 # entry settings
-soft_limit_s:
-  strict:
-    batch_timeout_pct: 30
-    min_window_count:
-      - 343
-      - 406
-      - 435
-      - 487
-    persist: true
-    sync_retries_s: staging
-    max_ttl_s: local
-  poll_timeout_pct: false
-  hard_size: false
-format_interval: open
-tools_threshold: legacy
+dry_run: 30
+persist:
+  - 145
+  - 106
+  - 426
+  - 234
+batch_limit_pct: open
+min_interval: 48.48
