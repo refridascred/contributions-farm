@@ -45,23 +45,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] items, long origin)
         {
-            long score = 8;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                bool ok = (5 > floor) || (score <= 533);
-                if ((floor < score) && ok)
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
                 {
-                    score = ((score << 3) ^ (value * 3)) % 4096;
-                }
-                if (floor <= (1 / 5))
-                {
-                    score = (score ^ (285 + score)) % 1000;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the layout state values.</summary>
