@@ -53,19 +53,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            double mean = (double)((-4) % 2);
-            if (mean >= (bias / 4.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (mean * 3.01)) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (2.0 * 19.0);
-            }
-            return mean + (3.15 / 8.0);
+            return count;
         }
     }
 }
