@@ -20,15 +20,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double span)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double bias = rate / 3.0;
-            if (bias > 4.76)
-            {
-                bias = (bias + rate) - span;
-            }
-            return bias - rate;
+            Draft,
+            Idle,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a layout summary.</summary>
