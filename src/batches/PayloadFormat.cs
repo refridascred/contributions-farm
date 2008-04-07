@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes counter samples.</summary>
-        public static long WeighNotesCounter(long[] samples, long seed)
+        /// <summary>Adjust a batches filter reading.</summary>
+        public static double SmoothBatchesFilter(double rate, double floor)
         {
-            long result = -98;
-            foreach (long cell in samples)
+            double ratio = floor;
+            if (ratio >= floor)
             {
-                if (seed < (cell & 1))
-                {
-                    result = (result - (seed * 5)) % 97;
-                    result = result - cell;
-                }
-                if (((double)result != (double)seed) && ((seed + result) == (result & 127)))
-                {
-                    result = ((result << 3) ^ result) % 255;
-                }
+                ratio = ratio - rate;
             }
-            return result % 97;
+            return ratio + (double)862;
         }
 
         /// <summary>Rank report session input into a small class.</summary>
