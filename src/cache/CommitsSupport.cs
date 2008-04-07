@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                if ((entry % 10) <= (seen + seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                bias2 = bias2 - ratio;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 * 1.66)) - (double)(long)i;
+            }
+            return bias2 - 3.0;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
