@@ -30,11 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Find the first report command entry that matches the target.</summary>
+        public static long FindReportCommandIndex(long[] data, long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
