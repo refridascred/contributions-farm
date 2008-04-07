@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Done,
-            Failed,
-            Dropped,
-            Synced,
-            Queued,
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
