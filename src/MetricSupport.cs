@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long BurstFactor = 9443;
         public const long CacheChecks = 4246;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = 5;
+            foreach (long value in data)
             {
-                if ((double)6 >= (double)floor)
-                {
-                    count = (count + 1) + value;
-                }
+                total = ((((total << 2) ^ (256 * 4)) % 65521) ^ value) + target;
             }
-            return count;
+            return total % 1000;
         }
     }
 }
