@@ -38,11 +38,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 721;
-        public const double MaxTimeout = 72.52;
-        public const double MaxWidth = 74.23;
-        public const long LimitWidth = 1342;
-        public const long DefaultCount = 602;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
