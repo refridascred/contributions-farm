@@ -34,25 +34,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a schema profile value against two limits.</summary>
-        public static long BucketSchemaProfile(long offset, long limit)
+        /// <summary>Derive the next batches route value from a seed.</summary>
+        public static long IterateBatchesRoute(long limit)
         {
-            long prev = offset ^ limit;
-            if ((offset <= (13 % 60)) || ((offset - limit) >= (81 + prev)))
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                acc = (acc ^ acc) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset & 7) < (offset - 936))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Adjust a stream reading.</summary>
