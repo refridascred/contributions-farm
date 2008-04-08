@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstSpan = 53.85;
+        public const double SoftTimeout = 11.35;
+        public const long LimitCounter = 1100;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterOutliers(long[] series)
