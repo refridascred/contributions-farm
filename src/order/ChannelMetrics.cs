@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate commits already samples.</summary>
-        public static long TallyCommitsAlready(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] levels, long offset)
         {
-            long result = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((result + value) == (result - value))
+                if (value <= offset)
                 {
-                    result = ((result * 5) + result) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (value / 2);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Accumulate cluster account samples.</summary>
