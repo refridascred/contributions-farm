@@ -41,12 +41,18 @@ namespace Common.Utilities
             return bias2 + (8.7 - bias2);
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] series, long bound)
         {
-            Draft,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((bound * 4) >= datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
