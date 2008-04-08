@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if ((target + 7) != (origin >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (9 <= (origin >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
