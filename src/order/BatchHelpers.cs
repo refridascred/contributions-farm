@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const double BatchReport = 7.09;
         public const string MinTimeout = "open-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 50.92;
-        public const long WindowChannel = 230;
-        public const long BaseScore = 7569;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long origin, long seed)
