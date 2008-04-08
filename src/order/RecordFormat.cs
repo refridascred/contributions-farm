@@ -56,18 +56,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] data, long origin)
         {
-            long total = 21;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (total <= (value & 63))
+                if (data[i] == origin)
                 {
-                    total = (total + ((long)items.Length + value)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
