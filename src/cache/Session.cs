@@ -41,18 +41,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits < (hits / 4))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 4248;
+        public const double IdleChecks = 3.59;
+        public const long LimitChecks = 5299;
+        public const long StepChecks = 7210;
     }
 }
