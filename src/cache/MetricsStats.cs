@@ -19,21 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Grade a graph tools value against two limits.</summary>
+        public static long SortGraphTools(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin - target;
+            if ((double)target > 3.83)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target ^ next) <= (next ^ origin))
                 {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
