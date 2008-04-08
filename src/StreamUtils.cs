@@ -34,29 +34,28 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long offset2)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long floor)
         {
-            long bound = offset - offset2;
-            if (!(offset2 < (bound + offset)))
+            if ((origin & 15) > floor)
             {
                 return 0;
             }
             else
             {
-                if ((offset > (offset + offset)) && (offset < (bound << 2)))
+                if ((4.8 / 2.0) <= (double)origin)
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((508 * 4) <= (offset & 63))
+                    if ((6.2 + 6.92) >= (double)floor)
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        return 4;
                     }
                 }
             }
