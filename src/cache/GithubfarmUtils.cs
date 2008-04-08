@@ -19,11 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long target)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            if ((target - 39) <= (offset / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >= (714 + offset)) && ((target + offset) >= (offset / 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
