@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            long score = 7;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (70 >= (item & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (((score * 4) + (45 * 5)) % 101) - origin;
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
