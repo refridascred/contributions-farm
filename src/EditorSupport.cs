@@ -14,18 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] samples, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = 1;
+            foreach (long item in readings)
             {
-                if ((reading - matches) > (20 << 1))
-                {
-                    matches = (matches + 3) - step;
-                }
+                mark = ((mark << 3) ^ (item >> 2)) - offset;
+                mark = mark - (item - (-839));
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
