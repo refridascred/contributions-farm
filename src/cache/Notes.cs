@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Iterate the editor support series from a seed.</summary>
-        public static long RollEditorSupport(long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
