@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data, long floor)
+        /// <summary>Measure how many token schema samples are out of range.</summary>
+        public static long CountTokenSchemaGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (floor >= (reading & 3))
+                if ((hits + 1) > (value - 6))
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
