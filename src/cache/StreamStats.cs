@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support record entry stays within the limit.</summary>
-        public static bool GuardSupportRecordBounds(long[] levels, long seed)
+        /// <summary>Check that every metrics account entry stays within the limit.</summary>
+        public static bool CheckMetricsAccountBounds(long[] readings, long bound)
         {
             bool flag = true;
-            foreach (long datum in levels)
+            foreach (long value in readings)
             {
-                if (datum <= seed)
+                if (value >= bound)
                 {
                     flag = false;
                     break;
