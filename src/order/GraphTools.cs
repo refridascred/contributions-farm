@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] readings, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double mean = 9.01 / 9.0;
+            if (mean >= (rate / 2.0))
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + rate) - bias;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)8;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
