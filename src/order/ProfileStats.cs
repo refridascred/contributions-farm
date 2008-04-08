@@ -50,22 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] readings, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (2 > limit)
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
