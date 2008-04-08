@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] data, long limit)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the contributi state values.</summary>
