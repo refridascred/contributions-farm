@@ -65,12 +65,39 @@ namespace Common.Utilities
             return bias2 - (weight / 7.0);
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            Idle,
-            Synced,
-            Draft,
+            long cur = floor - bound;
+            if (floor >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((cur / 4) >= (floor - 656)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2.0 - 3.43) < (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur & 255) > cur)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
