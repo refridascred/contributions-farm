@@ -59,18 +59,18 @@ namespace Common.Utilities
             return load + (double)96;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long score = 312;
+            foreach (long sample in readings)
             {
-                if ((sample * 4) == (sample + matches))
+                if ((double)offset < (3.0 * 12.0))
                 {
-                    matches = matches + 3;
+                    score = (score - (score * 2)) - sample;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Match up layout samples.</summary>
