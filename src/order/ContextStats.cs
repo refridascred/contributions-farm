@@ -41,19 +41,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] data, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (datum < offset)
+                if (datum <= 5)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
