@@ -54,17 +54,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a counter graph reading by value.</summary>
-        public static long LocateCounterGraphIndex(long[] readings, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
