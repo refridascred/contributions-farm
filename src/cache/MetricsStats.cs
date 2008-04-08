@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] items, long step)
+        /// <summary>Compare every pair of already format readings.</summary>
+        public static long MatchAlreadyFormatCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
