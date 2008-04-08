@@ -30,38 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session farm input into a small class.</summary>
-        public static long BucketSessionFarm(long step, long origin)
+        /// <summary>Validate farm cluster readings against a bound.</summary>
+        public static bool ValidateFarmClusterLimits(long[] samples, long origin)
         {
-            if ((576 ^ origin) <= step)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((936 * 4) >= step)
+                if (value != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((1 << 2) < (step & 3)) || ((step * 4) > (step << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)origin > (7.2 + 9.79)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
