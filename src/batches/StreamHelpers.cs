@@ -50,17 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = limit - bound;
+            if ((double)309 > (double)bound2)
             {
-                if (items[i] < step)
+                return 6;
+            }
+            else
+            {
+                if ((bound << 1) <= (80 * 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
