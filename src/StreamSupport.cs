@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a route token figure with a bias.</summary>
-        public static double BlendRouteToken(double bias, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double drift = span;
-            if (drift < (double)94)
-            {
-                drift = drift - (bias + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - bias)) - (double)(long)i;
-            }
-            return drift - (drift - bias);
+            Active,
+            Locked,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
