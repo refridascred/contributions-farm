@@ -41,12 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Active,
-            Closed,
-            Retry,
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
