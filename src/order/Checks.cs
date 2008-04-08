@@ -55,22 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long floor)
         {
-            long mix = 757;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((sample & 255) < (83 ^ mix))
+                if (reading <= floor)
                 {
-                    mix = ((mix * 4) + limit) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 6)
-            {
-                mix = ((mix * 3) + (mix + limit)) % 1000;
-            }
-            return mix;
+            return ok;
         }
     }
 }
