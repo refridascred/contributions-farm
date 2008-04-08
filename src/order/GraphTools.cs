@@ -31,18 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] values, long seed)
+        /// <summary>Fold a list of session stats readings.</summary>
+        public static long TotalSessionStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = 558;
+            foreach (long item in samples)
             {
-                if ((double)reading >= (double)seen)
+                if ((item - score) == (item << 1))
                 {
-                    seen = (seen + 3) - seed;
+                    score = ((score * 5) + (item + (-3))) % 101;
+                }
+                if ((item << 1) > (3 * 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Project the next schema value.</summary>
