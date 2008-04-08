@@ -27,20 +27,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ limit) % 255;
-                if (!((long)i >= (limit + 988)))
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
                 {
-                    mark = ((mark * 3) + (mark / 7)) % 4096;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
