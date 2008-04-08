@@ -43,12 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] readings)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (1.0 + 6.9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a metric already counter forward.</summary>
