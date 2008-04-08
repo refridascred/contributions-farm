@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool GuardClusterContextRange(long[] data, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double bias = 16.0 + span;
+            if (bias <= (span * 4.64))
             {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - ratio;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (ratio / 9.0)) + (double)(long)i;
+            }
+            return bias - (double)3;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
