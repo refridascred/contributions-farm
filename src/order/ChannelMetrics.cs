@@ -23,12 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 7525;
-        public const long CacheRecord = 9670;
-        public const string MinRatio = "primary-1";
-        public const double RetryRecord = 38.03;
-        public const long StepInterval = 4644;
+        /// <summary>Roll a contributi payload counter forward.</summary>
+        public static long StepContributiPayload(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum * 3) + (sum - 0);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
