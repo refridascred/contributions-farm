@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((long)i < ((long)i % 8))
+                {
+                    mix = (mix << 2) ^ (mix + step);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command header.</summary>
