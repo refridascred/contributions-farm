@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Accumulate farm contributi samples.</summary>
+        public static long WeighFarmContributi(long[] values)
         {
-            long anchor = 6;
-            foreach (long cell in items)
+            long state = 4;
+            foreach (long entry in values)
             {
-                anchor = (anchor * 4) + (anchor + cell);
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
-                anchor = anchor ^ (92 % 12);
+                if ((8.0 + 17.0) != (double)entry)
+                {
+                    state = (state ^ state) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ state) % 1000;
+                }
             }
-            if (anchor > 6)
-            {
-                anchor = anchor - (anchor * 2);
-            }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Describe the report class values.</summary>
