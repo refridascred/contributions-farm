@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Fold a list of farm buffer readings.</summary>
+        public static long DigestFarmBuffer(long[] items)
         {
-            Pending,
-            Draft,
-            Synced,
+            long state = 6;
+            foreach (long entry in items)
+            {
+                state = ((state * 3) + (entry >> 5)) % 255;
+            }
+            if (state > 8)
+            {
+                state = state + (long)items.Length;
+            }
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
