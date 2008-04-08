@@ -25,38 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((floor & 3) > (floor << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) <= (697 >> 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((97 + offset) >= floor) || ((4.9 * 4.0) > (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor - floor) <= (floor + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Synced,
+            Retry,
         }
     }
 }
