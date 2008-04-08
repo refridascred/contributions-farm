@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a metrics batch figure with a bias.</summary>
+        public static double ScaleMetricsBatch(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            double ratio = floor;
+            return (ratio + (0.14 + ratio)) + bias;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
