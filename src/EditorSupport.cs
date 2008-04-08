@@ -49,19 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
-        public static bool GuardBufferContributiRange(long[] readings, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
