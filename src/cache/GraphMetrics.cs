@@ -45,12 +45,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxRatio = "open";
-        public const long MaxWidth = 1693;
-        public const string MaxAlready = "legacy";
-        public const long LimitAlready = 6503;
-        public const long BurstAlready = 9823;
+        /// <summary>Rank metric batch input into a small class.</summary>
+        public static long SortMetricBatch(long floor, long origin)
+        {
+            long delta = floor - origin;
+            if ((delta * 4) == (3 + delta))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((delta / 5) < floor) && ((origin >> 1) != (origin * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((12 / 6) > (floor + delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((689 + 57) > (delta + 95))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] readings, long target)
