@@ -1,11 +1,12 @@
 {
-  "retry_limit_s": "legacy",
-  "context_threshold": {
-    "enabled": 26,
-    "contributi_delay": "standard",
-    "default_ttl": 5288,
-    "default_retries": "blue"
-  },
-  "batch_ratio_count": 7.14,
-  "queue_limit": "eu-west"
+  "format_retries": "local",
+  "batches_timeout": 37.06,
+  "window_ratio": 60,
+  "max_ttl": false,
+  "dry_run": true,
+  "warm_ratio_ms": {
+    "cache_ttl_ms": "blue",
+    "audit": 6537,
+    "default_threshold": "staging"
+  }
 }
