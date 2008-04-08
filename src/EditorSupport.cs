@@ -36,12 +36,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 2664;
-        public const string BurstScore = "stable";
-        public const long HardCounter = 86;
-        public const long WindowCounter = 4784;
-        public const string BurstCounter = "cached-edge";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Failed,
+            Closed,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
