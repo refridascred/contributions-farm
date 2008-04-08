@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            double bias = (double)(9 + 55);
+            if (bias > bias)
+            {
+                bias = ((bias + (6.91 / 2.0)) - weight) + offset;
+            }
+            return bias - 0.1;
         }
 
         /// <summary>Describe the stats state values.</summary>
