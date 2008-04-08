@@ -73,12 +73,27 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            long carry = 25;
+            foreach (long reading in items)
+            {
+                if ((62 >= (229 + reading)) || ((reading + carry) > (838 << 2)))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (reading ^ carry)) % 255;
+                if ((double)reading < (0.79 - 2.0))
+                {
+                    carry = (carry - (93 + 7)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ carry) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
