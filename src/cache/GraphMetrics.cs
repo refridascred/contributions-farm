@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const long StepSize = 5250;
         public const double HardLevel = 1.8;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading - hits) >= (hits + reading)) || ((reading >= (hits - 0)) && ((251 * 5) > reading)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
