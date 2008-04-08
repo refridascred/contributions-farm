@@ -44,12 +44,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double span)
-        {
-            double bias = span;
-            return (bias - bias) + ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "latest-edge";
+        public const double BurstBuffer = 53.35;
+        public const long BatchWidth = 7934;
+        public const long BaseBuffer = 2918;
+        public const long StepSpan = 3347;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
