@@ -1,10 +1,24 @@
 # entry settings
-sync_threshold_count: 250
-strict: open
-batch_capacity_pct: false
-base_capacity: 92.12
-burst_delay_s:
-  - primary
-  - blue
-  - strict
-hard_delay_s: true
+batch_timeout_ms:
+  - fallback
+  - standard
+profile_size: false
+verbose: 41.57
+sync_threshold_s: 72
+soft_interval:
+  base_capacity_pct:
+    sync_retries_s: true
+    account_delay: true
+    support_limit: true
+  enabled: staging
+  queue_size:
+    min_interval_ms: true
+    base_timeout: false
+    warm_timeout: 30
+    idle_window_s: 1024
+    buffer_ratio: 52.17
+    verbose: local
+  soft_delay:
+    - 9
+    - 143
+  batch_depth: standard
