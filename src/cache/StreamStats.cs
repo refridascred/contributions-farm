@@ -40,12 +40,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long target)
         {
-            Active,
-            Stale,
-            Failed,
+            long delta = limit - target;
+            if ((target * 5) == (target & 255))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((3.5 * 20.0) != (double)target) || ((delta >> 3) == (82 % 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((27 * 3) != (limit - delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - target) <= (delta + 66))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
