@@ -72,12 +72,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Paused,
-            Idle,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 5781;
+        public const string RetrySpan = "standard-edge";
+        public const double MinToken = 45.84;
+        public const long SoftDepth = 7483;
     }
 }
