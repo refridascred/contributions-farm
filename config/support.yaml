@@ -1,8 +1,11 @@
 # support settings
-strict: 30
-cache_depth_ms: false
-stats_timeout: 460
-payload_limit: false
-dry_run:
-  - 438
-  - 44
+tools_size: 90.6
+metric_capacity: 75
+hard_depth: 34.81
+idle_window: 99
+record_window: green
+default_ttl_s:
+  - 87
+  - 266
+  - 312
+  - 385
