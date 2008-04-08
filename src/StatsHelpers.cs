@@ -38,14 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Retry,
+            Dropped,
+            Synced,
             Stale,
-            Idle,
-            Queued,
-            Done,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
