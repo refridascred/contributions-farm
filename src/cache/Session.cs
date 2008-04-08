@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 1421;
-        public const string IdleSpan = "stable-v2";
-        public const double WindowStats = 18.43;
-        public const string CacheInterval = "staging";
+        /// <summary>Count the payload support entries that pass the check.</summary>
+        public static long MeasurePayloadSupportMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen << 1) == (value << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "standard-v2";
