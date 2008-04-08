@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long target, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] values, long step)
         {
-            long gap = target ^ origin;
-            if ((target + gap) > origin)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.68 / 9.0) < (double)gap)
+                if ((step >> 2) > reading)
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((gap ^ origin) < (origin / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
