@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardSpan = 59.09;
-        public const string BatchLevel = "strict";
-        public const long WindowWidth = 8209;
-        public const double LimitFactor = 81.44;
-        public const long BatchWindow = 6018;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSpan = 4821;
+        public const long RetryChannel = 3750;
+        public const long MaxWidth = 1408;
+        public const long CacheSpan = 2946;
+        public const long CacheTimeout = 2965;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long origin, long limit)
