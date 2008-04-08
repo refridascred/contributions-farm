@@ -32,17 +32,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = anchor ^ (floor + (long)i);
-                anchor = (anchor + (floor + anchor)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry << 3) ^ carry) % 255) ^ (long)i2;
+                }
+                if (step > (carry + (-345)))
+                {
+                    carry = (carry - ((long)i * 2)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
     }
 }
