@@ -1,4 +1,20 @@
 # githubfarm settings
-cache_depth_ms: stable
-soft_interval_pct: true
-cache_size_s: primary
+persist: 1024
+schema_timeout:
+  profile_delay: 72.72
+  commits_retries: 29.73
+  idle_timeout_pct: true
+verbose:
+  retry_window_count:
+    soft_ttl_ms: cached
+    token_timeout: true
+    dry_run: 61.51
+  persist: true
+  warm_depth: 38
+  max_ratio_s:
+    - strict
+    - open
+  burst_delay_s: open
+  base_window: 250
+warm_interval_s: 82.33
+sync_interval_s: 40
