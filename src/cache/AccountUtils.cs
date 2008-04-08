@@ -22,14 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels, long floor)
         {
-            Retry,
-            Idle,
-            Locked,
-            Dropped,
-            Done,
+            long acc = 50;
+            foreach (long item in levels)
+            {
+                acc = (acc - (item << 3)) % 97;
+            }
+            if (acc > (-41))
+            {
+                acc = (acc + (floor - (long)levels.Length)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
