@@ -46,10 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardLevel = 11.77;
-        public const double MinWidth = 42.32;
-        public const long BaseRatio = 1881;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Done,
+            New,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] levels)
