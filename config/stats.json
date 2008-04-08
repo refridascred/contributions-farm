@@ -1,7 +1,5 @@
 {
-  "base_retries_s": 7466,
-  "flush_depth": ["eu-west", "local"],
-  "retry_depth": "staging",
-  "idle_timeout_s": false,
-  "retry_ratio": "blue"
+  "idle_ttl_pct": 30,
+  "hard_ratio_s": 6232,
+  "strict": ["eu-west", "primary"]
 }
