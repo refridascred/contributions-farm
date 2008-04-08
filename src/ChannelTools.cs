@@ -22,19 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of tools session entries.</summary>
-        public static long FoldToolsSession(long[] readings, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = 1;
-            foreach (long sample in readings)
-            {
-                mix = (((mix * 2) + (78 << 3)) - sample) - origin;
-            }
-            if (mix < 947)
-            {
-                mix = ((mix << 2) ^ mix) % 97;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
