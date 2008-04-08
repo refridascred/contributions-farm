@@ -1,5 +1,10 @@
 # entry settings
-max_interval_count: 23
-graph_retries: strict
-enabled: staging
-default_limit: cached
+idle_interval_pct:
+  profile_window: legacy
+  dry_run: 98.51
+  stream_window: 657
+  cache_interval: false
+context_ttl: 30
+verbose: local
+poll_capacity_ms: fallback
+sync_timeout_count: 1024
