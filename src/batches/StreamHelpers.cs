@@ -14,12 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long seed)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            if (limit >= (limit + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit & 63) >= (limit & 255)) || ((seed % 12) > seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
