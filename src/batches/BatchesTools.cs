@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 49.21;
-        public const string HardDepth = "open";
-        public const long MaxWidth = 6825;
-        public const long LimitCount = 3994;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every record profile entry stays within the limit.</summary>
         public static bool CheckRecordProfileBounds(long[] data, long limit)
