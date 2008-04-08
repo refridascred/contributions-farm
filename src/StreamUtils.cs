@@ -62,11 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "stable";
-        public const long MinCounter = 6630;
-        public const long LimitCounter = 3746;
-        public const long HardCounter = 5000;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
