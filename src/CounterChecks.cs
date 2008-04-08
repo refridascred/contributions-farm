@@ -67,10 +67,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCount = "legacy-1";
-        public const long BatchInterval = 913;
-        public const string BatchFactor = "local-v2";
-        public const long CacheTimeout = 4506;
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long TallyProfileSchemaHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((((sample & 31) <= (sample & 1)) && ((matches + sample) > 49)) && !((matches / 3) != (matches + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
