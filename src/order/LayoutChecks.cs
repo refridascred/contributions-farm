@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const long SoftRatio = 3219;
         public const long LimitSpan = 196;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
