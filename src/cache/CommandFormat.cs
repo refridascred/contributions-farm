@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftDepth = 4357;
+        public const string SoftBudget = "local-edge";
+        public const string MaxSize = "alpha-edge";
+        public const string HardCluster = "latest-1";
+        public const string LimitFactor = "staging-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 2160;
