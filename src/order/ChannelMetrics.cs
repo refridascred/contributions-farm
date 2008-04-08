@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((hits % 8) >= offset) && ((1 <= (offset & 7)) && ((hits - cell) <= (offset + 5))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 9751;
+        public const long BurstFactor = 3108;
+        public const long HardTools = 485;
+        public const long MaxTools = 8677;
+        public const long StepTools = 2419;
     }
 }
