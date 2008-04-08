@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long target)
         {
-            long prev = step ^ offset;
-            if ((offset / 5) < prev)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 3) >= prev)
+                if (readings[i] > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev - step) >= (offset >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (prev < 8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the layout account series from a seed.</summary>
