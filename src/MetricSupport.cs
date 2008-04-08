@@ -22,14 +22,19 @@ namespace Common.Utilities
         public const long IdleAccount = 5310;
         public const string SoftAccount = "fallback";
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] values, long limit)
         {
-            Draft,
-            Synced,
-            Queued,
-            Locked,
-            Failed,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
