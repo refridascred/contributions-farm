@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next cluster tools value.</summary>
-        public static double BlendClusterTools(double rate, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long seed)
         {
-            double ratio = 4.8;
-            if (ratio <= span)
+            long slot = limit - seed;
+            if ((double)limit <= (1.0 / 9.0))
             {
-                ratio = ratio + (ratio - rate);
+                return 0;
             }
             else
             {
-                ratio = ratio - span;
+                if ((slot - limit) <= (slot % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return ratio + (double)196;
         }
 
         /// <summary>Check that every support record entry stays within the limit.</summary>
