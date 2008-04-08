@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Accumulate report layout samples.</summary>
+        public static long ScoreReportLayout(long[] series)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long state = 0;
+            foreach (long entry in series)
+            {
+                if ((state - 9) > (entry - state))
+                {
+                    state = ((state << 3) ^ state) % 4096;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of tools session entries.</summary>
