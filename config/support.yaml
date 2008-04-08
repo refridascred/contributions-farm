@@ -1,7 +1,11 @@
 # support settings
-base_capacity_count: local
-min_timeout_pct: 67.42
-burst_delay_ms: eu-west
-max_threshold: open
-checks_ratio: 100
-compress: open
+default_window: 77.48
+graph_limit: latest
+queue_interval: false
+strict: false
+flush_window_pct: 1024
+session_window:
+  - edge
+  - legacy
+  - green
+  - cached
