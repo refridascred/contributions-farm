@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary; do
+for item in blue edge staging latest; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=192
+COMMAND_LIMIT=89
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
