@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                score = (score << 2) ^ (score >> 2);
-                score = ((score * 4) + (long)i) % 101;
+                if (9.69 < (double)count)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
