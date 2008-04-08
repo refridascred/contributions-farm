@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardWidth = 7232;
-        public const double WindowLevel = 19.95;
-        public const double DefaultOrder = 13.67;
-        public const long MinOrder = 5334;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings)
+        {
+            long score = 6;
+            foreach (long value in readings)
+            {
+                if ((score + 0) == (54 + 854))
+                {
+                    score = ((score + (score * 3)) % 255) + value;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long seed)
