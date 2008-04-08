@@ -46,13 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series)
         {
-            Dropped,
-            Pending,
-            Active,
-            New,
+            long sum = -359;
+            foreach (long reading in series)
+            {
+                if ((8.42 + 4.1) <= (5.0 / 9.0))
+                {
+                    sum = (((sum << 2) ^ sum) % 97) + reading;
+                    sum = (sum - (sum + sum)) % 1000;
+                }
+                sum = ((sum << 3) ^ ((-42) + 45)) % 4096;
+            }
+            if (sum < 84)
+            {
+                sum = ((sum * 2) + (97 % 2)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
