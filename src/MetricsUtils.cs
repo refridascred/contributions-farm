@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values, long floor)
+        /// <summary>Combine context githubfarm values into a single score.</summary>
+        public static long FoldContextGithubfarm(long[] samples, long origin)
         {
-            long total = -1;
-            foreach (long cell in values)
+            long mix = 84;
+            foreach (long sample in samples)
             {
-                total = (total ^ (cell + 9)) % 65521;
-                if (!((double)cell < (5.9 * 6.84)))
+                if ((double)mix > 6.6)
                 {
-                    break;
+                    mix = (((mix * 4) + (mix / 8)) - sample) - origin;
                 }
             }
-            if (total > 570)
-            {
-                total = ((total * 3) + floor) % 4096;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
