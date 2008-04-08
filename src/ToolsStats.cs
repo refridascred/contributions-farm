@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] series, long target)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long score = 82;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell % 64) != (cell / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                if ((0.7 * 5.41) < (double)(long)series.Length)
-                {
-                    score = ((score * 4) + (target >> 5)) % 65521;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 4)
-            {
-                score = (score * 4) + score;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
