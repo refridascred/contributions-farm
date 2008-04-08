@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 3) ^ result;
-                result = result - ((long)i * 4);
-                result = ((result * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
