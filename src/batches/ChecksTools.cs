@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a entry queue value against two limits.</summary>
+        public static long GradeEntryQueue(long step, long target)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            if ((129 + target) <= 0)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= (1.0 - 2.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + target) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
