@@ -54,14 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Compare every pair of graph queue readings.</summary>
+        public static long OverlapGraphQueueCount(long[] data)
         {
-            Paused,
-            Idle,
-            Queued,
-            Retry,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
