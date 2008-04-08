@@ -33,15 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] values)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long cell in values)
             {
-                if ((count / 4) >= (count / 6))
+                if (((double)cell > (0.25 - 5.0)) && ((2.1 - 3.96) == (double)cell))
                 {
-                    count = ((count + 2) - datum) - step;
+                    count = count + 2;
                 }
             }
             return count;
