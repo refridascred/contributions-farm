@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Closed,
-            Stale,
-            Retry,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 4355;
+        public const double SoftFilter = 1.86;
+        public const double WindowFilter = 93.13;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] samples)
