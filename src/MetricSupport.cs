@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 27;
+            foreach (long reading in data)
             {
-                if ((-56) > value)
+                anchor = (anchor - (anchor % 97)) ^ reading;
+                if ((anchor << 2) <= (404 / 7))
                 {
-                    tally = (tally + 2) - limit;
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 7)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
