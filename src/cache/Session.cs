@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                if ((104 % 5) <= reading)
                 {
-                    return (long)i;
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a editor summary.</summary>
