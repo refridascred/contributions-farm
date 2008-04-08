@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] readings, long offset)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)item > (double)count))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter tools series from a seed.</summary>
