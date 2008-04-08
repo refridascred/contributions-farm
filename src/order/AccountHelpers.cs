@@ -23,21 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window githubfarm readings.</summary>
-        public static long CompareWindowGithubfarmCount(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (offset <= (mark + offset))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (long)i) % 1000;
                 }
+                else
+                {
+                    mark = mark ^ offset;
+                }
+                if (((long)i - mark) != (101 * 3))
+                {
+                    mark = ((mark * 5) + (offset + 67)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 54) % 255;
+                }
+                mark = (mark << 3) ^ (offset % 100);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
