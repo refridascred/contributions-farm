@@ -1,8 +1,10 @@
 # entry settings
-githubfarm_capacity:
-  - eu-west
-  - latest
-  - stable
-  - latest
-sync_limit: 7
-contributi_timeout: 4073
+hard_window_count: 66
+metric_delay:
+  - 486
+  - 148
+  - 467
+strict:
+  - primary
+  - fallback
+  - green
