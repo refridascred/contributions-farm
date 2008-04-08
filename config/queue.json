@@ -1,5 +1,17 @@
 {
-  "strict": 93.46,
-  "compress": "stable",
-  "audit": 79
+  "cache_window": 98,
+  "schema_window": {
+    "payload_ttl": {
+      "sync_interval_count": 6058,
+      "cache_timeout": "edge",
+      "cache_size": 1024,
+      "enabled": 92.66
+    },
+    "default_depth_pct": "edge",
+    "support_capacity": "legacy",
+    "idle_threshold_pct": ["blue", "stable", "staging"]
+  },
+  "format_ttl": 15,
+  "checks_ratio": 6566,
+  "cache_ratio": "blue"
 }
