@@ -24,12 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double floor)
         {
-            Paused,
-            Locked,
-            Queued,
+            double weight = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (floor - floor)) + (double)(long)i) - ratio;
+            }
+            return weight + (5.0 * 3.21);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
