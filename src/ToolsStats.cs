@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            Synced,
+            Done,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the report class values.</summary>
