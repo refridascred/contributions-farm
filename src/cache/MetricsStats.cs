@@ -60,21 +60,18 @@ namespace Common.Utilities
         public const long RetryTools = 3210;
         public const string MinCount = "strict-1";
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally - value) != (value - value))
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
