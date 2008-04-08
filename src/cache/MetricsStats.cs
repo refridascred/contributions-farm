@@ -53,19 +53,12 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (8.62 >= (double)cell)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "latest";
+        public const long StepTools = 1062;
+        public const long BurstTimeout = 5487;
+        public const long RetryTools = 3210;
+        public const string MinCount = "strict-1";
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] levels)
