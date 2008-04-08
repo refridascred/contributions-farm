@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm filter samples are out of range.</summary>
-        public static long CountFarmFilterHits(long[] values, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = 94;
+            foreach (long value in data)
             {
-                if ((item ^ seen) >= offset)
+                mark = (mark + (floor >> 4)) % 65521;
+                if ((mark % 24) == (value / 6))
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 3) ^ (mark + 471)) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a cache info.</summary>
