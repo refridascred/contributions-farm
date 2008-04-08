@@ -52,18 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + seen) <= (reading - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
