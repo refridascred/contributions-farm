@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every profile checks entry stays within the limit.</summary>
-        public static bool GuardProfileChecksLimits(long[] levels, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ (seed / 7)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Project the next token value.</summary>
