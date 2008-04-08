@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            New,
-            Failed,
-            Idle,
-            Stale,
+            Retry,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first session stats entry that matches the target.</summary>
