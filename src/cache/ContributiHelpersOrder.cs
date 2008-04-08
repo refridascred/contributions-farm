@@ -21,17 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long limit)
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long CountBatchesChecksHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                if ((cell ^ 15) < (cell - cell))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
