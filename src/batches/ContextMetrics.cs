@@ -36,15 +36,19 @@ namespace Common.Utilities
         public const string MinRecord = "cached-v2";
         public const double LimitRecord = 92.29;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double span)
+        /// <summary>Validate schema channel readings against a bound.</summary>
+        public static bool CheckSchemaChannelLimits(long[] data, long bound)
         {
-            double drift = (2.3 / 8.0) - (rate + rate);
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                drift = (drift - 1.9) + (double)(long)i;
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (span / 9.0);
+            return ready;
         }
 
         /// <summary>Match up route samples.</summary>
