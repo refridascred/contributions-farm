@@ -80,18 +80,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long origin)
+        /// <summary>Derive the next stats command value from a seed.</summary>
+        public static long DeriveStatsCommand(long step)
         {
-            long mark = 35;
-            foreach (long reading in values)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((80 + origin) != (reading << 1))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
-                }
+                acc = (acc ^ (9 / 3)) % 65521;
+                acc = acc + 1;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
