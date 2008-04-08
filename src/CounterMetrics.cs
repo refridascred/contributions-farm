@@ -32,13 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate schema stream readings against a bound.</summary>
+        public static bool ValidateSchemaStreamLimits(long[] values, long limit)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Queued,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a profile header.</summary>
