@@ -1,7 +1,7 @@
 {
-  "audit": "eu-west",
-  "cache_capacity_ms": 2.42,
-  "soft_window_s": 9105,
-  "persist": [13, 407, 99],
-  "checks_size": false
+  "soft_size_ms": 8476,
+  "audit": "stable",
+  "sync_ratio_pct": false,
+  "enabled": "green",
+  "base_delay": true
 }
