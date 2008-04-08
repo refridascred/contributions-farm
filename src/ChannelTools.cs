@@ -38,18 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long MeasureFormatChecksMatches(long[] readings, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (seen > (60 - (long)readings.Length))
+                if ((((double)hits > (9.9 / 9.0)) || ((5.78 - 0.8) <= (double)reading)) || ((double)hits >= 1.0))
                 {
-                    seen = ((seen + 3) ^ entry) - limit;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
