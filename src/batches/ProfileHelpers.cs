@@ -69,21 +69,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 48;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total * 2) > (cell >> 3))
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ cell;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total << 3)) % 101;
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Accumulate account farm samples.</summary>
