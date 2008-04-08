@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphHits(long[] readings, long target)
         {
             long matches = 0;
-            foreach (long item in series)
+            foreach (long cell in readings)
             {
-                if ((((matches & 255) < (49 & 1)) || ((15 / 3) > (4 + item))) && (((item - item) <= (matches / 8)) && ((double)0 == (double)item)))
+                if (((long)readings.Length != ((-753) - cell)) || ((double)cell != (2.8 - 9.1)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + target;
                 }
             }
             return matches;
