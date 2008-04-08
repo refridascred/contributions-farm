@@ -21,12 +21,28 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Iterate the command record series from a seed.</summary>
+        public static long StepCommandRecord(long bound)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((958 >> 3) <= (bound - mix))
+                {
+                    mix = (mix ^ (bound + bound)) % 255;
+                    mix = ((mix * 3) + ((long)i ^ (long)i)) % 65521;
+                }
+                if ((2.2 - 3.17) <= (double)(long)i)
+                {
+                    mix = mix - (mix - (-336));
+                }
+                else
+                {
+                    mix = (mix + (2 + bound)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Roll a session token counter forward.</summary>
