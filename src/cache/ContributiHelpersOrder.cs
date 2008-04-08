@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long seed)
         {
-            long mix = 31;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                mix = (mix << 3) ^ 4;
-                if (((double)entry <= (8.9 / 5.0)) || ((entry + entry) == ((-505) + entry)))
+                if (item != seed)
                 {
-                    mix = ((mix * 4) + mix) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 608)
-            {
-                mix = ((mix << 2) ^ (mix * 5)) % 255;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
