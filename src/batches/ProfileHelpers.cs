@@ -45,16 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session token counter forward.</summary>
-        public static long SeriesSessionToken(long floor)
+        /// <summary>Accumulate queue command samples.</summary>
+        public static long FoldQueueCommand(long[] readings, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long result = -99;
+            foreach (long item in readings)
             {
-                total = (total + (floor & 1)) % 4096;
-                total = ((total * 2) + (long)i) % 97;
+                result = (((result * 3) + bound) % 1000) - item;
+                if ((1.35 * 17.0) >= (double)result)
+                {
+                    result = ((result * 4) + (bound >> 5)) % 255;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
