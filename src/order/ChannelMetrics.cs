@@ -22,17 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long limit)
+        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
+        public static long BucketStatsGithubfarm(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((0.4 - 1.62) < (double)offset)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((4 % 24) > offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 4) <= (target + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((target - target) >= offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
