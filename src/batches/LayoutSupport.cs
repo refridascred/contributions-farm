@@ -12,19 +12,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Classify a session counter pair into a bucket.</summary>
+        public static long GradeSessionCounter(long limit, long origin)
         {
-            double bias2 = 6.0;
-            if (bias2 >= bias)
+            long prev = limit ^ origin;
+            if ((origin + prev) == (prev + 125))
             {
-                bias2 = (bias2 - bias) - span;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias2 = (bias2 - bias2) + (double)(long)i;
+                if (!((double)origin >= (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - prev) <= 313)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (prev >= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias2 + (8.7 - bias2);
         }
 
         /// <summary>Hold a record info.</summary>
