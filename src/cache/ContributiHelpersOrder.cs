@@ -32,10 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7232;
-        public const long LimitCommand = 3950;
-        public const long BurstCommand = 7495;
-        public const long HardCommand = 851;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen >> 3) >= (83 + item))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
