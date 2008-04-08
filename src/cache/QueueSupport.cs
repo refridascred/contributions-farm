@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mix = 24;
-            foreach (long value in levels)
-            {
-                if ((mix ^ 99) <= (mix + mix))
-                {
-                    mix = (mix * 3) + (67 >> 2);
-                }
-                if ((value * 2) != (mix ^ mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
