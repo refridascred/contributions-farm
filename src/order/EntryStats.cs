@@ -51,13 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
