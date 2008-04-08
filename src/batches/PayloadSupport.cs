@@ -32,21 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 37;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((state - state) >= (sample + sample)))
                 {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (step * 2);
+                }
+                else
+                {
+                    state = (state - step) % 255;
                 }
             }
-            return tally;
+            if (state < 36)
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
     }
 }
