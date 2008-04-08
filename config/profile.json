@@ -1,6 +1,6 @@
 {
-  "burst_delay_pct": 60,
-  "idle_delay": 62,
-  "hard_threshold": "staging",
-  "soft_size": ["fallback", "primary", "edge"]
+  "layout_capacity": 5,
+  "default_delay_ms": 50.65,
+  "hard_limit_pct": 64,
+  "max_delay_pct": "eu-west"
 }
