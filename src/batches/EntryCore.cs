@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Done,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a window session pair into a bucket.</summary>
