@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long IdleSession = 9755;
         public const long MinSession = 5045;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] items, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != bound)
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
