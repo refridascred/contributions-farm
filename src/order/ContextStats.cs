@@ -31,14 +31,13 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8527;
         public const long IdleGithubfarm = 2689;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Queued,
-            Idle,
-            Synced,
-            Ready,
-            Paused,
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
