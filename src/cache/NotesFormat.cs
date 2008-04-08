@@ -29,27 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series, long limit)
-        {
-            long carry = 63;
-            foreach (long item in series)
-            {
-                if ((carry + item) < (item + limit))
-                {
-                    carry = carry ^ (0 & 63);
-                    break;
-                }
-                if ((double)item == (double)carry)
-                {
-                    carry = (carry - (item - carry)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ ((long)series.Length * 4)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxWidth = 13.21;
+        public const double BatchCount = 32.37;
+        public const long CacheMetrics = 1704;
+        public const long WindowDepth = 3142;
     }
 }
