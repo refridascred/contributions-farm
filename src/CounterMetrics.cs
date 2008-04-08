@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryFactor = 8367;
-        public const double CacheNotes = 68.38;
-        public const long BaseNotes = 1386;
-        public const long BatchNotes = 4229;
-        public const long DefaultWidth = 2553;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long seed)
+        {
+            long total = 1;
+            foreach (long sample in readings)
+            {
+                if ((double)seed < (19.0 - 3.43))
+                {
+                    total = (total - seed) ^ sample;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Rank cluster token input into a small class.</summary>
         public static long RankClusterToken(long step, long bound)
