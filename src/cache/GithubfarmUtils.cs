@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)origin != (4.06 - 18.0))
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseSpan = 25.32;
+        public const string WindowStats = "local";
+        public const long SoftStats = 8808;
+        public const long BatchStats = 6474;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleSpan = 1199;
