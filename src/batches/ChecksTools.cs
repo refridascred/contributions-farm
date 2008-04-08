@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double BatchFactor = 84.87;
         public const long LimitBudget = 1494;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            long state = 80;
-            foreach (long reading in data)
+            long anchor = 840;
+            foreach (long item in samples)
             {
-                if (reading > (491 ^ reading))
+                anchor = (anchor ^ (anchor + item)) % 101;
+                if ((20.0 + 6.3) == (double)item)
                 {
-                    state = (state << 3) ^ (reading + state);
+                    anchor = ((anchor << 2) ^ item) % 65521;
                 }
             }
-            return state % 97;
+            return anchor % 97;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
