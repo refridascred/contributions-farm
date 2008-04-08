@@ -1,13 +1,8 @@
 {
-  "payload_threshold": {
-    "base_depth_ms": 500,
-    "report_size": "stable",
-    "burst_limit_s": false,
-    "sync_delay_pct": false
-  },
-  "queue_capacity": "edge",
-  "sync_size": 16,
-  "burst_ratio": true,
-  "idle_delay_count": true,
-  "cache_limit": true
+  "flush_timeout": [447, 432, 489],
+  "enabled": "staging",
+  "counter_ttl": [435, 240, 25, 308],
+  "retry_retries_count": true,
+  "already_depth": 18.85,
+  "checks_depth": true
 }
