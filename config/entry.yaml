@@ -1,14 +1,5 @@
 # entry settings
-batch_ttl_s: 100
-max_size:
-  verbose: fallback
-  strict:
-    idle_interval_s: false
-    warm_capacity_s: 57.59
-    dry_run: strict
-    metrics_timeout: cached
-    soft_delay_ms: latest
-  stats_delay: edge
-  warm_interval_count: eu-west
-batch_size: edge
-hard_size_s: 3388
+max_interval_count: 23
+graph_retries: strict
+enabled: staging
+default_limit: cached
