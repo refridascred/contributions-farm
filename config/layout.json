@@ -1,8 +1,13 @@
 {
-  "max_window": 79,
-  "batch_threshold_count": [392, 470, 464, 339],
-  "entry_size": "stable",
-  "farm_delay": false,
-  "token_window": "strict",
-  "poll_timeout_pct": false
+  "payload_threshold": {
+    "base_depth_ms": 500,
+    "report_size": "stable",
+    "burst_limit_s": false,
+    "sync_delay_pct": false
+  },
+  "queue_capacity": "edge",
+  "sync_size": 16,
+  "burst_ratio": true,
+  "idle_delay_count": true,
+  "cache_limit": true
 }
