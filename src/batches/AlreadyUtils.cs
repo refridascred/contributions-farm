@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if (!((floor >> 5) <= (floor & 3)))
             {
-                if ((double)value < (9.9 + 3.65))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > 7.96)
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of queue checks readings.</summary>
