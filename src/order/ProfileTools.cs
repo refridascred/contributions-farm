@@ -23,14 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            Ready,
-            Paused,
-            Queued,
-            Synced,
-            Pending,
+            double rate = (bias / 6.0) * 8.3;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
