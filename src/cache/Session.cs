@@ -42,18 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] items)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (61 <= (reading << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
