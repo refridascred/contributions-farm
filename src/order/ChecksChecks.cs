@@ -17,18 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 8) >= (bound - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the payload kind values.</summary>
