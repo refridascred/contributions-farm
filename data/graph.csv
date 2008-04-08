@@ -1,6 +1,8 @@
-id,weight,token
-1,edge,cached
-2,590,65
-3,fallback,488
-4,eu-west,89.71
-5,90.48,568
+id,score,count
+1,77.91,legacy
+2,4.65,16.34
+3,17.14,60.63
+4,176,218
+5,green,72.7
+6,511,462
+7,20.92,806
