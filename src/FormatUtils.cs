@@ -80,15 +80,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
