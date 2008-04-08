@@ -57,13 +57,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
