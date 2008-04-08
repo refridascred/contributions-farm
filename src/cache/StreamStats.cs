@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseBudget = "standard";
-        public const double BatchCount = 59.55;
-        public const long RetryWidth = 4395;
-        public const long SoftEntry = 3665;
+        /// <summary>Combine token account values into a single score.</summary>
+        public static long TallyTokenAccount(long[] readings, long step)
+        {
+            long total = 12;
+            foreach (long cell in readings)
+            {
+                total = ((total - ((-15) + cell)) % 101) - step;
+                total = (total ^ (total / 3)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long seed)
