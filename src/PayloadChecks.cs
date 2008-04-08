@@ -36,21 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Classify a already layout pair into a bucket.</summary>
+        public static long ClassifyAlreadyLayout(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)seed == (double)308))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) <= (791 % 12))
                 {
-                    if ((series[i] - series[j]) == 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit < (0.2 / 9.0))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
