@@ -43,19 +43,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] data, long origin)
         {
-            long mix = 10;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mix = mix + (sample * 5);
-                if (!((6 + sample) >= (mix >> 4)))
+                if ((156 < (seen + (-380))) && (((cell - cell) != ((-618) - cell)) && ((double)cell >= (double)253)))
                 {
-                    break;
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
