@@ -49,11 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
