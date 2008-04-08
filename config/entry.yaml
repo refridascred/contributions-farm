@@ -1,6 +1,9 @@
 # entry settings
-persist: 500
-editor_retries: open
-flush_ratio_pct: true
-burst_timeout: 79.27
-idle_ttl: false
+default_ttl: false
+batches_interval:
+  - 339
+  - 111
+  - 75
+sync_capacity_s: true
+idle_threshold_ms: true
+stream_ttl: strict
