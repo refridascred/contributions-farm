@@ -29,19 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two order cluster measurements.</summary>
-        public static double AdjustOrderCluster(double rate, double bias)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double drift = bias * 3.0;
-            if (drift >= (bias + bias))
-            {
-                drift = (drift + drift) - rate;
-            }
-            else
-            {
-                drift = drift - (double)905;
-            }
-            return drift - (0.7 - drift);
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate schema already samples.</summary>
