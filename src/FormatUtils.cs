@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Active,
             Dropped,
-            Closed,
-            Retry,
-            Queued,
-            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a stream cache sample.</summary>
