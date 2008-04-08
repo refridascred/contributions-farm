@@ -32,13 +32,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5023;
+        public const string BaseFactor = "local";
+        public const long IdleFilter = 3902;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long target)
