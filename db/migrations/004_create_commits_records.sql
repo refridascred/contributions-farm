@@ -1,14 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    token TEXT,
-    owner TEXT NOT NULL,
-    score REAL NOT NULL DEFAULT 0
+    ratio REAL,
+    weight REAL,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
 
-INSERT INTO commits_records (count, token, owner, score) VALUES (17, 'strict', 'cached', 11.27);
-INSERT INTO commits_records (count, token, owner, score) VALUES (75, 'green', 'edge', 94.73);
-INSERT INTO commits_records (count, token, owner, score) VALUES (95, 'fallback', 'green', 59.46);
+INSERT INTO commits_records (ratio, weight, level, region) VALUES (77.75, 50.12, 76, 'open');
