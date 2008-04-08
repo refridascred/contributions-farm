@@ -1,26 +1,7 @@
 # support settings
-verbose: 60
-default_ratio: 60
-dry_run:
-  githubfarm_threshold:
-    - local
-    - standard
-    - local
-    - fallback
-  strict:
-    persist: standard
-    base_window_count: false
-    command_window: 500
-    already_threshold:
-      - 270
-      - 399
-      - 418
-      - 341
-    farm_threshold:
-      - eu-west
-      - staging
-      - strict
-      - green
-  compress: 17.23
-  max_delay_s: 98
-default_ttl: 1024
+idle_ttl_pct:
+  - strict
+  - open
+order_ratio: local
+hard_window: true
+metric_threshold: 30
