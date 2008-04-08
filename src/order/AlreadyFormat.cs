@@ -51,18 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long carry = 121;
-            foreach (long item in data)
-            {
-                if ((double)item < (19.0 * 20.0))
-                {
-                    carry = carry + (carry / 8);
-                }
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a metric already counter forward.</summary>
