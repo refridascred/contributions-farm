@@ -13,31 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if (9.0 >= (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-302) >> 1) > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 7) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the filter tools series from a seed.</summary>
