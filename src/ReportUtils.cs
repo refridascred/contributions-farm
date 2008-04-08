@@ -22,16 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2414;
+        public const long MinWindow = 9845;
+        public const long IdleWindow = 5580;
+        public const double DefaultWindow = 56.4;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] values)
