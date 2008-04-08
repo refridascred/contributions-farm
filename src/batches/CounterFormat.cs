@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches layout counter forward.</summary>
-        public static long StepBatchesLayout(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 1049;
+        public const double MaxChannel = 0.75;
+        public const string LimitInterval = "alpha";
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] readings, long target)
