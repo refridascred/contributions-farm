@@ -35,20 +35,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "primary-1";
+        public const long BurstAccount = 7933;
+        public const string BurstTimeout = "local-v2";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
