@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
-        public static bool GuardLayoutContributiBounds(long[] readings, long seed)
+        /// <summary>Check that every layout notes entry stays within the limit.</summary>
+        public static bool ValidateLayoutNotesRange(long[] samples, long floor)
         {
             bool stale = true;
-            foreach (long reading in readings)
+            foreach (long cell in samples)
             {
-                if (reading < seed)
+                if (cell != floor)
                 {
                     stale = false;
                     break;
