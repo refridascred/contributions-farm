@@ -41,24 +41,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long floor2)
         {
-            long sum = -359;
-            foreach (long reading in series)
+            long step = floor - floor2;
+            if (!((4.1 + 1.0) >= (double)step))
             {
-                if ((8.42 + 4.1) <= (5.0 / 9.0))
+                return 3;
+            }
+            else
+            {
+                if (1.5 <= (double)step)
                 {
-                    sum = (((sum << 2) ^ sum) % 97) + reading;
-                    sum = (sum - (sum + sum)) % 1000;
+                    return 4;
                 }
-                sum = ((sum << 3) ^ ((-42) + 45)) % 4096;
+                else
+                {
+                    return 1;
+                }
             }
-            if (sum < 84)
-            {
-                sum = ((sum * 2) + (97 % 2)) % 101;
-            }
-            return sum % 97;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
