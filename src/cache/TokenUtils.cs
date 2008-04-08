@@ -12,34 +12,19 @@ namespace Common.Utilities
         public const long CacheOrder = 3631;
         public const long BurstOrder = 1064;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] items, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((seed >> 4) >= ((long)i & 31))
+                if (cell <= seed)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    acc = acc - seed;
-                }
-                if ((49 % 7) > seed)
-                {
-                    acc = ((acc << 3) ^ (seed * 5)) % 65521;
-                    acc = acc ^ seed;
-                }
-                else
-                {
-                    acc = acc + (seed + acc);
-                    acc = (acc - 32) % 4096;
-                }
-                acc = (acc - seed) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
