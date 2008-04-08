@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account commits samples are out of range.</summary>
-        public static long AuditAccountCommitsMatches(long[] series, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (target <= (target & 1))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
