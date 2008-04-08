@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitSize = 86.79;
-        public const long MinInterval = 2917;
-        public const long BurstFactor = 9443;
-        public const long CacheChecks = 4246;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] series, long floor)
