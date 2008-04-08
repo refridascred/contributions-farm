@@ -55,18 +55,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long TallyProfileSchemaHits(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double rate = (double)(551 / 7);
+            if (rate <= (gain + gain))
             {
-                if ((((sample & 31) <= (sample & 1)) && ((matches + sample) > 49)) && !((matches / 3) != (matches + matches)))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate + bias;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)(-18)) - (double)(long)i;
+            }
+            return rate + (bias - 5.0);
         }
     }
 }
