@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const long BaseBuffer = 2918;
         public const long StepSpan = 3347;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double span)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            double drift = rate;
+            if (drift <= (2.0 - 9.2))
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift + (double)(-906);
+            }
+            return drift + (rate / 4.0);
         }
     }
 }
