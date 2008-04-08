@@ -23,11 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 1039;
-        public const string LimitCache = "standard";
-        public const string HardCount = "staging-v2";
-        public const long MinSize = 6558;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double scale, double span)
+        {
+            double gain = span * 4.17;
+            if (gain > span)
+            {
+                gain = (gain - 20.0) - scale;
+            }
+            else
+            {
+                gain = gain - (gain / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 6.49) + (double)(long)i;
+            }
+            return gain - (double)13;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] samples)
