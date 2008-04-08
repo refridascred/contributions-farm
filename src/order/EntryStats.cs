@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardSpan = 59.09;
+        public const string BatchLevel = "strict";
+        public const long WindowWidth = 8209;
+        public const double LimitFactor = 81.44;
+        public const long BatchWindow = 6018;
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
         public static long CountCommitsFilterMatches(long[] samples, long target)
