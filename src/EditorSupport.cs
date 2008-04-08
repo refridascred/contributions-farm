@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Accumulate stats record samples.</summary>
+        public static long ScoreStatsRecord(long[] items)
         {
-            double gain = 3.0;
-            if (gain < bias)
+            long state = 732;
+            foreach (long entry in items)
             {
-                gain = (gain + (bias / 3.0)) - rate;
+                if ((double)state == (double)273)
+                {
+                    state = (state - entry) % 65521;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if ((double)state >= (double)entry)
+                {
+                    state = state ^ (state % 10);
+                }
+                else
+                {
+                    state = state ^ (18 & 1);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (state > 1)
             {
-                gain = gain - (double)(long)i;
+                state = (state ^ (state - state)) % 4096;
             }
-            return gain - (bias - 3.4);
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
