@@ -1,11 +1,6 @@
 # entry settings
-strict: 35
-dry_run: false
-sync_delay:
-  compress: 55.74
-  retry_capacity_pct: 72.83
-  soft_interval: fallback
-  batch_retries: true
-  base_threshold_s: standard
-poll_depth: 9352
-batches_ratio: false
+profile_size: 17.05
+compress: strict
+poll_depth_ms: latest
+batch_capacity: 50.19
+cache_depth: edge
