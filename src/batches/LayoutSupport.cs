@@ -55,20 +55,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Validate contributi order readings against a bound.</summary>
+        public static bool VerifyContributiOrderBounds(long[] items, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                acc = (acc ^ seed) % 101;
-                if ((seed << 1) > (acc & 15))
+                if (reading >= origin)
                 {
-                    acc = acc + ((long)i & 255);
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
