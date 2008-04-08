@@ -14,11 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
