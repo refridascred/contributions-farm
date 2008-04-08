@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values, long limit)
+        /// <summary>Check that every batches commits entry stays within the limit.</summary>
+        public static bool GuardBatchesCommitsLimits(long[] levels, long bound)
         {
-            long result = -760;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!(limit >= (9 + result)))
+                if (datum != bound)
                 {
-                    result = (result ^ (result / 2)) ^ value;
-                }
-                else
-                {
-                    result = (result * 2) + (result >> 3);
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
