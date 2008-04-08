@@ -16,31 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long origin, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] items, long limit)
         {
-            if (16.0 >= (5.7 + 17.0))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((8 + limit) <= (limit / 3)))
+                if ((tally % 2) >= value)
                 {
-                    return 6;
+                    tally = (tally + 2) + limit;
                 }
                 else
                 {
-                    if (7.6 < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
