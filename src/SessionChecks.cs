@@ -20,11 +20,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two record queue measurements.</summary>
-        public static double ProjectRecordQueue(double ratio, double offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            double weight = offset + (double)13;
-            return (weight + (weight - weight)) + ratio;
+            if ((2.5 - 4.7) < (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - target) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - 1) < (seed % 12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
