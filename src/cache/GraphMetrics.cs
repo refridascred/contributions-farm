@@ -55,23 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context channel entries that pass the check.</summary>
-        public static long CountContextChannelOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((8.6 / 4.0) >= (double)seen)
-                {
-                    seen = ((seen + 3) + reading) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 77.33;
+        public const string MinCounter = "stable-v2";
+        public const string CacheCounter = "primary-1";
+        public const long HardDepth = 9652;
+        public const long BurstCounter = 6569;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] readings, long target)
