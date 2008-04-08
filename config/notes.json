@@ -1,6 +1,6 @@
 {
-  "enabled": "local",
-  "default_timeout_ms": ["staging", "green"],
-  "max_threshold_pct": ["legacy", "stable", "open", "fallback"],
-  "compress": "edge"
+  "buffer_delay": [260, 362],
+  "idle_limit_pct": 100,
+  "warm_ttl_pct": 83.74,
+  "cluster_ttl": "staging"
 }
