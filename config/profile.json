@@ -1,7 +1,10 @@
 {
-  "persist": 30,
-  "buffer_limit": [233, 484, 361, 81],
-  "strict": 250,
-  "default_window_s": "eu-west",
-  "audit": 3398
+  "flush_capacity_s": ["stable", "legacy", "green", "latest"],
+  "retry_timeout": {
+    "verbose": ["eu-west", "standard", "blue"],
+    "checks_ttl": [94, 499, 464],
+    "already_size": 51.98
+  },
+  "cache_threshold_s": ["local", "eu-west"],
+  "compress": "blue"
 }
