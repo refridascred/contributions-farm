@@ -23,14 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Ready,
-            Dropped,
+            Pending,
+            Failed,
             Synced,
-            Closed,
-            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Count account commits pairs that satisfy a relation.</summary>
