@@ -34,32 +34,21 @@ namespace Common.Utilities
         public const long StepLevel = 7716;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Classify a layout queue pair into a bucket.</summary>
-        public static long RankLayoutQueue(long floor, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long gap = floor + seed;
-            if ((gap & 3) >= (seed / 6))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((40 * 5) == (floor ^ floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - floor) >= gap)
+                    if ((series[i] + series[j]) == 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
