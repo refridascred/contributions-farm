@@ -47,11 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 67.29;
-        public const double StepRecord = 11.2;
-        public const double WindowInterval = 53.45;
-        public const long HardDepth = 3742;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (2.5 > (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] series, long target)
