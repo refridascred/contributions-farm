@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long step)
         {
-            long carry = 430;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (carry >= (datum - datum))
+                if (item <= step)
                 {
-                    carry = carry - (datum + datum);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 43)
-            {
-                carry = (carry + (carry + carry)) % 4096;
-            }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
