@@ -1,7 +1,8 @@
-id,weight,rank,owner,token
-1,165,edge,405,30.28
-2,81,edge,fallback,688
-3,standard,945,69.3,154
-4,44.08,107,890,77.69
-5,703,open,63,84.43
-6,local,legacy,primary,86.82
+id,weight,count
+1,blue,fallback
+2,594,168
+3,582,legacy
+4,35.56,95.74
+5,27.31,799
+6,89.06,74.41
+7,open,18.51
