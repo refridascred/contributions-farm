@@ -61,21 +61,22 @@ namespace Common.Utilities
         public const string HardBudget = "stable";
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally + 64) <= reading)
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
