@@ -1,18 +1,5 @@
 {
-  "default_retries": 17.6,
-  "sync_threshold_count": {
-    "dry_run": "legacy",
-    "batch_interval": {
-      "layout_interval": "eu-west",
-      "warm_size": 5173,
-      "idle_retries_s": 7495,
-      "sync_size": 9434,
-      "base_ratio": "blue"
-    },
-    "poll_depth": [459, 192, 354],
-    "soft_limit": 250,
-    "poll_window_s": "stable"
-  },
-  "metrics_retries": true,
-  "checks_threshold": 8136
+  "notes_retries": false,
+  "soft_window_ms": 32,
+  "batch_depth_s": 60
 }
