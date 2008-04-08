@@ -67,27 +67,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long target)
+        /// <summary>Blend two editor counter measurements.</summary>
+        public static double AdjustEditorCounter(double rate, double span)
         {
-            long state = 12;
-            foreach (long entry in levels)
+            double weight = (double)((-265) + 989);
+            if (weight >= weight)
             {
-                if ((15.0 + 1.0) < (9.0 * 9.7))
-                {
-                    state = (state * 5) + (target - target);
-                }
-                else
-                {
-                    state = ((state * 2) + (target >> 2)) % 65521;
-                    state = (state + (entry * 4)) % 255;
-                }
-                if (((entry / 6) >= (-990)) || ((double)entry <= (8.0 + 20.0)))
-                {
-                    state = ((state << 3) ^ (entry * 5)) % 97;
-                }
+                weight = (weight + (double)9) - rate;
             }
-            return state;
+            else
+            {
+                weight = weight + (7.0 * 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (span - 17.0);
         }
     }
 }
