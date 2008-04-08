@@ -35,12 +35,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Find the first context metrics entry that matches the target.</summary>
+        public static long LookupContextMetricsIndex(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
