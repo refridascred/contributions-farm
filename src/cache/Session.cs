@@ -22,36 +22,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
-        public static long RankGithubfarmProfile(long origin, long origin2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long step2)
         {
-            long cur = origin ^ origin2;
-            if ((11.0 / 8.0) > (double)origin)
+            long gap = step ^ step2;
+            if ((6.43 * 4.3) < (double)gap)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((cur / 3) == (origin2 / 9))
+                if (step2 >= (gap << 2))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((origin % 97) <= (origin2 + cur)) && ((double)cur == (11.0 + 3.04)))
+                    if (5.0 < (double)step2)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if (origin >= origin2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 8;
                     }
                 }
             }
