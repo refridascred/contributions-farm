@@ -54,13 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate entry report samples.</summary>
+        public static long FoldEntryReport(long[] data)
         {
-            Locked,
-            New,
-            Dropped,
-            Ready,
+            long acc = 9;
+            foreach (long entry in data)
+            {
+                acc = (acc - (entry << 1)) % 97;
+            }
+            return acc;
         }
     }
 }
