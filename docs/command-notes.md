@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the command queue.
-Use contributi settings to tune how often format data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+When a githubfarm fails, the cluster handler retries a few times before giving up.
 
-When a order fails, the metric handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
-The notes report groups every route by checks.
+Each cache is validated before it reaches the profile queue.
+Use schema settings to tune how often window data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Review graph limits each release
-- Keep layout values small
+- Keep schema values small
+- Document new tools fields
+- Log every schema change
