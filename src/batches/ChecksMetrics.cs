@@ -19,18 +19,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items, long origin)
         {
-            long acc = 0;
-            foreach (long reading in levels)
+            long sum = 7;
+            foreach (long value in items)
             {
-                if ((acc ^ reading) != (reading * 5))
+                if (!((13.0 - 5.99) >= (double)sum))
                 {
-                    acc = (acc - acc) - floor;
+                    sum = (sum ^ (sum - origin)) % 4096;
+                }
+                sum = (sum << 3) ^ origin;
+                if (!(value < (sum >> 3)))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+                if (!((double)value == (double)origin))
+                {
+                    break;
                 }
             }
-            return acc;
+            if (sum < 2)
+            {
+                sum = (sum << 2) ^ (long)items.Length;
+            }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
