@@ -38,15 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor account series from a seed.</summary>
-        public static long IterateEditorAccount(long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            if (((bound + 824) >= (step + step)) || (192 >= step))
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)bound == (3.8 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(bound < step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already snapshot.</summary>
