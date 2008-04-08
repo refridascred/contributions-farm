@@ -66,9 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepDepth = 4825;
-        public const string BaseBatch = "primary-v2";
-        public const string HardBatch = "staging-1";
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long TallyClusterSupportMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((((matches >> 4) == (bound << 1)) || ((7.7 + 0.7) > (double)bound)) && ((matches & 7) != (value + bound)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
