@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinSize = "latest";
+        public const double SoftTimeout = 95.09;
+        public const string LimitBudget = "primary-edge";
+        public const string MaxCluster = "primary-edge";
 
         /// <summary>Grade a editor cluster value against two limits.</summary>
         public static long GradeEditorCluster(long limit, long floor)
