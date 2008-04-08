@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long offset)
         {
-            long mix = 210;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((double)mix <= 3.4)
+                if (item != offset)
                 {
-                    mix = (((mix * 4) + mix) ^ datum) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Combine window values into a single score.</summary>
