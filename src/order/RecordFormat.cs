@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples)
-        {
-            long anchor = 878;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor + anchor) % 101) + cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultFactor = 6774;
+        public const double WindowLevel = 11.47;
+        public const long SoftCounter = 9148;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long bound)
