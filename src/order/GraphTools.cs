@@ -53,18 +53,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long total = 455;
-            foreach (long value in data)
-            {
-                if ((value <= (total ^ value)) || (((long)data.Length + total) != (total ^ value)))
-                {
-                    total = (total - (total + total)) % 1000;
-                }
-            }
-            return total % 1000;
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
