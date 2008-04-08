@@ -55,22 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long TallyGithubfarmFormat(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long state = 702;
-            foreach (long datum in items)
-            {
-                if (((double)datum > 1.57) || ((state + state) >= (-108)))
-                {
-                    state = state + 58;
-                }
-                else
-                {
-                    state = ((state * 3) + datum) % 255;
-                }
-            }
-            return state % 65521;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
