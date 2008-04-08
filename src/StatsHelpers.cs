@@ -28,30 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile checks samples.</summary>
-        public static long WeighProfileChecks(long[] data)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long sum = 13;
-            foreach (long value in data)
-            {
-                if ((value << 1) >= (value + sum))
-                {
-                    sum = ((sum * 3) + value) % 255;
-                }
-                else
-                {
-                    sum = sum + (3 - 37);
-                }
-                if ((double)sum < (double)value)
-                {
-                    break;
-                }
-            }
-            if (sum > 36)
-            {
-                sum = sum - (sum << 3);
-            }
-            return sum % 65521;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
