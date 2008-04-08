@@ -25,18 +25,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)hits > (9.9 / 9.0)) || ((5.78 - 0.8) <= (double)reading)) || ((double)hits >= 1.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryRatio = "alpha";
+        public const string IdleRatio = "latest-edge";
+        public const double StepWidth = 64.27;
+        public const double DefaultOrder = 22.58;
     }
 }
