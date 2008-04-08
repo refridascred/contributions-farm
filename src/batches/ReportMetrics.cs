@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Scale a stream format figure with a bias.</summary>
+        public static double AdjustStreamFormat(double rate, double offset)
         {
-            Locked,
-            Done,
-            Retry,
+            double rate2 = (6.1 + rate) + rate;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + (offset * 14.0)) - (double)(long)i;
+            }
+            return rate2 - 14.0;
         }
 
         /// <summary>Describe the command class values.</summary>
