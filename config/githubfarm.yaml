@@ -1,12 +1,6 @@
 # githubfarm settings
-warm_retries_count: stable
-soft_retries_pct: green
-enabled:
-  max_delay: eu-west
-  notes_delay: true
-  filter_depth: green
-  min_ttl: false
-  warm_timeout_s: strict
-  sync_window_s: 26.64
-min_depth_s: 1493
-verbose: 60
+soft_depth_ms: latest
+farm_ttl: fallback
+burst_size:
+  - fallback
+  - legacy
