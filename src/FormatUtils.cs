@@ -87,14 +87,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Closed,
-            Synced,
-            Locked,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "staging-1";
+        public const string RetryCommits = "legacy-v2";
+        public const long HardCount = 30;
+        public const double MaxCommits = 64.59;
     }
 }
