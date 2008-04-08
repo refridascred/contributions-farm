@@ -20,16 +20,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batches route value from a seed.</summary>
-        public static long IterateBatchesRoute(long limit)
+        /// <summary>Locate a format window reading by value.</summary>
+        public static long LocateFormatWindowIndex(long[] series, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ acc) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first graph metrics entry that matches the target.</summary>
