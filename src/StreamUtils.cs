@@ -34,22 +34,32 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] data, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long bound = offset - offset2;
+            if (!(offset2 < (bound + offset)))
             {
-                if ((count + 97) >= (step ^ entry))
+                return 0;
+            }
+            else
+            {
+                if ((offset > (offset + offset)) && (offset < (bound << 2)))
                 {
-                    count = count + 3;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((508 * 4) <= (offset & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
