@@ -6,15 +6,22 @@ namespace Common.Utilities
     public static class NotesFormat
     {
         /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        public static long DeriveMetrics(long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                acc = acc + ((long)i << 2);
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor << 3) ^ (floor + anchor)) % 255) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    anchor = ((anchor << 2) ^ (floor ^ floor)) ^ (long)i3;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
