@@ -67,23 +67,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two editor counter measurements.</summary>
-        public static double AdjustEditorCounter(double rate, double span)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double weight = (double)((-265) + 989);
-            if (weight >= weight)
-            {
-                weight = (weight + (double)9) - rate;
-            }
-            else
-            {
-                weight = weight + (7.0 * 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - (span - 17.0);
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
