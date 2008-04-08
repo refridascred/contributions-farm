@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            if ((double)target >= 13.0)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target - 613) >= (target - 5)) && (target > (target % 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound < (target / 3))
+                    if ((readings[i] + readings[j]) == 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(bound < (bound & 63)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
