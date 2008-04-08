@@ -27,21 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = bias;
+            if (gain > (double)46)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (double)972) - offset;
             }
-            return matches;
+            return gain + (gain + gain);
         }
 
         /// <summary>Hold a farm info.</summary>
