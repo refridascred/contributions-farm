@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const string IdleInterval = "local-v2";
         public const double HardSupport = 76.0;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > bound)
+                if (levels[i] < step)
                 {
                     return (long)i;
                 }
