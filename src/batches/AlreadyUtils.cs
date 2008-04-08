@@ -51,14 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            Pending,
-            Done,
-            Retry,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally / 6) >= (tally % 3))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
