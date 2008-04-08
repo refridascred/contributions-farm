@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long carry = 9;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.5 / 3.0) < (double)carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry << 3) ^ (value - value);
-                }
-                if (value > carry)
-                {
-                    break;
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
