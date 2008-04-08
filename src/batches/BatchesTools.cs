@@ -28,22 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long target)
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long TallyWindowEditorMatches(long[] values, long origin)
         {
-            long score = -50;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((8.24 >= (double)sample) && (((long)levels.Length + 33) < target))
+                if ((double)origin >= (2.5 - 4.14))
                 {
-                    score = ((score * 5) + score) % 97;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (score < 8)
-            {
-                score = score - (target + target);
-            }
-            return score;
+            return seen;
         }
     }
 }
