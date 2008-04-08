@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxBudget = "staging-1";
+        public const string LimitFactor = "primary-v2";
+        public const string BatchSpan = "cached-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double HardCount = 16.52;
