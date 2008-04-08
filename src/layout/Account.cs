@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const long BaseBatches = 4864;
         public const double HardBatches = 73.4;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((159 << 3) > matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Closed,
+            Idle,
+            Ready,
         }
     }
 }
