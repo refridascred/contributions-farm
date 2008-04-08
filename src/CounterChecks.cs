@@ -34,13 +34,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate farm cluster readings against a bound.</summary>
-        public static bool ValidateFarmClusterLimits(long[] samples, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] items, long seed)
         {
             bool ok = true;
-            foreach (long value in samples)
+            foreach (long item in items)
             {
-                if (value != origin)
+                if (item < seed)
                 {
                     ok = false;
                     break;
