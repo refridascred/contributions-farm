@@ -24,31 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long step2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series)
         {
-            if (((18 + 1) != (step2 ^ step)) && ((double)step >= 14.0))
+            long mark = 817;
+            foreach (long sample in series)
             {
-                return 5;
+                mark = ((mark + (763 ^ 2)) % 65521) ^ sample;
             }
-            else
-            {
-                if (!((double)step == (3.0 / 4.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 / 5) < (step2 + step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a graph summary.</summary>
