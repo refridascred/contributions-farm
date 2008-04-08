@@ -23,14 +23,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Locked,
-            Closed,
-            Done,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 1232;
+        public const long SoftAccount = 7256;
+        public const long DefaultWidth = 6064;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string RetryMetrics = "staging-v2";
