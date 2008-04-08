@@ -42,12 +42,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7397;
-        public const long SoftFactor = 4427;
-        public const double BaseSession = 18.87;
-        public const long WindowBudget = 7671;
-        public const long IdleSize = 3336;
+        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
+        public static long MatchToolsProfileCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] levels)
