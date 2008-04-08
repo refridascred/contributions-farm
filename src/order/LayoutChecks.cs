@@ -46,11 +46,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = 519;
+            foreach (long value in samples)
+            {
+                acc = (acc - value) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
