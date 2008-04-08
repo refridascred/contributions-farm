@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch format measurements.</summary>
-        public static double AdjustBatchFormat(double gain, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long floor)
         {
-            double scale = 6.49 + (span * 11.0);
-            if (scale <= (span - gain))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (double)(-7);
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale - gain;
+            return -1;
         }
 
         /// <summary>Scale a buffer batch figure with a bias.</summary>
