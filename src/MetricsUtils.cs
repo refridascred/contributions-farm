@@ -46,18 +46,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] samples)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 2) <= (tally ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
