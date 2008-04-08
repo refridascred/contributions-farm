@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            Ready,
-            Paused,
-            Synced,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)count >= (7.0 / 7.0)))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
