@@ -43,18 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long state = 357;
+            foreach (long sample in readings)
             {
-                if (datum <= 5)
-                {
-                    seen = seen + 3;
-                }
+                state = (state ^ (sample - sample)) % 97;
             }
-            return seen;
+            return state;
         }
     }
 }
