@@ -34,13 +34,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Done,
-            Active,
-            Closed,
-            Idle,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
