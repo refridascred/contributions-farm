@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] < step)
+                if ((double)seen <= (5.42 * 2.9))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
