@@ -24,19 +24,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] levels, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long sum = 90;
+            foreach (long sample in series)
             {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum + ((long)series.Length + sample);
+                sum = sum + sum;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
