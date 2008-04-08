@@ -32,18 +32,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mark = 4;
+            foreach (long datum in samples)
             {
-                if (!((double)count >= (7.0 / 7.0)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = (count + 2) - item;
+                    mark = ((mark << 2) ^ (limit + (long)i2)) % 4096;
+                    mark = mark + (datum % 24);
+                }
+                if ((limit - mark) >= (limit + limit))
+                {
+                    mark = (mark << 3) ^ (datum + datum);
+                }
+                else
+                {
+                    mark = mark + (limit - 7);
+                }
+                if (((datum >> 5) <= limit) || ((datum << 3) >= (mark % 3)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the format state values.</summary>
