@@ -17,18 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] data, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((8.0 - 5.09) < (double)matches)
-                {
-                    matches = ((matches + 3) + sample) + step;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up report cluster samples.</summary>
