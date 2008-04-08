@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultDepth = 23.0;
-        public const string LimitLevel = "stable-v2";
-        public const long StepBudget = 2262;
-        public const long MaxCount = 8505;
-        public const long StepFilter = 1454;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels)
+        {
+            long mix = 788;
+            foreach (long cell in levels)
+            {
+                if (!((mix >> 2) <= mix))
+                {
+                    mix = (mix + (mix * 4)) ^ cell;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] values)
