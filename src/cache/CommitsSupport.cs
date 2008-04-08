@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double DefaultFactor = 73.15;
         public const long IdleReport = 1197;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] samples, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double mean = offset;
+            if (mean >= (double)(-7))
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + mean) + ratio;
             }
-            return stale;
+            else
+            {
+                mean = mean - (double)36;
+            }
+            return mean + (double)380;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
