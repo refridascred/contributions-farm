@@ -26,17 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
