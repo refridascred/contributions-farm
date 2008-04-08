@@ -33,18 +33,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data, long bound)
+        /// <summary>Count account commits pairs that satisfy a relation.</summary>
+        public static long PairAccountCommitsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally < (12.0 / 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 1) ^ sample) - bound;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
