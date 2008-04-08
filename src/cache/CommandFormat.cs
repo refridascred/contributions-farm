@@ -22,26 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long sum = 53;
-            foreach (long entry in items)
-            {
-                if (!((sum * 2) > (286 - 6)))
-                {
-                    sum = ((sum * 2) + (entry * 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum * 4) + sum;
-                }
-            }
-            if (sum < 22)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 97;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
