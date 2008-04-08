@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a profile batch counter forward.</summary>
-        public static long RollProfileBatch(long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            double bias = weight;
+            return bias - floor;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
