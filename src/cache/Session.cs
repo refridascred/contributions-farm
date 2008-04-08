@@ -25,18 +25,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the payload support entries that pass the check.</summary>
-        public static long MeasurePayloadSupportMatches(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen << 1) == (value << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
