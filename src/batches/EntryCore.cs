@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value & 15) <= (tally & 31))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 47.31;
+        public const string StepWidth = "legacy-edge";
+        public const long IdleDepth = 8897;
+        public const string MaxAlready = "local";
+        public const long HardBudget = 7323;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] levels)
