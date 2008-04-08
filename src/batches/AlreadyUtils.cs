@@ -20,13 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long limit, long limit2)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            long bound = limit ^ limit2;
+            if (((double)limit2 == (8.21 * 2.0)) && ((bound % 5) > (limit - 6)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >= (655 + bound)) || (bound <= (limit2 + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((25 - limit) != (limit & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((62 + limit2) < (72 << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate window samples.</summary>
