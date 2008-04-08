@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((reading + reading) > (9 >> 5))
+                if (((double)529 != (double)count) || ((((long)series.Length * 5) <= count) && ((count & 7) != (sample << 3))))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
