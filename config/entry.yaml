@@ -1,11 +1,21 @@
 # entry settings
-metrics_window:
-  - 129
-  - 93
-counter_window: 78
-metrics_interval:
-  - 273
-  - 151
-  - 460
-  - 328
-base_ratio: 79.86
+base_capacity_pct: latest
+verbose:
+  soft_window: 31.31
+  poll_capacity: 93
+  readonly: 40
+  batch_window_count:
+    notes_interval:
+      - 264
+      - 360
+      - 394
+      - 430
+    githubfarm_delay: 1024
+    soft_interval_ms: local
+    layout_capacity: false
+  max_threshold_count: 62.09
+  idle_capacity: 2187
+strict: 6.9
+entry_size: 1809
+githubfarm_threshold: true
+audit: 59
