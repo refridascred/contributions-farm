@@ -1,16 +1,14 @@
 {
+  "batch_limit": {
+    "batch_retries": ["open", "legacy"],
+    "sync_timeout_count": ["latest", "open", "fallback", "staging"],
+    "counter_delay": 12
+  },
+  "max_timeout_pct": true,
   "compress": {
-    "command_window": 60,
-    "soft_delay": "primary",
-    "sync_limit_s": 26.2,
-    "order_limit": 82.03
+    "hard_depth_s": 100,
+    "context_capacity": 16.65,
+    "default_delay_count": ["latest", "open"]
   },
-  "base_capacity_count": {
-    "enabled": 8272,
-    "dry_run": 18,
-    "layout_retries": "open",
-    "farm_capacity": "green"
-  },
-  "default_interval_pct": "standard",
-  "hard_ratio_ms": 4856
+  "retry_ratio_s": 52.23
 }
