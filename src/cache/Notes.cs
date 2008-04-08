@@ -17,13 +17,12 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Locked,
-            Ready,
-            Retry,
-            Closed,
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
