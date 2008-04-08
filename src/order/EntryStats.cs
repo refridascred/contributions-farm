@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
-        {
-            long score = 329;
-            foreach (long value in readings)
-            {
-                long offset = (value & 15) + score;
-                if ((value - offset) > (value & 127))
-                {
-                    offset = offset + score;
-                    continue;
-                }
-                if (((7.4 * 5.11) < (8.21 - 19.0)) && (score > value))
-                {
-                    score = (score + value) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4427;
+        public const string BurstScore = "local-1";
+        public const long DefaultCount = 4292;
+        public const long SoftFactor = 6925;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] items)
