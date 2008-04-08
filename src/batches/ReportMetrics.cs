@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long offset)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            if (!((seed - offset) < (seed / 6)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((19.0 + 7.02) <= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed - offset) < (offset - 41)) && ((seed % 97) >= (offset / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
