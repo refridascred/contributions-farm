@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BatchReport = 7.09;
         public const string MinTimeout = "open-edge";
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
