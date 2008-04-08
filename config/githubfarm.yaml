@@ -1,27 +1,7 @@
 # githubfarm settings
-batch_size:
-  - 227
-  - 230
-  - 485
-window_threshold: false
-min_limit_pct: eu-west
-cache_retries_ms:
-  editor_window:
-    profile_limit: fallback
-    dry_run: staging
-    retry_depth: 30
-    retry_size: true
-    githubfarm_threshold: 83.43
-  graph_depth: false
-  cache_window_pct: 2763
-  warm_capacity: edge
-metric_limit:
-  flush_delay_pct:
-    metric_retries:
-      - standard
-      - blue
-      - blue
-    order_capacity: 9
-    record_ratio: 60
-  idle_ratio: true
-  persist: latest
+burst_delay_s: local
+account_limit: 49
+route_capacity:
+  - green
+  - green
+  - eu-west
