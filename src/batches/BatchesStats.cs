@@ -57,12 +57,17 @@ namespace Common.Utilities
         public const long LimitRatio = 2848;
         public const string SoftQueue = "staging-1";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Locate a filter entry reading by value.</summary>
+        public static long SeekFilterEntryIndex(long[] data, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
