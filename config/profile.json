@@ -1,8 +1,5 @@
 {
-  "soft_timeout_s": 9095,
-  "persist": 89,
-  "account_window": "fallback",
-  "sync_timeout_pct": false,
-  "session_delay": "local",
-  "farm_size": [440, 149]
+  "max_retries_count": "strict",
+  "already_timeout": 48.25,
+  "min_ttl": 87.88
 }
