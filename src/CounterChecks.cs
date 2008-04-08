@@ -56,18 +56,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 18.96;
         public const long MinRatio = 459;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits != (8.63 - 0.59))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many window tools samples are out of range.</summary>
