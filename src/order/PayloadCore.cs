@@ -41,12 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Failed,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 719;
+        public const long WindowLevel = 5550;
+        public const long DefaultRoute = 1860;
+        public const long BatchBudget = 8529;
+        public const double SoftScore = 96.16;
     }
 }
