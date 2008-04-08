@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            if ((99 >> 5) < (bound % 100))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (8.6 + 6.09))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
