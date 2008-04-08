@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch profile entries.</summary>
-        public static long FoldBatchProfile(long[] values, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long offset)
         {
-            long total = 1;
-            foreach (long datum in values)
+            long sum = -14;
+            foreach (long reading in samples)
             {
-                total = ((total * 5) + (step ^ total)) % 4096;
-                if ((total > ((long)values.Length * 4)) && ((datum - 846) == (total << 1)))
+                if ((8.99 * 9.15) <= (double)reading)
                 {
-                    break;
+                    sum = sum ^ (6 ^ 785);
                 }
             }
-            return total;
+            if (sum > 78)
+            {
+                sum = sum ^ (sum - offset);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
