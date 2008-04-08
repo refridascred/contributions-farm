@@ -77,18 +77,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if (origin >= (origin / 2))
             {
-                if (seed >= hits)
+                return 7;
+            }
+            else
+            {
+                if (((offset * 4) == (492 ^ origin)) && ((offset & 1) != (offset * 5)))
                 {
-                    hits = (hits + 1) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
