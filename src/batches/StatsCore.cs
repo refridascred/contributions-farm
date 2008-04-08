@@ -51,16 +51,13 @@ namespace Common.Utilities
             return rate - (bias2 / 9.0);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum + (648 & 31);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many context command samples are out of range.</summary>
