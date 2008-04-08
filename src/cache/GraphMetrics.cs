@@ -43,20 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch session entry stays within the limit.</summary>
-        public static bool CheckBatchSessionRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxRatio = "open";
+        public const long MaxWidth = 1693;
+        public const string MaxAlready = "legacy";
+        public const long LimitAlready = 6503;
+        public const long BurstAlready = 9823;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
