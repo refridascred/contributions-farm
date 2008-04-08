@@ -48,11 +48,13 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            Active,
+            Paused,
+            Synced,
+            Done,
         }
     }
 }
