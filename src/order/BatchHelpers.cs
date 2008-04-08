@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Active,
-            Locked,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 9414;
+        public const long WindowDepth = 6774;
+        public const long RetryWidth = 7959;
+        public const string WindowScore = "primary";
+        public const double BurstQueue = 25.19;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] data, long bound)
