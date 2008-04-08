@@ -1,5 +1,8 @@
 {
-  "sync_size_s": 20.01,
-  "base_size": ["cached", "open"],
-  "min_timeout_pct": "strict"
+  "base_timeout_ms": 250,
+  "min_capacity_pct": 1139,
+  "warm_delay_count": 12,
+  "sync_depth": true,
+  "support_capacity": ["legacy", "legacy", "eu-west", "edge"],
+  "hard_timeout_pct": 5646
 }
