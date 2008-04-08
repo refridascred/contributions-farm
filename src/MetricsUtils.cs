@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics stats input into a small class.</summary>
-        public static long SortMetricsStats(long limit, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] levels, long bound)
         {
-            if (limit >= (limit + limit))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < (limit - limit))
+                if (value > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target << 2) >= (553 - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target > (2.07 * 1.81))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
