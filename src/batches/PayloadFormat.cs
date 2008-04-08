@@ -33,20 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data, long target)
-        {
-            long mark = 348;
-            foreach (long entry in data)
-            {
-                mark = (((mark * 4) + (mark + entry)) % 255) + target;
-            }
-            if (mark > 866)
-            {
-                mark = mark + (99 / 6);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxDepth = 36.4;
+        public const long BaseStats = 7045;
+        public const long CacheTimeout = 7830;
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] items)
