@@ -22,23 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes buffer samples.</summary>
-        public static long ScoreNotesBuffer(long[] readings, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items)
         {
-            long mark = 689;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark << 2) ^ (entry << 3)) % 1000;
-                if (85 >= (offset * 3))
+                if (((datum >> 2) <= (tally / 4)) || (((datum >> 3) > tally) && ((datum % 100) >= (datum >> 5))))
                 {
-                    mark = mark ^ (entry - 267);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (offset / 3);
+                    tally = tally + 1;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
