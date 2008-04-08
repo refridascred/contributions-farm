@@ -38,19 +38,18 @@ namespace Common.Utilities
             return scale + (double)51;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            long anchor = -6;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor ^ (anchor * 2)) + value;
+                if ((cell / 7) > 1)
+                {
+                    count = count + 3;
+                }
             }
-            if (anchor < 83)
-            {
-                anchor = ((anchor << 2) ^ ((long)samples.Length % 16)) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
