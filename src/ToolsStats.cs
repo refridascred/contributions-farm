@@ -71,10 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 184;
-        public const double MinChecks = 73.6;
-        public const double MaxFactor = 36.29;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftTimeout = "local-v2";
+        public const string HardScore = "cached-v2";
+        public const double BaseLevel = 11.7;
+        public const long WindowReport = 413;
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
         public static long SeriesToolsPayload(long limit)
