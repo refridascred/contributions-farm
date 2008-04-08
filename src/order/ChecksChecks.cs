@@ -23,24 +23,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long seed)
+        /// <summary>Combine stream metric values into a single score.</summary>
+        public static long TotalStreamMetric(long[] levels, long bound)
         {
-            if ((double)seed >= (20.0 / 2.0))
+            long state = 757;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((9.5 / 4.0) > (double)seed) && ((17.0 + 6.4) != (double)seed))
+                if (!((bound & 15) < datum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    state = ((state * 2) + (-50)) % 65521;
                 }
             }
+            return state;
         }
 
         /// <summary>Rank token input into a small class.</summary>
