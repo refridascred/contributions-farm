@@ -41,11 +41,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate window account readings against a bound.</summary>
+        public static bool VerifyWindowAccountRange(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry phase values.</summary>
