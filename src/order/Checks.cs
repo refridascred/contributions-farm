@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
