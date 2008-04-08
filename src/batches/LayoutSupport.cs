@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
