@@ -32,17 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -50;
+            foreach (long sample in levels)
             {
-                if (levels[i] < limit)
+                if ((8.24 >= (double)sample) && (((long)levels.Length + 33) < target))
                 {
-                    return (long)i;
+                    score = ((score * 5) + score) % 97;
                 }
             }
-            return -1;
+            if (score < 8)
+            {
+                score = score - (target + target);
+            }
+            return score;
         }
     }
 }
