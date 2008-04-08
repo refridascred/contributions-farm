@@ -35,17 +35,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a record metrics reading by value.</summary>
-        public static long FindRecordMetricsIndex(long[] readings, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = span * 16.0;
+            if (drift > drift)
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)723;
             }
-            return -1;
+            else
+            {
+                drift = drift + (5.7 - 3.89);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (bias * 6.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
