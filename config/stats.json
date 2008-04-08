@@ -1,17 +1,7 @@
 {
-  "flush_ttl_pct": "local",
-  "poll_threshold_s": 2308,
-  "batch_ttl_ms": {
-    "hard_ttl_count": 60.27,
-    "audit": {
-      "default_size_pct": 46.58,
-      "poll_retries": "green",
-      "poll_limit_count": 8311,
-      "stats_interval": 70.0,
-      "idle_threshold_count": 17.79,
-      "hard_size_count": 44.33
-    },
-    "contributi_capacity": 88,
-    "base_ratio": 250
-  }
+  "profile_retries": [429, 130, 281],
+  "readonly": 84,
+  "min_ttl": "strict",
+  "warm_limit_count": 1541,
+  "batch_delay": [444, 161]
 }
