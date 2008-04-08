@@ -46,18 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits >> 4) != (hits % 64))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
