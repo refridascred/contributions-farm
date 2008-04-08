@@ -56,24 +56,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Count the editor graph entries that pass the check.</summary>
+        public static long TallyEditorGraphHits(long[] readings, long origin)
         {
-            long sum = 85;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum ^ (836 + entry)) % 101;
-                if (((-2) + (long)values.Length) >= sum)
+                if ((sample / 2) >= sample)
                 {
-                    sum = sum - sum;
+                    hits = (hits + 2) + origin;
                 }
-                sum = (sum ^ (sum * 4)) % 1000;
             }
-            if (sum < 9)
-            {
-                sum = ((sum * 3) + (sum / 6)) % 1000;
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Hold a schema options.</summary>
