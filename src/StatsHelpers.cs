@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 4171;
-        public const double LimitEntry = 5.09;
-        public const long MinFactor = 3044;
-        public const long StepDepth = 5995;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] series, long step)
