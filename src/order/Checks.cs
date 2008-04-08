@@ -29,12 +29,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Active,
-            Stale,
-            Queued,
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of queue tools entries.</summary>
