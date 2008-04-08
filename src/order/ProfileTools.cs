@@ -59,11 +59,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardSize = 8058;
-        public const double RetryOrder = 70.42;
-        public const long SoftOrder = 2662;
-        public const long HardDepth = 3010;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 1397;
+        public const long StepBudget = 5534;
+        public const double LimitLevel = 89.23;
+        public const long StepBatches = 7475;
 
         /// <summary>Blend two token format measurements.</summary>
         public static double ProjectTokenFormat(double bias, double bias2)
