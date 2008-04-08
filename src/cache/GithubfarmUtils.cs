@@ -23,22 +23,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many metric stream samples are out of range.</summary>
-        public static long CountMetricStreamOutliers(long[] values, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((double)item > (double)hits)
+                if (!(((limit + cell) < cell) && (cell < (cell ^ matches))))
                 {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a commits header.</summary>
