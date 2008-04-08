@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 18.96;
         public const long MinRatio = 459;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many window tools samples are out of range.</summary>
