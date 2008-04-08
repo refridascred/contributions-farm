@@ -1,7 +1,5 @@
 {
-  "command_capacity": "strict",
-  "stream_threshold": "fallback",
-  "idle_threshold": 15,
-  "compress": true,
-  "verbose": 403
+  "queue_ratio": 90.16,
+  "readonly": 30,
+  "default_ratio": "local"
 }
