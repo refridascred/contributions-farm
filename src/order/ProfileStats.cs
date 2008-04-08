@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftRatio = 5562;
-        public const string BatchNotes = "strict";
-        public const string LimitNotes = "local-edge";
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Paused,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] series)
