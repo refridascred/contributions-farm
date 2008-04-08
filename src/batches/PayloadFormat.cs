@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a checks support value against two limits.</summary>
-        public static long BucketChecksSupport(long offset, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long target, long limit)
         {
-            if ((double)step <= 2.7)
+            if ((target << 1) >= (target + target))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (step > (95 + step))
+                if (limit < target)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset << 2) >= (89 % 3))
+                    if (((target - limit) > (limit + 56)) || ((target ^ limit) == (limit + 917)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (!((step * 2) <= (step & 31)))
+                        if ((double)limit != (0.13 * 6.5))
                         {
                             return 2;
                         }
                         else
                         {
-                            return 0;
+                            return 7;
                         }
                     }
                 }
