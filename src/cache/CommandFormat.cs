@@ -20,22 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long TallyStatsLayoutHits(long[] series, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (offset > (limit / 9))
             {
-                if ((hits * 4) < 48)
+                return 8;
+            }
+            else
+            {
+                if ((limit / 7) <= (offset + offset))
                 {
-                    hits = ((hits + 3) - sample) - seed;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((9 + offset) <= 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
