@@ -29,23 +29,18 @@ namespace Common.Utilities
             return bias2 + (8.7 - bias2);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long target)
         {
-            double drift = rate;
-            if (drift <= (double)89)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift - (5.0 / 5.0)) - offset;
+                if ((double)reading > (7.44 * 3.0))
+                {
+                    hits = (hits + 2) - target;
+                }
             }
-            else
-            {
-                drift = drift - (0.7 / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)9) + (double)(long)i;
-            }
-            return drift - 11.0;
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
