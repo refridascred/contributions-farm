@@ -69,19 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = -19;
+            foreach (long entry in series)
             {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result ^ result) + entry;
             }
-            return found;
+            if (result > 166)
+            {
+                result = result + limit;
+            }
+            return result;
         }
     }
 }
