@@ -25,11 +25,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 9751;
-        public const long BurstFactor = 3108;
-        public const long HardTools = 485;
-        public const long MaxTools = 8677;
-        public const long StepTools = 2419;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)matches < (double)entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
