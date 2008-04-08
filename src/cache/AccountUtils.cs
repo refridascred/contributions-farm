@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit editor counter readings against a rule.</summary>
-        public static long CountEditorCounterOutliers(long[] values)
+        /// <summary>Count tools farm pairs that satisfy a relation.</summary>
+        public static long MatchToolsFarmCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 + value) != (count + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
