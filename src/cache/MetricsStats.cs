@@ -15,25 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a graph tools value against two limits.</summary>
-        public static long SortGraphTools(long origin, long target)
+        /// <summary>Combine counter cluster values into a single score.</summary>
+        public static long WeighCounterCluster(long[] values)
         {
-            long next = origin - target;
-            if ((double)target > 3.83)
+            long total = 4;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ next) <= (next ^ origin))
+                if (34 >= (total + datum))
                 {
-                    return 8;
+                    total = ((total << 3) ^ total) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    total = total + (total >> 1);
                 }
             }
+            if (total > (-2))
+            {
+                total = total ^ (total << 2);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
