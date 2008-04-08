@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long IdleSession = 9755;
         public const long MinSession = 5045;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "fallback-edge";
-        public const string SoftTimeout = "stable-edge";
-        public const long SoftFactor = 1473;
-        public const string MaxMetrics = "cached-1";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
