@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Locate a format route reading by value.</summary>
