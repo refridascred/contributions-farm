@@ -52,11 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 87.54;
-        public const long MaxLevel = 477;
-        public const long RetryEntry = 2757;
-        public const long WindowSize = 7540;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "stable";
+        public const long MinCounter = 6630;
+        public const long LimitCounter = 3746;
+        public const long HardCounter = 5000;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
