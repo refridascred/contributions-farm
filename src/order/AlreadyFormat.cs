@@ -45,17 +45,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a queue channel sample.</summary>
-        public static long SeekQueueChannelIndex(long[] samples, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 3;
+            foreach (long entry in readings)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                if (130 > (target % 16))
                 {
-                    return (long)i;
+                    result = ((result - (10 & 1)) % 97) ^ entry;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Grade a checks tools value against two limits.</summary>
