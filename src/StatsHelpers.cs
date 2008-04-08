@@ -61,13 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long total = 5;
+            foreach (long reading in samples)
+            {
+                total = (total << 2) ^ (reading >> 5);
+                if (((total + reading) < total) && ((reading << 1) >= (total + 1)))
+                {
+                    total = (total - (total << 3)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a already snapshot.</summary>
