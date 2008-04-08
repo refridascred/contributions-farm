@@ -39,9 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "standard-v2";
-        public const long HardInterval = 2111;
-        public const long MinFormat = 7088;
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long CountEditorToolsMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.43 + 5.8) < (double)entry)
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
     }
 }
