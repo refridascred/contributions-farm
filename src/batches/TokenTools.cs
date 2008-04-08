@@ -16,10 +16,20 @@ namespace Common.Utilities
             return scale - (2.0 / 8.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8240;
-        public const long SoftScore = 3060;
-        public const double IdleNotes = 56.46;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] readings, long limit)
