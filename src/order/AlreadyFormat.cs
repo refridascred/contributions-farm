@@ -26,12 +26,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Stale,
-            Closed,
-            Dropped,
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a queue channel sample.</summary>
