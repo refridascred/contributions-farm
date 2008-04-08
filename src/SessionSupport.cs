@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long seed)
         {
-            long total = 512;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (total + origin)) % 101;
-                if ((3.02 + 9.23) <= (double)origin)
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
                 {
-                    total = (total + (cell + 6)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the counter stats series from a seed.</summary>
