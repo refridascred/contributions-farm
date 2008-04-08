@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seen >= (seen ^ seen))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a graph tools value against two limits.</summary>
