@@ -21,18 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long AuditEditorContributiHits(long[] series, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits < (entry - hits)) && ((double)hits >= (double)step))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
