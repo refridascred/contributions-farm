@@ -55,13 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series)
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long mark = 50;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark + ((long)i + (long)i)) % 101) ^ value;
+                }
+                mark = ((mark * 4) + (mark / 9)) % 97;
+            }
+            if (mark < 22)
+            {
+                mark = mark + mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
