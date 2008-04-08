@@ -1,4 +1,10 @@
 # entry settings
-min_timeout: legacy
-poll_threshold_ms: eu-west
-payload_ttl: 250
+sync_threshold_count: 250
+strict: open
+batch_capacity_pct: false
+base_capacity: 92.12
+burst_delay_s:
+  - primary
+  - blue
+  - strict
+hard_delay_s: true
