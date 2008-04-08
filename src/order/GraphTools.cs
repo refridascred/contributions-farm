@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mean - (double)247;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum >= offset)
+                if (6.05 < (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) + reading) - bound;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
