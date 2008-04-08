@@ -19,18 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings, long floor)
         {
-            long mix = 18;
-            foreach (long value in values)
+            long score = 944;
+            foreach (long value in readings)
             {
-                if (!((value - mix) == (mix + mix)))
+                if ((double)score > (double)value)
                 {
-                    mix = (mix + (mix - value)) % 101;
+                    score = ((score << 3) ^ score) % 4096;
                 }
+                score = (score - (score >> 3)) % 65521;
+                score = (score << 2) ^ (3 + floor);
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
