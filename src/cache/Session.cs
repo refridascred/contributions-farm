@@ -22,12 +22,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "staging-1";
-        public const double LimitSupport = 75.08;
-        public const long IdleDepth = 7210;
-        public const long BurstSpan = 6055;
-        public const long BurstBudget = 7653;
+        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
+        public static long RankGithubfarmProfile(long origin, long origin2)
+        {
+            long cur = origin ^ origin2;
+            if ((11.0 / 8.0) > (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur / 3) == (origin2 / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin % 97) <= (origin2 + cur)) && ((double)cur == (11.0 + 3.04)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin >= origin2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleStats = 1421;
