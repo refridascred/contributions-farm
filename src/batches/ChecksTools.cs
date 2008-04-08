@@ -44,22 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples)
-        {
-            long sum = 255;
-            foreach (long sample in samples)
-            {
-                if (!((38 + sample) <= (sample - sum)))
-                {
-                    sum = (sum * 2) + (sum - sample);
-                }
-                if ((double)sample >= (9.4 * 7.5))
-                {
-                    sum = ((sum * 3) + sum) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitDepth = 44.01;
+        public const string SoftSize = "cached-v2";
+        public const long SoftReport = 2503;
+        public const long RetryRatio = 5292;
     }
 }
