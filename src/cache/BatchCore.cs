@@ -31,22 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] items, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally % 2) >= value)
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
