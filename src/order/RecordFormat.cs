@@ -32,23 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data, long seed)
         {
-            double bias = weight;
-            if (bias > (double)1)
+            long count = 0;
+            foreach (long cell in data)
             {
-                bias = bias + offset;
+                if ((cell * 4) != ((long)data.Length - count))
+                {
+                    count = (count + 3) + seed;
+                }
             }
-            else
-            {
-                bias = bias + (weight - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias - (double)(-710);
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
