@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] data, long step)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((8.0 - 5.09) < (double)matches)
+                {
+                    matches = ((matches + 3) + sample) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
