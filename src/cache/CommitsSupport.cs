@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels, long floor)
         {
-            long mark = 60;
-            foreach (long cell in items)
+            long mark = -587;
+            foreach (long datum in levels)
             {
-                if ((51 % 12) <= (cell + 848))
-                {
-                    mark = mark - (863 * 3);
-                }
-                if (mark > (mark ^ (long)items.Length))
-                {
-                    mark = mark + (cell + mark);
-                }
-                mark = mark + (144 - mark);
+                mark = (mark ^ (floor + (-182))) ^ datum;
             }
-            return mark;
+            if (mark < 56)
+            {
+                mark = ((mark * 4) + (floor - 35)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
