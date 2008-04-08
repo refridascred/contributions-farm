@@ -41,20 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Accumulate graph tools samples.</summary>
+        public static long TallyGraphTools(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long anchor = 25;
+            foreach (long datum in items)
             {
-                if ((double)origin < (9.72 / 5.0))
+                anchor = ((anchor * 4) + anchor) % 255;
+                if (!((6 + anchor) < datum))
                 {
-                    mix = (mix + (19 << 2)) % 255;
+                    anchor = ((anchor << 2) ^ 0) % 1000;
                 }
-                mix = ((mix * 2) + (mix * 4)) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    anchor = (anchor << 2) ^ (87 ^ anchor);
+                }
             }
-            return mix;
+            return anchor;
         }
     }
 }
