@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] readings, long origin)
         {
-            long sum = -34;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = ((sum * 3) + sample) % 4096;
-                sum = sum ^ (floor - sample);
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
