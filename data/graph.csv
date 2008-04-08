@@ -1,6 +1,11 @@
-id,owner,active,rank
-1,322,blue,55.98
-2,41.25,44.66,354
-3,eu-west,885,853
-4,staging,standard,804
-5,41.71,781,52.48
+id,label,active,level
+1,322,97.66,68.19
+2,standard,204,10.85
+3,918,903,70.59
+4,708,46.49,fallback
+5,fallback,staging,42.78
+6,407,642,69.19
+7,398,410,36.66
+8,strict,979,70.64
+9,15,local,638
+10,31.45,legacy,72
