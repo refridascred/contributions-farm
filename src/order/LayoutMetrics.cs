@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next buffer editor value from a seed.</summary>
-        public static long RollBufferEditor(long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            if ((99 >> 5) < (bound % 100))
             {
-                total = ((total * 5) + (long)i) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((double)bound != (8.6 + 6.09))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
