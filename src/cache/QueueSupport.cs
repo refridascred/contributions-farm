@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally & 15) >= (value * 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
