@@ -1,5 +1,7 @@
 # entry settings
-record_capacity: edge
-command_interval: 49
-filter_limit: 82.14
-audit: 11.64
+sync_retries: 79.64
+compress: 61.24
+idle_depth_count:
+  - latest
+  - green
+counter_ratio: 18
