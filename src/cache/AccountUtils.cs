@@ -32,13 +32,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Dropped,
-            Retry,
+            Paused,
+            Idle,
             Failed,
-            New,
+            Done,
+            Queued,
         }
     }
 }
