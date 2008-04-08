@@ -60,12 +60,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Ready,
-            Closed,
-            Pending,
+            Queued,
+            Retry,
+            Active,
+            Stale,
+            Draft,
         }
     }
 }
