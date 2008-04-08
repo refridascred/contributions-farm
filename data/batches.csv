@@ -1,6 +1,6 @@
-id,score,level,token
-1,62,83.1,stable
-2,993,908,49.37
-3,7.91,eu-west,staging
-4,661,81.54,68.42
-5,178,445,140
+id,active,token,state,ratio
+1,cached,54.49,11.59,26.96
+2,strict,586,legacy,84.22
+3,20.08,2.08,236,245
+4,staging,blue,700,560
+5,open,open,654,485
