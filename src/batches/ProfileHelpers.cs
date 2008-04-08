@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseSpan = 2441;
-        public const long MinAccount = 8180;
-        public const long IdleFactor = 3977;
-        public const string IdleTimeout = "staging-v2";
-        public const long WindowAccount = 6651;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((9 * 2) != (72 - hits)) && ((68 - hits) > 77)) || ((hits >> 5) == (37 ^ 58)))
+                {
+                    hits = ((hits + 3) ^ datum) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many cluster commits samples are out of range.</summary>
         public static long AuditClusterCommitsMatches(long[] samples, long step)
