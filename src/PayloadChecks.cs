@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const long StepFormat = 6241;
         public const double CacheSpan = 52.79;
 
-        /// <summary>Count payload already pairs that satisfy a relation.</summary>
-        public static long MatchPayloadAlreadyCount(long[] samples)
+        /// <summary>Grade a filter entry value against two limits.</summary>
+        public static long BucketFilterEntry(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target ^ seed;
+            if (((seed * 3) < 483) && ((double)prev > (3.08 - 6.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((14.0 / 7.0) >= (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
