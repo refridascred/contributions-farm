@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Digest a series of cache metrics entries.</summary>
+        public static long DigestCacheMetrics(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -103;
+            foreach (long datum in values)
             {
-                if (series[i] < floor)
+                if (((datum >> 4) > (datum ^ datum)) || ((double)mark >= (5.3 - 6.0)))
                 {
-                    return (long)i;
+                    mark = ((mark + (mark + datum)) % 97) - floor;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (21 & 7)) % 4096;
                 }
             }
-            return -1;
+            if (mark < 3)
+            {
+                mark = (mark - 20) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the contributi state values.</summary>
