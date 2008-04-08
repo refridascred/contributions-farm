@@ -46,13 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Pending,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
