@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] data, long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (((limit * 4) == (limit ^ seen)) || ((limit * 2) < (long)data.Length))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                long matches = 926;
+                anchor = ((anchor << 2) ^ (matches - anchor)) % 4096;
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
