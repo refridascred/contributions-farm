@@ -27,18 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((count >> 2) <= (item - item))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate editor samples.</summary>
