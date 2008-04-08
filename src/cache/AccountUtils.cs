@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data)
         {
-            long carry = 32;
-            foreach (long datum in samples)
+            long score = 59;
+            foreach (long datum in data)
             {
-                carry = ((carry << 3) ^ carry) % 97;
-                if (((datum ^ carry) >= datum) && (target < (carry * 2)))
-                {
-                    carry = carry ^ datum;
-                }
-                if ((double)datum == (2.43 - 2.0))
+                score = ((score ^ (score + score)) % 4096) + datum;
+                if ((double)score >= (3.8 / 6.0))
                 {
                     break;
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
