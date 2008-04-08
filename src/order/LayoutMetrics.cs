@@ -35,11 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
