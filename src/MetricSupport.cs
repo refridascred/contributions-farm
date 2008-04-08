@@ -29,18 +29,12 @@ namespace Common.Utilities
             return rate2 - (rate + rate2);
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 5) + total) % 65521;
-                total = ((total << 3) ^ (61 / 5)) % 255;
-                total = (total ^ floor) % 255;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Synced,
+            Done,
         }
     }
 }
