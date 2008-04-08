@@ -62,21 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Validate support metric readings against a bound.</summary>
+        public static bool GuardSupportMetricLimits(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum != target)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
