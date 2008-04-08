@@ -1,5 +1,7 @@
 {
-  "batch_timeout_pct": 97,
-  "session_capacity": true,
-  "min_timeout_pct": [247, 319]
+  "retry_size": ["blue", "strict"],
+  "burst_interval_ms": 36,
+  "default_depth_s": 100,
+  "soft_retries": ["green", "local"],
+  "poll_capacity_s": "legacy"
 }
