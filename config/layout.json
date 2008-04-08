@@ -1,7 +1,6 @@
 {
-  "retry_depth": 7146,
-  "max_window": 4168,
-  "retry_ttl": "open",
-  "burst_limit_s": 90.57,
-  "cache_depth_pct": "cached"
+  "batch_window": 4619,
+  "soft_retries_pct": "primary",
+  "poll_capacity": "cached",
+  "schema_ratio": [133, 35, 470]
 }
