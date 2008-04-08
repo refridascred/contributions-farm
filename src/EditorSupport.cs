@@ -48,15 +48,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double span)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            double mean = weight;
-            for (int i = 0; i < 4; i++)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mean = ((mean - (mean * 1.0)) + (double)(long)i) - span;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mean + (mean + mean);
+            return mix;
         }
     }
 }
