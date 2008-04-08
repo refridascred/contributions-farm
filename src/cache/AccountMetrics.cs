@@ -28,18 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 1.18;
+        public const long LimitWindow = 6706;
+        public const long RetrySize = 7708;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
