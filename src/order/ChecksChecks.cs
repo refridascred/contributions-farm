@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream metric values into a single score.</summary>
-        public static long TotalStreamMetric(long[] levels, long bound)
-        {
-            long state = 757;
-            foreach (long datum in levels)
-            {
-                if (!((bound & 15) < datum))
-                {
-                    state = ((state * 2) + (-50)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepWidth = 2569;
+        public const long MaxProfile = 786;
+        public const string CacheProfile = "stable-1";
+        public const long IdleProfile = 501;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] data, long target)
