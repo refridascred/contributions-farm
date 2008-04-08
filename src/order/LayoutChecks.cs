@@ -78,11 +78,39 @@ namespace Common.Utilities
         public const double IdleLayout = 50.93;
         public const long SoftInterval = 1028;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long floor)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long prev = bound ^ floor;
+            if (((floor - prev) == (prev - bound)) || (floor <= (floor + prev)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 1) < (bound ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (23 >= (bound & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound != (double)9)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
