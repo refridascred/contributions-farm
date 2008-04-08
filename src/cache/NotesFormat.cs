@@ -51,19 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] series, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
