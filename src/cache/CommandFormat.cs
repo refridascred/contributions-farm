@@ -22,21 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 53;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sum * 2) > (286 - 6)))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 2) + (entry * 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 4) + sum;
                 }
             }
-            return count;
+            if (sum < 22)
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the report class values.</summary>
