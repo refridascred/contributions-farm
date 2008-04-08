@@ -32,10 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 84.48;
-        public const string MinTimeout = "strict-v2";
-        public const long HardSpan = 1665;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark ^ (long)i;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a graph stats sample.</summary>
         public static long LocateGraphStatsIndex(long[] levels, long bound)
