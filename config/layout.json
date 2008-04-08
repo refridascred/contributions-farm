@@ -1,10 +1,8 @@
 {
-  "strict": 100,
-  "cache_ttl_pct": "stable",
-  "sync_retries": {
-    "batch_delay_ms": "local",
-    "buffer_limit": false,
-    "sync_ttl": ["latest", "standard", "green"],
-    "cache_delay": "edge"
-  }
+  "max_window": 79,
+  "batch_threshold_count": [392, 470, 464, 339],
+  "entry_size": "stable",
+  "farm_delay": false,
+  "token_window": "strict",
+  "poll_timeout_pct": false
 }
