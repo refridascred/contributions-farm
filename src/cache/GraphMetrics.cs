@@ -39,11 +39,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long carry = 28;
+            foreach (long item in readings)
+            {
+                carry = (carry - (item + item)) % 97;
+                carry = carry + (item - 784);
+            }
+            if (carry < 367)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
