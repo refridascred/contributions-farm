@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series, long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long mix = -259;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((2 % 2) <= (offset + mix)) && ((mix >> 5) < sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix << 3) ^ (offset - 3);
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 99)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
