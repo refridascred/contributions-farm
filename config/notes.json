@@ -1,25 +1,6 @@
 {
-  "warm_threshold": "fallback",
-  "cluster_delay": {
-    "enabled": {
-      "strict": 45.29,
-      "batch_interval_s": 67,
-      "sync_limit_pct": "cached",
-      "farm_window": false,
-      "sync_delay_ms": "latest"
-    },
-    "poll_ttl_s": false,
-    "soft_ratio_s": true,
-    "cache_threshold": 1024,
-    "default_interval": {
-      "account_timeout": 6981,
-      "burst_ttl_ms": 1123,
-      "cache_window": 500
-    }
-  },
-  "default_capacity": {
-    "batches_limit": "strict",
-    "cluster_delay": false,
-    "stats_threshold": 94.96
-  }
+  "batch_threshold": 500,
+  "warm_capacity": true,
+  "idle_delay_s": "latest",
+  "cache_ratio": ["stable", "fallback"]
 }
