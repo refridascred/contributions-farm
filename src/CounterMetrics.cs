@@ -12,12 +12,24 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 5566;
-        public const long DefaultAccount = 6394;
-        public const long BatchTimeout = 4031;
-        public const long RetryAccount = 175;
-        public const double LimitScore = 17.86;
+        /// <summary>Iterate the route token series from a seed.</summary>
+        public static long DeriveRouteToken(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((6.0 * 19.0) < (double)bound) && (7.89 <= (double)(long)i))
+                {
+                    total = (total * 2) + bound;
+                }
+                else
+                {
+                    total = ((total << 2) ^ bound) % 97;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] levels)
