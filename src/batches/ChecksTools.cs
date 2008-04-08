@@ -19,24 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (anchor + (anchor * 4)) + entry;
-                anchor = ((anchor * 4) + (anchor << 2)) % 255;
-                if ((double)anchor > (13.0 / 6.0))
+                if (carry > (47 << 1))
                 {
-                    anchor = (anchor + (719 + bound)) % 101;
+                    carry = carry + offset;
                 }
-                if ((15.0 - 8.0) == (double)bound)
+                if ((long)i >= ((long)i + carry))
                 {
-                    break;
+                    carry = ((carry * 5) + (carry + (long)i)) % 101;
+                    carry = ((carry * 3) + 5) % 65521;
                 }
+                if ((offset + offset) >= (carry << 2))
+                {
+                    carry = carry + (0 / 3);
+                    carry = (carry ^ (carry % 10)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
