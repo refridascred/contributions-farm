@@ -1,5 +1,7 @@
 # support settings
-strict: 90.28
-soft_limit_ms: open
-dry_run: 4818
-persist: fallback
+flush_ratio_pct: 9955
+burst_threshold: false
+retry_size_pct: false
+min_window_s: false
+retry_capacity_pct: 8067
+poll_capacity_pct: 46.49
