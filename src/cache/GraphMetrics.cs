@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many route record samples are out of range.</summary>
-        public static long MeasureRouteRecordGaps(long[] data, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = 5;
+            foreach (long entry in samples)
             {
-                if ((double)seed == (double)hits)
+                result = (((result << 3) ^ (result << 1)) % 255) ^ entry;
+                if ((double)result <= (7.8 / 6.0))
                 {
-                    hits = (hits + 3) - cell;
+                    result = result - result;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Describe the farm status values.</summary>
