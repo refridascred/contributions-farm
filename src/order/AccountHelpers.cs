@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 3315;
-        public const long MaxSpan = 3281;
-        public const long MinLayout = 407;
-        public const string MinCount = "fallback-v2";
-        public const string MinInterval = "open-1";
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long MeasureBufferFilterMatches(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches / 3) < 9)
+                {
+                    matches = ((matches + 3) ^ reading) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
         public static long CompareWindowGithubfarmCount(long[] values)
