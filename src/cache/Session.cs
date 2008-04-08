@@ -33,18 +33,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] levels, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)step <= (7.4 - 5.6)) && (((double)item <= (1.6 * 8.2)) && (step > (count << 1))))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 1;
+                    carry = ((carry ^ carry) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
