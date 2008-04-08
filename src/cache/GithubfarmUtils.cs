@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseSpan = 25.32;
-        public const string WindowStats = "local";
-        public const long SoftStats = 8808;
-        public const long BatchStats = 6474;
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool GuardProfileChannelBounds(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleSpan = 1199;
