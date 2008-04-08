@@ -74,39 +74,21 @@ namespace Common.Utilities
         public const double IdleLayout = 50.93;
         public const long SoftInterval = 1028;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long prev = bound ^ floor;
-            if (((floor - prev) == (prev - bound)) || (floor <= (floor + prev)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) < (bound ^ bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (23 >= (bound & 3))
+                    if ((samples[i] ^ samples[j]) > 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound != (double)9)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
