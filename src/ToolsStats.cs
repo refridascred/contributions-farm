@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token tools entry stays within the limit.</summary>
-        public static bool CheckTokenToolsBounds(long[] samples, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mix = 54;
+            foreach (long cell in items)
             {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((((mix * 3) + (mix >> 1)) % 4096) ^ cell) - offset;
             }
-            return valid;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
