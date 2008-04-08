@@ -72,15 +72,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long step)
-        {
-            long acc = -5;
-            foreach (long sample in readings)
-            {
-                acc = (acc - step) + sample;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultTimeout = "primary-v2";
+        public const string MinRatio = "stable-edge";
+        public const long RetryScore = 2235;
+        public const long BaseInterval = 1563;
     }
 }
