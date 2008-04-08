@@ -34,15 +34,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long target)
         {
-            long carry = 956;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ datum) % 255) - limit;
+                if ((data[i] > target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate schema channel readings against a bound.</summary>
