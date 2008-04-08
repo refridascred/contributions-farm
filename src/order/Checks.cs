@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long score = 786;
+            foreach (long reading in levels)
             {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score << 3) ^ (reading - (long)levels.Length);
             }
-            return ready;
+            if (score > 37)
+            {
+                score = (score - (score * 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
