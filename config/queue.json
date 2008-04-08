@@ -1,6 +1,5 @@
 {
-  "base_capacity_s": 2031,
-  "report_threshold": [320, 91, 332],
-  "farm_retries": ["blue", "green", "eu-west", "eu-west"],
-  "enabled": [395, 121]
+  "sync_size_s": 20.01,
+  "base_size": ["cached", "open"],
+  "min_timeout_pct": "strict"
 }
