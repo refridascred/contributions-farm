@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] series, long floor)
         {
-            long score = 7;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((item + 49) <= (item >> 2))
+                if (item < floor)
                 {
-                    score = ((score << 2) ^ (item << 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
