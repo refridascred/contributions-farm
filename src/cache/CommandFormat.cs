@@ -39,38 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long step, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if (5.68 <= (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((2.0 + 3.0) != (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (step ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step % 10) != (floor % 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
