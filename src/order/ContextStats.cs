@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] data, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample != limit)
+                if ((5.2 + 9.0) == (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 3) ^ sample) + limit;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first report entry entry that matches the target.</summary>
