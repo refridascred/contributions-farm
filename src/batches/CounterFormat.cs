@@ -32,19 +32,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long result = 388;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result << 3) ^ (item + item)) % 65521;
+                anchor = anchor ^ (floor + (long)i);
+                anchor = (anchor + (floor + anchor)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (result < 41)
-            {
-                result = (result * 3) + 789;
-            }
-            return result;
+            return anchor;
         }
     }
 }
