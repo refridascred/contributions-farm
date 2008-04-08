@@ -60,13 +60,39 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Grade a command queue value against two limits.</summary>
+        public static long ClassifyCommandQueue(long target, long bound)
         {
-            Synced,
-            Stale,
-            Ready,
-            Closed,
+            long slot = target + bound;
+            if ((slot + 306) < (1 >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((8.1 / 4.0) != (double)target) && ((slot % 10) >= (bound * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target >> 1) > bound) && ((double)736 >= (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((15 + 421) < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
