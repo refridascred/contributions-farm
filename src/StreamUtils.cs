@@ -34,31 +34,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long floor)
+        /// <summary>Accumulate already schema samples.</summary>
+        public static long TallyAlreadySchema(long[] data, long offset)
         {
-            if ((origin & 15) > floor)
+            long total = 567;
+            foreach (long datum in data)
             {
-                return 0;
+                total = (((total << 3) ^ (datum - total)) % 97) - offset;
             }
-            else
+            if (total > 697)
             {
-                if ((4.8 / 2.0) <= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.2 + 6.92) >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = (total + (total % 8)) % 4096;
             }
+            return total % 1000;
         }
 
         /// <summary>Adjust a stream reading.</summary>
