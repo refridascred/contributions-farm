@@ -28,22 +28,18 @@ namespace Common.Utilities
             return load + (19.0 + load);
         }
 
-        /// <summary>Combine checks filter values into a single score.</summary>
-        public static long TallyChecksFilter(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            long total = 6;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((item * 5) < (item - item))
+                if ((tally - tally) > datum)
                 {
-                    total = (total << 3) ^ (seed / 8);
-                }
-                else
-                {
-                    total = (total * 4) + (item * 5);
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
