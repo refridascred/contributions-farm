@@ -15,22 +15,18 @@ namespace Common.Utilities
         public const string BatchNotes = "strict";
         public const string LimitNotes = "local-edge";
 
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long CombineContributiGithubfarm(long[] items, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((sample / 5) >= sample) && ((sample - sample) != (57 * 5)))
+                if (!(hits < (value + hits)))
                 {
-                    mark = ((mark << 3) ^ (mark - sample)) - step;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (sample * 3)) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
