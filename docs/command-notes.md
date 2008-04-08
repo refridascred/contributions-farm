@@ -1,15 +1,15 @@
 # Command notes
 
-Use metric settings to tune how often already data is refreshed.
-The account helpers are pure functions, so they are safe to call from any thread.
-Use channel settings to tune how often channel data is refreshed.
+Keep buffer and githubfarm names short and lowercase.
+The cache module keeps stream values in sync with the counter cache.
+Keep token and channel names short and lowercase.
 
-Run the order check before changing any batch limits.
-Keep notes and counter names short and lowercase.
-Run the buffer check before changing any tools limits.
+Use stream settings to tune how often cache data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate editor input early
+- Log every payload change
 - Keep metrics values small
-- Log every metric change
+- Prefer support defaults
+- Document new profile fields
