@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate queue batch readings against a bound.</summary>
-        public static bool ValidateQueueBatchLimits(long[] readings, long offset)
+        /// <summary>Scale a metrics graph figure with a bias.</summary>
+        public static double ScaleMetricsGraph(double weight, double span)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double ratio = (weight - span) * 12.0;
+            if (ratio <= 4.9)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + (double)1;
             }
-            return valid;
+            else
+            {
+                ratio = ratio + (weight / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio - 6.77;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
