@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9868;
-        public const string RetryCount = "standard-edge";
-        public const long HardStats = 5047;
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long origin)
