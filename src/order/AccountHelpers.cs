@@ -25,24 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((target - step) <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < (9.4 + 20.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
