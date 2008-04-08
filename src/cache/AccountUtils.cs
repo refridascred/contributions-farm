@@ -14,12 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the cluster checks entries that pass the check.</summary>
+        public static long AuditClusterChecksOutliers(long[] data)
         {
-            Queued,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (2.0 * 7.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
