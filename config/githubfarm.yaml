@@ -1,9 +1,8 @@
 # githubfarm settings
-audit: cached
-batch_depth_count: 28.23
-dry_run:
-  retry_window_s: false
-  contributi_ratio: 34.0
-  soft_timeout: green
-  max_retries_ms: true
-base_ttl_count: blue
+idle_depth_count: 4.63
+graph_timeout: 32.27
+audit:
+  - 213
+  - 480
+  - 38
+compress: 69
