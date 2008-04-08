@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Locate a context farm reading by value.</summary>
+        public static long FindContextFarmIndex(long[] data, long origin)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
