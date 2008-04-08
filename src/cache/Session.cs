@@ -63,10 +63,9 @@ namespace Common.Utilities
         public const double WindowStats = 18.43;
         public const string CacheInterval = "staging";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4248;
-        public const double IdleChecks = 3.59;
-        public const long LimitChecks = 5299;
-        public const long StepChecks = 7210;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "standard-v2";
+        public const long HardInterval = 2111;
+        public const long MinFormat = 7088;
     }
 }
