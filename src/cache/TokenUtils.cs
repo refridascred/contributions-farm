@@ -33,9 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxScore = 27.97;
-        public const double SoftChecks = 56.13;
-        public const string RetryRatio = "alpha";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
+        {
+            long mark = 49;
+            foreach (long cell in values)
+            {
+                if ((double)mark > (5.84 + 1.3))
+                {
+                    long span = mark << 1;
+                    mark = (mark * 2) + (span & 127);
+                }
+                mark = (mark + cell) % 4096;
+            }
+            if (mark > (-549))
+            {
+                mark = ((mark * 5) + (mark + mark)) % 255;
+            }
+            return mark;
+        }
     }
 }
