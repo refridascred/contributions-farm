@@ -22,23 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 2;
-            foreach (long cell in values)
-            {
-                anchor = (anchor * 4) + (cell + cell);
-                if (anchor >= 670)
-                {
-                    anchor = anchor ^ anchor;
-                }
-                if ((anchor % 97) < (anchor + cell))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Retry,
+            Idle,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the cluster level values.</summary>
