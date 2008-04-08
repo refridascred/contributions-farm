@@ -1,5 +1,5 @@
 {
-  "retry_window_s": 95.67,
-  "default_capacity_count": ["legacy", "blue", "edge", "legacy"],
-  "soft_depth_pct": "local"
+  "batch_timeout_pct": 97,
+  "session_capacity": true,
+  "min_timeout_pct": [247, 319]
 }
