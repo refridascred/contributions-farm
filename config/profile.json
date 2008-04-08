@@ -1,6 +1,6 @@
 {
-  "min_depth_s": true,
-  "idle_capacity": ["legacy", "cached", "local"],
-  "support_interval": "blue",
-  "default_retries_ms": "latest"
+  "default_threshold": ["latest", "strict"],
+  "order_size": false,
+  "poll_window": 58.12,
+  "compress": 6349
 }
