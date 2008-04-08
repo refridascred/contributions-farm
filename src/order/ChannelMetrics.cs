@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 9868;
+        public const string RetryCount = "standard-edge";
+        public const long HardStats = 5047;
 
         /// <summary>Accumulate cluster account samples.</summary>
         public static long WeighClusterAccount(long[] series)
