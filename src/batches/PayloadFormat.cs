@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long CombineSupportEditor(long[] series, long target)
+        /// <summary>Grade a checks support value against two limits.</summary>
+        public static long BucketChecksSupport(long offset, long step)
         {
-            long score = 52;
-            foreach (long reading in series)
+            if ((double)step <= 2.7)
             {
-                if ((double)target != (double)reading)
+                return 7;
+            }
+            else
+            {
+                if (step > (95 + step))
                 {
-                    score = (score << 2) ^ ((long)series.Length + reading);
+                    return 5;
                 }
-                score = score - (9 - score);
+                else
+                {
+                    if ((offset << 2) >= (89 % 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step * 2) <= (step & 31)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            if (score < 5)
-            {
-                score = score ^ ((long)series.Length + score);
-            }
-            return score;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
