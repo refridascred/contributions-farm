@@ -22,21 +22,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = bound - bound2;
+            if (1 > (bound2 & 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)span != (double)bound)
                 {
-                    if ((levels[i] + levels[j]) > 2)
+                    return 2;
+                }
+                else
+                {
+                    if ((span % 16) > (bound2 - bound))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound * 2) < bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
