@@ -14,12 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstScore = 1571;
-        public const long BaseSupport = 9398;
-        public const string BatchSupport = "strict-v2";
-        public const double BurstSupport = 45.6;
-        public const long StepSupport = 4650;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (7.5 > (double)seed)
+                {
+                    state = ((state * 4) + (seed % 12)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double BlendMetric(double weight, double span)
