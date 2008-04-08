@@ -25,13 +25,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long bound)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            if (9.0 >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-302) >> 1) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 7) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank checks graph input into a small class.</summary>
