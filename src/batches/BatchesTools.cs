@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mark = 19;
-            foreach (long sample in readings)
-            {
-                if ((origin - origin) >= origin)
-                {
-                    mark = ((mark * 4) + origin) % 97;
-                }
-                else
-                {
-                    mark = (mark + (sample >> 5)) % 4096;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark << 3) ^ origin) % 1000;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
