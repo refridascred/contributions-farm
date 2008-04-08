@@ -18,18 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchLevel = 1060;
+        public const double IdleSize = 65.97;
+        public const long LimitFarm = 1717;
+        public const long MinFarm = 8311;
+        public const long DefaultFarm = 6243;
 
         /// <summary>Grade a payload account value against two limits.</summary>
         public static long RankPayloadAccount(long limit, long step)
