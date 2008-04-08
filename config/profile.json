@@ -1,5 +1,7 @@
 {
-  "max_retries_count": "strict",
-  "already_timeout": 48.25,
-  "min_ttl": 87.88
+  "warm_interval_count": ["legacy", "stable", "cached"],
+  "persist": 4997,
+  "default_ttl": 25.38,
+  "batch_retries": 801,
+  "record_window": false
 }
