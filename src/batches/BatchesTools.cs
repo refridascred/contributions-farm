@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (mean - (bias - 4.34)) + bias2;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
