@@ -42,22 +42,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate schema already samples.</summary>
-        public static long CombineSchemaAlready(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long state = 2;
-            foreach (long cell in readings)
-            {
-                state = ((state << 3) ^ (state % 60)) % 255;
-                if ((62 - cell) < cell)
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                    state = (state - cell) % 65521;
-                    break;
-                }
-                state = ((state * 2) + (cell << 1)) % 1000;
-            }
-            return state;
+            Queued,
+            Idle,
+            Synced,
+            Ready,
+            Paused,
         }
     }
 }
