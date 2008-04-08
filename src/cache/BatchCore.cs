@@ -60,13 +60,17 @@ namespace Common.Utilities
             return ratio2 + (double)(-8);
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
