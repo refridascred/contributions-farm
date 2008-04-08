@@ -1,8 +1,19 @@
 {
-  "idle_interval_ms": 3682,
-  "warm_ttl": [341, 466, 344],
-  "flush_depth": "local",
-  "cluster_window": 1024,
-  "idle_threshold_count": "cached",
-  "token_window": ["open", "eu-west"]
+  "strict": 60,
+  "dry_run": {
+    "farm_threshold": 82.61,
+    "sync_depth_count": ["latest", "strict"],
+    "default_retries": "cached",
+    "enabled": 8201,
+    "verbose": "open",
+    "strict": "latest"
+  },
+  "burst_ttl": ["fallback", "cached"],
+  "default_window_pct": {
+    "burst_ttl_s": 87.01,
+    "session_threshold": 34.58,
+    "sync_retries_s": 30,
+    "channel_ttl": true,
+    "context_threshold": ["latest", "open"]
+  }
 }
