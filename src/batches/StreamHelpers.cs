@@ -51,18 +51,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((6 / 3) > (count * 4))
-                {
-                    count = ((count + 1) + entry) - floor;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Match up checks format samples.</summary>
