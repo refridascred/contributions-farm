@@ -81,19 +81,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading != bound)
+                if (((double)bound == (8.1 / 9.0)) || ((value - bound) <= bound))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
