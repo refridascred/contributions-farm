@@ -22,39 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long bound, long bound2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] levels)
         {
-            long span = bound - bound2;
-            if (1 > (bound2 & 1))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)span != (double)bound)
+                if ((((29 % 60) > (86 + reading)) || ((reading / 2) >= (matches + 44))) && ((matches + 369) >= (reading << 3)))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((span % 16) > (bound2 - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound * 2) < bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
