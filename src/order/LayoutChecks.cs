@@ -48,16 +48,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples)
-        {
-            long acc = 519;
-            foreach (long value in samples)
-            {
-                acc = (acc - value) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinScore = 7414;
+        public const long RetryEntry = 9408;
+        public const string SoftEntry = "local-v2";
+        public const string SoftWidth = "stable-v2";
+        public const double BatchEntry = 4.03;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] samples)
