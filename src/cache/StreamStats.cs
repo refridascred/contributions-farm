@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Queued,
-            Dropped,
-            Active,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseBudget = "standard";
+        public const double BatchCount = 59.55;
+        public const long RetryWidth = 4395;
+        public const long SoftEntry = 3665;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long seed)
