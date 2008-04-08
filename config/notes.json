@@ -1,6 +1,11 @@
 {
-  "payload_retries": 100,
-  "hard_window_count": [86, 269, 175],
-  "soft_retries_ms": "stable",
-  "record_delay": 33.46
+  "warm_interval_count": true,
+  "cache_ratio": 90.87,
+  "retry_size": {
+    "min_depth": 94,
+    "max_limit": 2912,
+    "format_threshold": "edge",
+    "already_threshold": [487, 422],
+    "strict": [435, 73]
+  }
 }
