@@ -20,11 +20,11 @@ namespace Common.Utilities
             return gain + (scale - scale);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitLevel = 4459;
-        public const string StepTimeout = "alpha-edge";
-        public const long IdleAccount = 5310;
-        public const string SoftAccount = "fallback";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitSize = 86.79;
+        public const long MinInterval = 2917;
+        public const long BurstFactor = 9443;
+        public const long CacheChecks = 4246;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] values, long limit)
