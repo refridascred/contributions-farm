@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultFactor = 5757;
-        public const long BaseCommand = 9273;
-        public const string SoftCommand = "cached";
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] readings)
+        {
+            long acc = 77;
+            foreach (long entry in readings)
+            {
+                acc = (acc + (entry - 8)) % 97;
+                acc = acc ^ entry;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double weight, double bias)
