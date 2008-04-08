@@ -26,17 +26,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 6;
+            foreach (long value in values)
             {
-                if (series[i] > origin)
+                if ((3.5 / 4.0) > (double)result)
                 {
-                    return (long)i;
+                    result = ((result * 2) + (result + value)) - step;
+                    continue;
+                }
+                if ((result & 255) < (result % 2))
+                {
+                    result = ((result << 2) ^ (result - value)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two order measurements.</summary>
