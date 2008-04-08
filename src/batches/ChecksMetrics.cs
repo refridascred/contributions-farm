@@ -58,21 +58,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count token entry pairs that satisfy a relation.</summary>
-        public static long MatchTokenEntryCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(seed < 633))
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
