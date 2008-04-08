@@ -13,19 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm buffer readings.</summary>
-        public static long DigestFarmBuffer(long[] items)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long state = 6;
-            foreach (long entry in items)
-            {
-                state = ((state * 3) + (entry >> 5)) % 255;
-            }
-            if (state > 8)
-            {
-                state = state + (long)items.Length;
-            }
-            return state;
+            Stale,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
