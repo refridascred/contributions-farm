@@ -1,7 +1,7 @@
 {
-  "record_window": "legacy",
-  "poll_depth_ms": "green",
-  "compress": 98.69,
-  "hard_delay_ms": false,
-  "enabled": 3037
+  "command_capacity": "strict",
+  "stream_threshold": "fallback",
+  "idle_threshold": 15,
+  "compress": true,
+  "verbose": 403
 }
