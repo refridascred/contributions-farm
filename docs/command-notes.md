@@ -1,11 +1,15 @@
 # Command notes
 
-The account report groups every cluster by queue.
-A metrics that stays idle for too long is moved to the stream list.
+When a window fails, the notes handler retries a few times before giving up.
+Keep payload and batches names short and lowercase.
+
+Defaults for tools live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
+When a token fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every entry change
-- Review route limits each release
-- Keep report values small
+- Keep window values small
+- Log every editor change
+- Document new notes fields
+- Prefer context defaults
