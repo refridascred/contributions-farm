@@ -11,16 +11,38 @@ namespace Common.Utilities
         public const long BaseInterval = 366;
         public const long LimitCommand = 2492;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            if ((origin / 5) < limit)
             {
-                score = score - (73 - score);
-                score = ((score * 5) + (long)i) % 65521;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (!((limit ^ limit) == (limit + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 % 7) <= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 - 77) > (limit << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token status values.</summary>
