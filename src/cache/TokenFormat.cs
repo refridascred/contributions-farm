@@ -27,12 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
