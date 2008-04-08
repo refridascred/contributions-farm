@@ -36,12 +36,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
