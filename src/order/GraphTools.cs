@@ -49,15 +49,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double drift = floor - (double)367;
-            if (drift >= (drift - weight))
-            {
-                drift = drift + (5.1 + weight);
-            }
-            return drift + (drift / 2.0);
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
