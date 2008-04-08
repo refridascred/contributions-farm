@@ -54,11 +54,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinLevel = 63.87;
-        public const double SoftProfile = 64.9;
-        public const long RetryProfile = 1280;
-        public const string HardProfile = "strict";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] levels)
