@@ -32,31 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long offset)
-        {
-            if (((8.18 / 8.0) == (double)bound) || ((offset ^ offset) == (bound % 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 3) != (offset % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset > (1.6 / 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7232;
+        public const long LimitCommand = 3950;
+        public const long BurstCommand = 7495;
+        public const long HardCommand = 851;
     }
 }
