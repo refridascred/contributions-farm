@@ -23,13 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            long state = -6;
+            foreach (long reading in levels)
+            {
+                state = (state * 3) + (reading + state);
+                if ((double)reading > (13.0 / 9.0))
+                {
+                    continue;
+                }
+                if (state >= reading)
+                {
+                    state = ((state * 4) + ((long)levels.Length ^ 64)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
