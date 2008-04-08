@@ -20,19 +20,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (item <= step)
+                if (sample > step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
