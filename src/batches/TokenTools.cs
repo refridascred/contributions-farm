@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score ^ ((long)i % 8)) % 101;
+                score = ((score * 2) + (0 + 43)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
