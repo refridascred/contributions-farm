@@ -28,19 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleSize = "cached-1";
+        public const double BurstFactor = 91.27;
+        public const long StepScore = 3394;
+        public const long StepInterval = 5740;
     }
 }
