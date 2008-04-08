@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((((long)i & 7) >= (state - state)) && ((state & 63) != (state - state))))
-                {
-                    state = (state ^ (step << 3)) % 101;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state * 4) + (step >> 3)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
