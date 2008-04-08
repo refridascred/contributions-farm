@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((seen * 2) == (seen & 127)))
-                {
-                    seen = ((seen + 3) ^ value) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
