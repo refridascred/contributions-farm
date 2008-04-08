@@ -23,15 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the counter stats series from a seed.</summary>
-        public static long SeriesCounterStats(long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
