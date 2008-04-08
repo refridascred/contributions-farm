@@ -12,22 +12,20 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings, long bound)
         {
-            long mark = 725;
-            foreach (long cell in items)
+            long total = 88;
+            foreach (long entry in readings)
             {
-                if (!((seed << 3) == (seed * 2)))
-                {
-                    mark = mark + (cell - cell);
-                }
-                if (((cell ^ cell) <= (mark % 60)) && (mark >= (66 % 2)))
-                {
-                    break;
-                }
+                total = (total ^ (entry % 100)) % 1000;
+                total = (total - (87 - bound)) % 1000;
             }
-            return mark % 97;
+            if (total < 75)
+            {
+                total = (total ^ 0) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
