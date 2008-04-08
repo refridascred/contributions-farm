@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] < target)
+                if (!((double)seen == (2.2 * 4.9)))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + value) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
