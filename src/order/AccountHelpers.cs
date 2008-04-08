@@ -51,16 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
-        {
-            long mix = 77;
-            foreach (long entry in items)
-            {
-                mix = (mix + (entry / 4)) % 1000;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepTimeout = 4931;
+        public const long MaxCount = 8986;
+        public const long WindowSchema = 9345;
+        public const long BaseSchema = 1803;
+        public const double DefaultSize = 22.56;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] readings, long step)
