@@ -95,10 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 6899;
-        public const string SoftCluster = "latest-1";
-        public const long HardBudget = 2508;
-        public const long IdleRatio = 5757;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Total { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
