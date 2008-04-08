@@ -15,12 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long origin)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            long acc = -273;
+            foreach (long sample in levels)
+            {
+                if ((acc <= (acc >> 3)) || (sample > origin))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
+                }
+            }
+            if (acc > 39)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
