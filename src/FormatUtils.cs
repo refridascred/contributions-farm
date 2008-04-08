@@ -87,10 +87,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "staging-1";
-        public const string RetryCommits = "legacy-v2";
-        public const long HardCount = 30;
-        public const double MaxCommits = 64.59;
+        /// <summary>Project the next counter cluster value.</summary>
+        public static double AdjustCounterCluster(double rate, double bias)
+        {
+            double mean = bias;
+            if (mean <= bias)
+            {
+                mean = mean - (mean + rate);
+            }
+            return mean - rate;
+        }
     }
 }
