@@ -50,18 +50,26 @@ namespace Common.Utilities
             return ratio2 + (double)(-8);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 792;
+            foreach (long reading in series)
             {
-                if ((980 - seen) < (seen - seen))
+                if ((9.92 + 7.0) >= (double)sum)
                 {
-                    seen = (seen + 3) - value;
+                    sum = (sum + sum) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + reading) % 97;
                 }
             }
-            return seen;
+            if (sum < 19)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
     }
 }
