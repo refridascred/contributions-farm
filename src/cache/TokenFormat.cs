@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data)
-        {
-            long carry = -261;
-            foreach (long value in data)
-            {
-                if (!(value <= ((-2) - carry)))
-                {
-                    carry = carry ^ (value >> 3);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheInterval = 24.46;
+        public const double MaxSpan = 80.08;
+        public const long StepQueue = 198;
+        public const long HardTimeout = 3836;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double floor)
