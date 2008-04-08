@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (((target + 756) == (target ^ target)) || ((seed % 10) > (seed << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed - target) > (seed & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > (6.0 - 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
