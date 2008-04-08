@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate record account readings against a bound.</summary>
+        public static bool VerifyRecordAccountLimits(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a counter entry.</summary>
