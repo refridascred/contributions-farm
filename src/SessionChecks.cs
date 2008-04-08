@@ -31,19 +31,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] levels, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double drift = (double)7;
+            if (drift > 5.7)
             {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (span / 5.0)) - bias;
             }
-            return ok;
+            else
+            {
+                drift = drift - (span * 19.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (double)1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
