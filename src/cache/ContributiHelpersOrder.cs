@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long result = 6;
-            foreach (long datum in items)
-            {
-                result = result + result;
-                result = (result * 5) + (datum >> 3);
-            }
-            if (result > 0)
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            Ready,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
