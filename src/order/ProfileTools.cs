@@ -59,13 +59,17 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Locate a counter graph reading by value.</summary>
+        public static long LocateCounterGraphIndex(long[] readings, long origin)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
