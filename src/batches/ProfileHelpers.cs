@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const double MinTimeout = 45.97;
         public const long WindowScore = 8253;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values, long seed)
         {
-            Locked,
-            Closed,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally - seed) <= seed)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
