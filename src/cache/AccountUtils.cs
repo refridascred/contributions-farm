@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count tools farm pairs that satisfy a relation.</summary>
-        public static long MatchToolsFarmCount(long[] values)
+        /// <summary>Count the checks payload entries that pass the check.</summary>
+        public static long MeasureChecksPayloadHits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 + hits) >= (value & 15))
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
