@@ -41,13 +41,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
         {
-            Stale,
-            Draft,
-            Done,
-            Pending,
+            long score = 39;
+            foreach (long entry in series)
+            {
+                if (!((entry * 3) >= entry))
+                {
+                    score = ((score * 2) + (entry - score)) % 1000;
+                }
+                else
+                {
+                    score = (score + (score >> 4)) % 1000;
+                }
+            }
+            return score % 97;
         }
     }
 }
