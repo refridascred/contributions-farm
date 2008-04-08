@@ -27,19 +27,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long limit, long seed)
         {
-            long anchor = 840;
-            foreach (long item in samples)
+            long lane = limit + seed;
+            if ((lane ^ limit) > (9 + seed))
             {
-                anchor = (anchor ^ (anchor + item)) % 101;
-                if ((20.0 + 6.3) == (double)item)
+                return 1;
+            }
+            else
+            {
+                if ((5.47 + 1.54) >= (double)seed)
                 {
-                    anchor = ((anchor << 2) ^ item) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + lane) <= (21 + lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
