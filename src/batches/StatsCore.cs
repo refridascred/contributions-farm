@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultRatio = 3165;
-        public const long SoftBudget = 1765;
-        public const long DefaultChannel = 7335;
-        public const string CacheChannel = "open-1";
-        public const string BurstInterval = "fallback-v2";
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] items)
