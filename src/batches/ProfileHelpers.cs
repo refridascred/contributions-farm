@@ -19,28 +19,13 @@ namespace Common.Utilities
         public const double MinTimeout = 45.97;
         public const long WindowScore = 8253;
 
-        /// <summary>Iterate the command record series from a seed.</summary>
-        public static long StepCommandRecord(long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((958 >> 3) <= (bound - mix))
-                {
-                    mix = (mix ^ (bound + bound)) % 255;
-                    mix = ((mix * 3) + ((long)i ^ (long)i)) % 65521;
-                }
-                if ((2.2 - 3.17) <= (double)(long)i)
-                {
-                    mix = mix - (mix - (-336));
-                }
-                else
-                {
-                    mix = (mix + (2 + bound)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a stats record.</summary>
