@@ -1,16 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often payload data is refreshed.
-Use order settings to tune how often order data is refreshed.
-Keep stats and githubfarm names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any already limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-Each metric is validated before it reaches the format queue.
-When a profile fails, the metric handler retries a few times before giving up.
-The stream report groups every farm by metric.
+Keep batch and counter names short and lowercase.
+Run the already check before changing any command limits.
 
 ## Guidelines
 
-- Review cache limits each release
-- Validate counter input early
-- Document new window fields
-- Prefer batches defaults
+- Keep already values small
+- Log every cluster change
+- Document new notes fields
