@@ -1,6 +1,21 @@
 # githubfarm settings
-soft_depth_ms: latest
-farm_ttl: fallback
-burst_size:
-  - fallback
-  - legacy
+idle_capacity: latest
+enabled: 97
+max_window:
+  flush_capacity_pct: stable
+  stream_capacity:
+    max_retries_ms: 30
+    poll_retries: local
+    layout_threshold: 30
+    soft_ttl_pct: staging
+    payload_capacity: standard
+  flush_ratio:
+    soft_timeout_count: latest
+    max_timeout_count: true
+    min_ttl: blue
+soft_size_ms: 91
+base_ratio: 30
+max_depth_s:
+  - 471
+  - 270
+  - 395
