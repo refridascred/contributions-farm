@@ -1,7 +1,6 @@
 # githubfarm settings
-burst_delay_s: local
-account_limit: 49
-route_capacity:
-  - green
-  - green
-  - eu-west
+already_window: eu-west
+readonly: true
+persist: 57
+retry_window_ms: legacy
+report_capacity: 4413
