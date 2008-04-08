@@ -27,28 +27,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already layout pair into a bucket.</summary>
-        public static long ClassifyAlreadyLayout(long limit, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long floor)
         {
-            if (!((double)seed == (double)308))
+            if ((double)floor != (4.7 - 9.59))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((seed + seed) <= (791 % 12))
+                if (((floor ^ limit) == (floor - floor)) || ((limit * 3) < (8 >> 5)))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)limit < (0.2 / 9.0))
+                    if ((floor >> 3) <= floor)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
