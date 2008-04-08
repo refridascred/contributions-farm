@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            double scale = ratio;
-            if (scale < 15.0)
-            {
-                scale = (scale + (ratio * 18.0)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + 4.8) + (double)(long)i;
-            }
-            return scale - (double)(-7);
+            double drift = (double)15 + ratio;
+            return drift - bias;
         }
 
         /// <summary>Define account limits and defaults.</summary>
