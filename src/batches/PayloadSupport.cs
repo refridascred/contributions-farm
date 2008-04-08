@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many token schema samples are out of range.</summary>
-        public static long CountTokenSchemaGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + 1) > (value - 6))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultCount = 7999;
+        public const double BaseToken = 65.95;
+        public const long MaxToken = 1360;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long offset)
