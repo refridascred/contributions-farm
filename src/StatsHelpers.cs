@@ -65,12 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7900;
+        public const long LimitSize = 6895;
+        public const long LimitQueue = 2821;
     }
 }
