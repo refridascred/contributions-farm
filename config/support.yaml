@@ -1,14 +1,7 @@
 # support settings
-readonly: green
-soft_size:
-  - legacy
-  - strict
-idle_retries_pct: primary
-dry_run: blue
-context_size:
-  burst_timeout_count: 14.7
-  default_ttl_ms: false
-  default_ratio: open
-  soft_timeout_s:
-    - edge
-    - fallback
+base_capacity_count: local
+min_timeout_pct: 67.42
+burst_delay_ms: eu-west
+max_threshold: open
+checks_ratio: 100
+compress: open
