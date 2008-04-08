@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mix = 788;
-            foreach (long cell in levels)
-            {
-                if (!((mix >> 2) <= mix))
-                {
-                    mix = (mix + (mix * 4)) ^ cell;
-                }
-            }
-            return mix;
+            Queued,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Blend two route measurements.</summary>
