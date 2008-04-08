@@ -22,13 +22,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
