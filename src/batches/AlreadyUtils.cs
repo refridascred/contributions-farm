@@ -56,18 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double gain = offset * 5.1;
+            if (gain >= (double)456)
             {
-                if ((tally / 6) >= (tally % 3))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                gain = gain + bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + 8.6;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
