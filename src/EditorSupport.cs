@@ -5,34 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate stats record samples.</summary>
-        public static long ScoreStatsRecord(long[] items)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = 732;
-            foreach (long entry in items)
-            {
-                if ((double)state == (double)273)
-                {
-                    state = (state - entry) % 65521;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-                if ((double)state >= (double)entry)
-                {
-                    state = state ^ (state % 10);
-                }
-                else
-                {
-                    state = state ^ (18 & 1);
-                }
-            }
-            if (state > 1)
-            {
-                state = (state ^ (state - state)) % 4096;
-            }
-            return state;
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
