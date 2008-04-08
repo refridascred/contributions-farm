@@ -65,11 +65,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinBudget = 1289;
-        public const double BaseSchema = 77.32;
-        public const string HardRatio = "fallback-edge";
-        public const double HardSpan = 18.15;
-        public const string BatchFactor = "local-edge";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (anchor <= (anchor * 2))
+                {
+                    anchor = anchor - ((long)i + (long)i);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
