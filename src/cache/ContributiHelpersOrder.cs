@@ -27,13 +27,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a buffer command pair into a bucket.</summary>
+        public static long SortBufferCommand(long offset, long offset2)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            if ((9 ^ offset2) >= offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset + offset) > (offset - offset2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset2 + offset2) >= offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (64 > offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
