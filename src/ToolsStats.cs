@@ -72,9 +72,13 @@ namespace Common.Utilities
         public const double BaseLevel = 11.7;
         public const long WindowReport = 413;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 5046;
-        public const long RetryChannel = 7014;
-        public const double WindowRatio = 25.38;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Draft,
+            Ready,
+            Synced,
+            Active,
+        }
     }
 }
