@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long bound)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long state = 256;
-            foreach (long value in readings)
-            {
-                if ((long)readings.Length != (bound << 3))
-                {
-                    state = (state * 4) + state;
-                }
-                else
-                {
-                    state = state - value;
-                }
-            }
-            return state % 97;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
