@@ -51,13 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long AuditBufferBatchMatches(long[] samples, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            foreach (long reading in levels)
             {
-                if ((((datum << 2) < (hits / 2)) && ((bound / 3) <= (hits - datum))) && ((double)hits <= (2.6 / 4.0)))
+                if ((8.3 + 19.0) <= (double)reading)
                 {
                     hits = hits + 3;
                 }
