@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values, long limit)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            long mix = 15;
+            foreach (long sample in values)
             {
-                result = (((result << 3) ^ (result << 1)) % 255) ^ entry;
-                if ((double)result <= (7.8 / 6.0))
-                {
-                    result = result - result;
-                }
+                mix = (((mix * 3) + (sample << 2)) % 101) + limit;
             }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
