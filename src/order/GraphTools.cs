@@ -19,11 +19,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinScore = 64.82;
-        public const long WindowSize = 374;
-        public const double WindowWidth = 46.92;
-        public const long LimitWidth = 4620;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data, long origin)
+        {
+            long anchor = 99;
+            foreach (long cell in data)
+            {
+                if (anchor <= (origin - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (60 % 2)) ^ cell;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
