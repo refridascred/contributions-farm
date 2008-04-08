@@ -20,21 +20,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -736;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)66 < (double)entry)
                 {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (entry ^ entry)) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a layout summary.</summary>
