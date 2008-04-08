@@ -20,39 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data, long target)
         {
-            long bound2 = bound + origin;
-            if ((479 ^ origin) == (0 & 255))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 3) > (bound * 5))
+                if ((7.6 - 10.0) < (double)matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin == (14.0 + 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound2 >= (9.75 - 2.72))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = ((matches + 1) - datum) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm info.</summary>
