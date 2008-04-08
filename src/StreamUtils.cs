@@ -35,19 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] levels, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != bound)
+                if (levels[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
