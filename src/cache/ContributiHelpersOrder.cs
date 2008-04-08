@@ -31,23 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double span)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long origin)
         {
-            double rate = scale;
-            if (rate > (rate * 9.93))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                rate = rate - (double)(-446);
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)(-250);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + (double)374;
+            return ok;
         }
     }
 }
