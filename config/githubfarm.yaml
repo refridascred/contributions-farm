@@ -1,5 +1,22 @@
 # githubfarm settings
-already_delay: cached
-account_threshold: 500
-checks_threshold: false
-soft_retries: strict
+audit:
+  dry_run:
+    - strict
+    - legacy
+    - latest
+    - legacy
+  context_size:
+    farm_ttl: false
+    persist: true
+    entry_timeout:
+      - standard
+      - latest
+      - green
+    batches_retries: 73.15
+  audit: 6.26
+  editor_interval: latest
+  burst_capacity_count: false
+  farm_retries: 30
+retry_interval_s: false
+burst_interval: eu-west
+strict: green
