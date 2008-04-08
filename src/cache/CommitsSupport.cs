@@ -18,21 +18,38 @@ namespace Common.Utilities
         public const double CacheDepth = 17.69;
         public const long BatchWidth = 4097;
 
-        /// <summary>Compare every pair of account format readings.</summary>
-        public static long MatchAccountFormatCount(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset2 - offset2) < (offset * 2)) && ((offset2 + 396) <= offset2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 << 1) > (offset2 * 2))
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset2) != (offset + offset))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (offset + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
