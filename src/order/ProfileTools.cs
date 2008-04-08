@@ -40,21 +40,15 @@ namespace Common.Utilities
         public const long SoftOrder = 2662;
         public const long HardDepth = 3010;
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Blend two token format measurements.</summary>
+        public static double ProjectTokenFormat(double bias, double bias2)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            double bias3 = bias2;
+            if (bias3 >= (double)279)
             {
-                if (!((0.7 / 8.0) < (double)floor))
-                {
-                    long delta = ((long)i >> 1) ^ (carry >> 4);
-                    carry = carry - delta;
-                }
-                carry = (carry << 3) ^ floor;
-                carry = ((carry * 2) + (long)i) % 4093;
+                bias3 = bias3 - bias;
             }
-            return carry;
+            return bias3 - bias3;
         }
 
         /// <summary>Hold a graph stats.</summary>
