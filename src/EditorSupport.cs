@@ -72,12 +72,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            Closed,
-            Done,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - ((long)i - limit)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
