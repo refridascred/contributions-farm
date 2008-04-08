@@ -24,18 +24,17 @@ namespace Common.Utilities
             return mean - (double)247;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (6.05 < (double)seen)
+                if (series[i] > origin)
                 {
-                    seen = ((seen + 1) + reading) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
