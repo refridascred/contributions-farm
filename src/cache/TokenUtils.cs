@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data)
-        {
-            long carry = 3;
-            foreach (long cell in data)
-            {
-                if (((8 / 4) != (cell + cell)) || ((carry - 401) <= (cell + cell)))
-                {
-                    carry = (carry * 5) + 57;
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 9867;
+        public const long RetryAlready = 3885;
+        public const double DefaultScore = 96.38;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] values)
