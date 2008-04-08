@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long delta = acc % 60;
-                acc = (acc * 3) + delta;
-                if ((16.0 / 6.0) <= (5.5 / 7.0))
-                {
-                    delta = (delta - (limit - 5)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc ^ limit;
-                    delta = (delta - (limit + 40)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
