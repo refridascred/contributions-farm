@@ -1,7 +1,6 @@
 {
-  "commits_ratio": 100,
-  "verbose": 66,
-  "soft_capacity": "legacy",
-  "retry_timeout_s": ["green", "edge", "eu-west", "strict"],
-  "enabled": false
+  "burst_timeout": 100,
+  "max_capacity": [37, 424, 397],
+  "soft_retries_pct": 0.78,
+  "filter_timeout": "strict"
 }
