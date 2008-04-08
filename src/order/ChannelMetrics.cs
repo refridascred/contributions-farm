@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark + mark) % 1000) - cell) - origin;
             }
-            return -1;
+            if (mark < 3)
+            {
+                mark = mark + (41 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
