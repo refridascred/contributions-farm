@@ -1,15 +1,15 @@
 # Command notes
 
-When a window fails, the notes handler retries a few times before giving up.
-Keep payload and batches names short and lowercase.
+A counter that stays idle for too long is moved to the context list.
+Each farm is validated before it reaches the buffer queue.
+The checks module keeps batches values in sync with the entry cache.
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Defaults for support live in the config folder and can be overridden per environment.
-When a token fails, the buffer handler retries a few times before giving up.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep window and context names short and lowercase.
 
 ## Guidelines
 
-- Keep window values small
-- Log every editor change
-- Document new notes fields
-- Prefer context defaults
+- Keep contributi values small
+- Document new checks fields
+- Review farm limits each release
+- Log every window change
