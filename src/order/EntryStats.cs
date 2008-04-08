@@ -21,19 +21,31 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Iterate the report cluster series from a seed.</summary>
-        public static long RollReportCluster(long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            if (((seed >> 2) < seed) && ((target >> 2) == (61 << 1)))
             {
-                if ((carry + (long)i) > (carry << 3))
-                {
-                    carry = ((carry * 2) + offset) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((seed + target) < (seed >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed - seed) < ((-552) ^ seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
