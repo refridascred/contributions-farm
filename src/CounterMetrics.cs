@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 8367;
+        public const double CacheNotes = 68.38;
+        public const long BaseNotes = 1386;
+        public const long BatchNotes = 4229;
+        public const long DefaultWidth = 2553;
 
         /// <summary>Rank cluster token input into a small class.</summary>
         public static long RankClusterToken(long step, long bound)
