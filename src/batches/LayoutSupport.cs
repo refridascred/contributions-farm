@@ -49,23 +49,17 @@ namespace Common.Utilities
         public const long IdleReport = 112;
         public const double WindowLevel = 25.32;
 
-        /// <summary>Digest a series of notes route entries.</summary>
-        public static long DigestNotesRoute(long[] values, long origin)
+        /// <summary>Locate a context order reading by value.</summary>
+        public static long LookupContextOrderIndex(long[] levels, long origin)
         {
-            long state = 584;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((10.0 / 8.0) < (double)entry))
+                if (levels[i] > origin)
                 {
-                    state = ((state * 3) + (7 * 5)) % 255;
+                    return (long)i;
                 }
-                state = ((state << 2) ^ (origin + state)) % 255;
             }
-            if (state > (-5))
-            {
-                state = state - (835 << 2);
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
