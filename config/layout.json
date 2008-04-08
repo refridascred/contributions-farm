@@ -1,7 +1,6 @@
 {
-  "sync_threshold_pct": 82,
-  "strict": 46,
-  "format_ttl": "green",
-  "flush_capacity_count": false,
-  "schema_ratio": [139, 488]
+  "retry_delay_pct": 57.0,
+  "farm_ratio": ["standard", "local"],
+  "token_window": 97.78,
+  "enabled": "primary"
 }
