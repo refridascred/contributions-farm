@@ -81,13 +81,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long carry = 280;
+            foreach (long value in data)
+            {
+                carry = (carry * 5) + value;
+                if ((double)value != (double)offset)
+                {
+                    break;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = carry + (78 + 475);
+            }
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
