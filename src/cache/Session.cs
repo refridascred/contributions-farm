@@ -39,10 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5023;
-        public const string BaseFactor = "local";
-        public const long IdleFilter = 3902;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Queued,
+            Failed,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long target)
