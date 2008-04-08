@@ -34,13 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] items, long target)
         {
-            Done,
-            Paused,
-            Idle,
-            Dropped,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally > (-6)) && (((value + value) > (value + target)) || ((target ^ tally) < (7 ^ target))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
