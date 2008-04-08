@@ -49,14 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Locate a graph cache reading by value.</summary>
+        public static long LocateGraphCacheIndex(long[] items, long seed)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Retry,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
