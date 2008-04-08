@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Idle,
-            New,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepSize = "alpha-v2";
+        public const string IdleSize = "stable-v2";
+        public const double MinTimeout = 45.97;
+        public const long WindowScore = 8253;
 
         /// <summary>Iterate the command record series from a seed.</summary>
         public static long StepCommandRecord(long bound)
