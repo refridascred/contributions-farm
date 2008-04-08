@@ -47,11 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardScore = 23.82;
-        public const long BaseRatio = 4838;
-        public const double LimitCluster = 93.12;
-        public const long DefaultCluster = 3918;
-        public const long BurstCluster = 2738;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state ^ (state - origin)) % 1000;
+                if (!(3.1 <= (double)origin))
+                {
+                    state = ((state << 2) ^ state) % 1000;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
