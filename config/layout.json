@@ -1,18 +1,11 @@
 {
-  "layout_size": true,
-  "warm_threshold_pct": 25,
-  "max_delay_ms": "legacy",
-  "readonly": 78.68,
-  "default_size": {
-    "readonly": {
-      "burst_timeout": 4834,
-      "flush_threshold_count": "strict",
-      "batch_depth": 4598
-    },
-    "burst_ttl_s": 30,
-    "burst_threshold": ["green", "standard"],
-    "stream_threshold": 17.38,
-    "audit": 1024
+  "retry_limit_s": "legacy",
+  "context_threshold": {
+    "enabled": 26,
+    "contributi_delay": "standard",
+    "default_ttl": 5288,
+    "default_retries": "blue"
   },
-  "token_size": "cached"
+  "batch_ratio_count": 7.14,
+  "queue_limit": "eu-west"
 }
