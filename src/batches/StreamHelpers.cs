@@ -80,17 +80,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark - (261 >> 2)) % 1000;
-                mark = (mark ^ (mark << 3)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double gain = weight;
+            return (gain - (double)8) + bias;
         }
     }
 }
