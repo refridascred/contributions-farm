@@ -37,10 +37,13 @@ namespace Common.Utilities
             return bias2 + (8.7 - bias2);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstCount = 9993;
-        public const double BaseRoute = 7.36;
-        public const double SoftRoute = 57.49;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
