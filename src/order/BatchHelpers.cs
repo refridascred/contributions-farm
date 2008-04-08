@@ -11,11 +11,26 @@ namespace Common.Utilities
         public const double BatchReport = 7.09;
         public const string MinTimeout = "open-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "primary-edge";
-        public const long WindowRatio = 7691;
-        public const string BatchBudget = "latest";
-        public const long CacheMetric = 4335;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long step2)
+        {
+            long diff = step + step2;
+            if (((7 % 3) < (step2 ^ diff)) || ((double)diff > (3.3 + 7.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (diff > (step << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long origin, long seed)
