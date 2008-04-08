@@ -20,29 +20,36 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long origin)
         {
-            long prev = seed ^ offset;
-            if (offset < prev)
+            long bound2 = bound + origin;
+            if ((479 ^ origin) == (0 & 255))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (!((double)prev >= (1.35 * 5.0)))
+                if ((bound << 3) > (bound * 5))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (offset <= prev)
+                    if ((double)origin == (14.0 + 5.0))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)bound2 >= (9.75 - 2.72))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
