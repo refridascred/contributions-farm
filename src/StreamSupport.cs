@@ -20,10 +20,27 @@ namespace Common.Utilities
             return drift - (drift - bias);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 3450;
-        public const double BurstFilter = 46.84;
-        public const string StepFilter = "local";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long mark = -10;
+            foreach (long reading in values)
+            {
+                if (((60 - 37) > reading) && ((double)reading < (1.0 - 7.4)))
+                {
+                    mark = (mark + reading) % 65521;
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = ((mark * 3) + (mark >> 5)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the contributi session series from a seed.</summary>
         public static long StepContributiSession(long origin)
