@@ -78,13 +78,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
