@@ -46,19 +46,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Find the first graph metrics entry that matches the target.</summary>
+        public static long LocateGraphMetricsIndex(long[] series, long seed)
         {
-            double rate = (double)(11 + 8);
-            if (rate > (4.7 / 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + 8.6) + scale) - span;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Fold a list of editor layout readings.</summary>
