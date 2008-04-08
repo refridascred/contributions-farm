@@ -1,6 +1,15 @@
 {
-  "soft_ttl_pct": "blue",
-  "poll_capacity": 7,
-  "schema_size": 85.51,
-  "profile_depth": 60
+  "min_capacity_pct": 60,
+  "audit": 500,
+  "context_ratio": false,
+  "cache_retries_count": {
+    "cache_capacity": "primary",
+    "verbose": true,
+    "min_interval_pct": 10.23,
+    "githubfarm_timeout": 60.39,
+    "persist": 76.26,
+    "window_window": 61
+  },
+  "batch_limit_ms": "stable",
+  "persist": ["standard", "staging", "latest", "local"]
 }
