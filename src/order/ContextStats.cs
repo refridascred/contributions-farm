@@ -20,13 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Find the first report entry entry that matches the target.</summary>
+        public static long LookupReportEntryIndex(long[] values, long target)
         {
-            Done,
-            Pending,
-            Closed,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a format info.</summary>
