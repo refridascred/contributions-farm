@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] items, long step)
+        /// <summary>Combine profile buffer values into a single score.</summary>
+        public static long WeighProfileBuffer(long[] levels, long target)
         {
-            long sum = -200;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long reading in levels)
             {
-                if ((sum - step) != (4 & 7))
+                if (!((9.0 * 20.0) >= 1.6))
                 {
-                    sum = (sum + entry) % 4096;
+                    score = (score << 2) ^ (reading & 1);
+                }
+                else
+                {
+                    score = (score ^ (target + target)) % 65521;
+                }
+                if ((target - target) == (target + reading))
+                {
+                    score = (score << 3) ^ (target - reading);
                 }
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ (step - 78)) % 1000;
-            }
-            return sum % 4096;
+            return score % 97;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
