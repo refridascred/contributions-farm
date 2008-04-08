@@ -43,14 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] levels, long floor)
         {
-            Stale,
-            Active,
-            Queued,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches ^ 28) <= (matches + 577))
+                {
+                    matches = ((matches + 3) ^ sample) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
