@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] levels, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long next = floor + bound;
+            if (bound < (next - floor))
             {
-                if ((target / 2) <= (seen / 9))
+                return 8;
+            }
+            else
+            {
+                if ((floor / 3) == (next - next))
                 {
-                    seen = (seen + 1) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((23 % 10) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((85 - floor) == (next ^ next)) && ((double)next >= (4.79 + 20.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of cache metrics entries.</summary>
