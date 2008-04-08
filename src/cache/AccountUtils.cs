@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long seed, long seed2)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            long cur = seed ^ seed2;
-            if (((double)seed2 <= (double)cur) || ((double)cur < (5.0 + 3.7)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed2) > seed2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
