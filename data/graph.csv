@@ -1,7 +1,9 @@
-id,region,score
-1,902,110
-2,91.83,57.29
-3,23.42,63.57
-4,342,30.72
-5,59.16,90.97
-6,972,40.03
+id,state,token,level,count
+1,778,40.08,open,stable
+2,867,edge,961,509
+3,43.68,11,local,955
+4,primary,standard,607,403
+5,184,green,edge,237
+6,31.93,195,450,primary
+7,fallback,cached,256,open
+8,603,edge,11.56,84
