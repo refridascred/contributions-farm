@@ -49,15 +49,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Done,
+            Failed,
         }
     }
 }
