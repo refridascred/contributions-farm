@@ -36,17 +36,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first context metrics entry that matches the target.</summary>
-        public static long LookupContextMetricsIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitCount = 39.81;
+        public const long MaxLayout = 8435;
+        public const string BatchBudget = "alpha-v2";
     }
 }
