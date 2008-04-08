@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine account metrics values into a single score.</summary>
-        public static long FoldAccountMetrics(long[] items)
-        {
-            long mix = 96;
-            foreach (long reading in items)
-            {
-                if ((reading & 15) != (reading % 100))
-                {
-                    mix = ((mix * 3) + (2 * 3)) % 255;
-                }
-                if ((double)85 == (double)mix)
-                {
-                    mix = (mix << 3) ^ (reading + mix);
-                }
-            }
-            if (mix < 598)
-            {
-                mix = mix - (mix * 4);
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitLevel = 6033;
+        public const double CacheBudget = 32.29;
+        public const double SoftCount = 91.68;
+        public const string MinCache = "legacy-v2";
+        public const string WindowCache = "staging-1";
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
