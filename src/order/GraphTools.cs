@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Ready,
-            Failed,
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result + (seed - result)) % 97;
+                if ((949 + (long)i) != (result - (long)i))
+                {
+                    result = (result + (result * 2)) % 255;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                result = (result + (result & 7)) % 97;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
