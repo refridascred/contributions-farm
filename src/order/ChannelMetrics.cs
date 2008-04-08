@@ -43,17 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (87 + (long)i)) % 4096;
+                anchor = (anchor + (anchor + offset)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
