@@ -1,6 +1,5 @@
 {
-  "batch_size_ms": "standard",
-  "default_size": "staging",
-  "audit": "latest",
-  "poll_capacity": "latest"
+  "cache_ttl_ms": 59.02,
+  "base_retries_pct": ["stable", "eu-west", "stable", "local"],
+  "audit": "edge"
 }
