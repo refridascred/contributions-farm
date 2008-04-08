@@ -29,11 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "primary";
-        public const long MaxCommits = 7675;
-        public const long BurstWidth = 1999;
-        public const long BatchInterval = 6928;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target * 3) > target)
+                {
+                    acc = acc + (acc ^ target);
+                    acc = ((acc * 4) + (acc & 127)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
