@@ -1,11 +1,21 @@
 # support settings
-tools_size: 90.6
-metric_capacity: 75
-hard_depth: 34.81
-idle_window: 99
-record_window: green
-default_ttl_s:
-  - 87
-  - 266
-  - 312
-  - 385
+max_window_s:
+  - 1
+  - 214
+  - 2
+warm_depth_s: fallback
+flush_capacity_count: stable
+farm_limit:
+  idle_limit_pct: 1390
+  poll_window: eu-west
+  batch_timeout_ms: 30
+  idle_depth: 77
+  entry_size:
+    order_size: standard
+    retry_threshold: true
+    poll_size: 18.76
+  dry_run:
+    - eu-west
+    - edge
+    - edge
+    - primary
