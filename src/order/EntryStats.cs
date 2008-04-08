@@ -37,17 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] readings, long step)
+        /// <summary>Grade a farm notes value against two limits.</summary>
+        public static long ClassifyFarmNotes(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed & 255) < 0)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((233 >> 5) <= (seed >> 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (0.8 > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + (-1)) < (73 - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
