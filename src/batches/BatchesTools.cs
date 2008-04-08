@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of already entries.</summary>
