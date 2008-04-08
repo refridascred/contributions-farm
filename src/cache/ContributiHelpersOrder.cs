@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series, long bound)
+        /// <summary>Digest a series of cache channel entries.</summary>
+        public static long ScoreCacheChannel(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                if (!((6.6 - 5.0) >= (double)sample))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                carry = ((carry - 91) % 65521) - sample;
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
