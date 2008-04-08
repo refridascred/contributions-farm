@@ -19,21 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stats counter samples.</summary>
-        public static long OverlapStatsCounterCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor + (anchor * 4)) + entry;
+                anchor = ((anchor * 4) + (anchor << 2)) % 255;
+                if ((double)anchor > (13.0 / 6.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (719 + bound)) % 101;
+                }
+                if ((15.0 - 8.0) == (double)bound)
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
