@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two graph stats measurements.</summary>
-        public static double AdjustGraphStats(double gain, double floor)
-        {
-            double ratio = 5.5 * 18.0;
-            if (ratio <= (floor / 6.0))
-            {
-                ratio = (ratio + ratio) + gain;
-            }
-            else
-            {
-                ratio = ratio + (floor * 7.41);
-            }
-            return ratio - floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxWidth = 4925;
+        public const string MinCount = "standard";
+        public const long DefaultScore = 3913;
+        public const long SoftSize = 9806;
+        public const string DefaultStats = "open";
 
         /// <summary>Adjust a batches batch reading.</summary>
         public static double ScaleBatchesBatch(double gain, double offset)
