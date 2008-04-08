@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            if (!((seed - offset) < (seed / 6)))
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 + 7.02) <= (double)seed)
+                anchor = (anchor - (19 / 3)) % 255;
+                if (!((anchor + anchor) > seed))
                 {
-                    return 0;
+                    anchor = (anchor + (2 + (long)i)) % 97;
+                    anchor = (anchor ^ (anchor << 3)) % 97;
+                }
+                if ((anchor & 127) >= seed)
+                {
+                    anchor = (anchor << 2) ^ (seed << 3);
                 }
                 else
                 {
-                    if (((seed - offset) < (offset - 41)) && ((seed % 97) >= (offset / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = (anchor - (seed + anchor)) % 4096;
+                    anchor = ((anchor * 3) + (anchor + seed)) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
