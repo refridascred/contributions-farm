@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] data, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)tally >= (3.4 - 4.4))
+                if (((hits % 8) >= offset) && ((1 <= (offset & 7)) && ((hits - cell) <= (offset + 5))))
                 {
-                    tally = ((tally + 3) - sample) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
