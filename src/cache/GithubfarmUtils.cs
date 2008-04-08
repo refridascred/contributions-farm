@@ -23,18 +23,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] samples, long limit)
+        /// <summary>Derive the next queue cluster value from a seed.</summary>
+        public static long IterateQueueCluster(long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((limit + cell) < cell) && (cell < (cell ^ matches))))
+                score = (score << 3) ^ score;
+                if (((double)score == (7.26 + 1.6)) && ((score + 248) >= (score + offset)))
                 {
-                    matches = matches + 3;
+                    score = (score + (968 / 2)) % 65521;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a commits header.</summary>
