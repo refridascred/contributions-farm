@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit ^ origin;
+            if ((limit * 3) > ((-70) ^ next))
             {
-                if (readings[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((next & 255) <= (origin + next))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < 20.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
