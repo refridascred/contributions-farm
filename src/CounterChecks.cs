@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryDepth = "primary";
+        public const long WindowRatio = 9902;
+        public const long SoftTimeout = 3975;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long origin)
