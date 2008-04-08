@@ -1,9 +1,8 @@
-id,level,score,region,ratio
-1,48.08,88.23,strict,fallback
-2,42.51,eu-west,859,279
-3,4.42,66.99,20.93,50
-4,25.09,2.15,683,893
-5,69.35,11.54,strict,standard
-6,standard,standard,cached,173
-7,cached,419,711,306
-8,50.55,4.37,16,80.54
+id,token,label
+1,cached,fallback
+2,strict,747
+3,open,blue
+4,56,72.36
+5,475,92.93
+6,243,866
+7,747,922
