@@ -23,25 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long offset)
         {
-            long prev = origin ^ limit;
-            if ((origin * 5) < origin)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit - (-954)) <= prev) && (origin > limit))
+                if (entry != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
