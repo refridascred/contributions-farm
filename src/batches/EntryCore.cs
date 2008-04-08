@@ -52,23 +52,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = 733;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (((score << 2) ^ (value - (long)i)) % 4096) + target;
-                }
-                score = (score * 3) + value;
-            }
-            if (score < 2)
-            {
-                score = (score * 5) + (score * 2);
-            }
-            return score;
+            Dropped,
+            Done,
+            Idle,
         }
     }
 }
