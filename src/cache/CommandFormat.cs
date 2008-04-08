@@ -20,31 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if (offset > (limit / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 7) <= (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((9 + offset) <= 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
