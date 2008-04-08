@@ -19,14 +19,13 @@ namespace Common.Utilities
         public const long DefaultPayload = 7751;
         public const long CacheInterval = 4133;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Closed,
-            Stale,
-            Synced,
-            Locked,
             Ready,
+            Queued,
+            Pending,
+            Active,
         }
     }
 }
