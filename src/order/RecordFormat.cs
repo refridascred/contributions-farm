@@ -64,13 +64,11 @@ namespace Common.Utilities
             return bias2 - (weight / 7.0);
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
             public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
