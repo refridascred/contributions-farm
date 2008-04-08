@@ -33,21 +33,11 @@ namespace Common.Utilities
         public const double WindowWidth = 46.92;
         public const long LimitWidth = 4620;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
