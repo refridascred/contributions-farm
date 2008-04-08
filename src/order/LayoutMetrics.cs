@@ -35,13 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Done,
+            Retry,
+            Active,
+            Stale,
         }
     }
 }
