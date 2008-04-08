@@ -55,15 +55,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            double bias = (double)(22 / 2);
+            if (bias < (double)0)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                bias = ((bias + (double)1) - rate) + floor;
             }
-            return anchor;
+            return bias + (5.2 / 9.0);
         }
     }
 }
