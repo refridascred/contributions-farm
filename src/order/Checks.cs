@@ -20,12 +20,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
