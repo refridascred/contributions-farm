@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum >= (datum % 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSpan = 1199;
+        public const long BurstReport = 5557;
+        public const long DefaultReport = 5706;
+        public const long WindowTimeout = 4986;
+        public const long IdleCount = 1692;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] samples, long floor)
