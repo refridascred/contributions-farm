@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] readings, long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + origin) == (1 << 3))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
