@@ -67,18 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits * 4) > (item * 4))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
