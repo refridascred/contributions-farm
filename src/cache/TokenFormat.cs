@@ -28,18 +28,13 @@ namespace Common.Utilities
             return load + (19.0 + load);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally - tally) > datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
