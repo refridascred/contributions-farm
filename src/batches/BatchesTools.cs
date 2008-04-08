@@ -29,18 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long TallyWindowEditorMatches(long[] values, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((double)origin >= (2.5 - 4.14))
+                if (sample > limit)
                 {
-                    seen = (seen + 2) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
