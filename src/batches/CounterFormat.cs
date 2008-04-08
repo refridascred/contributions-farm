@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long CacheScore = 5548;
         public const double LimitEditor = 89.23;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((count ^ count) == (count ^ 31))
+                if (entry <= origin)
                 {
-                    count = (count + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
