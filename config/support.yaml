@@ -1,10 +1,5 @@
 # support settings
-base_ttl: strict
-readonly: 51.72
-farm_limit:
-  - 117
-  - 143
-  - 431
-  - 157
-profile_ttl: standard
-base_retries: 30
+layout_window: 60
+poll_timeout_pct: 9817
+enabled: 60
+strict: 31.03
