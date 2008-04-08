@@ -79,10 +79,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 9669;
-        public const string DefaultCache = "staging-v2";
-        public const string BatchCache = "latest-1";
-        public const string MaxInterval = "staging-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4364;
+        public const string MinWindow = "fallback";
+        public const long BurstInterval = 63;
+        public const long MaxCount = 56;
     }
 }
