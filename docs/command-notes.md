@@ -1,14 +1,11 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the cluster handler retries a few times before giving up.
-
-Each cache is validated before it reaches the profile queue.
-Use schema settings to tune how often window data is refreshed.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the queue queue.
+When a filter fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new tools fields
-- Log every schema change
+- Keep checks values small
+- Document new commits fields
+- Log every route change
+- Review counter limits each release
