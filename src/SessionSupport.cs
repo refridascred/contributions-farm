@@ -31,14 +31,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data)
         {
-            Locked,
-            Retry,
-            Idle,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)(-4) > (double)tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
