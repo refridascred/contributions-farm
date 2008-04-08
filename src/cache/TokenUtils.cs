@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter buffer readings.</summary>
-        public static long FoldCounterBuffer(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] items, long floor)
         {
-            long anchor = 10;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((anchor / 4) <= (datum >> 3))
+                if (sample < floor)
                 {
-                    anchor = (anchor * 2) + (anchor / 7);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor + datum)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
