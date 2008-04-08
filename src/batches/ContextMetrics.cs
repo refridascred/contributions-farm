@@ -29,20 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleTimeout = 8707;
+        public const double SoftCount = 30.94;
+        public const long WindowCount = 8829;
+        public const string MinRecord = "cached-v2";
+        public const double LimitRecord = 92.29;
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double rate, double span)
