@@ -1,7 +1,6 @@
 {
-  "githubfarm_ratio": ["green", "cached"],
-  "strict": true,
-  "max_capacity_pct": "edge",
-  "max_limit": 3.13,
-  "soft_interval_pct": ["latest", "edge", "strict"]
+  "layout_interval": false,
+  "route_threshold": "fallback",
+  "compress": "fallback",
+  "poll_delay_pct": 46.3
 }
