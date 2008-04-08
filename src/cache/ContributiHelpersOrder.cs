@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Synced,
-            Closed,
             Done,
-            Locked,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
