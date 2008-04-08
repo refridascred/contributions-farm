@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank channel notes input into a small class.</summary>
-        public static long ClassifyChannelNotes(long limit, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels, long target)
         {
-            if ((target - target) > limit)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.27 * 12.0) > (double)target)
+                if ((target / 2) <= (seen / 9))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
