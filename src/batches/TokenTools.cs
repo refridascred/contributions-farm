@@ -26,18 +26,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) >= (sample + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitWidth = 88.11;
+        public const long CacheLevel = 7470;
+        public const long SoftMetric = 6312;
+        public const long IdleMetric = 4862;
+        public const double StepMetric = 21.51;
     }
 }
