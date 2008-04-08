@@ -1,15 +1,7 @@
 {
-  "stats_capacity": 35,
-  "warm_interval_count": ["blue", "cached"],
-  "default_size_count": "staging",
-  "min_timeout": "legacy",
-  "flush_threshold_count": {
-    "default_ttl_count": "cached",
-    "warm_retries_pct": {
-      "warm_capacity_count": 250,
-      "poll_interval_s": 30,
-      "default_capacity": "standard"
-    },
-    "route_retries": "blue"
-  }
+  "sync_threshold_pct": 82,
+  "strict": 46,
+  "format_ttl": "green",
+  "flush_capacity_count": false,
+  "schema_ratio": [139, 488]
 }
