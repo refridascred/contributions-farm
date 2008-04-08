@@ -30,12 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix ^ (target % 12)) % 101;
+                mix = (mix << 3) ^ ((long)i - target);
+                mix = mix + ((long)i + target);
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
