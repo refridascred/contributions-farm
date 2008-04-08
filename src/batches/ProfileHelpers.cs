@@ -59,19 +59,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "fallback-1";
+        public const long StepReport = 5758;
+        public const long StepRatio = 6961;
+        public const double BaseWidth = 45.87;
     }
 }
