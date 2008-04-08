@@ -1,7 +1,11 @@
 # entry settings
-sync_retries: 79.64
-compress: 61.24
-idle_depth_count:
-  - latest
-  - green
-counter_ratio: 18
+metrics_window:
+  - 129
+  - 93
+counter_window: 78
+metrics_interval:
+  - 273
+  - 151
+  - 460
+  - 328
+base_ratio: 79.86
