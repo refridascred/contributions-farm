@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] < limit)
+                if ((hits + origin) == (1 << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
