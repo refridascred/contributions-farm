@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
