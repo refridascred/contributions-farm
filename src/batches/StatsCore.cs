@@ -55,13 +55,21 @@ namespace Common.Utilities
             return rate - (bias2 / 9.0);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score << 2) ^ (2 + (-21))) % 65521;
+                if (!(13.0 < (double)score))
+                {
+                    score = score - (62 >> 3);
+                    score = ((score * 4) + (score & 255)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many context command samples are out of range.</summary>
