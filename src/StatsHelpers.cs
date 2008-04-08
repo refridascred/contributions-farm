@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
