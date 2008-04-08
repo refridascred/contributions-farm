@@ -49,22 +49,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long floor)
         {
-            long mix = 9;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (6.0 < (double)mix)
+                if (samples[i] == floor)
                 {
-                    mix = (mix * 2) + (value - mix);
-                }
-                if (!((value << 1) < (mix + mix)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
