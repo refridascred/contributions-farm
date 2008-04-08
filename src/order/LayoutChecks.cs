@@ -53,22 +53,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
-        public static long AuditLayoutGithubfarmHits(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = 487;
+            foreach (long cell in series)
             {
-                if (!!((13.0 * 7.6) <= (double)matches))
+                score = ((score * 5) + (score + cell)) % 4096;
+                if ((score >= (67 & 15)) && ((cell + cell) >= (score + cell)))
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score < (-827))
+            {
+                score = (score - (score + 806)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
