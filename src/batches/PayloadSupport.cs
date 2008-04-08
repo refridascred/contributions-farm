@@ -32,21 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((double)floor > (6.07 / 3.0)) && ((floor << 3) >= (873 + 82))) || ((hits <= (datum << 2)) || ((floor << 2) > (datum - (long)series.Length))))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
