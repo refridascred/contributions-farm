@@ -1,19 +1,8 @@
 {
-  "enabled": "open",
-  "sync_ttl_pct": {
-    "idle_timeout": {
-      "strict": 5716,
-      "audit": 5.87,
-      "max_retries_ms": "standard",
-      "graph_ttl": "cached",
-      "session_capacity": 250
-    },
-    "burst_threshold_pct": 8387,
-    "compress": 68,
-    "warm_limit": "fallback"
-  },
-  "report_limit": 31,
-  "dry_run": "open",
-  "readonly": false,
-  "persist": "fallback"
+  "poll_delay": "open",
+  "max_ratio_pct": true,
+  "sync_limit_ms": "local",
+  "persist": 28.12,
+  "hard_ttl_pct": 42.06,
+  "audit": true
 }
