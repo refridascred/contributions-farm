@@ -86,11 +86,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleTimeout = 7456;
-        public const double LimitSupport = 62.94;
-        public const double BurstLevel = 87.06;
-        public const long BatchSupport = 6121;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "fallback-edge";
+        public const long RetryLevel = 9561;
+        public const double LimitLayout = 82.78;
+        public const double IdleLayout = 50.93;
+        public const long SoftInterval = 1028;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
