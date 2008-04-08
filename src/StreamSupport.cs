@@ -35,19 +35,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4614;
+        public const long RetrySession = 2022;
+        public const string BatchSession = "cached-edge";
     }
 }
