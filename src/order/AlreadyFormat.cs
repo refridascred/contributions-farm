@@ -50,22 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long mix = 8;
-            foreach (long entry in items)
+            long carry = 121;
+            foreach (long item in data)
             {
-                if ((target << 1) >= target)
+                if ((double)item < (19.0 * 20.0))
                 {
-                    mix = ((mix << 2) ^ (entry / 9)) % 255;
-                }
-                else
-                {
-                    mix = mix + (mix - target);
+                    carry = carry + (carry / 8);
                 }
             }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Describe the checks level values.</summary>
