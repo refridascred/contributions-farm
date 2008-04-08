@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] levels, long seed)
         {
-            long carry = 67;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)carry <= 5.23)
+                if (levels[i] <= seed)
                 {
-                    carry = ((carry << 3) ^ sample) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry > 26)
-            {
-                carry = (carry - (origin & 63)) % 1000;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
