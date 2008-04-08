@@ -25,13 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Idle,
-            Retry,
-            Draft,
-            Locked,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
