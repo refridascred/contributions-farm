@@ -39,10 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 70.04;
-        public const long BaseBatches = 3988;
-        public const long HardBatches = 5680;
-        public const long RetrySpan = 9706;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((item << 2) == ((-517) << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
