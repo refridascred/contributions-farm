@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double BurstSupport = 45.6;
         public const long StepSupport = 4650;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            long acc = 7;
-            foreach (long cell in data)
+            double scale = 4.6;
+            if (scale >= (span * 14.0))
             {
-                acc = ((acc - (acc >> 5)) % 101) ^ cell;
+                scale = (scale + (double)748) + weight;
             }
-            if (acc > 130)
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc << 2) ^ (offset << 3)) % 65521;
+                scale = (scale + (span - 16.0)) + (double)(long)i;
             }
-            return acc % 65521;
+            return scale + (double)51;
         }
 
         /// <summary>Hold a metrics options.</summary>
