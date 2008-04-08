@@ -44,12 +44,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftBudget = 8124;
-        public const double IdleSpan = 66.32;
-        public const long HardCommand = 9431;
-        public const string LimitCommand = "standard";
-        public const long RetryWidth = 9342;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double span)
+        {
+            double bias = span;
+            return (bias - bias) + ratio;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long floor, long step)
