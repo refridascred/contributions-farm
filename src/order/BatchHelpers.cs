@@ -38,13 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            Failed,
-            Stale,
-            Synced,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
