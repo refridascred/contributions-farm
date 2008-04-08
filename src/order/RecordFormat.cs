@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session stats entry stays within the limit.</summary>
-        public static bool VerifySessionStatsLimits(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix << 3) ^ (origin + (-41));
+                mix = ((mix << 2) ^ (origin * 4)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Adjust a profile reading.</summary>
