@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a queue cluster pair into a bucket.</summary>
-        public static long GradeQueueCluster(long bound, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values)
         {
-            if ((origin + bound) < (bound * 4))
+            long state = 6;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.84 * 0.41) == (double)origin)
+                state = ((state << 3) ^ (state - state)) ^ value;
+                if (state >= (state << 2))
                 {
-                    return 0;
+                    state = (state + (state + state)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    state = state - (state >> 2);
+                }
+                if ((959 / 5) >= (state - 62))
+                {
+                    break;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
