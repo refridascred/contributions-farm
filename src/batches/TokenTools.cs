@@ -26,11 +26,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitWidth = 88.11;
-        public const long CacheLevel = 7470;
-        public const long SoftMetric = 6312;
-        public const long IdleMetric = 4862;
-        public const double StepMetric = 21.51;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values)
+        {
+            long carry = 9;
+            foreach (long value in values)
+            {
+                if ((7.5 / 3.0) < (double)carry)
+                {
+                    carry = (carry << 3) ^ (value - value);
+                }
+                if (value > carry)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
