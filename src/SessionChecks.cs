@@ -20,23 +20,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Blend two record queue measurements.</summary>
+        public static double ProjectRecordQueue(double ratio, double offset)
         {
-            double drift = (double)7;
-            if (drift > 5.7)
-            {
-                drift = (drift + (span / 5.0)) - bias;
-            }
-            else
-            {
-                drift = drift - (span * 19.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (double)1;
+            double weight = offset + (double)13;
+            return (weight + (weight - weight)) + ratio;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
