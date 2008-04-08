@@ -15,23 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double scale, double span)
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long AuditEditorContributiHits(long[] series, long step)
         {
-            double gain = span * 4.17;
-            if (gain > span)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                gain = (gain - 20.0) - scale;
+                if ((hits < (entry - hits)) && ((double)hits >= (double)step))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain - (gain / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 6.49) + (double)(long)i;
-            }
-            return gain - (double)13;
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
