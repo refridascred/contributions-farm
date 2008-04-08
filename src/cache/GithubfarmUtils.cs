@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings, long origin)
         {
-            long anchor = 8;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (offset >= (cell * 2))
+                if ((double)origin != (4.06 - 18.0))
                 {
-                    anchor = (anchor * 5) + (anchor * 2);
-                }
-                else
-                {
-                    anchor = anchor + (anchor ^ cell);
-                }
-                if (5.8 >= (9.0 / 5.0))
-                {
-                    break;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
