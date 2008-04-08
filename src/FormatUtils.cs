@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long SoftSize = 9806;
         public const string DefaultStats = "open";
 
-        /// <summary>Adjust a batches batch reading.</summary>
-        public static double ScaleBatchesBatch(double gain, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double load = 4.0;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + 2.05) - (double)(long)i) - offset;
-            }
-            return load - (gain / 2.0);
+            Locked,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
