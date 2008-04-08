@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            New,
-            Stale,
-            Synced,
+            Failed,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
