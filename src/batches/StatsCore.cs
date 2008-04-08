@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleWidth = 3028;
+        public const string StepDepth = "primary-edge";
+        public const long SoftCount = 404;
+        public const long DefaultTimeout = 6715;
+        public const long BatchDepth = 4984;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
