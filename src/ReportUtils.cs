@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] readings, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = 71;
-            foreach (long reading in readings)
-            {
-                acc = (acc << 2) ^ (acc % 12);
-                acc = acc + 0;
-                if ((reading / 3) == (acc << 2))
-                {
-                    acc = (acc * 3) + 645;
-                }
-                else
-                {
-                    acc = acc + (step & 7);
-                }
-            }
-            return acc % 4096;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
