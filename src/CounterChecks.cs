@@ -64,12 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            Queued,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!!((entry / 8) <= (entry - entry)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
