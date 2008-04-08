@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string StepInterval = "alpha-1";
         public const string BatchDepth = "stable-1";
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            double weight = floor;
-            for (int i = 0; i < 3; i++)
+            double gain = weight;
+            if (gain > (double)64)
             {
-                weight = ((weight + (floor - floor)) + (double)(long)i) - ratio;
+                gain = gain - (bias - gain);
             }
-            return weight + (5.0 * 3.21);
+            return gain - (gain * 0.15);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
