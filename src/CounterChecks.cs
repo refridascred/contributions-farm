@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long seed)
         {
-            Idle,
-            Draft,
-            Failed,
+            if (!((seed / 3) != (seed / 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((72 / 4) == (2 ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
