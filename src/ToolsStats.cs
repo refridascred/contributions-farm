@@ -36,15 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long mix = 54;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((((mix * 3) + (mix >> 1)) % 4096) ^ cell) - offset;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
