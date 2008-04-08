@@ -1,7 +1,10 @@
 # support settings
-flush_ratio_pct: 9955
-burst_threshold: false
-retry_size_pct: false
-min_window_s: false
-retry_capacity_pct: 8067
-poll_capacity_pct: 46.49
+base_ttl: strict
+readonly: 51.72
+farm_limit:
+  - 117
+  - 143
+  - 431
+  - 157
+profile_ttl: standard
+base_retries: 30
