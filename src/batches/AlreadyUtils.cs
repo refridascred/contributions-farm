@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data)
         {
-            if ((double)bound == (10.0 + 4.76))
+            long score = 8;
+            foreach (long datum in data)
             {
-                return 4;
+                score = ((score << 3) ^ (178 * 5)) ^ datum;
             }
-            else
+            if (score > 86)
             {
-                if ((8.0 / 2.0) > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                score = score ^ (score - score);
             }
+            return score % 4096;
         }
 
         /// <summary>Describe the batch phase values.</summary>
