@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            Dropped,
-            Active,
-            Synced,
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
