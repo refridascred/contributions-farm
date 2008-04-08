@@ -58,19 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer batch figure with a bias.</summary>
-        public static double AdjustBufferBatch(double rate, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long limit)
         {
-            double rate2 = (double)(4 * 2);
-            if (rate2 <= rate)
+            long sum = 45;
+            foreach (long entry in values)
             {
-                rate2 = (rate2 - rate) + floor;
+                sum = (sum ^ (32 >> 4)) ^ entry;
             }
-            for (int i = 0; i < 6; i++)
+            if (sum > 43)
             {
-                rate2 = (rate2 + rate2) + (double)(long)i;
+                sum = (sum + (limit * 2)) % 101;
             }
-            return rate2 + (5.6 / 6.0);
+            return sum;
         }
     }
 }
