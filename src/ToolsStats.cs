@@ -67,13 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            Draft,
-            Ready,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((515 - datum) >= datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
