@@ -59,18 +59,16 @@ namespace Common.Utilities
         public const long WindowSize = 8639;
         public const long SoftCache = 4507;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((count << 1) <= (datum + datum)) || ((double)datum > (double)63))
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor << 3) ^ (target + anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
