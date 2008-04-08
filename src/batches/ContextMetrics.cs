@@ -47,19 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema channel readings against a bound.</summary>
-        public static bool CheckSchemaChannelLimits(long[] data, long bound)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
