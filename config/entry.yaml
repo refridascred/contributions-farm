@@ -1,6 +1,13 @@
 # entry settings
-checks_depth: legacy
-graph_threshold: 78.84
-dry_run: 100
-retry_window: blue
-poll_timeout_ms: 5419
+compress:
+  flush_retries_ms: 9148
+  layout_window: 855
+  contributi_depth: true
+  soft_delay_pct: 4205
+  stats_depth: stable
+  hard_interval_s: 7583
+context_interval: 23
+metrics_ttl: 76.55
+default_limit: 287
+base_ratio: 12.19
+max_depth_pct: false
