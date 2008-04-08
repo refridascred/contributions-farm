@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double bias = 3.0;
+            if (bias >= (double)465)
             {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = ((bias + bias) + weight) - offset;
             }
-            return ready;
+            return bias + (double)924;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
