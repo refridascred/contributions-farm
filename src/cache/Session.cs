@@ -27,12 +27,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Failed,
-            Done,
-            Ready,
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
