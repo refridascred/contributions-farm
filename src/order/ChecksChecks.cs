@@ -33,21 +33,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count account commits pairs that satisfy a relation.</summary>
-        public static long PairAccountCommitsCount(long[] samples)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = gain;
+            if (scale > scale)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (double)3;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias * 3.2)) - (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
