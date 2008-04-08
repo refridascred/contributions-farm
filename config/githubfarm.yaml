@@ -1,6 +1,4 @@
 # githubfarm settings
-batches_limit: blue
-warm_retries: 73.96
-audit: 4439
-persist: 75
-flush_ttl_s: false
+cache_depth: 72
+dry_run: 70
+idle_capacity: true
