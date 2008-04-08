@@ -23,16 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi payload counter forward.</summary>
-        public static long StepContributiPayload(long offset)
+        /// <summary>Accumulate cluster account samples.</summary>
+        public static long WeighClusterAccount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = 0;
+            foreach (long item in series)
             {
-                sum = (sum * 3) + (sum - 0);
-                sum = ((sum * 5) + (long)i) % 1000;
+                mark = mark ^ item;
             }
-            return sum;
+            if (mark > 0)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
