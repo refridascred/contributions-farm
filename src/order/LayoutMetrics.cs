@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Active,
-            Synced,
-            Paused,
-            Retry,
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
