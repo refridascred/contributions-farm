@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const long RetryEntry = 2757;
         public const long WindowSize = 7540;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Queued,
-            Ready,
             Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
