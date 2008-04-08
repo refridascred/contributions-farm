@@ -47,19 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of format record entries.</summary>
-        public static long FoldFormatRecord(long[] values, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long score = 235;
-            foreach (long item in values)
-            {
-                score = (score * 3) + 284;
-                if (((item ^ score) > ((long)values.Length + offset)) || ((offset >> 2) > (offset + item)))
-                {
-                    score = (score * 5) + (offset & 3);
-                }
-            }
-            return score;
+            Synced,
+            Draft,
+            Ready,
         }
     }
 }
