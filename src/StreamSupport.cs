@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((target + 7) != (origin >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (9 <= (origin >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
