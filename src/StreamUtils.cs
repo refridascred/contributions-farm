@@ -34,17 +34,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(9 & 63);
+            if (bias < (double)359)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias = ((bias + (double)37) - ratio) - floor;
             }
-            return -1;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (7.7 * 7.3);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
