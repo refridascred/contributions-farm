@@ -1,4 +1,4 @@
 # entry settings
-poll_timeout: cached
-audit: 85
-sync_ratio_pct: staging
+min_timeout: legacy
+poll_threshold_ms: eu-west
+payload_ttl: 250
