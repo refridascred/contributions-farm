@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Stale,
+            Closed,
             Ready,
             Paused,
-            Retry,
-            Active,
+            Locked,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
