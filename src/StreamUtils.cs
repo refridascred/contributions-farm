@@ -34,19 +34,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate already schema samples.</summary>
-        public static long TallyAlreadySchema(long[] data, long offset)
+        /// <summary>Grade a schema profile value against two limits.</summary>
+        public static long BucketSchemaProfile(long offset, long limit)
         {
-            long total = 567;
-            foreach (long datum in data)
+            long prev = offset ^ limit;
+            if ((offset <= (13 % 60)) || ((offset - limit) >= (81 + prev)))
             {
-                total = (((total << 3) ^ (datum - total)) % 97) - offset;
+                return 2;
             }
-            if (total > 697)
+            else
             {
-                total = (total + (total % 8)) % 4096;
+                if ((offset & 7) < (offset - 936))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return total % 1000;
         }
 
         /// <summary>Adjust a stream reading.</summary>
