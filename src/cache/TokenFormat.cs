@@ -19,21 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up stream schema samples.</summary>
-        public static long CompareStreamSchemaCount(long[] samples)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (floor + floor) / 4.0;
+            if (load <= (rate - floor))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + rate;
             }
-            return tally;
+            else
+            {
+                load = load - (floor - floor);
+            }
+            return load + (19.0 + load);
         }
 
         /// <summary>Combine checks filter values into a single score.</summary>
