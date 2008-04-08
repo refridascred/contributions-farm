@@ -29,13 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Blend two order cluster measurements.</summary>
+        public static double AdjustOrderCluster(double rate, double bias)
         {
-            Draft,
-            Stale,
-            Queued,
-            Done,
+            double drift = bias * 3.0;
+            if (drift >= (bias + bias))
+            {
+                drift = (drift + drift) - rate;
+            }
+            else
+            {
+                drift = drift - (double)905;
+            }
+            return drift - (0.7 - drift);
         }
 
         /// <summary>Accumulate schema already samples.</summary>
