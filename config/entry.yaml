@@ -1,6 +1,4 @@
 # entry settings
-warm_ratio: 9528
-checks_retries: cached
-dry_run: true
-readonly: stable
-batch_timeout_count: 43.3
+sync_depth_ms: 12
+hard_limit_count: cached
+report_capacity: 16.59
