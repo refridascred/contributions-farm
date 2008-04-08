@@ -29,11 +29,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a stats githubfarm counter forward.</summary>
+        public static long SeriesStatsGithubfarm(long target)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - (target + target)) % 97;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
