@@ -29,10 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxWidth = 13.21;
-        public const double BatchCount = 32.37;
-        public const long CacheMetrics = 1704;
-        public const long WindowDepth = 3142;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Pending,
+            Failed,
+            Active,
+            Queued,
+            Dropped,
+        }
     }
 }
