@@ -54,19 +54,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long step)
+        /// <summary>Match up batch metric samples.</summary>
+        public static long OverlapBatchMetricCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
