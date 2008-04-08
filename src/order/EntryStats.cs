@@ -60,12 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 8104;
+        public const long SoftWindow = 5324;
+        public const long BaseCount = 6073;
+        public const long MinScore = 2734;
+        public const string StepWindow = "stable";
     }
 }
