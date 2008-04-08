@@ -51,10 +51,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLevel = 86.28;
-        public const string HardBudget = "stable";
-        public const string MaxInterval = "cached-edge";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum + (648 & 31);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many context command samples are out of range.</summary>
         public static long CountContextCommandHits(long[] values, long floor)
