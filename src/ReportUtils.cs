@@ -25,22 +25,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long TallyMetricsEntryGaps(long[] readings, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)matches == (9.8 / 4.0)) || ((cell % 10) > (matches + 64)))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank checks graph input into a small class.</summary>
