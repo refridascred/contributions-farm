@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mark = 25;
-            foreach (long entry in samples)
-            {
-                mark = ((mark ^ (mark & 1)) % 255) ^ entry;
-            }
-            return mark;
+            Pending,
+            Active,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the cache phase values.</summary>
