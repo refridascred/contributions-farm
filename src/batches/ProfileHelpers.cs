@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
-        {
-            double gain = (rate + 6.78) / 8.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (offset - rate)) - (double)(long)i;
-            }
-            return gain + rate;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseSpan = 2441;
+        public const long MinAccount = 8180;
+        public const long IdleFactor = 3977;
+        public const string IdleTimeout = "staging-v2";
+        public const long WindowAccount = 6651;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
