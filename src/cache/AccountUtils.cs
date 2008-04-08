@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks payload entries that pass the check.</summary>
-        public static long MeasureChecksPayloadHits(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((5 + hits) >= (value & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
