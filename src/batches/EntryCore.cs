@@ -42,10 +42,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3123;
-        public const string MaxFactor = "latest-v2";
-        public const long IdleSize = 5133;
+        /// <summary>Classify a session payload pair into a bucket.</summary>
+        public static long ClassifySessionPayload(long target, long offset)
+        {
+            if (((target - target) == (offset - offset)) || ((target >> 4) <= (5 % 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)1 < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((277 % 24) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferOutliers(long[] samples)
