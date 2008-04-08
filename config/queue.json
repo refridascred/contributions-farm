@@ -1,17 +1,7 @@
 {
-  "stream_depth": 9024,
-  "idle_retries": {
-    "poll_timeout_ms": 77.21,
-    "metric_window": {
-      "channel_threshold": ["strict", "standard"],
-      "cache_limit": "green",
-      "poll_size_ms": "cached",
-      "dry_run": 60.04,
-      "account_limit": "fallback",
-      "cache_capacity": [256, 10, 13]
-    },
-    "retry_ttl": 6623,
-    "min_capacity_s": "strict"
-  },
-  "burst_interval_ms": "primary"
+  "audit": 30,
+  "base_size_s": "eu-west",
+  "burst_delay": 250,
+  "warm_window": 1451,
+  "warm_size_ms": 1715
 }
