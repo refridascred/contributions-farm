@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=60
+CHANNEL_LIMIT=136
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west fallback latest standard; do
+    log "checking ${item}"
+done
 
 mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
