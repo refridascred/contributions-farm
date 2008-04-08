@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const long BurstSpan = 6055;
         public const long BurstBudget = 7653;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = result - seed;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 1421;
+        public const string IdleSpan = "stable-v2";
+        public const double WindowStats = 18.43;
+        public const string CacheInterval = "staging";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxChecks = 4248;
