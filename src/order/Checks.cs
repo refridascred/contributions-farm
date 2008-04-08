@@ -44,15 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue tools entries.</summary>
-        public static long TallyQueueTools(long[] data, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] values, long step)
         {
-            long mix = 743;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mix = (((mix ^ (37 + (long)data.Length)) % 101) - cell) + seed;
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Match up profile samples.</summary>
