@@ -14,26 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a window session pair into a bucket.</summary>
-        public static long SortWindowSession(long limit, long origin)
-        {
-            long gap = limit ^ origin;
-            if (limit < (48 + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (8 >= (origin ^ gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinBudget = "legacy-1";
+        public const long StepWidth = 1924;
+        public const long SoftChecks = 6368;
+        public const long HardChecks = 8836;
+        public const long MinTimeout = 9334;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long bound)
