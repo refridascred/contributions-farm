@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long origin)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
