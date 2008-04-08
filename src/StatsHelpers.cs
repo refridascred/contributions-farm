@@ -13,12 +13,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long score = 84;
+            foreach (long value in levels)
+            {
+                if (floor >= 73)
+                {
+                    score = (score << 2) ^ (score / 9);
+                    continue;
+                }
+                score = ((score * 5) + floor) % 1000;
+                score = (score * 2) + value;
+                if ((score << 1) <= (floor & 15))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
