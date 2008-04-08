@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine profile buffer values into a single score.</summary>
