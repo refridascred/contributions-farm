@@ -40,12 +40,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long seed)
         {
-            Pending,
-            Idle,
-            Paused,
+            long acc = 685;
+            foreach (long datum in series)
+            {
+                acc = ((acc + (acc + seed)) % 1000) ^ datum;
+            }
+            return acc;
         }
     }
 }
