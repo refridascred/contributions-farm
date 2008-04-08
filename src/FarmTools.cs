@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 1058;
-        public const long MaxSpan = 1582;
-        public const double IdleStream = 27.88;
-        public const string HardStream = "latest";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Accumulate commits account samples.</summary>
         public static long TallyCommitsAccount(long[] samples, long offset)
