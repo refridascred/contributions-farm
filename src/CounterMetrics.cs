@@ -20,13 +20,30 @@ namespace Common.Utilities
             return scale - (double)(-7);
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            Synced,
-            Queued,
-            Locked,
-            Dropped,
+            long mark = 240;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (double)mark)
+                {
+                    mark = (mark + (396 % 2)) % 4096;
+                }
+                else
+                {
+                    mark = mark + (mark - mark);
+                }
+                if ((4 + entry) > (entry >> 3))
+                {
+                    break;
+                }
+            }
+            if (mark < (-8))
+            {
+                mark = (mark ^ (mark >> 1)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
