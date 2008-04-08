@@ -15,23 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long score = 103;
-            foreach (long sample in values)
+            long total = 104;
+            foreach (long entry in values)
             {
-                if (!((sample - sample) < origin))
-                {
-                    score = (score + (score ^ origin)) % 101;
-                    score = (score * 4) + (origin + origin);
-                }
-                if ((origin + 91) > (sample % 3))
-                {
-                    score = ((score * 4) + origin) % 65521;
-                }
+                total = (((total << 3) ^ total) % 4096) ^ entry;
             }
-            return score % 65521;
+            if (total < 63)
+            {
+                total = ((total << 3) ^ (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a command entry.</summary>
