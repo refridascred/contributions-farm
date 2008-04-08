@@ -27,9 +27,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 25.53;
-        public const long MinRatio = 3256;
-        public const long SoftEditor = 6569;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxScore = 27.97;
+        public const double SoftChecks = 56.13;
+        public const string RetryRatio = "alpha";
     }
 }
