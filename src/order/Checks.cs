@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Queued,
-            Dropped,
-            Ready,
-            Stale,
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
