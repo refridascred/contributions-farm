@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool ValidateQueueBatchLimits(long[] readings, long offset)
         {
-            Synced,
-            Dropped,
-            Draft,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
