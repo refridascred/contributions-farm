@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            Retry,
-            Queued,
-            Paused,
+            long score = 719;
+            foreach (long cell in levels)
+            {
+                score = ((score * 4) + (score & 31)) % 65521;
+                if ((cell >> 1) <= (score - cell))
+                {
+                    score = (score + score) % 97;
+                }
+                else
+                {
+                    score = score ^ cell;
+                }
+                if ((cell + score) != (cell + 696))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate profile checks samples.</summary>
