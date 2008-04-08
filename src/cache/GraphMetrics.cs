@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long target)
         {
-            long mix = 15;
-            foreach (long sample in values)
+            long mix = 210;
+            foreach (long datum in samples)
             {
-                mix = (((mix * 3) + (sample << 2)) % 101) + limit;
+                if ((double)mix <= 3.4)
+                {
+                    mix = (((mix * 4) + mix) ^ datum) - target;
+                }
             }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
