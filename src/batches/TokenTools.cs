@@ -29,22 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] series, long seed)
+        /// <summary>Validate batch metric readings against a bound.</summary>
+        public static bool CheckBatchMetricRange(long[] levels, long step)
         {
-            long state = 6;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((6 - seed) <= (entry - entry))
+                if (datum != step)
                 {
-                    state = state ^ (entry - seed);
-                }
-                else
-                {
-                    state = (state * 2) + (entry >> 2);
+                    stale = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return stale;
         }
     }
 }
