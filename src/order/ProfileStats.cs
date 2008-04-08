@@ -28,17 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry profile sample.</summary>
-        public static long SeekEntryProfileIndex(long[] series, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                if (!((item % 64) >= (item + item)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
