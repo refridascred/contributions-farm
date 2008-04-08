@@ -79,13 +79,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
