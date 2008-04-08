@@ -41,14 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values, long origin)
         {
-            Paused,
-            Synced,
-            Done,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((matches << 3) > origin) && (reading > (matches & 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
