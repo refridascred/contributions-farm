@@ -35,14 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            New,
-            Stale,
-            Locked,
-            Active,
-            Synced,
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
