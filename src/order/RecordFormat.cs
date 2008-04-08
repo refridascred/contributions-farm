@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((limit - limit) > (limit ^ limit))
             {
-                if ((534 + 549) > (cell * 3))
+                return 0;
+            }
+            else
+            {
+                if ((9.8 - 1.62) >= (double)limit)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit / 4) >= (73 / 9)) || (limit < step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 2) < (69 - 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
