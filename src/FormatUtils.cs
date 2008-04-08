@@ -55,10 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepInterval = "primary-edge";
-        public const long BatchWindow = 7174;
-        public const long LimitTimeout = 7871;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
