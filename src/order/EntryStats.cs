@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm metrics input into a small class.</summary>
-        public static long BucketFarmMetrics(long floor, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if (floor >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor % 10) != (floor + (-3))) && ((step + step) > (step - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
