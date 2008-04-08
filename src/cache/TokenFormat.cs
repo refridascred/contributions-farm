@@ -35,13 +35,11 @@ namespace Common.Utilities
             return load + (19.0 + load);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
