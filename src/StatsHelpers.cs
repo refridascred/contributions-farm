@@ -71,20 +71,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples)
-        {
-            long total = 5;
-            foreach (long reading in samples)
-            {
-                total = (total << 2) ^ (reading >> 5);
-                if (((total + reading) < total) && ((reading << 1) >= (total + 1)))
-                {
-                    total = (total - (total << 3)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4356;
+        public const long BurstRoute = 7495;
+        public const long BaseRoute = 2243;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
