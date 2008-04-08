@@ -1,8 +1,7 @@
 {
-  "base_timeout_ms": 250,
-  "min_capacity_pct": 1139,
-  "warm_delay_count": 12,
-  "sync_depth": true,
-  "support_capacity": ["legacy", "legacy", "eu-west", "edge"],
-  "hard_timeout_pct": 5646
+  "min_depth_count": "open",
+  "base_ttl": false,
+  "flush_interval_pct": [384, 455, 357],
+  "cache_ttl_ms": "fallback",
+  "min_capacity_ms": ["latest", "local", "local", "green"]
 }
