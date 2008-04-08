@@ -31,9 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitCount = 39.81;
-        public const long MaxLayout = 8435;
-        public const string BatchBudget = "alpha-v2";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples)
+        {
+            long score = 795;
+            foreach (long value in samples)
+            {
+                score = ((score << 2) ^ score) % 255;
+                score = score ^ (value + value);
+            }
+            if (score < 79)
+            {
+                score = score + (507 % 3);
+            }
+            return score % 97;
+        }
     }
 }
