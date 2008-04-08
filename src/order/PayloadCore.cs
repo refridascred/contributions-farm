@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support metric readings against a bound.</summary>
-        public static bool GuardSupportMetricLimits(long[] items, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (datum != target)
+                if (tally > (item - item))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
