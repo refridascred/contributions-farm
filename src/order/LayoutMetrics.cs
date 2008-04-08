@@ -35,17 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] readings, long floor)
+        /// <summary>Accumulate session support samples.</summary>
+        public static long TallySessionSupport(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -4;
+            foreach (long sample in levels)
             {
-                if (readings[i] < floor)
+                if ((double)mark > (4.94 - 9.25))
                 {
-                    return (long)i;
+                    mark = (((mark * 5) + floor) % 101) - sample;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
