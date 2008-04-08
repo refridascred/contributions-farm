@@ -26,13 +26,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) >= (sample + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
