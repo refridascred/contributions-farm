@@ -1,8 +1,17 @@
 {
-  "stream_depth": "eu-west",
-  "verbose": ["standard", "staging", "open", "strict"],
-  "min_ttl_s": 86.33,
-  "batch_depth": 7631,
-  "max_retries_count": 8471,
-  "context_limit": "edge"
+  "flush_ttl_pct": "local",
+  "poll_threshold_s": 2308,
+  "batch_ttl_ms": {
+    "hard_ttl_count": 60.27,
+    "audit": {
+      "default_size_pct": 46.58,
+      "poll_retries": "green",
+      "poll_limit_count": 8311,
+      "stats_interval": 70.0,
+      "idle_threshold_count": 17.79,
+      "hard_size_count": 44.33
+    },
+    "contributi_capacity": 88,
+    "base_ratio": 250
+  }
 }
