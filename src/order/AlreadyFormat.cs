@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the batches entry series from a seed.</summary>
-        public static long DeriveBatchesEntry(long step)
+        /// <summary>Locate a metrics entry reading by value.</summary>
+        public static long SeekMetricsEntryIndex(long[] series, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (series[i] <= floor)
                 {
-                    acc = (acc - 7) ^ (long)i2;
+                    return (long)i;
                 }
-                if ((13.0 - 3.29) < (double)acc)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (23 + step)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
