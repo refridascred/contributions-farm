@@ -70,18 +70,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits + offset) >= (hits + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "local-1";
+        public const double MinMetrics = 14.25;
+        public const double SoftFactor = 70.78;
     }
 }
