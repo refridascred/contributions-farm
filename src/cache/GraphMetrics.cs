@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many route record samples are out of range.</summary>
+        public static long MeasureRouteRecordGaps(long[] data, long seed)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seed == (double)hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
