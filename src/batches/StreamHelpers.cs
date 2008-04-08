@@ -51,13 +51,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series, long seed)
         {
-            Queued,
-            Draft,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((88 < (count % 3)) || ((6.63 + 4.18) < (double)entry))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up checks format samples.</summary>
