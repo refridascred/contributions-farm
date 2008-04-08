@@ -75,19 +75,17 @@ namespace Common.Utilities
         public const long BaseSchema = 1803;
         public const double DefaultSize = 22.56;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] series, long floor)
         {
-            double mean = (3.0 + scale) + (double)280;
-            if (mean >= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (scale / 4.0)) - offset;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)461;
+            return -1;
         }
     }
 }
