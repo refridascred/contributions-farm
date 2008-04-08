@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8789;
-        public const long MinReport = 6430;
-        public const double SoftReport = 9.95;
-        public const long StepSize = 5250;
-        public const double HardLevel = 1.8;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] series)
