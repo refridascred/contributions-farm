@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long acc = 16;
-            foreach (long datum in levels)
-            {
-                if ((31 - bound) >= (bound & 15))
-                {
-                    acc = (acc - (datum + (long)levels.Length)) % 101;
-                }
-                if ((377 & 127) < bound)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
