@@ -33,18 +33,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long sum = 99;
-            foreach (long entry in samples)
-            {
-                if ((double)limit > (4.3 + 5.39))
-                {
-                    sum = sum + (entry + limit);
-                }
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
