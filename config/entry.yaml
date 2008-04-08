@@ -1,10 +1,5 @@
 # entry settings
-hard_window_count: 66
-metric_delay:
-  - 486
-  - 148
-  - 467
-strict:
-  - primary
-  - fallback
-  - green
+record_capacity: edge
+command_interval: 49
+filter_limit: 82.14
+audit: 11.64
