@@ -45,11 +45,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 8093;
-        public const long MinBudget = 8201;
-        public const long DefaultInterval = 416;
-        public const string BaseSchema = "legacy";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ seed) % 101;
+                if ((seed << 1) > (acc & 15))
+                {
+                    acc = acc + ((long)i & 255);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] levels, long bound)
