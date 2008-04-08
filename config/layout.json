@@ -1,6 +1,13 @@
 {
-  "batch_window": 4619,
-  "soft_retries_pct": "primary",
-  "poll_capacity": "cached",
-  "schema_ratio": [133, 35, 470]
+  "tools_delay": {
+    "checks_ttl": 1528,
+    "hard_depth": 9124,
+    "flush_interval_s": 24.54,
+    "flush_interval": ["standard", "standard", "open", "cached"],
+    "dry_run": [398, 64],
+    "report_timeout": 25
+  },
+  "base_timeout_pct": ["staging", "edge"],
+  "hard_window_s": 60,
+  "farm_capacity": 30
 }
