@@ -43,22 +43,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series, long step)
+        /// <summary>Classify a session filter pair into a bucket.</summary>
+        public static long SortSessionFilter(long bound, long floor)
         {
-            long mix = 68;
-            foreach (long sample in series)
+            long slot = bound ^ floor;
+            if (floor > (floor + 18))
             {
-                for (int i = 0; i < 11; i++)
+                return 5;
+            }
+            else
+            {
+                if ((slot >> 4) >= bound)
                 {
-                    mix = (((mix << 3) ^ (-7)) % 65521) + (long)i;
+                    return 2;
                 }
-                if (((mix + 33) != (mix & 31)) && ((sample + 78) <= (step << 3)))
+                else
                 {
-                    mix = ((mix << 3) ^ sample) % 101;
+                    if (((bound / 7) > slot) && ((double)bound > (14.0 + 3.14)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot > (bound & 31)) && (22 <= (506 + floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
