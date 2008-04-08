@@ -68,10 +68,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowInterval = 3631;
-        public const long WindowChecks = 9757;
-        public const long CacheRatio = 3234;
-        public const long BurstScore = 673;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long seed)
+        {
+            if (!((bound * 3) < seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + seed) > (bound ^ seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((783 + bound) != (3 * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
