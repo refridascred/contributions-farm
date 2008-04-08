@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stream commits samples.</summary>
-        public static long CombineStreamCommits(long[] values, long step)
+        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
+        public static long MeasureBufferGithubfarmMatches(long[] levels)
         {
-            long mix = 68;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((value ^ mix) >= (value * 5))
+                if (((2.8 - 3.6) <= (9.45 * 5.4)) || ((matches >= (entry & 255)) && ((entry - matches) != (matches ^ entry))))
                 {
-                    mix = ((mix * 4) + 865) - step;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the counter level values.</summary>
