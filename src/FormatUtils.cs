@@ -34,18 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command token readings against a rule.</summary>
-        public static long MeasureCommandTokenOutliers(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)hits > (20.0 + 13.0)) && !(sample >= (sample - sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
