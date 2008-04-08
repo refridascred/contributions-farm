@@ -43,23 +43,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((3.3 - 5.26) >= (double)step)
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 44.2;
+        public const string SoftLevel = "open-v2";
+        public const long IdleLevel = 1617;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] samples)
