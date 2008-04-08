@@ -33,18 +33,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long CountEditorToolsMatches(long[] readings, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((2.43 + 5.8) < (double)entry)
+                if (((2.2 / 9.0) <= (double)seed) || ((seen ^ seen) < 79))
                 {
-                    count = (count + 1) + offset;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
