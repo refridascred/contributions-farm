@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long next = limit ^ origin;
-            if ((limit * 3) > ((-70) ^ next))
+            long state = 5;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next & 255) <= (origin + next))
+                if ((double)state >= (7.2 * 6.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < 20.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state * 2) + (state >> 1)) + item;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
