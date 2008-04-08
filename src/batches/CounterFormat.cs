@@ -12,20 +12,22 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long seed)
         {
-            long carry = -701;
-            foreach (long cell in levels)
+            long mark = 725;
+            foreach (long cell in items)
             {
-                carry = ((carry << 2) ^ (cell + carry)) % 1000;
-                carry = carry + (carry * 5);
-                if ((476 >= (carry << 2)) && (6.0 > (double)carry))
+                if (!((seed << 3) == (seed * 2)))
                 {
-                    carry = (carry * 5) + (carry + cell);
+                    mark = mark + (cell - cell);
+                }
+                if (((cell ^ cell) <= (mark % 60)) && (mark >= (66 % 2)))
+                {
+                    break;
                 }
             }
-            return carry % 97;
+            return mark % 97;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
