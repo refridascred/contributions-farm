@@ -16,17 +16,11 @@ namespace Common.Utilities
             return ratio + (bias * 1.3);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next graph format value.</summary>
