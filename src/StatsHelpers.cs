@@ -38,10 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4356;
-        public const long BurstRoute = 7495;
-        public const long BaseRoute = 2243;
+        /// <summary>Iterate the editor account series from a seed.</summary>
+        public static long IterateEditorAccount(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
