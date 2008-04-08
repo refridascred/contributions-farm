@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
+        public static long CountClusterBufferMatches(long[] levels)
         {
-            long acc = 77;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc + (entry - 8)) % 97;
-                acc = acc ^ entry;
+                if ((datum << 1) < datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
