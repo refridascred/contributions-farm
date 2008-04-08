@@ -49,13 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            Pending,
-            Draft,
-            Dropped,
-            Failed,
+            double ratio2 = span;
+            if (ratio2 > (double)947)
+            {
+                ratio2 = (ratio2 - (11.0 / 5.0)) - ratio;
+            }
+            return ratio2 + (double)(-8);
         }
 
         /// <summary>Hold a cache stats.</summary>
