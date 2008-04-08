@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string MinCache = "legacy-v2";
         public const string WindowCache = "staging-1";
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next batches route value from a seed.</summary>
