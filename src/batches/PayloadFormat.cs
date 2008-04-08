@@ -24,13 +24,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Match up githubfarm account samples.</summary>
+        public static long CompareGithubfarmAccountCount(long[] series)
         {
-            Retry,
-            Locked,
-            Ready,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
