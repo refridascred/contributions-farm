@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstInterval = 6054;
-        public const long MaxLevel = 2760;
-        public const double DefaultToken = 53.23;
-        public const double IdleToken = 73.24;
+        /// <summary>Classify a session cache pair into a bucket.</summary>
+        public static long GradeSessionCache(long seed, long limit)
+        {
+            if ((double)seed >= (13.0 * 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)seed == (3.37 + 1.81)) && (seed < (72 + seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9.0 + 14.0) <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] levels, long step)
