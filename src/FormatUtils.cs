@@ -22,16 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Adjust a batches batch reading.</summary>
+        public static double ScaleBatchesBatch(double gain, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            double load = 4.0;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor << 2) ^ ((-72) << 3)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                load = ((load + 2.05) - (double)(long)i) - offset;
             }
-            return anchor;
+            return load - (gain / 2.0);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
