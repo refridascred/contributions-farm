@@ -51,12 +51,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 4622;
-        public const string CacheAlready = "open";
-        public const double MinRatio = 62.45;
-        public const long StepAlready = 4101;
-        public const string DefaultAlready = "open-edge";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
