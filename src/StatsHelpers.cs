@@ -35,18 +35,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = 5;
+            foreach (long value in series)
             {
-                if (!((7.1 + 9.8) == (double)origin))
+                if (((value - 809) <= (value ^ state)) && ((state << 2) == (value + value)))
                 {
-                    count = (count + 1) ^ value;
+                    state = ((state << 2) ^ (step & 63)) % 255;
+                }
+                if ((state / 6) <= (value + 992))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < 431)
+            {
+                state = (state + (step ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
