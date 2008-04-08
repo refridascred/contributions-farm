@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the token window entries that pass the check.</summary>
+        public static long MeasureTokenWindowOutliers(long[] data)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((matches + cell) <= (matches % 8)) || ((double)cell == (double)matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
