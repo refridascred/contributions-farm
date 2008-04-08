@@ -25,23 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue checks readings.</summary>
-        public static long TotalQueueChecks(long[] readings, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long target)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            if ((double)bound == (10.0 + 4.76))
             {
-                mark = (mark - value) - origin;
-                if ((mark + (long)readings.Length) >= value)
+                return 4;
+            }
+            else
+            {
+                if ((8.0 / 2.0) > (double)target)
                 {
-                    mark = mark + (value - value);
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark > 86)
-            {
-                mark = (mark + (mark >> 1)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Describe the batch phase values.</summary>
