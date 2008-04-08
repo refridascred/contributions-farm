@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((floor - limit) >= limit)
             {
-                if (cell < target)
+                return 0;
+            }
+            else
+            {
+                if ((floor - floor) >= 173)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor << 1) < (2 ^ 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
