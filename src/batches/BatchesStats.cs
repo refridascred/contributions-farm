@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 2600;
-        public const string BasePayload = "stable-edge";
-        public const string RetryPayload = "primary-1";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Draft,
+            Pending,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 2343;
