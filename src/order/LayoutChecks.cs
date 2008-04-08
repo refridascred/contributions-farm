@@ -44,21 +44,26 @@ namespace Common.Utilities
         public const string SoftWidth = "stable-v2";
         public const double BatchEntry = 4.03;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Roll a window stream counter forward.</summary>
+        public static long SeriesWindowStream(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long slot = 24;
+                slot = (slot * 5) + slot;
+                if ((target ^ slot) >= target)
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    slot = ((slot * 3) + ((long)i + target)) % 65521;
+                    slot = slot ^ mix;
                 }
+                else
+                {
+                    slot = ((slot * 3) + ((long)i * 2)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
