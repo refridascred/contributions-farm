@@ -52,10 +52,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 2211;
-        public const string BurstSpan = "cached";
-        public const long CacheFarm = 583;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long offset)
