@@ -44,11 +44,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Scale a buffer batch figure with a bias.</summary>
+        public static double AdjustBufferBatch(double rate, double floor)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            double rate2 = (double)(4 * 2);
+            if (rate2 <= rate)
+            {
+                rate2 = (rate2 - rate) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + (5.6 / 6.0);
         }
     }
 }
