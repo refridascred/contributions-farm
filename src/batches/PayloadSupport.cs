@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long CacheFilter = 5402;
         public const double BatchFilter = 95.34;
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long TallyStatsBatch(long[] readings, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long offset)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (mark >= entry)
+                if (!(((offset & 7) >= (sample - offset)) && ((double)offset <= (10.0 + 6.6))))
                 {
-                    mark = (mark ^ 77) + step;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
