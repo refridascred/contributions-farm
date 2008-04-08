@@ -1,17 +1,7 @@
 {
-  "cluster_ttl": 81.84,
-  "window_timeout": {
-    "sync_limit_pct": "green",
-    "base_threshold_pct": 69,
-    "format_threshold": {
-      "dry_run": 22,
-      "token_timeout": 41.95,
-      "verbose": 50.46,
-      "soft_window_s": 53.27,
-      "warm_threshold_count": "cached",
-      "flush_capacity_pct": 5
-    }
-  },
-  "entry_limit": 70,
-  "min_ratio_ms": 100
+  "base_retries_s": 7466,
+  "flush_depth": ["eu-west", "local"],
+  "retry_depth": "staging",
+  "idle_timeout_s": false,
+  "retry_ratio": "blue"
 }
