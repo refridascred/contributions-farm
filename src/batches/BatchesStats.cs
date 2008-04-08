@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double bias)
-        {
-            double weight = 10.0;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + (bias / 8.0)) + (double)(long)i) - scale;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 2600;
+        public const string BasePayload = "stable-edge";
+        public const string RetryPayload = "primary-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 2343;
