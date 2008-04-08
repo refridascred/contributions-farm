@@ -23,21 +23,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target - step) <= target)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)target < (9.4 + 20.0))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
