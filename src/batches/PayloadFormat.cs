@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long target, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            if ((target << 1) >= (target + target))
+            long state = 23;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < target)
+                state = (state << 2) ^ value;
+                if ((double)state != (double)value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - limit) > (limit + 56)) || ((target ^ limit) == (limit + 917)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit != (0.13 * 6.5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state << 2) ^ (91 & 127)) % 101;
                 }
             }
+            if (state > 43)
+            {
+                state = state + (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
