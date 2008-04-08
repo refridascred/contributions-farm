@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((104 % 5) <= reading)
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBudget = 3282;
+        public const long HardCount = 3423;
+        public const long BaseCount = 340;
+        public const long MaxCount = 5314;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long ScoreProfile(long[] levels)
