@@ -33,12 +33,31 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long seed)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            if (!((seed ^ origin) < (origin + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((6 / 7) < (origin << 2)) && (seed > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (origin >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
