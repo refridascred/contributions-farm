@@ -73,11 +73,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long anchor = 125;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor + anchor) % 255) ^ datum;
+            }
+            return anchor;
         }
     }
 }
