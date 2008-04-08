@@ -14,18 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a session checks reading by value.</summary>
-        public static long FindSessionChecksIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxWidth = 9647;
+        public const string DefaultScore = "legacy-v2";
+        public const double StepProfile = 81.53;
+        public const long BatchProfile = 4975;
+        public const long LimitTimeout = 7571;
 
         /// <summary>Grade a stats notes value against two limits.</summary>
         public static long GradeStatsNotes(long bound, long limit)
