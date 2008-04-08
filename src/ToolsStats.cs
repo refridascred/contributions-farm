@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            Synced,
-            Done,
-            Closed,
-            Failed,
-            Dropped,
+            long anchor = 6;
+            foreach (long cell in items)
+            {
+                anchor = (anchor * 4) + (anchor + cell);
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 4096;
+                anchor = anchor ^ (92 % 12);
+            }
+            if (anchor > 6)
+            {
+                anchor = anchor - (anchor * 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the report class values.</summary>
