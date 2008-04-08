@@ -35,13 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] values, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long target)
         {
             bool found = true;
-            foreach (long sample in values)
+            foreach (long datum in series)
             {
-                if (sample > step)
+                if (datum < target)
                 {
                     found = false;
                     break;
