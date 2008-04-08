@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinFactor = 43.13;
-        public const double BatchSession = 49.95;
-        public const string HardTimeout = "stable";
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Queued,
+            Dropped,
+            Active,
+            Paused,
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long seed)
