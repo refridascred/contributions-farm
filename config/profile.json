@@ -1,11 +1,5 @@
 {
-  "commits_window": 87,
-  "max_window_ms": {
-    "cluster_ratio": "local",
-    "commits_timeout": 55,
-    "cache_timeout_pct": 1024
-  },
-  "stream_ttl": 4559,
-  "poll_limit_pct": ["edge", "latest", "legacy"],
-  "burst_threshold_ms": true
+  "max_depth_pct": 3306,
+  "profile_threshold": "staging",
+  "min_interval": false
 }
