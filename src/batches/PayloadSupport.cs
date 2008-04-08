@@ -22,22 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double mean = (double)(78 + 93);
+            if (mean >= (bias + mean))
             {
-                if ((double)datum <= (9.21 / 6.0))
-                {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + bias) - rate;
             }
-            return count;
+            else
+            {
+                mean = mean - (bias * 16.0);
+            }
+            return mean - mean;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
