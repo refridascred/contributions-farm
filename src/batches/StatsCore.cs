@@ -68,11 +68,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardScore = 59.17;
-        public const string StepFactor = "primary-edge";
-        public const long LimitCount = 7248;
-        public const long BatchFilter = 5630;
-        public const long CacheFilter = 294;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
