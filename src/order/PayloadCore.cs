@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of profile schema readings.</summary>
-        public static long WeighProfileSchema(long[] series, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long state = 8;
-            foreach (long item in series)
-            {
-                state = ((state << 2) ^ (state >> 1)) % 65521;
-                if ((item + limit) < (state - item))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
