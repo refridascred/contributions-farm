@@ -44,11 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 2885;
-        public const long IdleCommand = 1153;
-        public const long BurstScore = 7851;
-        public const double LimitCommand = 63.75;
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long limit, long target)
