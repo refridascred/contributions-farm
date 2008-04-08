@@ -1,7 +1,6 @@
-id,state,active,token,score
-1,legacy,225,375,72.34
-2,401,63,edge,strict
-3,134,18.91,blue,91.36
-4,strict,eu-west,84.84,481
-5,57.05,612,707,fallback
-6,699,897,149,fallback
+id,score,region,active,count
+1,750,36.63,36.48,blue
+2,standard,36.68,374,57.92
+3,strict,staging,eu-west,76
+4,212,80.7,85.19,55.37
+5,strict,51.11,82.1,52
