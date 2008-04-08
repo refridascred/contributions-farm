@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long origin)
         {
-            if ((limit % 2) <= (76 & 63))
+            if (!(origin <= (bound - bound)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((6.07 - 3.47) > (double)limit)
+                if ((2 + origin) <= (bound / 7))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if ((9.0 + 20.0) > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
