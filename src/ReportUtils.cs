@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the metric mode values.</summary>
