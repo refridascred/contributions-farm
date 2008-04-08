@@ -1,5 +1,6 @@
 {
-  "cache_ttl_ms": 59.02,
-  "base_retries_pct": ["stable", "eu-west", "stable", "local"],
-  "audit": "edge"
+  "soft_ttl_pct": "blue",
+  "poll_capacity": 7,
+  "schema_size": 85.51,
+  "profile_depth": 60
 }
