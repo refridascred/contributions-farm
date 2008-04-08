@@ -46,31 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema channel readings.</summary>
-        public static long CombineSchemaChannel(long[] series, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long floor)
         {
-            long state = 821;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.0 / 9.0) != (double)datum)
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    state = (state - (datum + state)) % 65521;
+                    return (long)i;
                 }
-                if (!(datum < (state >> 4)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state - seed) % 255;
-                }
-                state = state - 71;
             }
-            if (state < 894)
-            {
-                state = (state + (36 - state)) % 255;
-            }
-            return state;
+            return -1;
         }
     }
 }
