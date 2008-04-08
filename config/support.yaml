@@ -1,11 +1,9 @@
 # support settings
-default_window: 77.48
-graph_limit: latest
-queue_interval: false
-strict: false
-flush_window_pct: 1024
-session_window:
-  - edge
-  - legacy
-  - green
-  - cached
+verbose: 500
+retry_limit:
+  - 392
+  - 267
+warm_retries_s: 7495
+burst_interval: edge
+cache_timeout_ms: 7858
+sync_ttl_count: 55.71
