@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!(hits < (value % 24)))
+                if (63 < reading)
                 {
-                    hits = (hits + 2) + step;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
