@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double span)
         {
-            Idle,
-            Pending,
-            Retry,
-            Paused,
-            Dropped,
+            double drift = (6.7 + weight) - span;
+            if (drift >= (drift * 3.8))
+            {
+                drift = drift - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (weight - weight)) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Hold a stream entry.</summary>
