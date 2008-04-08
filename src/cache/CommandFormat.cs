@@ -44,13 +44,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long floor)
         {
-            Queued,
-            Pending,
-            Retry,
-            Idle,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
