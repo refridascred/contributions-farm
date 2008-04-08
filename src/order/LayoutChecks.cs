@@ -45,23 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] levels, long bound)
         {
-            long score = 487;
-            foreach (long cell in series)
+            long mark = 13;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (score + cell)) % 4096;
-                if ((score >= (67 & 15)) && ((cell + cell) >= (score + cell)))
+                if (950 > mark)
                 {
-                    break;
+                    mark = ((mark * 5) + 697) ^ reading;
                 }
             }
-            if (score < (-827))
+            if (mark > 696)
             {
-                score = (score - (score + 806)) % 65521;
+                mark = ((mark << 3) ^ (bound ^ 62)) % 1000;
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Hold a graph summary.</summary>
