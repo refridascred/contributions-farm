@@ -1,11 +1,11 @@
 {
-  "contributi_limit": {
-    "verbose": true,
-    "max_retries_s": "legacy",
-    "poll_depth_count": 9470
+  "max_threshold": ["eu-west", "blue", "green"],
+  "commits_ratio": "stable",
+  "idle_timeout_s": {
+    "enabled": false,
+    "sync_size": 93.37,
+    "soft_timeout": 37,
+    "payload_retries": 46
   },
-  "min_limit": "standard",
-  "base_interval": 8541,
-  "base_delay_ms": "blue",
-  "min_delay_s": 500
+  "base_size": "fallback"
 }
