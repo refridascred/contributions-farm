@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long CacheOrder = 3631;
         public const long BurstOrder = 1064;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long seed)
+        /// <summary>Digest a series of queue channel entries.</summary>
+        public static long ScoreQueueChannel(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long sum = 984;
+            foreach (long datum in readings)
             {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum + (datum - sum);
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
