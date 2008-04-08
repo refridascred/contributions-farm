@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long total = 159;
+            foreach (long value in series)
             {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total << 3) ^ value) % 4096) + step;
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
