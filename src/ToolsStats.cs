@@ -23,15 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Pending,
-            Closed,
-            Idle,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseScore = 490;
+        public const string RetryCommand = "legacy-v2";
+        public const long CacheCommand = 7762;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] samples)
