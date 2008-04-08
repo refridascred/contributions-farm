@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout window readings against a bound.</summary>
-        public static bool CheckLayoutWindowRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 70.04;
+        public const long BaseBatches = 3988;
+        public const long HardBatches = 5680;
+        public const long RetrySpan = 9706;
     }
 }
