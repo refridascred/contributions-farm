@@ -64,13 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 936;
+        public const long StepTools = 7341;
+        public const long BatchBudget = 8878;
+        public const long MaxTools = 5032;
+        public const double BaseSpan = 87.3;
     }
 }
