@@ -20,23 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double mean = (double)675 + (double)90;
-            if (mean <= (gain / 4.0))
-            {
-                mean = mean + (double)4;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 8.01) + (double)(long)i;
-            }
-            return mean + (mean / 5.0);
+            Stale,
+            Retry,
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Digest a series of tools session entries.</summary>
