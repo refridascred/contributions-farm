@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + matches) >= (54 + value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 411;
+        public const long StepFormat = 6241;
+        public const double CacheSpan = 52.79;
 
         /// <summary>Count payload already pairs that satisfy a relation.</summary>
         public static long MatchPayloadAlreadyCount(long[] samples)
