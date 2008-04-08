@@ -30,10 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "primary-1";
-        public const long BurstAccount = 7933;
-        public const string BurstTimeout = "local-v2";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Active,
+            Retry,
+        }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
         public static long CompareFarmTokenCount(long[] values)
