@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Roll a profile batch counter forward.</summary>
+        public static long RollProfileBatch(long step)
         {
-            double mean = 9.64 - weight;
-            for (int i = 0; i < 8; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean + bias) + (double)(long)i;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mean + (double)157;
+            return result;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
