@@ -45,13 +45,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Idle,
-            Retry,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 8093;
+        public const long MinBudget = 8201;
+        public const long DefaultInterval = 416;
+        public const string BaseSchema = "legacy";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] levels, long bound)
