@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = 18;
+            foreach (long value in values)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((value - mix) == (mix + mix)))
+                {
+                    mix = (mix + (mix - value)) % 101;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
