@@ -43,31 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples, long target)
         {
-            if (((bound + 824) >= (step + step)) || (192 >= step))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound == (3.8 / 2.0))
+                if ((tally << 3) < (long)samples.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(bound < step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = ((tally + 1) + item) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
