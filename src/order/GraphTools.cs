@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double rate, double bias)
-        {
-            double mean = 9.01 / 9.0;
-            if (mean >= (rate / 2.0))
-            {
-                mean = (mean + rate) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)8;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7290;
+        public const long WindowFactor = 6310;
+        public const long RetryBatch = 7146;
+        public const string BaseBudget = "local";
+        public const long HardSize = 5416;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MinScore = 64.82;
