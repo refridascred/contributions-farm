@@ -1,5 +1,12 @@
 # support settings
-layout_window: 60
-poll_timeout_pct: 9817
-enabled: 60
-strict: 31.03
+batch_capacity_pct: 5044
+sync_limit_count: legacy
+batch_size_s: 10.41
+compress:
+  - 83
+  - 106
+idle_capacity_ms:
+  min_timeout: false
+  persist: 84
+  poll_retries_pct: primary
+commits_retries: 30
