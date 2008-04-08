@@ -37,19 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!!((entry / 8) <= (entry - entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleInterval = "fallback-edge";
+        public const string LimitOrder = "staging";
+        public const string MaxSpan = "standard";
+        public const double BurstTimeout = 18.96;
+        public const long MinRatio = 459;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsMatches(long[] values)
