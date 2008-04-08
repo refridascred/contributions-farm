@@ -50,13 +50,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Locate a context buffer reading by value.</summary>
+        public static long FindContextBufferIndex(long[] levels, long floor)
         {
-            Draft,
-            Pending,
-            Idle,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
