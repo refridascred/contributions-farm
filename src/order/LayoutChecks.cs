@@ -45,12 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinScore = 7414;
-        public const long RetryEntry = 9408;
-        public const string SoftEntry = "local-v2";
-        public const string SoftWidth = "stable-v2";
-        public const double BatchEntry = 4.03;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a window stream counter forward.</summary>
         public static long SeriesWindowStream(long target)
