@@ -64,12 +64,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long target)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
