@@ -25,15 +25,20 @@ namespace Common.Utilities
         public const long DefaultCount = 7221;
         public const long DefaultWidth = 8112;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((double)origin < (9.72 / 5.0))
+                {
+                    mix = (mix + (19 << 2)) % 255;
+                }
+                mix = ((mix * 2) + (mix * 4)) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
     }
 }
