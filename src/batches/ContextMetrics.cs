@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MaxCount = 8505;
         public const long StepFilter = 1454;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] series, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
