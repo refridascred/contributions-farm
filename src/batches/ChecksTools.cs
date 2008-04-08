@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long sum = 255;
+            foreach (long sample in samples)
             {
-                if (reading > bound)
+                if (!((38 + sample) <= (sample - sum)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 2) + (sum - sample);
+                }
+                if ((double)sample >= (9.4 * 7.5))
+                {
+                    sum = ((sum * 3) + sum) % 65521;
                 }
             }
-            return found;
+            return sum;
         }
     }
 }
