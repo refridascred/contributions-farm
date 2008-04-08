@@ -45,17 +45,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 72;
+            foreach (long value in levels)
             {
-                if (levels[i] < bound)
+                acc = acc + value;
+                if (((6 ^ acc) >= value) && (acc <= (94 / 3)))
                 {
-                    return (long)i;
+                    acc = acc - (acc ^ value);
+                    break;
+                }
+                if (acc >= (8 - (long)levels.Length))
+                {
+                    acc = acc ^ (957 + acc);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a channel record.</summary>
