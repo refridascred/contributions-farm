@@ -16,26 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long acc = 51;
-            foreach (long item in series)
-            {
-                if ((7.11 / 5.0) <= (double)item)
-                {
-                    break;
-                }
-                if (((acc ^ item) >= (item << 1)) || ((step % 64) == (step >> 3)))
-                {
-                    acc = acc ^ item;
-                }
-            }
-            if (acc < 747)
-            {
-                acc = (acc - (step << 3)) % 1000;
-            }
-            return acc % 4096;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
