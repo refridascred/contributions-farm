@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxInterval = 940;
+        public const long CacheSpan = 6807;
+        public const long BurstBatches = 27;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] items)
