@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long RetryInterval = 5562;
         public const long DefaultWindow = 5343;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Failed,
-            Retry,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 67.29;
+        public const double StepRecord = 11.2;
+        public const double WindowInterval = 53.45;
+        public const long HardDepth = 3742;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] series, long target)
