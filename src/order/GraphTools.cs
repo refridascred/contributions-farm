@@ -39,23 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session stats readings.</summary>
-        public static long TotalSessionStats(long[] samples)
-        {
-            long score = 558;
-            foreach (long item in samples)
-            {
-                if ((item - score) == (item << 1))
-                {
-                    score = ((score * 5) + (item + (-3))) % 101;
-                }
-                if ((item << 1) > (3 * 2))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinLevel = 63.87;
+        public const double SoftProfile = 64.9;
+        public const long RetryProfile = 1280;
+        public const string HardProfile = "strict";
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
