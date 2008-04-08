@@ -1,7 +1,14 @@
 {
-  "flush_limit_count": ["cached", "edge", "primary"],
-  "cluster_timeout": "open",
-  "default_capacity_pct": ["latest", "eu-west", "staging", "eu-west"],
-  "soft_size": 48,
-  "enabled": 51
+  "audit": 95.14,
+  "context_depth": {
+    "max_delay": 51,
+    "graph_ratio": 2853,
+    "burst_depth_count": 6455,
+    "batch_timeout_pct": "cached",
+    "persist": "legacy"
+  },
+  "flush_limit": 5409,
+  "burst_size_s": ["staging", "open", "staging"],
+  "flush_depth": true,
+  "burst_window_count": 6671
 }
