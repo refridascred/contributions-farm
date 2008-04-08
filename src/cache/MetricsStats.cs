@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepCount = 76.41;
-        public const string MinSize = "fallback";
-        public const string RetryNotes = "fallback";
-        public const string HardNotes = "stable-1";
+        /// <summary>Fold a list of layout checks readings.</summary>
+        public static long DigestLayoutChecks(long[] levels)
+        {
+            long total = 55;
+            foreach (long item in levels)
+            {
+                total = (total + (-145)) + item;
+            }
+            if (total < 403)
+            {
+                total = total ^ (total % 64);
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
