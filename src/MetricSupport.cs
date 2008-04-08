@@ -19,12 +19,16 @@ namespace Common.Utilities
         public const long DefaultPayload = 7751;
         public const long CacheInterval = 4133;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long origin)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total - (total * 5)) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
