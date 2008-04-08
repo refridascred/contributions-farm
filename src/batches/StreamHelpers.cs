@@ -77,11 +77,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double gain = weight;
-            return (gain - (double)8) + bias;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
