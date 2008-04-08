@@ -34,17 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long step)
+        /// <summary>Blend two entry commits measurements.</summary>
+        public static double SmoothEntryCommits(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span;
+            if (scale < scale)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = (scale + span) - ratio;
             }
-            return -1;
+            return scale - span;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
