@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long state = 256;
+            foreach (long value in readings)
+            {
+                if ((long)readings.Length != (bound << 3))
+                {
+                    state = (state * 4) + state;
+                }
+                else
+                {
+                    state = state - value;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
