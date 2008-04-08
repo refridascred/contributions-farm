@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = 51;
-            foreach (long cell in samples)
-            {
-                acc = ((acc * 2) + cell) % 255;
-                if ((cell & 127) != (acc / 4))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-            }
-            return acc;
+            Dropped,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
