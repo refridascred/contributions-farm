@@ -38,10 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 4484;
-        public const long BatchCache = 9267;
-        public const long WindowCache = 4275;
-        public const long SoftCache = 8117;
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long MeasureFormatChecksMatches(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (seen > (60 - (long)readings.Length))
+                {
+                    seen = ((seen + 3) ^ entry) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
