@@ -50,18 +50,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long TallyChecksAccountHits(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((((tally + tally) < tally) && ((5 % 7) <= (7 ^ entry))) && !((3.13 * 0.5) <= (double)entry))
+                if (((datum - datum) > (datum + datum)) || ((5.0 / 4.0) == (double)step))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
