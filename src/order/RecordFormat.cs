@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            if ((limit - limit) > (limit ^ limit))
+            long anchor = 878;
+            foreach (long cell in samples)
             {
-                return 0;
+                anchor = ((anchor + anchor) % 101) + cell;
             }
-            else
-            {
-                if ((9.8 - 1.62) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit / 4) >= (73 / 9)) || (limit < step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit / 2) < (69 - 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
