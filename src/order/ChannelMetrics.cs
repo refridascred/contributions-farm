@@ -22,25 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long prev = step ^ floor;
-            if ((floor % 8) <= (prev % 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev + floor) != (471 - prev))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
