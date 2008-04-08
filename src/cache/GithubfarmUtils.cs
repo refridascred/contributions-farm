@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long floor)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long CountMetricStreamOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (samples[i] == floor)
+                if ((double)item > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
