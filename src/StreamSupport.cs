@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a metric command reading by value.</summary>
-        public static long FindMetricCommandIndex(long[] samples, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
