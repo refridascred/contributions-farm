@@ -16,19 +16,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (value <= target)
+                if ((double)hits != (0.8 * 3.96))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
