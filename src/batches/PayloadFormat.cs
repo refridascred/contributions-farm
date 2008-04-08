@@ -41,13 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
+            long total = 45;
+            foreach (long value in items)
+            {
+                if (((value ^ value) != (total % 3)) || (17.0 <= (double)(long)items.Length))
+                {
+                    total = (total - (total % 24)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value >> 5)) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
