@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3172;
         public const long RetryMetrics = 4254;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 1049;
-        public const double MaxChannel = 0.75;
-        public const string LimitInterval = "alpha";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseLevel = 51.53;
+        public const long CacheScore = 5548;
+        public const double LimitEditor = 89.23;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long RollBatch(long offset)
