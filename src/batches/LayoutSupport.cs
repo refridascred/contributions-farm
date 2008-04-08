@@ -74,17 +74,10 @@ namespace Common.Utilities
             return load - (double)526;
         }
 
-        /// <summary>Locate a context order reading by value.</summary>
-        public static long LookupContextOrderIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 6899;
+        public const string SoftCluster = "latest-1";
+        public const long HardBudget = 2508;
+        public const long IdleRatio = 5757;
     }
 }
