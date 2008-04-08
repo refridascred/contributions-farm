@@ -37,13 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Active,
-            Draft,
-            Ready,
-            New,
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
