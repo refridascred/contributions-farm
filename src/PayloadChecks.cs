@@ -31,31 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data, long offset)
         {
-            if ((double)floor != (4.7 - 9.59))
+            long acc = 7;
+            foreach (long cell in data)
             {
-                return 6;
+                acc = ((acc - (acc >> 5)) % 101) ^ cell;
             }
-            else
+            if (acc > 130)
             {
-                if (((floor ^ limit) == (floor - floor)) || ((limit * 3) < (8 >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >> 3) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = ((acc << 2) ^ (offset << 3)) % 65521;
             }
+            return acc % 65521;
         }
 
         /// <summary>Rank token input into a small class.</summary>
