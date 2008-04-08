@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "compress": 1024,
-  "graph_interval": 25.7
+  "audit": 500,
+  "max_size_ms": 54,
+  "readonly": false
 }
