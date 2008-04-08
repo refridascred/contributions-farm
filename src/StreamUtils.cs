@@ -20,38 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            if ((double)step > (double)limit)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step >> 4) > (limit - limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit == (double)step) && ((212 - limit) != (limit & 255)))
+                    if ((readings[i] ^ readings[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step != (double)limit) && (step > (step + limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
