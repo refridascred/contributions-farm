@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepCount = 76.41;
+        public const string MinSize = "fallback";
+        public const string RetryNotes = "fallback";
+        public const string HardNotes = "stable-1";
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
