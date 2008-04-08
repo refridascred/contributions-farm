@@ -1,6 +1,26 @@
 {
-  "compress": "fallback",
-  "strict": 35.03,
-  "schema_depth": true,
-  "batch_ratio": ["local", "latest"]
+  "hard_threshold_count": false,
+  "payload_retries": 49.05,
+  "batch_retries_count": [164, 16, 133, 432],
+  "idle_limit_count": {
+    "min_threshold_s": 6592,
+    "retry_depth": 3,
+    "audit": ["local", "strict", "primary", "eu-west"],
+    "persist": false,
+    "soft_timeout_ms": "legacy"
+  },
+  "base_timeout_pct": {
+    "batch_window": "edge",
+    "strict": [197, 310],
+    "persist": "legacy",
+    "batch_window_s": [208, 61, 487],
+    "flush_timeout": "blue",
+    "commits_retries": {
+      "poll_window_s": "standard",
+      "retry_depth_pct": "latest",
+      "route_ratio": "staging",
+      "soft_timeout_s": true,
+      "burst_delay_count": "open"
+    }
+  }
 }
