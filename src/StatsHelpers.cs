@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 4171;
+        public const double LimitEntry = 5.09;
+        public const long MinFactor = 3044;
+        public const long StepDepth = 5995;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long WeighEntry(long[] series, long step)
