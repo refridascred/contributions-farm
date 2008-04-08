@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 6569;
-        public const long BaseReport = 9784;
-        public const long LimitReport = 1990;
-        public const double DefaultFactor = 73.15;
-        public const long IdleReport = 1197;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
