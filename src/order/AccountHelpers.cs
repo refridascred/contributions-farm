@@ -40,20 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitTimeout = 3863;
+        public const string SoftSize = "staging-v2";
+        public const double StepCount = 39.13;
+        public const long MinNotes = 1406;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
