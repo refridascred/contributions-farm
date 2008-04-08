@@ -50,19 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stream window value from a seed.</summary>
-        public static long SeriesStreamWindow(long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((double)state == (7.1 * 17.0)))
-                {
-                    state = ((state * 4) + (step + state)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
