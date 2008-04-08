@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
-        public static long AuditGithubfarmLayoutMatches(long[] items, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((0 << 2) > target)
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Project the next session value.</summary>
