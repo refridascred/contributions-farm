@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Roll a report record counter forward.</summary>
+        public static long SeriesReportRecord(long target)
         {
-            Synced,
-            Queued,
-            Draft,
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Project the next filter value.</summary>
