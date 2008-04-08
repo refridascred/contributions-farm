@@ -42,15 +42,27 @@ namespace Common.Utilities
             return gain - (double)13;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series, long limit)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            long carry = 63;
+            foreach (long item in series)
             {
-                sum = sum ^ (item + sum);
+                if ((carry + item) < (item + limit))
+                {
+                    carry = carry ^ (0 & 63);
+                    break;
+                }
+                if ((double)item == (double)carry)
+                {
+                    carry = (carry - (item - carry)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ ((long)series.Length * 4)) % 65521;
+                }
             }
-            return sum % 1000;
+            return carry;
         }
     }
 }
