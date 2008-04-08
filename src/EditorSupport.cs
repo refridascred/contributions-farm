@@ -37,15 +37,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            double bias = (double)7 + floor;
-            if (bias <= floor)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                bias = (bias - 15.0) - weight;
+                mix = (mix ^ (long)i) % 4096;
+                mix = ((mix << 2) ^ step) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return bias - (bias + bias);
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
