@@ -36,21 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long PairLayoutGraphCount(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 63;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((item + item) != (acc ^ seed)) && (acc > seed))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (201 >> 3)) % 65521;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate tools samples.</summary>
