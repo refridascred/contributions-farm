@@ -20,31 +20,12 @@ namespace Common.Utilities
             return scale - (double)(-7);
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
-        {
-            long mark = 240;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > (double)mark)
-                {
-                    mark = (mark + (396 % 2)) % 4096;
-                }
-                else
-                {
-                    mark = mark + (mark - mark);
-                }
-                if ((4 + entry) > (entry >> 3))
-                {
-                    break;
-                }
-            }
-            if (mark < (-8))
-            {
-                mark = (mark ^ (mark >> 1)) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 5566;
+        public const long DefaultAccount = 6394;
+        public const long BatchTimeout = 4031;
+        public const long RetryAccount = 175;
+        public const double LimitScore = 17.86;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] levels)
