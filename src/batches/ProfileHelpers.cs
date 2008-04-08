@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
