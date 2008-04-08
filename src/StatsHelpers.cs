@@ -43,19 +43,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally << 3) < (long)samples.Length)
-                {
-                    tally = ((tally + 1) + item) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftBudget = 8124;
+        public const double IdleSpan = 66.32;
+        public const long HardCommand = 9431;
+        public const string LimitCommand = "standard";
+        public const long RetryWidth = 9342;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long floor, long step)
