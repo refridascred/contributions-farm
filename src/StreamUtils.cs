@@ -49,19 +49,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            if (((-3) > limit) || (((-55) + seed) != (limit + limit)))
             {
-                if ((state < ((-22) - offset)) && ((long)i <= offset))
-                {
-                    state = (state ^ (state - offset)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((limit % 97) <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((662 % 16) > (limit & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed / 4) > seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
