@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool CheckGraphCounterRange(long[] readings, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (entry >= origin)
+                if (origin < (origin ^ (long)items.Length))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
