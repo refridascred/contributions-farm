@@ -47,21 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up context filter samples.</summary>
-        public static long CompareContextFilterCount(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading < offset)
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
