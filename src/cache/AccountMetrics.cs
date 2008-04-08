@@ -44,18 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
-        public static long LookupCounterGithubfarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 1356;
+        public const string HardProfile = "latest-v2";
+        public const string LimitWidth = "legacy-v2";
+        public const double MinDepth = 67.85;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] data, long step)
