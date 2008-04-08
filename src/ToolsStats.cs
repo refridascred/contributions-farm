@@ -40,21 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph queue readings.</summary>
-        public static long OverlapGraphQueueCount(long[] data)
+        /// <summary>Check that every token tools entry stays within the limit.</summary>
+        public static bool CheckTokenToolsBounds(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < step)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
