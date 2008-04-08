@@ -40,13 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
