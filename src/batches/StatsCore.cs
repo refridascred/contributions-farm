@@ -36,24 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long seed)
+        /// <summary>Check that every profile record entry stays within the limit.</summary>
+        public static bool CheckProfileRecordBounds(long[] samples, long limit)
         {
-            if (floor < (floor % 10))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (floor % 60))
+                if (value >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
