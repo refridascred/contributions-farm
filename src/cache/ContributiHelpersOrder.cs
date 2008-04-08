@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Check that every tools session entry stays within the limit.</summary>
+        public static bool GuardToolsSessionBounds(long[] series, long origin)
         {
-            New,
-            Failed,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
