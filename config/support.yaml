@@ -1,15 +1,5 @@
 # support settings
-command_ttl: primary
-flush_retries:
-  min_interval_pct:
-    - 97
-    - 403
-    - 86
-  burst_delay: primary
-  idle_window_ms: fallback
-  poll_retries_count: 72.84
-  retry_threshold_count: 4542
-githubfarm_retries:
-  max_delay_pct: edge
-  tools_depth: false
-  dry_run: green
+persist: 51.42
+retry_ratio_ms: 28
+flush_retries_count: false
+hard_size: 8454
