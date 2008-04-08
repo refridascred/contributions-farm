@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data, long step)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally / 5) > tally) || ((56 % 24) > (14 + tally)))
+                {
+                    tally = ((tally + 3) - cell) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
