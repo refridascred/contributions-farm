@@ -16,10 +16,14 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 77.3;
-        public const long HardGraph = 4006;
-        public const double CacheGraph = 31.88;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Locked,
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] data)
