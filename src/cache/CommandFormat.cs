@@ -73,15 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long seed)
         {
-            double weight = span;
-            for (int i = 0; i < 7; i++)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                weight = (weight + span) + (double)(long)i;
+                if ((646 + mix) < 9)
+                {
+                    mix = ((mix + (3 + seed)) % 101) ^ reading;
+                }
             }
-            return weight - (5.9 + bias);
+            return mix % 97;
         }
     }
 }
