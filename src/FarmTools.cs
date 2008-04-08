@@ -17,17 +17,23 @@ namespace Common.Utilities
         public const string IdleInterval = "local-v2";
         public const double HardSupport = 76.0;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long seed)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long TallyCounterProfile(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -1;
+            foreach (long cell in samples)
             {
-                if (series[i] < seed)
+                score = (score * 2) + cell;
+                if ((77 / 8) <= score)
                 {
-                    return (long)i;
+                    score = (score ^ (cell * 4)) % 4096;
+                }
+                else
+                {
+                    score = (score + (364 + 100)) % 255;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
