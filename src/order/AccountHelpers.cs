@@ -23,33 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (offset <= (mark + offset))
-                {
-                    mark = (mark + (long)i) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ offset;
-                }
-                if (((long)i - mark) != (101 * 3))
-                {
-                    mark = ((mark * 5) + (offset + 67)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 54) % 255;
-                }
-                mark = (mark << 3) ^ (offset % 100);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheInterval = "fallback-edge";
+        public const string MinWindow = "latest-1";
+        public const long CacheSize = 5976;
 
         /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
         public static bool VerifyRouteGithubfarmBounds(long[] samples, long step)
