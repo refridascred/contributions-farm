@@ -1,7 +1,21 @@
 {
-  "cache_interval": false,
-  "batch_ttl": [444, 419, 108],
-  "base_size_count": [304, 402, 181, 55],
-  "strict": [186, 471],
-  "idle_timeout": "legacy"
+  "channel_depth": "cached",
+  "warm_threshold_pct": 76,
+  "enabled": 1024,
+  "strict": true,
+  "batch_interval_s": 8468,
+  "base_interval_ms": {
+    "default_ratio_ms": 3094,
+    "warm_ttl_ms": 500,
+    "max_interval_pct": {
+      "idle_interval": 8628,
+      "retry_window_pct": "blue",
+      "window_timeout": 4962,
+      "verbose": true,
+      "persist": 12.01,
+      "audit": 44.13
+    },
+    "burst_window_s": ["fallback", "blue", "eu-west"],
+    "sync_window_count": "staging"
+  }
 }
