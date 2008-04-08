@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            double gain = bias2;
+            if (gain >= (bias2 * 1.0))
+            {
+                gain = gain - (bias * 6.3);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain + bias)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
