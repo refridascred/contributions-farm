@@ -39,15 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long mark = 98;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                mark = ((mark << 2) ^ (7 - cell)) % 65521;
+                if ((4.08 - 2.05) != (double)cell)
+                {
+                    mark = mark - (mark << 3);
+                }
+                else
+                {
+                    mark = mark + (mark - mark);
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
