@@ -34,13 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
