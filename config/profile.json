@@ -1,10 +1,7 @@
 {
-  "stream_limit": {
-    "poll_ttl_s": ["strict", "edge", "latest", "green"],
-    "notes_limit": false,
-    "poll_depth_pct": "staging",
-    "min_interval_pct": false
-  },
-  "cache_ratio": 90.69,
-  "verbose": [166, 490]
+  "strict": 30,
+  "cache_retries_pct": "green",
+  "poll_size_count": 33.1,
+  "order_limit": "legacy",
+  "dry_run": 64.34
 }
