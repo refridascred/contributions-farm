@@ -30,18 +30,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (offset >= (501 + hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxInterval = 3973;
+        public const long WindowProfile = 3717;
+        public const long StepProfile = 6259;
     }
 }
