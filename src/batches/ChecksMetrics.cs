@@ -58,13 +58,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long origin)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Done,
+            if (!(step >= (origin + origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.0 + 2.07) == (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((8 + step) < (origin + 150)) || (origin < (origin + 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + 39) <= (309 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
