@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (63 < reading)
+                if ((cell ^ cell) == (85 << 1))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
