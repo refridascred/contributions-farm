@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long MaxWidth = 6825;
         public const long LimitCount = 3994;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data, long limit)
+        /// <summary>Check that every record profile entry stays within the limit.</summary>
+        public static bool CheckRecordProfileBounds(long[] data, long limit)
         {
-            long tally = 0;
+            bool flag = true;
             foreach (long cell in data)
             {
-                if ((limit + limit) <= tally)
+                if (cell <= limit)
                 {
-                    tally = (tally + 3) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
