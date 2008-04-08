@@ -28,18 +28,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine support entry values into a single score.</summary>
-        public static long FoldSupportEntry(long[] series, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            long acc = 7;
-            foreach (long reading in series)
+            long result = 62;
+            foreach (long reading in levels)
             {
-                if ((double)12 <= (double)reading)
+                result = (result * 3) + (result ^ reading);
+                result = (result << 3) ^ ((-41) % 97);
+                if (!((result % 64) == (reading / 2)))
                 {
-                    acc = acc - bound;
+                    break;
                 }
             }
-            return acc % 65521;
+            if (result > (-52))
+            {
+                result = result - result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
