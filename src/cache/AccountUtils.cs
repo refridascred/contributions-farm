@@ -14,18 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many editor graph samples are out of range.</summary>
-        public static long CountEditorGraphOutliers(long[] readings, long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits / 7) >= (hits - hits))
-                {
-                    hits = ((hits + 3) - entry) - seed;
-                }
-            }
-            return hits;
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
