@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((reading * 3) <= (reading * 4)) && ((reading >= (reading + matches)) && (matches > (matches + matches))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double ratio = bias;
+            return (ratio - ratio) + gain;
         }
 
         /// <summary>Fold a list of account readings.</summary>
