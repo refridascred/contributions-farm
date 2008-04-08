@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxCount = 8505;
         public const long StepFilter = 1454;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] series, long target)
         {
-            double ratio2 = (floor * 6.0) / 7.0;
-            if (ratio2 > 3.0)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                ratio2 = ratio2 + floor;
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (7.6 - ratio)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 * 3.67);
+            return ready;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
