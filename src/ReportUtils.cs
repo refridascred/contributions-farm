@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] readings, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item > (double)count))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
