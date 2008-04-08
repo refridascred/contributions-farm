@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const string IdlePayload = "alpha-v2";
         public const long BatchLevel = 189;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
         {
-            if ((origin / 5) < limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit ^ limit) == (limit + limit)))
+                if (items[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 % 7) <= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 - 77) > (limit << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
