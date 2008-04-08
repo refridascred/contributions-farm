@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Mode { get; set; }
             public long Count { get; set; }
         }
 
