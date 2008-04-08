@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Retry,
-            Paused,
-            Queued,
-            Idle,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "standard-1";
+        public const long BaseLayout = 6148;
+        public const double WindowScore = 93.66;
+        public const long IdleScore = 8318;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] values)
