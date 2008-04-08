@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 3) + origin) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 7094;
+        public const string BatchSpan = "strict-v2";
+        public const double StepChannel = 41.95;
+        public const string IdleTimeout = "open";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitInterval = 8339;
