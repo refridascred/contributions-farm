@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7276;
-        public const long IdleFormat = 369;
-        public const long DefaultFactor = 6775;
-        public const long RetryLevel = 1632;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Active,
+            Dropped,
+            Done,
+            Retry,
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
