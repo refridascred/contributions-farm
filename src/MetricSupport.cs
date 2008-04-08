@@ -17,11 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowInterval = 2489;
-        public const string LimitFormat = "local";
-        public const string WindowSpan = "strict-v2";
-        public const long HardDepth = 8633;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((2.0 - 6.95) < (double)item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long CompareToolsCount(long[] values)
