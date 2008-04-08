@@ -87,12 +87,13 @@ namespace Common.Utilities
             return bias2 - (weight / 7.0);
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Pending,
-            Draft,
-            Retry,
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
