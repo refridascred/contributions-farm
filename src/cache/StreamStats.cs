@@ -34,31 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data)
         {
-            if (!((floor + floor) < (offset - offset)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (double)floor)
+                if ((double)value == (2.79 - 4.7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((495 * 2) != (floor << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
