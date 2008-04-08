@@ -21,19 +21,25 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items, long target)
+        /// <summary>Classify a command farm pair into a bucket.</summary>
+        public static long SortCommandFarm(long step, long seed)
         {
-            long carry = 6;
-            foreach (long item in items)
+            long slot = step ^ seed;
+            if (((slot >> 4) > (slot + seed)) || ((step + seed) <= (seed * 4)))
             {
-                carry = ((carry + target) % 4096) - item;
+                return 2;
             }
-            if (carry > 9)
+            else
             {
-                carry = (carry + (target - target)) % 101;
+                if ((8.4 / 3.0) <= (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return carry;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
