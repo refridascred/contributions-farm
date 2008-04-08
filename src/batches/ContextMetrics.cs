@@ -53,38 +53,13 @@ namespace Common.Utilities
             return drift - (span / 9.0);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long seed, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if ((seed ^ seed) > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)837 == (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset > (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset < (6.0 * 4.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Synced,
+            Retry,
         }
     }
 }
