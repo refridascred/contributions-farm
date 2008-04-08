@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = 5;
-            foreach (long datum in values)
-            {
-                if (step <= datum)
-                {
-                    mark = (mark ^ (step + datum)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-            }
-            return mark;
+            Synced,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
