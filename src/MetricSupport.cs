@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long BurstFactor = 9443;
         public const long CacheChecks = 4246;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] values, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value <= limit)
+                if ((double)6 >= (double)floor)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + value;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
