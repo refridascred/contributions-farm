@@ -34,13 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] series, long step)
         {
-            Done,
-            New,
-            Retry,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
