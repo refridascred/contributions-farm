@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = 4;
-            foreach (long datum in series)
-            {
-                if ((double)mix <= (6.91 * 5.78))
-                {
-                    mix = ((mix - mix) % 1000) ^ datum;
-                }
-            }
-            if (mix > 80)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many metric stream samples are out of range.</summary>
