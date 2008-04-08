@@ -50,17 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] levels, long step)
+        /// <summary>Adjust a commits support reading.</summary>
+        public static double AdjustCommitsSupport(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            if (rate < (0.01 + floor))
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + 6.1) - (double)(long)i;
+            }
+            return rate - (double)8;
         }
     }
 }
