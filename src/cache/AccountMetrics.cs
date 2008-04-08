@@ -36,19 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long limit)
         {
-            long result = 45;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                result = ((result << 2) ^ (item % 97)) % 4096;
+                if (!(((limit + (-29)) >= datum) || ((5.38 * 1.4) == (double)datum)))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (result < (-78))
-            {
-                result = (result + (3 * 4)) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
