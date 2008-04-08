@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long bound)
         {
-            long sum = -794;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum - (sum % 12)) % 1000) ^ sample) + target;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
