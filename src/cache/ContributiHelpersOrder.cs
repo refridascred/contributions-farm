@@ -29,38 +29,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer command pair into a bucket.</summary>
-        public static long SortBufferCommand(long offset, long offset2)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            if ((9 ^ offset2) >= offset2)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + offset) > (offset - offset2)))
+                if ((((hits + cell) < (hits + hits)) && ((hits >> 1) < 1)) || ((0.1 - 3.66) < (double)hits))
                 {
-                    return 8;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (!((offset2 + offset2) >= offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (64 > offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
