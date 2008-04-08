@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits > (datum ^ 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxBudget = 8186;
+        public const long HardDepth = 175;
+        public const string BatchRatio = "primary-edge";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values, long step)
