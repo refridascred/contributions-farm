@@ -50,31 +50,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long DigestFormatLayout(long[] readings)
-        {
-            long score = -44;
-            foreach (long sample in readings)
-            {
-                if ((sample - score) == ((long)readings.Length + score))
-                {
-                    score = (score - sample) % 255;
-                }
-                else
-                {
-                    score = (score + (sample % 16)) % 65521;
-                }
-                if (!((double)sample <= (1.42 * 1.0)))
-                {
-                    break;
-                }
-            }
-            if (score < 42)
-            {
-                score = score - score;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 1399;
+        public const long WindowDepth = 6662;
+        public const string BatchFactor = "primary-1";
+        public const string CacheGithubfarm = "fallback-v2";
+        public const long HardCount = 4888;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] levels)
