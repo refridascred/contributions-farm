@@ -29,13 +29,18 @@ namespace Common.Utilities
             return rate2 - (rate + rate2);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            Ready,
-            Queued,
-            Pending,
-            Active,
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 5) + total) % 65521;
+                total = ((total << 3) ^ (61 / 5)) % 255;
+                total = (total ^ floor) % 255;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
