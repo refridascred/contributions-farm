@@ -34,18 +34,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long seed)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((646 + mix) < 9)
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
                 {
-                    mix = ((mix + (3 + seed)) % 101) ^ reading;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
