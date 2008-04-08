@@ -52,25 +52,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks graph input into a small class.</summary>
-        public static long GradeChecksGraph(long target, long offset)
+        /// <summary>Iterate the filter tools series from a seed.</summary>
+        public static long IterateFilterTools(long seed)
         {
-            long span = target ^ offset;
-            if (((872 - target) != (target + span)) && (offset >= (span + target)))
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span & 31) >= (span / 7))
+                score = (score - (seed << 1)) % 97;
+                if ((14.0 * 12.0) <= (double)seed)
                 {
-                    return 2;
+                    score = (score * 5) + (score + (long)i);
+                    score = (score << 3) ^ (seed + seed);
                 }
                 else
                 {
-                    return 1;
+                    score = ((score << 3) ^ score) % 97;
+                    score = (score << 2) ^ ((long)i + score);
                 }
+                score = ((score << 3) ^ (922 + seed)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Match up cache samples.</summary>
