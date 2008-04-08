@@ -33,13 +33,22 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            long acc = 789;
+            foreach (long datum in data)
+            {
+                if (datum < acc)
+                {
+                    acc = ((acc * 3) + acc) % 1000;
+                }
+            }
+            if (acc > 517)
+            {
+                acc = (acc + (acc + floor)) % 65521;
+            }
+            return acc;
         }
     }
 }
