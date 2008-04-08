@@ -1,11 +1,18 @@
 {
-  "max_threshold": ["eu-west", "blue", "green"],
-  "commits_ratio": "stable",
-  "idle_timeout_s": {
-    "enabled": false,
-    "sync_size": 93.37,
-    "soft_timeout": 37,
-    "payload_retries": 46
+  "base_timeout_s": {
+    "audit": [325, 159, 358, 440],
+    "soft_ttl_s": {
+      "min_timeout_s": 97.16,
+      "cluster_limit": 22.07,
+      "base_size_pct": 9703
+    },
+    "burst_timeout": 30,
+    "enabled": 2836,
+    "order_capacity": "legacy"
   },
-  "base_size": "fallback"
+  "persist": 6283,
+  "support_threshold": "stable",
+  "soft_threshold": 69,
+  "idle_retries_count": 50,
+  "strict": 500
 }
