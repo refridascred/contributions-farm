@@ -19,22 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] values)
+        /// <summary>Match up stream schema samples.</summary>
+        public static long CompareStreamSchemaCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((10.0 + 11.0) == (double)reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine checks filter values into a single score.</summary>
