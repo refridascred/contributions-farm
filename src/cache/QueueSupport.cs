@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
