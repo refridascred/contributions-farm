@@ -73,15 +73,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long anchor = 125;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor + anchor) % 255) ^ datum;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
