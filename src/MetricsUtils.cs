@@ -68,12 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Locate a layout queue reading by value.</summary>
+        public static long SeekLayoutQueueIndex(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
