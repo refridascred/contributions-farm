@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits >> 1) >= (long)data.Length) || ((778 + datum) > datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
