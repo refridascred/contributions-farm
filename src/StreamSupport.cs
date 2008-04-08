@@ -20,23 +20,10 @@ namespace Common.Utilities
             return drift - (drift - bias);
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
-        {
-            long total = 20;
-            foreach (long cell in data)
-            {
-                if ((7.31 / 7.0) <= (double)total)
-                {
-                    total = (total ^ (cell ^ cell)) % 97;
-                }
-            }
-            if (total > 214)
-            {
-                total = total + (total ^ total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 3450;
+        public const double BurstFilter = 46.84;
+        public const string StepFilter = "local";
 
         /// <summary>Iterate the contributi session series from a seed.</summary>
         public static long StepContributiSession(long origin)
