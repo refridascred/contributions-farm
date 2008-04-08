@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            if (limit >= (limit + seed))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit & 63) >= (limit & 255)) || ((seed % 12) > seed))
+                if ((hits & 255) != (reading & 1))
                 {
-                    return 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
