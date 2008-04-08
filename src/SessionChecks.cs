@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long offset)
         {
-            Paused,
-            Locked,
-            Synced,
+            long lane = step - offset;
+            if ((lane - offset) <= (658 - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((0 + offset) > 638))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
