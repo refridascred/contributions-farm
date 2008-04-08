@@ -44,22 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 8214;
+        public const long LimitFactor = 3660;
+        public const string BurstCount = "primary-1";
+        public const double BurstWindow = 85.23;
+        public const string CacheWindow = "stable-v2";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long limit, long target)
