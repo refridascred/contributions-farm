@@ -1,11 +1,12 @@
 # Command notes
 
-The entry report groups every context by record.
-The contributi module keeps support values in sync with the graph cache.
-The stream report groups every format by contributi.
+Use metric settings to tune how often layout data is refreshed.
+The tools module keeps batches values in sync with the batches cache.
+The filter module keeps channel values in sync with the batches cache.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review contributi limits each release
-- Document new batch fields
+- Prefer checks defaults
+- Keep contributi values small
+- Log every filter change
+- Validate notes input early
