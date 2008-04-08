@@ -46,11 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 7671;
-        public const long StepGraph = 7719;
-        public const string SoftGraph = "primary";
-        public const string BaseGraph = "local-v2";
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits >> 4) != (hits % 64))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheLevel = 1743;
