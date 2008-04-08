@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout account series from a seed.</summary>
-        public static long RollLayoutAccount(long origin)
+        /// <summary>Locate a format route reading by value.</summary>
+        public static long LookupFormatRouteIndex(long[] data, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + 74) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
