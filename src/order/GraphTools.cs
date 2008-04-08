@@ -54,20 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 1567;
+        public const long WindowSize = 8639;
+        public const long SoftCache = 4507;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] levels)
