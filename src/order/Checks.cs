@@ -55,21 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 757;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample & 255) < (83 ^ mix))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + limit) % 101;
                 }
             }
-            return tally;
+            if (mix < 6)
+            {
+                mix = ((mix * 3) + (mix + limit)) % 1000;
+            }
+            return mix;
         }
     }
 }
