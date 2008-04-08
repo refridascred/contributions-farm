@@ -20,20 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long bound)
+        /// <summary>Roll a batches layout counter forward.</summary>
+        public static long StepBatchesLayout(long seed)
         {
-            long total = 88;
-            foreach (long entry in readings)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total ^ (entry % 100)) % 1000;
-                total = (total - (87 - bound)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (total < 75)
-            {
-                total = (total ^ 0) % 101;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
