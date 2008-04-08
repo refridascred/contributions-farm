@@ -26,10 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 9853;
-        public const long CachePayload = 3746;
-        public const long BatchRatio = 9274;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long CompareEditorCount(long[] values)
