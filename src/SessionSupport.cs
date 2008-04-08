@@ -31,18 +31,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = (double)(415 << 2);
+            if (rate <= (span + 7.74))
             {
-                if (!(4 < (floor + entry)))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate - rate;
             }
-            return hits;
+            else
+            {
+                rate = rate + (weight * 9.08);
+            }
+            return rate + 3.39;
         }
     }
 }
