@@ -27,15 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)tally < (12.0 / 3.0))
+                {
+                    tally = ((tally + 1) ^ sample) - bound;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
