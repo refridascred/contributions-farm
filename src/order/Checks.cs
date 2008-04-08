@@ -50,19 +50,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long floor)
+        /// <summary>Digest a series of format record entries.</summary>
+        public static long FoldFormatRecord(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long score = 235;
+            foreach (long item in values)
             {
-                if (reading <= floor)
+                score = (score * 3) + 284;
+                if (((item ^ score) > ((long)values.Length + offset)) || ((offset >> 2) > (offset + item)))
                 {
-                    ok = false;
-                    break;
+                    score = (score * 5) + (offset & 3);
                 }
             }
-            return ok;
+            return score;
         }
     }
 }
