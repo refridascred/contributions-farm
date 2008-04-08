@@ -41,15 +41,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Retry,
-            New,
-            Locked,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 84.48;
+        public const string MinTimeout = "strict-v2";
+        public const long HardSpan = 1665;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] samples)
