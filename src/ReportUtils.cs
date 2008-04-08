@@ -64,18 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long floor)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long ScoreFormatLayout(long[] levels)
         {
-            long count = 0;
+            long result = 0;
             foreach (long item in levels)
             {
-                if (count < (count & 15))
+                if (((item << 2) >= (4 << 3)) && ((result - item) > (result + item)))
                 {
-                    count = ((count + 2) + item) + floor;
+                    result = (result ^ (item / 3)) % 4096;
                 }
             }
-            return count;
+            if (result > 572)
+            {
+                result = (result << 2) ^ (result << 1);
+            }
+            return result % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
