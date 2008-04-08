@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data)
         {
-            New,
-            Queued,
-            Locked,
+            long mix = -55;
+            foreach (long datum in data)
+            {
+                mix = (mix - (datum ^ datum)) % 255;
+            }
+            if (mix < 38)
+            {
+                mix = ((mix << 2) ^ (mix / 3)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Blend two window measurements.</summary>
