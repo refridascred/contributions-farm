@@ -50,11 +50,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSpan = 6449;
-        public const long CacheScore = 7456;
-        public const long RetryScore = 4540;
-        public const string MinCache = "open";
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long offset, long bound)
+        {
+            if ((bound << 1) < offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (offset * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.18 * 17.0) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset < (offset << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatOutliers(long[] data, long bound)
