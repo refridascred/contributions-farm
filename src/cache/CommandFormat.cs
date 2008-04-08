@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double bias)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double drift = rate;
-            return (drift + (drift * 6.02)) + bias;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
