@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a cache entry.</summary>
