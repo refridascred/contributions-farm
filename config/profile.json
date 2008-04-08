@@ -1,5 +1,6 @@
 {
-  "strict": "cached",
-  "retry_timeout": true,
-  "retry_delay": 74
+  "min_depth_s": true,
+  "idle_capacity": ["legacy", "cached", "local"],
+  "support_interval": "blue",
+  "default_retries_ms": "latest"
 }
