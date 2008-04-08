@@ -1,6 +1,8 @@
 {
-  "batch_threshold": 500,
-  "warm_capacity": true,
-  "idle_delay_s": "latest",
-  "cache_ratio": ["stable", "fallback"]
+  "context_interval": 100,
+  "hard_delay_ms": 50.46,
+  "compress": "staging",
+  "sync_interval_pct": false,
+  "persist": 36.57,
+  "counter_capacity": true
 }
