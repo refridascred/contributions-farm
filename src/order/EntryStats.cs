@@ -49,17 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
