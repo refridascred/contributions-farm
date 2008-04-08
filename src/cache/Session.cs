@@ -33,22 +33,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of farm editor entries.</summary>
-        public static long FoldFarmEditor(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] levels, long step)
         {
-            long score = 87;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((sample >> 3) >= 0) || ((2.41 / 5.0) < (double)score))
+                if (((double)step <= (7.4 - 5.6)) && (((double)item <= (1.6 * 8.2)) && (step > (count << 1))))
                 {
-                    score = (score * 5) + sample;
-                }
-                else
-                {
-                    score = score ^ (28 / 5);
+                    count = count + 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
