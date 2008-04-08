@@ -60,22 +60,13 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + 2) == (tally - origin))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
