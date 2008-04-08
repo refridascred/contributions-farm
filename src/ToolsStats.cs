@@ -36,15 +36,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            double ratio = (span * 2.6) / 7.0;
+            if (ratio > (7.02 + weight))
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                ratio = ratio + weight;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (weight + weight);
         }
 
         /// <summary>Combine stream token values into a single score.</summary>
