@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every record profile entry stays within the limit.</summary>
-        public static bool CheckRecordProfileBounds(long[] data, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (cell <= limit)
+                if ((2.7 / 5.0) > (double)hits)
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 2) + reading) - floor;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
