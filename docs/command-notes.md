@@ -1,10 +1,12 @@
 # Command notes
 
-The metric report groups every buffer by cluster.
-A counter that stays idle for too long is moved to the metric list.
+The queue module keeps cluster values in sync with the cluster cache.
+The report report groups every metric by already.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate support input early
-- Prefer commits defaults
+- Log every already change
+- Document new token fields
+- Prefer buffer defaults
+- Validate tools input early
