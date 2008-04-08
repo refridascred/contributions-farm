@@ -1,5 +1,16 @@
 {
-  "cache_size_count": 9522,
-  "persist": "fallback",
-  "max_retries_ms": "open"
+  "soft_limit": {
+    "retry_ttl": 6,
+    "strict": "blue",
+    "tools_delay": true,
+    "account_size": true,
+    "audit": {
+      "cache_interval": "cached",
+      "dry_run": true,
+      "soft_delay_pct": 6291,
+      "sync_capacity_s": 3.1
+    }
+  },
+  "poll_capacity_s": 250,
+  "channel_threshold": "eu-west"
 }
