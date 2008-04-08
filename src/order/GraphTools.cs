@@ -28,17 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel tools reading by value.</summary>
-        public static long LocateChannelToolsIndex(long[] items, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = floor;
+            if (bias <= weight)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + 2.66;
             }
-            return -1;
+            else
+            {
+                bias = bias - (floor + bias);
+            }
+            return bias - 0.51;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
