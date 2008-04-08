@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)matches < 0.3)
+                {
+                    matches = ((matches + 2) + value) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
