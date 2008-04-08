@@ -1,21 +1,7 @@
 {
-  "cache_capacity": 74.38,
-  "retry_depth": 500,
-  "queue_depth": {
-    "cache_depth": "legacy",
-    "dry_run": "legacy",
-    "hard_limit": "fallback"
-  },
-  "soft_retries_ms": {
-    "tools_depth": [103, 284, 284, 137],
-    "command_size": "primary",
-    "hard_ratio_ms": {
-      "buffer_capacity": "standard",
-      "idle_threshold": 1576,
-      "cache_size_s": "green"
-    },
-    "account_timeout": "blue",
-    "readonly": [161, 454],
-    "sync_window_pct": 64
-  }
+  "sync_limit_count": 19.87,
+  "strict": 53.07,
+  "layout_delay": "eu-west",
+  "batch_ratio": 35,
+  "retry_interval": 80.18
 }
