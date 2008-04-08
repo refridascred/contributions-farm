@@ -62,17 +62,9 @@ namespace Common.Utilities
         public const long HardDepth = 9652;
         public const long BurstCounter = 6569;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 74.61;
+        public const long MaxFactor = 7816;
+        public const double BatchTimeout = 91.72;
     }
 }
