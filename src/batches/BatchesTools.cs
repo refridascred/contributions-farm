@@ -10,20 +10,25 @@ namespace Common.Utilities
         public const long IdleEditor = 3496;
         public const string WindowEditor = "staging-edge";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long bound)
         {
-            long score = 944;
-            foreach (long value in readings)
+            long diff = limit - bound;
+            if ((double)bound <= (5.0 + 7.1))
             {
-                if ((double)score > (double)value)
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                score = (score - (score >> 3)) % 65521;
-                score = (score << 2) ^ (3 + floor);
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((bound + 281) > (diff * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
