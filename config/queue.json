@@ -1,6 +1,5 @@
 {
-  "warm_size_count": [52, 295, 449],
-  "window_limit": 35,
-  "warm_window_pct": 3382,
-  "farm_ttl": 79
+  "burst_threshold_pct": 20,
+  "commits_retries": 8206,
+  "flush_window_ms": ["legacy", "local"]
 }
