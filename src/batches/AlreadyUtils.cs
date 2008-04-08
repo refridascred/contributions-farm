@@ -23,39 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long limit, long limit2)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            long bound = limit ^ limit2;
-            if (((double)limit2 == (8.21 * 2.0)) && ((bound % 5) > (limit - 6)))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (655 + bound)) || (bound <= (limit2 + bound)))
+                if (((double)matches < 2.0) && ((matches - matches) > (entry + matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((25 - limit) != (limit & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((62 + limit2) < (72 << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
