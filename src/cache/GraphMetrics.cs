@@ -39,39 +39,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank metric batch input into a small class.</summary>
-        public static long SortMetricBatch(long floor, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long delta = floor - origin;
-            if ((delta * 4) == (3 + delta))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((delta / 5) < floor) && ((origin >> 1) != (origin * 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((12 / 6) > (floor + delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((689 + 57) > (delta + 95))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
