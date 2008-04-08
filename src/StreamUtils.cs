@@ -34,19 +34,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] data, long step)
         {
-            double bias = (double)(9 & 63);
-            if (bias < (double)359)
+            long count = 0;
+            foreach (long entry in data)
             {
-                bias = ((bias + (double)37) - ratio) - floor;
+                if ((count + 97) >= (step ^ entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (7.7 * 7.3);
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
