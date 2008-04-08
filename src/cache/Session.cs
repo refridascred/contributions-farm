@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] series, long origin)
         {
-            long next = floor + bound;
-            if (bound < (next - floor))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 3) == (next - next))
+                if ((double)count <= (5.0 / 4.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((23 % 10) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((85 - floor) == (next ^ next)) && ((double)next >= (4.79 + 20.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = ((count + 3) + item) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of cache metrics entries.</summary>
