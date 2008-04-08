@@ -1,8 +1,18 @@
 {
-  "base_retries_count": true,
-  "compress": true,
-  "warm_depth": 984,
-  "retry_threshold": "blue",
-  "batch_delay": "local",
-  "sync_ratio_s": "staging"
+  "min_retries": 30,
+  "persist": {
+    "cache_timeout_count": "standard",
+    "soft_delay": {
+      "poll_retries": true,
+      "idle_size_ms": 37.8,
+      "soft_window": "eu-west",
+      "record_interval": false,
+      "counter_retries": 4697
+    },
+    "dry_run": "standard",
+    "hard_depth_count": "stable"
+  },
+  "base_depth": ["open", "standard", "standard", "blue"],
+  "support_retries": 9459,
+  "strict": 26
 }
