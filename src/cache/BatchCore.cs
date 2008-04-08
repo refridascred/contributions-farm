@@ -50,12 +50,18 @@ namespace Common.Utilities
             return ratio2 + (double)(-8);
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((980 - seen) < (seen - seen))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
     }
 }
