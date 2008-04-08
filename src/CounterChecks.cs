@@ -64,18 +64,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many window tools samples are out of range.</summary>
-        public static long AuditWindowToolsHits(long[] data, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!((reading << 2) != (hits + reading)))
+                if ((7.0 / 2.0) >= (double)tally)
                 {
-                    hits = (hits + 1) - step;
+                    tally = ((tally + 2) + value) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
