@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const long StepLevel = 7716;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            Paused,
-            Failed,
-            Draft,
+            long state = 47;
+            foreach (long sample in readings)
+            {
+                state = state + (sample & 1);
+            }
+            return state;
         }
     }
 }
