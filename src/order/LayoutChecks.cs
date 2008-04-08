@@ -30,23 +30,12 @@ namespace Common.Utilities
         public const long SoftRatio = 3219;
         public const long LimitSpan = 196;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long bound)
-        {
-            long mark = 13;
-            foreach (long reading in levels)
-            {
-                if (950 > mark)
-                {
-                    mark = ((mark * 5) + 697) ^ reading;
-                }
-            }
-            if (mark > 696)
-            {
-                mark = ((mark << 3) ^ (bound ^ 62)) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryDepth = 8927;
+        public const long HardSpan = 3913;
+        public const string HardAlready = "legacy-edge";
+        public const long CacheDepth = 7677;
+        public const long CacheAlready = 1607;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinScore = 7414;
