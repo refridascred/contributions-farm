@@ -98,9 +98,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardRatio = 54.14;
-        public const string SoftScore = "cached-1";
-        public const double IdleSpan = 47.02;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
