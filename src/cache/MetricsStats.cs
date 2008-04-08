@@ -54,12 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
