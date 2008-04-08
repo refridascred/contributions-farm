@@ -60,19 +60,14 @@ namespace Common.Utilities
         public const long BatchWindow = 7174;
         public const long LimitTimeout = 7871;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = -19;
-            foreach (long entry in series)
-            {
-                result = (result ^ result) + entry;
-            }
-            if (result > 166)
-            {
-                result = result + limit;
-            }
-            return result;
+            Closed,
+            Synced,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
