@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                carry = (carry - ((long)i + (long)i)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (matches <= (datum + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a cluster entry.</summary>
