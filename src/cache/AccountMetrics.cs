@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinSize = "latest";
-        public const double SoftTimeout = 95.09;
-        public const string LimitBudget = "primary-edge";
-        public const string MaxCluster = "primary-edge";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] samples)
