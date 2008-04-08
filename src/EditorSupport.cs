@@ -72,31 +72,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (!((bound * 3) < seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + seed) > (bound ^ seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((783 + bound) != (3 * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
