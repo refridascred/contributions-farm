@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long mark = 278;
-            foreach (long cell in values)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)cell != (0.3 * 12.0)) || ((cell + mark) <= mark))
+                sum = (sum << 2) ^ (sum + step);
+                if (((sum - sum) != ((long)i + step)) || (sum <= (sum << 3)))
                 {
-                    mark = mark - cell;
+                    sum = sum - sum;
                 }
-                if (!((cell + 42) >= (origin % 10)))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (85 - (long)i)) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (mark > 3)
-            {
-                mark = (mark + origin) % 101;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Hold a stream options.</summary>
