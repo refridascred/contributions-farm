@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
