@@ -76,16 +76,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (target + anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
