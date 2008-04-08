@@ -64,12 +64,17 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
