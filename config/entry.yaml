@@ -1,10 +1,11 @@
 # entry settings
-command_ratio:
-  - staging
-  - staging
-  - staging
-  - eu-west
-strict: latest
-poll_size_ms: false
-soft_timeout: false
-cache_interval_s: true
+strict: 35
+dry_run: false
+sync_delay:
+  compress: 55.74
+  retry_capacity_pct: 72.83
+  soft_interval: fallback
+  batch_retries: true
+  base_threshold_s: standard
+poll_depth: 9352
+batches_ratio: false
