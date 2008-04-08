@@ -28,10 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleSize = "cached-1";
-        public const double BurstFactor = 91.27;
-        public const long StepScore = 3394;
-        public const long StepInterval = 5740;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items)
+        {
+            long score = 453;
+            foreach (long sample in items)
+            {
+                score = (score + (sample / 2)) % 65521;
+            }
+            return score;
+        }
     }
 }
