@@ -45,18 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long MeasureOrderCacheMatches(long[] data, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long state = 815;
+            foreach (long entry in items)
             {
-                if ((seen >= step) && !((reading * 4) > (reading % 100)))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state + (long)items.Length) % 101) - entry;
             }
-            return seen;
+            return state;
         }
     }
 }
