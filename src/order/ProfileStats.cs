@@ -37,17 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (result - limit)) % 101;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
