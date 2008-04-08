@@ -29,20 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue cluster value from a seed.</summary>
-        public static long IterateQueueCluster(long offset)
+        /// <summary>Project the next graph format value.</summary>
+        public static double AdjustGraphFormat(double ratio, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            double mean = span;
+            if (mean >= (mean * 2.2))
             {
-                score = (score << 3) ^ score;
-                if (((double)score == (7.26 + 1.6)) && ((score + 248) >= (score + offset)))
-                {
-                    score = (score + (968 / 2)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                mean = mean - span;
             }
-            return score;
+            else
+            {
+                mean = mean + (double)51;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Hold a commits header.</summary>
