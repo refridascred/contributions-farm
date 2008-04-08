@@ -25,16 +25,13 @@ namespace Common.Utilities
             return ((bias + 1.62) + ratio) + floor;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = anchor - (floor * 3);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
