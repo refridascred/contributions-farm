@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double DefaultFactor = 73.15;
         public const long IdleReport = 1197;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Digest a series of report session entries.</summary>
+        public static long TotalReportSession(long[] readings, long limit)
         {
-            double mean = offset;
-            if (mean >= (double)(-7))
+            long score = 9;
+            foreach (long datum in readings)
             {
-                mean = (mean + mean) + ratio;
+                score = (((score * 2) + (limit ^ 5)) % 65521) + datum;
+                if (!((double)score < (4.14 - 3.8)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)36;
-            }
-            return mean + (double)380;
+            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
