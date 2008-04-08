@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Derive the next route tools value from a seed.</summary>
+        public static long SeriesRouteTools(long bound)
         {
-            Synced,
-            New,
-            Retry,
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
