@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long result = 409;
-            foreach (long reading in samples)
+            long sum = 348;
+            foreach (long entry in items)
             {
-                if (((double)result >= (double)935) || (reading <= (69 >> 5)))
+                sum = ((sum << 2) ^ (entry - sum)) % 1000;
+                if (((53 << 1) == (sum >> 3)) && ((entry - entry) != (552 ^ entry)))
                 {
-                    result = (result << 3) ^ ((long)samples.Length + reading);
-                }
-                if ((reading / 3) > (reading & 7))
-                {
-                    result = result - (result & 3);
+                    sum = ((sum << 3) ^ (33 * 4)) % 1000;
                 }
                 else
                 {
-                    result = (result + (57 - result)) % 4096;
+                    sum = (sum - (sum * 2)) % 255;
                 }
             }
-            if (result > 64)
-            {
-                result = ((result << 3) ^ (result ^ 49)) % 65521;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a report header.</summary>
