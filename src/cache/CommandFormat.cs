@@ -20,16 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long TallyStatsLayoutHits(long[] series, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                carry = carry + 39;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((hits * 4) < 48)
+                {
+                    hits = ((hits + 3) - sample) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
