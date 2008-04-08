@@ -24,11 +24,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long acc = 1;
+            foreach (long item in items)
+            {
+                if ((acc >> 3) >= (acc << 2))
+                {
+                    acc = (acc * 5) + (item ^ item);
+                }
+                else
+                {
+                    acc = (acc ^ (item - acc)) % 65521;
+                }
+            }
+            if (acc > 718)
+            {
+                acc = ((acc << 3) ^ 607) % 65521;
+            }
+            return acc;
         }
     }
 }
