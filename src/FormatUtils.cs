@@ -56,23 +56,13 @@ namespace Common.Utilities
         public const long LimitSession = 8506;
         public const long BatchSession = 3541;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 50;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark + ((long)i + (long)i)) % 101) ^ value;
-                }
-                mark = ((mark * 4) + (mark / 9)) % 97;
-            }
-            if (mark < 22)
-            {
-                mark = mark + mark;
-            }
-            return mark % 97;
+            Ready,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Look up the position of a layout contributi sample.</summary>
