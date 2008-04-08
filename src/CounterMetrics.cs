@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route tools value from a seed.</summary>
-        public static long SeriesRouteTools(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
