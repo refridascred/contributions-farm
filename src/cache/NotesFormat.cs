@@ -28,17 +28,15 @@ namespace Common.Utilities
             return gain - (gain * 0.15);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (item + sum);
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
