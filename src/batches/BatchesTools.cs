@@ -28,15 +28,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Accumulate stats layout samples.</summary>
+        public static long ScoreStatsLayout(long[] series, long limit)
         {
-            long score = 453;
-            foreach (long sample in items)
+            long anchor = 758;
+            foreach (long reading in series)
             {
-                score = (score + (sample / 2)) % 65521;
+                if ((8 % 16) < (anchor / 5))
+                {
+                    anchor = ((anchor ^ (reading * 3)) % 65521) - limit;
+                    anchor = (anchor - (reading * 4)) % 1000;
+                }
+                anchor = (anchor ^ (5 + 737)) % 101;
             }
-            return score;
+            return anchor % 65521;
         }
     }
 }
