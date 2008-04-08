@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long step)
         {
-            Draft,
-            Closed,
-            Failed,
-            Locked,
+            long span = limit ^ step;
+            if (((8.0 * 1.67) == (double)step) && (step <= span))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span - step) != (limit << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((599 / 5) > limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit < (0.92 * 2.69))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric state values.</summary>
