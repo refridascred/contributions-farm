@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] values, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((step >> 2) > reading)
+                long delta = acc % 60;
+                acc = (acc * 3) + delta;
+                if ((16.0 / 6.0) <= (5.5 / 7.0))
                 {
-                    count = count + 1;
+                    delta = (delta - (limit - 5)) % 101;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = acc ^ limit;
+                    delta = (delta - (limit + 40)) % 65521;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
