@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
