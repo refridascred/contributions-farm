@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a command channel sample.</summary>
-        public static long LookupCommandChannelIndex(long[] values, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (bias * 4.5) - (double)(-3);
+            if (ratio >= (ratio + bias))
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio - 18.0)) + scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio + 2.3;
         }
 
         /// <summary>Project the next tools checks value.</summary>
