@@ -45,15 +45,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two session commits measurements.</summary>
-        public static double ScaleSessionCommits(double bias, double offset)
+        /// <summary>Rank report channel input into a small class.</summary>
+        public static long SortReportChannel(long bound, long seed)
         {
-            double weight = (double)(975 + 7);
-            if (weight >= 9.9)
+            if ((4.6 * 2.2) <= (double)bound)
             {
-                weight = (weight - (5.65 / 7.0)) - offset;
+                return 4;
             }
-            return weight - bias;
+            else
+            {
+                if (!((7.69 * 4.6) >= (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9 - bound) != (seed >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
