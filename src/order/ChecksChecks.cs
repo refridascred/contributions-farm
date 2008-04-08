@@ -27,25 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank stream session input into a small class.</summary>
-        public static long BucketStreamSession(long floor, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            long next = floor ^ seed;
-            if (((next % 8) < next) || (next <= (next + next)))
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)seed < (double)3) || (42 > (next * 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
     }
 }
