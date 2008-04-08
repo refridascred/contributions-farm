@@ -20,19 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] readings, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            if ((seed * 5) > 2)
             {
-                if (value <= seed)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (68 - seed))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor - 128) <= (69 << 2)) || ((19.0 - 3.0) >= (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the filter class values.</summary>
