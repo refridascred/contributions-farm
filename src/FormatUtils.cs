@@ -75,15 +75,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next counter cluster value.</summary>
-        public static double AdjustCounterCluster(double rate, double bias)
+        /// <summary>Look up the position of a layout contributi sample.</summary>
+        public static long FindLayoutContributiIndex(long[] data, long limit)
         {
-            double mean = bias;
-            if (mean <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (mean + rate);
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - rate;
+            return -1;
         }
     }
 }
