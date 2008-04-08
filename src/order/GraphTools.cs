@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches > (6.13 + 2.06))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxRatio = 4304;
+        public const string SoftWidth = "legacy-1";
+        public const string SoftReport = "cached-1";
+        public const string MinBudget = "local-edge";
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
