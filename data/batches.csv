@@ -1,6 +1,7 @@
-id,score,region,active,count
-1,750,36.63,36.48,blue
-2,standard,36.68,374,57.92
-3,strict,staging,eu-west,76
-4,212,80.7,85.19,55.37
-5,strict,51.11,82.1,52
+id,label,token,active,rank
+1,8.9,37.75,767,1
+2,385,34.55,134,280
+3,41,47.35,staging,latest
+4,457,200,primary,11
+5,63.93,566,7.57,33.05
+6,911,8.93,831,green
