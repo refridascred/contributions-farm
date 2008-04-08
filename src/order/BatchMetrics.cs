@@ -62,10 +62,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 2738;
-        public const double StepScore = 64.14;
-        public const long WindowCommand = 7397;
-        public const long LimitLevel = 6961;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
