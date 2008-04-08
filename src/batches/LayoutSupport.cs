@@ -55,23 +55,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data)
         {
-            double load = rate;
-            if (load < (bias * 7.0))
+            long state = 54;
+            foreach (long cell in data)
             {
-                load = load - (13.0 + bias);
+                state = ((state << 3) ^ (cell & 127)) % 255;
+                state = ((state * 3) + cell) % 255;
             }
-            else
+            if (state < 9)
             {
-                load = load + (rate * 3.9);
+                state = ((state << 2) ^ (1 % 5)) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (rate + rate)) + (double)(long)i;
-            }
-            return load - (double)526;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
