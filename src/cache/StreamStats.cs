@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics account entry stays within the limit.</summary>
-        public static bool CheckMetricsAccountBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitSpan = "standard";
+        public const string BatchCounter = "standard";
+        public const long MaxLevel = 8817;
 
         /// <summary>Blend two entry commits measurements.</summary>
         public static double SmoothEntryCommits(double ratio, double span)
