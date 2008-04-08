@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Ready,
-            Closed,
-            Paused,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 78.81;
+        public const long IdleInterval = 4445;
+        public const double CacheEditor = 31.26;
+        public const long MaxSize = 4309;
+        public const long DefaultLevel = 5815;
     }
 }
