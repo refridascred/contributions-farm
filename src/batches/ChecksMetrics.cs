@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout notes entry stays within the limit.</summary>
-        public static bool ValidateLayoutNotesRange(long[] samples, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mix = -259;
+            foreach (long sample in series)
             {
-                if (cell != floor)
+                if (((2 % 2) <= (offset + mix)) && ((mix >> 5) < sample))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix << 3) ^ (offset - 3);
                 }
             }
-            return stale;
+            if (mix > 99)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate format layout samples.</summary>
