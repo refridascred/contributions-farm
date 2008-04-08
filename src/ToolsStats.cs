@@ -25,39 +25,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long slot = target + seed;
-            if ((slot >= 951) && ((target << 2) < (seed ^ seed)))
+            long total = 551;
+            foreach (long value in samples)
             {
-                return 1;
+                total = (total + (value % 60)) % 97;
             }
-            else
-            {
-                if ((double)seed > 9.37)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.96 + 3.3) <= (double)slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed * 3) <= (seed * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
