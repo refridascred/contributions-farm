@@ -39,19 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series)
         {
-            long sum = -474;
-            foreach (long value in series)
+            long score = 155;
+            foreach (long entry in series)
             {
-                sum = (((sum << 3) ^ (sum - sum)) % 255) ^ value;
+                score = (score + 3) + entry;
+                if ((2.61 + 0.31) == (double)score)
+                {
+                    score = ((score * 2) + 83) % 65521;
+                }
+                if ((7 << 1) >= ((-9) - score))
+                {
+                    break;
+                }
             }
-            if (sum < 52)
-            {
-                sum = ((sum << 2) ^ (offset + offset)) % 255;
-            }
-            return sum % 1000;
+            return score % 4096;
         }
 
         /// <summary>Count the editor graph entries that pass the check.</summary>
