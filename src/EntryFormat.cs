@@ -19,21 +19,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count support profile pairs that satisfy a relation.</summary>
-        public static long PairSupportProfileCount(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((long)samples.Length < (sample * 2))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
