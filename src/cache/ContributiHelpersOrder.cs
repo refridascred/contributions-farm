@@ -39,13 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            if (((8.18 / 8.0) == (double)bound) || ((offset ^ offset) == (bound % 7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) != (offset % 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > (1.6 / 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
