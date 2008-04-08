@@ -27,18 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] values, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((matches << 3) > origin) && (reading > (matches & 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
