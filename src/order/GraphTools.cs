@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string SoftReport = "cached-1";
         public const string MinBudget = "local-edge";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Project the next already entry value.</summary>
+        public static double ProjectAlreadyEntry(double ratio, double bias)
         {
-            Dropped,
-            Active,
-            Locked,
-            Ready,
+            double gain = (10.0 + 4.0) * 5.0;
+            if (gain > (6.7 + 3.08))
+            {
+                gain = (gain - 7.74) - ratio;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the record phase values.</summary>
