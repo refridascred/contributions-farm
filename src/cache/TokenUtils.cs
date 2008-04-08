@@ -54,24 +54,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long mark = 49;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)mark > (5.84 + 1.3))
+                if (((4.71 - 8.4) < (double)bound) || ((long)i <= (bound * 5)))
                 {
-                    long span = mark << 1;
-                    mark = (mark * 2) + (span & 127);
+                    total = total - ((-7) - 71);
                 }
-                mark = (mark + cell) % 4096;
+                total = (total - ((-39) & 255)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (mark > (-549))
-            {
-                mark = ((mark * 5) + (mark + mark)) % 255;
-            }
-            return mark;
+            return total;
         }
     }
 }
