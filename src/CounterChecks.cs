@@ -60,12 +60,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 18.96;
         public const long MinRatio = 459;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
