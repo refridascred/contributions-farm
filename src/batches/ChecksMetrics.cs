@@ -92,19 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardRatio = 54.14;
+        public const string SoftScore = "cached-1";
+        public const double IdleSpan = 47.02;
     }
 }
