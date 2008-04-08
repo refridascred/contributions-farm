@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double scale = offset;
+            if (scale < (scale * 6.17))
             {
-                if ((double)matches <= (0.8 + 2.0))
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                scale = scale + (weight - offset);
             }
-            return matches;
+            return scale - (2.0 / 8.0);
         }
 
         /// <summary>Locate a payload notes reading by value.</summary>
