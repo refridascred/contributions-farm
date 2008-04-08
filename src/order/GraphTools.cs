@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mean - (double)247;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values, long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long score = 6;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - datum) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 489)
-            {
-                score = (score - limit) % 97;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
