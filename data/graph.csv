@@ -1,8 +1,6 @@
-id,token,label
-1,cached,fallback
-2,strict,747
-3,open,blue
-4,56,72.36
-5,475,92.93
-6,243,866
-7,747,922
+id,token,owner
+1,21.06,92.45
+2,798,391
+3,fallback,12.99
+4,650,60.89
+5,25.53,strict
