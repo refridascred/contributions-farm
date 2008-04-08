@@ -41,38 +41,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long offset, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data)
         {
-            if ((bound << 1) < offset)
+            long mark = 828;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (offset * 2))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 6;
+                    mark = (mark - (cell + (long)i)) % 1000;
                 }
-                else
+                if (cell <= (mark ^ cell))
                 {
-                    if ((0.18 * 17.0) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset < (offset << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = (mark + (mark >> 3)) % 101;
+                }
+                if ((double)4 >= 10.0)
+                {
+                    break;
                 }
             }
+            if (mark < 744)
+            {
+                mark = mark + mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
