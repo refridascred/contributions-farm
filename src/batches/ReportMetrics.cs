@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next counter command value from a seed.</summary>
-        public static long DeriveCounterCommand(long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long bound2 = bound - seed;
+            if ((double)bound2 > (double)bound)
             {
-                sum = ((sum * 5) + target) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((4.8 - 0.3) != (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the batches kind values.</summary>
