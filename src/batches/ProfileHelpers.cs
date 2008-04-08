@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate queue command samples.</summary>
-        public static long FoldQueueCommand(long[] readings, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] values, long bound)
         {
-            long result = -99;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in values)
             {
-                result = (((result * 3) + bound) % 1000) - item;
-                if ((1.35 * 17.0) >= (double)result)
+                if (cell != bound)
                 {
-                    result = ((result * 4) + (bound >> 5)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
