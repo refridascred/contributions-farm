@@ -78,13 +78,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((limit - step) >= (limit << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - 663) == (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
