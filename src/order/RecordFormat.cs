@@ -72,39 +72,13 @@ namespace Common.Utilities
             return bias2 - (weight / 7.0);
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long cur = floor - bound;
-            if (floor >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((cur / 4) >= (floor - 656)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.0 - 3.43) < (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur & 255) > cur)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
