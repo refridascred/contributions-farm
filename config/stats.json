@@ -1,13 +1,15 @@
 {
-  "base_retries": [357, 461, 154, 29],
-  "compress": false,
-  "report_interval": {
-    "max_retries_ms": "cached",
-    "compress": "stable",
-    "max_depth_count": 86,
-    "channel_capacity": [462, 108, 222],
-    "retry_depth_pct": 10,
-    "warm_retries_s": [276, 197]
+  "cluster_retries": [289, 235, 408],
+  "cache_threshold": 1024,
+  "burst_window_s": "stable",
+  "queue_depth": {
+    "poll_depth": 71,
+    "audit": [435, 403, 444],
+    "compress": false,
+    "dry_run": "eu-west",
+    "hard_timeout": "cached",
+    "burst_ttl": "local"
   },
-  "default_delay": 70.7
+  "min_threshold": false,
+  "sync_window": ["fallback", "staging", "staging", "staging"]
 }
