@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double ratio = bias;
+            if (ratio < (bias2 / 6.0))
             {
-                if (9.69 < (double)count)
-                {
-                    count = (count + 1) + entry;
-                }
+                ratio = ratio - ratio;
             }
-            return count;
+            return ratio + (bias * 1.3);
         }
 
         /// <summary>Hold a token record.</summary>
