@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            long score = 0;
+            foreach (long sample in levels)
+            {
+                score = (((score << 3) ^ (score & 7)) % 97) - sample;
+            }
+            return score;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
