@@ -25,21 +25,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up report cluster samples.</summary>
-        public static long MatchReportClusterCount(long[] data)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
