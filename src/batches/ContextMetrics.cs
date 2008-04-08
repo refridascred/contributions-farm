@@ -14,19 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double load = 0.79 / 4.0;
-            if (load >= (double)994)
-            {
-                load = (load + (load * 9.53)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (gain + load)) + (double)(long)i;
-            }
-            return load + load;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
