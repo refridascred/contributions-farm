@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long ScoreFormatQueue(long[] samples, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mix = 972;
-            foreach (long entry in samples)
-            {
-                mix = ((mix - (23 - offset)) % 65521) - entry;
-            }
-            return mix;
+            Done,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the metric state values.</summary>
