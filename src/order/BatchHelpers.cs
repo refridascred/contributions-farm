@@ -24,22 +24,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long CountChecksAlreadyHits(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((10.0 / 2.0) > (double)matches)
+                if (data[i] > bound)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
