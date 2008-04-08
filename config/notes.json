@@ -1,20 +1,11 @@
 {
-  "cache_delay_ms": "staging",
-  "cluster_interval": true,
-  "stats_retries": 2625,
-  "sync_delay_count": {
-    "cache_ttl": "blue",
-    "audit": 35,
-    "warm_capacity_count": "edge",
-    "compress": {
-      "hard_window": 66,
-      "warm_limit": 41.67,
-      "warm_depth": "edge",
-      "soft_limit_pct": true,
-      "batch_threshold_pct": false,
-      "max_window_ms": 250
-    },
-    "poll_capacity_s": 60,
-    "soft_interval_count": 1024
-  }
+  "base_window": true,
+  "warm_limit": {
+    "report_ttl": false,
+    "queue_delay": "staging",
+    "commits_capacity": 66.35,
+    "dry_run": true,
+    "readonly": 14
+  },
+  "tools_interval": "local"
 }
