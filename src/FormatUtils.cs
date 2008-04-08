@@ -82,19 +82,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool ValidateCounterContextRange(long[] samples, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
     }
 }
