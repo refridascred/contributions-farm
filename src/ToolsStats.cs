@@ -25,17 +25,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] items, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = target + seed;
+            if ((slot >= 951) && ((target << 2) < (seed ^ seed)))
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > 9.37)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((3.96 + 3.3) <= (double)slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed * 3) <= (seed * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
