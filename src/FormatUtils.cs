@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxWidth = 4925;
-        public const string MinCount = "standard";
-        public const long DefaultScore = 3913;
-        public const long SoftSize = 9806;
-        public const string DefaultStats = "open";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count / 8) >= (619 & 63))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
