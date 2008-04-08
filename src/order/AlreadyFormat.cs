@@ -41,19 +41,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool ValidateBufferRecordLimits(long[] samples, long step)
+        /// <summary>Look up the position of a queue channel sample.</summary>
+        public static long SeekQueueChannelIndex(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= step)
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a metric already counter forward.</summary>
