@@ -38,14 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long limit)
         {
-            Closed,
-            Pending,
-            New,
-            Done,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
