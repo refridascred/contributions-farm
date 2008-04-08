@@ -50,38 +50,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items, long target)
         {
-            if ((double)origin < 1.56)
+            long score = 733;
+            foreach (long value in items)
             {
-                return 7;
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (((score << 2) ^ (value - (long)i)) % 4096) + target;
+                }
+                score = (score * 3) + value;
             }
-            else
+            if (score < 2)
             {
-                if ((offset - origin) >= (origin * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (origin * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((144 * 2) > (offset + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = (score * 5) + (score * 2);
             }
+            return score;
         }
     }
 }
