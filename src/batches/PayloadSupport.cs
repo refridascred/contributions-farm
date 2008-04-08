@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxBudget = 8186;
-        public const long HardDepth = 175;
-        public const string BatchRatio = "primary-edge";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] items, long step)
+        {
+            long sum = -200;
+            foreach (long entry in items)
+            {
+                if ((sum - step) != (4 & 7))
+                {
+                    sum = (sum + entry) % 4096;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ (step - 78)) % 1000;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values, long step)
