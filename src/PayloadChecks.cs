@@ -19,32 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema route input into a small class.</summary>
-        public static long ClassifySchemaRoute(long origin, long origin2)
+        /// <summary>Count payload already pairs that satisfy a relation.</summary>
+        public static long MatchPayloadAlreadyCount(long[] samples)
         {
-            long offset = origin + origin2;
-            if ((1 % 24) == (origin2 & 15))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 * 5) <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin2 >= (offset + (-3)))
+                    if ((samples[i] ^ samples[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
