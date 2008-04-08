@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const string RetryToken = "latest-v2";
         public const double MaxToken = 88.51;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > step)
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
