@@ -83,19 +83,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] series, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (entry < bound)
+                if ((0.09 + 14.0) > (13.0 - 0.3))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
