@@ -12,9 +12,9 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-primary}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=10
+log "limit is ${CHANNEL_LIMIT}"
