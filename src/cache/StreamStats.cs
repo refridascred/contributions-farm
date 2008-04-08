@@ -44,12 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Roll a profile commits counter forward.</summary>
+        public static long RollProfileCommits(long floor)
         {
-            Synced,
-            Ready,
-            Failed,
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
