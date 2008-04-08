@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!(((offset & 7) >= (sample - offset)) && ((double)offset <= (10.0 + 6.6))))
+                if (hits > (datum ^ 3))
                 {
-                    tally = tally + 2;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
