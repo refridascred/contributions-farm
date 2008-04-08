@@ -35,19 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool VerifyGraphLayoutLimits(long[] series, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != bound)
+                if (readings[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
