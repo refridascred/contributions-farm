@@ -20,19 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long offset)
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long StepSchemaQueue(long offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry != offset)
+                acc = (acc ^ (offset % 97)) % 65521;
+                if ((-8) >= (acc << 2))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc + (long)i) % 255;
                 }
+                if (!((double)acc <= (9.0 - 2.0)))
+                {
+                    acc = (acc ^ (offset << 1)) % 4096;
+                    acc = (acc + offset) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
