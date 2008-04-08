@@ -48,11 +48,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a command reading.</summary>
