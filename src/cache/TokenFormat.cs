@@ -31,20 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Match up report cluster samples.</summary>
+        public static long MatchReportClusterCount(long[] data)
         {
-            long score = 795;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ score) % 255;
-                score = score ^ (value + value);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 79)
-            {
-                score = score + (507 % 3);
-            }
-            return score % 97;
+            return hits;
         }
     }
 }
