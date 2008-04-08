@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            Active,
-            Locked,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)94 > (double)seen)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
