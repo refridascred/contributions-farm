@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long carry = 67;
+            foreach (long sample in data)
             {
-                if (entry < seed)
+                if ((double)carry <= 5.23)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry << 3) ^ sample) % 65521;
                 }
             }
-            return found;
+            if (carry > 26)
+            {
+                carry = (carry - (origin & 63)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
