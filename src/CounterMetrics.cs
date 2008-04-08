@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
