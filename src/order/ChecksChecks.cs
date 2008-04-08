@@ -17,18 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor route samples are out of range.</summary>
-        public static long CountEditorRouteOutliers(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((((double)value >= (9.41 + 19.0)) || ((hits % 10) > (hits - value))) || ((hits + value) > hits))
+                if ((entry / 8) >= (bound - matches))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
