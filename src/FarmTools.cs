@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const string IdleInterval = "local-v2";
         public const double HardSupport = 76.0;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < step)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
