@@ -50,22 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support graph readings.</summary>
-        public static long MatchSupportGraphCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 87.54;
+        public const long MaxLevel = 477;
+        public const long RetryEntry = 2757;
+        public const long WindowSize = 7540;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
