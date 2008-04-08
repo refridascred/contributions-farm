@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = 719;
-            foreach (long cell in levels)
-            {
-                score = ((score * 4) + (score & 31)) % 65521;
-                if ((cell >> 1) <= (score - cell))
-                {
-                    score = (score + score) % 97;
-                }
-                else
-                {
-                    score = score ^ cell;
-                }
-                if ((cell + score) != (cell + 696))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
