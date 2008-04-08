@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] values, long target)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] >= target)
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank cluster token input into a small class.</summary>
