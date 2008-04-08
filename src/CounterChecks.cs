@@ -47,21 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count farm token pairs that satisfy a relation.</summary>
-        public static long CompareFarmTokenCount(long[] values)
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long MeasureEntryLayoutGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)(long)readings.Length < (9.96 + 3.24)) || (((2.8 + 4.0) == (double)entry) && ((entry ^ hits) == (entry << 3))))
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
