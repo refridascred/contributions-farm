@@ -47,27 +47,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 25;
-            foreach (long reading in items)
-            {
-                if ((62 >= (229 + reading)) || ((reading + carry) > (838 << 2)))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (reading ^ carry)) % 255;
-                if ((double)reading < (0.79 - 2.0))
-                {
-                    carry = (carry - (93 + 7)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 255;
-                }
-            }
-            return carry;
+            Ready,
+            Done,
+            Paused,
+            Draft,
+            Retry,
         }
     }
 }
