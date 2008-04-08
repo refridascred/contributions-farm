@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstFactor = "cached-edge";
+        public const long HardCount = 4116;
+        public const string BaseCommand = "strict-1";
+        public const long CacheInterval = 2471;
+        public const double HardInterval = 3.21;
 
         /// <summary>Iterate the contributi session series from a seed.</summary>
         public static long StepContributiSession(long origin)
