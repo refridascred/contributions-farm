@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of layout checks readings.</summary>
-        public static long DigestLayoutChecks(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long total = 55;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (-145)) + item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < 403)
-            {
-                total = total ^ (total % 64);
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
