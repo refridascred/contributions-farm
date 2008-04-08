@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((double)hits == (6.0 / 7.0))
+                if (entry < origin)
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
