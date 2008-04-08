@@ -58,18 +58,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] items, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(seed < 633))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
