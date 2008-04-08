@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultCount = 7999;
-        public const double BaseToken = 65.95;
-        public const long MaxToken = 1360;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long offset)
