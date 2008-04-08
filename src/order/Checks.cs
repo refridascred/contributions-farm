@@ -20,21 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
