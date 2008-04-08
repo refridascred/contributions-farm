@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the layout token series from a seed.</summary>
-        public static long DeriveLayoutToken(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor + (step << 2)) % 4096) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 77.3;
+        public const long HardGraph = 4006;
+        public const double CacheGraph = 31.88;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] values, long target)
