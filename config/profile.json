@@ -1,10 +1,17 @@
 {
-  "flush_capacity_s": ["stable", "legacy", "green", "latest"],
-  "retry_timeout": {
-    "verbose": ["eu-west", "standard", "blue"],
-    "checks_ttl": [94, 499, 464],
-    "already_size": 51.98
-  },
-  "cache_threshold_s": ["local", "eu-west"],
-  "compress": "blue"
+  "soft_window": ["legacy", "edge"],
+  "payload_capacity": 65.78,
+  "compress": 63,
+  "profile_delay": {
+    "enabled": {
+      "persist": "green",
+      "audit": true,
+      "soft_timeout_count": 14,
+      "sync_window_s": 5393,
+      "payload_threshold": 3033
+    },
+    "audit": "eu-west",
+    "readonly": "edge",
+    "retry_interval_pct": 60
+  }
 }
