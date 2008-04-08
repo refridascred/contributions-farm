@@ -1,8 +1,11 @@
 {
-  "flush_timeout": [447, 432, 489],
-  "enabled": "staging",
-  "counter_ttl": [435, 240, 25, 308],
-  "retry_retries_count": true,
-  "already_depth": 18.85,
-  "checks_depth": true
+  "warm_ttl_s": 11.45,
+  "sync_threshold_count": 57.5,
+  "readonly": {
+    "compress": 67.25,
+    "dry_run": "edge",
+    "sync_size": ["eu-west", "latest"]
+  },
+  "audit": "primary",
+  "burst_window": 76.0
 }
