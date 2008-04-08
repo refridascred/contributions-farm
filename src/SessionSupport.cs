@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count / 4) >= (count / 6))
+                {
+                    count = ((count + 2) - datum) - step;
+                }
+            }
+            return count;
         }
     }
 }
