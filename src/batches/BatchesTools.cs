@@ -28,18 +28,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings, long floor)
+        /// <summary>Combine batches format values into a single score.</summary>
+        public static long WeighBatchesFormat(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 2;
+            foreach (long cell in values)
             {
-                if ((2.7 / 5.0) > (double)hits)
+                if (cell <= 21)
                 {
-                    hits = ((hits + 2) + reading) - floor;
+                    score = score + score;
                 }
             }
-            return hits;
+            if (score > 796)
+            {
+                score = ((score * 4) + score) % 1000;
+            }
+            return score;
         }
     }
 }
