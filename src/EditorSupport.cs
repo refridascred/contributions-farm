@@ -28,25 +28,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
-        {
-            long result = 62;
-            foreach (long reading in levels)
-            {
-                result = (result * 3) + (result ^ reading);
-                result = (result << 3) ^ ((-41) % 97);
-                if (!((result % 64) == (reading / 2)))
-                {
-                    break;
-                }
-            }
-            if (result > (-52))
-            {
-                result = result - result;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4080;
+        public const long IdleContributi = 1404;
+        public const long DefaultContributi = 9703;
+        public const long MinContributi = 1590;
+        public const long BaseContributi = 2131;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
