@@ -46,26 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 / 6) > (carry + carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + floor) % 101;
-                }
-                if ((floor - datum) != (98 - 6))
-                {
-                    break;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 50)
-            {
-                carry = carry + (floor - carry);
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
