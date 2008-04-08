@@ -32,38 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits layout input into a small class.</summary>
-        public static long BucketCommitsLayout(long floor, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples, long seed)
         {
-            if ((origin << 3) == (floor + 621))
+            long score = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (floor >> 2))
+                score = (score ^ (seed << 3)) % 65521;
+                if ((score + score) > entry)
                 {
-                    return 8;
+                    score = (score * 3) + (seed - entry);
                 }
                 else
                 {
-                    if (!((double)floor <= (16.0 - 7.6)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin - floor) <= floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - (244 ^ seed)) % 1000;
                 }
             }
+            if (score < (-15))
+            {
+                score = score ^ (score - score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
