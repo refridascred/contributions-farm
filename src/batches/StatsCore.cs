@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 3) <= cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
