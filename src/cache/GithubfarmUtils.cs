@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool GuardProfileChannelBounds(long[] samples, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score << 2) ^ (score >> 2);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
