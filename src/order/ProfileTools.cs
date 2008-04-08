@@ -29,15 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Paused,
-            Queued,
-            Retry,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 91.4;
+        public const double MaxWidth = 67.07;
+        public const string MinProfile = "primary-edge";
+        public const double StepProfile = 77.06;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardSize = 8058;
