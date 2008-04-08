@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long floor)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long anchor = 670;
+            foreach (long entry in items)
+            {
+                anchor = (anchor - floor) ^ entry;
+            }
+            if (anchor > 43)
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
