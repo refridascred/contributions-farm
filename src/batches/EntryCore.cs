@@ -22,15 +22,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            if (origin > (bound ^ 343))
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (origin <= ((-8) ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
