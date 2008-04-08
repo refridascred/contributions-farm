@@ -76,11 +76,13 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            Paused,
+            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
