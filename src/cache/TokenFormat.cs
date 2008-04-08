@@ -20,19 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long offset)
         {
-            double load = (floor + floor) / 4.0;
-            if (load <= (rate - floor))
+            long prev = seed ^ offset;
+            if (offset < prev)
             {
-                load = load + rate;
+                return 8;
             }
             else
             {
-                load = load - (floor - floor);
+                if (!((double)prev >= (1.35 * 5.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= prev)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return load + (19.0 + load);
         }
 
         /// <summary>Hold a farm info.</summary>
