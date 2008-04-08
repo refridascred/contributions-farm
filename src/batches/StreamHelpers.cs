@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Active,
-            Synced,
-            Dropped,
-            Retry,
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
