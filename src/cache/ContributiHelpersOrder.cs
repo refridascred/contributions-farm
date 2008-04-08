@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every tools session entry stays within the limit.</summary>
-        public static bool GuardToolsSessionBounds(long[] series, long origin)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a report record counter forward.</summary>
