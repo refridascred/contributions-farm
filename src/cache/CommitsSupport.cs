@@ -33,38 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long offset2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            if (((offset2 - offset2) < (offset * 2)) && ((offset2 + 396) <= offset2))
+            long mark = 60;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 << 1) > (offset2 * 2))
+                if ((51 % 12) <= (cell + 848))
                 {
-                    return 2;
+                    mark = mark - (863 * 3);
                 }
-                else
+                if (mark > (mark ^ (long)items.Length))
                 {
-                    if ((offset + offset2) != (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (offset + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = mark + (cell + mark);
                 }
+                mark = mark + (144 - mark);
             }
+            return mark;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
