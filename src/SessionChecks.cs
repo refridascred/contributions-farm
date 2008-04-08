@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long TallyBatchesChecksHits(long[] series)
         {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((entry & 15) <= matches) && ((779 + entry) <= (5 + 8)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of layout format entries.</summary>
