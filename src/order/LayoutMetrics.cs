@@ -29,26 +29,19 @@ namespace Common.Utilities
         public const long BaseScore = 3343;
         public const long BaseEntry = 2926;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool VerifyGraphLayoutLimits(long[] series, long bound)
         {
-            long acc = 1;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((acc >> 3) >= (acc << 2))
+                if (item != bound)
                 {
-                    acc = (acc * 5) + (item ^ item);
-                }
-                else
-                {
-                    acc = (acc ^ (item - acc)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 718)
-            {
-                acc = ((acc << 3) ^ 607) % 65521;
-            }
-            return acc;
+            return ready;
         }
     }
 }
