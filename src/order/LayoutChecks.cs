@@ -52,20 +52,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data, long floor)
         {
-            long total = 8;
-            foreach (long item in samples)
+            long carry = 8;
+            foreach (long datum in data)
             {
-                total = ((total << 2) ^ (129 / 8)) + item;
-                total = (total - (total + target)) % 65521;
-                if ((total >= target) && (total < (target - total)))
+                if ((0 / 6) > (carry + carry))
+                {
+                    carry = (carry + floor) % 101;
+                }
+                if ((floor - datum) != (98 - 6))
                 {
                     break;
                 }
             }
-            return total % 65521;
+            if (carry < 50)
+            {
+                carry = carry + (floor - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the layout githubfarm entries that pass the check.</summary>
