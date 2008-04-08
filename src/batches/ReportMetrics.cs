@@ -32,14 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            Closed,
-            Done,
-            Active,
-            Dropped,
-            Queued,
+            double mean = (double)(18 >> 4);
+            return (mean + (span + mean)) + rate;
         }
     }
 }
