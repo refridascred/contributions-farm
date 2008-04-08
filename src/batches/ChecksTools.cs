@@ -27,32 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long limit, long seed)
+        /// <summary>Check that every session schema entry stays within the limit.</summary>
+        public static bool GuardSessionSchemaBounds(long[] values, long target)
         {
-            long lane = limit + seed;
-            if ((lane ^ limit) > (9 + seed))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.47 + 1.54) >= (double)seed)
+                if (cell <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + lane) <= (21 + lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
