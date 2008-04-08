@@ -1,10 +1,19 @@
 # entry settings
-idle_interval_pct:
-  profile_window: legacy
-  dry_run: 98.51
-  stream_window: 657
-  cache_interval: false
-context_ttl: 30
-verbose: local
-poll_capacity_ms: fallback
-sync_timeout_count: 1024
+route_capacity: latest
+cache_depth_count: true
+min_ttl_s:
+  retry_threshold_pct:
+    - staging
+    - staging
+  profile_window: 46.88
+  verbose:
+    base_timeout_ms: 9346
+    readonly: stable
+    contributi_capacity: 41
+    editor_capacity: 8060
+    cache_limit_s: true
+    flush_interval: fallback
+  base_capacity: 60
+  command_threshold: false
+cache_window: 30
+base_ratio_count: primary
