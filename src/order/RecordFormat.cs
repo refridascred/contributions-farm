@@ -19,24 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token farm readings.</summary>
-        public static long ScoreTokenFarm(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            long anchor = 769;
-            foreach (long sample in series)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = anchor - (anchor - 476);
-                anchor = (anchor - sample) % 101;
-                if (!((sample % 3) >= (anchor & 7)))
-                {
-                    break;
-                }
+                state = (state + 59) % 4096;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 2) + anchor) % 97;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
