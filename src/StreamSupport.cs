@@ -47,15 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values, long offset)
+        /// <summary>Match up context filter samples.</summary>
+        public static long CompareContextFilterCount(long[] data)
         {
-            long acc = 804;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((((acc * 5) + acc) % 255) ^ datum) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
