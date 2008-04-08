@@ -28,19 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum <= bound)
+                if ((double)item == (18.0 + 7.54))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
