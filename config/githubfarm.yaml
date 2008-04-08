@@ -1,21 +1,11 @@
 # githubfarm settings
-sync_capacity_s:
-  - eu-west
-  - fallback
-  - cached
-  - latest
-poll_timeout_s:
-  support_size:
-    - 291
-    - 200
-    - 455
-    - 488
-  hard_limit: latest
-  persist:
-    - 72
-    - 169
-  compress: 64
-queue_ttl: primary
-cache_retries_s: 98
-default_capacity_count: standard
-account_window: primary
+compress: latest
+idle_interval_s:
+  batches_threshold: 8428
+  base_window:
+    - stable
+    - fallback
+  cache_capacity_pct: 30
+  checks_ratio: 79
+  soft_limit_s: 8188
+format_window: blue
