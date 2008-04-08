@@ -23,22 +23,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] levels, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seed / 5) >= (seed * 3))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine notes values into a single score.</summary>
