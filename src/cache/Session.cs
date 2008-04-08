@@ -51,19 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (61 <= (reading << 2))
                 {
-                    carry = ((carry ^ carry) % 255) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
     }
 }
