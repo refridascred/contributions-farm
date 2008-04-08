@@ -70,17 +70,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch cluster entry that matches the target.</summary>
-        public static long SeekBatchClusterIndex(long[] samples, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long cell in data)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (cell + anchor)) + floor;
+                anchor = (anchor << 2) ^ cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
