@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] values, long bound)
         {
-            Closed,
-            Failed,
-            Idle,
-            Draft,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
