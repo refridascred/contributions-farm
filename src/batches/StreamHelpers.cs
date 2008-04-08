@@ -28,14 +28,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long limit)
         {
-            Paused,
-            Pending,
-            Draft,
-            New,
-            Locked,
+            long diff = step - limit;
+            if ((limit / 7) > (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step << 2) != (99 ^ diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (4 << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
