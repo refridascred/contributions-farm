@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long total = 512;
+            foreach (long cell in values)
+            {
+                total = (total - (total + origin)) % 101;
+                if ((3.02 + 9.23) <= (double)origin)
+                {
+                    total = (total + (cell + 6)) % 101;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
