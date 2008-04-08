@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 461;
+            foreach (long item in readings)
+            {
+                sum = (sum ^ (127 * 3)) % 65521;
+                if ((item % 100) < (sum + sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 846)
+            {
+                sum = (sum * 5) + (sum >> 4);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
