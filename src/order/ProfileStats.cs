@@ -37,16 +37,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result << 2) ^ (result - limit)) % 101;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7909;
+        public const double WindowTools = 14.56;
+        public const long BatchTools = 5283;
     }
 }
