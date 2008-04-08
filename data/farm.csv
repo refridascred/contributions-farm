@@ -1,6 +1,9 @@
-id,active,count,rank
-1,97.1,eu-west,90.8
-2,783,923,539
-3,421,90.39,legacy
-4,180,623,16
-5,77.62,legacy,823
+id,token,region,state
+1,eu-west,332,19.42
+2,open,strict,471
+3,green,fallback,63.37
+4,2.4,9.93,96.78
+5,strict,314,eu-west
+6,65.04,373,1.7
+7,279,primary,775
+8,599,latest,302
