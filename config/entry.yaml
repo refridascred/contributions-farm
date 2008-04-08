@@ -1,23 +1,6 @@
 # entry settings
-warm_retries_s: stable
-base_timeout_s: 3839
-default_size_pct:
-  - 246
-  - 94
-  - 431
-  - 220
-checks_size: 60
-dry_run: 6851
-default_timeout:
-  audit:
-    persist: staging
-    min_window_pct: staging
-    min_ratio_s: 1798
-    profile_delay: cached
-    strict: 74
-  batch_ratio:
-    - 410
-    - 215
-    - 167
-    - 254
-  notes_retries: stable
+persist: 500
+editor_retries: open
+flush_ratio_pct: true
+burst_timeout: 79.27
+idle_ttl: false
