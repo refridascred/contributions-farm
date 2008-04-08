@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] values, long offset)
         {
-            Retry,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (offset >= (cell ^ offset))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
