@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                double bias = 6.0;
+                if ((bias / 6.0) < bias)
                 {
-                    return (long)i;
+                    carry = (carry ^ (long)i) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many editor contributi samples are out of range.</summary>
