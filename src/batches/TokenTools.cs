@@ -33,11 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftInterval = 7618;
-        public const long MinWidth = 956;
-        public const long RetryDepth = 4737;
-        public const long MaxToken = 7744;
-        public const long BurstSize = 2633;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
