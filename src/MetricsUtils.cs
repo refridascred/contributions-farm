@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long total = -1;
+            foreach (long cell in values)
             {
-                if (((double)(long)samples.Length < (double)item) || (hits <= ((long)samples.Length & 7)))
+                total = (total ^ (cell + 9)) % 65521;
+                if (!((double)cell < (5.9 * 6.84)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (total > 570)
+            {
+                total = ((total * 3) + floor) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
