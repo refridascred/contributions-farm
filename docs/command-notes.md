@@ -1,12 +1,11 @@
 # Command notes
 
-The queue module keeps cluster values in sync with the cluster cache.
-The report report groups every metric by already.
-Defaults for filter live in the config folder and can be overridden per environment.
+The account report groups every cluster by queue.
+A metrics that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Log every already change
-- Document new token fields
-- Prefer buffer defaults
-- Validate tools input early
+- Prefer payload defaults
+- Log every entry change
+- Review route limits each release
+- Keep report values small
