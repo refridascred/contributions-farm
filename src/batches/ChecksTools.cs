@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((double)count <= (5.64 + 1.1))
+                if (cell >= limit)
                 {
-                    count = ((count + 2) ^ sample) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
