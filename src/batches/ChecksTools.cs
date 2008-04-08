@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Match up stats counter samples.</summary>
+        public static long OverlapStatsCounterCount(long[] samples)
         {
-            double scale = span;
-            if (scale > scale)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (scale * 9.2);
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
