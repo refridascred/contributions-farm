@@ -1,12 +1,6 @@
 {
-  "retry_depth": ["stable", "green", "staging", "cached"],
-  "strict": {
-    "idle_threshold": "standard",
-    "audit": 3,
-    "min_window": "open",
-    "cache_limit_pct": 9832,
-    "max_size": "latest",
-    "warm_ttl_ms": false
-  },
-  "flush_size": ["standard", "eu-west", "fallback"]
+  "idle_timeout_s": "cached",
+  "sync_delay": 96.11,
+  "record_depth": "standard",
+  "base_size_ms": 60
 }
