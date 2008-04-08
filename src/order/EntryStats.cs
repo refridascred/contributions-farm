@@ -44,18 +44,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the editor graph entries that pass the check.</summary>
-        public static long TallyEditorGraphHits(long[] readings, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample / 2) >= sample)
+                if (samples[i] >= target)
                 {
-                    hits = (hits + 2) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
