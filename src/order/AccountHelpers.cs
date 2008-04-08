@@ -20,22 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route cache entries.</summary>
-        public static long ScoreRouteCache(long[] samples)
+        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
+        public static bool VerifyRouteGithubfarmBounds(long[] samples, long step)
         {
-            long score = 24;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if (reading <= step)
                 {
-                    score = (((score << 3) ^ cell) % 97) - (long)i;
-                }
-                if ((score & 3) <= cell)
-                {
-                    score = ((score * 2) + ((-96) - score)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
