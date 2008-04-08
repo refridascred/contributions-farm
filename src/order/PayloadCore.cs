@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long origin)
         {
-            if ((seed + 99) == (seed & 3))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed > (3.0 / 9.0)))
+                if (datum >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= (3 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
