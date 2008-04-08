@@ -17,13 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
