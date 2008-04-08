@@ -38,11 +38,19 @@ namespace Common.Utilities
             return scale + (double)51;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long anchor = -6;
+            foreach (long value in samples)
+            {
+                anchor = (anchor ^ (anchor * 2)) + value;
+            }
+            if (anchor < 83)
+            {
+                anchor = ((anchor << 2) ^ ((long)samples.Length % 16)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
