@@ -55,22 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] items, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((double)value <= 8.0) || ((double)count >= (double)value))
+                if (!(4 < (floor + entry)))
                 {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
