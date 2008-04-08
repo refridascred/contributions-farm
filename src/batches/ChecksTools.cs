@@ -47,11 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinInterval = 7150;
-        public const long DefaultCount = 8614;
-        public const long MinAlready = 2128;
-        public const long StepAlready = 5942;
+        /// <summary>Fold a list of session stats readings.</summary>
+        public static long ScoreSessionStats(long[] items, long step)
+        {
+            long anchor = 1;
+            foreach (long reading in items)
+            {
+                anchor = ((((anchor * 4) + (anchor >> 3)) % 97) + reading) - step;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
