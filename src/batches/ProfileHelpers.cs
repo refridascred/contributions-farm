@@ -58,17 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 35;
+            foreach (long reading in values)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                if ((80 + origin) != (reading << 1))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
