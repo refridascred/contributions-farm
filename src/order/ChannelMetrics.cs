@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two command metric measurements.</summary>
-        public static double ScaleCommandMetric(double scale, double bias)
+        /// <summary>Classify a queue cluster pair into a bucket.</summary>
+        public static long GradeQueueCluster(long bound, long origin)
         {
-            double drift = (scale / 4.0) + (bias / 3.0);
-            if (drift <= (scale - bias))
+            if ((origin + bound) < (bound * 4))
             {
-                drift = drift + (drift * 5.0);
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift - (bias - bias)) + (double)(long)i;
+                if ((5.84 * 0.41) == (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift + (drift - bias);
         }
 
         /// <summary>Digest a series of schema entries.</summary>
