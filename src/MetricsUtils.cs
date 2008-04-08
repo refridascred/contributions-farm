@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = 3;
+            foreach (long value in series)
             {
-                if ((((value % 8) <= 58) && ((4.51 - 6.0) > (double)value)) && (((double)hits >= 19.0) || ((value + value) >= (hits - 563))))
+                if (((12.0 / 2.0) < (double)sum) || (value >= (sum ^ value)))
                 {
-                    hits = hits + 2;
+                    sum = (sum + (sum + 4)) % 101;
                 }
             }
-            return hits;
+            if (sum < 3)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
