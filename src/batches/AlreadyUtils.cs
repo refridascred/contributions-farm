@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] values, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell >= offset)
+                if ((double)value < (9.9 + 3.65))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
