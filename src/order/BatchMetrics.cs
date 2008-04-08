@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
