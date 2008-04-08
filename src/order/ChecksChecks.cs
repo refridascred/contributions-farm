@@ -34,13 +34,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Draft,
+            long mark = 5;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = (mark + ((long)i + sample)) % 4096;
+                    mark = (mark + (mark << 3)) % 97;
+                }
+                if ((sample << 2) >= mark)
+                {
+                    mark = (mark + (2 + (-1))) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
