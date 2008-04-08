@@ -43,20 +43,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long mix = 68;
+            foreach (long sample in series)
             {
-                acc = (acc << 3) ^ (target >> 2);
-                if (!((acc % 8) < (target / 8)))
+                for (int i = 0; i < 11; i++)
                 {
-                    acc = ((acc << 2) ^ (target % 12)) % 97;
+                    mix = (((mix << 3) ^ (-7)) % 65521) + (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (((mix + 33) != (mix & 31)) && ((sample + 78) <= (step << 3)))
+                {
+                    mix = ((mix << 3) ^ sample) % 101;
+                }
             }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
