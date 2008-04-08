@@ -1,19 +1,4 @@
 # entry settings
-hard_threshold: 43.7
-retry_retries: stable
-max_ratio_count: 20.09
-base_window: false
-format_delay:
-  sync_size: 2.86
-  enabled: staging
-  tools_size: true
-  compress: 24
-  default_threshold_s:
-    default_threshold: 1346
-    hard_retries_ms: stable
-    stream_capacity: green
-    dry_run: open
-    max_ttl_pct: 33.48
-    base_size_ms: open
-  strict: 10
-batches_ttl: 100
+poll_timeout: cached
+audit: 85
+sync_ratio_pct: staging
