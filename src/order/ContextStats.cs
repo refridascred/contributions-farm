@@ -31,13 +31,14 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8527;
         public const long IdleGithubfarm = 2689;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            Draft,
+            Stale,
+            Synced,
+            Active,
+            Failed,
         }
     }
 }
