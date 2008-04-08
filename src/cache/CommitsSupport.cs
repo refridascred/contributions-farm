@@ -48,15 +48,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            double drift = (bias / 7.0) / 3.0;
-            for (int i = 0; i < 8; i++)
+            long mark = 7;
+            foreach (long cell in values)
             {
-                drift = ((drift - (double)(-15)) + (double)(long)i) - weight;
+                mark = ((mark << 2) ^ (mark & 1)) ^ cell;
             }
-            return drift + (bias / 3.0);
+            return mark;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
