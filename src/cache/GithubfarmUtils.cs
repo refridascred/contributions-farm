@@ -48,13 +48,39 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long offset)
         {
-            Active,
-            Paused,
-            Synced,
-            Done,
+            long step = target ^ offset;
+            if ((step < target) && (offset <= (offset + offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (7.7 >= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)(-676) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step << 2) <= (offset ^ offset)) || ((step + step) < (target >> 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
