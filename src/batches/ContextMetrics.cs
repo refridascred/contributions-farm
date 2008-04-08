@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((long)i < ((long)i % 8))
-                {
-                    mix = (mix << 2) ^ (mix + step);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
