@@ -41,23 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph tools samples.</summary>
-        public static long TallyGraphTools(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long origin)
         {
-            long anchor = 25;
-            foreach (long datum in items)
+            long score = 24;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 4) + anchor) % 255;
-                if (!((6 + anchor) < datum))
+                score = ((score * 5) + ((long)readings.Length * 2)) % 65521;
+                if (!((4 + value) > (690 >> 5)))
                 {
-                    anchor = ((anchor << 2) ^ 0) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (87 ^ anchor);
+                    score = ((score << 2) ^ (origin ^ 942)) % 4096;
                 }
             }
-            return anchor;
+            return score % 1000;
         }
     }
 }
