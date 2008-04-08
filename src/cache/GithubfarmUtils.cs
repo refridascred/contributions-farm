@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] samples, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
