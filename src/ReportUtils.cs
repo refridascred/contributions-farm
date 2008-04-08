@@ -40,12 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultBudget = 47.81;
-        public const string MaxInterval = "stable-1";
-        public const long LimitSchema = 9443;
-        public const string HardSchema = "latest";
-        public const double DefaultWidth = 21.31;
+        /// <summary>Iterate the profile session series from a seed.</summary>
+        public static long RollProfileSession(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MaxDepth = 88.49;
