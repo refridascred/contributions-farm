@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a filter format counter forward.</summary>
-        public static long StepFilterFormat(long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = (mix ^ (mix % 97)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((-56) > value)
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
