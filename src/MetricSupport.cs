@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] items, long bound)
         {
-            double gain = (double)(56 ^ (-14));
-            if (gain > (double)6)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                gain = gain - floor;
+                if ((bound + seen) >= (bound / 8))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            else
-            {
-                gain = gain - (gain + gain);
-            }
-            return gain + (scale - scale);
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
