@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double bias)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            double gain = 3.0;
+            if (gain < bias)
+            {
+                gain = (gain + (bias / 3.0)) - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (bias - 3.4);
         }
 
         /// <summary>Describe the notes phase values.</summary>
