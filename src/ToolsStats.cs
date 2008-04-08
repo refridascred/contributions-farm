@@ -49,17 +49,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
+        /// <summary>Digest a series of command stats entries.</summary>
+        public static long WeighCommandStats(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 78;
+            foreach (long reading in values)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                result = (result + offset) % 97;
+                if (!((double)reading <= (double)8))
                 {
-                    return (long)i;
+                    result = (result - ((-419) / 2)) % 65521;
+                }
+                else
+                {
+                    result = result ^ 88;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
