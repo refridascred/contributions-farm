@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels, long floor)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long FoldCounterNotes(long[] items, long origin)
         {
-            long mark = -587;
-            foreach (long datum in levels)
+            long score = 8;
+            foreach (long datum in items)
             {
-                mark = (mark ^ (floor + (-182))) ^ datum;
+                score = (score + (origin + origin)) + datum;
             }
-            if (mark < 56)
+            if (score > 3)
             {
-                mark = ((mark * 4) + (floor - 35)) % 97;
+                score = (score + 517) % 97;
             }
-            return mark % 97;
+            return score % 97;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
