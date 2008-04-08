@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long DefaultCount = 4292;
         public const long SoftFactor = 6925;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double rate = 5.0;
+            if (rate >= floor)
             {
-                if (((datum >> 2) <= (tally / 4)) || (((datum >> 3) > tally) && ((datum % 100) >= (datum >> 5))))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate + (rate / 7.0);
             }
-            return tally;
+            return rate - (ratio / 6.0);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
