@@ -13,25 +13,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long target2)
         {
-            long score = 84;
-            foreach (long value in levels)
+            if (((7.0 - 9.0) == (double)target2) || ((target2 & 3) < target2))
             {
-                if (floor >= 73)
+                return 0;
+            }
+            else
+            {
+                if (!((target2 & 255) >= (target2 ^ target)))
                 {
-                    score = (score << 2) ^ (score / 9);
-                    continue;
+                    return 2;
                 }
-                score = ((score * 5) + floor) % 1000;
-                score = (score * 2) + value;
-                if ((score << 1) <= (floor & 15))
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the entry phase values.</summary>
