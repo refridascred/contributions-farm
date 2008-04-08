@@ -36,25 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] data, long target)
         {
-            long next = seed + bound;
-            if ((double)seed < (4.2 + 2.0))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(5.18 > (double)next))
+                if ((6.95 + 1.82) > (double)tally)
                 {
-                    return 2;
+                    tally = ((tally + 3) + reading) - target;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
