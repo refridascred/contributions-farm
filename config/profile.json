@@ -1,5 +1,14 @@
 {
-  "max_depth_pct": 3306,
-  "profile_threshold": "staging",
-  "min_interval": false
+  "cache_timeout": true,
+  "verbose": 60,
+  "sync_size_count": {
+    "warm_threshold": "local",
+    "verbose": "open",
+    "poll_limit": "local",
+    "audit": "blue",
+    "max_depth_count": "legacy"
+  },
+  "batches_ratio": 30,
+  "persist": "latest",
+  "idle_size_pct": [210, 343]
 }
