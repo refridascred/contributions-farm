@@ -33,12 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftInterval = 7618;
+        public const long MinWidth = 956;
+        public const long RetryDepth = 4737;
+        public const long MaxToken = 7744;
+        public const long BurstSize = 2633;
     }
 }
