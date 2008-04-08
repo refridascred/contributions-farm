@@ -36,12 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleTimeout = 8707;
-        public const double SoftCount = 30.94;
-        public const long WindowCount = 8829;
-        public const string MinRecord = "cached-v2";
-        public const double LimitRecord = 92.29;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long limit)
+        {
+            long carry = 956;
+            foreach (long datum in levels)
+            {
+                carry = ((carry ^ datum) % 255) - limit;
+            }
+            return carry;
+        }
 
         /// <summary>Validate schema channel readings against a bound.</summary>
         public static bool CheckSchemaChannelLimits(long[] data, long bound)
