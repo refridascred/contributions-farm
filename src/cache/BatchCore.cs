@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload farm entries that pass the check.</summary>
-        public static long AuditPayloadFarmGaps(long[] values, long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (744 <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - entry;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a stream layout sample.</summary>
