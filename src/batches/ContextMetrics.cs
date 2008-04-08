@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Queued,
-            Locked,
-            Active,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 2155;
+        public const long BatchCommand = 8296;
+        public const long HardTimeout = 7951;
+        public const double CacheCommand = 80.71;
+        public const long SoftInterval = 9547;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long step)
