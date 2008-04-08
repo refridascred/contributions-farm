@@ -51,38 +51,12 @@ namespace Common.Utilities
             return (bias - bias) + ratio;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long floor, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((double)step > 9.41)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 3) == (step - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + step) > 253) || ((0.28 - 1.0) > (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step < (5.1 * 2.9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
