@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Check that every profile checks entry stays within the limit.</summary>
+        public static bool GuardProfileChecksLimits(long[] levels, long bound)
         {
-            Ready,
-            Synced,
-            Retry,
-            Failed,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine stream metric values into a single score.</summary>
