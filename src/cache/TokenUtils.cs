@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] values, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            if (((5.3 / 4.0) > (double)bound) || ((target + target) > (target % 8)))
             {
-                if (entry >= bound)
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound != (6.07 - 3.54)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (target - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target ^ 5) <= (bound + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
