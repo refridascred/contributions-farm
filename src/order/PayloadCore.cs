@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc + (5 / 4);
-                acc = ((acc * 2) + (long)i) % 97;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
