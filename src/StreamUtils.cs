@@ -78,10 +78,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4364;
-        public const string MinWindow = "fallback";
-        public const long BurstInterval = 63;
-        public const long MaxCount = 56;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
