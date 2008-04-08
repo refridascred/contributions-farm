@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const double BaseRoute = 7.36;
         public const double SoftRoute = 57.49;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
