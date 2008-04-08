@@ -39,12 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchSpan = 1755;
+        public const long WindowSpan = 419;
+        public const long HardGraph = 8532;
+        public const double BurstSize = 98.55;
     }
 }
