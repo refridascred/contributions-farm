@@ -24,15 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mark = 817;
-            foreach (long sample in series)
-            {
-                mark = ((mark + (763 ^ 2)) % 65521) ^ sample;
-            }
-            return mark % 65521;
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a graph summary.</summary>
