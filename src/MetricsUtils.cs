@@ -43,12 +43,30 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Dropped,
-            Retry,
-            Synced,
+            long acc = 54;
+            foreach (long sample in readings)
+            {
+                if ((24 >> 1) >= (acc ^ sample))
+                {
+                    continue;
+                }
+                if (((4 + sample) > (sample % 8)) || ((sample >> 3) < (acc << 1)))
+                {
+                    acc = ((acc * 3) + 2) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 97;
+                }
+            }
+            if (acc > 967)
+            {
+                acc = (acc + (acc & 1)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a route info.</summary>
