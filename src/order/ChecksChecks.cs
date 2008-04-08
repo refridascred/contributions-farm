@@ -34,23 +34,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] data, long target)
         {
-            long mark = 5;
-            foreach (long sample in values)
+            long score = 1;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 7; i++)
+                score = (((score << 2) ^ (0 >> 1)) % 4096) + sample;
+                if (((double)score < 2.96) || ((score >> 2) > (score & 1)))
                 {
-                    mark = (mark + ((long)i + sample)) % 4096;
-                    mark = (mark + (mark << 3)) % 97;
-                }
-                if ((sample << 2) >= mark)
-                {
-                    mark = (mark + (2 + (-1))) % 97;
+                    score = (score + (score + target)) % 4096;
                 }
             }
-            return mark;
+            if (score > 726)
+            {
+                score = score ^ target;
+            }
+            return score % 97;
         }
     }
 }
