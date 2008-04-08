@@ -83,12 +83,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long target)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
