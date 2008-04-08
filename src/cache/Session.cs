@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings)
-        {
-            long score = 6;
-            foreach (long value in readings)
-            {
-                if ((score + 0) == (54 + 854))
-                {
-                    score = ((score + (score * 3)) % 255) + value;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "staging-1";
+        public const double LimitSupport = 75.08;
+        public const long IdleDepth = 7210;
+        public const long BurstSpan = 6055;
+        public const long BurstBudget = 7653;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long seed)
