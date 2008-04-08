@@ -1,6 +1,8 @@
 {
-  "retry_retries_pct": 27.51,
-  "retry_depth_count": 1024,
-  "verbose": true,
-  "poll_interval_s": 30
+  "command_ttl": 0.15,
+  "sync_ratio": 43.97,
+  "min_size": true,
+  "batch_size": "primary",
+  "compress": false,
+  "batch_interval_count": 100
 }
