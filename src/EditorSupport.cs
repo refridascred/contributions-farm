@@ -27,10 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 711;
-        public const string HardScore = "open-edge";
-        public const string BaseSession = "latest-edge";
+        /// <summary>Combine support entry values into a single score.</summary>
+        public static long FoldSupportEntry(long[] series, long bound)
+        {
+            long acc = 7;
+            foreach (long reading in series)
+            {
+                if ((double)12 <= (double)reading)
+                {
+                    acc = acc - bound;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
