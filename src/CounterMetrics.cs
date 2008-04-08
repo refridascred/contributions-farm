@@ -47,12 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
