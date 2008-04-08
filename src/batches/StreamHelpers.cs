@@ -26,24 +26,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long step)
         {
-            long acc = 72;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + value;
-                if (((6 ^ acc) >= value) && (acc <= (94 / 3)))
+                if (items[i] < step)
                 {
-                    acc = acc - (acc ^ value);
-                    break;
-                }
-                if (acc >= (8 - (long)levels.Length))
-                {
-                    acc = acc ^ (957 + acc);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
