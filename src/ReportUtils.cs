@@ -22,11 +22,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2414;
-        public const long MinWindow = 9845;
-        public const long IdleWindow = 5580;
-        public const double DefaultWindow = 56.4;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] values)
