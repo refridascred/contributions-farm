@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 94.35;
-        public const string BatchBudget = "primary";
-        public const long WindowStats = 6698;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryDepth = 4888;
+        public const long BaseChecks = 1882;
+        public const double BatchChecks = 3.97;
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] samples)
