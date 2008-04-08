@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBudget = 3282;
-        public const long HardCount = 3423;
-        public const long BaseCount = 340;
-        public const long MaxCount = 5314;
+        /// <summary>Rank channel notes input into a small class.</summary>
+        public static long ClassifyChannelNotes(long limit, long target)
+        {
+            if ((target - target) > limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.27 * 12.0) > (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long ScoreProfile(long[] levels)
