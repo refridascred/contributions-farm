@@ -37,21 +37,19 @@ namespace Common.Utilities
             return rate2 - (rate + rate2);
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
