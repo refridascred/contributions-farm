@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Synced,
-            Ready,
-            Retry,
-            New,
-            Draft,
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
