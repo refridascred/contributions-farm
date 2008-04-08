@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=307
+CHANNEL_LIMIT=459
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in strict staging; do
-    log "checking ${item}"
-done
