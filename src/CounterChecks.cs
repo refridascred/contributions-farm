@@ -58,39 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long origin, long floor)
+        /// <summary>Measure how many window tools samples are out of range.</summary>
+        public static long AuditWindowToolsHits(long[] data, long step)
         {
-            long edge = origin - floor;
-            if ((double)648 > (double)floor)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge & 1) >= (edge + edge))
+                if (!((reading << 2) != (hits + reading)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >= edge) || ((3.44 - 8.7) >= (double)edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (floor & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) - step;
                 }
             }
+            return hits;
         }
     }
 }
