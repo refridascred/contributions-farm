@@ -77,24 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long MeasureProfileClusterHits(long[] levels, long floor)
         {
-            if ((limit - step) >= (limit << 2))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - 663) == (step + step))
+                if ((7.74 - 5.0) == (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = ((tally + 2) ^ value) + floor;
                 }
             }
+            return tally;
         }
     }
 }
