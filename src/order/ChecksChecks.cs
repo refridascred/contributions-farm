@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepWidth = 2569;
-        public const long MaxProfile = 786;
-        public const string CacheProfile = "stable-1";
-        public const long IdleProfile = 501;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((reading * 3) <= (reading * 4)) && ((reading >= (reading + matches)) && (matches > (matches + matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] data, long target)
