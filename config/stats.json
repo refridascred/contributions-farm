@@ -1,34 +1,6 @@
 {
-  "idle_ttl_count": 8214,
-  "min_threshold": {
-    "cache_ratio_ms": "legacy",
-    "record_capacity": {
-      "default_threshold": 57,
-      "compress": 8925,
-      "persist": 6.24,
-      "dry_run": 68.01,
-      "batch_limit_pct": 500
-    },
-    "sync_interval_ms": "open",
-    "graph_capacity": {
-      "min_window_s": 33.22,
-      "dry_run": 3234,
-      "default_threshold_s": 71,
-      "window_size": 32.86,
-      "hard_interval_pct": "local"
-    }
-  },
-  "verbose": false,
-  "batch_size_pct": {
-    "min_ratio_count": 80,
-    "flush_retries": {
-      "retry_interval_pct": "eu-west",
-      "buffer_threshold": [177, 433],
-      "warm_retries": false
-    },
-    "readonly": "cached",
-    "default_retries_count": 250,
-    "flush_retries_ms": ["strict", "edge", "primary", "blue"],
-    "default_ttl_s": [102, 355, 403, 398]
-  }
+  "min_interval_count": "fallback",
+  "batch_interval_count": 23.0,
+  "batch_retries_s": 98,
+  "max_capacity": 33.96
 }
