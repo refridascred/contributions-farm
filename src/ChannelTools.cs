@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (long)i) ^ (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Blend two batches measurements.</summary>
