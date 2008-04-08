@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values)
         {
-            Queued,
-            Failed,
-            Pending,
-            Idle,
+            long mix = 0;
+            foreach (long datum in values)
+            {
+                if (mix <= ((-863) << 3))
+                {
+                    mix = (mix + datum) % 1000;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
