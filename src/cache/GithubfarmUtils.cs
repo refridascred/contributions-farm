@@ -55,17 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Idle,
+            Synced,
         }
     }
 }
