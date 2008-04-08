@@ -37,19 +37,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            long carry = -45;
-            foreach (long reading in levels)
+            double bias = (double)7 + floor;
+            if (bias <= floor)
             {
-                carry = ((carry << 3) ^ (carry ^ 0)) % 255;
-                if ((7.81 + 3.7) <= (double)carry)
-                {
-                    carry = (carry + (reading - carry)) % 65521;
-                }
+                bias = (bias - 15.0) - weight;
             }
-            return carry % 4096;
+            return bias - (bias + bias);
         }
 
         /// <summary>Hold a cluster entry.</summary>
