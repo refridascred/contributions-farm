@@ -1,31 +1,18 @@
 # entry settings
-buffer_capacity:
-  - staging
-  - fallback
-  - stable
-max_interval_s:
-  compress: true
-  audit: local
-  verbose: open
-  support_timeout:
-    - staging
-    - green
-    - open
-    - open
-  min_ttl:
-    - primary
-    - primary
-    - primary
-    - open
-soft_threshold_count: legacy
-account_size:
-  audit:
-    - 254
-    - 465
-    - 86
-    - 185
-  persist:
-    - 27
-    - 272
-    - 290
-  commits_threshold: 9830
+buffer_ttl:
+  default_depth_ms: false
+  idle_threshold_ms: true
+  burst_window_s: eu-west
+  editor_delay:
+    poll_retries_s: 92
+    strict: 2453
+    warm_threshold: false
+    max_depth_ms: true
+  compress:
+    - 416
+    - 440
+    - 99
+  base_limit_s: 78.06
+idle_ttl_pct: 8818
+burst_ttl: false
+context_capacity: 3293
