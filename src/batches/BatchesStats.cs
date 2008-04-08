@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long MinFarm = 8311;
         public const long DefaultFarm = 6243;
 
-        /// <summary>Grade a payload account value against two limits.</summary>
-        public static long RankPayloadAccount(long limit, long step)
-        {
-            long offset = limit + step;
-            if (offset < (offset + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= (9.82 + 10.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 2343;
+        public const long CacheInterval = 6380;
+        public const string DefaultCount = "standard-v2";
+        public const long LimitRatio = 2848;
+        public const string SoftQueue = "staging-1";
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
