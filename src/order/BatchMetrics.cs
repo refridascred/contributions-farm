@@ -66,11 +66,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 936;
-        public const long StepTools = 7341;
-        public const long BatchBudget = 8878;
-        public const long MaxTools = 5032;
-        public const double BaseSpan = 87.3;
+        /// <summary>Rank support graph input into a small class.</summary>
+        public static long ClassifySupportGraph(long seed, long origin)
+        {
+            long next = seed + origin;
+            if ((double)seed != (5.26 - 2.4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed % 5) >= (seed << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed + 78) != (56 + next)) && ((double)origin < (13.0 + 0.59)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8.0 <= (double)origin) && (next > (seed * 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
