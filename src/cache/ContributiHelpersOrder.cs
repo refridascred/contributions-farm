@@ -14,15 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mark = 62;
-            foreach (long reading in samples)
-            {
-                mark = (((mark * 3) + reading) % 101) - origin;
-            }
-            return mark;
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a buffer summary.</summary>
