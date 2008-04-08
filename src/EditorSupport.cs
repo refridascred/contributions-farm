@@ -26,26 +26,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor + (seed % 3);
-                long cur = anchor;
-                if (41 <= (anchor % 60))
-                {
-                    anchor = (anchor - (cur << 1)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i + cur)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 711;
+        public const string HardScore = "open-edge";
+        public const string BaseSession = "latest-edge";
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
