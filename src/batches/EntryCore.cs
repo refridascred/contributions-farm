@@ -29,24 +29,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            if (origin > (bound ^ 343))
+            long mark = 79;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin <= ((-8) ^ bound))
+                mark = mark ^ (717 + cell);
+                if (mark >= (cell / 5))
                 {
-                    return 8;
+                    mark = (mark ^ (cell + 915)) % 65521;
                 }
                 else
                 {
-                    return 1;
+                    mark = ((mark * 5) + (mark - cell)) % 255;
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
