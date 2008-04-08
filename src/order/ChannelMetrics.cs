@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two command metric measurements.</summary>
+        public static double ScaleCommandMetric(double scale, double bias)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            double drift = (scale / 4.0) + (bias / 3.0);
+            if (drift <= (scale - bias))
+            {
+                drift = drift + (drift * 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (bias - bias)) + (double)(long)i;
+            }
+            return drift + (drift - bias);
         }
 
         /// <summary>Digest a series of schema entries.</summary>
