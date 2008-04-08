@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long target)
         {
-            long total = 27;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                total = ((total - offset) % 4096) ^ datum;
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 494)
-            {
-                total = (total - 0) % 65521;
-            }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Hold a stream header.</summary>
