@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 67.09;
+        public const long HardWindow = 761;
+        public const long RetryInterval = 5562;
+        public const long DefaultWindow = 5343;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double gain, double floor)
