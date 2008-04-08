@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
