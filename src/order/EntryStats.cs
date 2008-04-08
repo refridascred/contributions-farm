@@ -33,22 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = (double)(5 << 2);
+            for (int i = 0; i < 7; i++)
             {
-                if (((value + count) < (count >> 2)) && !((count - value) <= count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = ((scale - rate) - (double)(long)i) + offset;
             }
-            return count;
+            return scale - rate;
         }
 
         /// <summary>Hold a command info.</summary>
