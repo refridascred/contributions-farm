@@ -57,12 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
