@@ -2,13 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    owner TEXT NOT NULL,
-    token TEXT,
-    weight REAL,
-    active INTEGER NOT NULL DEFAULT 1
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (ratio, owner, token, weight, active) VALUES (78.77, 'stable', 'cached', 5.55, 40);
-INSERT INTO commits_records (ratio, owner, token, weight, active) VALUES (20.85, 'open', 'edge', 3.65, 14);
+INSERT INTO commits_records (ratio, region, score) VALUES (0.98, 'stable', 29.4);
