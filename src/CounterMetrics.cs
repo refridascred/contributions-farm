@@ -22,18 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long seed)
+        /// <summary>Rank cluster token input into a small class.</summary>
+        public static long RankClusterToken(long step, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long diff = step ^ bound;
+            if (((-10) + step) > 47)
             {
-                if ((double)(long)readings.Length >= (1.14 * 8.98))
+                return 8;
+            }
+            else
+            {
+                if (step >= bound)
                 {
-                    matches = ((matches + 1) + sample) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)diff != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
