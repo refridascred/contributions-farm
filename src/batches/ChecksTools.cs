@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            double scale = span;
+            if (scale > scale)
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (scale * 9.2);
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
