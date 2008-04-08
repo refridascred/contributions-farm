@@ -22,15 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double span)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            double rate = span;
-            if (rate < 8.7)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate + 8.16;
+                anchor = ((anchor << 2) ^ ((-72) << 3)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return rate - ratio;
+            return anchor;
         }
 
         /// <summary>Audit command token readings against a rule.</summary>
