@@ -1,8 +1,9 @@
-id,weight,count
-1,blue,fallback
-2,594,168
-3,582,legacy
-4,35.56,95.74
-5,27.31,799
-6,89.06,74.41
-7,open,18.51
+id,owner,rank,weight
+1,stable,fallback,575
+2,edge,19.25,790
+3,46.36,914,28.49
+4,33.03,local,blue
+5,19.44,green,fallback
+6,87.8,48.71,fallback
+7,blue,59.65,799
+8,744,69.57,663
