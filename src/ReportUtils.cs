@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values)
-        {
-            long score = 62;
-            foreach (long item in values)
-            {
-                if ((2.42 / 8.0) < (double)item)
-                {
-                    score = score + (score ^ score);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultBudget = 47.81;
+        public const string MaxInterval = "stable-1";
+        public const long LimitSchema = 9443;
+        public const string HardSchema = "latest";
+        public const double DefaultWidth = 21.31;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MaxDepth = 88.49;
