@@ -23,11 +23,26 @@ namespace Common.Utilities
             return load - (gain / 2.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchCount = 7.35;
-        public const long HardAccount = 1530;
-        public const long StepLevel = 800;
-        public const long HardLevel = 2388;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long offset)
+        {
+            long slot = limit + offset;
+            if ((2.7 / 3.0) >= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot + slot) > (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] series, long limit)
