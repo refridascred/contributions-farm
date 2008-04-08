@@ -1,14 +1,11 @@
 # Command notes
 
-The context report groups every payload by account.
-Keep format and contributi names short and lowercase.
-Run the buffer check before changing any cluster limits.
-
-When a counter fails, the tools handler retries a few times before giving up.
-Run the payload check before changing any stats limits.
+The entry report groups every context by record.
+The contributi module keeps support values in sync with the graph cache.
+The stream report groups every format by contributi.
 
 ## Guidelines
 
-- Log every account change
-- Keep route values small
-- Validate counter input early
+- Prefer order defaults
+- Review contributi limits each release
+- Document new batch fields
