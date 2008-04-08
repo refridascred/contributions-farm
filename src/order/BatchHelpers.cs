@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Active,
-            Queued,
-            Paused,
-            Done,
+            Failed,
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
