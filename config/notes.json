@@ -1,6 +1,18 @@
 {
-  "buffer_delay": [260, 362],
-  "idle_limit_pct": 100,
-  "warm_ttl_pct": 83.74,
-  "cluster_ttl": "staging"
+  "strict": {
+    "hard_window_s": "edge",
+    "flush_limit": {
+      "already_threshold": "strict",
+      "max_ttl_s": 78,
+      "strict": true,
+      "graph_timeout": false,
+      "max_threshold": "fallback",
+      "warm_retries_pct": 49
+    },
+    "commits_depth": 250,
+    "batch_capacity": false
+  },
+  "tools_depth": true,
+  "verbose": true,
+  "compress": 6229
 }
