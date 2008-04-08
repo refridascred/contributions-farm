@@ -32,14 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            Paused,
-            Idle,
-            Failed,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((seen + 46) < item) || ((item + item) < 18))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
