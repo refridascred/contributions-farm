@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long offset)
         {
-            Locked,
-            New,
-            Idle,
-            Failed,
+            if ((seed + 99) == (seed & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed > (3.0 / 9.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ seed) >= (3 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
