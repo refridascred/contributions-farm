@@ -28,11 +28,36 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 91.4;
-        public const double MaxWidth = 67.07;
-        public const string MinProfile = "primary-edge";
-        public const double StepProfile = 77.06;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values, long floor)
+        {
+            long acc = 195;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (((acc * 3) + floor) % 101) + (long)i;
+                    acc = ((acc * 4) + (floor - acc)) % 65521;
+                }
+                if (floor < (floor - acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (67 + floor)) % 4096;
+                }
+                if (reading <= acc)
+                {
+                    acc = acc ^ (floor % 24);
+                }
+            }
+            if (acc < (-9))
+            {
+                acc = acc - acc;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardSize = 8058;
