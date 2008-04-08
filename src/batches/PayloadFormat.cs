@@ -50,19 +50,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (sum <= (sum ^ (long)i))
+                if (!((count << 1) == (offset + entry)))
                 {
-                    continue;
+                    count = count + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
     }
 }
