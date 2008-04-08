@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long RetryInterval = 5562;
         public const long DefaultWindow = 5343;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double drift = 16.0 + (gain - floor);
-            if (drift < (7.1 * 6.0))
-            {
-                drift = drift - (2.21 + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)6) + (double)(long)i;
-            }
-            return drift - (double)89;
+            Failed,
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
