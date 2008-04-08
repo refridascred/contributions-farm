@@ -24,18 +24,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (((double)529 != (double)count) || ((((long)series.Length * 5) <= count) && ((count & 7) != (sample << 3))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
