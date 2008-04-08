@@ -60,18 +60,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long TallyClusterSupportMatches(long[] series, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((((matches >> 4) == (bound << 1)) || ((7.7 + 0.7) > (double)bound)) && ((matches & 7) != (value + bound)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            New,
+            Done,
+            Active,
         }
     }
 }
