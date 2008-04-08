@@ -22,17 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter record entry that matches the target.</summary>
-        public static long FindCounterRecordIndex(long[] series, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
