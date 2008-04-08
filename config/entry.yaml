@@ -1,19 +1,15 @@
 # entry settings
-strict:
-  persist: 80.23
-  flush_depth: 69
-  burst_ttl:
-    strict: staging
-    stats_interval: true
-    checks_delay: 9660
-    enabled: edge
-    batch_window: true
-  layout_timeout: 30
-base_size_count:
-  poll_ttl: 61.37
-  retry_interval: stable
-  dry_run: 89
-poll_retries_ms: false
-retry_size_pct: fallback
-flush_ttl_count: true
-stats_window: 2067
+graph_interval: 63.99
+retry_ttl_count:
+  retry_ratio_ms: 32.82
+  hard_delay_pct:
+    - stable
+    - fallback
+  hard_retries_count: edge
+  readonly: 9
+  default_window_pct: 1865
+burst_delay_count: 46.79
+notes_ttl:
+  - blue
+  - standard
+dry_run: 4931
