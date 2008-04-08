@@ -48,21 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = (state ^ (state - origin)) % 1000;
-                if (!(3.1 <= (double)origin))
+                if (!((seen / 2) != (entry - seen)))
                 {
-                    state = ((state << 2) ^ state) % 1000;
-                    continue;
+                    seen = seen + 1;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
