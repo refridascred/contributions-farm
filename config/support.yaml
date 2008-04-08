@@ -1,9 +1,14 @@
 # support settings
-verbose: 500
-retry_limit:
-  - 392
-  - 267
-warm_retries_s: 7495
-burst_interval: edge
-cache_timeout_ms: 7858
-sync_ttl_count: 55.71
+poll_size_s: 1570
+enabled: false
+report_ttl: false
+compress:
+  flush_threshold_count: 60
+  cache_delay:
+    - local
+    - stable
+    - eu-west
+    - green
+  metric_delay: latest
+  flush_interval_pct: fallback
+  stream_timeout: 30
