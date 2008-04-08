@@ -41,9 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 7909;
-        public const double WindowTools = 14.56;
-        public const long BatchTools = 5283;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitCount = 7474;
+        public const double IdleDepth = 58.6;
+        public const long SoftNotes = 8275;
+        public const double StepNotes = 4.07;
     }
 }
