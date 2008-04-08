@@ -29,19 +29,10 @@ namespace Common.Utilities
             return bias2 + (8.7 - bias2);
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (7.44 * 3.0))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstCount = 9993;
+        public const double BaseRoute = 7.36;
+        public const double SoftRoute = 57.49;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
