@@ -1,5 +1,18 @@
 {
-  "cache_interval_s": true,
-  "commits_timeout": "primary",
-  "order_size": true
+  "cache_delay": true,
+  "batch_depth": 2021,
+  "context_limit": ["eu-west", "strict", "fallback"],
+  "persist": "latest",
+  "audit": {
+    "retry_interval_ms": "staging",
+    "hard_limit_count": 60,
+    "flush_timeout_ms": 76,
+    "batch_retries": {
+      "warm_retries": 30,
+      "max_size_count": 60,
+      "flush_size": "stable",
+      "enabled": 54,
+      "hard_depth": "eu-west"
+    }
+  }
 }
