@@ -39,19 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] readings, long origin)
+        /// <summary>Accumulate tools contributi samples.</summary>
+        public static long DigestToolsContributi(long[] series)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mix = 81;
+            foreach (long item in series)
             {
-                if (value != origin)
+                if (!(item >= (606 / 8)))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix << 3) ^ (mix ^ item);
+                }
+                mix = (mix << 2) ^ (mix + mix);
+                if ((double)item < (1.0 - 7.4))
+                {
+                    mix = (mix - (115 << 1)) % 4096;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
