@@ -43,10 +43,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 44.2;
-        public const string SoftLevel = "open-v2";
-        public const long IdleLevel = 1617;
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] levels, long offset)
