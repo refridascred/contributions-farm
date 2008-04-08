@@ -19,31 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items, long origin)
+        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
+        public static bool GuardLayoutContributiBounds(long[] readings, long seed)
         {
-            long sum = 7;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (!((13.0 - 5.99) >= (double)sum))
+                if (reading < seed)
                 {
-                    sum = (sum ^ (sum - origin)) % 4096;
-                }
-                sum = (sum << 3) ^ origin;
-                if (!(value < (sum >> 3)))
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
-                if (!((double)value == (double)origin))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum << 2) ^ (long)items.Length;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
