@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardFactor = "latest-edge";
-        public const double MaxLevel = 59.09;
-        public const long IdleBatch = 5433;
-        public const long DefaultBatch = 2882;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
