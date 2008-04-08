@@ -23,10 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheInterval = "fallback-edge";
-        public const string MinWindow = "latest-1";
-        public const long CacheSize = 5976;
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double floor)
+        {
+            double scale = (double)(9 * 4);
+            if (scale < (floor / 7.0))
+            {
+                scale = (scale - scale) + gain;
+            }
+            else
+            {
+                scale = scale + (double)9;
+            }
+            return scale + (2.7 + floor);
+        }
 
         /// <summary>Fold a list of support notes readings.</summary>
         public static long FoldSupportNotes(long[] data, long bound)
