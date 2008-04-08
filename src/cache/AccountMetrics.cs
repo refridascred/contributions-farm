@@ -23,10 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 1232;
-        public const long SoftAccount = 7256;
-        public const long DefaultWidth = 6064;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepSize = 7194;
+        public const double WindowCommand = 12.43;
+        public const string MaxDepth = "latest-v2";
+        public const double MinScore = 91.63;
+        public const double RetryFactor = 7.34;
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
         public static long DeriveNotesBatch(long step)
