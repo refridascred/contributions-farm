@@ -15,16 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = 1;
-            foreach (long item in readings)
-            {
-                mark = ((mark << 3) ^ (item >> 2)) - offset;
-                mark = mark - (item - (-839));
-            }
-            return mark;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine support entry values into a single score.</summary>
