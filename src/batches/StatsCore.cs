@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = 740;
+            foreach (long sample in items)
             {
-                if (!(1.27 >= (double)(long)i))
-                {
-                    state = ((state << 3) ^ (state - 325)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                anchor = ((anchor * 3) + (sample + 380)) % 4096;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
