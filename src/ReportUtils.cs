@@ -52,22 +52,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] data, long bound)
+        /// <summary>Derive the next token route value from a seed.</summary>
+        public static long RollTokenRoute(long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)bound == (8.1 / 9.0)) || ((value - bound) <= bound))
+                mark = mark ^ (origin >> 5);
+                if (!((mark / 6) == ((long)i + mark)))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
-                else
+                if (!((long)i > ((long)i + origin)))
                 {
-                    hits = hits - 1;
+                    mark = (mark << 3) ^ (origin ^ mark);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
