@@ -27,17 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
