@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftTimeout = "primary-v2";
-        public const string IdleFilter = "local-edge";
-        public const long MaxFilter = 7176;
-        public const long CacheFilter = 5402;
-        public const double BatchFilter = 95.34;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (floor >= (reading & 3))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels, long offset)
