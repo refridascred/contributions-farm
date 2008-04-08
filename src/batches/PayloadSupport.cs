@@ -32,9 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 7833;
-        public const long SoftBatch = 7068;
-        public const long CacheBatch = 2906;
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
