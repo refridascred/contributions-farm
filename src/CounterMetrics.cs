@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema stream readings against a bound.</summary>
-        public static bool ValidateSchemaStreamLimits(long[] values, long limit)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
