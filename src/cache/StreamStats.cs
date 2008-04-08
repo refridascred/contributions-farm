@@ -34,18 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long step)
         {
-            long acc = 869;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + acc) < (acc + acc))
+                if (samples[i] <= step)
                 {
-                    acc = (acc ^ entry) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
