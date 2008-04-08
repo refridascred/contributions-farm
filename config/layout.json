@@ -1,11 +1,7 @@
 {
-  "warm_ttl_s": 11.45,
-  "sync_threshold_count": 57.5,
-  "readonly": {
-    "compress": 67.25,
-    "dry_run": "edge",
-    "sync_size": ["eu-west", "latest"]
-  },
-  "audit": "primary",
-  "burst_window": 76.0
+  "cache_interval": false,
+  "batch_ttl": [444, 419, 108],
+  "base_size_count": [304, 402, 181, 55],
+  "strict": [186, 471],
+  "idle_timeout": "legacy"
 }
