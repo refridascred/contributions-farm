@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] series, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((((double)floor > (6.07 / 3.0)) && ((floor << 3) >= (873 + 82))) || ((hits <= (datum << 2)) || ((floor << 2) > (datum - (long)series.Length))))
+                if (item > target)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
