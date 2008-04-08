@@ -1,15 +1,5 @@
 {
-  "flush_size": 6232,
-  "counter_capacity": ["open", "open", "blue"],
-  "max_depth_s": ["fallback", "green", "staging", "blue"],
-  "min_threshold": true,
-  "soft_depth_pct": 100,
-  "counter_timeout": {
-    "batches_ttl": "eu-west",
-    "soft_ttl_s": 9044,
-    "min_capacity_count": true,
-    "hard_limit": 3.81,
-    "max_timeout": 8704,
-    "persist": 11.85
-  }
+  "retry_window_s": 95.67,
+  "default_capacity_count": ["legacy", "blue", "edge", "legacy"],
+  "soft_depth_pct": "local"
 }
