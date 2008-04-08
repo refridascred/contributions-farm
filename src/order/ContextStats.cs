@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool GuardContributiTokenBounds(long[] series, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
