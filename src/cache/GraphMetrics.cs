@@ -50,13 +50,17 @@ namespace Common.Utilities
         public const long LimitAlready = 6503;
         public const long BurstAlready = 9823;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long target)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
