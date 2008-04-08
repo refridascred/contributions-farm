@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long bound)
         {
-            long sum = 235;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                sum = (((sum * 3) + 13) % 4096) - value;
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum < 90)
-            {
-                sum = ((sum * 3) + (sum / 5)) % 255;
-            }
-            return sum % 65521;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
