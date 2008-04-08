@@ -27,10 +27,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchSpan = 1755;
-        public const long WindowSpan = 419;
-        public const long HardGraph = 8532;
-        public const double BurstSize = 98.55;
+        /// <summary>Validate entry checks readings against a bound.</summary>
+        public static bool VerifyEntryChecksRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
