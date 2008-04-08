@@ -52,21 +52,12 @@ namespace Common.Utilities
         public const long BurstWidth = 1999;
         public const long BatchInterval = 6928;
 
-        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
-        public static long MatchToolsProfileCount(long[] series)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
