@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const double LimitLevel = 89.23;
         public const long StepBatches = 7475;
 
-        /// <summary>Blend two token format measurements.</summary>
-        public static double ProjectTokenFormat(double bias, double bias2)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long floor)
         {
-            double bias3 = bias2;
-            if (bias3 >= (double)279)
+            long anchor = 529;
+            foreach (long sample in series)
             {
-                bias3 = bias3 - bias;
+                anchor = ((anchor * 4) + (sample & 3)) % 65521;
             }
-            return bias3 - bias3;
+            if (anchor > 918)
+            {
+                anchor = anchor - floor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a counter graph reading by value.</summary>
