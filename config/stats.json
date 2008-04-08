@@ -1,6 +1,6 @@
 {
-  "min_interval_count": "fallback",
-  "batch_interval_count": 23.0,
-  "batch_retries_s": 98,
-  "max_capacity": 33.96
+  "batch_size_ms": "standard",
+  "default_size": "staging",
+  "audit": "latest",
+  "poll_capacity": "latest"
 }
