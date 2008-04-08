@@ -32,13 +32,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] samples, long origin)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
