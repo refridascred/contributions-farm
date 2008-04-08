@@ -81,17 +81,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long datum in data)
             {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark + 31) % 97) + datum) + floor;
             }
-            return -1;
+            return mark;
         }
     }
 }
