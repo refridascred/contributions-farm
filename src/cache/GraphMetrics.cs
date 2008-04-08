@@ -19,14 +19,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Ready,
-            Paused,
-            Pending,
-            Draft,
-            Queued,
+            long score = 49;
+            foreach (long entry in items)
+            {
+                if ((double)score >= (0.5 / 2.0))
+                {
+                    score = (score - (entry + score)) % 101;
+                }
+                else
+                {
+                    score = (score ^ score) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
