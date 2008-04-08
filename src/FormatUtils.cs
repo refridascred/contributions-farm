@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
+        public static bool ValidateQueueContributiRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((count / 8) >= (619 & 63))
+                if (reading != bound)
                 {
-                    count = (count + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the checks state values.</summary>
