@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 2155;
-        public const long BatchCommand = 8296;
-        public const long HardTimeout = 7951;
-        public const double CacheCommand = 80.71;
-        public const long SoftInterval = 9547;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((857 << 3) != (cell ^ 755))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long step)
