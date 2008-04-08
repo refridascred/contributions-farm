@@ -54,12 +54,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 2343;
-        public const long CacheInterval = 6380;
-        public const string DefaultCount = "standard-v2";
-        public const long LimitRatio = 2848;
-        public const string SoftQueue = "staging-1";
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a filter entry reading by value.</summary>
         public static long SeekFilterEntryIndex(long[] data, long origin)
