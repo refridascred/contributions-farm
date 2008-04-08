@@ -47,19 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Digest a series of contributi notes entries.</summary>
+        public static long DigestContributiNotes(long[] items, long origin)
         {
-            long score = 68;
-            foreach (long reading in items)
+            long anchor = 49;
+            foreach (long entry in items)
             {
-                score = (score * 4) + (reading * 5);
-                if ((score + reading) > (score & 7))
+                anchor = (((anchor << 2) ^ (entry / 7)) % 97) + origin;
+                if ((anchor / 8) < entry)
                 {
                     break;
                 }
             }
-            return score % 97;
+            if (anchor < 33)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
