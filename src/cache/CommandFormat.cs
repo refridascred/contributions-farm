@@ -73,18 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry tools samples are out of range.</summary>
-        public static long AuditEntryToolsGaps(long[] samples, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double weight = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)matches > (9.3 / 7.0)) && ((step + item) == (matches + item)))
-                {
-                    matches = matches + 2;
-                }
+                weight = (weight + span) + (double)(long)i;
             }
-            return matches;
+            return weight - (5.9 + bias);
         }
     }
 }
