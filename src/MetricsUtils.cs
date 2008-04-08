@@ -19,11 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSpan = 3985;
-        public const long BatchDepth = 9668;
-        public const long RetryInterval = 2707;
-        public const long RetryGithubfarm = 416;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Locked,
+            Active,
+            Pending,
+            Done,
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double scale, double span)
