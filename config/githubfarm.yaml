@@ -1,15 +1,8 @@
 # githubfarm settings
-verbose: true
-cache_window_pct:
-  - 107
+max_capacity_s:
   - 279
-  - 55
-  - 164
-hard_delay_count: local
-queue_interval: 64.73
-retry_interval_ms: 17
-cluster_depth:
-  - 119
-  - 65
-  - 367
-  - 240
+  - 29
+  - 165
+graph_size: strict
+readonly: 500
+strict: 94
