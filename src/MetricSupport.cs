@@ -34,17 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
