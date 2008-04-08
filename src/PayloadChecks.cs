@@ -58,13 +58,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long edge = target + step;
+            if (19.0 < (double)edge)
+            {
+                return 1;
+            }
+            else
+            {
+                if (14.0 < (8.0 - 3.62))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((372 << 1) > (target + edge)) && ((double)10 > (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
