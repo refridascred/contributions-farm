@@ -21,22 +21,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine batches format values into a single score.</summary>
-        public static long WeighBatchesFormat(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] levels, long limit)
         {
-            long score = 2;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= 21)
+                if (levels[i] < limit)
                 {
-                    score = score + score;
+                    return (long)i;
                 }
             }
-            if (score > 796)
-            {
-                score = ((score * 4) + score) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
