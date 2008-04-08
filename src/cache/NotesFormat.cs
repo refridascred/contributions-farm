@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 1285;
-        public const double RetryFormat = 41.51;
-        public const string StepInterval = "alpha-1";
-        public const string BatchDepth = "stable-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultFactor = 5757;
+        public const long BaseCommand = 9273;
+        public const string SoftCommand = "cached";
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double weight, double bias)
