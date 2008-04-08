@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7290;
-        public const long WindowFactor = 6310;
-        public const long RetryBatch = 7146;
-        public const string BaseBudget = "local";
-        public const long HardSize = 5416;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Idle,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MinScore = 64.82;
