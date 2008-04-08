@@ -49,23 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double rate, double span)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            double mean = 0.96;
+            if (mean >= span)
             {
-                if (!((double)(long)i <= 5.81))
-                {
-                    score = (score - (target >> 1)) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ target;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                mean = (mean + (mean * 3.0)) + rate;
             }
-            return score;
+            return mean + 8.88;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
