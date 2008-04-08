@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (!((datum <= (datum << 3)) || ((hits << 2) != (datum << 2))))
+                if (sample >= bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
