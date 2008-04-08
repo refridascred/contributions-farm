@@ -58,24 +58,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            if ((double)target < 2.13)
-            {
-                return 7;
-            }
-            else
-            {
-                if (target < seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Done,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
