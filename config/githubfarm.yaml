@@ -1,8 +1,30 @@
 # githubfarm settings
-warm_capacity_pct: 881
-farm_window:
-  - fallback
-  - staging
-  - stable
-  - blue
-default_ratio: edge
+verbose:
+  - 170
+  - 194
+  - 41
+flush_ratio_s: 21.04
+soft_limit_ms: 6877
+idle_ratio_ms:
+  soft_delay:
+    retry_timeout: 95.19
+    burst_limit_pct: 7155
+    retry_ratio_count: 21.85
+    account_threshold: true
+  hard_threshold_s:
+    soft_ratio: 100
+    warm_depth: 42
+    min_ratio_s: true
+    order_retries: 71
+  strict: 100
+  compress:
+    persist: false
+    batch_interval_ms: eu-west
+    cache_retries_s:
+      - primary
+      - legacy
+      - eu-west
+      - blue
+    soft_window_ms: 51
+  max_depth_ms: true
+  verbose: 2962
