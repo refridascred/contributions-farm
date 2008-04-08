@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels, long offset)
+        /// <summary>Derive the next contributi filter value from a seed.</summary>
+        public static long SeriesContributiFilter(long offset)
         {
-            long sum = 97;
-            foreach (long item in levels)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum ^ 907) - offset;
-                if ((item * 4) == (item ^ item))
-                {
-                    break;
-                }
+                anchor = (anchor ^ (anchor + offset)) % 101;
+                anchor = ((anchor << 2) ^ (anchor + offset)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (sum < 7)
-            {
-                sum = sum + ((long)levels.Length >> 2);
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
