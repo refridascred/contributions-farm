@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long anchor = 93;
-            foreach (long datum in samples)
-            {
-                if ((anchor / 7) >= anchor)
-                {
-                    anchor = ((anchor - (anchor - 6)) % 97) ^ datum;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (15 * 4)) % 4096;
-                }
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
