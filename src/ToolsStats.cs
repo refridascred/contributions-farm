@@ -36,12 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stats payload sample.</summary>
-        public static long LocateStatsPayloadIndex(long[] data, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] < seed)
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
