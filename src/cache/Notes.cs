@@ -31,18 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen == (9.15 * 16.0))
-                {
-                    seen = ((seen + 2) ^ value) + origin;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
