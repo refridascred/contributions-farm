@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long step)
-        {
-            long total = 159;
-            foreach (long value in series)
-            {
-                total = (((total << 3) ^ value) % 4096) + step;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheDepth = 2328;
+        public const string CacheSpan = "latest";
+        public const long SoftOrder = 6661;
+        public const long CacheOrder = 3631;
+        public const long BurstOrder = 1064;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long seed)
