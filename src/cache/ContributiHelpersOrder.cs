@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report record counter forward.</summary>
-        public static long SeriesReportRecord(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if (!((6.6 - 5.0) >= (double)sample))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
