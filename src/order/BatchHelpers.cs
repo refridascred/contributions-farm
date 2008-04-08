@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score << 3) ^ (limit + score)) % 101;
-                score = (score + (score << 3)) % 255;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultDepth = 0.58;
+        public const long BurstSpan = 8648;
+        public const double BatchReport = 7.09;
+        public const string MinTimeout = "open-edge";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MaxMetric = "primary-edge";
