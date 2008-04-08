@@ -55,11 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Compare every pair of entry graph readings.</summary>
+        public static long PairEntryGraphCount(long[] series)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
