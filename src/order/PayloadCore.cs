@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc + (5 / 4);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
