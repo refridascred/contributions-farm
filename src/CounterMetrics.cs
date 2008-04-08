@@ -41,23 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long target)
         {
-            double rate = weight - 11.0;
-            if (rate > weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + (double)80) + floor;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (weight / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + 8.26) + (double)(long)i;
-            }
-            return rate - (7.9 * 18.0);
+            return -1;
         }
     }
 }
