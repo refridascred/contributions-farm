@@ -19,16 +19,14 @@ namespace Common.Utilities
         public const long DefaultPayload = 7751;
         public const long CacheInterval = 4133;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total - (total * 5)) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Closed,
+            Stale,
+            Synced,
+            Locked,
+            Ready,
         }
     }
 }
