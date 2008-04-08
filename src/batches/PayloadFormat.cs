@@ -33,10 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxDepth = 36.4;
-        public const long BaseStats = 7045;
-        public const long CacheTimeout = 7830;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long limit)
+        {
+            long sum = 99;
+            foreach (long entry in samples)
+            {
+                if ((double)limit > (4.3 + 5.39))
+                {
+                    sum = sum + (entry + limit);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] items)
