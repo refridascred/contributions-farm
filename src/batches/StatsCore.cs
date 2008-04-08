@@ -60,15 +60,18 @@ namespace Common.Utilities
             return load + (double)96;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((sample * 4) == (sample + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
