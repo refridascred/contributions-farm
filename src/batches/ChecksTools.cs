@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches < ((-423) + matches))
+                if (step < (step / 6))
                 {
-                    matches = ((matches + 2) + entry) - step;
+                    result = (result - ((-78) & 255)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
