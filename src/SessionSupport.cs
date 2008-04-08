@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 8;
+            foreach (long reading in series)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
+                if ((reading + bound) >= (bound & 15))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (reading * 4)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + bound) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the counter stats series from a seed.</summary>
