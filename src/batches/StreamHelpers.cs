@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank layout metrics input into a small class.</summary>
-        public static long GradeLayoutMetrics(long bound, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (((double)bound != (double)step) && (5.3 > (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((869 / 6) != (bound % 10))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 24) > (bound * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
