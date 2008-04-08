@@ -1,6 +1,4 @@
 # githubfarm settings
-record_timeout: edge
-default_ttl_ms: false
-session_window: fallback
-burst_delay_count: primary
-stats_depth: 15.59
+poll_size_ms: 500
+batch_capacity: 32.99
+hard_ratio: 250
