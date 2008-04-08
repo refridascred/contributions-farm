@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long CacheScore = 5548;
         public const double LimitEditor = 89.23;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((count ^ count) == (count ^ 31))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
