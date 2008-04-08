@@ -52,11 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
+        public static bool GuardBufferContributiRange(long[] readings, long limit)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
