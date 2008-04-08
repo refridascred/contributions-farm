@@ -1,14 +1,15 @@
 # support settings
-poll_size_s: 1570
-enabled: false
-report_ttl: false
-compress:
-  flush_threshold_count: 60
-  cache_delay:
-    - local
-    - stable
-    - eu-west
-    - green
-  metric_delay: latest
-  flush_interval_pct: fallback
-  stream_timeout: 30
+sync_ttl_s:
+  - latest
+  - standard
+  - edge
+schema_delay:
+  base_size_count: 80
+  max_delay: primary
+  enabled: 250
+enabled:
+  min_ttl_ms: cached
+  idle_ratio_pct: strict
+  flush_capacity_ms: primary
+  compress: blue
+  persist: edge
