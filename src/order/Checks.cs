@@ -31,11 +31,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark ^ limit) % 255;
+                if (!((long)i >= (limit + 988)))
+                {
+                    mark = ((mark * 3) + (mark / 7)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of queue tools entries.</summary>
