@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine context githubfarm values into a single score.</summary>
-        public static long FoldContextGithubfarm(long[] samples, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mix = 84;
-            foreach (long sample in samples)
-            {
-                if ((double)mix > 6.6)
-                {
-                    mix = (((mix * 4) + (mix / 8)) - sample) - origin;
-                }
-            }
-            return mix;
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
