@@ -32,11 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstScore = 3733;
-        public const long BatchLevel = 1017;
-        public const long LimitInterval = 5022;
-        public const string BatchEntry = "open-v2";
-        public const long RetryEntry = 538;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
