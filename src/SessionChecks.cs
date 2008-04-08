@@ -22,31 +22,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            if ((2.5 - 4.7) < (double)target)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - target) <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - 1) < (seed % 12))
+                    if ((values[i] ^ values[j]) != 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
