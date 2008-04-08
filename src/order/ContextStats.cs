@@ -44,24 +44,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Accumulate schema already samples.</summary>
+        public static long CombineSchemaAlready(long[] readings)
         {
-            long sum = 80;
-            foreach (long cell in values)
+            long state = 2;
+            foreach (long cell in readings)
             {
-                sum = (sum + (cell << 3)) % 101;
-                sum = (sum << 3) ^ cell;
-                if ((cell << 1) >= (sum * 3))
+                state = ((state << 3) ^ (state % 60)) % 255;
+                if ((62 - cell) < cell)
                 {
-                    sum = ((sum << 2) ^ sum) % 97;
+                    state = ((state << 2) ^ state) % 1000;
+                    state = (state - cell) % 65521;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
+                state = ((state * 2) + (cell << 1)) % 1000;
             }
-            return sum;
+            return state;
         }
     }
 }
