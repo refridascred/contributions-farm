@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            double drift = 16.0 + (gain - floor);
+            if (drift < (7.1 * 6.0))
             {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (2.21 + floor);
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)6) + (double)(long)i;
+            }
+            return drift - (double)89;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
