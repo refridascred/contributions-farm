@@ -22,11 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Find the first counter record entry that matches the target.</summary>
+        public static long FindCounterRecordIndex(long[] series, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
