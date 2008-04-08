@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool GuardContributiTokenBounds(long[] series, long step)
         {
-            double ratio = (bias * 4.5) - (double)(-3);
-            if (ratio >= (ratio + bias))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                ratio = (ratio - (ratio - 18.0)) + scale;
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio + 2.3;
+            return flag;
         }
 
         /// <summary>Fold a list of format queue readings.</summary>
