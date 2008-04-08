@@ -50,13 +50,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (sum <= (sum ^ (long)i))
+                {
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
