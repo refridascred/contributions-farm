@@ -1,5 +1,20 @@
 {
-  "audit": 500,
-  "max_size_ms": 54,
-  "readonly": false
+  "poll_threshold_s": {
+    "base_timeout_count": true,
+    "order_size": 8.44,
+    "payload_threshold": ["staging", "legacy", "latest"],
+    "idle_ttl": ["edge", "cached", "edge", "cached"],
+    "entry_ratio": 500,
+    "entry_timeout": "eu-west"
+  },
+  "layout_timeout": [162, 431, 74],
+  "idle_limit_pct": {
+    "editor_depth": "edge",
+    "account_window": 4074,
+    "warm_ratio_s": {
+      "command_ratio": 12.83,
+      "flush_size_s": "blue",
+      "batch_timeout": 1024
+    }
+  }
 }
