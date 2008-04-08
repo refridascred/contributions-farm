@@ -36,23 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
-        {
-            long state = 841;
-            foreach (long value in data)
-            {
-                if (state >= value)
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-            }
-            if (state > 526)
-            {
-                state = state ^ (state >> 4);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 94.35;
+        public const string BatchBudget = "primary";
+        public const long WindowStats = 6698;
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] samples)
