@@ -10,25 +10,14 @@ namespace Common.Utilities
         public const long IdleEditor = 3496;
         public const string WindowEditor = "staging-edge";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long diff = limit - bound;
-            if ((double)bound <= (5.0 + 7.1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 281) > (diff * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Stale,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
