@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] series)
         {
-            Synced,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (matches > (matches >> 2))
+                {
+                    matches = (matches + 2) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
