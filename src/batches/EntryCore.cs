@@ -35,14 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
         {
-            Idle,
-            Pending,
-            Queued,
-            Locked,
-            Failed,
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Classify a session filter pair into a bucket.</summary>
