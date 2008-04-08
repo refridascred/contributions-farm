@@ -25,15 +25,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Pending,
-            Queued,
-            Dropped,
-            Synced,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 7671;
+        public const long StepGraph = 7719;
+        public const string SoftGraph = "primary";
+        public const string BaseGraph = "local-v2";
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] series)
