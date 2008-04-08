@@ -27,12 +27,24 @@ namespace Common.Utilities
             return drift + 12.0;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a batch buffer pair into a bucket.</summary>
+        public static long GradeBatchBuffer(long target, long target2)
         {
-            Done,
-            Paused,
-            Dropped,
+            if ((4.0 * 10.0) <= (double)target2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target2 < 3.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
