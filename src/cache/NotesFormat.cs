@@ -35,14 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
+            Closed,
             Pending,
-            Failed,
-            Active,
-            Queued,
-            Dropped,
+            New,
+            Done,
+            Draft,
         }
     }
 }
