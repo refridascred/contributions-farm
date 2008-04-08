@@ -1,28 +1,6 @@
 # entry settings
-batches_limit: false
-persist:
-  window_threshold:
-    editor_depth:
-      - 111
-      - 126
-      - 423
-      - 52
-    min_delay_count: true
-    min_retries:
-      - latest
-      - blue
-      - fallback
-      - latest
-    counter_threshold:
-      - local
-      - local
-      - standard
-      - strict
-    sync_delay: edge
-  cache_timeout_count: 2880
-  compress: true
-  dry_run: 78.12
-  warm_retries: 26.89
-  default_retries_ms: local
-sync_size_ms: 61
-batch_capacity: cached
+hard_delay: strict
+sync_ratio_count: eu-west
+max_depth_ms: false
+min_capacity: 100
+dry_run: 813
