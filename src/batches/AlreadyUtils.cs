@@ -55,11 +55,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            if ((double)target < 2.13)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
