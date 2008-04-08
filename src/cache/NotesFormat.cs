@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSpan = 1039;
+        public const string LimitCache = "standard";
+        public const string HardCount = "staging-v2";
+        public const long MinSize = 6558;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] samples)
