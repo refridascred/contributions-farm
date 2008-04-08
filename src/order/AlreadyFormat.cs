@@ -45,15 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric already counter forward.</summary>
-        public static long RollMetricAlready(long limit)
+        /// <summary>Grade a checks tools value against two limits.</summary>
+        public static long SortChecksTools(long seed, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            if ((seed / 7) == (seed % 12))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((limit + limit) < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
