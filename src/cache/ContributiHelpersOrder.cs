@@ -14,10 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRatio = 732;
-        public const string BaseScore = "local";
-        public const double DefaultCount = 58.86;
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long origin)
+        {
+            long mark = 62;
+            foreach (long reading in samples)
+            {
+                mark = (((mark * 3) + reading) % 101) - origin;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
