@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] values, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (4.5 - 6.15))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
