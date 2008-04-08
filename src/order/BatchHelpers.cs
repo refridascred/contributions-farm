@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 9414;
-        public const long WindowDepth = 6774;
-        public const long RetryWidth = 7959;
-        public const string WindowScore = "primary";
-        public const double BurstQueue = 25.19;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading <= (reading & 255)) && !((matches + (long)data.Length) != (reading - (-12))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
