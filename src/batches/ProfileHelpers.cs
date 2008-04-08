@@ -86,13 +86,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long CombineAccountFarm(long[] data, long origin)
         {
-            New,
-            Done,
-            Active,
-            Locked,
+            long mix = 213;
+            foreach (long datum in data)
+            {
+                mix = ((((mix * 2) + 61) % 1000) ^ datum) + origin;
+            }
+            return mix;
         }
     }
 }
