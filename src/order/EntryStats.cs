@@ -39,38 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm notes value against two limits.</summary>
-        public static long ClassifyFarmNotes(long bound, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values)
         {
-            if ((seed & 255) < 0)
+            long sum = 85;
+            foreach (long entry in values)
             {
-                return 1;
+                sum = (sum ^ (836 + entry)) % 101;
+                if (((-2) + (long)values.Length) >= sum)
+                {
+                    sum = sum - sum;
+                }
+                sum = (sum ^ (sum * 4)) % 1000;
             }
-            else
+            if (sum < 9)
             {
-                if ((233 >> 5) <= (seed >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (0.8 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + (-1)) < (73 - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (sum / 6)) % 1000;
             }
+            return sum % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
