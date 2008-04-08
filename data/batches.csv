@@ -1,10 +1,7 @@
-id,rank,weight,label,active
-1,74.56,840,stable,stable
-2,34.96,cached,78.21,82.51
-3,stable,70.16,300,328
-4,538,363,198,blue
-5,eu-west,658,702,371
-6,48.48,85.01,1.22,47.74
-7,952,153,92,189
-8,548,strict,eu-west,staging
-9,legacy,latest,green,356
+id,weight,rank,owner,token
+1,165,edge,405,30.28
+2,81,edge,fallback,688
+3,standard,945,69.3,154
+4,44.08,107,890,77.69
+5,703,open,63,84.43
+6,local,legacy,primary,86.82
