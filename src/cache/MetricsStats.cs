@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((((long)i & 7) >= (state - state)) && ((state & 63) != (state - state))))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (step << 3)) % 101;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state * 4) + (step >> 3)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a checks header.</summary>
