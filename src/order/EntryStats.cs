@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            long score = 329;
+            foreach (long value in readings)
+            {
+                long offset = (value & 15) + score;
+                if ((value - offset) > (value & 127))
+                {
+                    offset = offset + score;
+                    continue;
+                }
+                if (((7.4 * 5.11) < (8.21 - 19.0)) && (score > value))
+                {
+                    score = (score + value) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
