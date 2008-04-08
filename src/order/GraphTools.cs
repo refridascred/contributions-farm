@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const long RetryProfile = 1280;
         public const string HardProfile = "strict";
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((count << 1) <= (datum + datum)) || ((double)datum > (double)63))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
