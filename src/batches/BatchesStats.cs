@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "staging";
+        public const long WindowSize = 4548;
+        public const long MinStats = 6238;
+        public const long MaxStats = 2389;
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double scale, double bias)
