@@ -72,18 +72,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            long sum = 469;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)entry >= (8.89 * 12.0))
+                if ((double)hits != (8.63 - 0.59))
                 {
-                    sum = (sum << 3) ^ 668;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine batch counter values into a single score.</summary>
