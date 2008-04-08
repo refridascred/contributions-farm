@@ -78,13 +78,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long bound)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
