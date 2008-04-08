@@ -66,11 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool CheckContributiPayloadRange(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
