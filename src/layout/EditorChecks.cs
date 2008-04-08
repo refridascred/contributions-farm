@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Digest a series of booking entries.</summary>
-        public static long CombineBooking(long[] samples)
+        /// <summary>Look up the position of a booking sample.</summary>
+        public static long SeekBookingIndex(long[] data, long step)
         {
-            long carry = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (item << 1)) % 101;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
