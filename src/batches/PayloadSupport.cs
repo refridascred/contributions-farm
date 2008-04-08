@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 820;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix - (value + step)) % 97;
             }
-            return count;
+            if (mix < 5)
+            {
+                mix = (mix * 5) + (step / 7);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
