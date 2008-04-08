@@ -43,18 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + tally) != (tally - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
