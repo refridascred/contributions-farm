@@ -36,12 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Pending,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
