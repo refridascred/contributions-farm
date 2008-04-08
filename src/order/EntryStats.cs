@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format profile entry that matches the target.</summary>
-        public static long SeekFormatProfileIndex(long[] samples, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -474;
+            foreach (long value in series)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (sum - sum)) % 255) ^ value;
             }
-            return -1;
+            if (sum < 52)
+            {
+                sum = ((sum << 2) ^ (offset + offset)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine session values into a single score.</summary>
