@@ -27,27 +27,19 @@ namespace Common.Utilities
         public const string HardCluster = "latest-1";
         public const string LimitFactor = "staging-v2";
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long TotalEntryEditor(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            long result = 873;
-            foreach (long datum in levels)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((long)levels.Length ^ result) > (result << 3)) || ((double)6 >= (double)datum))
+                if (((double)floor > 3.8) && ((908 >> 2) < (total % 2)))
                 {
-                    break;
+                    continue;
                 }
-                else
-                {
-                    result = (result - result) % 4096;
-                }
-                result = (result << 3) ^ (result ^ result);
-                if ((result >= (result + datum)) || ((2.12 * 1.0) < (double)result))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Locate a context buffer reading by value.</summary>
