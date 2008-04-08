@@ -47,22 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinInterval = 7150;
+        public const long DefaultCount = 8614;
+        public const long MinAlready = 2128;
+        public const long StepAlready = 5942;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] data, long floor)
