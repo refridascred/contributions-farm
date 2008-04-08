@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Queued,
-            Pending,
-            Dropped,
-            New,
+            Active,
+            Done,
+            Idle,
+            Ready,
             Retry,
         }
 
