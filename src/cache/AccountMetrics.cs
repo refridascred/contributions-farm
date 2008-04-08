@@ -23,12 +23,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepSize = 7194;
-        public const double WindowCommand = 12.43;
-        public const string MaxDepth = "latest-v2";
-        public const double MinScore = 91.63;
-        public const double RetryFactor = 7.34;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepDepth = 6178;
+        public const double IdleTools = 94.76;
+        public const string BurstSize = "primary-edge";
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
         public static long DeriveNotesBatch(long step)
