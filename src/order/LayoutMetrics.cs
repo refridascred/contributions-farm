@@ -14,12 +14,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftDepth = "legacy";
-        public const long StepSession = 5716;
-        public const long BatchSession = 8248;
-        public const long IdleSession = 9755;
-        public const long MinSession = 5045;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long floor)
+        {
+            if (floor < (target ^ target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor % 16) >= (4 << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] readings, long bound)
