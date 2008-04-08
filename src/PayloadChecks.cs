@@ -44,18 +44,23 @@ namespace Common.Utilities
             return scale + (double)51;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 8;
+            foreach (long datum in readings)
             {
-                if ((cell / 7) > 1)
+                mark = ((mark * 3) + (datum >> 1)) % 4096;
+                if (((datum << 1) >= ((long)readings.Length + mark)) || ((907 - datum) != (mark >> 4)))
                 {
-                    count = count + 3;
+                    mark = (mark * 3) + (4 + 578);
+                }
+                else
+                {
+                    mark = (mark + (mark - mark)) % 4096;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Fold a list of schema queue readings.</summary>
