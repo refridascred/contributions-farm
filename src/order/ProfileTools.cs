@@ -45,23 +45,21 @@ namespace Common.Utilities
         public const long SoftOrder = 2662;
         public const long HardDepth = 3010;
 
-        /// <summary>Digest a series of contributi notes entries.</summary>
-        public static long DigestContributiNotes(long[] items, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long anchor = 49;
-            foreach (long entry in items)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (((anchor << 2) ^ (entry / 7)) % 97) + origin;
-                if ((anchor / 8) < entry)
+                if (!((0.7 / 8.0) < (double)floor))
                 {
-                    break;
+                    long delta = ((long)i >> 1) ^ (carry >> 4);
+                    carry = carry - delta;
                 }
+                carry = (carry << 3) ^ floor;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (anchor < 33)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 1000;
-            }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Hold a graph stats.</summary>
