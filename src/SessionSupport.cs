@@ -23,24 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long step, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] samples, long seed)
         {
-            if ((step / 9) > offset)
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) != (step - offset))
+                if (value > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
