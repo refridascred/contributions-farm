@@ -40,10 +40,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinWidth = 2903;
-        public const long MinLevel = 2109;
-        public const long BaseNotes = 5720;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7397;
+        public const long SoftFactor = 4427;
+        public const double BaseSession = 18.87;
+        public const long WindowBudget = 7671;
+        public const long IdleSize = 3336;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
