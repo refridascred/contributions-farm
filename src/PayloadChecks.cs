@@ -58,11 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftInterval = 47.42;
-        public const double BatchCache = 41.83;
-        public const long MaxSpan = 3709;
-        public const long StepCache = 9364;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 2211;
