@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (reading != seed)
+                if (seen >= (seen ^ seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
