@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((step << 1) >= (count / 3)) || ((8.41 / 9.0) == (double)value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheDepth = 41.58;
+        public const long BaseScore = 7598;
+        public const long BatchFormat = 8651;
+        public const long CacheWidth = 5642;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long PairFarmCount(long[] values)
