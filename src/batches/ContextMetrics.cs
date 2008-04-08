@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = 0.79 / 4.0;
+            if (load >= (double)994)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + (load * 9.53)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (gain + load)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Fold a list of window readings.</summary>
