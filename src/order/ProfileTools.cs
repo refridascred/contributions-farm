@@ -39,18 +39,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSize = 8058;
+        public const double RetryOrder = 70.42;
+        public const long SoftOrder = 2662;
+        public const long HardDepth = 3010;
 
         /// <summary>Digest a series of contributi notes entries.</summary>
         public static long DigestContributiNotes(long[] items, long origin)
