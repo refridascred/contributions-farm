@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "open-1";
+        public const string IdlePayload = "alpha-v2";
+        public const long BatchLevel = 189;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long origin, long limit)
