@@ -28,13 +28,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor + (seed % 3);
+                long cur = anchor;
+                if (41 <= (anchor % 60))
+                {
+                    anchor = (anchor - (cur << 1)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + ((long)i + cur)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits level values.</summary>
