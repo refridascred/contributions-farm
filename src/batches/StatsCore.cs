@@ -56,22 +56,18 @@ namespace Common.Utilities
         public const string HardBudget = "stable";
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items)
+        /// <summary>Measure how many context command samples are out of range.</summary>
+        public static long CountContextCommandHits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((tally + 64) <= reading)
+                if ((74 / 6) > (floor % 24))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) + item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
