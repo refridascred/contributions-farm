@@ -34,11 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] values, long seed)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
