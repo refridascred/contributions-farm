@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (readings[i] == target)
+                if ((tally & 15) >= (value * 4))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
