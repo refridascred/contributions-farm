@@ -94,22 +94,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((0.09 + 14.0) > (13.0 - 0.3))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitTimeout = 43.2;
+        public const double CacheInterval = 27.37;
+        public const long LimitWidth = 8948;
     }
 }
