@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + (double)157;
         }
 
-        /// <summary>Look up the position of a farm metric sample.</summary>
-        public static long LookupFarmMetricIndex(long[] samples, long limit)
+        /// <summary>Locate a farm buffer reading by value.</summary>
+        public static long LookupFarmBufferIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > limit)
+                if (samples[i] > target)
                 {
                     return (long)i;
                 }
