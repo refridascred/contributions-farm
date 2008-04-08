@@ -71,22 +71,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long CombineAccountCommits(long[] data, long origin)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = 417;
-            foreach (long datum in data)
-            {
-                if (origin <= ((-210) & 3))
-                {
-                    sum = (sum ^ datum) % 97;
-                }
-            }
-            if (sum < 48)
-            {
-                sum = (sum + (sum + origin)) % 97;
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
