@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] series, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long state = 378;
+            foreach (long entry in values)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state ^ (871 + state)) + entry;
             }
-            return flag;
+            if (state > 4)
+            {
+                state = (state ^ (state % 97)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
