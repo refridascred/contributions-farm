@@ -28,14 +28,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long limit)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Locked,
-            Done,
+            if (((offset * 4) < (offset % 16)) && ((limit & 7) > (limit & 63)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit ^ offset) <= (offset / 3)) || ((limit << 1) >= (offset << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= (563 >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
