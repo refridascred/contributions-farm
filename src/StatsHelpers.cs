@@ -35,13 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values, long origin)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((7.1 + 9.8) == (double)origin))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
