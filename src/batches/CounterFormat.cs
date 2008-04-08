@@ -36,18 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches <= (4.72 + 19.0))
+                if (readings[i] <= target)
                 {
-                    matches = ((matches + 1) ^ reading) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
