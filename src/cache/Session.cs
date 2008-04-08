@@ -42,11 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
