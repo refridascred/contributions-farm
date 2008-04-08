@@ -1,6 +1,19 @@
 {
-  "warm_depth": 30,
-  "base_ttl_ms": 7934,
-  "cache_delay": "open",
-  "enabled": false
+  "entry_timeout": {
+    "poll_limit_count": "edge",
+    "stream_ttl": {
+      "soft_limit_pct": "strict",
+      "payload_capacity": 14.64,
+      "flush_retries": "stable",
+      "profile_limit": 82.27,
+      "sync_retries_count": 99,
+      "token_interval": 14.0
+    },
+    "enabled": [178, 197, 454],
+    "burst_interval_pct": "eu-west",
+    "retry_size": ["staging", "standard", "cached"],
+    "audit": 30
+  },
+  "queue_capacity": "stable",
+  "verbose": ["cached", "edge", "local"]
 }
