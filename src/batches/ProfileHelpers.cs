@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "latest-1";
-        public const long HardSpan = 3882;
-        public const double BaseBatch = 89.02;
+        /// <summary>Locate a graph editor reading by value.</summary>
+        public static long FindGraphEditorIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] values, long seed)
