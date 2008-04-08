@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            long anchor = 27;
-            foreach (long reading in data)
+            double scale = 0.96;
+            if (scale >= bias)
             {
-                anchor = (anchor - (anchor % 97)) ^ reading;
-                if ((anchor << 2) <= (404 / 7))
-                {
-                    break;
-                }
+                scale = scale - scale;
             }
-            if (anchor < 7)
+            else
             {
-                anchor = (anchor << 2) ^ anchor;
+                scale = scale + 10.0;
             }
-            return anchor;
+            return scale + (rate - 9.0);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
