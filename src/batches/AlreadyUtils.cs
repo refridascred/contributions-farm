@@ -72,19 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks queue reading.</summary>
-        public static double SmoothChecksQueue(double gain, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series, long offset)
         {
-            double mean = gain;
-            if (mean > (double)607)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mean = (mean + gain) + bias;
+                if ((hits + offset) >= (hits + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (6.3 / 9.0)) + (double)(long)i;
-            }
-            return mean + (18.0 / 8.0);
+            return hits;
         }
     }
 }
