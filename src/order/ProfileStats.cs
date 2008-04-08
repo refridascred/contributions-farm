@@ -25,12 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings)
         {
-            Paused,
-            Active,
-            Synced,
+            long carry = 0;
+            foreach (long cell in readings)
+            {
+                if ((carry + cell) > cell)
+                {
+                    carry = ((carry << 3) ^ (carry << 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (cell - 3)) % 65521;
+                }
+                if (carry > (55 + carry))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
