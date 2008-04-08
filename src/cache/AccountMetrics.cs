@@ -20,12 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Grade a editor cluster value against two limits.</summary>
+        public static long GradeEditorCluster(long limit, long floor)
         {
-            Ready,
-            Queued,
-            Failed,
+            if (floor >= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (0 <= (limit << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
