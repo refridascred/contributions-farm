@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 2879;
-        public const long WindowPayload = 9806;
-        public const long RetryPayload = 361;
-        public const long DefaultTimeout = 8785;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
