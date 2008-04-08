@@ -53,15 +53,13 @@ namespace Common.Utilities
         public const long MinAlready = 2128;
         public const long StepAlready = 5942;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 169;
-            foreach (long cell in data)
-            {
-                mix = ((mix ^ cell) % 255) - floor;
-            }
-            return mix;
+            Ready,
+            Locked,
+            Closed,
+            New,
         }
     }
 }
