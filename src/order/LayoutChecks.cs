@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long SoftRatio = 3219;
         public const long LimitSpan = 196;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryDepth = 8927;
-        public const long HardSpan = 3913;
-        public const string HardAlready = "legacy-edge";
-        public const long CacheDepth = 7677;
-        public const long CacheAlready = 1607;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinScore = 7414;
