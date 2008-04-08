@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "open-1";
-        public const string IdlePayload = "alpha-v2";
-        public const long BatchLevel = 189;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum < ((-2) - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long seed)
