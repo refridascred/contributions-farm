@@ -35,23 +35,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double bias, double span)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double drift = span * 16.0;
-            if (drift > drift)
-            {
-                drift = drift + (double)723;
-            }
-            else
-            {
-                drift = drift + (5.7 - 3.89);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (bias * 6.0)) + (double)(long)i;
-            }
-            return drift + bias;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
