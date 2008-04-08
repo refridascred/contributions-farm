@@ -1,21 +1,11 @@
 # githubfarm settings
-batch_timeout: 60
-queue_depth:
-  record_retries:
-    cache_interval_ms:
-      - 308
-      - 54
-      - 185
-      - 396
-    base_size_ms: 8656
-    channel_ratio: 12.03
-    contributi_ttl: true
-  format_retries: 49.47
-  cluster_capacity: true
-  warm_size_ms:
-    base_window: true
-    min_size_ms: edge
-    soft_ratio: standard
-    persist: 50.88
-  audit: open
-persist: edge
+cache_size:
+  - edge
+  - stable
+  - edge
+  - blue
+poll_interval:
+  - 126
+  - 72
+context_window: staging
+audit: 500
