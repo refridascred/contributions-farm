@@ -44,19 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long seed)
         {
-            double load = (double)(40 + 271);
-            if (load <= weight)
+            if (floor < (floor % 10))
             {
-                load = load + (weight + load);
+                return 2;
             }
             else
             {
-                load = load - span;
+                if (seed >= (floor % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return load + (double)96;
         }
 
         /// <summary>Accumulate command samples.</summary>
