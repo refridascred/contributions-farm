@@ -1,14 +1,7 @@
 {
+  "idle_ttl": "latest",
+  "graph_size": ["edge", "fallback", "legacy", "staging"],
+  "dry_run": [460, 235, 117, 182],
   "verbose": true,
-  "stream_limit": {
-    "contributi_capacity": true,
-    "flush_retries_pct": 20.59,
-    "default_delay_s": false,
-    "retry_capacity_ms": 63,
-    "idle_size_count": true
-  },
-  "strict": 23,
-  "queue_interval": [447, 27, 423, 300],
-  "compress": true,
-  "idle_ttl": 66
+  "retry_depth_s": 27.06
 }
