@@ -60,14 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            Locked,
-            Pending,
-            New,
-            Done,
-            Active,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 2) <= (tally ^ tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
