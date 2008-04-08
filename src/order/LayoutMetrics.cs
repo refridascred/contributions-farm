@@ -30,14 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Closed,
-            Done,
             Retry,
-            Active,
-            Stale,
+            Locked,
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
