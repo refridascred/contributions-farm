@@ -1,9 +1,10 @@
 # entry settings
-min_window_ms: 334
-support_delay:
-  - open
-  - standard
-  - primary
-enabled: false
-strict: 84.54
-dry_run: standard
+command_ratio:
+  - staging
+  - staging
+  - staging
+  - eu-west
+strict: latest
+poll_size_ms: false
+soft_timeout: false
+cache_interval_s: true
