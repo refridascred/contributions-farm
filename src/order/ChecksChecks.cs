@@ -34,32 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long slot = offset ^ limit;
-            if (!((offset + limit) > slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-843) + slot) != (limit + 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (7.8 > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Stale,
+            Draft,
         }
     }
 }
