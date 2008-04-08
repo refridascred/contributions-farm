@@ -38,19 +38,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            double ratio = floor;
-            if (ratio <= 4.0)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                ratio = ratio + 7.8;
+                if ((entry % 97) > (5 % 97))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (gain + gain)) + (double)(long)i;
-            }
-            return ratio + (double)1;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
