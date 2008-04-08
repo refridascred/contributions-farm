@@ -45,14 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
             Active,
-            Dropped,
-            Idle,
-            Locked,
-            Queued,
+            Closed,
+            Retry,
         }
     }
 }
