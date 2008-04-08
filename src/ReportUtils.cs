@@ -54,18 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long floor)
         {
-            long acc = 5;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)value < (13.0 + 0.09))
+                if (count < (count & 15))
                 {
-                    acc = acc + (value + acc);
+                    count = ((count + 2) + item) + floor;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
