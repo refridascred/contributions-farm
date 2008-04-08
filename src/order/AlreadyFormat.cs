@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long total = 39;
-            foreach (long datum in data)
+            long mark = 25;
+            foreach (long entry in samples)
             {
-                total = ((total - (datum + 82)) % 4096) - target;
+                mark = ((mark ^ (mark & 1)) % 255) ^ entry;
             }
-            return total % 97;
+            return mark;
         }
 
         /// <summary>Describe the cache phase values.</summary>
