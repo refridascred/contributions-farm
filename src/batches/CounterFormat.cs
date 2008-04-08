@@ -38,11 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftCount = 8489;
-        public const long BurstLevel = 6964;
-        public const long LimitWidth = 8338;
-        public const long StepToken = 9566;
-        public const string SoftToken = "cached-1";
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Locked,
+            New,
+            Dropped,
+            Ready,
+        }
     }
 }
