@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 43.32;
-        public const long WindowSize = 4101;
-        public const string LimitSize = "alpha-1";
-        public const long StepFormat = 2396;
-        public const long BatchBudget = 5286;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
