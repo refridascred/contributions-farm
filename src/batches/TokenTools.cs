@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] readings, long floor)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up profile samples.</summary>
