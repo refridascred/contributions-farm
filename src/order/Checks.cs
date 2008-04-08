@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 67.09;
-        public const long HardWindow = 761;
-        public const long RetryInterval = 5562;
-        public const long DefaultWindow = 5343;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            New,
+            Stale,
+            Done,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double CacheRecord = 67.29;
