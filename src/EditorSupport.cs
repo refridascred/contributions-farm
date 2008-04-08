@@ -63,13 +63,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double weight, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            double mean = weight;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean - (mean * 1.0)) + (double)(long)i) - span;
+            }
+            return mean + (mean + mean);
         }
     }
 }
