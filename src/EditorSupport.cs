@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Failed,
             Idle,
-            Draft,
-            Closed,
+            Pending,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Accumulate batches samples.</summary>
