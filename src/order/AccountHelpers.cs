@@ -43,12 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            Stale,
+            Active,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
