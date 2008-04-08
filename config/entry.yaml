@@ -1,6 +1,31 @@
 # entry settings
-hard_delay: strict
-sync_ratio_count: eu-west
-max_depth_ms: false
-min_capacity: 100
-dry_run: 813
+buffer_capacity:
+  - staging
+  - fallback
+  - stable
+max_interval_s:
+  compress: true
+  audit: local
+  verbose: open
+  support_timeout:
+    - staging
+    - green
+    - open
+    - open
+  min_ttl:
+    - primary
+    - primary
+    - primary
+    - open
+soft_threshold_count: legacy
+account_size:
+  audit:
+    - 254
+    - 465
+    - 86
+    - 185
+  persist:
+    - 27
+    - 272
+    - 290
+  commits_threshold: 9830
