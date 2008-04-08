@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
