@@ -64,17 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long floor)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (offset - offset) * 10.0;
+            if (drift < (drift + offset))
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - 8.78) - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)921;
+            }
+            return drift - offset;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
