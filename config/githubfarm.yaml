@@ -1,7 +1,37 @@
 # githubfarm settings
-audit: 46
-flush_delay_count: eu-west
-warm_timeout: true
-order_retries:
-  - 261
-  - 166
+report_ttl:
+  base_ttl_pct: true
+  sync_delay_pct: true
+  verbose: false
+base_limit_pct:
+  warm_ratio_ms: 56.2
+  graph_retries: 46
+  hard_timeout:
+    default_interval_s: 30.51
+    flush_size_s: stable
+    cache_timeout: latest
+    min_threshold_s:
+      - 147
+      - 269
+      - 92
+    cache_limit: 500
+  flush_ratio_ms: local
+  idle_interval_ms: 9062
+  order_retries:
+    sync_retries_count: 91
+    poll_window_count: 12.43
+    persist: legacy
+    idle_size_count: green
+retry_depth_count: 6065
+window_window:
+  already_size: open
+  compress: legacy
+  warm_interval_s: false
+  account_ratio:
+    - 8
+    - 5
+    - 344
+  verbose: latest
+  retry_interval_ms: 30
+max_threshold_count: local
+base_ttl: 7797
