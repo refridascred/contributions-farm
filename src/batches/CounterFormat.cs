@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const double MaxChannel = 0.75;
         public const string LimitInterval = "alpha";
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
