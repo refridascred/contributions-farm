@@ -44,13 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Locked,
-            Paused,
-            Idle,
-            Synced,
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
