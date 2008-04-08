@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double offset)
-        {
-            double rate2 = 6.2;
-            if (rate2 >= (2.9 / 4.0))
-            {
-                rate2 = (rate2 - (double)40) - offset;
-            }
-            else
-            {
-                rate2 = rate2 + (5.6 / 7.0);
-            }
-            return rate2 - (rate + rate2);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitLevel = 4459;
+        public const string StepTimeout = "alpha-edge";
+        public const long IdleAccount = 5310;
+        public const string SoftAccount = "fallback";
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
