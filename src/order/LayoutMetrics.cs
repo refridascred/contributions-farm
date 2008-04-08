@@ -16,13 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardCount = 16.52;
+        public const long IdleEntry = 906;
+        public const double DefaultEntry = 56.33;
+        public const long BaseScore = 3343;
+        public const long BaseEntry = 2926;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] items)
