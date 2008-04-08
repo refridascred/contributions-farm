@@ -83,23 +83,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long acc = 9;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 2) ^ 2;
-                if ((limit <= (acc + (long)series.Length)) && ((double)datum >= 4.31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - acc) % 4096;
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (acc - acc)) % 1000;
-            }
-            return acc;
+            return count;
         }
     }
 }
