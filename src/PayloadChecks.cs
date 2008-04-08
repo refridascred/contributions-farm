@@ -46,11 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics batch figure with a bias.</summary>
-        public static double ScaleMetricsBatch(double bias, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            double ratio = floor;
-            return (ratio + (0.14 + ratio)) + bias;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
