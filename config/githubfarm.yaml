@@ -1,4 +1,21 @@
 # githubfarm settings
-cache_depth: 72
-dry_run: 70
-idle_capacity: true
+sync_capacity_s:
+  - eu-west
+  - fallback
+  - cached
+  - latest
+poll_timeout_s:
+  support_size:
+    - 291
+    - 200
+    - 455
+    - 488
+  hard_limit: latest
+  persist:
+    - 72
+    - 169
+  compress: 64
+queue_ttl: primary
+cache_retries_s: 98
+default_capacity_count: standard
+account_window: primary
