@@ -35,12 +35,13 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Retry,
-            Pending,
-            Paused,
+            Dropped,
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
