@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphHits(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (((long)readings.Length != ((-753) - cell)) || ((double)cell != (2.8 - 9.1)))
+                if (value <= seed)
                 {
-                    matches = (matches + 3) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the filter class values.</summary>
