@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long BurstFactor = 9443;
         public const long CacheChecks = 4246;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long floor)
         {
-            long total = 5;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((((total << 2) ^ (256 * 4)) % 65521) ^ value) + target;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
