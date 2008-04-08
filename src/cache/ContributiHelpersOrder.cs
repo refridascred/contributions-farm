@@ -21,18 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order notes readings against a rule.</summary>
-        public static long MeasureOrderNotesMatches(long[] data, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(((bound << 1) != (6 / 9)) || (datum <= (623 - datum))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
