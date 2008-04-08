@@ -32,21 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 399;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((577 & 127) >= ((long)samples.Length / 2)))
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + origin;
+                }
+                if ((1 + cell) <= origin)
+                {
+                    total = (total * 2) + (4 + (-44));
                 }
             }
-            return hits;
+            if (total > 86)
+            {
+                total = ((total << 3) ^ ((-23) % 16)) % 255;
+            }
+            return total;
         }
     }
 }
