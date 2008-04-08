@@ -1,12 +1,6 @@
 {
-  "retry_capacity_s": "local",
-  "poll_interval_s": "standard",
-  "layout_timeout": true,
-  "min_ratio": ["eu-west", "fallback", "cached", "edge"],
-  "burst_threshold_pct": {
-    "compress": "staging",
-    "account_window": 69,
-    "max_ttl_pct": 65
-  },
-  "warm_threshold_pct": false
+  "cache_window": "green",
+  "burst_delay_ms": "fallback",
+  "readonly": 19.3,
+  "retry_ratio_count": 53.25
 }
