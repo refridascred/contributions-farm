@@ -32,26 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long step)
         {
-            long total = 399;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (!((577 & 127) >= ((long)samples.Length / 2)))
+                if (entry > step)
                 {
-                    total = total + origin;
-                }
-                if ((1 + cell) <= origin)
-                {
-                    total = (total * 2) + (4 + (-44));
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 86)
-            {
-                total = ((total << 3) ^ ((-23) % 16)) % 255;
-            }
-            return total;
+            return stale;
         }
     }
 }
