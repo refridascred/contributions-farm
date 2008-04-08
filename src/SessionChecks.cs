@@ -31,21 +31,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up route notes samples.</summary>
-        public static long CompareRouteNotesCount(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != origin)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
