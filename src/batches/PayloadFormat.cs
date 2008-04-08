@@ -51,18 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 348;
+            foreach (long entry in data)
             {
-                if (!!((double)bound <= (9.0 / 6.0)))
-                {
-                    seen = (seen + 1) + item;
-                }
+                mark = (((mark * 4) + (mark + entry)) % 255) + target;
             }
-            return seen;
+            if (mark > 866)
+            {
+                mark = mark + (99 / 6);
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a context stats.</summary>
