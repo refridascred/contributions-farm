@@ -37,22 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches < (double)entry)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryLevel = 89.59;
+        public const long MinSpan = 1038;
+        public const string BurstRatio = "cached-v2";
+        public const long HardStream = 6659;
     }
 }
