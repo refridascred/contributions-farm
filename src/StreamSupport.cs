@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Digest a series of buffer batches entries.</summary>
+        public static long DigestBufferBatches(long[] data, long floor)
         {
-            Locked,
-            Draft,
-            Stale,
-            Retry,
-            Failed,
+            long result = 32;
+            foreach (long item in data)
+            {
+                result = (result ^ (item << 1)) % 255;
+            }
+            if (result > 6)
+            {
+                result = (result - floor) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
