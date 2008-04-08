@@ -55,19 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel counter values into a single score.</summary>
-        public static long DigestChannelCounter(long[] readings)
-        {
-            long sum = 486;
-            foreach (long sample in readings)
-            {
-                if (51 < (sum / 6))
-                {
-                    sum = (sum + sum) ^ sample;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepInterval = "primary-edge";
+        public const long BatchWindow = 7174;
+        public const long LimitTimeout = 7871;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long WeighStats(long[] series, long limit)
