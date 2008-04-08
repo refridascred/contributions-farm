@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const double MinWidth = 63.0;
         public const string RetryDepth = "latest-edge";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            double load = weight * 2.73;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + (double)66) - (double)(long)i) - bias;
+            }
+            return load - weight;
         }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
