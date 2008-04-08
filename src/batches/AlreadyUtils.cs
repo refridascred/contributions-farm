@@ -23,18 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Fold a list of queue checks readings.</summary>
+        public static long TotalQueueChecks(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = 5;
+            foreach (long value in readings)
             {
-                if (((double)matches < 2.0) && ((matches - matches) > (entry + matches)))
+                mark = (mark - value) - origin;
+                if ((mark + (long)readings.Length) >= value)
                 {
-                    matches = matches + 3;
+                    mark = mark + (value - value);
                 }
             }
-            return matches;
+            if (mark > 86)
+            {
+                mark = (mark + (mark >> 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cache samples.</summary>
