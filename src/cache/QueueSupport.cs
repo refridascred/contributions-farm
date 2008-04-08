@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((hits % 5) > reading) || (reading < (reading & 7)))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultSpan = 1004;
+        public const long DefaultCount = 7221;
+        public const long DefaultWidth = 8112;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long step)
