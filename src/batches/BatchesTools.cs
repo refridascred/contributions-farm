@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
