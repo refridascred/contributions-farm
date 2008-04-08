@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the token window entries that pass the check.</summary>
-        public static long MeasureTokenWindowOutliers(long[] data)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches + cell) <= (matches % 8)) || ((double)cell == (double)matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
