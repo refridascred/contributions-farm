@@ -13,21 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = span;
+            if (gain <= bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (span * 17.0)) + (double)(long)i;
+            }
+            return gain + (double)0;
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
