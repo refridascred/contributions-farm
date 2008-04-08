@@ -64,19 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings, long offset)
-        {
-            long score = 312;
-            foreach (long sample in readings)
-            {
-                if ((double)offset < (3.0 * 12.0))
-                {
-                    score = (score - (score * 2)) - sample;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLevel = 86.28;
+        public const string HardBudget = "stable";
+        public const string MaxInterval = "cached-edge";
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
