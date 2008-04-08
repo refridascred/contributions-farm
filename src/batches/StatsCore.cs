@@ -21,12 +21,20 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleWidth = 3028;
-        public const string StepDepth = "primary-edge";
-        public const long SoftCount = 404;
-        public const long DefaultTimeout = 6715;
-        public const long BatchDepth = 4984;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long target)
+        {
+            long carry = 6;
+            foreach (long item in items)
+            {
+                carry = ((carry + target) % 4096) - item;
+            }
+            if (carry > 9)
+            {
+                carry = (carry + (target - target)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
