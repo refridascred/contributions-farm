@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long target)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((target >> 4) == (target >> 2))
+                if (value <= target)
                 {
-                    result = ((result * 4) + (result / 3)) % 101;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    result = result ^ (9 << 2);
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the cache status values.</summary>
