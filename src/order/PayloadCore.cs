@@ -54,18 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally > (item - item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Ready,
         }
     }
 }
