@@ -23,19 +23,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long gap = target + origin;
+            if ((3.31 / 9.0) > (double)gap)
             {
-                if (state < (seed * 4))
-                {
-                    state = (state + seed) % 97;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (origin >= (target << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two tools measurements.</summary>
