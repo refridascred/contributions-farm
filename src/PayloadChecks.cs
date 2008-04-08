@@ -16,26 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a filter entry value against two limits.</summary>
-        public static long BucketFilterEntry(long target, long seed)
-        {
-            long prev = target ^ seed;
-            if (((seed * 3) < 483) && ((double)prev > (3.08 - 6.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((14.0 / 7.0) >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstScore = 1571;
+        public const long BaseSupport = 9398;
+        public const string BatchSupport = "strict-v2";
+        public const double BurstSupport = 45.6;
+        public const long StepSupport = 4650;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] data, long offset)
