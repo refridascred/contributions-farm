@@ -25,27 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values, long offset)
-        {
-            long acc = 3;
-            foreach (long datum in values)
-            {
-                if (!(acc > (datum << 2)))
-                {
-                    acc = (acc * 3) + (acc - 9);
-                }
-                if (((double)acc >= (11.0 + 6.0)) && ((offset >> 3) >= acc))
-                {
-                    acc = acc - (offset - 53);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (offset & 1);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 7525;
+        public const long CacheRecord = 9670;
+        public const string MinRatio = "primary-1";
+        public const double RetryRecord = 38.03;
+        public const long StepInterval = 4644;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long CompareFilterCount(long[] series)
