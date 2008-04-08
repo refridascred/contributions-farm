@@ -45,18 +45,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] readings, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long result = 3;
-            foreach (long entry in readings)
-            {
-                if (130 > (target % 16))
-                {
-                    result = ((result - (10 & 1)) % 97) ^ entry;
-                }
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a checks tools value against two limits.</summary>
