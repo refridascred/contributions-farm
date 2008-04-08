@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Validate layout format readings against a bound.</summary>
+        public static bool CheckLayoutFormatRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (tally < (item / 3))
+                if (entry >= origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a entry options.</summary>
