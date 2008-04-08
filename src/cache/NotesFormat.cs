@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long MeasureBufferGithubfarmMatches(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 835;
+            foreach (long cell in values)
             {
-                if (((2.8 - 3.6) <= (9.45 * 5.4)) || ((matches >= (entry & 255)) && ((entry - matches) != (matches ^ entry))))
+                if (!(((6.67 + 8.88) <= (double)sum) && ((double)cell == (9.6 - 4.46))))
                 {
-                    matches = matches + 2;
+                    sum = (sum * 5) + (sum - step);
                 }
+                if ((step % 12) > sum)
+                {
+                    sum = (sum - (-965)) % 1000;
+                }
+                sum = (sum - (sum + sum)) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
