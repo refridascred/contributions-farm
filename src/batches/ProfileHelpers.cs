@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long AuditClusterCommitsMatches(long[] samples, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)reading != (3.0 / 6.0)) && !(seen < (seen + 82)))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Iterate the command record series from a seed.</summary>
