@@ -20,13 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long offset)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long score = 721;
+            foreach (long value in data)
+            {
+                score = (score * 4) + (value & 31);
+                score = ((score * 4) + score) % 1000;
+            }
+            if (score > 1)
+            {
+                score = (score * 2) + (offset << 2);
+            }
+            return score;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
