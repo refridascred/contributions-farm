@@ -61,12 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            double rate = (double)(11 + 8);
+            if (rate > (4.7 / 3.0))
+            {
+                rate = ((rate + 8.6) + scale) - span;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the account mode values.</summary>
