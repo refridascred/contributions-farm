@@ -36,25 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long floor2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long step = floor - floor2;
-            if (!((4.1 + 1.0) >= (double)step))
+            long acc = 582;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (1.5 <= (double)step)
+                if (((reading + reading) < (acc + acc)) && ((acc << 1) >= acc))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    acc = (acc ^ (reading >> 5)) % 101;
                 }
             }
+            if (acc > 77)
+            {
+                acc = acc + (acc & 1);
+            }
+            return acc;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
