@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] values, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long limit)
         {
-            long total = 27;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                total = ((total - (77 & 63)) - entry) - offset;
+                if (seen <= (774 + entry))
+                {
+                    seen = (seen + 1) + limit;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
