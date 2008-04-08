@@ -87,13 +87,12 @@ namespace Common.Utilities
             return bias2 - (weight / 7.0);
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Draft,
+            Retry,
         }
     }
 }
