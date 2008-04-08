@@ -47,16 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Audit buffer batch readings against a rule.</summary>
+        public static long AuditBufferBatchMatches(long[] samples, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                result = (result << 2) ^ 337;
-                result = ((result * 3) + (long)i) % 101;
+                if ((((datum << 2) < (hits / 2)) && ((bound / 3) <= (hits - datum))) && ((double)hits <= (2.6 / 4.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
