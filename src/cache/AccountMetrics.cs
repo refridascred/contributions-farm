@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = -866;
-            foreach (long entry in samples)
-            {
-                mark = ((mark + ((long)samples.Length + mark)) % 97) ^ entry;
-                mark = mark + (mark + mark);
-            }
-            if (mark < 0)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
