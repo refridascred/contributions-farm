@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "local";
-        public const double WindowEntry = 50.2;
-        public const double MinEntry = 92.54;
-        public const string SoftEntry = "stable-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 3315;
+        public const long MaxSpan = 3281;
+        public const long MinLayout = 407;
+        public const string MinCount = "fallback-v2";
+        public const string MinInterval = "open-1";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
