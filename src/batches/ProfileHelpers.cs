@@ -40,21 +40,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = origin + seed;
+            if ((6.35 - 3.78) > (double)edge)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(400 >= (edge & 127)))
                 {
-                    if ((samples[i] - samples[j]) != 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge != (double)origin)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((edge & 63) > (edge & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next stats command value from a seed.</summary>
