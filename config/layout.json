@@ -1,6 +1,18 @@
 {
-  "retry_delay_pct": 57.0,
-  "farm_ratio": ["standard", "local"],
-  "token_window": 97.78,
-  "enabled": "primary"
+  "layout_size": true,
+  "warm_threshold_pct": 25,
+  "max_delay_ms": "legacy",
+  "readonly": 78.68,
+  "default_size": {
+    "readonly": {
+      "burst_timeout": 4834,
+      "flush_threshold_count": "strict",
+      "batch_depth": 4598
+    },
+    "burst_ttl_s": 30,
+    "burst_threshold": ["green", "standard"],
+    "stream_threshold": 17.38,
+    "audit": 1024
+  },
+  "token_size": "cached"
 }
