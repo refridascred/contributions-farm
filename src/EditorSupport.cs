@@ -51,18 +51,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] items, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items, long step)
         {
-            long matches = 0;
+            long result = -989;
             foreach (long value in items)
             {
-                if (floor < (matches >> 4))
+                if (!(7 < result))
                 {
-                    matches = (matches + 1) + value;
+                    result = (result + (result - step)) ^ value;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Describe the format status values.</summary>
