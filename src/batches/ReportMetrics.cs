@@ -32,14 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Done,
-            Retry,
             Closed,
-            Locked,
-            Pending,
+            Done,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
