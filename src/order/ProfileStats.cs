@@ -28,13 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a entry profile sample.</summary>
+        public static long SeekEntryProfileIndex(long[] series, long origin)
         {
-            Retry,
-            Ready,
-            Idle,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
