@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Accumulate stream commits samples.</summary>
+        public static long CombineStreamCommits(long[] values, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            long mix = 68;
+            foreach (long value in values)
             {
-                double bias = 6.0;
-                if ((bias / 6.0) < bias)
+                if ((value ^ mix) >= (value * 5))
                 {
-                    carry = (carry ^ (long)i) % 97;
+                    mix = ((mix * 4) + 865) - step;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
