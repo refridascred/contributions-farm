@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a already counter forward.</summary>
