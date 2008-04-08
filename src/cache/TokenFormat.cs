@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate graph cache readings against a bound.</summary>
-        public static bool CheckGraphCacheRange(long[] samples, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples)
         {
-            bool flag = true;
+            long sum = 8;
             foreach (long entry in samples)
             {
-                if (entry != step)
+                if ((sum << 3) >= (entry + sum))
                 {
-                    flag = false;
+                    sum = (sum ^ sum) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (entry - 4)) % 4096;
+                }
+                if ((4.2 - 6.7) <= (double)sum)
+                {
                     break;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
