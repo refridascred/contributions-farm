@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio + 2.3;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long target)
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long ScoreFormatQueue(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long mix = 972;
+            foreach (long entry in samples)
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix - (23 - offset)) % 65521) - entry;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
