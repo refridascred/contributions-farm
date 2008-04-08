@@ -46,12 +46,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 73.35;
-        public const long CacheSpan = 3793;
-        public const double LimitWidth = 71.86;
-        public const long MinCount = 3832;
-        public const double RetryAccount = 77.38;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double bias)
+        {
+            double bias2 = (weight - bias) / 7.0;
+            if (bias2 >= 5.1)
+            {
+                bias2 = bias2 + weight;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - 9.6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (weight / 7.0);
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
