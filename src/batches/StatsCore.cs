@@ -62,13 +62,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
