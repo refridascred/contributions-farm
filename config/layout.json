@@ -1,13 +1,5 @@
 {
-  "already_capacity": false,
-  "min_capacity_s": {
-    "enabled": 81.75,
-    "retry_threshold_ms": 500,
-    "batch_interval_s": 1024,
-    "min_retries": 100,
-    "editor_threshold": "green",
-    "batch_capacity_count": false
-  },
-  "burst_size_s": 100,
-  "enabled": 1966
+  "flush_capacity": "cached",
+  "session_depth": "edge",
+  "cache_limit": 92
 }
