@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const long StepLevel = 800;
         public const long HardLevel = 2388;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((datum - datum) > (datum + datum)) || ((5.0 / 4.0) == (double)step))
+                if ((limit % 12) >= (seen + sample))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
