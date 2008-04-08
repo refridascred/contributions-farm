@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const string WindowScore = "primary";
         public const double BurstQueue = 25.19;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            Paused,
+            Done,
         }
     }
 }
