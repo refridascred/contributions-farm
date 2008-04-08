@@ -1,5 +1,6 @@
 {
-  "metric_capacity": 72.19,
-  "channel_capacity": 36,
-  "base_timeout_pct": "edge"
+  "cluster_depth": 86,
+  "githubfarm_depth": ["open", "latest", "edge"],
+  "retry_timeout": "legacy",
+  "compress": 27
 }
