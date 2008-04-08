@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry entry that matches the target.</summary>
-        public static long LookupReportEntryIndex(long[] values, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + origin) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
