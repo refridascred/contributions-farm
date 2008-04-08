@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool GuardClusterContextRange(long[] data, long bound)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream entry.</summary>
