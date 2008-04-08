@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] data)
         {
-            Done,
-            Idle,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (item <= 739)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
