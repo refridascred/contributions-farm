@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            Ready,
+            Paused,
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
