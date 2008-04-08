@@ -45,26 +45,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Blend two session commits measurements.</summary>
+        public static double ScaleSessionCommits(double bias, double offset)
         {
-            long result = 76;
-            foreach (long datum in samples)
+            double weight = (double)(975 + 7);
+            if (weight >= 9.9)
             {
-                if (!((17.0 + 7.9) < (double)datum))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result ^ (datum ^ result)) % 4096;
-                }
-                if ((double)datum < (6.33 - 6.2))
-                {
-                    result = (result - ((-805) & 127)) % 255;
-                }
+                weight = (weight - (5.65 / 7.0)) - offset;
             }
-            return result % 97;
+            return weight - bias;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
