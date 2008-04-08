@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 5956;
-        public const long CacheMetric = 778;
-        public const long MaxMetric = 8413;
-        public const long CacheCount = 8369;
+        /// <summary>Iterate the layout token series from a seed.</summary>
+        public static long DeriveLayoutToken(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor + (step << 2)) % 4096) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] values, long target)
