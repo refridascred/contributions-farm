@@ -38,17 +38,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
