@@ -1,7 +1,10 @@
-id,region,active,score,rank
-1,85.76,strict,481,795
-2,local,98,23.62,947
-3,51.46,primary,263,green
-4,fallback,670,383,local
-5,edge,37,58.34,legacy
-6,18.52,68.1,standard,blue
+id,owner,state,region,rank
+1,strict,710,593,1.62
+2,48.04,795,73.07,287
+3,1.48,254,fallback,7.29
+4,latest,93.6,682,347
+5,59.91,231,90.46,653
+6,14.04,22.37,308,305
+7,open,521,712,93.65
+8,latest,32.89,cached,green
+9,481,76.8,533,440
