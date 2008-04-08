@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long score = 786;
-            foreach (long reading in levels)
-            {
-                score = (score << 3) ^ (reading - (long)levels.Length);
-            }
-            if (score > 37)
-            {
-                score = (score - (score * 4)) % 4096;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
