@@ -1,6 +1,6 @@
 {
-  "burst_timeout": 100,
-  "max_capacity": [37, 424, 397],
-  "soft_retries_pct": 0.78,
-  "filter_timeout": "strict"
+  "burst_delay_pct": 60,
+  "idle_delay": 62,
+  "hard_threshold": "staging",
+  "soft_size": ["fallback", "primary", "edge"]
 }
