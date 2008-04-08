@@ -34,19 +34,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double bias = weight;
+            if (bias > (double)1)
             {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + offset;
             }
-            return flag;
+            else
+            {
+                bias = bias + (weight - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + weight) - (double)(long)i;
+            }
+            return bias - (double)(-710);
         }
 
         /// <summary>Define account limits and defaults.</summary>
