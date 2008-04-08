@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            Retry,
-            Paused,
-            Queued,
-            Ready,
+            double rate2 = (bias * 7.5) - rate;
+            return rate2 - rate;
         }
 
         /// <summary>Find the first session stats entry that matches the target.</summary>
