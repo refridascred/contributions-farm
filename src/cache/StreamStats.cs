@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum < ((-2) - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinFactor = 43.13;
+        public const double BatchSession = 49.95;
+        public const string HardTimeout = "stable";
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long seed)
