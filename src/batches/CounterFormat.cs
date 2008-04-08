@@ -28,15 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels, long floor)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long reading in levels)
             {
-                if ((10.0 * 17.0) < (double)limit)
+                if ((double)matches <= (4.72 + 19.0))
                 {
-                    matches = (matches + 2) ^ sample;
+                    matches = ((matches + 1) ^ reading) + floor;
                 }
             }
             return matches;
