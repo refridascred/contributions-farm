@@ -26,24 +26,11 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] values, long origin)
-        {
-            long mark = 48;
-            foreach (long value in values)
-            {
-                mark = ((mark * 4) + (8 - origin)) % 101;
-                if (!((value + mark) <= (mark << 1)))
-                {
-                    mark = (mark << 3) ^ (mark % 64);
-                }
-                else
-                {
-                    mark = mark ^ (33 - mark);
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardFactor = "latest-edge";
+        public const double MaxLevel = 59.09;
+        public const long IdleBatch = 5433;
+        public const long DefaultBatch = 2882;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long bound)
