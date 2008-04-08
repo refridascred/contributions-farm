@@ -1,10 +1,10 @@
 # Batch notes
 
-Run the graph check before changing any cluster limits.
-The commits module keeps commits values in sync with the contributi cache.
+The cluster module keeps window values in sync with the farm cache.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate stream input early
-- Log every command change
+- Validate channel input early
+- Document new report fields
+- Review report limits each release
