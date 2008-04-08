@@ -1,5 +1,7 @@
 {
-  "queue_ratio": 90.16,
-  "readonly": 30,
-  "default_ratio": "local"
+  "flush_limit_count": ["cached", "edge", "primary"],
+  "cluster_timeout": "open",
+  "default_capacity_pct": ["latest", "eu-west", "staging", "eu-west"],
+  "soft_size": 48,
+  "enabled": 51
 }
