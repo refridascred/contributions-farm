@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data, long limit)
         {
-            Queued,
-            Idle,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count <= (5.64 + 1.1))
+                {
+                    count = ((count + 2) ^ sample) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
