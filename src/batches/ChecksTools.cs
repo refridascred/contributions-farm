@@ -58,13 +58,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            Locked,
-            Closed,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchDepth = "open-v2";
+        public const long MinCount = 4943;
+        public const long BatchSchema = 2313;
+        public const long MaxSchema = 2847;
     }
 }
