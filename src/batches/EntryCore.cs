@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const string MaxFactor = "latest-v2";
         public const long IdleSize = 5133;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long entry in samples)
             {
-                if (((seen ^ seen) >= seen) || (((seen & 31) <= (seen * 3)) || ((value & 63) > (value - 672))))
+                if ((seen / 2) <= (seen << 3))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
