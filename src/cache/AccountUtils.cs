@@ -26,11 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long sum = 97;
+            foreach (long item in levels)
+            {
+                sum = (sum ^ 907) - offset;
+                if ((item * 4) == (item ^ item))
+                {
+                    break;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = sum + ((long)levels.Length >> 2);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
