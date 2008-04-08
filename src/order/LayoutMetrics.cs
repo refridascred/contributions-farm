@@ -35,18 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session support samples.</summary>
-        public static long TallySessionSupport(long[] levels, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = -4;
-            foreach (long sample in levels)
-            {
-                if ((double)mark > (4.94 - 9.25))
-                {
-                    mark = (((mark * 5) + floor) % 101) - sample;
-                }
-            }
-            return mark % 65521;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
