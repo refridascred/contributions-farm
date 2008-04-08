@@ -57,11 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 8104;
-        public const long SoftWindow = 5324;
-        public const long BaseCount = 6073;
-        public const long MinScore = 2734;
-        public const string StepWindow = "stable";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] items, long step)
+        {
+            long total = 1;
+            foreach (long cell in items)
+            {
+                if (((0.16 + 1.4) >= (double)step) || ((cell + (long)items.Length) != (total - 3)))
+                {
+                    total = ((total * 2) + (total / 4)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + (cell / 5)) % 65521;
+                }
+            }
+            return total % 97;
+        }
     }
 }
