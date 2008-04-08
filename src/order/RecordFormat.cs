@@ -53,17 +53,12 @@ namespace Common.Utilities
         public const long MinCount = 3832;
         public const double RetryAccount = 77.38;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Synced,
+            Draft,
         }
     }
 }
