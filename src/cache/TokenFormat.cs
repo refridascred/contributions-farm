@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] data, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.6 - 10.0) < (double)matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 1) - datum) - target;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
