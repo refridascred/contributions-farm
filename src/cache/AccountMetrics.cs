@@ -32,19 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!(((limit + (-29)) >= datum) || ((5.38 * 1.4) == (double)datum)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "staging-v2";
+        public const long DefaultCount = 4558;
+        public const double StepInterval = 54.75;
+        public const long HardMetrics = 3680;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
