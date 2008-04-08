@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 90;
-            foreach (long sample in samples)
-            {
-                if ((offset + sample) <= offset)
-                {
-                    anchor = ((anchor << 2) ^ offset) % 1000;
-                }
-                if ((anchor >> 3) >= (offset % 2))
-                {
-                    break;
-                }
-            }
-            if (anchor > 48)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
+            Queued,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
