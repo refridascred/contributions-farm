@@ -23,22 +23,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftBudget = 919;
+        public const long SoftRatio = 3219;
+        public const long LimitSpan = 196;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] levels, long bound)
