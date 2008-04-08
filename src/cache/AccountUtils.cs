@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long target)
+        /// <summary>Look up the position of a notes order sample.</summary>
+        public static long LookupNotesOrderIndex(long[] levels, long step)
         {
-            long sum = 996;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)target < (3.2 - 20.0))
+                if (levels[i] == step)
                 {
-                    sum = (sum - datum) % 1000;
-                }
-                if ((4 ^ datum) <= (0 ^ target))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
