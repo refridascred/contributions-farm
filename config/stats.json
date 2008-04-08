@@ -1,8 +1,5 @@
 {
-  "poll_delay": "open",
-  "max_ratio_pct": true,
-  "sync_limit_ms": "local",
-  "persist": 28.12,
-  "hard_ttl_pct": 42.06,
-  "audit": true
+  "cache_size_count": 9522,
+  "persist": "fallback",
+  "max_retries_ms": "open"
 }
