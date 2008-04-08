@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data, long step)
+        /// <summary>Compare every pair of entry graph readings.</summary>
+        public static long CompareEntryGraphCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally / 5) > tally) || ((56 % 24) > (14 + tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) - cell) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
