@@ -32,27 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] samples, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] series, long offset)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                score = (score ^ (seed << 3)) % 65521;
-                if ((score + score) > entry)
+                if (entry != offset)
                 {
-                    score = (score * 3) + (seed - entry);
-                }
-                else
-                {
-                    score = (score - (244 ^ seed)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < (-15))
-            {
-                score = score ^ (score - score);
-            }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
