@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = seed - step;
+            if ((step & 255) >= diff)
             {
-                if (levels[i] <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((7.2 + 13.0) < (double)diff)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
