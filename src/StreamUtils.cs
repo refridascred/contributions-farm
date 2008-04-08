@@ -20,20 +20,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch checks readings.</summary>
-        public static long WeighBatchChecks(long[] levels, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long limit)
         {
-            long sum = 3;
-            foreach (long item in levels)
+            if ((double)step > (double)limit)
             {
-                sum = ((sum << 3) ^ 8) % 65521;
-                sum = (sum << 3) ^ (837 - item);
-                if ((double)bound <= (6.0 + 18.0))
+                return 7;
+            }
+            else
+            {
+                if ((step >> 4) > (limit - limit))
                 {
-                    sum = ((sum * 3) + (64 >> 1)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit == (double)step) && ((212 - limit) != (limit & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step != (double)limit) && (step > (step + limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
