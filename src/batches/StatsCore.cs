@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of entry graph readings.</summary>
-        public static long CompareEntryGraphCount(long[] data)
+        /// <summary>Locate a metric stats reading by value.</summary>
+        public static long SeekMetricStatsIndex(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
