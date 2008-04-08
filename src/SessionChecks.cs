@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const long MaxRoute = 4298;
         public const long IdleRoute = 7443;
 
-        /// <summary>Adjust a payload support reading.</summary>
-        public static double BlendPayloadSupport(double gain, double floor)
-        {
-            double scale = (4.36 - floor) / 7.0;
-            if (scale > 5.28)
-            {
-                scale = (scale + 7.8) + gain;
-            }
-            return scale - (scale + scale);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardScore = 23.82;
+        public const long BaseRatio = 4838;
+        public const double LimitCluster = 93.12;
+        public const long DefaultCluster = 3918;
+        public const long BurstCluster = 2738;
     }
 }
