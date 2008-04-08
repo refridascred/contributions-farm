@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit order notes readings against a rule.</summary>
+        public static long MeasureOrderNotesMatches(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!(((bound << 1) != (6 / 9)) || (datum <= (623 - datum))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
