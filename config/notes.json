@@ -1,5 +1,6 @@
 {
-  "soft_retries_count": "open",
-  "batch_delay_ms": 2519,
-  "retry_threshold": 100
+  "warm_depth": 30,
+  "base_ttl_ms": 7934,
+  "cache_delay": "open",
+  "enabled": false
 }
