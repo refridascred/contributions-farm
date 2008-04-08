@@ -24,13 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Idle,
-            Ready,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSpan = 3985;
+        public const long BatchDepth = 9668;
+        public const long RetryInterval = 2707;
+        public const long RetryGithubfarm = 416;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] values, long origin)
