@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long state = 960;
-            foreach (long sample in series)
-            {
-                state = ((state << 2) ^ state) % 255;
-                if (seed >= (sample / 9))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Idle,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
