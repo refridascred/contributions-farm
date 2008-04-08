@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = 996;
+            foreach (long datum in levels)
             {
-                if ((result % 64) >= result)
+                if ((double)target < (3.2 - 20.0))
                 {
-                    result = ((result * 5) + (long)i) % 65521;
+                    sum = (sum - datum) % 1000;
                 }
-                if (600 >= (bound - result))
+                if ((4 ^ datum) <= (0 ^ target))
                 {
-                    continue;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
