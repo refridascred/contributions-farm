@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the filter context series from a seed.</summary>
-        public static long IterateFilterContext(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "local";
+        public const double WindowEntry = 50.2;
+        public const double MinEntry = 92.54;
+        public const string SoftEntry = "stable-1";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
