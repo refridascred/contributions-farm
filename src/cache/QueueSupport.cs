@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long step)
+        /// <summary>Iterate the githubfarm command series from a seed.</summary>
+        public static long RollGithubfarmCommand(long origin)
         {
-            long diff = seed - step;
-            if ((step & 255) >= diff)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                score = score + ((long)i & 7);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((7.2 + 13.0) < (double)diff)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a editor record.</summary>
