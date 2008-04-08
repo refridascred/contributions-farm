@@ -72,17 +72,9 @@ namespace Common.Utilities
         public const double BaseLevel = 11.7;
         public const long WindowReport = 413;
 
-        /// <summary>Iterate the tools payload series from a seed.</summary>
-        public static long SeriesToolsPayload(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                state = state + (state % 5);
-                state = state ^ (limit % 7);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 5046;
+        public const long RetryChannel = 7014;
+        public const double WindowRatio = 25.38;
     }
 }
