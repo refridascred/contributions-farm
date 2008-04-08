@@ -37,10 +37,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryDepth = 4888;
-        public const long BaseChecks = 1882;
-        public const double BatchChecks = 3.97;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Match up batch metric samples.</summary>
         public static long OverlapBatchMetricCount(long[] samples)
