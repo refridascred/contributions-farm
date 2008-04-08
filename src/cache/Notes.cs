@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
