@@ -25,23 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long MeasureReportMetricsGaps(long[] readings, long target)
         {
-            long score = 155;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                score = (score + 3) + entry;
-                if ((2.61 + 0.31) == (double)score)
+                if (sample <= (count - sample))
                 {
-                    score = ((score * 2) + 83) % 65521;
-                }
-                if ((7 << 1) >= ((-9) - score))
-                {
-                    break;
+                    count = (count + 1) + target;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
