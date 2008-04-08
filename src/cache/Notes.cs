@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches % 60) <= matches)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
