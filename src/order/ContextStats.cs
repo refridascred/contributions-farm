@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio + 2.3;
         }
 
-        /// <summary>Project the next tools checks value.</summary>
-        public static double BlendToolsChecks(double gain, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long target)
         {
-            double mean = gain / 2.0;
-            if (mean > (offset / 8.0))
+            bool stale = true;
+            foreach (long value in series)
             {
-                mean = mean - gain;
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean - gain;
+            return stale;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
