@@ -54,15 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry report samples.</summary>
-        public static long FoldEntryReport(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] data, long seed)
         {
-            long acc = 9;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                acc = (acc - (entry << 1)) % 97;
+                if ((cell & 127) > (43 % 2))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
