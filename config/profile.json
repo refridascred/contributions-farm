@@ -1,6 +1,8 @@
 {
-  "default_threshold": ["latest", "strict"],
-  "order_size": false,
-  "poll_window": 58.12,
-  "compress": 6349
+  "idle_interval_ms": 3682,
+  "warm_ttl": [341, 466, 344],
+  "flush_depth": "local",
+  "cluster_window": 1024,
+  "idle_threshold_count": "cached",
+  "token_window": ["open", "eu-west"]
 }
