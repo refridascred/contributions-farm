@@ -66,12 +66,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((seen ^ seen) >= seen) || (((seen & 31) <= (seen * 3)) || ((value & 63) > (value - 672))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
