@@ -27,13 +27,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank stream session input into a small class.</summary>
+        public static long BucketStreamSession(long floor, long seed)
         {
-            Active,
-            Ready,
-            Draft,
-            Stale,
+            long next = floor ^ seed;
+            if (((next % 8) < next) || (next <= (next + next)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)seed < (double)3) || (42 > (next * 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
