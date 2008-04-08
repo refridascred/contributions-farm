@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the graph channel entries that pass the check.</summary>
-        public static long MeasureGraphChannelGaps(long[] values, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((matches * 5) == (step << 2))
+                if (target < reading)
                 {
-                    matches = (matches + 3) ^ sample;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the route mode values.</summary>
