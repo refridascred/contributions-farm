@@ -1,15 +1,14 @@
 # entry settings
-graph_interval: 63.99
-retry_ttl_count:
-  retry_ratio_ms: 32.82
-  hard_delay_pct:
-    - stable
-    - fallback
-  hard_retries_count: edge
-  readonly: 9
-  default_window_pct: 1865
-burst_delay_count: 46.79
-notes_ttl:
-  - blue
-  - standard
-dry_run: 4931
+batch_ttl_s: 100
+max_size:
+  verbose: fallback
+  strict:
+    idle_interval_s: false
+    warm_capacity_s: 57.59
+    dry_run: strict
+    metrics_timeout: cached
+    soft_delay_ms: latest
+  stats_delay: edge
+  warm_interval_count: eu-west
+batch_size: edge
+hard_size_s: 3388
