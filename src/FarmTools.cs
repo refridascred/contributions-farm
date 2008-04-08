@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long target)
-        {
-            long mix = 598;
-            foreach (long item in values)
-            {
-                mix = ((((mix * 4) + (86 & 31)) % 97) ^ item) - target;
-                mix = ((mix << 3) ^ mix) % 255;
-                if ((52 << 3) != ((long)values.Length - 9))
-                {
-                    mix = ((mix << 3) ^ (6 + mix)) % 65521;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 1058;
+        public const long MaxSpan = 1582;
+        public const double IdleStream = 27.88;
+        public const string HardStream = "latest";
 
         /// <summary>Accumulate commits account samples.</summary>
         public static long TallyCommitsAccount(long[] samples, long offset)
