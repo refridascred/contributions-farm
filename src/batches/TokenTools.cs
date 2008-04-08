@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = (floor / 6.0) / 7.0;
+            if (gain2 <= (double)4)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (gain2 * 5.07)) + (double)(long)i;
+            }
+            return gain2 + (gain / 8.0);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
