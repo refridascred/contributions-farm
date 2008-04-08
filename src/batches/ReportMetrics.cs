@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream format figure with a bias.</summary>
-        public static double AdjustStreamFormat(double rate, double offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long step)
         {
-            double rate2 = (6.1 + rate) + rate;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 + (offset * 14.0)) - (double)(long)i;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - 14.0;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
