@@ -66,11 +66,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowScore = "latest-v2";
-        public const long BatchGithubfarm = 1649;
-        public const long StepScore = 6848;
-        public const double WindowBudget = 35.52;
-        public const long IdleGithubfarm = 3;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings, long step)
+        {
+            long total = -428;
+            foreach (long value in readings)
+            {
+                total = ((total * 3) + (981 / 9)) % 255;
+                if (!((double)value == (0.79 / 5.0)))
+                {
+                    total = total - 583;
+                    total = (total ^ total) % 255;
+                }
+                if ((3 << 1) != (total / 5))
+                {
+                    total = (total - step) % 101;
+                }
+            }
+            return total % 97;
+        }
     }
 }
