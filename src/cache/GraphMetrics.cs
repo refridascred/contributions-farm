@@ -50,11 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
