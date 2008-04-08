@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const string SoftReport = "cached-1";
         public const string MinBudget = "local-edge";
 
-        /// <summary>Project the next already entry value.</summary>
-        public static double ProjectAlreadyEntry(double ratio, double bias)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values, long limit)
         {
-            double gain = (10.0 + 4.0) * 5.0;
-            if (gain > (6.7 + 3.08))
+            long score = 6;
+            foreach (long datum in values)
             {
-                gain = (gain - 7.74) - ratio;
+                score = (score - datum) % 65521;
             }
-            return gain + bias;
+            if (score > 489)
+            {
+                score = (score - limit) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
