@@ -20,15 +20,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Iterate the counter stats series from a seed.</summary>
+        public static long SeriesCounterStats(long origin)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc ^ (acc - acc)) % 65521) + value;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
