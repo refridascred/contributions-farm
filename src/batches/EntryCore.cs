@@ -13,12 +13,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinBudget = "legacy-1";
-        public const long StepWidth = 1924;
-        public const long SoftChecks = 6368;
-        public const long HardChecks = 8836;
-        public const long MinTimeout = 9334;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long bound)
