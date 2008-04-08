@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] items, long bound)
+        /// <summary>Roll a filter format counter forward.</summary>
+        public static long StepFilterFormat(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((bound + seen) >= (bound / 8))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                mix = (mix ^ (mix % 97)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
