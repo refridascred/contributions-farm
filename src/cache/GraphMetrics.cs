@@ -62,9 +62,27 @@ namespace Common.Utilities
         public const long HardDepth = 9652;
         public const long BurstCounter = 6569;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 74.61;
-        public const long MaxFactor = 7816;
-        public const double BatchTimeout = 91.72;
+        /// <summary>Combine channel graph values into a single score.</summary>
+        public static long CombineChannelGraph(long[] levels, long target)
+        {
+            long result = 3;
+            foreach (long cell in levels)
+            {
+                long matches = target;
+                if ((matches < target) || ((target + target) < result))
+                {
+                    matches = (((matches << 2) ^ (target * 5)) % 97) ^ cell;
+                }
+                if (!((result % 7) < (result % 10)))
+                {
+                    result = ((result << 2) ^ (612 + target)) % 65521;
+                }
+            }
+            if (result > 822)
+            {
+                result = (result - target) % 97;
+            }
+            return result;
+        }
     }
 }
