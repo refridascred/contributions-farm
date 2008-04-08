@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double mean = bias * 6.5;
-            return (mean - (bias - 4.34)) + bias2;
+            Ready,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a commits entry.</summary>
