@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Locate a payload notes reading by value.</summary>
+        public static long LookupPayloadNotesIndex(long[] series, long target)
         {
-            double gain2 = (floor / 6.0) / 7.0;
-            if (gain2 <= (double)4)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + floor;
+                if ((series[i] < target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (gain2 * 5.07)) + (double)(long)i;
-            }
-            return gain2 + (gain / 8.0);
+            return -1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
