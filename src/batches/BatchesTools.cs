@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long AuditCacheBatchGaps(long[] items)
         {
-            Stale,
-            Closed,
-            Ready,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 3) <= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
