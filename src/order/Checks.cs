@@ -37,25 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long offset2 = offset + floor;
-            if (((double)offset2 < (20.0 + 8.03)) && ((double)offset2 == (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor >= 4.56) && ((0.7 - 2.44) < (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Digest a series of queue tools entries.</summary>
