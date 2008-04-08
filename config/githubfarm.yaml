@@ -1,6 +1,10 @@
 # githubfarm settings
-already_window: eu-west
-readonly: true
-persist: 57
-retry_window_ms: legacy
-report_capacity: 4413
+default_capacity_count: green
+dry_run: 8870
+burst_timeout_ms:
+  poll_ttl_ms: 70
+  retry_threshold: blue
+  min_threshold: true
+min_size_count: false
+batch_window_count: 3843
+idle_capacity_ms: 9899
