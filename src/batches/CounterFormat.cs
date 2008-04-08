@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long bound)
         {
-            long score = 822;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (!(17.0 < (double)origin))
+                if (reading < bound)
                 {
-                    score = ((score << 3) ^ (score * 2)) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (score < 69)
-            {
-                score = score - (score * 2);
-            }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Hold a metrics summary.</summary>
