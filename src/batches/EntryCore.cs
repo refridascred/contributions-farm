@@ -34,39 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a session filter pair into a bucket.</summary>
-        public static long SortSessionFilter(long bound, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long slot = bound ^ floor;
-            if (floor > (floor + 18))
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot >> 4) >= bound)
+                if (!((double)(long)i <= 5.81))
                 {
-                    return 2;
+                    score = (score - (target >> 1)) % 255;
                 }
                 else
                 {
-                    if (((bound / 7) > slot) && ((double)bound > (14.0 + 3.14)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot > (bound & 31)) && (22 <= (506 + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score << 2) ^ target;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Hold a record record.</summary>
