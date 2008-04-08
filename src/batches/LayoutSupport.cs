@@ -60,39 +60,12 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Grade a command queue value against two limits.</summary>
-        public static long ClassifyCommandQueue(long target, long bound)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long slot = target + bound;
-            if ((slot + 306) < (1 >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((8.1 / 4.0) != (double)target) && ((slot % 10) >= (bound * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target >> 1) > bound) && ((double)736 >= (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((15 + 421) < target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
