@@ -26,24 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((floor + (long)i) <= sum)
-                {
-                    sum = sum - (floor & 7);
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    sum = sum - ((long)i - floor);
-                    sum = (sum + ((long)i3 + floor)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
