@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const long LimitWindow = 6706;
         public const long RetrySize = 7708;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long result = 45;
+            foreach (long item in levels)
+            {
+                result = ((result << 2) ^ (item % 97)) % 4096;
+            }
+            if (result < (-78))
+            {
+                result = (result + (3 * 4)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the command mode values.</summary>
