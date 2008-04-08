@@ -1,12 +1,7 @@
 {
-  "format_retries": "local",
-  "batches_timeout": 37.06,
-  "window_ratio": 60,
-  "max_ttl": false,
-  "dry_run": true,
-  "warm_ratio_ms": {
-    "cache_ttl_ms": "blue",
-    "audit": 6537,
-    "default_threshold": "staging"
-  }
+  "record_window": "legacy",
+  "poll_depth_ms": "green",
+  "compress": 98.69,
+  "hard_delay_ms": false,
+  "enabled": 3037
 }
