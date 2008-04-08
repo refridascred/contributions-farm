@@ -1,9 +1,17 @@
 {
-  "flush_depth_ms": {
-    "cache_window_count": true,
-    "sync_size_count": "primary",
-    "readonly": "blue"
+  "soft_interval_count": [121, 33],
+  "sync_retries_ms": {
+    "audit": {
+      "verbose": false,
+      "max_ratio": [227, 344, 412, 340],
+      "max_retries": 9557,
+      "token_threshold": 30,
+      "cache_limit_count": false
+    },
+    "batches_capacity": 90,
+    "default_interval": 98.44,
+    "cache_delay_s": "cached",
+    "poll_timeout_pct": 1024
   },
-  "persist": false,
-  "githubfarm_ttl": 500
+  "max_ttl_count": "eu-west"
 }
