@@ -35,14 +35,39 @@ namespace Common.Utilities
         public const long MinContributi = 1590;
         public const long BaseContributi = 2131;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long bound)
         {
-            Retry,
-            Locked,
-            Synced,
-            Dropped,
-            Closed,
+            long edge = limit ^ bound;
+            if ((limit - bound) < bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge % 64) < 8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge >= (0.58 - 13.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)edge <= (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report channel input into a small class.</summary>
