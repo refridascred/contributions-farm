@@ -1,8 +1,9 @@
-id,score,ratio,region,state
-1,331,482,61.87,blue
-2,latest,stable,edge,887
-3,70.25,924,local,eu-west
-4,green,95,922,77.62
-5,staging,931,primary,30.35
-6,233,30.12,487,19.95
-7,988,open,510,fallback
+id,token,score,state
+1,19.37,442,latest
+2,182,28.31,284
+3,68.19,598,185
+4,43.52,476,fallback
+5,83.33,standard,legacy
+6,467,cached,203
+7,46.34,10.99,green
+8,990,52.68,standard
