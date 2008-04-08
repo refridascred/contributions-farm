@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen > (1.0 + 3.3))
                 {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
