@@ -67,13 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total + (total * 4)) % 4096;
+                total = (total - (offset - offset)) % 255;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
