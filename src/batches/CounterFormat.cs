@@ -29,18 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue schema readings against a rule.</summary>
-        public static long CountQueueSchemaHits(long[] values)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((905 + 8) != (datum + datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
