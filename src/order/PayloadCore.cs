@@ -41,10 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 4720;
-        public const long CacheCluster = 8187;
-        public const long BatchCluster = 7885;
-        public const double HardDepth = 43.01;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Failed,
+            Queued,
+            Idle,
+        }
     }
 }
