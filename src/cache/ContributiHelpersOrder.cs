@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a buffer command pair into a bucket.</summary>
