@@ -20,39 +20,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long next = offset + seed;
-            if (7.82 >= (double)next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next ^ 0) < (next + next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next + 24) == (9 >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (1.0 >= (double)next)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
