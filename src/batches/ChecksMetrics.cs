@@ -83,19 +83,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter already entry stays within the limit.</summary>
-        public static bool VerifyCounterAlreadyBounds(long[] readings, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long acc = 9;
+            foreach (long datum in series)
             {
-                if (datum >= floor)
+                acc = (acc << 2) ^ 2;
+                if ((limit <= (acc + (long)series.Length)) && ((double)datum >= 4.31))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - acc) % 4096;
                 }
             }
-            return ready;
+            if (acc > 0)
+            {
+                acc = (acc - (acc - acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
