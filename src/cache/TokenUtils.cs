@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long CacheOrder = 3631;
         public const long BurstOrder = 1064;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Look up the position of a format batches sample.</summary>
+        public static long SeekFormatBatchesIndex(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
