@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (step < (step / 6))
-                {
-                    result = (result - ((-78) & 255)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
