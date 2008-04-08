@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values)
         {
-            Done,
-            Stale,
-            Draft,
+            long anchor = 2;
+            foreach (long cell in values)
+            {
+                anchor = (anchor * 4) + (cell + cell);
+                if (anchor >= 670)
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if ((anchor % 97) < (anchor + cell))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
