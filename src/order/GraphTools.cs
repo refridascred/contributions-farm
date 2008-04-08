@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a cluster record figure with a bias.</summary>
-        public static double AdjustClusterRecord(double scale, double offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double mean = (offset / 5.0) * 13.0;
-            if (mean >= scale)
-            {
-                mean = mean - scale;
-            }
-            else
-            {
-                mean = mean - (double)189;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean - (double)247;
+            Dropped,
+            Stale,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
