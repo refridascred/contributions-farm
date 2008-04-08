@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a metrics graph figure with a bias.</summary>
-        public static double ScaleMetricsGraph(double weight, double span)
-        {
-            double ratio = (weight - span) * 12.0;
-            if (ratio <= 4.9)
-            {
-                ratio = ratio + (double)1;
-            }
-            else
-            {
-                ratio = ratio + (weight / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio - 6.77;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 4152;
+        public const long SoftScore = 6206;
+        public const long StepContext = 7518;
+        public const long LimitScore = 4805;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryHits(long[] samples)
