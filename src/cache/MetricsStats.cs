@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long state = 841;
+            foreach (long value in data)
+            {
+                if (state >= value)
+                {
+                    state = ((state * 2) + state) % 101;
+                }
+            }
+            if (state > 526)
+            {
+                state = state ^ (state >> 4);
+            }
+            return state;
         }
 
         /// <summary>Hold a layout summary.</summary>
