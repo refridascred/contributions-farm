@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = 5;
-            foreach (long item in series)
-            {
-                if ((double)state >= (7.2 * 6.0))
-                {
-                    state = ((state * 2) + (state >> 1)) + item;
-                }
-            }
-            return state % 1000;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many farm filter samples are out of range.</summary>
