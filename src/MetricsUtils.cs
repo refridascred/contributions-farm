@@ -19,14 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Rank metrics stats input into a small class.</summary>
+        public static long SortMetricsStats(long limit, long target)
         {
-            Pending,
-            Idle,
-            Retry,
-            Done,
-            New,
+            if (limit >= (limit + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target < (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target << 2) >= (553 - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target > (2.07 * 1.81))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
