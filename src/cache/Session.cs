@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseBudget = 9411;
+        public const long WindowCounter = 3558;
+        public const double HardCounter = 27.42;
+        public const double MinCounter = 43.02;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] items)
