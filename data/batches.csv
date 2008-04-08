@@ -1,11 +1,6 @@
-id,owner,weight,active
-1,fallback,64.38,67.15
-2,green,local,9
-3,436,14.39,36.01
-4,32.04,legacy,local
-5,226,811,476
-6,777,381,35.67
-7,90,864,staging
-8,949,54.68,eu-west
-9,159,709,42.69
-10,3.65,legacy,299
+id,count,active
+1,490,363
+2,197,62
+3,blue,188
+4,601,116
+5,104,primary
