@@ -62,18 +62,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            long mix = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix <= ((-863) << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix + datum) % 1000;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
