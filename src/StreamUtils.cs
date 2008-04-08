@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph metrics entry that matches the target.</summary>
-        public static long LocateGraphMetricsIndex(long[] series, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > seed)
+                if ((double)tally >= (double)value)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
