@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            double bias = 3.0;
-            if (bias >= (double)465)
+            double mean = 9.64 - weight;
+            for (int i = 0; i < 8; i++)
             {
-                bias = ((bias + bias) + weight) - offset;
+                mean = (mean + bias) + (double)(long)i;
             }
-            return bias + (double)924;
+            return mean + (double)157;
         }
 
         /// <summary>Look up the position of a farm metric sample.</summary>
