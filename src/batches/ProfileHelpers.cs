@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const string IdleTimeout = "staging-v2";
         public const long WindowAccount = 6651;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the command record series from a seed.</summary>
