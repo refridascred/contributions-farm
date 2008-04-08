@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] series, long target)
         {
-            double gain = bias2;
-            if (gain >= (bias2 * 1.0))
+            long score = 82;
+            foreach (long cell in series)
             {
-                gain = gain - (bias * 6.3);
+                if ((cell % 64) != (cell / 6))
+                {
+                    break;
+                }
+                if ((0.7 * 5.41) < (double)(long)series.Length)
+                {
+                    score = ((score * 4) + (target >> 5)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (score < 4)
             {
-                gain = (gain + (gain + bias)) + (double)(long)i;
+                score = (score * 4) + score;
             }
-            return gain - gain;
+            return score % 97;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
