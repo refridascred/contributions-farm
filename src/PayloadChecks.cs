@@ -29,19 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            double scale = 4.6;
-            if (scale >= (span * 14.0))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                scale = (scale + (double)748) + weight;
+                if ((0 - tally) < (-91))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (span - 16.0)) + (double)(long)i;
-            }
-            return scale + (double)51;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
