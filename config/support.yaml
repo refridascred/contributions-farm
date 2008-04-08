@@ -1,15 +1,15 @@
 # support settings
-sync_ttl_s:
-  - latest
-  - standard
-  - edge
-schema_delay:
-  base_size_count: 80
-  max_delay: primary
-  enabled: 250
-enabled:
-  min_ttl_ms: cached
-  idle_ratio_pct: strict
-  flush_capacity_ms: primary
-  compress: blue
-  persist: edge
+command_ttl: primary
+flush_retries:
+  min_interval_pct:
+    - 97
+    - 403
+    - 86
+  burst_delay: primary
+  idle_window_ms: fallback
+  poll_retries_count: 72.84
+  retry_threshold_count: 4542
+githubfarm_retries:
+  max_delay_pct: edge
+  tools_depth: false
+  dry_run: green
