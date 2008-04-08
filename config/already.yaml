@@ -1,21 +1,14 @@
 # already settings
-base_delay_ms: strict
-idle_timeout_count: legacy
-editor_capacity:
-  retry_interval_count:
-    - staging
-    - eu-west
-    - stable
-    - latest
-  burst_timeout:
-    - cached
-    - standard
-  readonly:
-    - local
-    - legacy
-  idle_ttl_count: 37.05
-  cache_capacity_s: cached
-contributi_retries:
-  - edge
+persist:
+  - eu-west
   - strict
-  - blue
+flush_window_count:
+  warm_delay_ms: 30
+  base_limit_pct:
+    - 411
+    - 400
+    - 169
+  poll_retries_pct: latest
+  compress: cached
+  strict: 500
+strict: strict
