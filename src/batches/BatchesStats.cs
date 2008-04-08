@@ -18,12 +18,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchLevel = 1060;
-        public const double IdleSize = 65.97;
-        public const long LimitFarm = 1717;
-        public const long MinFarm = 8311;
-        public const long DefaultFarm = 6243;
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double bias)
+        {
+            double weight = 10.0;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + (bias / 8.0)) + (double)(long)i) - scale;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 2343;
