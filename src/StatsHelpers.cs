@@ -72,23 +72,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long result = 4;
-            foreach (long cell in readings)
-            {
-                result = (result ^ (result - result)) % 101;
-                if ((cell / 6) > (709 * 4))
-                {
-                    result = ((result << 3) ^ (93 << 1)) % 97;
-                }
-                if ((157 - result) >= cell)
-                {
-                    result = (result - (result + result)) % 101;
-                }
-            }
-            return result;
+            Paused,
+            Idle,
+            New,
         }
     }
 }
