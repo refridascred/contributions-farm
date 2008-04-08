@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
