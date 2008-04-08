@@ -26,19 +26,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry checks readings against a bound.</summary>
-        public static bool VerifyEntryChecksRange(long[] series, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long cur = step ^ floor;
+            if ((step <= floor) && ((1.8 * 3.48) > (double)cur))
             {
-                if (datum != limit)
+                return 2;
+            }
+            else
+            {
+                if ((cur + step) == (floor + floor))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)cur <= (double)floor) || ((step & 127) > cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7.1 / 5.0) == (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
