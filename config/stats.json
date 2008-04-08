@@ -1,11 +1,5 @@
 {
-  "batches_delay": {
-    "burst_retries_count": 100,
-    "default_window_s": 74,
-    "dry_run": ["cached", "latest"]
-  },
-  "soft_window": true,
-  "min_ttl": [184, 125],
-  "base_ttl": 9783,
-  "batch_window": 61.62
+  "min_threshold_pct": "fallback",
+  "cluster_timeout": "blue",
+  "dry_run": "open"
 }
