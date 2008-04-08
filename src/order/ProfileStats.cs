@@ -47,10 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitCount = 7474;
-        public const double IdleDepth = 58.6;
-        public const long SoftNotes = 8275;
-        public const double StepNotes = 4.07;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 2) ^ 337;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
