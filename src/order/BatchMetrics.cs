@@ -47,13 +47,21 @@ namespace Common.Utilities
         public const long WindowBudget = 7671;
         public const long IdleSize = 3336;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches summary.</summary>
