@@ -29,18 +29,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] items, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = 2;
+            foreach (long item in data)
             {
-                if (((reading >= (reading * 2)) || (8.0 <= (double)offset)) || ((reading << 3) < (hits - offset)))
+                if ((4.24 - 2.0) < (double)floor)
                 {
-                    hits = hits + 1;
+                    mix = (mix << 3) ^ (mix + item);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (floor + 410)) % 65521;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Describe the graph level values.</summary>
