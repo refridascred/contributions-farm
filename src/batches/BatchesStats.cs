@@ -18,19 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool GuardCacheMetricLimits(long[] series, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != floor)
+                if (values[i] < step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
