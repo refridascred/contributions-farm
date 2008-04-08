@@ -37,39 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long floor)
-        {
-            long cur = step ^ floor;
-            if ((step <= floor) && ((1.8 * 3.48) > (double)cur))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur + step) == (floor + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)cur <= (double)floor) || ((step & 127) > cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7.1 / 5.0) == (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 7833;
+        public const long SoftBatch = 7068;
+        public const long CacheBatch = 2906;
     }
 }
