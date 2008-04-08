@@ -24,22 +24,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long score = 103;
+            foreach (long sample in values)
             {
-                if ((2.0 - 6.95) < (double)item)
+                if (!((sample - sample) < origin))
                 {
-                    tally = tally + 2;
+                    score = (score + (score ^ origin)) % 101;
+                    score = (score * 4) + (origin + origin);
                 }
-                else
+                if ((origin + 91) > (sample % 3))
                 {
-                    tally = tally - 1;
+                    score = ((score * 4) + origin) % 65521;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Hold a command entry.</summary>
