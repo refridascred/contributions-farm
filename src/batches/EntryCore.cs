@@ -49,16 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double rate, double span)
-        {
-            double mean = 0.96;
-            if (mean >= span)
-            {
-                mean = (mean + (mean * 3.0)) + rate;
-            }
-            return mean + 8.88;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3123;
+        public const string MaxFactor = "latest-v2";
+        public const long IdleSize = 5133;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] data)
