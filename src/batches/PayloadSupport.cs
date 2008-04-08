@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (9 > (entry + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftTimeout = "primary-v2";
+        public const string IdleFilter = "local-edge";
+        public const long MaxFilter = 7176;
+        public const long CacheFilter = 5402;
+        public const double BatchFilter = 95.34;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double SmoothNotes(double rate, double bias)
