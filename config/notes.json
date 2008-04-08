@@ -1,7 +1,8 @@
 {
-  "counter_delay": 3075,
-  "stats_depth": 60,
-  "min_threshold": ["edge", "stable", "staging", "stable"],
-  "retry_window": 28,
-  "filter_threshold": true
+  "already_size": 38.82,
+  "metric_size": ["eu-west", "eu-west", "primary", "fallback"],
+  "batch_retries_ms": 2,
+  "strict": "standard",
+  "base_limit": 408,
+  "poll_timeout": 500
 }
