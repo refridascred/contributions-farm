@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const string RetryCount = "standard-edge";
         public const long HardStats = 5047;
 
-        /// <summary>Classify a graph command pair into a bucket.</summary>
-        public static long SortGraphCommand(long floor, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long origin)
         {
-            if ((double)floor != (17.0 * 9.54))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(floor >= (target + target)))
+                if (levels[i] >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (floor << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
