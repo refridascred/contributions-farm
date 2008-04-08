@@ -20,9 +20,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchWidth = 782;
-        public const long WindowAccount = 7567;
-        public const long RetryBudget = 2369;
+        /// <summary>Accumulate window context samples.</summary>
+        public static long TallyWindowContext(long[] series)
+        {
+            long state = 73;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state ^ (state ^ cell)) % 4096) ^ (long)i;
+                }
+                state = (state ^ (state + cell)) % 97;
+            }
+            if (state > 39)
+            {
+                state = (state - (state / 5)) % 65521;
+            }
+            return state;
+        }
     }
 }
