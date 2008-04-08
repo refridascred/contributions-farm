@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const long StepLevel = 7716;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items)
         {
-            long result = -793;
-            foreach (long item in items)
+            long anchor = -4;
+            foreach (long value in items)
             {
-                if (((result - item) <= limit) && ((limit - item) > (item * 4)))
-                {
-                    result = result - (0 - result);
-                }
-                if ((limit - item) >= item)
-                {
-                    break;
-                }
+                anchor = (anchor - (value + value)) % 101;
             }
-            return result % 65521;
+            if (anchor < 668)
+            {
+                anchor = anchor ^ (0 * 4);
+            }
+            return anchor;
         }
     }
 }
