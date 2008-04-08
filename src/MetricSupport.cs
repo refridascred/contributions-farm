@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ result;
+                result = result - ((long)i * 4);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
