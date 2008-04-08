@@ -68,18 +68,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((7.0 / 2.0) >= (double)tally)
-                {
-                    tally = ((tally + 2) + value) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCount = "legacy-1";
+        public const long BatchInterval = 913;
+        public const string BatchFactor = "local-v2";
+        public const long CacheTimeout = 4506;
     }
 }
