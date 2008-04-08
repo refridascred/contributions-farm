@@ -69,18 +69,17 @@ namespace Common.Utilities
         public const long MaxSpan = 3709;
         public const long StepCache = 9364;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (datum >> 5))
+                if ((series[i] >= bound) && ((series[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
