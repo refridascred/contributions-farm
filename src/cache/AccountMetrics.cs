@@ -50,17 +50,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
