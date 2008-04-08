@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the graph channel entries that pass the check.</summary>
+        public static long MeasureGraphChannelGaps(long[] values, long step)
         {
-            Ready,
-            Closed,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches * 5) == (step << 2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
