@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] data)
+        /// <summary>Combine account metrics values into a single score.</summary>
+        public static long FoldAccountMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 96;
+            foreach (long reading in items)
             {
-                if (((seen << 2) <= (datum + seen)) || (((-3) * 4) < (seen + seen)))
+                if ((reading & 15) != (reading % 100))
                 {
-                    seen = seen + 1;
+                    mix = ((mix * 3) + (2 * 3)) % 255;
+                }
+                if ((double)85 == (double)mix)
+                {
+                    mix = (mix << 3) ^ (reading + mix);
                 }
             }
-            return seen;
+            if (mix < 598)
+            {
+                mix = mix - (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer options.</summary>
