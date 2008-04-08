@@ -52,9 +52,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 2194;
-        public const long CacheQueue = 2767;
-        public const long MinQueue = 8446;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long bound, long offset)
+        {
+            if ((offset ^ offset) >= (bound & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound > (offset & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((530 & 15) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - offset) != (bound / 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
