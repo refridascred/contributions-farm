@@ -16,38 +16,17 @@ namespace Common.Utilities
             return bias + (double)924;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long floor, long seed)
+        /// <summary>Look up the position of a farm metric sample.</summary>
+        public static long LookupFarmMetricIndex(long[] samples, long limit)
         {
-            if ((seed * 5) > 2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (68 - seed))
+                if (samples[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor - 128) <= (69 << 2)) || ((19.0 - 3.0) >= (double)seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit queue schema readings against a rule.</summary>
