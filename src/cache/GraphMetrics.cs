@@ -29,13 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((double)(long)values.Length != (double)cell) || !(cell <= (611 + 450)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
