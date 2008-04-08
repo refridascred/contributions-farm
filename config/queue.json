@@ -1,6 +1,5 @@
 {
-  "idle_timeout_s": "cached",
-  "sync_delay": 96.11,
-  "record_depth": "standard",
-  "base_size_ms": 60
+  "strict": 93.46,
+  "compress": "stable",
+  "audit": 79
 }
