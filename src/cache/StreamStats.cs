@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine token account values into a single score.</summary>
-        public static long TallyTokenAccount(long[] readings, long step)
+        /// <summary>Project the next cluster tools value.</summary>
+        public static double BlendClusterTools(double rate, double span)
         {
-            long total = 12;
-            foreach (long cell in readings)
+            double ratio = 4.8;
+            if (ratio <= span)
             {
-                total = ((total - ((-15) + cell)) % 101) - step;
-                total = (total ^ (total / 3)) % 97;
+                ratio = ratio + (ratio - rate);
             }
-            return total;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio + (double)196;
         }
 
         /// <summary>Check that every support record entry stays within the limit.</summary>
