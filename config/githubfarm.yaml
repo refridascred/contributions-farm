@@ -1,8 +1,8 @@
 # githubfarm settings
-idle_depth_count: 4.63
-graph_timeout: 32.27
-audit:
-  - 213
-  - 480
-  - 38
-compress: 69
+warm_capacity_pct: 881
+farm_window:
+  - fallback
+  - staging
+  - stable
+  - blue
+default_ratio: edge
