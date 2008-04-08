@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double bias2)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            double ratio = bias;
-            if (ratio < (bias2 / 6.0))
+            long delta = offset ^ bound;
+            if ((18.0 <= (double)delta) && ((offset + offset) < (delta * 3)))
             {
-                ratio = ratio - ratio;
+                return 3;
             }
-            return ratio + (bias * 1.3);
+            else
+            {
+                if ((7.1 - 5.0) == (double)delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
