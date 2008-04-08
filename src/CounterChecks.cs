@@ -35,17 +35,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] > bound)
+                total = (total ^ (long)i) % 97;
+                total = (total + (total + limit)) % 4096;
+                if (limit > (-810))
                 {
-                    return (long)i;
+                    total = (total + (limit + total)) % 97;
                 }
+                else
+                {
+                    total = (total + total) % 255;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate already support readings against a bound.</summary>
