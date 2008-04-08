@@ -56,19 +56,9 @@ namespace Common.Utilities
         public const long BaseBuffer = 2918;
         public const long StepSpan = 3347;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double span)
-        {
-            double drift = rate;
-            if (drift <= (2.0 - 9.2))
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + (double)(-906);
-            }
-            return drift + (rate / 4.0);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 61.73;
+        public const long CacheTimeout = 4077;
+        public const string CacheInterval = "staging-1";
     }
 }
