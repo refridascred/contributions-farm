@@ -31,10 +31,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryRatio = "alpha";
-        public const string IdleRatio = "latest-edge";
-        public const double StepWidth = 64.27;
-        public const double DefaultOrder = 22.58;
+        /// <summary>Digest a series of tools session entries.</summary>
+        public static long FoldToolsSession(long[] readings, long origin)
+        {
+            long mix = 1;
+            foreach (long sample in readings)
+            {
+                mix = (((mix * 2) + (78 << 3)) - sample) - origin;
+            }
+            if (mix < 947)
+            {
+                mix = ((mix << 2) ^ mix) % 97;
+            }
+            return mix;
+        }
     }
 }
