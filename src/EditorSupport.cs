@@ -49,12 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            double load = scale + scale;
+            if (load < (double)13)
+            {
+                load = (load - load) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (scale / 4.0)) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
