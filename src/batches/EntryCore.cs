@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate record account readings against a bound.</summary>
-        public static bool VerifyRecordAccountLimits(long[] samples, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (cell < limit)
+                if ((value & 15) <= (tally & 31))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
