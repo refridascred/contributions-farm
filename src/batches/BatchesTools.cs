@@ -15,17 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
