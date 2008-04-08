@@ -1,5 +1,16 @@
 {
-  "idle_ttl_pct": 30,
-  "hard_ratio_s": 6232,
-  "strict": ["eu-west", "primary"]
+  "tools_timeout": 72.66,
+  "readonly": false,
+  "compress": {
+    "default_window": "blue",
+    "dry_run": false,
+    "audit": 22.25,
+    "batch_retries_count": {
+      "min_limit": 8.28,
+      "idle_depth_count": false,
+      "soft_window": true
+    },
+    "default_depth_pct": 90.99,
+    "base_limit_ms": false
+  }
 }
