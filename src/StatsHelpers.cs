@@ -72,10 +72,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSize = 5781;
-        public const string RetrySpan = "standard-edge";
-        public const double MinToken = 45.84;
-        public const long SoftDepth = 7483;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry + (target << 3)) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
