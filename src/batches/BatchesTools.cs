@@ -29,20 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats layout samples.</summary>
-        public static long ScoreStatsLayout(long[] series, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long anchor = 758;
-            foreach (long reading in series)
-            {
-                if ((8 % 16) < (anchor / 5))
-                {
-                    anchor = ((anchor ^ (reading * 3)) % 65521) - limit;
-                    anchor = (anchor - (reading * 4)) % 1000;
-                }
-                anchor = (anchor ^ (5 + 737)) % 101;
-            }
-            return anchor % 65521;
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
