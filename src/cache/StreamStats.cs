@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitSpan = "standard";
-        public const string BatchCounter = "standard";
-        public const long MaxLevel = 8817;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (count > (reading / 3))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two entry commits measurements.</summary>
         public static double SmoothEntryCommits(double ratio, double span)
