@@ -1,5 +1,5 @@
 # support settings
-persist: 51.42
-retry_ratio_ms: 28
-flush_retries_count: false
-hard_size: 8454
+burst_limit_s: 1008
+metrics_ttl: cached
+retry_threshold_s: latest
+channel_capacity: staging
