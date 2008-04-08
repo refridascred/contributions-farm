@@ -57,12 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Adjust a checks queue reading.</summary>
+        public static double SmoothChecksQueue(double gain, double bias)
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            double mean = gain;
+            if (mean > (double)607)
+            {
+                mean = (mean + gain) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (6.3 / 9.0)) + (double)(long)i;
+            }
+            return mean + (18.0 / 8.0);
         }
     }
 }
