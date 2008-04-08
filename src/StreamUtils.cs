@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((-21) + limit) > hits)
+                if ((acc < 2) && ((long)i < target))
                 {
-                    hits = (hits + 3) + sample;
+                    acc = ((acc * 3) + target) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
