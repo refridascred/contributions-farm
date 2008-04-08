@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] readings, long origin)
+        /// <summary>Audit command token readings against a rule.</summary>
+        public static long MeasureCommandTokenOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (reading < origin)
+                if (((double)hits > (20.0 + 13.0)) && !(sample >= (sample - sample)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
