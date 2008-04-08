@@ -38,32 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long diff = step - limit;
-            if ((limit / 7) > (limit + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step << 2) != (99 ^ diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (4 << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
