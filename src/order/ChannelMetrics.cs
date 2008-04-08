@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string RetryCount = "standard-edge";
         public const long HardStats = 5047;
 
-        /// <summary>Accumulate cluster account samples.</summary>
-        public static long WeighClusterAccount(long[] series)
+        /// <summary>Classify a graph command pair into a bucket.</summary>
+        public static long SortGraphCommand(long floor, long target)
         {
-            long mark = 0;
-            foreach (long item in series)
+            if ((double)floor != (17.0 * 9.54))
             {
-                mark = mark ^ item;
+                return 4;
             }
-            if (mark > 0)
+            else
             {
-                mark = mark + (mark + mark);
+                if (!(floor >= (target + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (floor << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mark % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
