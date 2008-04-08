@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Derive the next counter command value from a seed.</summary>
+        public static long DeriveCounterCommand(long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor - (19 / 3)) % 255;
-                if (!((anchor + anchor) > seed))
-                {
-                    anchor = (anchor + (2 + (long)i)) % 97;
-                    anchor = (anchor ^ (anchor << 3)) % 97;
-                }
-                if ((anchor & 127) >= seed)
-                {
-                    anchor = (anchor << 2) ^ (seed << 3);
-                }
-                else
-                {
-                    anchor = (anchor - (seed + anchor)) % 4096;
-                    anchor = ((anchor * 3) + (anchor + seed)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                sum = ((sum * 5) + target) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
