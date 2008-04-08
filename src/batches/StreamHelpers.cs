@@ -14,18 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally / 5) != (sample / 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
