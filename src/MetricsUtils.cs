@@ -47,19 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long span = origin + step;
+            if ((2.1 * 2.0) != (double)origin)
             {
-                if (item <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((span >> 3) == (step + span))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a filter stats.</summary>
