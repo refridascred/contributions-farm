@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = -6;
-            foreach (long reading in levels)
-            {
-                state = (state * 3) + (reading + state);
-                if ((double)reading > (13.0 / 9.0))
-                {
-                    continue;
-                }
-                if (state >= reading)
-                {
-                    state = ((state * 4) + ((long)levels.Length ^ 64)) % 65521;
-                }
-            }
-            return state;
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
