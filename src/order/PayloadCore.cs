@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long ScoreWindowStats(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items, long step)
         {
-            long total = 9;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)total >= (double)850)
+                if (!(hits < (value % 24)))
                 {
-                    total = ((total ^ total) % 65521) + cell;
+                    hits = (hits + 2) + step;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
