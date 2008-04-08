@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
