@@ -29,10 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxTimeout = "fallback-v2";
-        public const long StepTimeout = 4457;
-        public const long BurstProfile = 7775;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Paused,
+            Queued,
+            Retry,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] readings, long offset)
