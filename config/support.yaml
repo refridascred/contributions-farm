@@ -1,22 +1,14 @@
 # support settings
-retry_window_ms: false
-strict:
-  stats_delay: legacy
-  metrics_ttl: true
-  strict: 1113
-  default_window_ms:
-    flush_window_pct: 56.3
-    githubfarm_capacity: latest
-    base_delay_s: 38.87
-    sync_size_s: true
-    persist: 3017
-    sync_ratio_pct: 250
-  flush_delay_pct: 20
-  enabled: 100
-compress:
-  context_ratio: true
-  route_delay: 55
-  warm_capacity_pct: true
-  max_threshold_s: 70.26
-  batch_capacity_pct: legacy
-audit: staging
+readonly: green
+soft_size:
+  - legacy
+  - strict
+idle_retries_pct: primary
+dry_run: blue
+context_size:
+  burst_timeout_count: 14.7
+  default_ttl_ms: false
+  default_ratio: open
+  soft_timeout_s:
+    - edge
+    - fallback
