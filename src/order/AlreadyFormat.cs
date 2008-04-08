@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 39;
+            foreach (long datum in data)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                total = ((total - (datum + 82)) % 4096) - target;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the cache phase values.</summary>
