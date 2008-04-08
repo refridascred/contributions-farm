@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const string WindowSpan = "strict-v2";
         public const long HardDepth = 8633;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] values, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
