@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] series, long offset)
         {
-            long anchor = 670;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor - floor) ^ entry;
+                if ((value + tally) == (tally / 2))
+                {
+                    tally = (tally + 2) + offset;
+                }
             }
-            if (anchor > 43)
-            {
-                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
