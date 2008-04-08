@@ -42,21 +42,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi session series from a seed.</summary>
-        public static long StepContributiSession(long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            double load = (double)26 * 8.3;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(total <= (origin ^ 95)))
-                {
-                    total = (total + (total >> 1)) % 1000;
-                }
-                total = total ^ (long)i;
-                total = ((total * 4) + total) % 255;
-                total = ((total * 5) + (long)i) % 1000;
+                load = (((load + (load - load)) + (double)(long)i) + ratio) - floor;
             }
-            return total;
+            return load - (double)14;
         }
     }
 }
