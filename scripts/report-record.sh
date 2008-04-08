@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=399
-log "limit is ${RECORD_LIMIT}"
-
-for item in staging eu-west latest; do
+for item in standard green blue; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=490
+log "limit is ${RECORD_LIMIT}"
