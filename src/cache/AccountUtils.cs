@@ -42,17 +42,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a githubfarm payload reading by value.</summary>
-        public static long SeekGithubfarmPayloadIndex(long[] items, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Retry,
+            Failed,
+            New,
         }
     }
 }
