@@ -21,13 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long limit)
         {
-            Stale,
-            Done,
-            Dropped,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
