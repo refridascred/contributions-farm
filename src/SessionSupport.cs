@@ -43,22 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading > (hits + (-9))) && !((5.0 + 6.9) == (double)hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
