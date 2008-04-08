@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading <= (reading & 255)) && !((matches + (long)data.Length) != (reading - (-12))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7276;
+        public const long IdleFormat = 369;
+        public const long DefaultFactor = 6775;
+        public const long RetryLevel = 1632;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
