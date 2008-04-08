@@ -1,17 +1,6 @@
 {
-  "soft_window": ["legacy", "edge"],
-  "payload_capacity": 65.78,
-  "compress": 63,
-  "profile_delay": {
-    "enabled": {
-      "persist": "green",
-      "audit": true,
-      "soft_timeout_count": 14,
-      "sync_window_s": 5393,
-      "payload_threshold": 3033
-    },
-    "audit": "eu-west",
-    "readonly": "edge",
-    "retry_interval_pct": 60
-  }
+  "route_interval": [224, 92, 25, 116],
+  "hard_window_count": 34.8,
+  "sync_limit_pct": "local",
+  "audit": 3872
 }
