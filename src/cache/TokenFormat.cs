@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Validate graph cache readings against a bound.</summary>
+        public static bool CheckGraphCacheRange(long[] samples, long step)
         {
-            long mix = -55;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                mix = (mix - (datum ^ datum)) % 255;
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix < 38)
-            {
-                mix = ((mix << 2) ^ (mix / 3)) % 97;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
