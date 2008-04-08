@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a metric stats reading by value.</summary>
-        public static long SeekMetricStatsIndex(long[] values, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a record summary.</summary>
