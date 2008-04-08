@@ -27,22 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] levels, long limit)
+        /// <summary>Compare every pair of account format readings.</summary>
+        public static long MatchAccountFormatCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((14.0 * 8.58) >= (double)reading) || (hits <= (86 & 31)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
