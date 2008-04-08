@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long floor)
         {
-            Closed,
-            Retry,
-            Draft,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
