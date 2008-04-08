@@ -43,16 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool CheckBatchSessionRange(long[] levels, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 2) + total) % 101;
-                total = ((total * 2) + (long)i) % 65521;
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Hold a account snapshot.</summary>
