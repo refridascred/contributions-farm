@@ -1,14 +1,15 @@
 {
-  "audit": 95.14,
-  "context_depth": {
-    "max_delay": 51,
-    "graph_ratio": 2853,
-    "burst_depth_count": 6455,
-    "batch_timeout_pct": "cached",
-    "persist": "legacy"
+  "flush_ttl_pct": false,
+  "graph_retries": {
+    "soft_ttl": 30,
+    "channel_retries": 53.0,
+    "base_timeout": {
+      "compress": 30,
+      "githubfarm_delay": 57.26,
+      "audit": "primary",
+      "enabled": false,
+      "min_threshold_s": [453, 469, 143, 160]
+    }
   },
-  "flush_limit": 5409,
-  "burst_size_s": ["staging", "open", "staging"],
-  "flush_depth": true,
-  "burst_window_count": 6671
+  "cache_size_pct": 3536
 }
