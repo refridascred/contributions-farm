@@ -1,6 +1,11 @@
-id,active,rank,state
-1,89,standard,704
-2,157,882,stable
-3,55,48.31,486
-4,legacy,770,legacy
-5,91.85,stable,eu-west
+id,region,rank,ratio
+1,15,913,cached
+2,647,local,cached
+3,0.33,65.98,122
+4,open,80.57,fallback
+5,staging,139,860
+6,0.26,917,standard
+7,strict,open,94.1
+8,418,981,cached
+9,291,307,778
+10,4.38,780,803
