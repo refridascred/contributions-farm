@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long BaseInterval = 366;
         public const long LimitCommand = 2492;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score - (73 - score);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the token status values.</summary>
