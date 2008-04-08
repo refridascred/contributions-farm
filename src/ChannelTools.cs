@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report layout samples.</summary>
-        public static long ScoreReportLayout(long[] series)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            long state = 0;
-            foreach (long entry in series)
+            double mean = (double)675 + (double)90;
+            if (mean <= (gain / 4.0))
             {
-                if ((state - 9) > (entry - state))
-                {
-                    state = ((state << 3) ^ state) % 4096;
-                }
+                mean = mean + (double)4;
             }
-            return state % 97;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 8.01) + (double)(long)i;
+            }
+            return mean + (mean / 5.0);
         }
 
         /// <summary>Digest a series of tools session entries.</summary>
