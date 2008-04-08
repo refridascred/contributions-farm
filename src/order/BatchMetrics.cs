@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (span / 2.0)) - (double)(long)i;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
