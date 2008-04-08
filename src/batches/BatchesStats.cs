@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            Draft,
-            Pending,
-            Paused,
-            Synced,
+            double mean = floor + (ratio * 3.0);
+            if (mean > (double)24)
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 9.0) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
