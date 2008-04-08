@@ -41,38 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a session payload pair into a bucket.</summary>
-        public static long ClassifySessionPayload(long target, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data, long bound)
         {
-            if (((target - target) == (offset - offset)) || ((target >> 4) <= (5 % 3)))
+            long total = 533;
+            foreach (long reading in data)
             {
-                return 0;
+                total = ((total * 2) + (reading ^ 7)) % 65521;
             }
-            else
+            if (total > 30)
             {
-                if (target <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)1 < (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((277 % 24) < offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = ((total * 5) + (bound << 3)) % 1000;
             }
+            return total % 65521;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
