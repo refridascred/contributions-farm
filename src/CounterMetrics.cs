@@ -60,12 +60,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            Queued,
-            Done,
-            Draft,
+            double rate = weight - 11.0;
+            if (rate > weight)
+            {
+                rate = (rate + (double)80) + floor;
+            }
+            else
+            {
+                rate = rate + (weight / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 8.26) + (double)(long)i;
+            }
+            return rate - (7.9 * 18.0);
         }
     }
 }
