@@ -57,39 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long offset)
-        {
-            long slot = step - offset;
-            if (!(offset > slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step % 100) >= slot) && ((slot - 0) != (slot % 12)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot * 4) > ((-1) * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset % 10) != (offset << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardRatio = 14.77;
+        public const double MaxChecks = 61.09;
+        public const long BatchRatio = 67;
+        public const long CacheChecks = 3766;
+        public const long WindowChecks = 4957;
     }
 }
