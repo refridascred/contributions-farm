@@ -32,17 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session stats entry that matches the target.</summary>
-        public static long LocateSessionStatsIndex(long[] readings, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = (double)(70 << 2);
+            if (gain2 < (span + 7.8))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - (double)2) + gain;
             }
-            return -1;
+            return gain2 + gain2;
         }
     }
 }
