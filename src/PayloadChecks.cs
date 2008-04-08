@@ -69,16 +69,18 @@ namespace Common.Utilities
         public const long MaxSpan = 3709;
         public const long StepCache = 9364;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            long anchor = 1;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor << 2) ^ (cell + anchor)) + floor;
-                anchor = (anchor << 2) ^ cell;
+                if (seen <= (datum >> 5))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
