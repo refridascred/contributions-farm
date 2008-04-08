@@ -28,13 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] levels)
         {
-            Ready,
-            Queued,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches > (6.08 / 7.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
