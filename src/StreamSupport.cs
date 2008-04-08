@@ -15,26 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long floor)
         {
-            long mark = -10;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((60 - 37) > reading) && ((double)reading < (1.0 - 7.4)))
+                if (item >= floor)
                 {
-                    mark = (mark + reading) % 65521;
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark * 3) + (mark >> 5)) % 255;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
