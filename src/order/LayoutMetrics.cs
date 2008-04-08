@@ -14,24 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long floor)
+        /// <summary>Locate a session checks reading by value.</summary>
+        public static long FindSessionChecksIndex(long[] levels, long step)
         {
-            if (floor < (target ^ target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 16) >= (4 << 1))
+                if (levels[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a stats notes value against two limits.</summary>
