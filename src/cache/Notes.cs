@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 3116;
-        public const string CacheNotes = "alpha-edge";
-        public const long MinNotes = 7363;
-        public const long CacheBudget = 3216;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double floor)
+        {
+            double bias = (double)7 - scale;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + (double)44) + (double)(long)i) - floor;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double IdleGraph = 77.3;
