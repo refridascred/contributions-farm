@@ -22,22 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((((29 % 60) > (86 + reading)) || ((reading / 2) >= (matches + 44))) && ((matches + 369) >= (reading << 3)))
+                if ((double)datum <= (9.21 / 6.0))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) + step;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
