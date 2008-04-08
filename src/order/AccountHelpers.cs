@@ -98,23 +98,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long TotalReportChannel(long[] readings, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long anchor = 89;
+            long hits = 0;
             foreach (long reading in readings)
             {
-                anchor = (anchor + (reading % 10)) % 4096;
-                if (((15.0 + 2.93) <= (double)reading) && ((48 / 7) > bound))
+                if ((reading + reading) < 3)
                 {
-                    anchor = (anchor << 3) ^ (anchor / 7);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > (-56))
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
