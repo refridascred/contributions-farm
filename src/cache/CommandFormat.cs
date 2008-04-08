@@ -32,13 +32,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            Stale,
-            Pending,
-            Synced,
-            Idle,
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)offset == (19.0 / 5.0))
+                {
+                    result = result + 4;
+                }
+                else
+                {
+                    result = (result + offset) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a route reading by value.</summary>
