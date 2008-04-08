@@ -1,4 +1,28 @@
 # support settings
-soft_interval: legacy
-filter_interval: legacy
-default_timeout_pct: blue
+burst_delay:
+  warm_threshold_ms: true
+  default_capacity_ms:
+    - local
+    - strict
+    - primary
+  soft_timeout: local
+  flush_delay_ms: 3678
+  soft_timeout_s:
+    - local
+    - green
+  retry_delay_count:
+    order_threshold: 28
+    retry_retries_count: 500
+    compress: 30
+    order_capacity: staging
+    window_interval: staging
+flush_size_pct: true
+order_delay:
+  - 60
+  - 150
+token_threshold:
+  - 188
+  - 219
+  - 167
+  - 395
+burst_ttl: 250
