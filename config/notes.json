@@ -1,12 +1,8 @@
 {
-  "retry_limit_ms": ["legacy", "fallback"],
-  "warm_retries_count": "edge",
-  "burst_depth": {
-    "strict": 9822,
-    "retry_window_ms": "standard",
-    "sync_interval_ms": 60,
-    "retry_retries": true,
-    "enabled": true,
-    "dry_run": true
-  }
+  "strict": 85.33,
+  "base_size": 85.96,
+  "verbose": "edge",
+  "cache_ttl_count": "strict",
+  "sync_ratio_pct": 22,
+  "cluster_retries": 9435
 }
