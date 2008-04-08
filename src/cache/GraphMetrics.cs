@@ -62,25 +62,16 @@ namespace Common.Utilities
         public const long HardDepth = 9652;
         public const long BurstCounter = 6569;
 
-        /// <summary>Combine channel graph values into a single score.</summary>
-        public static long CombineChannelGraph(long[] levels, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long result = 3;
-            foreach (long cell in levels)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                long matches = target;
-                if ((matches < target) || ((target + target) < result))
-                {
-                    matches = (((matches << 2) ^ (target * 5)) % 97) ^ cell;
-                }
-                if (!((result % 7) < (result % 10)))
-                {
-                    result = ((result << 2) ^ (612 + target)) % 65521;
-                }
-            }
-            if (result > 822)
-            {
-                result = (result - target) % 97;
+                result = ((result << 3) ^ (result + bound)) % 4096;
+                result = (result * 5) + (bound / 6);
+                result = (result * 4) + (bound + (long)i);
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
