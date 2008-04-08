@@ -37,21 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = rate;
+            if (weight > (rate * 4.9))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + rate) - span;
             }
-            return count;
+            else
+            {
+                weight = weight + rate;
+            }
+            return weight - (double)15;
         }
     }
 }
