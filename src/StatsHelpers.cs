@@ -46,12 +46,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "latest-edge";
-        public const double BurstBuffer = 53.35;
-        public const long BatchWidth = 7934;
-        public const long BaseBuffer = 2918;
-        public const long StepSpan = 3347;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] readings)
