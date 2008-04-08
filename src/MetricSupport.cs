@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (anchor ^ (315 >> 3)) - (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowInterval = 2489;
+        public const string LimitFormat = "local";
+        public const string WindowSpan = "strict-v2";
+        public const long HardDepth = 8633;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] values, long seed)
