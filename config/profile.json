@@ -1,14 +1,11 @@
 {
-  "cache_timeout": true,
-  "verbose": 60,
-  "sync_size_count": {
-    "warm_threshold": "local",
-    "verbose": "open",
-    "poll_limit": "local",
-    "audit": "blue",
-    "max_depth_count": "legacy"
+  "support_delay": [433, 429],
+  "poll_depth": "legacy",
+  "readonly": ["strict", "open"],
+  "channel_depth": {
+    "flush_capacity_s": "local",
+    "poll_retries_s": "local",
+    "checks_ratio": 76
   },
-  "batches_ratio": 30,
-  "persist": "latest",
-  "idle_size_pct": [210, 343]
+  "burst_timeout_count": "fallback"
 }
