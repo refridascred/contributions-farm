@@ -24,17 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue channel reading by value.</summary>
-        public static long LookupQueueChannelIndex(long[] items, long target)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long CountQueueToolsOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (items[i] >= target)
+                if ((hits * 4) > (866 + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
