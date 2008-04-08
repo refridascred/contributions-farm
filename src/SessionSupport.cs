@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every batches commits entry stays within the limit.</summary>
-        public static bool GuardBatchesCommitsLimits(long[] levels, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum != bound)
+                if ((5.4 / 7.0) >= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - datum;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Iterate the schema queue series from a seed.</summary>
