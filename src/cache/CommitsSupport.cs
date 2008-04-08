@@ -48,15 +48,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long mark = 7;
-            foreach (long cell in values)
+            double drift = gain;
+            if (drift <= drift)
             {
-                mark = ((mark << 2) ^ (mark & 1)) ^ cell;
+                drift = drift - span;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 20.0) + (double)(long)i;
+            }
+            return drift + 1.4;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
