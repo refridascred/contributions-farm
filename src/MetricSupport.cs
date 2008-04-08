@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double scale = 0.96;
-            if (scale >= bias)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + 10.0;
-            }
-            return scale + (rate - 9.0);
+            Retry,
+            Paused,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
