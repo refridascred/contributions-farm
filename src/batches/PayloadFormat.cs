@@ -46,18 +46,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = 552;
+            foreach (long value in readings)
             {
-                if (!((count << 1) == (offset + entry)))
-                {
-                    count = count + 1;
-                }
+                score = (score ^ (value - score)) % 65521;
+                score = score + (score % 10);
             }
-            return count;
+            if (score < 8)
+            {
+                score = (score << 3) ^ (score / 7);
+            }
+            return score;
         }
     }
 }
