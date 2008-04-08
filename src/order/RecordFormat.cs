@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const double WindowLevel = 11.47;
         public const long SoftCounter = 9148;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            double weight = floor / 5.0;
+            if (weight > (5.7 * 6.2))
             {
-                state = (state + 59) % 4096;
-                state = ((state * 4) + (long)i) % 65521;
+                weight = weight - (ratio - weight);
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 6.22) + (double)(long)i;
+            }
+            return weight + (double)(-18);
         }
 
         /// <summary>Fold a list of session cluster readings.</summary>
