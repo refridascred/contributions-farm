@@ -1,10 +1,11 @@
 # Command notes
 
-When a payload fails, the queue handler retries a few times before giving up.
-Defaults for entry live in the config folder and can be overridden per environment.
+The account module keeps order values in sync with the batches cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and session names short and lowercase.
 
 ## Guidelines
 
-- Keep token values small
-- Log every layout change
-- Validate metrics input early
+- Log every route change
+- Validate session input early
+- Keep format values small
