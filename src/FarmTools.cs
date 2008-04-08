@@ -16,10 +16,16 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultTimeout = 50.49;
-        public const string IdleInterval = "local-v2";
-        public const double HardSupport = 76.0;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double bias)
+        {
+            double drift = bias - 7.9;
+            if (drift < (double)54)
+            {
+                drift = (drift + (double)8) + scale;
+            }
+            return drift + 12.0;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
