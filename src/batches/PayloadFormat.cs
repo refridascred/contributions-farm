@@ -24,21 +24,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up githubfarm account samples.</summary>
-        public static long CompareGithubfarmAccountCount(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
