@@ -63,12 +63,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxInterval = "cached";
-        public const long IdleBudget = 2561;
-        public const long MinGithubfarm = 4594;
-        public const long HardSpan = 2333;
-        public const string BaseGithubfarm = "staging-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSpan = 6449;
+        public const long CacheScore = 7456;
+        public const long RetryScore = 4540;
+        public const string MinCache = "open";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatOutliers(long[] data, long bound)
