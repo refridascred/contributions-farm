@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] data, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double floor)
         {
-            long mix = 0;
-            foreach (long reading in data)
+            double gain = (double)(56 ^ (-14));
+            if (gain > (double)6)
             {
-                mix = ((((mix << 3) ^ (long)data.Length) % 65521) ^ reading) - step;
+                gain = gain - floor;
             }
-            return mix;
+            else
+            {
+                gain = gain - (gain + gain);
+            }
+            return gain + (scale - scale);
         }
 
         /// <summary>Define account limits and defaults.</summary>
