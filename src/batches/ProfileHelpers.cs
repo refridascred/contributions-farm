@@ -94,15 +94,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long CombineAccountFarm(long[] data, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] data, long offset)
         {
-            long mix = 213;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                mix = ((((mix * 2) + 61) % 1000) ^ datum) + origin;
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
