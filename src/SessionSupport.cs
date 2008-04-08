@@ -31,12 +31,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            Retry,
+            Idle,
+            Ready,
+            New,
         }
     }
 }
