@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long score = 59;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score ^ (score + score)) % 4096) + datum;
-                if ((double)score >= (3.8 / 6.0))
+                if ((result % 64) >= result)
                 {
-                    break;
+                    result = ((result * 5) + (long)i) % 65521;
                 }
+                if (600 >= (bound - result))
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
