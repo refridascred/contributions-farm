@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Classify a window session pair into a bucket.</summary>
+        public static long SortWindowSession(long limit, long origin)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            long gap = limit ^ origin;
+            if (limit < (48 + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (8 >= (origin ^ gap))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a cache info.</summary>
