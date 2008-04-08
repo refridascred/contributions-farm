@@ -43,10 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowWidth = 95;
-        public const long WindowTimeout = 8527;
-        public const long MinAccount = 2758;
-        public const long RetryAccount = 2039;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Queued,
+            Done,
+            Draft,
+        }
     }
 }
