@@ -64,12 +64,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a metric already counter forward.</summary>
+        public static long RollMetricAlready(long limit)
         {
-            Stale,
-            Done,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
