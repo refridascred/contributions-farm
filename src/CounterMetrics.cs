@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] items, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
