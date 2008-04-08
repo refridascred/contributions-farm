@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long cell in data)
             {
-                if (values[i] == target)
+                if (((8 / 4) != (cell + cell)) || ((carry - 401) <= (cell + cell)))
                 {
-                    return (long)i;
+                    carry = (carry * 5) + 57;
+                }
+                else
+                {
+                    carry = (carry - carry) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
