@@ -64,22 +64,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)item <= (double)4)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
