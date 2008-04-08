@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of entry stream readings.</summary>
-        public static long DigestEntryStream(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long total = 17;
-            foreach (long cell in series)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.0 + 8.0) != (double)total)
-                {
-                    total = (total * 4) + (total - 1);
-                }
-                else
-                {
-                    total = (total + cell) % 97;
-                }
+                result = result ^ (result + result);
+                result = result + (floor ^ floor);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (total < 5)
-            {
-                total = total - (total + total);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Validate cache metric readings against a bound.</summary>
