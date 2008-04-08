@@ -33,14 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Paused,
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "primary";
+        public const long MaxCommits = 7675;
+        public const long BurstWidth = 1999;
+        public const long BatchInterval = 6928;
 
         /// <summary>Count tools profile pairs that satisfy a relation.</summary>
         public static long MatchToolsProfileCount(long[] series)
