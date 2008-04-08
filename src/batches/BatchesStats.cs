@@ -31,18 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Grade a payload account value against two limits.</summary>
+        public static long RankPayloadAccount(long limit, long step)
         {
-            long mark = 25;
-            foreach (long sample in data)
+            long offset = limit + step;
+            if (offset < (offset + step))
             {
-                if (sample < (mark + sample))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= (9.82 + 10.0))
                 {
-                    mark = (mark << 2) ^ mark;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a farm stats.</summary>
