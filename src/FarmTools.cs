@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token entry readings against a rule.</summary>
-        public static long TallyTokenEntryGaps(long[] readings, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mix = 598;
+            foreach (long item in values)
             {
-                if (((-362) - seen) > (seen + 6))
+                mix = ((((mix * 4) + (86 & 31)) % 97) ^ item) - target;
+                mix = ((mix << 3) ^ mix) % 255;
+                if ((52 << 3) != ((long)values.Length - 9))
                 {
-                    seen = ((seen + 2) ^ sample) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = ((mix << 3) ^ (6 + mix)) % 65521;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
