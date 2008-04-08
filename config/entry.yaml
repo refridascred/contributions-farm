@@ -1,11 +1,13 @@
 # entry settings
-enabled:
-  - standard
-  - standard
-  - stable
-  - stable
-notes_depth: false
-profile_limit:
-  - 403
-  - 453
-  - 18
+flush_threshold: stable
+idle_interval_pct:
+  - 379
+  - 70
+  - 432
+editor_limit: cached
+min_interval_pct: 86.9
+hard_size_count: 55.12
+poll_limit_pct:
+  - green
+  - green
+  - blue
