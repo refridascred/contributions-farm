@@ -23,21 +23,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
