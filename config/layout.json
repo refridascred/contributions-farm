@@ -1,18 +1,10 @@
 {
-  "default_threshold": "eu-west",
-  "batch_threshold": {
-    "queue_ratio": {
-      "report_timeout": 50.19,
-      "persist": ["standard", "legacy"],
-      "compress": 14,
-      "burst_depth_pct": false
-    },
-    "persist": true,
-    "min_timeout_count": "local",
-    "sync_threshold_pct": 91.86,
-    "default_size_count": 35.99
-  },
-  "strict": 8822,
-  "hard_capacity_s": "primary",
-  "retry_timeout": "latest"
+  "strict": 100,
+  "cache_ttl_pct": "stable",
+  "sync_retries": {
+    "batch_delay_ms": "local",
+    "buffer_limit": false,
+    "sync_ttl": ["latest", "standard", "green"],
+    "cache_delay": "edge"
+  }
 }
