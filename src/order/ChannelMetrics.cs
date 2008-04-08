@@ -35,22 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long CombineMetricsGraph(long[] levels, long bound)
-        {
-            long mix = 670;
-            foreach (long cell in levels)
-            {
-                if (bound < (mix << 2))
-                {
-                    mix = mix ^ (bound + cell);
-                }
-            }
-            if (mix < 48)
-            {
-                mix = (mix - (bound << 3)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 721;
+        public const double MaxTimeout = 72.52;
+        public const double MaxWidth = 74.23;
+        public const long LimitWidth = 1342;
+        public const long DefaultCount = 602;
     }
 }
