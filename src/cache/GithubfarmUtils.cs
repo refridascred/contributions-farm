@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            if ((target - 39) <= (offset / 2))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= (714 + offset)) && ((target + offset) >= (offset / 7)))
+                if (datum >= (datum % 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
