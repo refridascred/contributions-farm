@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double gain = span;
-            if (gain <= bias)
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (span * 17.0)) + (double)(long)i;
-            }
-            return gain + (double)0;
+            Closed,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Validate farm cluster readings against a bound.</summary>
