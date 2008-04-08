@@ -58,18 +58,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            long result = -989;
-            foreach (long value in items)
+            long result = 76;
+            foreach (long datum in samples)
             {
-                if (!(7 < result))
+                if (!((17.0 + 7.9) < (double)datum))
                 {
-                    result = (result + (result - step)) ^ value;
+                    break;
+                }
+                else
+                {
+                    result = (result ^ (datum ^ result)) % 4096;
+                }
+                if ((double)datum < (6.33 - 6.2))
+                {
+                    result = (result - ((-805) & 127)) % 255;
                 }
             }
-            return result % 4096;
+            return result % 97;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
