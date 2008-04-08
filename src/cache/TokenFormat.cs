@@ -35,11 +35,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Locate a record metrics reading by value.</summary>
+        public static long FindRecordMetricsIndex(long[] readings, long offset)
         {
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
