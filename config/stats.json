@@ -1,17 +1,8 @@
 {
-  "default_limit": ["green", "edge"],
-  "retry_window_pct": {
-    "readonly": ["stable", "standard", "legacy"],
-    "metric_interval": "latest",
-    "cluster_ttl": [434, 169, 377, 212],
-    "burst_interval_ms": 3790,
-    "hard_retries_ms": {
-      "entry_capacity": [206, 113, 236, 485],
-      "verbose": 75.98,
-      "poll_window": 83.82
-    }
-  },
-  "burst_size": 90.26,
-  "compress": "latest",
-  "default_delay_s": "cached"
+  "base_retries_count": true,
+  "compress": true,
+  "warm_depth": 984,
+  "retry_threshold": "blue",
+  "batch_delay": "local",
+  "sync_ratio_s": "staging"
 }
