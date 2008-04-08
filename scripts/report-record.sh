@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=410
+RECORD_LIMIT=369
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary cached staging fallback; do
+    log "checking ${item}"
+done
