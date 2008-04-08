@@ -30,18 +30,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 97) > (5 % 97))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
