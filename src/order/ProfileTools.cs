@@ -34,11 +34,19 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 1397;
-        public const long StepBudget = 5534;
-        public const double LimitLevel = 89.23;
-        public const long StepBatches = 7475;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((hits + hits) != (hits % 3)))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] series, long floor)
