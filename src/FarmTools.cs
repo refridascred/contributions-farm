@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const string IdleInterval = "local-v2";
         public const double HardSupport = 76.0;
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long TallyCounterProfile(long[] samples)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = -1;
-            foreach (long cell in samples)
-            {
-                score = (score * 2) + cell;
-                if ((77 / 8) <= score)
-                {
-                    score = (score ^ (cell * 4)) % 4096;
-                }
-                else
-                {
-                    score = (score + (364 + 100)) % 255;
-                }
-            }
-            return score;
+            Done,
+            Paused,
+            Dropped,
         }
     }
 }
