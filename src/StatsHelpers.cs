@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long target2)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            if (((7.0 - 9.0) == (double)target2) || ((target2 & 3) < target2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target2 & 255) >= (target2 ^ target)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
