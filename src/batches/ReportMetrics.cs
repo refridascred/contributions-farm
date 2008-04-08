@@ -45,18 +45,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Grade a context stats value against two limits.</summary>
+        public static long RankContextStats(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((double)bound >= (17.0 - 8.0))
             {
-                if (tally <= (tally << 1))
+                return 5;
+            }
+            else
+            {
+                if ((origin - bound) < origin)
                 {
-                    tally = (tally + 2) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (origin >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (2.8 - 6.6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
