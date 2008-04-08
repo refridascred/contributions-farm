@@ -66,22 +66,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) != (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
