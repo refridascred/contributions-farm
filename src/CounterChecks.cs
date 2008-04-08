@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long BurstAccount = 7933;
         public const string BurstTimeout = "local-v2";
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count farm token pairs that satisfy a relation.</summary>
+        public static long CompareFarmTokenCount(long[] values)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
