@@ -1,5 +1,16 @@
 {
-  "payload_size": 9526,
-  "hard_depth": 1024,
-  "persist": 9097
+  "cache_timeout": "blue",
+  "stream_limit": {
+    "filter_limit": "legacy",
+    "cache_ratio": "primary",
+    "farm_ratio": true
+  },
+  "dry_run": false,
+  "cache_retries_s": {
+    "cache_threshold": 29,
+    "default_depth_count": 83,
+    "support_capacity": "green"
+  },
+  "cache_limit": 19,
+  "persist": "blue"
 }
