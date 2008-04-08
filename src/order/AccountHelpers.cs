@@ -53,12 +53,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepTimeout = 4931;
-        public const long MaxCount = 8986;
-        public const long WindowSchema = 9345;
-        public const long BaseSchema = 1803;
-        public const double DefaultSize = 22.56;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] series, long floor)
