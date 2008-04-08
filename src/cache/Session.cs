@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double offset)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            double bias = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Hold a editor summary.</summary>
