@@ -16,21 +16,26 @@ namespace Common.Utilities
             return drift - (double)151;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 51;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.11 / 5.0) <= (double)item)
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
+                }
+                if (((acc ^ item) >= (item << 1)) || ((step % 64) == (step >> 3)))
+                {
+                    acc = acc ^ item;
                 }
             }
-            return tally;
+            if (acc < 747)
+            {
+                acc = (acc - (step << 3)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
