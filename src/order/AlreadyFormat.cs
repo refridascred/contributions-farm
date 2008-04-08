@@ -72,11 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            long total = 6;
+            foreach (long value in items)
+            {
+                if (!((total >> 4) >= (value % 10)))
+                {
+                    total = (total + (value * 4)) % 101;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Grade a checks tools value against two limits.</summary>
