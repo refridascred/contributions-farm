@@ -24,18 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long CountQueueToolsOutliers(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 0;
+            foreach (long datum in data)
             {
-                if ((hits * 4) > (866 + hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                sum = (((sum * 3) + (739 & 15)) % 65521) - datum;
             }
-            return hits;
+            if (sum > 542)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Locate a account reading by value.</summary>
