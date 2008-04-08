@@ -14,18 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 732;
+        public const string BaseScore = "local";
+        public const double DefaultCount = 58.86;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
