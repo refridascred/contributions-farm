@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)bound > (4.9 + 7.0)) || (hits > sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = (double)(3 * 2);
+            return ((bias + 1.62) + ratio) + floor;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
