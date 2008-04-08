@@ -1,7 +1,15 @@
 {
-  "audit": 30,
-  "base_size_s": "eu-west",
-  "burst_delay": 250,
-  "warm_window": 1451,
-  "warm_size_ms": 1715
+  "min_delay_pct": "open",
+  "warm_limit_pct": {
+    "burst_capacity": 37.68,
+    "soft_ttl_count": 67.59,
+    "warm_capacity_s": 100,
+    "hard_retries_s": ["standard", "staging", "open"],
+    "readonly": 1024,
+    "enabled": 42
+  },
+  "persist": 37.94,
+  "readonly": 70,
+  "dry_run": [298, 157, 27, 430],
+  "retry_capacity": "edge"
 }
