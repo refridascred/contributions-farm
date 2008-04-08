@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double span)
-        {
-            double drift = span;
-            if (drift > (double)94)
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift + (double)(-49);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 5.87) + (double)(long)i;
-            }
-            return drift + (double)21;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstScore = 9708;
+        public const string RetryToken = "latest-v2";
+        public const double MaxToken = 88.51;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] series, long step)
