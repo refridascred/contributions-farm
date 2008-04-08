@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] values, long seed)
         {
-            double bias = (double)7 - scale;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                bias = ((bias + (double)44) + (double)(long)i) - floor;
+                if ((6 - 83) > matches)
+                {
+                    matches = ((matches + 1) + item) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
