@@ -26,18 +26,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((-638) <= ((long)samples.Length & 127)))
-                {
-                    tally = ((tally + 1) + datum) + limit;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
