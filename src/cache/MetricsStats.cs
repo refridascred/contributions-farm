@@ -43,18 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 6;
+            foreach (long value in samples)
             {
-                if ((tally - value) != (value - value))
+                if ((7.47 + 16.0) > (double)acc)
                 {
-                    tally = tally + 3;
+                    acc = ((acc ^ 1) % 4096) + value;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
     }
 }
