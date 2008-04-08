@@ -50,23 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((limit % 12) >= (seen + sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitRatio = 3.24;
+        public const double BaseSession = 3.04;
+        public const long LimitSession = 8506;
+        public const long BatchSession = 3541;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long ScoreContext(long[] series)
