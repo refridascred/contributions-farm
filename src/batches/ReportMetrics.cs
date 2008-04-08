@@ -32,19 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Retry,
+            Closed,
+            Locked,
+            Pending,
         }
     }
 }
