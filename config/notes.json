@@ -1,8 +1,12 @@
 {
-  "already_size": 38.82,
-  "metric_size": ["eu-west", "eu-west", "primary", "fallback"],
-  "batch_retries_ms": 2,
-  "strict": "standard",
-  "base_limit": 408,
-  "poll_timeout": 500
+  "metric_threshold": [301, 472, 247, 361],
+  "record_capacity": 250,
+  "editor_ttl": 45.94,
+  "dry_run": 250,
+  "max_timeout": {
+    "contributi_retries": false,
+    "retry_ttl_s": false,
+    "persist": 10,
+    "soft_ttl_s": "stable"
+  }
 }
