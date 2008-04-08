@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long CacheOrder = 3631;
         public const long BurstOrder = 1064;
 
-        /// <summary>Digest a series of queue channel entries.</summary>
-        public static long ScoreQueueChannel(long[] readings)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long sum = 984;
-            foreach (long datum in readings)
-            {
-                sum = sum + (datum - sum);
-            }
-            return sum % 1000;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
