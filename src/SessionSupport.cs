@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long StepNotes = 8991;
         public const long SoftLevel = 6787;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] data, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
