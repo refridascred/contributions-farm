@@ -46,12 +46,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
             public long Score { get; set; }
         }
     }
