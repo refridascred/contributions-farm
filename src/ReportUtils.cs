@@ -41,30 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long mark = 828;
-            foreach (long cell in data)
+            long score = 62;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((2.42 / 8.0) < (double)item)
                 {
-                    mark = (mark - (cell + (long)i)) % 1000;
-                }
-                if (cell <= (mark ^ cell))
-                {
-                    mark = (mark + (mark >> 3)) % 101;
-                }
-                if ((double)4 >= 10.0)
-                {
-                    break;
+                    score = score + (score ^ score);
                 }
             }
-            if (mark < 744)
-            {
-                mark = mark + mark;
-            }
-            return mark % 65521;
+            return score % 4096;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
