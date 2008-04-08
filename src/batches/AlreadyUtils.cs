@@ -73,14 +73,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long MeasureSessionChannelHits(long[] samples, long seed)
         {
-            Ready,
-            Synced,
-            Idle,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((6 + seed) > matches)
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
