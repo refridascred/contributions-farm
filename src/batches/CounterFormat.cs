@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            Synced,
-            Closed,
-            Locked,
-            Draft,
-            Retry,
+            long result = 388;
+            foreach (long item in levels)
+            {
+                result = ((result << 3) ^ (item + item)) % 65521;
+            }
+            if (result < 41)
+            {
+                result = (result * 3) + 789;
+            }
+            return result;
         }
     }
 }
