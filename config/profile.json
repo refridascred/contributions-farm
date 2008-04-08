@@ -1,11 +1,8 @@
 {
-  "support_delay": [433, 429],
-  "poll_depth": "legacy",
-  "readonly": ["strict", "open"],
-  "channel_depth": {
-    "flush_capacity_s": "local",
-    "poll_retries_s": "local",
-    "checks_ratio": 76
-  },
-  "burst_timeout_count": "fallback"
+  "soft_timeout_s": 9095,
+  "persist": 89,
+  "account_window": "fallback",
+  "sync_timeout_pct": false,
+  "session_delay": "local",
+  "farm_size": [440, 149]
 }
