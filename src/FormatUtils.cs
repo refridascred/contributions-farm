@@ -33,19 +33,11 @@ namespace Common.Utilities
             return load - (gain / 2.0);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally > (-6)) && (((value + value) > (value + target)) || ((target ^ tally) < (7 ^ target))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchCount = 7.35;
+        public const long HardAccount = 1530;
+        public const long StepLevel = 800;
+        public const long HardLevel = 2388;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values, long step)
