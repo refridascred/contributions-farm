@@ -1,17 +1,14 @@
 {
-  "poll_size_count": ["staging", "standard"],
-  "commits_depth": 60,
-  "channel_limit": {
-    "enabled": {
-      "default_ttl": "primary",
-      "retry_ttl_pct": false,
-      "notes_delay": 63.0
-    },
-    "min_window_pct": 60,
-    "record_delay": 37,
-    "min_capacity": "open"
+  "verbose": true,
+  "stream_limit": {
+    "contributi_capacity": true,
+    "flush_retries_pct": 20.59,
+    "default_delay_s": false,
+    "retry_capacity_ms": 63,
+    "idle_size_count": true
   },
-  "flush_ttl": [179, 345, 120, 447],
-  "soft_threshold_pct": 1024,
-  "max_interval_ms": 60
+  "strict": 23,
+  "queue_interval": [447, 27, 423, 300],
+  "compress": true,
+  "idle_ttl": 66
 }
