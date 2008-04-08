@@ -69,17 +69,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a filter entry reading by value.</summary>
-        public static long SeekFilterEntryIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 2194;
+        public const long CacheQueue = 2767;
+        public const long MinQueue = 8446;
     }
 }
