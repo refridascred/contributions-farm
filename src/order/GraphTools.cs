@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string SoftReport = "cached-1";
         public const string MinBudget = "local-edge";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Idle,
-            Stale,
-            Draft,
+            Dropped,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the record phase values.</summary>
