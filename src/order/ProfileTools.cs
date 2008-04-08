@@ -55,11 +55,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
