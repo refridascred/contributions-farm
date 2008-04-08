@@ -36,19 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every profile record entry stays within the limit.</summary>
-        public static bool CheckProfileRecordBounds(long[] samples, long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double rate = 4.37;
+            if (rate > (double)9)
             {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + (bias + 9.92);
             }
-            return found;
+            else
+            {
+                rate = rate + (double)8;
+            }
+            return rate - (bias2 / 9.0);
         }
 
         /// <summary>Roll a route counter forward.</summary>
