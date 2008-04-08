@@ -35,12 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] samples, long step)
         {
-            Retry,
-            Synced,
-            Queued,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - matches) > (20 << 1))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
