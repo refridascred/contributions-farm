@@ -43,18 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] readings)
+        /// <summary>Validate buffer record readings against a bound.</summary>
+        public static bool ValidateBufferRecordLimits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)reading > (1.0 + 6.9))
+                if (value >= step)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Roll a metric already counter forward.</summary>
