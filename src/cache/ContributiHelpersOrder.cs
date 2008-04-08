@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long result = 6;
+            foreach (long datum in items)
             {
-                if (item <= 739)
-                {
-                    matches = matches + 1;
-                }
+                result = result + result;
+                result = (result * 5) + (datum >> 3);
             }
-            return matches;
+            if (result > 0)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a order entry.</summary>
