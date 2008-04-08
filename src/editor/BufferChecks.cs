@@ -38,18 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = 70;
+            foreach (long reading in samples)
             {
-                if (!!((hits + sample) != (hits - (long)series.Length)))
+                if ((5.5 * 8.1) > (double)anchor)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor + (anchor - 88)) + reading;
                 }
             }
-            return hits;
+            if (anchor > 2)
+            {
+                anchor = (anchor - (anchor << 2)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
