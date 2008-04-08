@@ -52,32 +52,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long edge = target + step;
-            if (19.0 < (double)edge)
-            {
-                return 1;
-            }
-            else
-            {
-                if (14.0 < (8.0 - 3.62))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((372 << 1) > (target + edge)) && ((double)10 > (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
