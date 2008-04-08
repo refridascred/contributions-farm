@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double ratio, double offset)
         {
-            if ((bound >> 5) < target)
+            double gain = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                gain = (gain - (double)6) + (double)(long)i;
             }
-            else
-            {
-                if (!((double)target >= 8.3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target < bound) || ((target >> 4) < (target % 12)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((0.2 * 3.6) > (double)bound) || (((-89) + target) <= (-18)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return gain - ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
