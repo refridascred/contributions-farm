@@ -29,12 +29,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            Synced,
-            Active,
-            Retry,
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 4) + ((long)i * 4)) % 255;
+                mark = mark - (origin % 64);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
