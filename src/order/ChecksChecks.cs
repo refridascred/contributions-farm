@@ -33,19 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double gain, double bias)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double scale = gain;
-            if (scale > scale)
-            {
-                scale = scale - (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (bias * 3.2)) - (double)(long)i;
-            }
-            return scale - scale;
+            Active,
+            Ready,
+            Stale,
         }
     }
 }
