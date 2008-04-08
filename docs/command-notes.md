@@ -1,11 +1,12 @@
 # Command notes
 
-When a filter fails, the cluster handler retries a few times before giving up.
-Keep counter and order names short and lowercase.
-A cluster that stays idle for too long is moved to the tools list.
+Use checks settings to tune how often tools data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use format settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep report values small
-- Validate order input early
+- Document new metric fields
+- Review route limits each release
+- Log every already change
+- Keep metrics values small
