@@ -17,17 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long seed)
+        /// <summary>Check that every support record entry stays within the limit.</summary>
+        public static bool GuardSupportRecordBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (items[i] == seed)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
