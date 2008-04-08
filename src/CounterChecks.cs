@@ -53,12 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleInterval = "fallback-edge";
-        public const string LimitOrder = "staging";
-        public const string MaxSpan = "standard";
-        public const double BurstTimeout = 18.96;
-        public const long MinRatio = 459;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
