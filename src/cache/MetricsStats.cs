@@ -34,12 +34,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "latest";
-        public const long StepTools = 1062;
-        public const long BurstTimeout = 5487;
-        public const long RetryTools = 3210;
-        public const string MinCount = "strict-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Done,
+            Active,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowMatches(long[] levels)
