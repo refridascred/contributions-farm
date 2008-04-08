@@ -48,21 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings, long floor)
+        /// <summary>Find the first session stats entry that matches the target.</summary>
+        public static long LocateSessionStatsIndex(long[] readings, long bound)
         {
-            long carry = 61;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry - (entry % 3)) % 255) - floor;
-                carry = carry ^ (carry & 31);
-                carry = (carry ^ carry) % 1000;
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 78)
-            {
-                carry = ((carry * 4) + (carry * 4)) % 101;
-            }
-            return carry % 1000;
+            return -1;
         }
     }
 }
