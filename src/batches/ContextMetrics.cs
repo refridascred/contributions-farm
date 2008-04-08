@@ -27,12 +27,12 @@ namespace Common.Utilities
             return ratio2 + (ratio2 * 3.67);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 2) != 0))
+                if (levels[i] < step)
                 {
                     return (long)i;
                 }
