@@ -16,13 +16,12 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
