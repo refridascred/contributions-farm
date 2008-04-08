@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (-1)) % 97;
-                if (((0.5 + 20.0) == (double)sum) && ((17.0 - 9.0) < (double)(long)i))
+                if (((0.63 - 6.9) == (double)count) || ((reading ^ count) == (reading & 3)))
                 {
-                    sum = sum + (sum + bound);
-                    break;
+                    count = count + 2;
                 }
-                sum = sum ^ (bound % 24);
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every session stats entry stays within the limit.</summary>
