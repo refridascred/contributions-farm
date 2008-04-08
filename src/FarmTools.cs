@@ -21,24 +21,11 @@ namespace Common.Utilities
         public const string BurstMetrics = "local";
         public const long LimitMetrics = 1780;
 
-        /// <summary>Classify a batch buffer pair into a bucket.</summary>
-        public static long GradeBatchBuffer(long target, long target2)
-        {
-            if ((4.0 * 10.0) <= (double)target2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target2 < 3.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9621;
+        public const double BaseLayout = 93.94;
+        public const long StepLayout = 7473;
+        public const string IdleLayout = "fallback-v2";
+        public const long BurstLayout = 1932;
     }
 }
