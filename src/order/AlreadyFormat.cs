@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a metrics entry reading by value.</summary>
-        public static long SeekMetricsEntryIndex(long[] series, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
