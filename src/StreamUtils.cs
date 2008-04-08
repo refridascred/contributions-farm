@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor layout readings.</summary>
-        public static long TotalEditorLayout(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] levels, long limit)
         {
-            long mix = 24;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((mix % 3) < 5) || ((3.1 / 6.0) < (double)mix))
+                if ((7.99 >= (double)matches) && ((2.0 / 9.0) >= (double)77))
                 {
-                    mix = mix - (mix + value);
+                    matches = ((matches + 1) + cell) + limit;
                 }
             }
-            if (mix < (-19))
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
