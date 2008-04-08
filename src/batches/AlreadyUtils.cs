@@ -37,22 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long mix = 2;
-            foreach (long item in data)
+            long total = 102;
+            foreach (long cell in samples)
             {
-                if ((4.24 - 2.0) < (double)floor)
-                {
-                    mix = (mix << 3) ^ (mix + item);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (floor + 410)) % 65521;
-                }
+                total = ((total * 2) + (total - cell)) % 97;
+                total = (total << 3) ^ total;
             }
-            return mix % 4096;
+            if (total < 3)
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
