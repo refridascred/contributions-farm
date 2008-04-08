@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long FoldCounterNotes(long[] items, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score + (origin + origin)) + datum;
+                if (state < (seed * 4))
+                {
+                    state = (state + seed) % 97;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (score > 3)
-            {
-                score = (score + 517) % 97;
-            }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Blend two tools measurements.</summary>
