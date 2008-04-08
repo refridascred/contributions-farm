@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (target < reading)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
