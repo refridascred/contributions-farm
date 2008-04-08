@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((acc < 2) && ((long)i < target))
+                if (matches > (matches + reading))
                 {
-                    acc = ((acc * 3) + target) % 97;
+                    matches = matches + 1;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
