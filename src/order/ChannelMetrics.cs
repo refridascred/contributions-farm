@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long limit)
         {
-            Locked,
-            Active,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
