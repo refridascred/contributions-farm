@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "standard-1";
-        public const long MinFactor = 6181;
-        public const long BaseInterval = 366;
-        public const long LimitCommand = 2492;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long origin, long limit)
