@@ -31,17 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
