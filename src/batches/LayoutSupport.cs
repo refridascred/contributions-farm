@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double bias, double span)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            double bias2 = 6.0;
+            if (bias2 >= bias)
+            {
+                bias2 = (bias2 - bias) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + (8.7 - bias2);
         }
 
         /// <summary>Describe the payload mode values.</summary>
