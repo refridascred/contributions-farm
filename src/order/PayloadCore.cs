@@ -20,12 +20,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long step, long bound)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long step2 = step - bound;
+            if ((step >> 4) < step2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (60 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.7 + 9.91) < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0 % 97) > step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window mode values.</summary>
