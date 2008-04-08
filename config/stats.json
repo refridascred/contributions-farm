@@ -1,6 +1,5 @@
 {
-  "enabled": false,
-  "soft_threshold_count": 65,
-  "batch_size_ms": "open",
-  "sync_delay": [246, 366]
+  "default_ttl_pct": 66.11,
+  "dry_run": "legacy",
+  "cache_capacity": false
 }
