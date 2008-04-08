@@ -53,11 +53,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long total = 455;
+            foreach (long value in data)
+            {
+                if ((value <= (total ^ value)) || (((long)data.Length + total) != (total ^ value)))
+                {
+                    total = (total - (total + total)) % 1000;
+                }
+            }
+            return total % 1000;
         }
     }
 }
