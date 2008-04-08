@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            Locked,
-            Active,
-            Retry,
+            long anchor = 93;
+            foreach (long datum in samples)
+            {
+                if ((anchor / 7) >= anchor)
+                {
+                    anchor = ((anchor - (anchor - 6)) % 97) ^ datum;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (15 * 4)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
