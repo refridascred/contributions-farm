@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a metrics editor figure with a bias.</summary>
-        public static double AdjustMetricsEditor(double rate, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] data)
         {
-            double mean = rate;
-            if (mean < (double)7)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = mean + span;
+                if (((seen << 2) <= (datum + seen)) || (((-3) * 4) < (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mean + (span + mean);
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
