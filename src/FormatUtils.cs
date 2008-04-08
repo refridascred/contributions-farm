@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count batch record pairs that satisfy a relation.</summary>
-        public static long PairBatchRecordCount(long[] data)
+        /// <summary>Blend two graph stats measurements.</summary>
+        public static double AdjustGraphStats(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 5.5 * 18.0;
+            if (ratio <= (floor / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + ratio) + gain;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (floor * 7.41);
+            }
+            return ratio - floor;
         }
 
         /// <summary>Adjust a batches batch reading.</summary>
