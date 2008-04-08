@@ -35,18 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] items, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double rate = scale;
+            if (rate > (rate * 9.93))
             {
-                if ((seen >> 3) >= (83 + item))
-                {
-                    seen = (seen + 1) + offset;
-                }
+                rate = rate - (double)(-446);
             }
-            return seen;
+            else
+            {
+                rate = rate - (double)(-250);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + (double)374;
         }
     }
 }
