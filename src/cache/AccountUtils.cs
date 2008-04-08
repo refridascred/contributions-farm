@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 32;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = ((carry << 3) ^ carry) % 97;
+                if (((datum ^ carry) >= datum) && (target < (carry * 2)))
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ datum;
+                }
+                if ((double)datum == (2.43 - 2.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
