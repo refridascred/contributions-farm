@@ -32,17 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a graph cache reading by value.</summary>
-        public static long LocateGraphCacheIndex(long[] items, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
