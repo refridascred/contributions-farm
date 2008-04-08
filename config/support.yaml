@@ -1,9 +1,5 @@
 # support settings
-verbose:
-  - 169
-  - 340
-  - 82
-  - 146
-already_retries: 64.65
-default_interval_s: false
-burst_size_pct: primary
+report_limit: 59
+cache_timeout: 7
+retry_size_count: blue
+min_ttl_s: 10
