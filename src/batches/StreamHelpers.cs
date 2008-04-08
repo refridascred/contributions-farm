@@ -36,19 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor - (floor * 3);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
