@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=278
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-latest}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=494
+log "limit is ${COMMAND_LIMIT}"
