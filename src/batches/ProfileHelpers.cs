@@ -41,17 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + (total * 4)) % 4096;
-                total = (total - (offset - offset)) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next stats command value from a seed.</summary>
