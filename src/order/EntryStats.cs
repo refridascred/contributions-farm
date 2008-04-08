@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSpan = 4821;
-        public const long RetryChannel = 3750;
-        public const long MaxWidth = 1408;
-        public const long CacheSpan = 2946;
-        public const long CacheTimeout = 2965;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long origin, long limit)
