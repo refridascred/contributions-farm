@@ -57,11 +57,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftTimeout = "local-v2";
-        public const string HardScore = "cached-v2";
-        public const double BaseLevel = 11.7;
-        public const long WindowReport = 413;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] readings)
+        {
+            long mix = 9;
+            foreach (long value in readings)
+            {
+                if (6.0 < (double)mix)
+                {
+                    mix = (mix * 2) + (value - mix);
+                }
+                if (!((value << 1) < (mix + mix)))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
