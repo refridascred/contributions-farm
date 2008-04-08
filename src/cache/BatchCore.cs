@@ -13,18 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)94 > (double)seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
