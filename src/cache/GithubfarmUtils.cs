@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values, long offset)
         {
-            New,
-            Draft,
-            Ready,
-            Closed,
-            Locked,
+            long anchor = 8;
+            foreach (long cell in values)
+            {
+                if (offset >= (cell * 2))
+                {
+                    anchor = (anchor * 5) + (anchor * 2);
+                }
+                else
+                {
+                    anchor = anchor + (anchor ^ cell);
+                }
+                if (5.8 >= (9.0 / 5.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
