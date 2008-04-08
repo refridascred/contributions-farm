@@ -44,10 +44,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseInterval = 9003;
-        public const long IdleReport = 112;
-        public const double WindowLevel = 25.32;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double rate, double bias)
+        {
+            double load = rate;
+            if (load < (bias * 7.0))
+            {
+                load = load - (13.0 + bias);
+            }
+            else
+            {
+                load = load + (rate * 3.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (rate + rate)) + (double)(long)i;
+            }
+            return load - (double)526;
+        }
 
         /// <summary>Locate a context order reading by value.</summary>
         public static long LookupContextOrderIndex(long[] levels, long origin)
