@@ -54,12 +54,23 @@ namespace Common.Utilities
         public const double CacheRecord = 38.3;
         public const long IdleInterval = 3375;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i ^ acc) > origin)
+                {
+                    acc = acc - (origin + (long)i);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (acc - (origin * 2)) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
