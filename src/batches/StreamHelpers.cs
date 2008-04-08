@@ -51,23 +51,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((88 < (count % 3)) || ((6.63 + 4.18) < (double)entry))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryInterval = 4622;
+        public const string CacheAlready = "open";
+        public const double MinRatio = 62.45;
+        public const long StepAlready = 4101;
+        public const string DefaultAlready = "open-edge";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
