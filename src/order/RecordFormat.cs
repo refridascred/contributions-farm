@@ -31,18 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data, long seed)
+        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchBatchesGithubfarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell * 4) != ((long)data.Length - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + seed;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two batch measurements.</summary>
