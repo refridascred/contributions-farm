@@ -40,13 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Iterate the layout account series from a seed.</summary>
+        public static long RollLayoutAccount(long origin)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Closed,
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 4) + 74) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Accumulate filter samples.</summary>
