@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] levels, long floor)
         {
-            double drift = gain;
-            if (drift <= drift)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                drift = drift - span;
+                if ((67 + floor) > (datum ^ floor))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 20.0) + (double)(long)i;
-            }
-            return drift + 1.4;
+            return matches;
         }
 
         /// <summary>Hold a context summary.</summary>
