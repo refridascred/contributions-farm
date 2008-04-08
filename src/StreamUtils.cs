@@ -76,12 +76,22 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of editor layout readings.</summary>
+        public static long TotalEditorLayout(long[] values)
         {
-            Draft,
-            Synced,
-            Active,
+            long mix = 24;
+            foreach (long value in values)
+            {
+                if (((mix % 3) < 5) || ((3.1 / 6.0) < (double)mix))
+                {
+                    mix = mix - (mix + value);
+                }
+            }
+            if (mix < (-19))
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a cache entry.</summary>
