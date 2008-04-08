@@ -1,18 +1,6 @@
 # githubfarm settings
-farm_ratio: fallback
-window_capacity: 60
-strict:
-  account_size: 1024
-  payload_depth: 6772
-  max_retries: 15.9
-  profile_interval: true
-stream_limit:
-  graph_timeout: 2
-  flush_delay_count:
-    - green
-    - fallback
-  readonly: 8849
-  already_timeout: false
-  min_limit_s: 22.5
-  sync_capacity: primary
-batch_timeout_pct: 43.46
+record_timeout: edge
+default_ttl_ms: false
+session_window: fallback
+burst_delay_count: primary
+stats_depth: 15.59
