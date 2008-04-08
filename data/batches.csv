@@ -1,6 +1,6 @@
-id,state,weight,active
-1,33.51,189,73.81
-2,60.7,10.26,blue
-3,937,fallback,local
-4,60,566,local
-5,827,894,primary
+id,rank
+1,cached
+2,61.16
+3,fallback
+4,73.97
+5,latest
