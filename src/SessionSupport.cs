@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double rate = (double)(415 << 2);
-            if (rate <= (span + 7.74))
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate + (weight * 9.08);
-            }
-            return rate + 3.39;
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
