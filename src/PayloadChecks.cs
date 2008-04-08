@@ -53,22 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftInterval = 47.42;
+        public const double BatchCache = 41.83;
+        public const long MaxSpan = 3709;
+        public const long StepCache = 9364;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] data, long floor)
