@@ -45,22 +45,10 @@ namespace Common.Utilities
         public const string SoftGraph = "primary";
         public const string BaseGraph = "local-v2";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
-        {
-            long score = 39;
-            foreach (long entry in series)
-            {
-                if (!((entry * 3) >= entry))
-                {
-                    score = ((score * 2) + (entry - score)) % 1000;
-                }
-                else
-                {
-                    score = (score + (score >> 4)) % 1000;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheLevel = 1743;
+        public const long DefaultCount = 9847;
+        public const double BatchRoute = 23.31;
+        public const double BaseRoute = 8.57;
     }
 }
