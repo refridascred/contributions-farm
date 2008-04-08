@@ -95,11 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long bound)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
