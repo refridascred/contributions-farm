@@ -44,22 +44,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] data, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 8;
+            foreach (long reading in levels)
             {
-                if ((156 < (seen + (-380))) && (((cell - cell) != ((-618) - cell)) && ((double)cell >= (double)253)))
+                carry = ((carry * 3) + (carry / 2)) % 4096;
+                carry = (carry * 5) + reading;
+                if (!((double)reading > (double)carry))
                 {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (carry < 46)
+            {
+                carry = (carry * 3) + (carry % 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
