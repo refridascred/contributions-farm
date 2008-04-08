@@ -26,16 +26,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats githubfarm counter forward.</summary>
-        public static long SeriesStatsGithubfarm(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - (target + target)) % 97;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchWidth = 782;
+        public const long WindowAccount = 7567;
+        public const long RetryBudget = 2369;
     }
 }
