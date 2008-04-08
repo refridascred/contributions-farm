@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long CacheFilter = 5402;
         public const double BatchFilter = 95.34;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long TallyStatsBatch(long[] readings, long step)
         {
-            double mean = (double)(78 + 93);
-            if (mean >= (bias + mean))
+            long mark = 1;
+            foreach (long entry in readings)
             {
-                mean = (mean + bias) - rate;
+                if (mark >= entry)
+                {
+                    mark = (mark ^ 77) + step;
+                }
             }
-            else
-            {
-                mean = mean - (bias * 16.0);
-            }
-            return mean - mean;
+            return mark;
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
