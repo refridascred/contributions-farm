@@ -34,17 +34,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
