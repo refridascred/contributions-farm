@@ -55,20 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long CountContextChannelOutliers(long[] data, long bound)
         {
-            long carry = 28;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                carry = (carry - (item + item)) % 97;
-                carry = carry + (item - 784);
+                if ((8.6 / 4.0) >= (double)seen)
+                {
+                    seen = ((seen + 3) + reading) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry < 367)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
