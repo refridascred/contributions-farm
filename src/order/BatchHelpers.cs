@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultDepth = 0.58;
-        public const long BurstSpan = 8648;
-        public const double BatchReport = 7.09;
-        public const string MinTimeout = "open-edge";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] values, long offset)
+        {
+            long total = 27;
+            foreach (long entry in values)
+            {
+                total = ((total - (77 & 63)) - entry) - offset;
+            }
+            return total;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
