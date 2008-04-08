@@ -32,15 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double span)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long origin)
         {
-            double gain2 = (double)(70 << 2);
-            if (gain2 < (span + 7.8))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                gain2 = (gain2 - (double)2) + gain;
+                if (datum <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain2 + gain2;
+            return flag;
         }
     }
 }
