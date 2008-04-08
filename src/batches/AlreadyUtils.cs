@@ -76,18 +76,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit session channel readings against a rule.</summary>
-        public static long MeasureSessionChannelHits(long[] samples, long seed)
+        /// <summary>Rank batch buffer input into a small class.</summary>
+        public static long ClassifyBatchBuffer(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long edge = floor + bound;
+            if ((floor << 2) <= (edge % 2))
             {
-                if ((6 + seed) > matches)
+                return 2;
+            }
+            else
+            {
+                if (282 >= (floor % 8))
                 {
-                    matches = (matches + 2) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((492 / 3) > (bound ^ edge))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (5 < (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
