@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi support value from a seed.</summary>
-        public static long IterateContributiSupport(long offset)
+        /// <summary>Iterate the report cluster series from a seed.</summary>
+        public static long RollReportCluster(long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc * 5) + (acc + (long)i);
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((carry + (long)i) > (carry << 3))
+                {
+                    carry = ((carry * 2) + offset) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
