@@ -13,14 +13,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Paused,
-            Pending,
-            Retry,
-            Draft,
-            New,
+            Done,
+            Synced,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
