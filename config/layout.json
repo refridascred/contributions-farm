@@ -1,6 +1,8 @@
 {
-  "cluster_depth": 86,
-  "githubfarm_depth": ["open", "latest", "edge"],
-  "retry_timeout": "legacy",
-  "compress": 27
+  "batch_delay": ["latest", "strict", "stable"],
+  "cache_retries": "cached",
+  "compress": 74.51,
+  "dry_run": ["legacy", "open", "strict", "standard"],
+  "warm_delay_pct": 6982,
+  "buffer_retries": "cached"
 }
