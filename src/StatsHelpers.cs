@@ -53,9 +53,23 @@ namespace Common.Utilities
         public const long BaseBuffer = 2918;
         public const long StepSpan = 3347;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 61.73;
-        public const long CacheTimeout = 4077;
-        public const string CacheInterval = "staging-1";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long result = 4;
+            foreach (long cell in readings)
+            {
+                result = (result ^ (result - result)) % 101;
+                if ((cell / 6) > (709 * 4))
+                {
+                    result = ((result << 3) ^ (93 << 1)) % 97;
+                }
+                if ((157 - result) >= cell)
+                {
+                    result = (result - (result + result)) % 101;
+                }
+            }
+            return result;
+        }
     }
 }
