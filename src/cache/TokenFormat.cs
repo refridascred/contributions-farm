@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheInterval = 24.46;
-        public const double MaxSpan = 80.08;
-        public const long StepQueue = 198;
-        public const long HardTimeout = 3836;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] values, long target)
+        {
+            long total = 16;
+            foreach (long cell in values)
+            {
+                total = ((total - (total + target)) % 1000) + cell;
+                total = total ^ (target ^ target);
+            }
+            return total;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double rate, double floor)
