@@ -1,7 +1,9 @@
 {
-  "sync_limit_count": 19.87,
-  "strict": 53.07,
-  "layout_delay": "eu-west",
-  "batch_ratio": 35,
-  "retry_interval": 80.18
+  "flush_delay_pct": {
+    "hard_window_pct": "stable",
+    "base_window_s": [32, 407, 147, 7],
+    "sync_limit_ms": 1024
+  },
+  "default_window_s": 84.07,
+  "audit": 3980
 }
