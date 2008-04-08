@@ -23,26 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long origin)
-        {
-            long gap = target + origin;
-            if ((3.31 / 9.0) > (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "legacy";
+        public const long WindowCounter = 8013;
+        public const string LimitInterval = "alpha-v2";
+        public const string DefaultCounter = "staging-v2";
+        public const double BatchScore = 30.23;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] levels, long floor)
