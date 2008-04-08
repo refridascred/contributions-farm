@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (sample >= bound)
+                if (!((double)bound > (4.9 + 7.0)) || (hits > sample))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
