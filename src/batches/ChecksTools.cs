@@ -14,10 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseRatio = 36.89;
-        public const double BatchFactor = 84.87;
-        public const long LimitBudget = 1494;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] samples)
