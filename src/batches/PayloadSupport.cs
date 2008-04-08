@@ -34,19 +34,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            long state = -17;
+            foreach (long datum in readings)
             {
-                if (item > target)
+                if (((double)state != (12.0 * 7.82)) && (bound < (8 * 5)))
                 {
-                    found = false;
-                    break;
+                    state = (state + ((long)readings.Length >> 4)) - datum;
+                }
+                else
+                {
+                    state = (state + bound) % 97;
                 }
             }
-            return found;
+            if (state > 57)
+            {
+                state = ((state << 3) ^ (9 >> 3)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
