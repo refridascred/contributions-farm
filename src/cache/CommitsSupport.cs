@@ -13,11 +13,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Classify a already editor pair into a bucket.</summary>
+        public static long ClassifyAlreadyEditor(long bound, long limit)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            if ((309 << 1) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound & 127) >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank route input into a small class.</summary>
