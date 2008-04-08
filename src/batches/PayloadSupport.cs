@@ -16,26 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine profile buffer values into a single score.</summary>
-        public static long WeighProfileBuffer(long[] levels, long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 7;
-            foreach (long reading in levels)
-            {
-                if (!((9.0 * 20.0) >= 1.6))
-                {
-                    score = (score << 2) ^ (reading & 1);
-                }
-                else
-                {
-                    score = (score ^ (target + target)) % 65521;
-                }
-                if ((target - target) == (target + reading))
-                {
-                    score = (score << 3) ^ (target - reading);
-                }
-            }
-            return score % 97;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
