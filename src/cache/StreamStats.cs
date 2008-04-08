@@ -32,12 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 8214;
-        public const long LimitFactor = 3660;
-        public const string BurstCount = "primary-1";
-        public const double BurstWindow = 85.23;
-        public const string CacheWindow = "stable-v2";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long seed)
+        {
+            long score = 135;
+            foreach (long sample in values)
+            {
+                score = (((score * 3) + seed) % 1000) ^ sample;
+            }
+            return score;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long step, long offset)
