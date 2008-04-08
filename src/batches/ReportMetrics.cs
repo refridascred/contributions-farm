@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] series, long origin)
         {
-            double rate2 = (bias * 7.5) - rate;
-            return rate2 - rate;
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(9.43 <= (double)origin))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first session stats entry that matches the target.</summary>
