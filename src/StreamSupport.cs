@@ -47,11 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long acc = 804;
+            foreach (long datum in values)
+            {
+                acc = ((((acc * 5) + acc) % 255) ^ datum) - offset;
+            }
+            return acc % 65521;
         }
     }
 }
