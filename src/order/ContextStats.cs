@@ -31,13 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Dropped,
             Draft,
-            Failed,
-            Ready,
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate schema already samples.</summary>
