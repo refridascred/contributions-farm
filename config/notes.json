@@ -1,14 +1,5 @@
 {
-  "cache_threshold": 3.86,
-  "compress": 9.89,
-  "burst_depth_pct": 65,
-  "buffer_retries": true,
-  "max_ratio_ms": {
-    "idle_ratio_count": "eu-west",
-    "retry_size_s": "fallback",
-    "entry_delay": false,
-    "batch_interval": 44,
-    "max_capacity": 85.51,
-    "cache_capacity": [202, 240, 450, 327]
-  }
+  "cache_ttl_pct": true,
+  "sync_limit": ["blue", "strict", "legacy"],
+  "burst_depth_pct": ["edge", "cached", "strict", "cached"]
 }
