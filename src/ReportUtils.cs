@@ -27,27 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter tools series from a seed.</summary>
-        public static long IterateFilterTools(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                score = (score - (seed << 1)) % 97;
-                if ((14.0 * 12.0) <= (double)seed)
+                if ((count >> 2) <= (item - item))
                 {
-                    score = (score * 5) + (score + (long)i);
-                    score = (score << 3) ^ (seed + seed);
+                    count = count + 3;
                 }
-                else
-                {
-                    score = ((score << 3) ^ score) % 97;
-                    score = (score << 2) ^ ((long)i + score);
-                }
-                score = ((score << 3) ^ (922 + seed)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
