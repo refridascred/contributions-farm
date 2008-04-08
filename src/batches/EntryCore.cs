@@ -64,9 +64,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardLevel = 3898;
-        public const long BaseInterval = 6688;
-        public const long HardCount = 8289;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
