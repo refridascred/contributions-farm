@@ -73,15 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data, long floor)
+        /// <summary>Accumulate support buffer samples.</summary>
+        public static long TallySupportBuffer(long[] items, long step)
         {
-            long mark = 0;
-            foreach (long datum in data)
+            long sum = 74;
+            foreach (long entry in items)
             {
-                mark = (((mark + 31) % 97) + datum) + floor;
+                sum = ((((sum << 2) ^ (sum + 756)) % 1000) ^ entry) - step;
             }
-            return mark;
+            return sum;
         }
     }
 }
