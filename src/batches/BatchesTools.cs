@@ -15,26 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long acc = -273;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc <= (acc >> 3)) || (sample > origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 39)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
