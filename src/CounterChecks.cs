@@ -76,19 +76,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool CheckAlreadySupportBounds(long[] data, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Failed,
+            Locked,
+            Synced,
+            Retry,
         }
     }
 }
