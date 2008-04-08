@@ -38,15 +38,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] data, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((double)tally >= (3.4 - 4.4))
+                {
+                    tally = ((tally + 3) - sample) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
