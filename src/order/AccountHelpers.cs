@@ -20,12 +20,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Digest a series of route cache entries.</summary>
+        public static long ScoreRouteCache(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long score = 24;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (((score << 3) ^ cell) % 97) - (long)i;
+                }
+                if ((score & 3) <= cell)
+                {
+                    score = ((score * 2) + ((-96) - score)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
