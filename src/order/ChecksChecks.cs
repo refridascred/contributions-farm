@@ -31,23 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] data, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 1;
-            foreach (long sample in data)
-            {
-                score = (((score << 2) ^ (0 >> 1)) % 4096) + sample;
-                if (((double)score < 2.96) || ((score >> 2) > (score & 1)))
-                {
-                    score = (score + (score + target)) % 4096;
-                }
-            }
-            if (score > 726)
-            {
-                score = score ^ target;
-            }
-            return score % 97;
+            Pending,
+            Dropped,
+            New,
+            Stale,
+            Draft,
         }
     }
 }
