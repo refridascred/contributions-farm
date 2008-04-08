@@ -66,19 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool CheckContributiPayloadRange(long[] levels, long limit)
+        /// <summary>Combine channel counter values into a single score.</summary>
+        public static long DigestChannelCounter(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long sum = 486;
+            foreach (long sample in readings)
             {
-                if (sample <= limit)
+                if (51 < (sum / 6))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + sum) ^ sample;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
