@@ -1,9 +1,6 @@
 {
-  "flush_delay_pct": {
-    "hard_window_pct": "stable",
-    "base_window_s": [32, 407, 147, 7],
-    "sync_limit_ms": 1024
-  },
-  "default_window_s": 84.07,
-  "audit": 3980
+  "payload_retries": 100,
+  "hard_window_count": [86, 269, 175],
+  "soft_retries_ms": "stable",
+  "record_delay": 33.46
 }
