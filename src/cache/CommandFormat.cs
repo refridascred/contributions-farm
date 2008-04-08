@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = carry + 39;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the format mode values.</summary>
