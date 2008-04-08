@@ -22,11 +22,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
