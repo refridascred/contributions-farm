@@ -33,15 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double rate, double offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long step)
         {
-            double scale = (double)(5 << 2);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = ((scale - rate) - (double)(long)i) + offset;
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - rate;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
