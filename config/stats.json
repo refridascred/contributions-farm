@@ -1,5 +1,7 @@
 {
-  "default_ttl_pct": 66.11,
-  "dry_run": "legacy",
-  "cache_capacity": false
+  "cache_depth": 7347,
+  "poll_depth_ms": [298, 472, 329],
+  "idle_capacity": 60,
+  "schema_ratio": false,
+  "soft_interval": false
 }
