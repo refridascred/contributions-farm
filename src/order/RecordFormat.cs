@@ -23,23 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long AuditChecksContributiHits(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample << 2) < (sample << 3))
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 313;
+        public const long DefaultMetric = 2375;
+        public const double WindowScore = 41.88;
+        public const long IdleMetric = 7978;
+        public const string RetryMetric = "staging-edge";
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long step)
