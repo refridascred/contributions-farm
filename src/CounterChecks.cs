@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if (!((seed / 3) != (seed / 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((72 / 4) == (2 ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
