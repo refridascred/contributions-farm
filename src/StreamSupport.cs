@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a format tools reading by value.</summary>
-        public static long LookupFormatToolsIndex(long[] values, long seed)
+        /// <summary>Locate a metric command reading by value.</summary>
+        public static long FindMetricCommandIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < seed)
+                if (samples[i] < limit)
                 {
                     return (long)i;
                 }
