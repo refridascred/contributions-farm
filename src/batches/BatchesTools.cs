@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings, long bound)
         {
-            Synced,
-            Idle,
-            Ready,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((item & 3) > (9 & 1)) || ((double)bound == (18.0 + 2.0))) && (bound <= (count - item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
