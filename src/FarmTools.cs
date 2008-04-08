@@ -16,16 +16,10 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double bias)
-        {
-            double drift = bias - 7.9;
-            if (drift < (double)54)
-            {
-                drift = (drift + (double)8) + scale;
-            }
-            return drift + 12.0;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 6339;
+        public const string BurstMetrics = "local";
+        public const long LimitMetrics = 1780;
 
         /// <summary>Classify a batch buffer pair into a bucket.</summary>
         public static long GradeBatchBuffer(long target, long target2)
