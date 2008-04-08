@@ -39,22 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (5.35 <= (double)item)
-                {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
