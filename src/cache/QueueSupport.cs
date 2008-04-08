@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
