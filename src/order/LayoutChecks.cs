@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Classify a metric record pair into a bucket.</summary>
+        public static long BucketMetricRecord(long origin, long bound)
         {
-            Locked,
-            Idle,
-            Draft,
+            long slot = origin - bound;
+            if ((origin % 97) > (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound + slot) > bound) || (bound > 233))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound << 1) >= (-57))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a format route reading by value.</summary>
