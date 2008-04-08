@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 411;
-        public const long StepFormat = 6241;
-        public const double CacheSpan = 52.79;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a filter entry value against two limits.</summary>
         public static long BucketFilterEntry(long target, long seed)
