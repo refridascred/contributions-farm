@@ -42,20 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long total = 102;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (total - cell)) % 97;
-                total = (total << 3) ^ total;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 3)
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Describe the profile phase values.</summary>
