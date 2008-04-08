@@ -13,13 +13,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long origin, long limit)
         {
-            Stale,
-            Retry,
-            Ready,
-            Closed,
+            if (16.0 >= (5.7 + 17.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((8 + limit) <= (limit / 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (7.6 < (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
