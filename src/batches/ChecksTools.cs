@@ -44,10 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitDepth = 44.01;
-        public const string SoftSize = "cached-v2";
-        public const long SoftReport = 2503;
-        public const long RetryRatio = 5292;
+        /// <summary>Accumulate buffer githubfarm samples.</summary>
+        public static long TotalBufferGithubfarm(long[] readings, long offset)
+        {
+            long carry = 470;
+            foreach (long sample in readings)
+            {
+                if (!((1.0 - 5.76) > (double)carry))
+                {
+                    carry = ((carry * 3) + (offset / 2)) - sample;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
