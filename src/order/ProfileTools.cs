@@ -34,18 +34,18 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((hits + hits) != (hits % 3)))
+                if ((double)datum > 3.0)
                 {
-                    hits = (hits + 3) - sample;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
