@@ -1,12 +1,15 @@
 # Command notes
 
-Each editor is validated before it reaches the cache queue.
-Keep batches and graph names short and lowercase.
-Keep profile and metrics names short and lowercase.
+A account that stays idle for too long is moved to the commits list.
+Use context settings to tune how often route data is refreshed.
+
+A support that stays idle for too long is moved to the batches list.
+A context that stays idle for too long is moved to the context list.
+The payload report groups every cache by profile.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every layout change
-- Keep stream values small
-- Document new metrics fields
+- Review payload limits each release
+- Validate filter input early
+- Prefer token defaults
+- Document new contributi fields
