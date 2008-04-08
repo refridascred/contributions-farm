@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                score = (score ^ ((long)i % 8)) % 101;
-                score = ((score * 2) + (0 + 43)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)matches <= (0.8 + 2.0))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a cluster options.</summary>
