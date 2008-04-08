@@ -44,15 +44,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values)
         {
-            long state = 357;
-            foreach (long sample in readings)
+            long sum = 80;
+            foreach (long cell in values)
             {
-                state = (state ^ (sample - sample)) % 97;
+                sum = (sum + (cell << 3)) % 101;
+                sum = (sum << 3) ^ cell;
+                if ((cell << 1) >= (sum * 3))
+                {
+                    sum = ((sum << 2) ^ sum) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
