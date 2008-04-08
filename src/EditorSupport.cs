@@ -42,21 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] items, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                score = (score * 4) + (target + score);
-                if ((target / 2) <= (long)i)
+                if (floor < (matches >> 4))
                 {
-                    score = (score + target) % 97;
-                    score = (score << 2) ^ (target % 12);
+                    matches = (matches + 1) + value;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
