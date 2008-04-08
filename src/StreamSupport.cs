@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of buffer batches entries.</summary>
-        public static long DigestBufferBatches(long[] data, long floor)
-        {
-            long result = 32;
-            foreach (long item in data)
-            {
-                result = (result ^ (item << 1)) % 255;
-            }
-            if (result > 6)
-            {
-                result = (result - floor) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstInterval = 6054;
+        public const long MaxLevel = 2760;
+        public const double DefaultToken = 53.23;
+        public const double IdleToken = 73.24;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] levels, long step)
