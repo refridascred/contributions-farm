@@ -55,11 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + (-7)) != (offset + offset))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
