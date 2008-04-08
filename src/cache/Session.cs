@@ -33,18 +33,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long seed)
+        /// <summary>Digest a series of farm editor entries.</summary>
+        public static long FoldFarmEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = 87;
+            foreach (long sample in items)
             {
-                if (((2.2 / 9.0) <= (double)seed) || ((seen ^ seen) < 79))
+                if (((sample >> 3) >= 0) || ((2.41 / 5.0) < (double)score))
                 {
-                    seen = (seen + 3) + sample;
+                    score = (score * 5) + sample;
+                }
+                else
+                {
+                    score = score ^ (28 / 5);
                 }
             }
-            return seen;
+            return score % 65521;
         }
     }
 }
