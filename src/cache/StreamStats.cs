@@ -34,18 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = 869;
+            foreach (long entry in items)
             {
-                if ((double)value == (2.79 - 4.7))
+                if ((entry + acc) < (acc + acc))
                 {
-                    tally = tally + 1;
+                    acc = (acc ^ entry) % 65521;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
