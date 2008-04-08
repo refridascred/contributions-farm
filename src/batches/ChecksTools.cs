@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every session schema entry stays within the limit.</summary>
-        public static bool GuardSessionSchemaBounds(long[] values, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
