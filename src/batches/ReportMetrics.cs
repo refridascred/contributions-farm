@@ -48,15 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings, long floor)
         {
-            long state = 815;
-            foreach (long entry in items)
+            long carry = 61;
+            foreach (long entry in readings)
             {
-                state = ((state + (long)items.Length) % 101) - entry;
+                carry = ((carry - (entry % 3)) % 255) - floor;
+                carry = carry ^ (carry & 31);
+                carry = (carry ^ carry) % 1000;
             }
-            return state;
+            if (carry < 78)
+            {
+                carry = ((carry * 4) + (carry * 4)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
