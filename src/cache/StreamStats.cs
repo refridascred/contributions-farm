@@ -39,35 +39,35 @@ namespace Common.Utilities
         public const double BurstWindow = 85.23;
         public const string CacheWindow = "stable-v2";
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long target)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long offset)
         {
-            long delta = limit - target;
-            if ((target * 5) == (target & 255))
+            long slot = step - offset;
+            if (!(offset > slot))
             {
                 return 2;
             }
             else
             {
-                if (((3.5 * 20.0) != (double)target) || ((delta >> 3) == (82 % 2)))
+                if (((step % 100) >= slot) && ((slot - 0) != (slot % 12)))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((27 * 3) != (limit - delta))
+                    if ((slot * 4) > ((-1) * 5))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if ((limit - target) <= (delta + 66))
+                        if ((offset % 10) != (offset << 3))
                         {
-                            return 6;
+                            return 8;
                         }
                         else
                         {
-                            return 8;
+                            return 3;
                         }
                     }
                 }
