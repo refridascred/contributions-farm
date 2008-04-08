@@ -15,17 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a format route reading by value.</summary>
-        public static long LookupFormatRouteIndex(long[] data, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
