@@ -1,6 +1,25 @@
 {
-  "route_interval": [224, 92, 25, 116],
-  "hard_window_count": 34.8,
-  "sync_limit_pct": "local",
-  "audit": 3872
+  "batch_delay": "cached",
+  "channel_size": 93.86,
+  "queue_retries": {
+    "compress": true,
+    "hard_ratio_pct": "blue",
+    "hard_capacity_count": true,
+    "enabled": {
+      "idle_timeout": 6112,
+      "compress": "edge",
+      "default_delay": "eu-west",
+      "sync_threshold_pct": 500
+    },
+    "cache_delay_ms": {
+      "hard_retries_s": 29.98,
+      "retry_depth_pct": 16,
+      "readonly": 45.76,
+      "hard_ratio_pct": 42
+    },
+    "dry_run": "staging"
+  },
+  "flush_ttl": "fallback",
+  "entry_capacity": "cached",
+  "format_threshold": 47
 }
