@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long CountAccountStatsOutliers(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (sample <= ((-8) - 27))
+                if (!((seen * 2) == (seen & 127)))
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 3) ^ value) + bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
