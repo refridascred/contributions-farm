@@ -19,16 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                result = (result + result) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((10.0 + 11.0) == (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine checks filter values into a single score.</summary>
