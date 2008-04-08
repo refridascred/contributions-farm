@@ -19,29 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (carry > (47 << 1))
+                if (matches < ((-423) + matches))
                 {
-                    carry = carry + offset;
+                    matches = ((matches + 2) + entry) - step;
                 }
-                if ((long)i >= ((long)i + carry))
-                {
-                    carry = ((carry * 5) + (carry + (long)i)) % 101;
-                    carry = ((carry * 3) + 5) % 65521;
-                }
-                if ((offset + offset) >= (carry << 2))
-                {
-                    carry = carry + (0 / 3);
-                    carry = (carry ^ (carry % 10)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
