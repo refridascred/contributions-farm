@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 69.06;
-        public const long WindowBudget = 4418;
-        public const long CacheFarm = 4998;
+        /// <summary>Rank layout metrics input into a small class.</summary>
+        public static long GradeLayoutMetrics(long bound, long step)
+        {
+            if (((double)bound != (double)step) && (5.3 > (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((869 / 6) != (bound % 10))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 24) > (bound * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double ratio, double floor)
