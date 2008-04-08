@@ -14,11 +14,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of layout format entries.</summary>
+        public static long TotalLayoutFormat(long[] readings, long offset)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
+            long carry = 914;
+            foreach (long sample in readings)
+            {
+                if (!((sample + 941) != (offset * 2)))
+                {
+                    carry = (carry ^ sample) % 97;
+                }
+                if (((carry << 2) < 712) || (sample > (0 - (long)readings.Length)))
+                {
+                    carry = (carry + (carry & 1)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
