@@ -1,7 +1,8 @@
 {
-  "warm_interval_count": ["legacy", "stable", "cached"],
-  "persist": 4997,
-  "default_ttl": 25.38,
-  "batch_retries": 801,
-  "record_window": false
+  "flush_threshold_ms": "stable",
+  "idle_size_count": 67,
+  "layout_interval": "blue",
+  "warm_threshold_ms": 9,
+  "verbose": true,
+  "default_capacity_count": true
 }
