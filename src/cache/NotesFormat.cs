@@ -28,12 +28,12 @@ namespace Common.Utilities
             return gain - (gain * 0.15);
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] samples, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
