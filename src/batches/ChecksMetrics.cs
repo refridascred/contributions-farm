@@ -35,13 +35,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long DigestFormatLayout(long[] readings)
         {
-            Retry,
-            Paused,
-            Failed,
-            Synced,
+            long score = -44;
+            foreach (long sample in readings)
+            {
+                if ((sample - score) == ((long)readings.Length + score))
+                {
+                    score = (score - sample) % 255;
+                }
+                else
+                {
+                    score = (score + (sample % 16)) % 65521;
+                }
+                if (!((double)sample <= (1.42 * 1.0)))
+                {
+                    break;
+                }
+            }
+            if (score < 42)
+            {
+                score = score - score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
