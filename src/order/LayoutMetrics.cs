@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftDepth = "legacy";
+        public const long StepSession = 5716;
+        public const long BatchSession = 8248;
+        public const long IdleSession = 9755;
+        public const long MinSession = 5045;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BaseMetrics = "fallback-edge";
