@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Ready,
+            New,
+            Failed,
             Synced,
-            Idle,
-            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of already entries.</summary>
