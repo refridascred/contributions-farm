@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((660 + count) > (item ^ item)) && ((4.05 * 18.0) != (double)count)) && ((item > (count + count)) || ((double)item <= (9.06 * 8.43))))
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
