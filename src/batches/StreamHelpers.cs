@@ -17,13 +17,13 @@ namespace Common.Utilities
             return ((bias + 1.62) + ratio) + floor;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
