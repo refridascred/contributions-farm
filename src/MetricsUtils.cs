@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long RetryInterval = 2707;
         public const long RetryGithubfarm = 416;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = 0.4;
+            if (load <= (double)249)
             {
-                if ((values[i] < origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (span * 1.49);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Describe the entry level values.</summary>
