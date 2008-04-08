@@ -57,13 +57,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardScore = 59.17;
+        public const string StepFactor = "primary-edge";
+        public const long LimitCount = 7248;
+        public const long BatchFilter = 5630;
+        public const long CacheFilter = 294;
     }
 }
