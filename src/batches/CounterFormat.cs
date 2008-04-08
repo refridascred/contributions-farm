@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((((matches & 255) < (49 & 1)) || ((15 / 3) > (4 + item))) && (((item - item) <= (matches / 8)) && ((double)0 == (double)item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
