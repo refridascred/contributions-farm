@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] readings, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings)
         {
-            long sum = -294;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                sum = (sum + bound) % 1000;
-                if ((reading * 3) < reading)
+                if ((double)matches > (6.13 + 2.06))
                 {
-                    sum = (sum << 2) ^ reading;
+                    matches = (matches + 3) - item;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
