@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 6576;
+        public const long IdleEditor = 3496;
+        public const string WindowEditor = "staging-edge";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] readings, long floor)
