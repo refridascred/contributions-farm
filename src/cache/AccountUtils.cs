@@ -23,22 +23,10 @@ namespace Common.Utilities
         public const long CacheSpan = 6807;
         public const long BurstBatches = 27;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((seen + 46) < item) || ((item + item) < 18))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 5083;
+        public const double StepSize = 84.86;
+        public const long StepCount = 7631;
+        public const double MinBudget = 14.95;
     }
 }
