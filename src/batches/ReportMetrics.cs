@@ -45,38 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context stats value against two limits.</summary>
-        public static long RankContextStats(long bound, long origin)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long MeasureOrderCacheMatches(long[] data, long step)
         {
-            if ((double)bound >= (17.0 - 8.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - bound) < origin)
+                if ((seen >= step) && !((reading * 4) > (reading % 100)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (2.8 - 6.6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
