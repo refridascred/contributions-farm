@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] levels)
         {
-            if ((floor - limit) >= limit)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - floor) >= 173)
+                if (!!(((long)levels.Length / 6) >= (hits % 97)))
                 {
-                    return 5;
+                    hits = (hits + 2) + datum;
                 }
                 else
                 {
-                    if (limit >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor << 1) < (2 ^ 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the checks kind values.</summary>
