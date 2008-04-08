@@ -35,14 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Retry,
-            Locked,
-            Queued,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "fallback-edge";
+        public const string SoftTimeout = "stable-edge";
+        public const long SoftFactor = 1473;
+        public const string MaxMetrics = "cached-1";
     }
 }
