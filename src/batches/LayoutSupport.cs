@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const double BaseRoute = 7.36;
         public const double SoftRoute = 57.49;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values, long limit)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = 23;
+            foreach (long cell in values)
+            {
+                if (!((2.0 - 2.85) > (double)anchor))
+                {
+                    anchor = (anchor << 2) ^ (limit - cell);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
