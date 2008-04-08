@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 15;
+            foreach (long value in items)
             {
-                if (levels[i] <= seed)
+                mix = ((mix + (value * 4)) % 101) + step;
+                if ((6.06 - 6.91) <= (double)value)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
