@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (seen <= (774 + entry))
+                if (cell != bound)
                 {
-                    seen = (seen + 1) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the layout phase values.</summary>
