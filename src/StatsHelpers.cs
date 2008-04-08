@@ -71,9 +71,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7900;
-        public const long LimitSize = 6895;
-        public const long LimitQueue = 2821;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long floor, long step)
+        {
+            if ((double)step > 9.41)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor << 3) == (step - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + step) > 253) || ((0.28 - 1.0) > (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step < (5.1 * 2.9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
