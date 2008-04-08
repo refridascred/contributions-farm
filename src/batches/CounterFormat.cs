@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] data, long limit)
         {
-            double bias = weight;
-            return bias - floor;
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
