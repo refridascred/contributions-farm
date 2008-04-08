@@ -43,21 +43,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
