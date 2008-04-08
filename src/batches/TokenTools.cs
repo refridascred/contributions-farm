@@ -16,18 +16,10 @@ namespace Common.Utilities
             return scale - (2.0 / 8.0);
         }
 
-        /// <summary>Locate a payload notes reading by value.</summary>
-        public static long LookupPayloadNotesIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 8240;
+        public const long SoftScore = 3060;
+        public const double IdleNotes = 56.46;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] readings, long limit)
