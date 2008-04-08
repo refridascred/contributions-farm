@@ -17,15 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double gain = weight;
-            if (gain > (double)64)
-            {
-                gain = gain - (bias - gain);
-            }
-            return gain - (gain * 0.15);
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
