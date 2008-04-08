@@ -69,21 +69,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks format samples.</summary>
-        public static long MatchChecksFormatCount(long[] levels)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
