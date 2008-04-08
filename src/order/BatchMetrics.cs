@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseWidth = "cached-1";
-        public const double MinCommits = 29.07;
-        public const long HardCommits = 6869;
-        public const string WindowScore = "staging-1";
-        public const long MaxLevel = 3390;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long target)
