@@ -1,31 +1,25 @@
 # support settings
-poll_size_pct:
-  min_timeout: 6153
-  account_size: fallback
-  default_retries: latest
-  sync_depth_ms: 1.28
-  compress:
-    - 382
-    - 91
-    - 450
-  sync_ttl_pct: eu-west
-report_size:
-  checks_threshold:
-    layout_size: eu-west
-    burst_delay_pct: 4513
-    command_interval: false
-    buffer_limit: false
-    flush_delay_s: strict
-  cache_ratio: fallback
-  idle_ttl_s: 39
-  session_ttl: 5637
-audit:
-  - cached
-  - open
-  - primary
-poll_limit_pct: 100
-compress: 52.0
-cluster_retries:
-  - latest
-  - primary
-  - edge
+filter_window:
+  githubfarm_limit:
+    poll_window_count: standard
+    metrics_ratio: fallback
+    stream_size: 9.25
+  soft_retries:
+    token_interval: 37.03
+    layout_threshold: 1024
+    warm_size: false
+    warm_delay_s:
+      - 163
+      - 363
+      - 264
+      - 400
+  readonly: 69.44
+  soft_delay: cached
+  stream_capacity: 3057
+  counter_interval: 63
+soft_interval:
+  batch_window_s: 39.55
+  githubfarm_ttl: 0.6
+  idle_delay_count: eu-west
+record_depth: true
+report_depth: 70.84
