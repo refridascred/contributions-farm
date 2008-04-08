@@ -73,19 +73,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
