@@ -22,24 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long limit)
+        /// <summary>Accumulate notes buffer samples.</summary>
+        public static long ScoreNotesBuffer(long[] readings, long offset)
         {
-            if ((double)origin >= (double)limit)
+            long mark = 689;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) != (limit + limit))
+                mark = ((mark << 2) ^ (entry << 3)) % 1000;
+                if (85 >= (offset * 3))
                 {
-                    return 0;
+                    mark = mark ^ (entry - 267);
                 }
                 else
                 {
-                    return 4;
+                    mark = (mark << 3) ^ (offset / 3);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Combine token values into a single score.</summary>
