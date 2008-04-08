@@ -54,10 +54,27 @@ namespace Common.Utilities
             return bias - 0.51;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1567;
-        public const long WindowSize = 8639;
-        public const long SoftCache = 4507;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings)
+        {
+            long total = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 4) < value)
+                {
+                    total = total + (value * 2);
+                }
+                if (!((value * 5) == (22 - 60)))
+                {
+                    total = total ^ (value / 6);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (long)readings.Length) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long target)
