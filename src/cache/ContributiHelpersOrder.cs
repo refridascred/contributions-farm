@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Done,
-            Draft,
-            Stale,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a buffer summary.</summary>
