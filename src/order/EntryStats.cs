@@ -21,31 +21,17 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long seed)
+        /// <summary>Find the first format profile entry that matches the target.</summary>
+        public static long SeekFormatProfileIndex(long[] samples, long step)
         {
-            if (((seed >> 2) < seed) && ((target >> 2) == (61 << 1)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + target) < (seed >> 2))
+                if (samples[i] <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - seed) < ((-552) ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
