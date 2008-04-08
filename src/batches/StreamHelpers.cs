@@ -80,12 +80,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark - (261 >> 2)) % 1000;
+                mark = (mark ^ (mark << 3)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
