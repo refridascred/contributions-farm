@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (offset >= (cell ^ offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 54.27;
+        public const long IdleWidth = 9115;
+        public const long BaseCommand = 4314;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long bound, long target)
