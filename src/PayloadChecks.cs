@@ -60,18 +60,10 @@ namespace Common.Utilities
         public const long MaxSpan = 3709;
         public const long StepCache = 9364;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 2211;
+        public const string BurstSpan = "cached";
+        public const long CacheFarm = 583;
 
         /// <summary>Accumulate support buffer samples.</summary>
         public static long TallySupportBuffer(long[] items, long step)
