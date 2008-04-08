@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((item & 3) > (9 & 1)) || ((double)bound == (18.0 + 2.0))) && (bound <= (count - item)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double mean = bias * 6.5;
+            return (mean - (bias - 4.34)) + bias2;
         }
 
         /// <summary>Hold a account stats.</summary>
