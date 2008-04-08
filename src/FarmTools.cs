@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long bound)
         {
-            long mix = 25;
-            foreach (long value in readings)
+            if ((bound >> 5) < target)
             {
-                if ((double)mix != (3.3 / 3.0))
+                return 8;
+            }
+            else
+            {
+                if (!((double)target >= 8.3))
                 {
-                    mix = (mix - (value >> 2)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((target < bound) || ((target >> 4) < (target % 12)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((0.2 * 3.6) > (double)bound) || (((-89) + target) <= (-18)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix < 733)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
