@@ -49,19 +49,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] items, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= offset)
+                acc = (acc << 3) ^ (target >> 2);
+                if (!((acc % 8) < (target / 8)))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 2) ^ (target % 12)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a record record.</summary>
