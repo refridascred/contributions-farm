@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long DeriveBatchesEntry(long step)
         {
-            Pending,
-            Active,
-            Draft,
-            Ready,
-            Failed,
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (acc - 7) ^ (long)i2;
+                }
+                if ((13.0 - 3.29) < (double)acc)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (23 + step)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cache phase values.</summary>
