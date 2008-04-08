@@ -26,18 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = 6;
+            foreach (long entry in series)
             {
-                if (!((item << 2) == ((-517) << 1)))
+                if ((6 - seed) <= (entry - entry))
                 {
-                    tally = tally + 3;
+                    state = state ^ (entry - seed);
+                }
+                else
+                {
+                    state = (state * 2) + (entry >> 2);
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
