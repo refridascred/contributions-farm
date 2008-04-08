@@ -20,13 +20,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 2;
+            foreach (long value in readings)
+            {
+                acc = ((acc ^ (acc - acc)) % 65521) + value;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
