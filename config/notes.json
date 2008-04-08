@@ -1,5 +1,25 @@
 {
-  "default_ttl_ms": [184, 383, 368, 241],
-  "poll_interval_pct": 15.02,
-  "format_retries": false
+  "enabled": 100,
+  "batch_retries": 65,
+  "poll_ttl": ["edge", "green"],
+  "batches_timeout": {
+    "persist": [296, 27, 242, 359],
+    "audit": true,
+    "flush_ratio": {
+      "flush_ratio_s": 9176,
+      "warm_ttl_pct": 9,
+      "poll_depth": [295, 402, 27],
+      "notes_interval": "eu-west",
+      "retry_delay_count": 38.02,
+      "warm_depth_pct": "blue"
+    },
+    "min_capacity": true,
+    "batch_threshold_ms": false,
+    "strict": {
+      "compress": "staging",
+      "batch_delay_ms": [352, 219, 428, 1],
+      "retry_threshold": true
+    }
+  },
+  "idle_capacity_count": false
 }
