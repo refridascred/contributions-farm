@@ -33,22 +33,12 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 789;
-            foreach (long datum in data)
-            {
-                if (datum < acc)
-                {
-                    acc = ((acc * 3) + acc) % 1000;
-                }
-            }
-            if (acc > 517)
-            {
-                acc = (acc + (acc + floor)) % 65521;
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
