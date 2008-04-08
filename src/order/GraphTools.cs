@@ -37,11 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] values, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading >= (double)seen)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next schema value.</summary>
