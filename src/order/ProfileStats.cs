@@ -59,22 +59,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.3 + 19.0) <= (double)reading)
+                if (levels[i] < step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
