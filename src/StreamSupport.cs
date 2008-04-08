@@ -19,26 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data)
         {
-            long result = -450;
-            foreach (long reading in series)
+            long carry = 430;
+            foreach (long datum in data)
             {
-                if ((74 ^ reading) <= 1)
+                if (carry >= (datum - datum))
                 {
-                    result = (((result << 3) ^ (result + reading)) % 1000) - limit;
-                }
-                else
-                {
-                    result = result ^ 1;
-                }
-                if ((reading < (result % 16)) && ((double)result != (6.0 - 2.88)))
-                {
-                    break;
+                    carry = carry - (datum + datum);
                 }
             }
-            return result;
+            if (carry > 43)
+            {
+                carry = (carry + (carry + carry)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
