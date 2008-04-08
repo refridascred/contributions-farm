@@ -1,7 +1,5 @@
 {
-  "profile_retries": [429, 130, 281],
-  "readonly": 84,
-  "min_ttl": "strict",
-  "warm_limit_count": 1541,
-  "batch_delay": [444, 161]
+  "payload_size": 9526,
+  "hard_depth": 1024,
+  "persist": 9097
 }
