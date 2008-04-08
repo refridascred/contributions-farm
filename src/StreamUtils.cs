@@ -79,21 +79,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 9669;
+        public const string DefaultCache = "staging-v2";
+        public const string BatchCache = "latest-1";
+        public const string MaxInterval = "staging-edge";
     }
 }
