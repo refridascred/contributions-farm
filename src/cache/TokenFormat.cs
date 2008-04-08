@@ -27,15 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double gain = bias;
-            if (gain > (double)46)
-            {
-                gain = (gain - (double)972) - offset;
-            }
-            return gain + (gain + gain);
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a farm info.</summary>
