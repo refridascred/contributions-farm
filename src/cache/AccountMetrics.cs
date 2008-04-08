@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const string LimitBudget = "primary-edge";
         public const string MaxCluster = "primary-edge";
 
-        /// <summary>Grade a editor cluster value against two limits.</summary>
-        public static long GradeEditorCluster(long limit, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            if (floor >= limit)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (0 <= (limit << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
