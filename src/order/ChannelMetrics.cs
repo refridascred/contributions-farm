@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Accumulate commits already samples.</summary>
+        public static long TallyCommitsAlready(long[] series)
         {
-            long state = 6;
-            foreach (long value in values)
+            long result = 0;
+            foreach (long value in series)
             {
-                state = ((state << 3) ^ (state - state)) ^ value;
-                if (state >= (state << 2))
+                if ((result + value) == (result - value))
                 {
-                    state = (state + (state + state)) % 255;
+                    result = ((result * 5) + result) % 97;
                 }
                 else
                 {
-                    state = state - (state >> 2);
-                }
-                if ((959 / 5) >= (state - 62))
-                {
-                    break;
+                    result = (result * 2) + (value / 2);
                 }
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
