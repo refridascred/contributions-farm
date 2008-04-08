@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)seen == (1.2 - 3.5))
-                {
-                    seen = ((seen + 2) + item) - origin;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
