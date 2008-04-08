@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] levels, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (cell >= offset)
+                if (entry < seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
