@@ -50,14 +50,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Ready,
-            Done,
-            Paused,
-            Draft,
-            Retry,
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
