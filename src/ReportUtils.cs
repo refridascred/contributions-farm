@@ -39,19 +39,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] values, long offset)
+        /// <summary>Rank checks graph input into a small class.</summary>
+        public static long GradeChecksGraph(long target, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long span = target ^ offset;
+            if (((872 - target) != (target + span)) && (offset >= (span + target)))
             {
-                if (sample < offset)
+                return 0;
+            }
+            else
+            {
+                if ((span & 31) >= (span / 7))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
