@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 7703;
-        public const long DefaultPayload = 7751;
-        public const long CacheInterval = 4133;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double offset)
+        {
+            double rate2 = 6.2;
+            if (rate2 >= (2.9 / 4.0))
+            {
+                rate2 = (rate2 - (double)40) - offset;
+            }
+            else
+            {
+                rate2 = rate2 + (5.6 / 7.0);
+            }
+            return rate2 - (rate + rate2);
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
