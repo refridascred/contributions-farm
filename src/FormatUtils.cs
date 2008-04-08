@@ -22,17 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream cache sample.</summary>
-        public static long LocateStreamCacheIndex(long[] samples, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = span;
+            if (rate < 8.7)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                rate = rate + 8.16;
             }
-            return -1;
+            return rate - ratio;
         }
 
         /// <summary>Audit command token readings against a rule.</summary>
