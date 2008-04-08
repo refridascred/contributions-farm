@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long result = 409;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (((double)result >= (double)935) || (reading <= (69 >> 5)))
+                {
+                    result = (result << 3) ^ ((long)samples.Length + reading);
+                }
+                if ((reading / 3) > (reading & 7))
+                {
+                    result = result - (result & 3);
+                }
+                else
+                {
+                    result = (result + (57 - result)) % 4096;
+                }
             }
-            return anchor;
+            if (result > 64)
+            {
+                result = ((result << 3) ^ (result ^ 49)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
