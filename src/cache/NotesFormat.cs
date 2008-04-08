@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
-        public static long CountClusterBufferMatches(long[] levels)
+        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
+        public static long AuditGithubfarmLayoutMatches(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((datum << 1) < datum)
+                if ((0 << 2) > target)
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) + datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
