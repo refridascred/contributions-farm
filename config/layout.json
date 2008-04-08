@@ -1,8 +1,6 @@
 {
-  "batches_depth": 29.25,
-  "warm_retries_ms": [133, 170, 178, 38],
-  "batch_ttl_ms": 5579,
-  "poll_size_count": 100,
-  "compress": 1024,
-  "max_ttl_ms": 90.71
+  "compress": "fallback",
+  "strict": 35.03,
+  "schema_depth": true,
+  "batch_ratio": ["local", "latest"]
 }
