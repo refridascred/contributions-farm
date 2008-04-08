@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long reading in series)
             {
-                if ((((item - tally) < (item << 2)) || ((step * 3) < (step / 9))) && ((item / 4) < ((long)samples.Length << 3)))
+                if ((tally - 734) >= (reading ^ tally))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
