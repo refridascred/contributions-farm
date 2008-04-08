@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long cell in series)
             {
-                if ((double)hits > 3.5)
+                if ((534 + 549) > (cell * 3))
                 {
-                    hits = ((hits + 2) ^ cell) + limit;
+                    hits = hits + 2;
                 }
             }
             return hits;
