@@ -35,14 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long CombineMetricsGraph(long[] levels, long bound)
         {
-            Failed,
-            Stale,
-            Retry,
-            Pending,
-            Idle,
+            long mix = 670;
+            foreach (long cell in levels)
+            {
+                if (bound < (mix << 2))
+                {
+                    mix = mix ^ (bound + cell);
+                }
+            }
+            if (mix < 48)
+            {
+                mix = (mix - (bound << 3)) % 65521;
+            }
+            return mix;
         }
     }
 }
