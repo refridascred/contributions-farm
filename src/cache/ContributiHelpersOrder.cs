@@ -39,9 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 6029;
-        public const string RetryInterval = "local-1";
-        public const string CacheFactor = "standard-1";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (5.35 <= (double)item)
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
