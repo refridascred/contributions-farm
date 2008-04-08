@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] readings, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long floor)
         {
-            long acc = 63;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (((item + item) != (acc ^ seed)) && (acc > seed))
+                if (item > floor)
                 {
-                    acc = (acc + (201 >> 3)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
