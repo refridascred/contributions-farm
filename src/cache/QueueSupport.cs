@@ -12,11 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 3827;
-        public const double WindowLevel = 34.29;
-        public const string HardScore = "primary-1";
-        public const long LimitRatio = 1861;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((hits % 5) > reading) || (reading < (reading & 7)))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] readings, long seed)
