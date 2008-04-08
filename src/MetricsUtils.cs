@@ -24,16 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 90;
-            foreach (long sample in series)
-            {
-                sum = sum + ((long)series.Length + sample);
-                sum = sum + sum;
-            }
-            return sum;
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
