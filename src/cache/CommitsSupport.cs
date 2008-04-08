@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double DefaultFactor = 73.15;
         public const long IdleReport = 1197;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 4069;
-        public const long MinLevel = 3804;
-        public const double CacheDepth = 17.69;
-        public const long BatchWidth = 4097;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long offset, long offset2)
