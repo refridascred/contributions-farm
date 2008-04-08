@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels, long step)
         {
-            long score = 8;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = ((score << 3) ^ (178 * 5)) ^ datum;
+                if (((step << 1) >= (count / 3)) || ((8.41 / 9.0) == (double)value))
+                {
+                    count = count + 3;
+                }
             }
-            if (score > 86)
-            {
-                score = score ^ (score - score);
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
