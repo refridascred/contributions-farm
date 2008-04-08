@@ -22,38 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
-        public static long BucketStatsGithubfarm(long offset, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values, long offset)
         {
-            if ((0.4 - 1.62) < (double)offset)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 % 24) > offset)
+                if (!(acc > (datum << 2)))
                 {
-                    return 5;
+                    acc = (acc * 3) + (acc - 9);
+                }
+                if (((double)acc >= (11.0 + 6.0)) && ((offset >> 3) >= acc))
+                {
+                    acc = acc - (offset - 53);
                 }
                 else
                 {
-                    if ((offset * 4) <= (target + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target - target) >= offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc << 3) ^ (offset & 1);
                 }
             }
+            return acc;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
