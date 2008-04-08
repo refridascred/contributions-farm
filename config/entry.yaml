@@ -1,21 +1,28 @@
 # entry settings
-default_window_ms:
-  payload_retries: 61.06
-  githubfarm_retries: true
-  cache_ratio_ms: 46.79
-dry_run: 9237
-warm_capacity_ms: 5274
-enabled: open
-base_ratio_s:
-  warm_interval_ms:
-    - standard
-    - open
-    - edge
-  soft_interval_ms: 1748
-  sync_threshold:
-    - 48
-    - 87
-    - 357
-    - 100
-  soft_delay: true
-warm_window_s: 6073
+idle_capacity_count: eu-west
+order_capacity:
+  flush_limit: 51
+  verbose: fallback
+  default_ttl_ms: 5.1
+  command_limit: 35.72
+base_timeout_s: 9996
+base_threshold:
+  poll_size_s:
+    idle_timeout: 2968
+    idle_ratio_ms: 53.51
+    sync_interval_s: 45.33
+  min_ratio_count:
+    - fallback
+    - latest
+  soft_capacity_ms: staging
+warm_depth_ms:
+  checks_threshold: fallback
+  hard_capacity:
+    - 81
+    - 431
+    - 480
+    - 325
+  default_threshold_count: true
+  cache_capacity: 60
+  warm_delay: true
+  flush_retries: open
