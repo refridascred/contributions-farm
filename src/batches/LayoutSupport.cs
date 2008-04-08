@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a cluster cache value against two limits.</summary>
-        public static long BucketClusterCache(long floor, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long span = floor - offset;
-            if (((offset >> 2) > (span + floor)) || (floor > 52))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(floor > (offset << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
