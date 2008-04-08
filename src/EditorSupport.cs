@@ -44,18 +44,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix ^ (long)i) % 4096;
-                mix = ((mix << 2) ^ step) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 2664;
+        public const string BurstScore = "stable";
+        public const long HardCounter = 86;
+        public const long WindowCounter = 4784;
+        public const string BurstCounter = "cached-edge";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
