@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] series, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long sum = -294;
+            foreach (long reading in readings)
             {
-                if (sample >= seed)
+                sum = (sum + bound) % 1000;
+                if ((reading * 3) < reading)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum << 2) ^ reading;
                 }
             }
-            return stale;
+            return sum % 4096;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
