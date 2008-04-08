@@ -40,19 +40,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double drift = floor - (double)367;
+            if (drift >= (drift - weight))
             {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (5.1 + weight);
             }
-            return ok;
+            return drift + (drift / 2.0);
         }
     }
 }
