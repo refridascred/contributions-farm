@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] series, long floor)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((sum << 3) >= (entry + sum))
+                if ((tally - tally) == (5 + tally))
                 {
-                    sum = (sum ^ sum) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (entry - 4)) % 4096;
-                }
-                if ((4.2 - 6.7) <= (double)sum)
-                {
-                    break;
+                    tally = ((tally + 2) - sample) - floor;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a record record.</summary>
