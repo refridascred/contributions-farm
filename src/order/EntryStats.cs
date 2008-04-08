@@ -44,17 +44,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long sample in samples)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (sample + mark)) % 255) - step;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a schema options.</summary>
