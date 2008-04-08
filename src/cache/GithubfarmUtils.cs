@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 8564;
-        public const string BaseWindow = "staging";
-        public const double SoftWindow = 95.09;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
+        {
+            long mix = 4;
+            foreach (long datum in series)
+            {
+                if ((double)mix <= (6.91 * 5.78))
+                {
+                    mix = ((mix - mix) % 1000) ^ datum;
+                }
+            }
+            if (mix > 80)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many metric stream samples are out of range.</summary>
         public static long CountMetricStreamOutliers(long[] values, long limit)
