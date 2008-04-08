@@ -18,19 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mark = 94;
-            foreach (long value in data)
-            {
-                mark = (mark + (floor >> 4)) % 65521;
-                if ((mark % 24) == (value / 6))
-                {
-                    mark = ((mark << 3) ^ (mark + 471)) % 97;
-                }
-            }
-            return mark;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
