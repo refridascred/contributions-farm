@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data, long origin)
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool CheckGraphCounterRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (!((origin + matches) != (origin / 9)))
+                if (entry >= origin)
                 {
-                    matches = (matches + 2) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
