@@ -1,15 +1,5 @@
 {
-  "editor_depth": "primary",
-  "audit": 12.6,
-  "verbose": {
-    "graph_timeout": 52,
-    "audit": true,
-    "soft_ratio_pct": {
-      "poll_ttl": 100,
-      "burst_depth_pct": "standard",
-      "contributi_limit": [168, 366],
-      "dry_run": "cached"
-    },
-    "idle_depth_ms": 9714
-  }
+  "soft_retries_count": "open",
+  "batch_delay_ms": 2519,
+  "retry_threshold": 100
 }
