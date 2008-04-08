@@ -50,11 +50,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long offset)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            if ((double)origin < 1.56)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - origin) >= (origin * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (origin * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((144 * 2) > (offset + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
