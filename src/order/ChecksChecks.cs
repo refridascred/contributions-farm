@@ -31,14 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Pending,
-            Dropped,
-            New,
-            Stale,
+            Active,
+            Ready,
             Draft,
+            Stale,
         }
     }
 }
