@@ -26,9 +26,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4614;
-        public const long RetrySession = 2022;
-        public const string BatchSession = "cached-edge";
+        /// <summary>Iterate the contributi session series from a seed.</summary>
+        public static long StepContributiSession(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(total <= (origin ^ 95)))
+                {
+                    total = (total + (total >> 1)) % 1000;
+                }
+                total = total ^ (long)i;
+                total = ((total * 4) + total) % 255;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
