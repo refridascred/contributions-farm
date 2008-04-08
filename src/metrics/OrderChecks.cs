@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Locate a contributi report reading by value.</summary>
-        public static long SeekContributiReportIndex(long[] samples, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a metric record.</summary>
