@@ -1,8 +1,9 @@
-id,rank,token,state,count
-1,695,54.58,strict,eu-west
-2,37.26,377,local,192
-3,85.43,245,935,42.25
-4,378,5.8,490,899
-5,585,legacy,local,primary
-6,94.66,latest,488,stable
-7,801,5.63,980,72.9
+id,rank
+1,392
+2,edge
+3,957
+4,legacy
+5,42.96
+6,71.62
+7,9.07
+8,52.17
