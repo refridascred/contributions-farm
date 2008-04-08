@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] readings, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((((9 * 2) != (72 - hits)) && ((68 - hits) > 77)) || ((hits >> 5) == (37 ^ 58)))
-                {
-                    hits = ((hits + 3) ^ datum) + bound;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many cluster commits samples are out of range.</summary>
