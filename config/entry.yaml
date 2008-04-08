@@ -1,9 +1,6 @@
 # entry settings
-default_ttl: false
-batches_interval:
-  - 339
-  - 111
-  - 75
-sync_capacity_s: true
-idle_threshold_ms: true
-stream_ttl: strict
+checks_depth: legacy
+graph_threshold: 78.84
+dry_run: 100
+retry_window: blue
+poll_timeout_ms: 5419
