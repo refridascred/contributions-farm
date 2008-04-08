@@ -44,16 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile commits counter forward.</summary>
-        public static long RollProfileCommits(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 2885;
+        public const long IdleCommand = 1153;
+        public const long BurstScore = 7851;
+        public const double LimitCommand = 63.75;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long limit, long target)
