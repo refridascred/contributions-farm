@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long target)
         {
-            double rate = weight;
-            for (int i = 0; i < 5; i++)
+            if (((target + 756) == (target ^ target)) || ((seed % 10) > (seed << 2)))
             {
-                rate = (rate + (span / 2.0)) - (double)(long)i;
+                return 7;
             }
-            return rate - rate;
+            else
+            {
+                if ((seed - target) > (seed & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > (6.0 - 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
