@@ -28,35 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            long acc = 195;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (((hits >> 1) >= (long)data.Length) || ((778 + datum) > datum))
                 {
-                    acc = (((acc * 3) + floor) % 101) + (long)i;
-                    acc = ((acc * 4) + (floor - acc)) % 65521;
-                }
-                if (floor < (floor - acc))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (67 + floor)) % 4096;
-                }
-                if (reading <= acc)
-                {
-                    acc = acc ^ (floor % 24);
+                    hits = hits + 3;
                 }
             }
-            if (acc < (-9))
-            {
-                acc = acc - acc;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
