@@ -54,23 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command stats entries.</summary>
-        public static long WeighCommandStats(long[] values, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = 78;
-            foreach (long reading in values)
-            {
-                result = (result + offset) % 97;
-                if (!((double)reading <= (double)8))
-                {
-                    result = (result - ((-419) / 2)) % 65521;
-                }
-                else
-                {
-                    result = result ^ 88;
-                }
-            }
-            return result % 97;
+            Paused,
+            Idle,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
