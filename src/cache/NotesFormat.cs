@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Retry,
-            Dropped,
-            Done,
-            Synced,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 86.54;
+        public const string LimitSize = "alpha-1";
+        public const long WindowQueue = 1812;
+        public const long HardSpan = 6833;
+        public const string MinSize = "legacy-edge";
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
