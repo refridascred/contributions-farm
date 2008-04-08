@@ -62,32 +62,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream window value against two limits.</summary>
-        public static long GradeStreamWindow(long target, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long prev = target ^ step;
-            if ((732 << 1) >= (target * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step & 255) < prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target ^ 749) < prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
