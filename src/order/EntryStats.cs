@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + count) < sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetrySpan = 7102;
+        public const double MinWidth = 63.0;
+        public const string RetryDepth = "latest-edge";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
