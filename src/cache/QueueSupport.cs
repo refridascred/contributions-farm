@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seed / 5) >= (seed * 3))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
