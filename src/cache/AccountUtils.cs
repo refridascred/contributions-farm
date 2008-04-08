@@ -13,19 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels, long floor)
+        /// <summary>Measure how many editor graph samples are out of range.</summary>
+        public static long CountEditorGraphOutliers(long[] readings, long seed)
         {
-            long acc = 50;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc - (item << 3)) % 97;
+                if ((hits / 7) >= (hits - hits))
+                {
+                    hits = ((hits + 3) - entry) - seed;
+                }
             }
-            if (acc > (-41))
-            {
-                acc = (acc + (floor - (long)levels.Length)) % 255;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
