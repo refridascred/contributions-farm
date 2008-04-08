@@ -67,38 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Compare every pair of support graph readings.</summary>
+        public static long MatchSupportGraphCount(long[] data)
         {
-            if (((-3) > limit) || (((-55) + seed) != (limit + limit)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit % 97) <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((662 % 16) > (limit & 31))
+                    if ((data[i] - data[j]) == 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed / 4) > seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
