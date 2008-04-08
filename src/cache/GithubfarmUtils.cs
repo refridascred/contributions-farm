@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 8564;
+        public const string BaseWindow = "staging";
+        public const double SoftWindow = 95.09;
 
         /// <summary>Measure how many metric stream samples are out of range.</summary>
         public static long CountMetricStreamOutliers(long[] values, long limit)
