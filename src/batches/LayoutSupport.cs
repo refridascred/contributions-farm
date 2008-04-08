@@ -41,18 +41,23 @@ namespace Common.Utilities
             return bias2 + (8.7 - bias2);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double drift = rate;
+            if (drift <= (double)89)
             {
-                if ((bound * 4) >= datum)
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift - (5.0 / 5.0)) - offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - (0.7 / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)9) + (double)(long)i;
+            }
+            return drift - 11.0;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
