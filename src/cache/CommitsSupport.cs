@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const double DefaultFactor = 73.15;
         public const long IdleReport = 1197;
 
-        /// <summary>Digest a series of report session entries.</summary>
-        public static long TotalReportSession(long[] readings, long limit)
-        {
-            long score = 9;
-            foreach (long datum in readings)
-            {
-                score = (((score * 2) + (limit ^ 5)) % 65521) + datum;
-                if (!((double)score < (4.14 - 3.8)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 4069;
+        public const long MinLevel = 3804;
+        public const double CacheDepth = 17.69;
+        public const long BatchWidth = 4097;
 
         /// <summary>Compare every pair of account format readings.</summary>
         public static long MatchAccountFormatCount(long[] samples)
