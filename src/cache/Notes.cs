@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long HardGraph = 4006;
         public const double CacheGraph = 31.88;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] samples)
+        /// <summary>Iterate the editor support series from a seed.</summary>
+        public static long RollEditorSupport(long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches % 60) <= matches)
-                {
-                    matches = (matches + 3) - sample;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the editor level values.</summary>
