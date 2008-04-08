@@ -39,15 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long step)
+        /// <summary>Roll a filter schema counter forward.</summary>
+        public static long IterateFilterSchema(long bound)
         {
-            long mark = 9;
-            foreach (long sample in samples)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark ^ (sample + mark)) % 255) - step;
+                if ((carry / 6) >= carry)
+                {
+                    carry = ((carry * 3) + bound) % 255;
+                    break;
+                }
+                carry = (carry << 3) ^ (carry + bound);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a schema options.</summary>
