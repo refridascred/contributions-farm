@@ -1,18 +1,4 @@
 # support settings
-soft_timeout_pct: 44.72
-default_retries_s: 93.0
-cache_size_s: primary
-strict: eu-west
-githubfarm_capacity:
-  record_threshold:
-    base_retries_pct: blue
-    sync_interval_pct: 17.17
-    base_retries: 2.4
-    hard_ttl_ms:
-      - 311
-      - 421
-      - 158
-      - 26
-  verbose: open
-  sync_depth: true
-  persist: edge
+soft_interval: legacy
+filter_interval: legacy
+default_timeout_pct: blue
