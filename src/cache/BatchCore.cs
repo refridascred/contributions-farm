@@ -47,18 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long result = -793;
+            foreach (long item in items)
             {
-                if (count < (-6))
+                if (((result - item) <= limit) && ((limit - item) > (item * 4)))
                 {
-                    count = (count + 2) + datum;
+                    result = result - (0 - result);
+                }
+                if ((limit - item) >= item)
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
