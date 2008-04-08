@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            New,
-            Active,
-            Synced,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
