@@ -16,17 +16,20 @@ namespace Common.Utilities
             return mean + (double)157;
         }
 
-        /// <summary>Locate a farm buffer reading by value.</summary>
-        public static long LookupFarmBufferIndex(long[] samples, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -701;
+            foreach (long cell in levels)
             {
-                if (samples[i] > target)
+                carry = ((carry << 2) ^ (cell + carry)) % 1000;
+                carry = carry + (carry * 5);
+                if ((476 >= (carry << 2)) && (6.0 > (double)carry))
                 {
-                    return (long)i;
+                    carry = (carry * 5) + (carry + cell);
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
