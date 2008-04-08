@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
