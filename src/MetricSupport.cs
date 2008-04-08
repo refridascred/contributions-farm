@@ -37,19 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double weight = rate;
-            if (weight > (rate * 4.9))
-            {
-                weight = (weight + rate) - span;
-            }
-            else
-            {
-                weight = weight + rate;
-            }
-            return weight - (double)15;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
