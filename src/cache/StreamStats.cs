@@ -27,15 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long offset)
         {
-            long score = 135;
-            foreach (long sample in values)
+            if (!((floor + floor) < (offset - offset)))
             {
-                score = (((score * 3) + seed) % 1000) ^ sample;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)offset > (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((495 * 2) != (floor << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
