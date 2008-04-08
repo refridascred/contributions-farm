@@ -69,22 +69,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((801 * 3) > reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Paused,
         }
     }
 }
