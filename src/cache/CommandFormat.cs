@@ -19,19 +19,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = -81;
+            foreach (long reading in series)
             {
-                if (entry < floor)
+                if ((score >= (reading % 2)) || ((score + score) < reading))
                 {
-                    ok = false;
-                    break;
+                    score = (score << 2) ^ (score ^ reading);
                 }
+                score = (score << 3) ^ (score * 2);
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Locate a route reading by value.</summary>
