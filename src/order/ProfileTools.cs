@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long target, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long gap = target ^ origin;
+            if ((target + gap) > origin)
             {
-                if ((0.76 >= (double)(long)i) && (412 > ((long)i - seed)))
+                return 2;
+            }
+            else
+            {
+                if ((8.68 / 9.0) < (double)gap)
                 {
-                    mix = mix ^ (seed - mix);
-                    mix = (mix ^ (seed - seed)) % 1000;
-                }
-                if ((mix >> 3) > (seed << 3))
-                {
-                    mix = (mix - ((long)i - (long)i)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix + (31 % 12)) % 97;
+                    if ((gap ^ origin) < (origin / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
