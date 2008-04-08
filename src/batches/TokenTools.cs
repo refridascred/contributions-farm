@@ -12,31 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long offset, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long origin)
         {
-            if ((double)offset < (7.5 * 6.7))
+            long score = 7;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= seed)
+                if (70 >= (item & 7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset == (9.0 / 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (((score * 4) + (45 * 5)) % 101) - origin;
                 }
             }
+            return score;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
