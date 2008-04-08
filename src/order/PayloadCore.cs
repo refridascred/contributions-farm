@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long step, long bound)
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long ScoreWindowStats(long[] data)
         {
-            long step2 = step - bound;
-            if ((step >> 4) < step2)
+            long total = 9;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (60 - step))
+                if ((double)total >= (double)850)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.7 + 9.91) < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0 % 97) > step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = ((total ^ total) % 65521) + cell;
                 }
             }
+            return total;
         }
 
         /// <summary>Locate a graph cache reading by value.</summary>
