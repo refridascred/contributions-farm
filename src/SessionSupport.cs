@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up commits support samples.</summary>
-        public static long OverlapCommitsSupportCount(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value % 24) <= tally)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
