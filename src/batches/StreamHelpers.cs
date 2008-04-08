@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            double bias = (double)(3 * 2);
-            return ((bias + 1.62) + ratio) + floor;
+            long score = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score << 2) ^ (long)i) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache info.</summary>
