@@ -41,11 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits < (hits / 4))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
