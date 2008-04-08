@@ -60,24 +60,19 @@ namespace Common.Utilities
         public const long BaseSchema = 1803;
         public const double DefaultSize = 22.56;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            long total = -428;
-            foreach (long value in readings)
+            double mean = (3.0 + scale) + (double)280;
+            if (mean >= scale)
             {
-                total = ((total * 3) + (981 / 9)) % 255;
-                if (!((double)value == (0.79 / 5.0)))
-                {
-                    total = total - 583;
-                    total = (total ^ total) % 255;
-                }
-                if ((3 << 1) != (total / 5))
-                {
-                    total = (total - step) % 101;
-                }
+                mean = (mean + (scale / 4.0)) - offset;
             }
-            return total % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (double)461;
         }
     }
 }
