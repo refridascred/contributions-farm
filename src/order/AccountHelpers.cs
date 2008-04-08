@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string MinCount = "fallback-v2";
         public const string MinInterval = "open-1";
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Compare every pair of window githubfarm readings.</summary>
+        public static long CompareWindowGithubfarmCount(long[] values)
         {
-            Stale,
-            Done,
-            Ready,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
