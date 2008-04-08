@@ -42,11 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score * 4) + (target + score);
+                if ((target / 2) <= (long)i)
+                {
+                    score = (score + target) % 97;
+                    score = (score << 2) ^ (target % 12);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the format status values.</summary>
