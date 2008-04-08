@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = span;
+            if (drift > (double)94)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift + bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)(-49);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 5.87) + (double)(long)i;
+            }
+            return drift + (double)21;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
