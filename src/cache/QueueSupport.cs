@@ -20,10 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSpan = 1004;
-        public const long DefaultCount = 7221;
-        public const long DefaultWidth = 8112;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long SeriesMetrics(long origin)
