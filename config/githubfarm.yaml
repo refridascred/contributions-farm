@@ -1,11 +1,4 @@
 # githubfarm settings
-cache_size:
-  - edge
-  - stable
-  - edge
-  - blue
-poll_interval:
-  - 126
-  - 72
-context_window: staging
-audit: 500
+cache_depth_ms: stable
+soft_interval_pct: true
+cache_size_s: primary
