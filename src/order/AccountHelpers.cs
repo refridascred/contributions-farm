@@ -28,19 +28,26 @@ namespace Common.Utilities
         public const string MinWindow = "latest-1";
         public const long CacheSize = 5976;
 
-        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
-        public static bool VerifyRouteGithubfarmBounds(long[] samples, long step)
+        /// <summary>Fold a list of support notes readings.</summary>
+        public static long FoldSupportNotes(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = 66;
+            foreach (long value in data)
             {
-                if (reading <= step)
+                if ((double)value > (7.9 + 6.29))
                 {
-                    ready = false;
+                    sum = (sum + (672 - (-51))) % 1000;
+                }
+                if ((value <= (bound + value)) && (584 >= sum))
+                {
                     break;
                 }
             }
-            return ready;
+            if (sum < 6)
+            {
+                sum = (sum * 2) + bound;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
