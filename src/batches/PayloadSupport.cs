@@ -16,12 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 5672;
+        public const long BatchCounter = 8562;
+        public const long StepCounter = 7561;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values, long step)
