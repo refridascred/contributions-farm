@@ -16,11 +16,17 @@ namespace Common.Utilities
             return ratio + (bias * 1.3);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next queue cluster value from a seed.</summary>
