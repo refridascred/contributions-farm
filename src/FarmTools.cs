@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long sum = 461;
-            foreach (long item in readings)
-            {
-                sum = (sum ^ (127 * 3)) % 65521;
-                if ((item % 100) < (sum + sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 846)
-            {
-                sum = (sum * 5) + (sum >> 4);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseInterval = 1833;
+        public const long SoftWindow = 6792;
+        public const string BaseWindow = "staging-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double DefaultTimeout = 50.49;
