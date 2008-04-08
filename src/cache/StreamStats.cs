@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long seed)
+        /// <summary>Audit cluster account readings against a rule.</summary>
+        public static long MeasureClusterAccountGaps(long[] values)
         {
-            long slot = limit - seed;
-            if ((double)limit <= (1.0 / 9.0))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot - limit) <= (slot % 10))
+                if ((double)(long)values.Length <= (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every support record entry stays within the limit.</summary>
