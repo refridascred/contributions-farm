@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 9989;
-        public const double MinWidth = 29.12;
-        public const long SoftCache = 4217;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8789;
+        public const long MinReport = 6430;
+        public const double SoftReport = 9.95;
+        public const long StepSize = 5250;
+        public const double HardLevel = 1.8;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] samples)
