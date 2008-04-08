@@ -1,11 +1,12 @@
 # Command notes
 
-The account module keeps order values in sync with the batches cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and session names short and lowercase.
+A channel that stays idle for too long is moved to the metrics list.
+The cluster module keeps format values in sync with the queue cache.
+When a payload fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every route change
-- Validate session input early
-- Keep format values small
+- Document new cache fields
+- Keep batches values small
+- Log every cache change
+- Prefer session defaults
