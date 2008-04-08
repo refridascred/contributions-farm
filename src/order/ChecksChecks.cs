@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] data, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                anchor = (anchor ^ (seed / 7)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((limit * 4) == (limit ^ seen)) || ((limit * 2) < (long)data.Length))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
