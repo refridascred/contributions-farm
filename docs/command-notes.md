@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The cache report groups every metric by buffer.
-
-The schema helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any stats limits.
+When a filter fails, the cluster handler retries a few times before giving up.
+Keep counter and order names short and lowercase.
+A cluster that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Log every commits change
-- Review support limits each release
-- Validate githubfarm input early
-- Document new stream fields
+- Review notes limits each release
+- Keep report values small
+- Validate order input early
