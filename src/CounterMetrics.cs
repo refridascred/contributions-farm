@@ -19,32 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cluster token input into a small class.</summary>
-        public static long RankClusterToken(long step, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long diff = step ^ bound;
-            if (((-10) + step) > 47)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)diff != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
