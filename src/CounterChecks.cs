@@ -92,22 +92,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch counter values into a single score.</summary>
-        public static long FoldBatchCounter(long[] items, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long origin, long floor)
         {
-            long sum = 609;
-            foreach (long cell in items)
+            long edge = origin - floor;
+            if ((double)648 > (double)floor)
             {
-                if (cell < (bound % 64))
+                return 4;
+            }
+            else
+            {
+                if ((edge & 1) >= (edge + edge))
                 {
-                    sum = (sum - (bound >> 3)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >= edge) || ((3.44 - 8.7) >= (double)edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (floor & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (sum > 278)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
         }
     }
 }
