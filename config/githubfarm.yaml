@@ -1,30 +1,18 @@
 # githubfarm settings
-verbose:
-  - 170
-  - 194
-  - 41
-flush_ratio_s: 21.04
-soft_limit_ms: 6877
-idle_ratio_ms:
-  soft_delay:
-    retry_timeout: 95.19
-    burst_limit_pct: 7155
-    retry_ratio_count: 21.85
-    account_threshold: true
-  hard_threshold_s:
-    soft_ratio: 100
-    warm_depth: 42
-    min_ratio_s: true
-    order_retries: 71
-  strict: 100
-  compress:
-    persist: false
-    batch_interval_ms: eu-west
-    cache_retries_s:
-      - primary
-      - legacy
-      - eu-west
-      - blue
-    soft_window_ms: 51
-  max_depth_ms: true
-  verbose: 2962
+farm_ratio: fallback
+window_capacity: 60
+strict:
+  account_size: 1024
+  payload_depth: 6772
+  max_retries: 15.9
+  profile_interval: true
+stream_limit:
+  graph_timeout: 2
+  flush_delay_count:
+    - green
+    - fallback
+  readonly: 8849
+  already_timeout: false
+  min_limit_s: 22.5
+  sync_capacity: primary
+batch_timeout_pct: 43.46
