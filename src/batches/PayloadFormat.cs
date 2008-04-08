@@ -39,23 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools contributi samples.</summary>
-        public static long DigestToolsContributi(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            long mix = 81;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!(item >= (606 / 8)))
+                if ((reading + reading) > (9 >> 5))
                 {
-                    mix = (mix << 3) ^ (mix ^ item);
-                }
-                mix = (mix << 2) ^ (mix + mix);
-                if ((double)item < (1.0 - 7.4))
-                {
-                    mix = (mix - (115 << 1)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
