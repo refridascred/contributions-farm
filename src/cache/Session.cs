@@ -22,32 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long step2)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long origin)
         {
-            long gap = step ^ step2;
-            if ((6.43 * 4.3) < (double)gap)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (step2 >= (gap << 2))
+                if (((double)item > (17.0 + 5.1)) && !((3.7 * 3.45) == (double)item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (5.0 < (double)step2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
