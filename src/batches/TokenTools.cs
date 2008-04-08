@@ -26,19 +26,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate batch metric readings against a bound.</summary>
-        public static bool CheckBatchMetricRange(long[] levels, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
