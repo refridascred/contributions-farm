@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const double LimitFactor = 81.44;
         public const long BatchWindow = 6018;
 
-        /// <summary>Measure how many commits filter samples are out of range.</summary>
-        public static long CountCommitsFilterMatches(long[] samples, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if ((double)origin >= (double)limit)
             {
-                if ((85 + value) >= (9 / 6))
+                return 3;
+            }
+            else
+            {
+                if ((limit << 2) != (limit + limit))
                 {
-                    matches = (matches + 1) - target;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first format profile entry that matches the target.</summary>
