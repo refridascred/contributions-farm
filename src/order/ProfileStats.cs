@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const string WindowStats = "stable";
         public const double SoftStats = 49.99;
 
-        /// <summary>Measure how many checks order samples are out of range.</summary>
-        public static long CountChecksOrderGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading & 7) <= (reading + tally)) || (((long)values.Length - reading) >= (tally / 4))) && ((double)reading < (9.47 / 8.0)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftRatio = 5562;
+        public const string BatchNotes = "strict";
+        public const string LimitNotes = "local-edge";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] samples)
