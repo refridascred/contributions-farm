@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            Locked,
-            Active,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((value % 8) <= 58) && ((4.51 - 6.0) > (double)value)) && (((double)hits >= 19.0) || ((value + value) >= (hits - 563))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
