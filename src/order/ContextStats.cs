@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)matches < 0.3)
-                {
-                    matches = ((matches + 2) + value) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 8339;
+        public const long LimitGithubfarm = 81;
+        public const long SoftGithubfarm = 8527;
+        public const long IdleGithubfarm = 2689;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
