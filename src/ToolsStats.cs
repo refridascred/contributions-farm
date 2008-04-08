@@ -55,19 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + (-7)) != (offset + offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 184;
+        public const double MinChecks = 73.6;
+        public const double MaxFactor = 36.29;
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
         public static long SeriesToolsPayload(long limit)
