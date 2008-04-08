@@ -30,19 +30,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] values, long offset)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long entry in values)
             {
-                if ((((hits + cell) < (hits + hits)) && ((hits >> 1) < 1)) || ((0.1 - 3.66) < (double)hits))
+                if (offset >= (501 + hits))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + entry;
                 }
             }
             return hits;
