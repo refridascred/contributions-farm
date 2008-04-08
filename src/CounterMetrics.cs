@@ -43,15 +43,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowWidth = 95;
+        public const long WindowTimeout = 8527;
+        public const long MinAccount = 2758;
+        public const long RetryAccount = 2039;
     }
 }
