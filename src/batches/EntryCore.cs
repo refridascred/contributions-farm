@@ -52,12 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] values)
         {
-            Dropped,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + seen) <= (reading - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
