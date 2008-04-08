@@ -56,18 +56,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 73.35;
+        public const long CacheSpan = 3793;
+        public const double LimitWidth = 71.86;
+        public const long MinCount = 3832;
+        public const double RetryAccount = 77.38;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long MatchLayoutCount(long[] data)
