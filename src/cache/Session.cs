@@ -19,26 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache metrics entries.</summary>
-        public static long DigestCacheMetrics(long[] values, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mark = -103;
-            foreach (long datum in values)
-            {
-                if (((datum >> 4) > (datum ^ datum)) || ((double)mark >= (5.3 - 6.0)))
-                {
-                    mark = ((mark + (mark + datum)) % 97) - floor;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (21 & 7)) % 4096;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = (mark - 20) % 4096;
-            }
-            return mark;
+            Closed,
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
