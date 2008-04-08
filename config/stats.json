@@ -1,14 +1,11 @@
 {
-  "soft_ratio_ms": 7343,
-  "soft_depth_s": {
-    "retry_capacity": {
-      "checks_delay": 75.23,
-      "hard_ratio_ms": ["blue", "fallback", "edge"],
-      "cache_ratio_s": "fallback"
-    },
-    "retry_depth": "standard",
-    "flush_retries_pct": 78.31
+  "batches_delay": {
+    "burst_retries_count": 100,
+    "default_window_s": 74,
+    "dry_run": ["cached", "latest"]
   },
-  "cache_retries": 100,
-  "flush_limit_ms": ["stable", "legacy", "primary", "edge"]
+  "soft_window": true,
+  "min_ttl": [184, 125],
+  "base_ttl": 9783,
+  "batch_window": 61.62
 }
