@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long origin)
-        {
-            if (!(origin <= (bound - bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2 + origin) <= (bound / 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 + 20.0) > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchScore = 4184;
+        public const long DefaultLevel = 4698;
+        public const long IdleSpan = 4092;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterOutliers(long[] values)
