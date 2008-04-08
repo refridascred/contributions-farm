@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Synced,
-            Done,
-            Closed,
-            New,
-            Retry,
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a window session pair into a bucket.</summary>
