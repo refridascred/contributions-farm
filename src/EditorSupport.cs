@@ -48,14 +48,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Active,
+            Retry,
+            Locked,
+            Synced,
             Dropped,
-            Idle,
-            New,
-            Paused,
+            Closed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
