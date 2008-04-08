@@ -30,23 +30,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((10.0 * 17.0) < (double)limit)
                 {
-                    carry = (((carry << 3) ^ carry) % 255) ^ (long)i2;
+                    matches = (matches + 2) ^ sample;
                 }
-                if (step > (carry + (-345)))
-                {
-                    carry = (carry - ((long)i * 2)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
     }
 }
