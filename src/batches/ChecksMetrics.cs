@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] series, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            if ((37 + bound) >= (bound & 63))
             {
-                if (item < floor)
+                return 6;
+            }
+            else
+            {
+                if ((bound % 7) < bound)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound <= (bound + (-900))) && (bound >= (bound - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate already samples.</summary>
