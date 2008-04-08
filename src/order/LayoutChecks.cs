@@ -93,19 +93,11 @@ namespace Common.Utilities
         public const double BurstLevel = 87.06;
         public const long BatchSupport = 6121;
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double ratio, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double drift = ratio;
-            if (drift >= drift)
-            {
-                drift = (drift - (double)8) - offset;
-            }
-            else
-            {
-                drift = drift + (ratio + 18.0);
-            }
-            return drift - drift;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
