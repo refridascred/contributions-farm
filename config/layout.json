@@ -1,11 +1,9 @@
 {
-  "base_size": 70,
-  "burst_retries_count": 9713,
-  "metric_limit": {
-    "compress": 48,
-    "default_delay": [386, 374, 215, 231],
-    "poll_retries_s": 500,
-    "max_delay_s": 1024,
-    "graph_capacity": false
-  }
+  "flush_depth_ms": {
+    "cache_window_count": true,
+    "sync_size_count": "primary",
+    "readonly": "blue"
+  },
+  "persist": false,
+  "githubfarm_ttl": 500
 }
