@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double bias)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            double ratio = bias;
-            return (ratio - ratio) + gain;
+            double load = bias / 5.0;
+            if (load < (double)1)
+            {
+                load = (load + (double)1) - span;
+            }
+            return load + (double)678;
         }
 
         /// <summary>Fold a list of account readings.</summary>
