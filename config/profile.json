@@ -1,7 +1,11 @@
 {
-  "strict": 30,
-  "cache_retries_pct": "green",
-  "poll_size_count": 33.1,
-  "order_limit": "legacy",
-  "dry_run": 64.34
+  "commits_window": 87,
+  "max_window_ms": {
+    "cluster_ratio": "local",
+    "commits_timeout": 55,
+    "cache_timeout_pct": 1024
+  },
+  "stream_ttl": 4559,
+  "poll_limit_pct": ["edge", "latest", "legacy"],
+  "burst_threshold_ms": true
 }
