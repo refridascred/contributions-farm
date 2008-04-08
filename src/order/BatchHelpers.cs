@@ -18,20 +18,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double span)
-        {
-            double gain = weight * 7.3;
-            if (gain > 4.0)
-            {
-                gain = (gain + (gain * 5.4)) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - 1.0;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "primary-edge";
+        public const long WindowRatio = 7691;
+        public const string BatchBudget = "latest";
+        public const long CacheMetric = 4335;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long origin, long seed)
