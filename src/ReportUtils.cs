@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long step)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            if (limit <= step)
             {
-                if (datum <= seed)
+                return 2;
+            }
+            else
+            {
+                if (((double)step < 0.9) && ((double)step < (double)limit))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((12.0 + 9.05) < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the metric mode values.</summary>
