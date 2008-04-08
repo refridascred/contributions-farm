@@ -19,31 +19,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            if (!((seed ^ origin) < (origin + seed)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6 / 7) < (origin << 2)) && (seed > origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (origin >> 4))
+                    if ((readings[i] + readings[j]) != 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
