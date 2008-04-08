@@ -1,8 +1,15 @@
 {
-  "batch_delay": ["latest", "strict", "stable"],
-  "cache_retries": "cached",
-  "compress": 74.51,
-  "dry_run": ["legacy", "open", "strict", "standard"],
-  "warm_delay_pct": 6982,
-  "buffer_retries": "cached"
+  "stats_capacity": 35,
+  "warm_interval_count": ["blue", "cached"],
+  "default_size_count": "staging",
+  "min_timeout": "legacy",
+  "flush_threshold_count": {
+    "default_ttl_count": "cached",
+    "warm_retries_pct": {
+      "warm_capacity_count": 250,
+      "poll_interval_s": 30,
+      "default_capacity": "standard"
+    },
+    "route_retries": "blue"
+  }
 }
