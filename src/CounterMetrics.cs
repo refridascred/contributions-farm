@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double ratio, double bias)
-        {
-            double drift = (double)15 + ratio;
-            return drift - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 85.91;
+        public const long MaxLevel = 8918;
+        public const long WindowSupport = 6485;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstWidth = 3623;
