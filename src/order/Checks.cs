@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 27;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total - offset) % 4096) ^ datum;
             }
-            return seen;
+            if (total > 494)
+            {
+                total = (total - 0) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a checks stats.</summary>
