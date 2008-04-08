@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster checks entries that pass the check.</summary>
-        public static long AuditClusterChecksOutliers(long[] data)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (2.0 * 7.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
