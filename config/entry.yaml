@@ -1,19 +1,11 @@
 # entry settings
-route_capacity: latest
-cache_depth_count: true
-min_ttl_s:
-  retry_threshold_pct:
-    - staging
-    - staging
-  profile_window: 46.88
-  verbose:
-    base_timeout_ms: 9346
-    readonly: stable
-    contributi_capacity: 41
-    editor_capacity: 8060
-    cache_limit_s: true
-    flush_interval: fallback
-  base_capacity: 60
-  command_threshold: false
-cache_window: 30
-base_ratio_count: primary
+enabled:
+  - standard
+  - standard
+  - stable
+  - stable
+notes_depth: false
+profile_limit:
+  - 403
+  - 453
+  - 18
