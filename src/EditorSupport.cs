@@ -49,19 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double load = scale + scale;
-            if (load < (double)13)
-            {
-                load = (load - load) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (scale / 4.0)) + (double)(long)i;
-            }
-            return load + scale;
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
