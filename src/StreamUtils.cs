@@ -20,19 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long origin)
+        /// <summary>Fold a list of batch checks readings.</summary>
+        public static long WeighBatchChecks(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long sum = 3;
+            foreach (long item in levels)
             {
-                if (entry < origin)
+                sum = ((sum << 3) ^ 8) % 65521;
+                sum = (sum << 3) ^ (837 - item);
+                if ((double)bound <= (6.0 + 18.0))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 3) + (64 >> 1)) % 255;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
