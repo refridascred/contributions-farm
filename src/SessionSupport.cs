@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] items, long step)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long value in items)
             {
-                if (((double)cell > (0.25 - 5.0)) && ((2.1 - 3.96) == (double)cell))
+                if (((double)value <= 8.0) || ((double)count >= (double)value))
                 {
-                    count = count + 2;
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
