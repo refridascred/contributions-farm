@@ -1,25 +1,10 @@
 # route settings
-enabled: 54.05
-dry_run: false
-soft_delay_s: false
-batch_limit_count:
-  batch_depth_s: latest
-  channel_delay: 100
-  poll_capacity:
-    - 86
-    - 480
-    - 305
-  cache_limit:
-    compress: green
-    idle_ttl_ms: eu-west
-    max_ttl_count: 61
-    retry_ttl_s: 61.13
-  editor_delay:
-    default_retries: local
-    entry_interval: 97
-    soft_threshold_count: 58.36
-    warm_limit: primary
-    batch_window: 94.66
-  queue_depth: false
-idle_ttl_pct: false
-max_delay_s: 53
+sync_retries_count:
+  - 426
+  - 53
+  - 434
+  - 279
+stats_timeout: 1945
+soft_ratio_pct: true
+default_size_count: 95
+hard_retries_pct: 4755
