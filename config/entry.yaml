@@ -1,28 +1,6 @@
 # entry settings
-idle_capacity_count: eu-west
-order_capacity:
-  flush_limit: 51
-  verbose: fallback
-  default_ttl_ms: 5.1
-  command_limit: 35.72
-base_timeout_s: 9996
-base_threshold:
-  poll_size_s:
-    idle_timeout: 2968
-    idle_ratio_ms: 53.51
-    sync_interval_s: 45.33
-  min_ratio_count:
-    - fallback
-    - latest
-  soft_capacity_ms: staging
-warm_depth_ms:
-  checks_threshold: fallback
-  hard_capacity:
-    - 81
-    - 431
-    - 480
-    - 325
-  default_threshold_count: true
-  cache_capacity: 60
-  warm_delay: true
-  flush_retries: open
+warm_ratio: 9528
+checks_retries: cached
+dry_run: true
+readonly: stable
+batch_timeout_count: 43.3
