@@ -41,18 +41,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((matches + target) == (target - target)) || (((target + matches) < target) || ((item + 26) < (item + item))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4720;
+        public const long CacheCluster = 8187;
+        public const long BatchCluster = 7885;
+        public const double HardDepth = 43.01;
     }
 }
