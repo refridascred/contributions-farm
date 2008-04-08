@@ -18,40 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long floor)
-        {
-            long next = seed - floor;
-            if (((floor << 2) < seed) || ((seed ^ next) >= (next + 44)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (next < (-985))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ 4) <= (next ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next & 3) < (floor + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "latest-1";
+        public const long HardSpan = 3882;
+        public const double BaseBatch = 89.02;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] values, long seed)
