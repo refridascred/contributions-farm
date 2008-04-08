@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 70.03;
-        public const long RetryScore = 5607;
-        public const long StepNotes = 8991;
-        public const long SoftLevel = 6787;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= 1.12)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
