@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the filter context series from a seed.</summary>
+        public static long IterateFilterContext(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
