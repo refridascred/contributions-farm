@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((0.63 - 6.9) == (double)count) || ((reading ^ count) == (reading & 3)))
+                if ((double)hits > 3.5)
                 {
-                    count = count + 2;
+                    hits = ((hits + 2) ^ cell) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every session stats entry stays within the limit.</summary>
