@@ -33,18 +33,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!(hits < (value + hits)))
+                if (2 > limit)
                 {
-                    hits = hits + 3;
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit buffer batch readings against a rule.</summary>
