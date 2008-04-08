@@ -1,15 +1,13 @@
 # Command notes
 
-A account that stays idle for too long is moved to the commits list.
-Use context settings to tune how often route data is refreshed.
+Run the githubfarm check before changing any account limits.
+Run the queue check before changing any route limits.
 
-A support that stays idle for too long is moved to the batches list.
-A context that stays idle for too long is moved to the context list.
-The payload report groups every cache by profile.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use batches settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate filter input early
-- Prefer token defaults
-- Document new contributi fields
+- Document new stats fields
+- Log every format change
+- Review token limits each release
