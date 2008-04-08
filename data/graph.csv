@@ -1,10 +1,6 @@
-id,owner,state,region,rank
-1,strict,710,593,1.62
-2,48.04,795,73.07,287
-3,1.48,254,fallback,7.29
-4,latest,93.6,682,347
-5,59.91,231,90.46,653
-6,14.04,22.37,308,305
-7,open,521,712,93.65
-8,latest,32.89,cached,green
-9,481,76.8,533,440
+id,ratio,weight,token
+1,blue,edge,830
+2,27.21,928,34.86
+3,841,cached,stable
+4,159,518,671
+5,latest,50.37,79
