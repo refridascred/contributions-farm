@@ -58,19 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long floor)
+        /// <summary>Fold a list of schema queue readings.</summary>
+        public static long TallySchemaQueue(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long acc = 4;
+            foreach (long datum in levels)
             {
-                if (item != floor)
+                if (((8 - datum) <= target) || (((-19) ^ 50) >= (target - 416)))
                 {
-                    found = false;
+                    acc = (acc - (target ^ 6)) % 1000;
+                }
+                if ((acc + 27) >= (target >> 4))
+                {
                     break;
                 }
             }
-            return found;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
