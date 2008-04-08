@@ -98,22 +98,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) < 3)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowScore = "latest-v2";
+        public const long BatchGithubfarm = 1649;
+        public const long StepScore = 6848;
+        public const double WindowBudget = 35.52;
+        public const long IdleGithubfarm = 3;
     }
 }
