@@ -1,14 +1,10 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any already limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-Keep batch and counter names short and lowercase.
-Run the already check before changing any command limits.
+Use notes settings to tune how often order data is refreshed.
+Each order is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Keep already values small
-- Log every cluster change
-- Document new notes fields
+- Review githubfarm limits each release
+- Validate window input early
+- Log every queue change
