@@ -53,24 +53,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next token route value from a seed.</summary>
-        public static long RollTokenRoute(long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark ^ (origin >> 5);
-                if (!((mark / 6) == ((long)i + mark)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (!((long)i > ((long)i + origin)))
-                {
-                    mark = (mark << 3) ^ (origin ^ mark);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
     }
 }
