@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const long SoftAccount = 7256;
         public const long DefaultWidth = 6064;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "staging-v2";
-        public const long DefaultCount = 4558;
-        public const double StepInterval = 54.75;
-        public const long HardMetrics = 3680;
+        /// <summary>Iterate the notes batch series from a seed.</summary>
+        public static long DeriveNotesBatch(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((6.55 * 9.7) != (double)step) || ((double)state <= (double)step))
+                {
+                    state = state ^ ((long)i % 12);
+                    continue;
+                }
+                state = ((state * 4) + (state * 3)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
