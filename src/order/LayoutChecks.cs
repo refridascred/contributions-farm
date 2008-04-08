@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Locked,
-            Done,
-            Retry,
-            Draft,
-            Queued,
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
