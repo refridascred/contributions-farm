@@ -68,19 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (anchor <= (anchor * 2))
+                if (((matches + target) == (target - target)) || (((target + matches) < target) || ((item + 26) < (item + item))))
                 {
-                    anchor = anchor - ((long)i + (long)i);
+                    matches = matches + 3;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
     }
 }
