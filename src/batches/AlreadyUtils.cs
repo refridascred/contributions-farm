@@ -39,23 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long mark = 98;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ (7 - cell)) % 65521;
-                if ((4.08 - 2.05) != (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark - (mark << 3);
-                }
-                else
-                {
-                    mark = mark + (mark - mark);
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
