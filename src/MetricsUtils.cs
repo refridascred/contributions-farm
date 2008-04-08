@@ -83,17 +83,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout queue reading by value.</summary>
-        public static long SeekLayoutQueueIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepDepth = 4825;
+        public const string BaseBatch = "primary-v2";
+        public const string HardBatch = "staging-1";
     }
 }
