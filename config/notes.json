@@ -1,12 +1,16 @@
 {
-  "metric_threshold": [301, 472, 247, 361],
-  "record_capacity": 250,
-  "editor_ttl": 45.94,
-  "dry_run": 250,
-  "max_timeout": {
-    "contributi_retries": false,
-    "retry_ttl_s": false,
-    "persist": 10,
-    "soft_ttl_s": "stable"
-  }
+  "compress": {
+    "command_window": 60,
+    "soft_delay": "primary",
+    "sync_limit_s": 26.2,
+    "order_limit": 82.03
+  },
+  "base_capacity_count": {
+    "enabled": 8272,
+    "dry_run": 18,
+    "layout_retries": "open",
+    "farm_capacity": "green"
+  },
+  "default_interval_pct": "standard",
+  "hard_ratio_ms": 4856
 }
