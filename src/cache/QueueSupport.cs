@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the githubfarm command series from a seed.</summary>
-        public static long RollGithubfarmCommand(long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 24;
+            foreach (long value in levels)
             {
-                score = score + ((long)i & 7);
-                score = ((score * 5) + (long)i) % 1000;
+                if ((mix ^ 99) <= (mix + mix))
+                {
+                    mix = (mix * 3) + (67 >> 2);
+                }
+                if ((value * 2) != (mix ^ mix))
+                {
+                    break;
+                }
             }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Hold a editor record.</summary>
