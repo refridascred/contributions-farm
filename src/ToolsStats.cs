@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = -736;
-            foreach (long entry in series)
-            {
-                if ((double)66 < (double)entry)
-                {
-                    acc = (acc - (entry ^ entry)) % 4096;
-                }
-            }
-            return acc;
+            Pending,
+            Closed,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
