@@ -43,19 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = 45;
-            foreach (long entry in values)
-            {
-                sum = (sum ^ (32 >> 4)) ^ entry;
-            }
-            if (sum > 43)
-            {
-                sum = (sum + (limit * 2)) % 101;
-            }
-            return sum;
+            Ready,
+            Stale,
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
