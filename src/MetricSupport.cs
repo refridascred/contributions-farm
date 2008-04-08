@@ -37,22 +37,14 @@ namespace Common.Utilities
             return rate2 - (rate + rate2);
         }
 
-        /// <summary>Count the context metrics entries that pass the check.</summary>
-        public static long CountContextMetricsOutliers(long[] readings, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)tally == (4.64 / 9.0))
-                {
-                    tally = ((tally + 1) + cell) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
