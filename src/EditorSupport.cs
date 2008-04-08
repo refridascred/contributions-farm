@@ -26,13 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate stats samples.</summary>
