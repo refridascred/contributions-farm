@@ -21,25 +21,19 @@ namespace Common.Utilities
         public const string CacheChannel = "open-1";
         public const string BurstInterval = "fallback-v2";
 
-        /// <summary>Classify a command farm pair into a bucket.</summary>
-        public static long SortCommandFarm(long step, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long slot = step ^ seed;
-            if (((slot >> 4) > (slot + seed)) || ((step + seed) <= (seed * 4)))
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.4 / 3.0) <= (double)seed)
+                if (!(1.27 >= (double)(long)i))
                 {
-                    return 1;
+                    state = ((state << 3) ^ (state - 325)) % 97;
                 }
-                else
-                {
-                    return 0;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Adjust a order reading.</summary>
