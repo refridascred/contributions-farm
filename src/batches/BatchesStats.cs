@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "staging";
-        public const long WindowSize = 4548;
-        public const long MinStats = 6238;
-        public const long MaxStats = 2389;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long target, long bound)
+        {
+            if ((double)target >= 13.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target - 613) >= (target - 5)) && (target > (target % 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound < (target / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(bound < (bound & 63)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double scale, double bias)
