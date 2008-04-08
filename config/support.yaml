@@ -1,7 +1,9 @@
 # support settings
-account_size: legacy
-token_threshold: eu-west
-default_timeout_s:
-  idle_timeout_count: strict
-  stats_limit: true
-  record_threshold: eu-west
+verbose:
+  - 169
+  - 340
+  - 82
+  - 146
+already_retries: 64.65
+default_interval_s: false
+burst_size_pct: primary
