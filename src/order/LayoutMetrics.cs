@@ -34,17 +34,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long bound)
+        /// <summary>Grade a stats notes value against two limits.</summary>
+        public static long GradeStatsNotes(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = bound - limit;
+            if ((15.0 < (double)limit) || (limit < (limit / 8)))
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ 46) <= (limit + delta))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((delta / 7) > (limit >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit + bound) > (bound % 2)) && ((7.3 + 6.52) > (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
