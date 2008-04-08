@@ -19,22 +19,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long anchor = 99;
-            foreach (long cell in data)
-            {
-                if (anchor <= (origin - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (60 % 2)) ^ cell;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
+            Locked,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
