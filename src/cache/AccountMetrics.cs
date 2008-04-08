@@ -44,11 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxLevel = 1356;
-        public const string HardProfile = "latest-v2";
-        public const string LimitWidth = "legacy-v2";
-        public const double MinDepth = 67.85;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] data, long step)
