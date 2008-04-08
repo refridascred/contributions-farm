@@ -31,22 +31,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)(-4) > (double)tally)
+                if ((9.63 + 19.0) <= (double)sample)
                 {
-                    tally = (tally + 3) + sample;
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
