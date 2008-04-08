@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((limit % 2) <= (76 & 63))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.07 - 3.47) > (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
