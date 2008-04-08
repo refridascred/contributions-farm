@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
