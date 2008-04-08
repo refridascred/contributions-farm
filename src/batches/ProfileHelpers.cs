@@ -58,26 +58,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long origin)
         {
-            long state = -9;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step > (6.75 - 7.57))
+                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
                 {
-                    state = ((state * 4) + 851) - entry;
-                }
-                else
-                {
-                    state = (state * 3) + state;
+                    return (long)i;
                 }
             }
-            if (state < 4)
-            {
-                state = (state - step) % 4096;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
