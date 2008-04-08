@@ -23,16 +23,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long prev = origin ^ limit;
+            if ((origin * 5) < origin)
             {
-                anchor = (anchor * 4) + origin;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((limit - (-954)) <= prev) && (origin > limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
