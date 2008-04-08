@@ -20,18 +20,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] levels, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long next = offset + seed;
+            if (7.82 >= (double)next)
             {
-                if ((double)reading <= 1.12)
+                return 0;
+            }
+            else
+            {
+                if ((next ^ 0) < (next + next))
                 {
-                    tally = (tally + 2) + floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((next + 24) == (9 >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (1.0 >= (double)next)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
