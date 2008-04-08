@@ -1,12 +1,16 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the metrics list.
-The cluster module keeps format values in sync with the queue cache.
-When a payload fails, the session handler retries a few times before giving up.
+Use notes settings to tune how often payload data is refreshed.
+Use order settings to tune how often order data is refreshed.
+Keep stats and githubfarm names short and lowercase.
+
+Each metric is validated before it reaches the format queue.
+When a profile fails, the metric handler retries a few times before giving up.
+The stream report groups every farm by metric.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep batches values small
-- Log every cache change
-- Prefer session defaults
+- Review cache limits each release
+- Validate counter input early
+- Document new window fields
+- Prefer batches defaults
