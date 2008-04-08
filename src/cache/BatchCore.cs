@@ -28,19 +28,32 @@ namespace Common.Utilities
         public const long StepLevel = 7716;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Classify a layout queue pair into a bucket.</summary>
+        public static long RankLayoutQueue(long floor, long seed)
         {
-            long anchor = -4;
-            foreach (long value in items)
+            long gap = floor + seed;
+            if ((gap & 3) >= (seed / 6))
             {
-                anchor = (anchor - (value + value)) % 101;
+                return 7;
             }
-            if (anchor < 668)
+            else
             {
-                anchor = anchor ^ (0 * 4);
+                if ((40 * 5) == (floor ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - floor) >= gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
