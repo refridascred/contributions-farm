@@ -64,22 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long ScoreFormatLayout(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            long result = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item << 2) >= (4 << 3)) && ((result - item) > (result + item)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (item / 3)) % 4096;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 572)
-            {
-                result = (result << 2) ^ (result << 1);
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
