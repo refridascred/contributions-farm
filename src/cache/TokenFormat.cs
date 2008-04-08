@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] series, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally - tally) == (5 + tally))
-                {
-                    tally = ((tally + 2) - sample) - floor;
-                }
+                carry = (carry - ((long)i + (long)i)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
