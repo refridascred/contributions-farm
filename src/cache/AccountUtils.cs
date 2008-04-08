@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long seed)
+        /// <summary>Audit editor counter readings against a rule.</summary>
+        public static long CountEditorCounterOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (cell >= seed)
+                if ((4 + value) != (count + value))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
