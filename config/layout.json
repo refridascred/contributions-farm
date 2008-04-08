@@ -1,15 +1,6 @@
 {
-  "flush_ttl_pct": false,
-  "graph_retries": {
-    "soft_ttl": 30,
-    "channel_retries": 53.0,
-    "base_timeout": {
-      "compress": 30,
-      "githubfarm_delay": 57.26,
-      "audit": "primary",
-      "enabled": false,
-      "min_threshold_s": [453, 469, 143, 160]
-    }
-  },
-  "cache_size_pct": 3536
+  "support_window": [486, 160],
+  "verbose": "local",
+  "entry_timeout": 60.4,
+  "sync_depth_count": "staging"
 }
