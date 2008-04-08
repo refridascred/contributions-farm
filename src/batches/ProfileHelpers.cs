@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string IdleTimeout = "staging-v2";
         public const long WindowAccount = 6651;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many cluster commits samples are out of range.</summary>
+        public static long AuditClusterCommitsMatches(long[] samples, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((double)reading != (3.0 / 6.0)) && !(seen < (seen + 82)))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the command record series from a seed.</summary>
