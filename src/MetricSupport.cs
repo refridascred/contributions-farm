@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((((mix << 3) ^ (long)data.Length) % 65521) ^ reading) - step;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
