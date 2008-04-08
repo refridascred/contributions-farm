@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 62.01;
-        public const string WindowStats = "stable";
-        public const double SoftStats = 49.99;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftRatio = 5562;
