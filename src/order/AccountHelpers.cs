@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitTimeout = 3863;
-        public const string SoftSize = "staging-v2";
-        public const double StepCount = 39.13;
-        public const long MinNotes = 1406;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((((item - tally) < (item << 2)) || ((step * 3) < (step / 9))) && ((item / 4) < ((long)samples.Length << 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
