@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxRatio = 4304;
-        public const string SoftWidth = "legacy-1";
-        public const string SoftReport = "cached-1";
-        public const string MinBudget = "local-edge";
+        /// <summary>Scale a cluster record figure with a bias.</summary>
+        public static double AdjustClusterRecord(double scale, double offset)
+        {
+            double mean = (offset / 5.0) * 13.0;
+            if (mean >= scale)
+            {
+                mean = mean - scale;
+            }
+            else
+            {
+                mean = mean - (double)189;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean - (double)247;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] values, long limit)
