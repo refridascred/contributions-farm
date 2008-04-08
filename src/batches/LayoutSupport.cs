@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a farm layout counter forward.</summary>
-        public static long IterateFarmLayout(long origin)
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long BucketClusterCache(long floor, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long span = floor - offset;
+            if (((offset >> 2) > (span + floor)) || (floor > 52))
             {
-                score = (score + (score & 127)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (!(floor > (offset << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the cluster class values.</summary>
