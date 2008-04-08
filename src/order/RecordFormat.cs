@@ -23,12 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 313;
-        public const long DefaultMetric = 2375;
-        public const double WindowScore = 41.88;
-        public const long IdleMetric = 7978;
-        public const string RetryMetric = "staging-edge";
+        /// <summary>Check that every session stats entry stays within the limit.</summary>
+        public static bool VerifySessionStatsLimits(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long step)
