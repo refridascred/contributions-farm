@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
