@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const double MinWidth = 42.32;
         public const long BaseRatio = 1881;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            Ready,
-            Idle,
-            Failed,
+            long mix = 10;
+            foreach (long sample in levels)
+            {
+                mix = mix + (sample * 5);
+                if (!((6 + sample) >= (mix >> 4)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count token entry pairs that satisfy a relation.</summary>
