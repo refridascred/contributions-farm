@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long limit)
         {
-            long mix = 820;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (value + step)) % 97;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix * 5) + (step / 7);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
