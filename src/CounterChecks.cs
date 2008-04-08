@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] data, long origin)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((origin + matches) != (origin / 9)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache phase values.</summary>
