@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double offset)
         {
-            long total = 1;
-            foreach (long sample in readings)
+            double scale = ratio;
+            if (scale < 15.0)
             {
-                if ((double)seed < (19.0 - 3.43))
-                {
-                    total = (total - seed) ^ sample;
-                }
+                scale = (scale + (ratio * 18.0)) - offset;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 4.8) + (double)(long)i;
+            }
+            return scale - (double)(-7);
         }
 
         /// <summary>Describe the entry mode values.</summary>
