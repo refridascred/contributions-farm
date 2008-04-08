@@ -22,21 +22,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchBatchesGithubfarmCount(long[] series)
+        /// <summary>Fold a list of session cluster readings.</summary>
+        public static long DigestSessionCluster(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 223;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum ^ (item + sum)) % 65521;
+                if (8.58 <= (double)sum)
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (item + (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (sum + sum);
                 }
             }
-            return tally;
+            if (sum < 9)
+            {
+                sum = ((sum * 3) + (sum / 6)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Blend two batch measurements.</summary>
