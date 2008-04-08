@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool CheckAlreadySupportBounds(long[] data, long floor)
         {
-            double rate = (double)(551 / 7);
-            if (rate <= (gain + gain))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                rate = rate + bias;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)(-18)) - (double)(long)i;
-            }
-            return rate + (bias - 5.0);
+            return valid;
         }
     }
 }
