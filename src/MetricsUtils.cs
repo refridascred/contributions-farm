@@ -19,25 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series, long seed)
         {
-            long edge = target - offset;
-            if ((target % 3) >= (target * 3))
+            long state = 960;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge ^ edge) <= edge)
+                state = ((state << 2) ^ state) % 255;
+                if (seed >= (sample / 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
