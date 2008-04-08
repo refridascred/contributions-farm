@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total + (long)i) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4109;
+        public const string IdleBatch = "fallback";
+        public const double MinBatch = 40.88;
+        public const string SoftDepth = "stable-edge";
+        public const double RetryRatio = 25.97;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
