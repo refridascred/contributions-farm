@@ -63,22 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxInterval = "cached";
+        public const long IdleBudget = 2561;
+        public const long MinGithubfarm = 4594;
+        public const long HardSpan = 2333;
+        public const string BaseGithubfarm = "staging-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatOutliers(long[] data, long bound)
