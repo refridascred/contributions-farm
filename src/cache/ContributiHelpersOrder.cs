@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
