@@ -47,12 +47,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Failed,
-            Closed,
+            Active,
+            Dropped,
             Idle,
+            New,
             Paused,
         }
 
