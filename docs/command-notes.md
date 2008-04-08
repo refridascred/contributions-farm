@@ -1,15 +1,15 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the context list.
-Each farm is validated before it reaches the buffer queue.
-The checks module keeps batches values in sync with the entry cache.
+Run the counter check before changing any tools limits.
+Run the filter check before changing any counter limits.
+Each format is validated before it reaches the cluster queue.
 
 Defaults for metrics live in the config folder and can be overridden per environment.
-Keep window and context names short and lowercase.
+A schema that stays idle for too long is moved to the tools list.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new checks fields
-- Review farm limits each release
-- Log every window change
+- Keep route values small
+- Log every profile change
+- Review report limits each release
