@@ -1,15 +1,8 @@
 # support settings
-idle_depth_s: edge
-verbose: 64.02
-default_capacity_pct: 41
-retry_size_count:
-  base_ratio: 85
-  flush_timeout_pct: 18
-  support_threshold: false
-  poll_limit_ms: 500
-  idle_timeout_pct: true
-sync_retries_count:
-  - standard
-  - cached
-  - cached
-  - staging
+strict: 30
+cache_depth_ms: false
+stats_timeout: 460
+payload_limit: false
+dry_run:
+  - 438
+  - 44
