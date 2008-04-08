@@ -72,18 +72,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context command samples are out of range.</summary>
-        public static long CountContextCommandHits(long[] values, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((74 / 6) > (floor % 24))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Active,
+            Retry,
         }
     }
 }
