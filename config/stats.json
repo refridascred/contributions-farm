@@ -1,6 +1,14 @@
 {
-  "layout_interval": false,
-  "route_threshold": "fallback",
-  "compress": "fallback",
-  "poll_delay_pct": 46.3
+  "retry_delay_s": "standard",
+  "report_threshold": [154, 47, 155],
+  "max_ttl_count": true,
+  "flush_interval_ms": {
+    "compress": "staging",
+    "profile_threshold": [348, 74, 154],
+    "hard_delay_ms": 58.67,
+    "filter_capacity": 250,
+    "poll_interval_count": false
+  },
+  "hard_depth": ["cached", "blue", "eu-west"],
+  "sync_capacity_ms": true
 }
