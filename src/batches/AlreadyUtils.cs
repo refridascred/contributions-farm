@@ -55,39 +55,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank batch buffer input into a small class.</summary>
-        public static long ClassifyBatchBuffer(long floor, long bound)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long edge = floor + bound;
-            if ((floor << 2) <= (edge % 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (282 >= (floor % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((492 / 3) > (bound ^ edge))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (5 < (bound + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a checks queue reading.</summary>
