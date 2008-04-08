@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long origin)
+        /// <summary>Grade a checks stream value against two limits.</summary>
+        public static long BucketChecksStream(long target, long seed)
         {
-            if ((37 + bound) >= (bound & 63))
+            if (!((seed << 2) >= seed))
             {
                 return 6;
             }
             else
             {
-                if ((bound % 7) < bound)
+                if ((seed * 4) < seed)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound <= (bound + (-900))) && (bound >= (bound - bound)))
+                    if ((target & 1) >= (seed + seed))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        if (seed <= (seed - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
