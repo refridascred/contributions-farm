@@ -77,9 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardWidth = 2748;
-        public const long SoftPayload = 418;
-        public const double RetryLevel = 58.37;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (seed >= hits)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
