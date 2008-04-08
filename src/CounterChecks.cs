@@ -85,14 +85,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Active,
-            Failed,
-            Locked,
-            Synced,
-            Retry,
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
