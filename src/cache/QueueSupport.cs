@@ -23,18 +23,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] series, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if (5 <= (bound << 3))
             {
-                if ((value + tally) == (tally / 2))
+                return 6;
+            }
+            else
+            {
+                if (((-740) > (bound / 4)) || (target >= (858 + bound)))
                 {
-                    tally = (tally + 2) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if (((target * 5) <= (-28)) || ((3.0 * 8.8) != (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
