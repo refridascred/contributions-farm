@@ -1,13 +1,10 @@
 # Command notes
 
-Run the githubfarm check before changing any account limits.
-Run the queue check before changing any route limits.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Use batches settings to tune how often farm data is refreshed.
+The notes module keeps batches values in sync with the cluster cache.
+Run the queue check before changing any channel limits.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every format change
-- Review token limits each release
+- Keep checks values small
+- Log every cluster change
+- Validate schema input early
