@@ -13,24 +13,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a already editor pair into a bucket.</summary>
-        public static long ClassifyAlreadyEditor(long bound, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if ((309 << 1) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 127) >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Pending,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
