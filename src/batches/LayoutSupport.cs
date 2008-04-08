@@ -60,20 +60,22 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long origin)
         {
-            long state = 54;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                state = ((state << 3) ^ (cell & 127)) % 255;
-                state = ((state * 3) + cell) % 255;
+                if ((tally + 2) == (tally - origin))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ (1 % 5)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
