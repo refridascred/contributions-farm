@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Dropped,
-            Retry,
-            Failed,
-            Draft,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
