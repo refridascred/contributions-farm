@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetrySpan = 7102;
-        public const double MinWidth = 63.0;
-        public const string RetryDepth = "latest-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen == (1.2 - 3.5))
+                {
+                    seen = ((seen + 2) + item) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
         public static long CountCommitsFilterMatches(long[] samples, long target)
