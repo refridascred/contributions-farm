@@ -19,19 +19,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long score = -81;
-            foreach (long reading in series)
-            {
-                if ((score >= (reading % 2)) || ((score + score) < reading))
-                {
-                    score = (score << 2) ^ (score ^ reading);
-                }
-                score = (score << 3) ^ (score * 2);
-            }
-            return score % 1000;
+            Stale,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Locate a route reading by value.</summary>
