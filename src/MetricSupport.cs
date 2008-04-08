@@ -37,19 +37,22 @@ namespace Common.Utilities
             return rate2 - (rate + rate2);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long floor)
+        /// <summary>Count the context metrics entries that pass the check.</summary>
+        public static long CountContextMetricsOutliers(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= floor)
+                if ((double)tally == (4.64 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) + cell) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
