@@ -31,10 +31,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1413;
-        public const long MaxRoute = 4298;
-        public const long IdleRoute = 7443;
+        /// <summary>Match up route notes samples.</summary>
+        public static long CompareRouteNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double HardScore = 23.82;
