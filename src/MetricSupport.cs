@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (anchor ^ (315 >> 3)) - (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
