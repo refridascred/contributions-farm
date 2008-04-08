@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long lane = step - offset;
-            if ((lane - offset) <= (658 - step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((0 + offset) > 638))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
