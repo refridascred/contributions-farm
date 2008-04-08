@@ -20,31 +20,21 @@ namespace Common.Utilities
             return gain - (bias - 3.4);
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long result = 976;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    long slot = (cell / 8) - ((long)i ^ (long)i);
-                    result = (result ^ (slot >> 3)) % 65521;
-                }
-                if (((long)data.Length - target) >= ((long)data.Length + target))
-                {
-                    continue;
-                }
-                if (((-966) + result) == (3 * 4))
-                {
-                    result = (result - (473 - target)) % 255;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 844)
-            {
-                result = ((result * 2) + (target ^ target)) % 65521;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
