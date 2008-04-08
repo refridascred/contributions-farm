@@ -25,18 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long MeasureReportMetricsGaps(long[] readings, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = -6;
+            foreach (long cell in values)
             {
-                if (sample <= (count - sample))
+                if ((cell ^ cell) == (mix + mix))
                 {
-                    count = (count + 1) + target;
+                    mix = (mix ^ (mix & 3)) % 97;
                 }
             }
-            return count;
+            if (mix < 4)
+            {
+                mix = ((mix * 3) + (offset ^ offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Roll a filter schema counter forward.</summary>
