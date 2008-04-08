@@ -34,26 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long state = -17;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)state != (12.0 * 7.82)) && (bound < (8 * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + ((long)readings.Length >> 4)) - datum;
-                }
-                else
-                {
-                    state = (state + bound) % 97;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 57)
-            {
-                state = ((state << 3) ^ (9 >> 3)) % 255;
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
