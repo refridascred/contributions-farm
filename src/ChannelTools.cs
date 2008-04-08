@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series, long target)
         {
-            double drift = rate;
-            if (drift >= (double)271)
+            long sum = -794;
+            foreach (long sample in series)
             {
-                drift = (drift + (11.0 / 6.0)) + bias;
+                sum = (((sum - (sum % 12)) % 1000) ^ sample) + target;
             }
-            return drift - (double)151;
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
