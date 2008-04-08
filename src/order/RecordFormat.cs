@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Fold a list of token farm readings.</summary>
+        public static long ScoreTokenFarm(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = 769;
+            foreach (long sample in series)
             {
-                mix = (mix << 3) ^ (origin + (-41));
-                mix = ((mix << 2) ^ (origin * 4)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
+                anchor = anchor - (anchor - 476);
+                anchor = (anchor - sample) % 101;
+                if (!((sample % 3) >= (anchor & 7)))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 2) + anchor) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
