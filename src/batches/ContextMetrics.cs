@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long CountCommitsRecordMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((857 << 3) != (cell ^ 755))
+                if ((entry % 10) < (seen & 63))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a metric header.</summary>
