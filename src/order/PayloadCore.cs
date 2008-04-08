@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            Locked,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
