@@ -50,15 +50,16 @@ namespace Common.Utilities
         public const string BurstSpan = "cached";
         public const long CacheFarm = 583;
 
-        /// <summary>Accumulate support buffer samples.</summary>
-        public static long TallySupportBuffer(long[] items, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long sum = 74;
-            foreach (long entry in items)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((((sum << 2) ^ (sum + 756)) % 1000) ^ entry) - step;
+                carry = (carry + (4 / 7)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
     }
 }
