@@ -55,19 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long mix = 77;
+            foreach (long entry in items)
             {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix + (entry / 4)) % 1000;
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
