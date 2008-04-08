@@ -55,17 +55,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] >= limit)
+                if (count < (-6))
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
