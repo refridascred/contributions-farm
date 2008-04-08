@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] values, long bound)
+        /// <summary>Accumulate commits account samples.</summary>
+        public static long TallyCommitsAccount(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = 10;
+            foreach (long item in samples)
             {
-                if (((entry * 3) > (matches & 31)) && (2 <= (entry ^ (-4))))
+                total = (total + (offset % 12)) - item;
+                if ((double)offset > (2.0 + 9.8))
                 {
-                    matches = (matches + 2) - bound;
+                    break;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Hold a schema header.</summary>
