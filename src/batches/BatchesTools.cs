@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long AuditCacheBatchGaps(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = 19;
+            foreach (long sample in readings)
             {
-                if ((reading / 3) <= reading)
+                if ((origin - origin) >= origin)
                 {
-                    hits = hits + 1;
+                    mark = ((mark * 4) + origin) % 97;
+                }
+                else
+                {
+                    mark = (mark + (sample >> 5)) % 4096;
                 }
             }
-            return hits;
+            if (mark > 3)
+            {
+                mark = ((mark << 3) ^ origin) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of already entries.</summary>
