@@ -29,10 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 1.18;
-        public const long LimitWindow = 6706;
-        public const long RetrySize = 7708;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Locked,
+            Closed,
+            Done,
+            Paused,
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] levels)
