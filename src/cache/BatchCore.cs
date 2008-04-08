@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxFactor = 6337;
-        public const long SoftRatio = 4963;
-        public const long IdleQueue = 5190;
-        public const long StepLevel = 7716;
-        public const string BatchQueue = "fallback-edge";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Pending,
+            Draft,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] readings)
