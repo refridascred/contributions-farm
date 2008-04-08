@@ -80,24 +80,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a checks tools value against two limits.</summary>
-        public static long SortChecksTools(long seed, long limit)
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long MeasureCounterSessionHits(long[] data, long bound)
         {
-            if ((seed / 7) == (seed % 12))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) < seed)
+                if (!((cell >> 2) <= bound) || (((cell << 1) < cell) || (count >= (long)data.Length)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
