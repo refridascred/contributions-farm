@@ -52,15 +52,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 47;
-            foreach (long sample in readings)
-            {
-                state = state + (sample & 1);
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
