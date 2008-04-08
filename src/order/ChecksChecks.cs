@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data, long bound)
         {
-            Pending,
-            Failed,
-            Synced,
-            New,
-            Paused,
+            long anchor = 0;
+            foreach (long value in data)
+            {
+                if (bound > (anchor ^ value))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - value)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph status values.</summary>
