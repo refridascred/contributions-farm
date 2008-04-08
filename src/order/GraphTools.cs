@@ -22,13 +22,17 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Locate a channel tools reading by value.</summary>
+        public static long LocateChannelToolsIndex(long[] items, long origin)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session stats readings.</summary>
