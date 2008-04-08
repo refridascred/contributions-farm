@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((double)seen <= (5.42 * 2.9))
+                if (((entry * 3) > (matches & 31)) && (2 <= (entry ^ (-4))))
                 {
-                    seen = (seen + 2) ^ cell;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the notes phase values.</summary>
