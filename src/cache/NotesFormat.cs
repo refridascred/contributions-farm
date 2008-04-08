@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (floor + anchor)) % 255) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    anchor = ((anchor << 2) ^ (floor ^ floor)) ^ (long)i3;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 1285;
+        public const double RetryFormat = 41.51;
+        public const string StepInterval = "alpha-1";
+        public const string BatchDepth = "stable-1";
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double ratio, double floor)
