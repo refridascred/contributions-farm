@@ -42,22 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double load = (double)(40 + 271);
+            if (load <= weight)
             {
-                if ((6.95 + 1.82) > (double)tally)
-                {
-                    tally = ((tally + 3) + reading) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = load + (weight + load);
             }
-            return tally;
+            else
+            {
+                load = load - span;
+            }
+            return load + (double)96;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
