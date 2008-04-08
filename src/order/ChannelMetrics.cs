@@ -23,19 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long floor)
         {
-            long mark = 3;
-            foreach (long cell in values)
+            long cur = target + floor;
+            if (!(8 < (cur >> 1)))
             {
-                mark = (((mark + mark) % 1000) - cell) - origin;
+                return 8;
             }
-            if (mark < 3)
+            else
             {
-                mark = mark + (41 - mark);
+                if ((target % 7) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
