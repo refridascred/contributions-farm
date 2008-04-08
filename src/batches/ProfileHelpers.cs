@@ -70,22 +70,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings, long step)
         {
-            long total = 48;
-            foreach (long cell in values)
+            long state = -9;
+            foreach (long entry in readings)
             {
-                if ((total * 2) > (cell >> 3))
+                if ((double)step > (6.75 - 7.57))
                 {
-                    total = total ^ cell;
+                    state = ((state * 4) + 851) - entry;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (total << 3)) % 101;
+                    state = (state * 3) + state;
                 }
             }
-            return total % 97;
+            if (state < 4)
+            {
+                state = (state - step) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
