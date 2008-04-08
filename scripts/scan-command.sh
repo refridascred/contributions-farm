@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy; do
+for item in staging primary; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=109
+COMMAND_LIMIT=192
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
