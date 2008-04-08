@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long seed)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long bound2 = bound - seed;
-            if ((double)bound2 > (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((4.8 - 0.3) != (double)bound2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
