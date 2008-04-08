@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long bound)
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
