@@ -67,14 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Stale,
-            Queued,
-            New,
-            Synced,
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
