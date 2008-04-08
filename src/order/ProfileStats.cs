@@ -25,26 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            long carry = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((carry + cell) > cell)
+                if (!(4 >= (value + tally)) || ((value + 970) == (tally ^ tally)))
                 {
-                    carry = ((carry << 3) ^ (carry << 3)) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = (carry + (cell - 3)) % 65521;
-                }
-                if (carry > (55 + carry))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
