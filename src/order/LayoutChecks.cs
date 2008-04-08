@@ -64,12 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "fallback-edge";
-        public const long RetryLevel = 9561;
-        public const double LimitLayout = 82.78;
-        public const double IdleLayout = 50.93;
-        public const long SoftInterval = 1028;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] samples)
