@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 3116;
+        public const string CacheNotes = "alpha-edge";
+        public const long MinNotes = 7363;
+        public const long CacheBudget = 3216;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double IdleGraph = 77.3;
