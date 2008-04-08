@@ -39,17 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long step)
+        /// <summary>Fold a list of schema channel readings.</summary>
+        public static long CombineSchemaChannel(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 821;
+            foreach (long datum in series)
             {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
+                if ((1.0 / 9.0) != (double)datum)
                 {
-                    return (long)i;
+                    state = (state - (datum + state)) % 65521;
                 }
+                if (!(datum < (state >> 4)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state - seed) % 255;
+                }
+                state = state - 71;
             }
-            return -1;
+            if (state < 894)
+            {
+                state = (state + (36 - state)) % 255;
+            }
+            return state;
         }
     }
 }
