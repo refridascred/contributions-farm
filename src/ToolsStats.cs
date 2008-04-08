@@ -49,17 +49,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long floor)
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long DigestStreamToken(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long sample in data)
             {
-                if (samples[i] == floor)
+                if ((sample + step) <= (sum - sample))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum ^ step);
+                    sum = sum ^ (5 - (-6));
                 }
+                else
+                {
+                    sum = (sum ^ (step + step)) % 101;
+                }
+                sum = (sum - (8 << 3)) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the profile class values.</summary>
