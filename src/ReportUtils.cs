@@ -53,21 +53,9 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxDepth = 88.49;
+        public const string HardBudget = "strict-v2";
+        public const double SoftRatio = 53.16;
     }
 }
