@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 538;
-        public const long WindowWidth = 2072;
-        public const long HardContext = 1725;
-        public const long RetryContext = 1134;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Done,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
         public static long SeekGithubfarmPayloadIndex(long[] items, long origin)
