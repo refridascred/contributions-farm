@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Match up commits support samples.</summary>
+        public static long OverlapCommitsSupportCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.4 / 7.0) >= (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) - datum;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the schema queue series from a seed.</summary>
