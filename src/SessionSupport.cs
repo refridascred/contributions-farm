@@ -23,19 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] samples, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor * 4) + origin;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
