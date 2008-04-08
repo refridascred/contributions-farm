@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long seed)
         {
-            long sum = -14;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((8.99 * 9.15) <= (double)reading)
+                if ((double)(long)readings.Length >= (1.14 * 8.98))
                 {
-                    sum = sum ^ (6 ^ 785);
+                    matches = ((matches + 1) + sample) + seed;
                 }
             }
-            if (sum > 78)
-            {
-                sum = sum ^ (sum - offset);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
