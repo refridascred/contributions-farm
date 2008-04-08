@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long seed)
+        /// <summary>Measure how many farm filter samples are out of range.</summary>
+        public static long CountFarmFilterHits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (cell != seed)
+                if ((item ^ seen) >= offset)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
