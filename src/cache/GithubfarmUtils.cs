@@ -17,12 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSpan = 1199;
-        public const long BurstReport = 5557;
-        public const long DefaultReport = 5706;
-        public const long WindowTimeout = 4986;
-        public const long IdleCount = 1692;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] samples, long floor)
