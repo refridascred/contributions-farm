@@ -23,23 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Combine record layout values into a single score.</summary>
+        public static long DigestRecordLayout(long[] readings, long limit)
         {
-            long mark = 79;
-            foreach (long cell in levels)
+            long acc = 7;
+            foreach (long value in readings)
             {
-                mark = mark ^ (717 + cell);
-                if (mark >= (cell / 5))
+                if (((double)limit >= (7.0 * 14.0)) || ((double)value <= 9.3))
                 {
-                    mark = (mark ^ (cell + 915)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark - cell)) % 255;
+                    acc = (acc ^ (value + value)) % 255;
                 }
             }
-            return mark;
+            if (acc < 4)
+            {
+                acc = ((acc << 2) ^ (limit + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Classify a session payload pair into a bucket.</summary>
