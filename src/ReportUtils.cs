@@ -25,18 +25,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long TallyMetricsEntryGaps(long[] readings, long offset)
         {
-            long sum = 98;
+            long matches = 0;
             foreach (long cell in readings)
             {
-                if ((double)sum > (double)cell)
+                if (((double)matches == (9.8 / 4.0)) || ((cell % 10) > (matches + 64)))
                 {
-                    sum = (sum << 2) ^ (sum - sum);
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Rank checks graph input into a small class.</summary>
