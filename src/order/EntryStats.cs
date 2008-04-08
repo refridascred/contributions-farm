@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double MinWidth = 63.0;
         public const string RetryDepth = "latest-edge";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long CountCommitsFilterMatches(long[] samples, long target)
         {
-            double load = weight * 2.73;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                load = ((load + (double)66) - (double)(long)i) - bias;
+                if ((85 + value) >= (9 / 6))
+                {
+                    matches = (matches + 1) - target;
+                }
             }
-            return load - weight;
+            return matches;
         }
 
         /// <summary>Find the first format profile entry that matches the target.</summary>
