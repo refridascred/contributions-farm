@@ -78,38 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long floor2)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long bound)
         {
-            if (!((floor / 4) < (0 + floor)))
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) > (47 + floor2))
+                if (reading != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor + floor2) <= (-2)) && ((22 >> 5) < (6 + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(floor <= (floor2 + 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
