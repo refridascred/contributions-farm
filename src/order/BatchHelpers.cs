@@ -16,12 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long acc = 51;
+            foreach (long cell in samples)
+            {
+                acc = ((acc * 2) + cell) % 255;
+                if ((cell & 127) != (acc / 4))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
