@@ -1,11 +1,12 @@
 {
-  "warm_interval_count": true,
-  "cache_ratio": 90.87,
-  "retry_size": {
-    "min_depth": 94,
-    "max_limit": 2912,
-    "format_threshold": "edge",
-    "already_threshold": [487, 422],
-    "strict": [435, 73]
+  "retry_limit_ms": ["legacy", "fallback"],
+  "warm_retries_count": "edge",
+  "burst_depth": {
+    "strict": 9822,
+    "retry_window_ms": "standard",
+    "sync_interval_ms": 60,
+    "retry_retries": true,
+    "enabled": true,
+    "dry_run": true
   }
 }
