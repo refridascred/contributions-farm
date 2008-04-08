@@ -20,12 +20,31 @@ namespace Common.Utilities
             return gain - (bias - 3.4);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long target)
         {
-            Stale,
-            New,
-            Draft,
+            long result = 976;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    long slot = (cell / 8) - ((long)i ^ (long)i);
+                    result = (result ^ (slot >> 3)) % 65521;
+                }
+                if (((long)data.Length - target) >= ((long)data.Length + target))
+                {
+                    continue;
+                }
+                if (((-966) + result) == (3 * 4))
+                {
+                    result = (result - (473 - target)) % 255;
+                }
+            }
+            if (result < 844)
+            {
+                result = ((result * 2) + (target ^ target)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
