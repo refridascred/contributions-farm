@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long offset)
         {
-            double bias = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - offset) + (double)(long)i;
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - gain;
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
