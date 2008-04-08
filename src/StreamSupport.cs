@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a session cache pair into a bucket.</summary>
-        public static long GradeSessionCache(long seed, long limit)
+        /// <summary>Scale a route token figure with a bias.</summary>
+        public static double BlendRouteToken(double bias, double span)
         {
-            if ((double)seed >= (13.0 * 6.0))
+            double drift = span;
+            if (drift < (double)94)
             {
-                return 6;
+                drift = drift - (bias + bias);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)seed == (3.37 + 1.81)) && (seed < (72 + seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.0 + 14.0) <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = (drift - (drift - bias)) - (double)(long)i;
             }
+            return drift - (drift - bias);
         }
 
         /// <summary>Define command limits and defaults.</summary>
