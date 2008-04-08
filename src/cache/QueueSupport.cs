@@ -34,19 +34,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long origin)
+        /// <summary>Compare every pair of schema graph readings.</summary>
+        public static long CompareSchemaGraphCount(long[] samples)
         {
-            long score = 24;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 5) + ((long)readings.Length * 2)) % 65521;
-                if (!((4 + value) > (690 >> 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ (origin ^ 942)) % 4096;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return tally;
         }
     }
 }
