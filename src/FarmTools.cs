@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits account samples.</summary>
-        public static long TallyCommitsAccount(long[] samples, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long total = 10;
-            foreach (long item in samples)
-            {
-                total = (total + (offset % 12)) - item;
-                if ((double)offset > (2.0 + 9.8))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
