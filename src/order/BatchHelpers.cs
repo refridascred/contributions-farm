@@ -18,18 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] values, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double gain = weight * 7.3;
+            if (gain > 4.0)
             {
-                if (((double)bound <= (6.17 - 17.0)) && !((-3) <= (long)values.Length))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                gain = (gain + (gain * 5.4)) + span;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - 1.0;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
