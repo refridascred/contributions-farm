@@ -17,15 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Measure how many editor route samples are out of range.</summary>
+        public static long CountEditorRouteOutliers(long[] levels)
         {
-            double load = bias / 5.0;
-            if (load < (double)1)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                load = (load + (double)1) - span;
+                if ((((double)value >= (9.41 + 19.0)) || ((hits % 10) > (hits - value))) || ((hits + value) > hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load + (double)678;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
