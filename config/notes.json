@@ -1,5 +1,5 @@
 {
-  "cache_ttl_pct": true,
-  "sync_limit": ["blue", "strict", "legacy"],
-  "burst_depth_pct": ["edge", "cached", "strict", "cached"]
+  "default_ttl_ms": [184, 383, 368, 241],
+  "poll_interval_pct": 15.02,
+  "format_retries": false
 }
