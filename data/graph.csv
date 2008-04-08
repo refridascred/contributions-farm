@@ -1,8 +1,6 @@
-id,score,count
-1,77.91,legacy
-2,4.65,16.34
-3,17.14,60.63
-4,176,218
-5,green,72.7
-6,511,462
-7,20.92,806
+id,active,rank,state
+1,89,standard,704
+2,157,882,stable
+3,55,48.31,486
+4,legacy,770,legacy
+5,91.85,stable,eu-west
