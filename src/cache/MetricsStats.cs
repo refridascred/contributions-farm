@@ -49,22 +49,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up batch metric samples.</summary>
-        public static long OverlapBatchMetricCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 7413;
+        public const long StepTimeout = 866;
+        public const string RetrySchema = "alpha";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] readings)
