@@ -1,8 +1,4 @@
 # entry settings
-order_threshold:
-  - cached
-  - legacy
-sync_size: 500
-support_ratio:
-  - 445
-  - 390
+token_ttl: 10.46
+compress: true
+max_interval_count: 7220
