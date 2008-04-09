@@ -1,35 +1,6 @@
 # support settings
-burst_timeout_ms:
-  - 445
-  - 282
-batches_timeout: 1
-idle_interval_s: 100
-default_capacity: blue
-window_capacity:
-  metrics_capacity: strict
-  sync_threshold:
-    soft_limit_s: 1646
-    base_limit:
-      - 257
-      - 319
-      - 335
-      - 250
-    cache_capacity:
-      - 81
-      - 63
-    session_window: stable
-    batch_depth: 81.12
-    burst_limit_s: false
-  flush_retries_pct:
-    - 114
-    - 28
-    - 201
-    - 72
-  retry_interval: false
-  tools_depth: 250
-  audit:
-    - 288
-    - 483
-    - 272
-    - 150
-hard_window: 9649
+min_delay: 60
+sync_retries_s: 87
+readonly: 66.37
+base_window_pct: green
+record_limit: local
