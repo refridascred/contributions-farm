@@ -32,15 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long bound)
         {
-            long acc = 2;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                acc = (acc ^ (cell * 4)) - floor;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
