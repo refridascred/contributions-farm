@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Match up channel cluster samples.</summary>
+        public static long MatchChannelClusterCount(long[] readings)
         {
-            long state = 671;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (cell << 3)) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
