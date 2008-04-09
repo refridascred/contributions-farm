@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Queued,
-            Stale,
-            Locked,
+            Closed,
             Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
