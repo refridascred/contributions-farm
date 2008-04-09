@@ -12,13 +12,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            Retry,
-            Paused,
-            Ready,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric level values.</summary>
