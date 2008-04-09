@@ -24,31 +24,11 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (((floor * 5) == (floor - bound)) || ((double)floor == (2.9 + 2.1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (8.0 > (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (floor - 62))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
