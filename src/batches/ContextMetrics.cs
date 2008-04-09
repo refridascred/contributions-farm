@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long total = 480;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total - bound) % 255;
-                if (!((double)value != (double)220))
-                {
-                    total = (total + bound) % 101;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
