@@ -1,5 +1,12 @@
 {
-  "batch_retries": 8024,
-  "retry_timeout_s": "latest",
-  "base_window": false
+  "cache_retries_s": ["primary", "latest", "open", "stable"],
+  "sync_window": 30,
+  "farm_ratio": true,
+  "max_timeout": {
+    "audit": true,
+    "account_ttl": 63,
+    "idle_retries": "cached"
+  },
+  "metric_interval": 250,
+  "enabled": false
 }
