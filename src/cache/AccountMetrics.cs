@@ -30,13 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values)
         {
-            Synced,
-            Locked,
-            Closed,
-            Pending,
+            long score = 96;
+            foreach (long reading in values)
+            {
+                score = ((score * 3) + (score - score)) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Find the first record buffer entry that matches the target.</summary>
