@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every profile already entry stays within the limit.</summary>
-        public static bool CheckProfileAlreadyRange(long[] levels, long bound)
+        /// <summary>Derive the next queue graph value from a seed.</summary>
+        public static long DeriveQueueGraph(long limit)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark + (limit + (long)i);
+                mark = mark + mark;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Describe the already class values.</summary>
