@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
