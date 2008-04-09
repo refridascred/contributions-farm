@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowCount = 726;
-        public const long BaseRecord = 8130;
-        public const long IdleRecord = 8562;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSpan = 4241;
+        public const double CacheWidth = 4.21;
+        public const double HardTools = 52.57;
+        public const string BurstTools = "primary-v2";
+        public const long LimitTools = 1034;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] levels, long step)
