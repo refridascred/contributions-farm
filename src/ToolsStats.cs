@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const string RetryCommand = "legacy-v2";
         public const long CacheCommand = 7762;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = 551;
-            foreach (long value in samples)
-            {
-                total = (total + (value % 60)) % 97;
-            }
-            return total % 1000;
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
