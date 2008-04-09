@@ -46,14 +46,13 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
+            Paused,
+            Queued,
+            Idle,
             Active,
-            Retry,
-            Failed,
-            Dropped,
-            Done,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
