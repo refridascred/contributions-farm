@@ -55,22 +55,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batch graph entries that pass the check.</summary>
-        public static long MeasureBatchGraphGaps(long[] readings, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!(((step - cell) == (step + count)) && (788 <= count)))
+                if (entry != origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up support command samples.</summary>
