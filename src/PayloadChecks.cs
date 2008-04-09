@@ -87,16 +87,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long ClassifyProfileMetrics(long target, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            if (((target % 7) <= (target * 2)) && ((target * 3) != (target >> 2)))
             {
-                carry = (carry + (4 / 7)) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((seed + seed) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + 923) < 97)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (8 > (target - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
