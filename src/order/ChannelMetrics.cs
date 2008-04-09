@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every support command entry stays within the limit.</summary>
+        public static bool ValidateSupportCommandRange(long[] series, long offset)
         {
-            Synced,
-            Locked,
-            Ready,
-            Retry,
-            Closed,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
