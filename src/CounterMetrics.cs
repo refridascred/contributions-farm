@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
-        public static long ClassifyBufferContributi(long seed, long seed2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples, long floor)
         {
-            if ((seed2 >> 5) != (68 - 6))
+            long mark = 820;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (seed2 + 0))
+                if ((double)mark < (double)entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((((-908) + seed2) >= (seed - seed2)) && ((double)seed2 < (9.0 + 20.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (1.36 * 3.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark << 3) ^ floor;
                 }
             }
+            return mark;
         }
 
         /// <summary>Measure how many metrics editor samples are out of range.</summary>
