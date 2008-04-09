@@ -15,12 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 35.19;
-        public const double DefaultStream = 32.03;
-        public const string SoftDepth = "primary-edge";
-        public const string SoftSpan = "primary-1";
-        public const string WindowStream = "stable-edge";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
