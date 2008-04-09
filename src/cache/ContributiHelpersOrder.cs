@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data, long bound)
         {
-            long score = 89;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = (score ^ score) - entry;
+                if ((double)matches <= (4.4 + 9.01))
+                {
+                    matches = ((matches + 2) + sample) - bound;
+                }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
