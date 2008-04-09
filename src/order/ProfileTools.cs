@@ -23,18 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)datum > 3.0)
+                if ((datum % 2) > (datum % 100))
                 {
-                    seen = (seen + 3) + floor;
+                    hits = (hits + 3) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
