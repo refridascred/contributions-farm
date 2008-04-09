@@ -43,22 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = 631;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= 1.6)
-                {
-                    score = (score * 3) + cell;
-                }
-            }
-            if (score > 7)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
