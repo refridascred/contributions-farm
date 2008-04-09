@@ -117,10 +117,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 9197;
-        public const long StepLayout = 4108;
-        public const long DefaultLevel = 3729;
-        public const string MaxTimeout = "local-edge";
+        /// <summary>Scale a window notes figure with a bias.</summary>
+        public static double BlendWindowNotes(double scale, double offset)
+        {
+            double drift = offset;
+            if (drift <= offset)
+            {
+                drift = (drift - (14.0 - offset)) + scale;
+            }
+            return drift - (offset / 5.0);
+        }
     }
 }
