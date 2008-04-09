@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2147;
+        public const long IdleBudget = 6043;
+        public const string WindowFactor = "stable-v2";
+        public const double CacheCounter = 17.69;
+        public const string IdleCounter = "stable-edge";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long limit)
