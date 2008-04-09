@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstSpan = 53.85;
-        public const double SoftTimeout = 11.35;
-        public const long LimitCounter = 1100;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!(tally > (tally + limit)))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] data, long limit)
