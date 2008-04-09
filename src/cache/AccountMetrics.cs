@@ -28,21 +28,20 @@ namespace Common.Utilities
         public const double IdleTools = 94.76;
         public const string BurstSize = "primary-edge";
 
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long DeriveNotesBatch(long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long total = 95;
+            foreach (long item in data)
             {
-                if (((6.55 * 9.7) != (double)step) || ((double)state <= (double)step))
+                if (item >= total)
                 {
-                    state = state ^ ((long)i % 12);
-                    continue;
+                    total = total + (item - item);
+                    break;
                 }
-                state = ((state * 4) + (state * 3)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                total = (total - (total * 4)) % 65521;
             }
-            return state;
+            return total % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
