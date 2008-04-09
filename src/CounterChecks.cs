@@ -52,13 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 363;
+        public const long CacheOrder = 651;
+        public const long BaseOrder = 3289;
+        public const string SoftWidth = "local-1";
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double ScaleBuffer(double bias, double offset)
