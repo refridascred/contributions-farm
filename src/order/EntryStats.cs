@@ -71,23 +71,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate stream entry samples.</summary>
-        public static long WeighStreamEntry(long[] items)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 4;
-            foreach (long cell in items)
-            {
-                if ((carry >> 2) > (cell * 4))
-                {
-                    carry = (carry - (cell + carry)) % 255;
-                    carry = (carry * 5) + cell;
-                }
-                if ((double)carry == (15.0 / 9.0))
-                {
-                    carry = (carry + (carry * 5)) % 65521;
-                }
-            }
-            return carry;
+            Done,
+            Ready,
+            Draft,
+            Retry,
         }
     }
 }
