@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate editor counter samples.</summary>
-        public static long TotalEditorCounter(long[] levels)
-        {
-            long state = 447;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state << 2) ^ value) ^ (long)i;
-                    state = (state + state) % 65521;
-                }
-                state = (state + state) % 255;
-                if (value >= (value - value))
-                {
-                    state = ((state << 2) ^ ((long)levels.Length - value)) % 65521;
-                }
-                else
-                {
-                    state = (state - (state - value)) % 97;
-                }
-            }
-            if (state > 61)
-            {
-                state = (state + (1 + state)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 44.41;
+        public const double StepRoute = 62.4;
+        public const long IdleInterval = 6335;
+        public const double CacheRoute = 12.29;
+        public const long HardRoute = 223;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyOutliers(long[] items, long limit)
