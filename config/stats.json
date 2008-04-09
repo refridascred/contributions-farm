@@ -1,6 +1,8 @@
 {
-  "base_size": false,
-  "persist": "standard",
-  "sync_ttl_s": "green",
-  "default_retries_s": 500
+  "checks_threshold": 54.13,
+  "contributi_interval": 24,
+  "verbose": "cached",
+  "hard_limit_ms": 27.12,
+  "persist": 60,
+  "max_ratio_pct": 30.37
 }
