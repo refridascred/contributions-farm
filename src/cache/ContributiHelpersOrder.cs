@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples, long floor)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length & 127) < 197)
+                {
+                    count = ((count + 2) + entry) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats header.</summary>
