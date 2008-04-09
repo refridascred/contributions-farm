@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry * 5) > (count - (long)series.Length)) || (entry <= (59 * 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
