@@ -70,30 +70,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of graph route entries.</summary>
-        public static long TallyGraphRoute(long[] series)
+        /// <summary>Count stream already pairs that satisfy a relation.</summary>
+        public static long PairStreamAlreadyCount(long[] items)
         {
-            long state = 6;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell == (12.0 * 7.49))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 2) ^ state) % 255;
-                }
-                if ((4.3 <= (double)cell) && ((double)cell >= 20.0))
-                {
-                    state = ((state * 4) + (state << 2)) % 255;
-                }
-                else
-                {
-                    state = (state * 4) + (47 - state);
-                }
-                if ((cell & 7) >= (state + cell))
-                {
-                    break;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
