@@ -71,19 +71,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading < step)
+                if ((8.23 - 6.0) < (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) ^ entry) - floor;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
