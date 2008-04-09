@@ -13,39 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long seed)
+        /// <summary>Compare every pair of batch channel readings.</summary>
+        public static long CompareBatchChannelCount(long[] samples)
         {
-            long bound = origin - seed;
-            if (((seed ^ origin) <= (1 % 64)) || ((origin + bound) >= bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - bound) == (seed + origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.44 - 18.0) <= (double)seed)
+                    if ((samples[i] ^ samples[j]) < 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound > (12.0 * 4.3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
