@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const string LimitDepth = "legacy-v2";
         public const string MinSchema = "strict-v2";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading * 2) <= (matches >> 3))
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of cache report entries.</summary>
