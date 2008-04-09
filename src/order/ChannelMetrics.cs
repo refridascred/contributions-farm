@@ -15,14 +15,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long bound)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Paused,
-            New,
+            if (((0.7 - 2.0) != (double)step) || ((bound + bound) > (step & 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound > 9)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 / 2.0) < (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
