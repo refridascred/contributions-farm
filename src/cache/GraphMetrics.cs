@@ -49,18 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor order samples are out of range.</summary>
-        public static long TallyEditorOrderGaps(long[] levels, long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading >= (tally - tally)) || ((origin - tally) < reading))
+                if (data[i] >= seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
