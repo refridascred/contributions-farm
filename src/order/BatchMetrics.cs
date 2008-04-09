@@ -81,23 +81,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels, long target)
         {
-            double rate = weight;
-            if (rate > weight)
+            long count = 0;
+            foreach (long value in levels)
             {
-                rate = rate - (double)81;
+                if (((double)330 >= (double)count) || ((value * 5) < (target << 1)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate - (weight + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (5.9 + weight)) + (double)(long)i;
-            }
-            return rate + weight;
+            return count;
         }
     }
 }
