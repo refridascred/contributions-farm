@@ -26,10 +26,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseTimeout = "stable";
-        public const long CacheDepth = 693;
-        public const string MinBuffer = "legacy-edge";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix ^ mix;
+                mix = (mix ^ bound) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
