@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long floor)
-        {
-            long cur = bound ^ floor;
-            if (((double)bound >= (double)bound) && ((937 + floor) == (bound + 62)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (cur > (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 5937;
+        public const double MaxSpan = 33.24;
+        public const long IdleChecks = 4561;
+        public const long BatchInterval = 6257;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxInterval = 940;
