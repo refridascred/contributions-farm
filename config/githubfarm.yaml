@@ -1,17 +1,17 @@
 # githubfarm settings
-batches_interval: 56.61
-verbose: eu-west
-soft_depth_s:
-  - 181
-  - 286
-cache_depth_ms:
-  verbose: false
-  burst_ttl_s: 96.39
-  readonly: 58
-  sync_size:
-    - 456
-    - 207
-    - 324
-  queue_depth: true
-channel_ttl: false
-command_interval: green
+cache_limit_ms: stable
+warm_timeout: 500
+notes_ttl: 60
+enabled: green
+audit:
+  route_delay: legacy
+  batch_window_ms: 100
+  warm_depth_pct: 77
+  cache_depth: edge
+  payload_ratio: local
+  readonly: eu-west
+hard_size_pct:
+  max_size_s: true
+  hard_threshold_pct: latest
+  batch_ttl: false
+  soft_size: local
