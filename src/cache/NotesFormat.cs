@@ -26,19 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long floor)
         {
-            double ratio = (bias * 8.2) / 8.0;
-            if (ratio <= (weight + weight))
+            long bound = origin + floor;
+            if ((origin + bound) < floor)
             {
-                ratio = ratio + weight;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + (weight / 3.0)) + (double)(long)i;
+                if (!((floor - bound) == (origin << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + 6.2;
         }
     }
 }
