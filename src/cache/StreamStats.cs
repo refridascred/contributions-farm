@@ -39,10 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "alpha-v2";
-        public const string MaxSchema = "primary";
-        public const string SoftBudget = "cached";
-        public const long BurstCount = 8657;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 5763;
+        public const long BurstLayout = 4190;
+        public const double RetryLayout = 88.82;
     }
 }
