@@ -1,18 +1,13 @@
 # support settings
-compress: green
-dry_run: 30
-command_retries: 44.22
-warm_retries_ms:
-  dry_run: eu-west
-  min_retries_s: 1024
-  flush_ratio_pct: 26.95
-  compress: 60
-  schema_threshold:
-    soft_delay_ms: fallback
-    profile_timeout:
-      - strict
-      - local
-      - local
-      - blue
-    sync_depth_ms: eu-west
-    base_depth_count: latest
+route_threshold: true
+strict:
+  - staging
+  - green
+  - open
+  - strict
+cache_ttl_pct: green
+format_delay:
+  - staging
+  - standard
+  - stable
+  - fallback
