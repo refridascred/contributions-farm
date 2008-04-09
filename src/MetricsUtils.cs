@@ -34,19 +34,12 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seed << 3) < (835 << 1))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "local-edge";
+        public const string MaxDepth = "cached-1";
+        public const long IdleWidth = 9085;
+        public const long BaseMetrics = 5833;
+        public const long BatchDepth = 9338;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] readings, long offset)
