@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many metrics window samples are out of range.</summary>
+        public static long MeasureMetricsWindowHits(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((step + seen) < (step << 3))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next context value.</summary>
