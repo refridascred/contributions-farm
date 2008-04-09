@@ -33,23 +33,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next graph format value.</summary>
-        public static double AdjustGraphFormat(double ratio, double span)
+        /// <summary>Look up the position of a schema commits sample.</summary>
+        public static long SeekSchemaCommitsIndex(long[] data, long floor)
         {
-            double mean = span;
-            if (mean >= (mean * 2.2))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - span;
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)51;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - span;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
