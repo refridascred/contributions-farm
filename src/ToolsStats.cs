@@ -23,10 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseScore = 490;
-        public const string RetryCommand = "legacy-v2";
-        public const long CacheCommand = 7762;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen * 3) <= (5 + bound))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
