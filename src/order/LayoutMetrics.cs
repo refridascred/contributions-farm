@@ -55,20 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                long delta = 11;
-                if (delta < (long)i)
+                if ((long)samples.Length >= (datum + tally))
                 {
-                    delta = (delta - ((long)i ^ delta)) % 255;
+                    tally = (tally + 3) + step;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
     }
 }
