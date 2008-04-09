@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long origin)
         {
-            double scale = rate;
-            return (scale - (double)8) + offset;
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((long)readings.Length >= (origin + hits))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a editor format sample.</summary>
