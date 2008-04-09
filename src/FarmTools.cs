@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] values, long limit)
         {
-            double ratio = (double)(5 + 924);
-            if (ratio > (double)790)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                ratio = (ratio - scale) - bias;
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + 14.0;
+            return valid;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
