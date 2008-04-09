@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] readings)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count / 6) < (sample + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
