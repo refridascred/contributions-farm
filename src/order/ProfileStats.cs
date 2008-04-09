@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)matches > (6.08 / 7.0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = (matches + 2) + value;
+                    total = (total + total) - (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Adjust a commits support reading.</summary>
