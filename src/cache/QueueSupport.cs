@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long ClassifyStreamEditor(long step, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long origin)
         {
-            if ((step - step) == (step ^ floor))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.8 / 7.0) <= (double)step)
+                if (datum > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a tools entry.</summary>
