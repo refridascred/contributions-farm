@@ -96,38 +96,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long ClassifyProfileMetrics(long target, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            if (((target % 7) <= (target * 2)) && ((target * 3) != (target >> 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) >= seed)
+                if (readings[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + 923) < 97)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (8 > (target - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
