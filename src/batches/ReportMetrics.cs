@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            double ratio = span;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                ratio = (ratio - (double)(long)i) + gain;
+                if (((long)series.Length << 2) <= (entry / 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio + (double)12;
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
