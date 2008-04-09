@@ -1,10 +1,6 @@
-id,count,score,level
-1,53.68,open,45.81
-2,60.12,15.36,212
-3,55.43,strict,fallback
-4,primary,587,931
-5,green,555,27.21
-6,241,929,446
-7,120,latest,fallback
-8,blue,95.91,30.77
-9,blue,93.11,staging
+id,label,region
+1,51.18,397
+2,standard,359
+3,85.59,73.36
+4,35.52,staging
+5,eu-west,180
