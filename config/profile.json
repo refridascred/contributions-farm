@@ -1,6 +1,11 @@
 {
-  "warm_depth_count": "green",
-  "base_delay": false,
-  "route_retries": "primary",
-  "batch_timeout": [160, 314, 450]
+  "retry_ratio_ms": false,
+  "default_timeout": 500,
+  "audit": [102, 162],
+  "batch_limit": 1483,
+  "warm_capacity_count": {
+    "flush_size_count": "edge",
+    "farm_ttl": 1846,
+    "compress": 11
+  }
 }
