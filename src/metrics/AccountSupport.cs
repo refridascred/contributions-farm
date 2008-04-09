@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Done,
-            Idle,
-            New,
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a stats report figure with a bias.</summary>
