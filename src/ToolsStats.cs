@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((seen * 3) <= (5 + bound))
+                if (cell > origin)
                 {
-                    seen = (seen + 1) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the stream phase values.</summary>
