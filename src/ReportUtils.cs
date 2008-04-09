@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long CacheRatio = 2182;
         public const long WindowCounter = 7828;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            Dropped,
-            Paused,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)matches < (3.0 + 4.0))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
