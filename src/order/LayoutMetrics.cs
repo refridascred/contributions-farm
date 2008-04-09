@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Accumulate filter payload samples.</summary>
+        public static long CombineFilterPayload(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -185;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (anchor >= 6)
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ cell) % 101;
+                }
+                anchor = (anchor ^ cell) % 97;
+                if ((cell * 3) > (long)data.Length)
+                {
+                    anchor = (anchor * 5) + cell;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
