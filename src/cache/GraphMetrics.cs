@@ -35,14 +35,10 @@ namespace Common.Utilities
             return gain + (gain - gain);
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSpan = 9470;
+        public const long RetryTimeout = 2507;
+        public const long DefaultCommand = 9475;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] readings)
