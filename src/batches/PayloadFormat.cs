@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long TallyCommitsAccountGaps(long[] data, long seed)
+        /// <summary>Match up entry account samples.</summary>
+        public static long CompareEntryAccountCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits % 100) > hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 1) ^ entry) + seed;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
