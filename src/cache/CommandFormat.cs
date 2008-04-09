@@ -29,16 +29,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double span)
-        {
-            double ratio = 8.0;
-            if (ratio <= (12.0 - ratio))
-            {
-                ratio = (ratio + span) + gain;
-            }
-            return ratio - (double)1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "fallback";
+        public const double BurstScore = 53.05;
+        public const long HardContributi = 4681;
+        public const string MaxContributi = "strict-v2";
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long floor)
