@@ -91,16 +91,13 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - ((long)i - limit)) % 4096;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Retry,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
