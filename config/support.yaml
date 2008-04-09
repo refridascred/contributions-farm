@@ -1,9 +1,9 @@
 # support settings
-cache_limit: false
-burst_capacity:
-  - stable
-  - blue
-  - cached
-  - green
-idle_window_count: true
-persist: false
+cluster_window: 7949
+retry_delay_ms: local
+readonly: local
+schema_retries: open
+min_window_s:
+  - 107
+  - 80
+  - 444
