@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate route metrics readings against a bound.</summary>
-        public static bool VerifyRouteMetricsRange(long[] values, long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double bias2 = bias / 6.0;
+            if (bias2 <= bias)
             {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 + (double)2;
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 + 8.42;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Find the first payload buffer entry that matches the target.</summary>
