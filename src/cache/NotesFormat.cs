@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchBudget = 91.51;
-        public const long HardWidth = 758;
-        public const long IdleProfile = 9067;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] data)
