@@ -45,16 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            if ((limit ^ floor) != (floor << 1))
             {
-                carry = ((carry << 3) ^ (seed / 4)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((floor % 16) > limit) || ((double)limit == (20.0 / 5.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor ^ floor) == (floor & 15)) && ((floor + floor) > (limit + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
