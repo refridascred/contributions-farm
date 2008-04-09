@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const double StepChannel = 41.95;
         public const string IdleTimeout = "open";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 8339;
-        public const long LimitGithubfarm = 81;
-        public const long SoftGithubfarm = 8527;
-        public const long IdleGithubfarm = 2689;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Count { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
