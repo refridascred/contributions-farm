@@ -41,18 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long CountProfileGithubfarmMatches(long[] data, long limit)
         {
-            long acc = 9;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((double)acc != (0.4 / 3.0)) && ((acc - 37) < (datum >> 3)))
+                if ((seen + 16) <= (seen - seen))
                 {
-                    acc = ((acc << 2) ^ ((long)series.Length + datum)) % 101;
+                    seen = ((seen + 1) - entry) + limit;
                 }
             }
-            return acc % 97;
+            return seen;
         }
     }
 }
