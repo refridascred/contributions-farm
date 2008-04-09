@@ -87,21 +87,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster payload pairs that satisfy a relation.</summary>
-        public static long CompareClusterPayloadCount(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (6.23 < (double)origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (double)origin)
                 {
-                    if ((items[i] - items[j]) > 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((0.54 / 6.0) != (double)limit)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
