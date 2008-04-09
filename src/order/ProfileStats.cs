@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long TotalFilterOrder(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long state = 4;
-            foreach (long entry in samples)
+            long mark = 357;
+            foreach (long reading in series)
             {
-                if ((state >= (entry + state)) && ((entry - entry) > (0 >> 3)))
-                {
-                    state = (state + 78) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (state & 63)) % 97;
-                }
+                mark = (mark << 2) ^ (reading + reading);
             }
-            return state % 97;
+            if (mark < 66)
+            {
+                mark = ((mark * 5) + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi entry.</summary>
