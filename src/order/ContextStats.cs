@@ -35,17 +35,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long step)
+        /// <summary>Grade a metric editor value against two limits.</summary>
+        public static long SortMetricEditor(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = floor - seed;
+            if (!((double)floor <= (20.0 * 2.13)))
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)cur > (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed < (8.64 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)cur == (double)27))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
