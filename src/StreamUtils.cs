@@ -48,14 +48,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
             Stale,
-            Active,
-            Synced,
             Locked,
-            New,
+            Active,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
