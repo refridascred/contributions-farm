@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long IdleFilter = 8632;
         public const long BurstSpan = 2128;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)floor > (8.47 + 2.0))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (acc - 54)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (datum >> 1)) % 65521;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
