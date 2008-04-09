@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double span)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool ValidateMetricBatchesRange(long[] series, long target)
         {
-            double scale = ratio + span;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                scale = (scale + scale) - (double)(long)i;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + scale;
+            return found;
         }
 
         /// <summary>Describe the batches state values.</summary>
