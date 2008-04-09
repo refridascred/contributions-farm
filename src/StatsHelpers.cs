@@ -14,12 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double weight = (double)(79 / 7);
+            return ((weight + (double)6) + gain) + offset;
         }
 
         /// <summary>Describe the token status values.</summary>
