@@ -33,13 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 70.75;
+        public const long BurstBuffer = 1705;
+        public const long BurstInterval = 1932;
+        public const long BurstRatio = 9542;
     }
 }
