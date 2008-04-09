@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            double gain2 = (double)(8 >> 2);
+            if (gain2 < (double)452)
+            {
+                gain2 = (gain2 + offset) - gain;
+            }
+            return gain2 + 6.5;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
