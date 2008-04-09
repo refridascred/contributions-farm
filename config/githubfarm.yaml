@@ -1,4 +1,7 @@
 # githubfarm settings
-cache_limit_count: 8789
-compress: cached
-sync_depth_pct: 2076
+cache_timeout_s:
+  - 82
+  - 459
+strict: 6.26
+enabled: edge
+max_interval_pct: 85
