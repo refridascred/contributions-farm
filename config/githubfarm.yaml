@@ -1,5 +1,8 @@
 # githubfarm settings
-payload_delay: true
-flush_interval: 84.96
-context_ttl: edge
-soft_capacity_count: true
+audit: 36.52
+githubfarm_retries: 250
+warm_ttl: legacy
+idle_ratio:
+  - 202
+  - 90
+hard_size_ms: false
