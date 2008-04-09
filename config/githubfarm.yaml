@@ -1,6 +1,12 @@
 # githubfarm settings
-checks_window: false
-enabled: 9209
-warm_interval: eu-west
-account_size: fallback
-channel_ratio: 90.59
+readonly:
+  - 315
+  - 336
+  - 173
+  - 300
+hard_ttl_s: stable
+cache_delay:
+  - local
+  - staging
+  - stable
+  - local
