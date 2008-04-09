@@ -34,17 +34,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] samples, long offset)
+        /// <summary>Adjust a farm stats reading.</summary>
+        public static double BlendFarmStats(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(515 / 5);
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - 6.2) + (double)(long)i) - span;
             }
-            return -1;
+            return ratio + weight;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
