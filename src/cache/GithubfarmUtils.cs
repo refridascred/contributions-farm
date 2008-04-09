@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const long IdleContributi = 7630;
         public const string MinContributi = "alpha-edge";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items, long offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(2 > matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) ^ reading) + offset;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
