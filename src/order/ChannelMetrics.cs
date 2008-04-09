@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string SoftCluster = "latest-v2";
         public const long RetryCluster = 4375;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
