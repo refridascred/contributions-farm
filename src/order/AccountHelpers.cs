@@ -23,10 +23,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
             public bool Score { get; set; }
         }
 
