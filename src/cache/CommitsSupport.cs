@@ -24,25 +24,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            long prev = origin - target;
-            if ((687 % 5) < (origin + 667))
+            long acc = -778;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((prev + prev) > (origin >> 5)) && ((origin + 790) == (target + origin)))
+                if ((cell >= (492 - cell)) || ((cell << 3) <= (98 - 7)))
                 {
-                    return 3;
+                    acc = acc - cell;
                 }
-                else
+                if ((cell % 100) > (acc / 4))
                 {
-                    return 8;
+                    acc = (acc ^ acc) % 255;
                 }
             }
+            if (acc < (-13))
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools mode values.</summary>
