@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state + state;
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
