@@ -67,19 +67,21 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long bound)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
