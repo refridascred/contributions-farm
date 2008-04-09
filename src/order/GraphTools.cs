@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 42.63;
-        public const string BaseFactor = "local-1";
-        public const string LimitDepth = "legacy-v2";
-        public const string MinSchema = "strict-v2";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Active,
+            Idle,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
