@@ -20,19 +20,22 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (reading < floor)
+                if ((double)reading <= (6.6 * 17.0))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
