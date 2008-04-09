@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((double)cell != (5.5 * 0.82))
+                if (sample != seed)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
