@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double gain = offset;
-            if (gain > (double)8)
-            {
-                gain = gain + (offset * 4.58);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (double)686) + (double)(long)i;
-            }
-            return gain + bias;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
