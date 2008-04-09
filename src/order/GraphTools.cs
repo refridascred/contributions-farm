@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double floor)
-        {
-            double weight2 = floor;
-            if (weight2 <= weight2)
-            {
-                weight2 = (weight2 + floor) - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + floor) + (double)(long)i;
-            }
-            return weight2 + (7.0 / 9.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 9903;
+        public const long BaseNotes = 9095;
+        public const double SoftNotes = 17.48;
+        public const double SoftLevel = 35.61;
+        public const long DefaultNotes = 1802;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] values, long step)
