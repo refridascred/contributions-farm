@@ -36,25 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] data, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((double)state <= 2.67) && ((bound ^ bound) < (state & 1)))
+                if ((3 ^ target) < tally)
                 {
-                    state = (state + bound) % 65521;
-                    break;
+                    tally = (tally + 3) + sample;
                 }
-                else
-                {
-                    state = ((state << 2) ^ (bound * 4)) % 101;
-                    state = (state ^ (26 ^ bound)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
     }
 }
