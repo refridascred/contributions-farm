@@ -19,14 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            Ready,
-            Closed,
-            New,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value >> 3) != (matches & 63))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session status values.</summary>
