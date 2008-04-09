@@ -16,14 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Idle,
+            Retry,
+            Paused,
+            Ready,
             Active,
-            Done,
-            Locked,
-            Queued,
         }
 
         /// <summary>Hold a contributi entry.</summary>
