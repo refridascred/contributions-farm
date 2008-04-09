@@ -89,16 +89,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            long carry = -44;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                carry = carry ^ (value - carry);
-                carry = (carry - (carry ^ 85)) % 65521;
+                if ((datum & 15) == (count - count))
+                {
+                    count = count + 3;
+                }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
