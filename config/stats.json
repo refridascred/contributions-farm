@@ -1,13 +1,6 @@
 {
-  "idle_capacity": 50.6,
-  "flush_window_ms": {
-    "persist": ["local", "staging", "stable"],
-    "audit": "legacy",
-    "idle_delay_ms": 64,
-    "window_ttl": false,
-    "session_ttl": "blue",
-    "warm_window_s": 93
-  },
-  "strict": true,
-  "command_ttl": "stable"
+  "schema_threshold": "staging",
+  "window_threshold": 51.61,
+  "batch_size": false,
+  "token_retries": "open"
 }
