@@ -31,18 +31,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long MeasureFormatAccountOutliers(long[] values, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)target > (4.0 - 16.0))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            Pending,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Combine metric session values into a single score.</summary>
