@@ -50,13 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Queued,
-            New,
-            Active,
-            Ready,
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
