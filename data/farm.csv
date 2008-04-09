@@ -1,10 +1,7 @@
-id,count,score,label,active
-1,eu-west,325,594,302
-2,94.15,102,236,255
-3,92.17,green,36.35,legacy
-4,269,40.78,515,fallback
-5,strict,50.36,stable,720
-6,748,10.62,50.92,872
-7,615,487,stable,green
-8,667,55.7,local,92.98
-9,398,245,267,latest
+id,region,score,owner,label
+1,79.48,701,staging,640
+2,946,36,40.46,green
+3,898,primary,eu-west,71.63
+4,local,local,strict,239
+5,333,236,stable,27.11
+6,5.55,open,30.91,80.12
