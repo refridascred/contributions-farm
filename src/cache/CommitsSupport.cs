@@ -79,21 +79,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up support command samples.</summary>
-        public static long CompareSupportCommandCount(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step & 63) < (4 * 4))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
