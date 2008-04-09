@@ -20,12 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Retry,
-            Queued,
-            Idle,
+            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
