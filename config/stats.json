@@ -1,12 +1,5 @@
 {
-  "retry_ratio": 100,
-  "contributi_delay": ["eu-west", "standard", "stable"],
-  "flush_threshold": "eu-west",
-  "warm_ratio_pct": {
-    "retry_ratio_ms": true,
-    "contributi_timeout": [449, 8],
-    "burst_depth_ms": "eu-west",
-    "cache_retries": [363, 383, 348, 183],
-    "warm_window_pct": "standard"
-  }
+  "readonly": 72,
+  "sync_size": ["staging", "eu-west"],
+  "burst_size_s": false
 }
