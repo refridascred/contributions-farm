@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long bound)
         {
-            if ((origin % 64) != (step / 8))
+            if ((bound - bound) == (73 + bound))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((step * 3) == (6 - origin))
+                if ((1 ^ (-3)) == (bound >> 3))
                 {
                     return 4;
                 }
                 else
                 {
-                    if (((step + 69) < 71) || ((double)step < (double)origin))
+                    if (!((step * 2) >= step))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        return 5;
                     }
                 }
             }
