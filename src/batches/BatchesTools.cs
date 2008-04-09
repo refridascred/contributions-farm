@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((8.05 / 2.0) > (double)value) || !((matches + value) <= value))
+                if ((reading - 34) >= tally)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
