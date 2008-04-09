@@ -31,11 +31,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 62.15;
-        public const double StepRoute = 27.75;
-        public const double BurstRoute = 1.76;
-        public const double HardRoute = 89.32;
-        public const string RetryRoute = "standard";
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
