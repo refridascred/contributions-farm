@@ -40,13 +40,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            Stale,
+            Dropped,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
