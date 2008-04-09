@@ -39,17 +39,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context buffer reading by value.</summary>
-        public static long FindContextBufferIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryCount = 4167;
+        public const string HardWidth = "open-1";
+        public const long RetryTimeout = 3541;
     }
 }
