@@ -1,27 +1,4 @@
 # entry settings
-warm_threshold:
-  githubfarm_size: 53.37
-  strict: 100
-  retry_delay:
-    warm_interval_pct: primary
-    enabled: 33
-    soft_ttl_pct: true
-    min_threshold_count: 1104
-    dry_run: 6
-    idle_limit: blue
-  readonly: 88
-  verbose: 4252
-  soft_size_pct:
-    verbose: 91.62
-    entry_size: 97
-    persist: true
-    metrics_capacity: standard
-    dry_run:
-      - 361
-      - 38
-      - 50
-      - 342
-readonly:
-  - 454
-  - 375
-base_delay: 1008
+context_ratio: 250
+default_limit_count: fallback
+idle_window_pct: 30
