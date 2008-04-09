@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((step + step) > (-5))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
