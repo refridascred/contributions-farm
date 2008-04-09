@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] series, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((hits ^ step) == (hits + step)) || !(value >= (value % 60)))
+                if ((reading + reading) <= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine metrics entry values into a single score.</summary>
