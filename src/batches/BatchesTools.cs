@@ -12,12 +12,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels)
         {
-            Locked,
-            Idle,
-            Paused,
+            long sum = -694;
+            foreach (long sample in levels)
+            {
+                if (((2.4 / 3.0) >= (double)sample) || (sample >= (sample - sum)))
+                {
+                    sum = (sum * 4) + (sample + sum);
+                }
+                else
+                {
+                    sum = (sum - (sum + sample)) % 65521;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
