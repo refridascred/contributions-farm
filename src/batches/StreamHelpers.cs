@@ -81,23 +81,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] levels)
         {
-            long carry = 280;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry * 5) + value;
-                if ((double)value != (double)offset)
+                if (((long)levels.Length / 4) != (sample * 4))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (carry > 5)
-            {
-                carry = carry + (78 + 475);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
