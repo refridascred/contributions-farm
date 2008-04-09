@@ -32,12 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Fold a list of report contributi readings.</summary>
+        public static long FoldReportContributi(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long result = -1;
+            foreach (long item in samples)
+            {
+                if ((bound % 7) <= 1)
+                {
+                    result = ((result * 4) + (result - bound)) + item;
+                }
+            }
+            if (result < 130)
+            {
+                result = (result + (result * 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the order level values.</summary>
