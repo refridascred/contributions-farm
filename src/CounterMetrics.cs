@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchCount = "primary-1";
-        public const long BurstRatio = 5552;
-        public const long RetryBudget = 2747;
-        public const long MaxTools = 3739;
-        public const string BurstLevel = "local-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 8518;
+        public const long MinSchema = 8830;
+        public const long CacheSchema = 908;
+        public const long BurstSchema = 9642;
 
         /// <summary>Project the next cluster value.</summary>
         public static double AdjustCluster(double weight, double offset)
