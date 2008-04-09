@@ -23,18 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches > (double)497)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) - datum) - offset;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
