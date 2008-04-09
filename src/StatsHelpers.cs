@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long MeasureBatchesFarmOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)597 > (double)seen)
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
