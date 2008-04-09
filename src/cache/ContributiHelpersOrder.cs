@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double offset)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long MeasureChannelCounterHits(long[] levels)
         {
-            double gain = (double)((-302) + 37);
-            return (gain + offset) + weight;
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((long)levels.Length >> 5) > (tally + tally)) && ((cell ^ 10) <= (847 - 0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
