@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long mark = 0;
+            foreach (long reading in items)
+            {
+                if (((double)mark <= 4.0) || ((double)reading > (3.37 + 1.08)))
+                {
+                    mark = mark + reading;
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = (mark * 5) + (mark >> 1);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
