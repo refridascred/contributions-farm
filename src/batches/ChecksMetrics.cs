@@ -101,21 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter counter samples.</summary>
-        public static long OverlapFilterCounterCount(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((3.0 / 5.0) != (double)hits))
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
