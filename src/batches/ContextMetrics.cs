@@ -63,12 +63,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            Paused,
-            Idle,
-            New,
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 5) + (12 >> 1)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
