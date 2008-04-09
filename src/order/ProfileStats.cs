@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = 3;
+            foreach (long value in data)
             {
-                if ((matches + 0) >= (sample << 2))
+                anchor = ((anchor << 2) ^ (value % 64)) % 1000;
+                anchor = (anchor + (392 - value)) % 97;
+                if ((9.0 * 3.8) <= (double)anchor)
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor * 4) + anchor) % 101;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
