@@ -37,25 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.37 * 8.6) <= (double)result)
+                if (items[i] <= seed)
                 {
-                    result = result - (target + (long)i);
-                    result = (result ^ target) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result * 3) + (9 - result)) % 1000;
-                    result = (result + result) % 255;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
