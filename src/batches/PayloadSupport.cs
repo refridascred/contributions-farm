@@ -30,23 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch batches value.</summary>
-        public static double ScaleBatchBatches(double weight, double floor)
+        /// <summary>Count the route tools entries that pass the check.</summary>
+        public static long CountRouteToolsHits(long[] data, long origin)
         {
-            double scale = weight;
-            if (scale > (floor - floor))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                scale = scale + floor;
+                if (((origin < hits) && ((reading << 1) < (reading + reading))) && ((double)hits >= 1.59))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)23) - (double)(long)i;
-            }
-            return scale - (double)772;
+            return hits;
         }
     }
 }
