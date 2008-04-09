@@ -54,15 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long offset)
         {
-            long score = 96;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 3) + (score - score)) ^ reading;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first record buffer entry that matches the target.</summary>
