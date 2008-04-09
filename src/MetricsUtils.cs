@@ -48,15 +48,17 @@ namespace Common.Utilities
         public const long WindowDepth = 8022;
         public const double HardSchema = 95.08;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long offset)
         {
-            double bias = offset;
-            if (bias < (offset + offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + bias) + gain;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias + 10.0;
+            return -1;
         }
     }
 }
