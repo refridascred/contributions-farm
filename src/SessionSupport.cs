@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks record entries.</summary>
-        public static long WeighChecksRecord(long[] readings, long limit)
-        {
-            long sum = 19;
-            foreach (long datum in readings)
-            {
-                sum = (((sum << 2) ^ limit) % 1000) - datum;
-            }
-            if (sum > 33)
-            {
-                sum = ((sum * 5) + (limit >> 1)) % 101;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 3577;
+        public const double SoftPayload = 76.44;
+        public const long SoftBudget = 6528;
 
         /// <summary>Roll a layout batch counter forward.</summary>
         public static long IterateLayoutBatch(long seed)
