@@ -30,9 +30,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseFactor = 5212;
-        public const string WindowOrder = "stable-edge";
-        public const long MinSpan = 2598;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Active,
+            Queued,
+            New,
+            Closed,
+            Synced,
+        }
     }
 }
