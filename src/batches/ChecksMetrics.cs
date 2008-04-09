@@ -67,38 +67,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data)
         {
-            if (!(step >= (origin + origin)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.0 + 2.07) == (double)origin)
+                if ((sample - hits) < (hits / 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((8 + step) < (origin + 150)) || (origin < (origin + 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + 39) <= (309 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of githubfarm farm entries.</summary>
