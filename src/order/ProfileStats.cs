@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long target)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long TotalFilterOrder(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 4;
+            foreach (long entry in samples)
             {
-                if (values[i] > target)
+                if ((state >= (entry + state)) && ((entry - entry) > (0 >> 3)))
                 {
-                    return (long)i;
+                    state = (state + 78) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (state & 63)) % 97;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
