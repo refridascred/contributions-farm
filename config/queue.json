@@ -1,5 +1,13 @@
 {
-  "commits_capacity": "edge",
-  "strict": 26,
-  "soft_window_count": "latest"
+  "stats_retries": false,
+  "enabled": {
+    "retry_delay_count": 24.81,
+    "max_window_pct": [117, 67, 322],
+    "idle_size_ms": false,
+    "cache_ttl_ms": "standard",
+    "idle_depth": [81, 345, 497, 383]
+  },
+  "retry_window_ms": 2.7,
+  "default_timeout": [442, 243],
+  "poll_retries_ms": 250
 }
