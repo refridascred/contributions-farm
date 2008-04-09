@@ -27,13 +27,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            Locked,
-            Idle,
-            Paused,
-            Active,
+            if (bound <= (bound ^ 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0 & 255) != (bound * 3)) || ((floor << 2) != (bound + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
