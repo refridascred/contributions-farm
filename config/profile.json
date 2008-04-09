@@ -1,12 +1,10 @@
 {
-  "queue_delay": 14.51,
-  "hard_ratio": 9567,
-  "context_depth": 100,
-  "stream_ratio": 2955,
-  "layout_delay": {
-    "strict": [356, 193, 225, 75],
-    "hard_ttl_count": true,
-    "cache_retries": false,
-    "sync_window_ms": 500
+  "verbose": ["blue", "stable", "fallback", "fallback"],
+  "burst_depth_pct": "strict",
+  "dry_run": {
+    "persist": 69.9,
+    "window_depth": ["legacy", "latest", "local", "blue"],
+    "entry_ttl": 30,
+    "cluster_retries": "strict"
   }
 }
