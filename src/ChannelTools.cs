@@ -38,19 +38,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long sum = 413;
-            foreach (long sample in data)
-            {
-                sum = ((sum ^ (sample / 9)) % 255) - offset;
-                if ((sum ^ 4) < (long)data.Length)
-                {
-                    sum = ((sum * 2) + 614) % 101;
-                }
-            }
-            return sum;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
