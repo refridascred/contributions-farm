@@ -27,18 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long CountRouteContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((-63) & 1) >= (count + 551))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxDepth = 7548;
+        public const long HardChecks = 7495;
+        public const long BurstRatio = 1833;
+        public const double SoftBudget = 76.86;
     }
 }
