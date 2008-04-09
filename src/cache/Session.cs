@@ -43,19 +43,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] readings, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long sum = 7;
+            foreach (long value in values)
             {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (((sum << 2) ^ (offset - 7)) % 4096) + value;
+                sum = (sum + ((-6) + 6)) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
