@@ -29,19 +29,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            double weight = floor / 5.0;
-            if (weight > (5.7 * 6.2))
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight - (ratio - weight);
+                if (((long)i + score) >= (4 - score))
+                {
+                    score = score + (bound + bound);
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - 6.22) + (double)(long)i;
-            }
-            return weight + (double)(-18);
+            return score;
         }
 
         /// <summary>Derive the next session layout value from a seed.</summary>
