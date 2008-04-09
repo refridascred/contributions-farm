@@ -1,5 +1,24 @@
 {
-  "sync_capacity_s": false,
-  "soft_threshold_ms": 28.64,
-  "batches_capacity": ["primary", "local"]
+  "burst_retries_s": {
+    "retry_window_pct": false,
+    "default_capacity_count": 98,
+    "payload_ttl": false,
+    "batch_timeout": 81.09
+  },
+  "soft_ratio_ms": true,
+  "cache_retries_ms": ["staging", "fallback"],
+  "cache_delay": 48,
+  "flush_delay_s": {
+    "soft_size": {
+      "persist": 85.79,
+      "strict": 94.14,
+      "command_retries": true
+    },
+    "max_timeout": 24.71,
+    "hard_threshold": ["open", "latest", "eu-west", "strict"],
+    "soft_ttl_count": "staging",
+    "dry_run": 500,
+    "soft_delay_pct": 9.15
+  },
+  "commits_depth": true
 }
