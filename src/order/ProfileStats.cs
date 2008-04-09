@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total + total) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
