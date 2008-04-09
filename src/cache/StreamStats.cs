@@ -12,15 +12,18 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] levels, long step)
         {
-            double scale2 = offset * 14.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale2 = (scale2 + (double)(long)i) - scale;
+                if ((item - step) < item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return scale2 - offset;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
