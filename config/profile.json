@@ -1,8 +1,5 @@
 {
-  "readonly": 905,
-  "cache_threshold_count": "local",
-  "account_retries": [197, 482, 163],
-  "compress": 1502,
-  "min_size_pct": "legacy",
-  "dry_run": 45.41
+  "strict": "legacy",
+  "buffer_delay": 74.33,
+  "schema_size": true
 }
