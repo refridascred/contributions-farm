@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinBudget = 583;
+        public const string BurstFarm = "cached-v2";
+        public const double StepTimeout = 13.48;
+        public const long BaseTimeout = 835;
+        public const long CacheFarm = 6119;
 
         /// <summary>Compare every pair of already record readings.</summary>
         public static long CompareAlreadyRecordCount(long[] values)
