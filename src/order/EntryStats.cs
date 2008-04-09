@@ -40,10 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 37.41;
-        public const long StepTimeout = 6872;
-        public const long RetryFilter = 9975;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples)
+        {
+            long mix = 7;
+            foreach (long sample in samples)
+            {
+                if ((mix + mix) >= (mix % 5))
+                {
+                    mix = ((mix + (499 * 4)) % 255) ^ sample;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] levels)
