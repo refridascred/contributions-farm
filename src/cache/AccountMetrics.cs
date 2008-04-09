@@ -54,21 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm checks series from a seed.</summary>
-        public static long RollFarmChecks(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((1 << 1) < carry)
-                {
-                    carry = (carry - (target & 31)) % 97;
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 9755;
+        public const string BatchContext = "fallback-edge";
+        public const long LimitContext = 5897;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] samples)
