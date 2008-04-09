@@ -16,17 +16,15 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -971;
+            foreach (long value in items)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (5 + value)) % 65521) + offset;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
