@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
