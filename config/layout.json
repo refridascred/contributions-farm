@@ -1,11 +1,6 @@
 {
-  "flush_ttl": "primary",
-  "retry_ratio_s": {
-    "session_delay": [361, 78, 95],
-    "max_depth": 43,
-    "base_ttl_s": ["edge", "cached", "latest", "stable"]
-  },
-  "metrics_limit": [282, 308, 312, 209],
-  "sync_capacity": 31.26,
-  "flush_retries": "green"
+  "default_delay": true,
+  "route_ratio": 17,
+  "min_depth_s": true,
+  "flush_threshold": "open"
 }
