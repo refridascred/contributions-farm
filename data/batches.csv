@@ -1,7 +1,6 @@
-id,state,ratio,region,weight
-1,591,56.64,958,594
-2,90.72,green,stable,751
-3,87.8,195,primary,786
-4,919,edge,530,primary
-5,90.14,65.86,0.98,primary
-6,842,72,26.95,325
+id,count,level,weight
+1,eu-west,929,fallback
+2,866,394,890
+3,standard,fallback,14.21
+4,737,974,open
+5,477,cached,stable
