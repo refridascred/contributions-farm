@@ -39,11 +39,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 5366;
-        public const string HardScore = "stable-edge";
-        public const double SoftFarm = 10.75;
-        public const string CacheFarm = "open-1";
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] values, long step)
