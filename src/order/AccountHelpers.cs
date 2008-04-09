@@ -32,26 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of support notes readings.</summary>
-        public static long FoldSupportNotes(long[] data, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            long sum = 66;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)value > (7.9 + 6.29))
+                if ((tally - tally) != (tally - 613))
                 {
-                    sum = (sum + (672 - (-51))) % 1000;
-                }
-                if ((value <= (bound + value)) && (584 >= sum))
-                {
-                    break;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            if (sum < 6)
-            {
-                sum = (sum * 2) + bound;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
