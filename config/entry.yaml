@@ -1,6 +1,6 @@
 # entry settings
-profile_size: 17.05
-compress: strict
-poll_depth_ms: latest
-batch_capacity: 50.19
-cache_depth: edge
+hard_window: 2265
+base_depth_ms: true
+retry_ttl_ms: 52.56
+channel_capacity: open
+batch_capacity: false
