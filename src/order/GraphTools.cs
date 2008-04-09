@@ -54,26 +54,12 @@ namespace Common.Utilities
             return bias - 0.51;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 4) < value)
-                {
-                    total = total + (value * 2);
-                }
-                if (!((value * 5) == (22 - 60)))
-                {
-                    total = total ^ (value / 6);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (long)readings.Length) % 65521;
-                }
-            }
-            return total;
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
