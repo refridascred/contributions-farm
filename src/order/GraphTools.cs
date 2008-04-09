@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values)
         {
-            Draft,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits - 203) < (hits * 2))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
