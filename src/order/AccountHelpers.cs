@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit payload batch readings against a rule.</summary>
-        public static long AuditPayloadBatchHits(long[] readings, long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!(hits > sample))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
