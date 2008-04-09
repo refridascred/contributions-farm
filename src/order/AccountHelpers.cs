@@ -26,18 +26,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - tally) != (tally - 613))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
