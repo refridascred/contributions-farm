@@ -36,11 +36,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitRatio = 3.24;
-        public const double BaseSession = 3.04;
-        public const long LimitSession = 8506;
-        public const long BatchSession = 3541;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
