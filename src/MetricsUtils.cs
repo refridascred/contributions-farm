@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Locate a editor format reading by value.</summary>
+        public static long LocateEditorFormatIndex(long[] levels, long floor)
         {
-            Queued,
-            New,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
