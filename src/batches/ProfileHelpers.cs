@@ -53,23 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long CountChecksContributiHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample - 862) >= 90)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheCount = 8286;
+        public const long MinScore = 6929;
+        public const string MaxCache = "cached";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long origin, long seed)
