@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long BatchFormat = 8651;
         public const long CacheWidth = 5642;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)176 * 2.39;
+            if (mean >= mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + (mean * 19.0)) + rate;
             }
-            return seen;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (bias * 2.6);
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
