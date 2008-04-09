@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryLevel = 3094;
+        public const long BatchTimeout = 5078;
+        public const string MaxOrder = "latest-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCount = 1547;
