@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 4152;
-        public const long SoftScore = 6206;
-        public const long StepContext = 7518;
-        public const long LimitScore = 4805;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine stream batch values into a single score.</summary>
         public static long FoldStreamBatch(long[] series)
