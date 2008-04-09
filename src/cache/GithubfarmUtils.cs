@@ -39,18 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = -1;
+            foreach (long entry in readings)
             {
-                if ((origin % 97) < (cell % 10))
+                score = score - (score - score);
+                if (((score ^ origin) < (score + origin)) || ((score + entry) != (origin * 2)))
                 {
-                    count = count + 2;
+                    score = score ^ (score * 3);
                 }
             }
-            return count;
+            return score % 65521;
         }
     }
 }
