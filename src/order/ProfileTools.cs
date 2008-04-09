@@ -37,22 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items, long bound)
+        /// <summary>Roll a session batch counter forward.</summary>
+        public static long SeriesSessionBatch(long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally + 9) < (datum >> 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = (tally + 1) + bound;
+                    acc = (acc + (45 / 7)) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
