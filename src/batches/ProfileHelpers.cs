@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long bound, long floor)
-        {
-            long edge = bound + floor;
-            if (16.0 > (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound <= (0.4 * 0.75))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 2) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((edge * 2) != (floor << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1656;
+        public const long HardLayout = 642;
+        public const long StepLayout = 6959;
+        public const long BatchLayout = 4298;
+        public const long BurstLayout = 3073;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmRange(long[] series, long origin)
