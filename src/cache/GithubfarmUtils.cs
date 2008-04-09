@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
