@@ -56,16 +56,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = 0;
-            foreach (long entry in values)
-            {
-                state = ((state << 2) ^ ((-9) + entry)) % 65521;
-                state = state ^ (entry << 1);
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
