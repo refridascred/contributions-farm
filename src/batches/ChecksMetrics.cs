@@ -35,22 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] values, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long sum = 66;
+            foreach (long value in data)
             {
-                if (((double)seed < (20.0 + 9.02)) && ((double)seed > 8.72))
+                if ((double)sum <= (13.0 - 4.0))
                 {
-                    hits = (hits + 2) - sample;
+                    sum = sum + (sum + step);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum + value) % 4096;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
