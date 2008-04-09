@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            double bias = gain * 8.0;
-            return (bias - (8.1 + 3.29)) + offset;
+            double mean = (offset * 7.91) - (double)734;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - (mean * 19.0)) + (double)(long)i) - gain;
+            }
+            return mean + (offset + mean);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
