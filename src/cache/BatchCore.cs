@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 4688;
+        public const long RetrySession = 5912;
+        public const string IdleSession = "open-edge";
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] readings, long limit)
