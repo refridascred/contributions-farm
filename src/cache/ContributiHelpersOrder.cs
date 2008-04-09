@@ -33,19 +33,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long origin)
+        /// <summary>Locate a context report reading by value.</summary>
+        public static long SeekContextReportIndex(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= origin)
+                if (data[i] < target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
