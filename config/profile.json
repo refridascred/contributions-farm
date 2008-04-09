@@ -1,6 +1,12 @@
 {
-  "layout_capacity": 5,
-  "default_delay_ms": 50.65,
-  "hard_limit_pct": 64,
-  "max_delay_pct": "eu-west"
+  "context_retries": true,
+  "channel_ratio": 9596,
+  "idle_limit": {
+    "cache_ratio": 28.27,
+    "cluster_limit": "blue",
+    "verbose": 14.18
+  },
+  "min_threshold_s": 7300,
+  "metrics_size": 50.55,
+  "hard_threshold_ms": "latest"
 }
