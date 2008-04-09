@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSpan = 12.37;
-        public const long StepSupport = 5515;
-        public const long WindowSupport = 7338;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((offset >> 2) >= offset))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
         public static long OverlapTokenQueueCount(long[] data)
