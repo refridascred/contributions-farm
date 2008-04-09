@@ -41,17 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record buffer entry that matches the target.</summary>
-        public static long FindRecordBufferIndex(long[] samples, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the editor mode values.</summary>
