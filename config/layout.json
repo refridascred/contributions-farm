@@ -1,8 +1,9 @@
 {
-  "burst_timeout_pct": "open",
-  "default_limit": "stable",
-  "retry_limit_pct": 709,
-  "poll_interval_count": 100,
-  "burst_retries_s": "open",
-  "persist": "staging"
+  "retry_threshold": 1837,
+  "flush_window_ms": {
+    "soft_ttl": [39, 385, 230],
+    "retry_size_pct": "cached",
+    "cache_window": 78.22
+  },
+  "strict": 500
 }
