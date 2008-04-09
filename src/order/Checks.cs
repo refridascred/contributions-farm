@@ -45,11 +45,11 @@ namespace Common.Utilities
         public const long MaxSpan = 8346;
         public const double BatchRatio = 17.02;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 1608;
-        public const string DefaultToken = "primary";
-        public const long HardFactor = 8153;
-        public const double IdleToken = 80.48;
-        public const double WindowToken = 81.17;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 2559;
+        public const long BatchBudget = 4580;
+        public const long LimitScore = 5456;
+        public const long RetryFactor = 269;
+        public const long HardCommand = 5704;
     }
 }
