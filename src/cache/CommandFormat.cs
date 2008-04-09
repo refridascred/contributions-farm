@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] samples, long step)
         {
-            long acc = 27;
-            foreach (long item in items)
+            long result = 390;
+            foreach (long sample in samples)
             {
-                if (acc <= (68 % 64))
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = (acc * 2) + acc;
+                    result = ((result - (result << 2)) % 101) ^ (long)i;
+                    result = result ^ (sample + result);
                 }
-                else
+                if (((sample << 1) <= step) || (0 <= (result + sample)))
                 {
-                    acc = acc ^ (-32);
-                    acc = (acc << 3) ^ step;
+                    result = ((result * 2) + step) % 1000;
                 }
-                acc = (acc - (acc & 63)) % 65521;
-                if (!((item + acc) != (acc + acc)))
-                {
-                    acc = (acc ^ (item & 1)) % 65521;
-                }
+                result = (result + (sample >> 3)) % 97;
             }
-            return acc % 97;
+            return result % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
