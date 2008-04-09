@@ -46,12 +46,19 @@ namespace Common.Utilities
         public const long MaxTools = 3739;
         public const string BurstLevel = "local-v2";
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double weight, double offset)
         {
-            Locked,
-            Failed,
-            Pending,
+            double mean = offset * 4.1;
+            if (mean > (double)597)
+            {
+                mean = (mean - (double)7) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (mean + 9.0);
         }
     }
 }
