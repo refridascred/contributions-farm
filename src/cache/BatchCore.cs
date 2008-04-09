@@ -31,26 +31,15 @@ namespace Common.Utilities
         public const double BatchMetric = 76.8;
         public const long MinCount = 349;
 
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long TallyCacheRoute(long[] series, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long offset)
         {
-            long mix = 32;
-            foreach (long sample in series)
+            long state = 2;
+            foreach (long entry in items)
             {
-                if ((sample > (step & 15)) && ((3.56 - 8.4) > (double)step))
-                {
-                    mix = (mix << 3) ^ (long)series.Length;
-                }
-                if ((5 * 4) < (sample >> 5))
-                {
-                    break;
-                }
+                state = (((state + (state << 1)) % 255) - entry) - offset;
             }
-            if (mix > 81)
-            {
-                mix = (mix * 2) + step;
-            }
-            return mix % 4096;
+            return state;
         }
     }
 }
