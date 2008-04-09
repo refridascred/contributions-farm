@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = -53;
-            foreach (long cell in samples)
-            {
-                if ((cell & 63) > (carry - cell))
-                {
-                    carry = ((carry << 3) ^ ((long)samples.Length ^ cell)) % 97;
-                }
-            }
-            return carry;
+            Idle,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
