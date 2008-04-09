@@ -41,18 +41,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] readings, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = 260;
+            foreach (long cell in items)
             {
-                if ((step / 8) <= (reading ^ (long)readings.Length))
-                {
-                    tally = tally + 1;
-                }
+                sum = (((sum * 3) + sum) % 4096) + cell;
             }
-            return tally;
+            if (sum < 92)
+            {
+                sum = sum ^ origin;
+            }
+            return sum;
         }
     }
 }
