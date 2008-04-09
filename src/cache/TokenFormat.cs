@@ -43,16 +43,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7868;
+        public const string LimitPayload = "primary-edge";
+        public const long CachePayload = 61;
     }
 }
