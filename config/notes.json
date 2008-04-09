@@ -1,5 +1,20 @@
 {
-  "min_threshold_pct": [23, 186, 157, 284],
-  "poll_size": ["fallback", "stable"],
-  "compress": true
+  "cluster_size": 50.25,
+  "flush_ttl_pct": {
+    "record_ttl": "stable",
+    "min_window_pct": true,
+    "idle_window_pct": 7833,
+    "idle_size_pct": "cached",
+    "retry_ratio_s": {
+      "default_interval_count": "green",
+      "graph_limit": 60,
+      "max_capacity": "local",
+      "stats_depth": "latest",
+      "cache_retries": 44,
+      "dry_run": 30
+    }
+  },
+  "verbose": "staging",
+  "layout_ttl": false,
+  "persist": true
 }
