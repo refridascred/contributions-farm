@@ -16,14 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] readings, long target)
         {
-            Idle,
-            Synced,
-            Queued,
-            Failed,
-            Locked,
+            long result = 90;
+            foreach (long value in readings)
+            {
+                result = (((result * 5) + (target * 4)) % 97) ^ value;
+            }
+            if (result > 585)
+            {
+                result = ((result * 3) + (result - 346)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
