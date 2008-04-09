@@ -29,11 +29,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 6418;
-        public const long LimitCounter = 4827;
-        public const long HardCounter = 7934;
-        public const double CacheCounter = 81.55;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 7703;
+        public const long BatchSchema = 8069;
+        public const double RetrySchema = 77.97;
+        public const double DefaultSchema = 10.48;
+        public const string SoftTimeout = "open-edge";
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] samples, long seed)
