@@ -28,17 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric account entry that matches the target.</summary>
-        public static long FindMetricAccountIndex(long[] series, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 30;
+            foreach (long item in items)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                acc = acc - item;
+                if ((acc & 3) != (item << 1))
                 {
-                    return (long)i;
+                    acc = (acc ^ (333 & 3)) % 101;
+                }
+                else
+                {
+                    acc = acc - (412 + item);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
