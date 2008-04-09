@@ -38,21 +38,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long TallyCacheRoute(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 32;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample > (step & 15)) && ((3.56 - 8.4) > (double)step))
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ (long)series.Length;
+                }
+                if ((5 * 4) < (sample >> 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix > 81)
+            {
+                mix = (mix * 2) + step;
+            }
+            return mix % 4096;
         }
     }
 }
