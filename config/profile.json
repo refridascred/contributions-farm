@@ -1,10 +1,5 @@
 {
-  "verbose": ["blue", "stable", "fallback", "fallback"],
-  "burst_depth_pct": "strict",
-  "dry_run": {
-    "persist": 69.9,
-    "window_depth": ["legacy", "latest", "local", "blue"],
-    "entry_ttl": 30,
-    "cluster_retries": "strict"
-  }
+  "context_interval": "local",
+  "min_capacity": 52.6,
+  "poll_threshold_s": 98.33
 }
