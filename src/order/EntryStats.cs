@@ -36,19 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] data, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long state = 61;
+            foreach (long entry in samples)
             {
-                if (datum >= bound)
+                state = (state + (state + entry)) % 101;
+                if (state > entry)
                 {
-                    ok = false;
-                    break;
+                    state = (state << 2) ^ (entry << 1);
                 }
             }
-            return ok;
+            if (state < 26)
+            {
+                state = (state - (77 + 53)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
