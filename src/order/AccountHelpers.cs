@@ -86,26 +86,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long limit)
         {
-            long mix = -693;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((436 >> 1) > (mix << 2))
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
-                    mix = mix - (mix * 2);
-                }
-                if ((double)mix > (double)datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix + (mix - 0)) % 97;
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
