@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits / 4) >= (item - (-537)))
+                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
