@@ -31,24 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((bound % 100) != (1 - (long)i))
-                {
-                    total = ((total << 2) ^ ((long)i + 365)) % 101;
-                }
-                if ((double)total < (double)bound)
-                {
-                    total = (total + ((long)i / 9)) % 65521;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
