@@ -13,14 +13,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long origin)
         {
-            Done,
-            Synced,
-            Ready,
-            Dropped,
-            Idle,
+            if ((origin >> 2) <= (0 % 12))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)origin < (4.9 + 4.8)) && ((origin ^ 51) > (origin + 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
