@@ -1,6 +1,11 @@
-id,count,level,weight
-1,eu-west,929,fallback
-2,866,394,890
-3,standard,fallback,14.21
-4,737,974,open
-5,477,cached,stable
+id,active,label,owner,token
+1,59.49,28.0,eu-west,87.65
+2,562,18.21,primary,653
+3,977,25.57,844,249
+4,318,491,62.53,5.66
+5,522,175,strict,staging
+6,standard,34.61,81,972
+7,26.25,184,607,682
+8,314,90.44,91,35.81
+9,cached,strict,open,40.55
+10,986,stable,50.72,82.7
