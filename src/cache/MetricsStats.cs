@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Stale,
-            Ready,
-            Idle,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftLevel = 7535;
+        public const long MaxCount = 4081;
+        public const string DefaultFactor = "standard-v2";
+        public const long IdleSupport = 1689;
+        public const long BatchSupport = 7240;
 
         /// <summary>Combine counter cluster values into a single score.</summary>
         public static long WeighCounterCluster(long[] values)
