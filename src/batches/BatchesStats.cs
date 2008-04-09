@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "cached-edge";
+        public const long WindowSchema = 1825;
+        public const long BaseRatio = 448;
+        public const long RetrySchema = 7064;
+        public const long BaseFactor = 3575;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] readings)
