@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Look up the position of a command entry sample.</summary>
+        public static long SeekCommandEntryIndex(long[] items, long seed)
         {
-            Synced,
-            Paused,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of batch channel readings.</summary>
