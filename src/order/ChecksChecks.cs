@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class ChecksChecks
     {
         /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 435;
-        public const string SoftEntry = "stable-1";
-        public const long BatchDepth = 8494;
+        public const string CacheSpan = "staging-1";
+        public const long MaxEntry = 7824;
+        public const long BatchCount = 8589;
+        public const long BurstFactor = 2560;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
