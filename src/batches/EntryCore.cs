@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long RetryRatio = 4245;
         public const long MinWindow = 9208;
 
-        /// <summary>Accumulate order farm samples.</summary>
-        public static long CombineOrderFarm(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = 2;
-            foreach (long value in readings)
-            {
-                long matches = score;
-                if (((matches & 1) < (score - 10)) || ((4.0 - 5.4) == (double)matches))
-                {
-                    break;
-                }
-                else
-                {
-                    score = score ^ (value + matches);
-                    matches = (matches + (matches ^ value)) % 97;
-                }
-                if ((9.0 * 17.0) <= (double)score)
-                {
-                    score = score - (value + score);
-                }
-                else
-                {
-                    score = (score - (score ^ score)) % 4096;
-                }
-            }
-            return score % 97;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
