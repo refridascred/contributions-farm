@@ -12,18 +12,15 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long MeasureProfileOrderGaps(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double scale2 = offset * 14.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample % 3) <= (matches + 6))
-                {
-                    matches = matches + 2;
-                }
+                scale2 = (scale2 + (double)(long)i) - scale;
             }
-            return matches;
+            return scale2 - offset;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
