@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] readings, long floor)
         {
-            Draft,
-            Dropped,
-            Pending,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 1) == (407 & 7))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
