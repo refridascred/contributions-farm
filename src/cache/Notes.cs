@@ -47,11 +47,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowDepth = 3.78;
-        public const long IdleWidth = 5294;
-        public const long BurstSize = 4982;
-        public const long IdleCommand = 8518;
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long TallyProfileCommandHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((9.0 + 5.0) >= (double)entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiOutliers(long[] data, long offset)
