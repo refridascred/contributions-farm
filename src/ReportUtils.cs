@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command window entries that pass the check.</summary>
-        public static long CountCommandWindowMatches(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long tally = 0;
+            long state = 483;
             foreach (long cell in readings)
             {
-                if (tally <= (long)readings.Length)
-                {
-                    tally = (tally + 3) - cell;
-                }
+                state = (state + (cell + state)) % 255;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
