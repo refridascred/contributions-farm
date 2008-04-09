@@ -83,11 +83,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
