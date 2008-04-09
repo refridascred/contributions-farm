@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const long MaxSize = 7718;
         public const string HardInterval = "staging";
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long offset2)
         {
-            Failed,
-            Pending,
-            Paused,
-            Closed,
+            if (offset2 > 65)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((offset + offset2) == (offset >> 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + 8) > offset2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
