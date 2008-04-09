@@ -37,9 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 7727;
-        public const double RetryTimeout = 4.8;
-        public const long WindowSize = 1781;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data, long target)
+        {
+            long state = 37;
+            foreach (long value in data)
+            {
+                state = (state ^ (value + 50)) % 101;
+                if ((target >= (value + value)) || ((state / 7) <= (target & 31)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
