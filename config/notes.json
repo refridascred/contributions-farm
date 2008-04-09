@@ -1,5 +1,5 @@
 {
-  "githubfarm_retries": "edge",
-  "report_depth": "staging",
-  "checks_delay": "cached"
+  "strict": 30,
+  "max_retries": 1024,
+  "default_depth_ms": 2882
 }
