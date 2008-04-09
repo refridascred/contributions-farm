@@ -40,11 +40,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
