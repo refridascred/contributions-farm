@@ -14,21 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = 6.1 / 9.0;
+            return ((scale + 2.0) + weight) + span;
         }
 
         /// <summary>Rank format input into a small class.</summary>
