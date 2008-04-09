@@ -44,12 +44,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 4635;
-        public const string SoftContext = "local-1";
-        public const long MinSpan = 152;
-        public const long WindowTimeout = 7892;
-        public const double StepCount = 41.79;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((761 + 9) < ((long)i ^ bound))
+                {
+                    carry = (carry + ((-8) * 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry - 136)) % 97;
+                }
+                carry = carry - bound;
+                if ((bound << 3) == (long)i)
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long floor)
