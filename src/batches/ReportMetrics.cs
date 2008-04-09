@@ -30,21 +30,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of counter editor readings.</summary>
-        public static long MatchCounterEditorCount(long[] readings)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
