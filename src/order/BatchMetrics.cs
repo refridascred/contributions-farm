@@ -28,25 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] series, long origin)
         {
-            long sum = 330;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = sum ^ sum;
-                if ((sum + sum) <= sum)
+                if (entry != origin)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum - (item + item)) % 1000;
-                    sum = (sum - (item * 3)) % 101;
-                }
-                sum = ((sum << 3) ^ (item % 64)) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a buffer entry.</summary>
