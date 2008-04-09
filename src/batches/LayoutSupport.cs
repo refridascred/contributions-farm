@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Classify a session counter pair into a bucket.</summary>
