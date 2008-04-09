@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "latest-1";
-        public const long StepEditor = 5873;
-        public const long BaseEditor = 8926;
-        public const double IdleEditor = 70.83;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (8.77 / 5.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long floor, long bound)
