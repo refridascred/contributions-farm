@@ -18,14 +18,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            Retry,
-            New,
-            Pending,
-            Done,
-            Queued,
+            double gain = ratio;
+            if (gain <= floor)
+            {
+                gain = gain + (gain - floor);
+            }
+            else
+            {
+                gain = gain - (gain * 8.23);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + 9.2;
         }
 
         /// <summary>Define window limits and defaults.</summary>
