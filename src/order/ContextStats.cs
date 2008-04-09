@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ entry) - origin;
             }
-            return ready;
+            if (sum > 785)
+            {
+                sum = (sum + (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
