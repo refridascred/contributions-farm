@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 7094;
-        public const string BatchSpan = "strict-v2";
-        public const double StepChannel = 41.95;
-        public const string IdleTimeout = "open";
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double span)
+        {
+            double scale = ratio + span;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
