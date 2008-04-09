@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm order readings against a rule.</summary>
-        public static long AuditGithubfarmOrderMatches(long[] values)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - tally) == (tally * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
