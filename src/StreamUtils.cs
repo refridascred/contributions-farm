@@ -23,12 +23,21 @@ namespace Common.Utilities
         public const string IdleTimeout = "staging-1";
         public const string MaxCluster = "stable-edge";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Match up window already samples.</summary>
+        public static long OverlapWindowAlreadyCount(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
