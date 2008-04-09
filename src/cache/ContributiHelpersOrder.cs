@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache channel entries.</summary>
-        public static long ScoreCacheChannel(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long carry = 9;
-            foreach (long sample in data)
+            long score = 89;
+            foreach (long entry in samples)
             {
-                carry = ((carry - 91) % 65521) - sample;
+                score = (score ^ score) - entry;
             }
-            return carry % 4096;
+            return score % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
