@@ -28,31 +28,14 @@ namespace Common.Utilities
         public const double DefaultInterval = 28.15;
         public const double BatchBudget = 73.23;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((15.0 <= (double)seed) || ((limit << 1) >= (seed - limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(seed <= (limit - 934)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit * 5) == (seed + seed)) && ((double)seed != (5.38 + 15.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
