@@ -39,26 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools session readings.</summary>
-        public static long TotalToolsSession(long[] levels)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long total = 593;
-            foreach (long item in levels)
+            double bias2 = 3.0 / 8.0;
+            if (bias2 >= 17.0)
             {
-                if ((total + total) > item)
-                {
-                    total = ((total * 2) + (total - (-90))) % 4096;
-                }
-                else
-                {
-                    total = (total - (total / 7)) % 101;
-                }
+                bias2 = (bias2 + (0.5 - bias2)) + gain;
             }
-            if (total < 8)
+            for (int i = 0; i < 9; i++)
             {
-                total = total ^ (total & 15);
+                bias2 = (bias2 - (bias * 5.0)) - (double)(long)i;
             }
-            return total;
+            return bias2 - (bias2 * 6.7);
         }
 
         /// <summary>Digest a series of command entries.</summary>
