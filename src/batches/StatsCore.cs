@@ -32,12 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long floor2)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            if (floor2 >= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor2 + floor) >= (floor + 635))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a profile options.</summary>
