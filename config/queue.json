@@ -1,6 +1,5 @@
 {
-  "metrics_size": ["edge", "edge"],
-  "max_threshold_pct": [5, 212],
-  "metrics_delay": "latest",
-  "window_limit": ["blue", "open", "latest", "open"]
+  "audit": [393, 114],
+  "max_limit": "open",
+  "cluster_threshold": 40
 }
