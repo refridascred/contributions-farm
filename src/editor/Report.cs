@@ -32,17 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long floor)
+        /// <summary>Check that every cache commits entry stays within the limit.</summary>
+        public static bool CheckCacheCommitsBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Project the next farm value.</summary>
