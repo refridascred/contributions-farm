@@ -14,20 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long carry = -78;
-            foreach (long reading in series)
-            {
-                carry = ((carry * 2) + (carry - 77)) - floor;
-                carry = ((carry * 3) + reading) % 255;
-            }
-            if (carry > 505)
-            {
-                carry = carry - (1 / 5);
-            }
-            return carry % 65521;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
