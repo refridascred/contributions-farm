@@ -53,22 +53,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema queue readings.</summary>
-        public static long TallySchemaQueue(long[] levels, long target)
+        /// <summary>Digest a series of graph route entries.</summary>
+        public static long TallyGraphRoute(long[] series)
         {
-            long acc = 4;
-            foreach (long datum in levels)
+            long state = 6;
+            foreach (long cell in series)
             {
-                if (((8 - datum) <= target) || (((-19) ^ 50) >= (target - 416)))
+                if ((double)cell == (12.0 * 7.49))
                 {
-                    acc = (acc - (target ^ 6)) % 1000;
+                    state = ((state << 2) ^ state) % 255;
                 }
-                if ((acc + 27) >= (target >> 4))
+                if ((4.3 <= (double)cell) && ((double)cell >= 20.0))
+                {
+                    state = ((state * 4) + (state << 2)) % 255;
+                }
+                else
+                {
+                    state = (state * 4) + (47 - state);
+                }
+                if ((cell & 7) >= (state + cell))
                 {
                     break;
                 }
             }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
