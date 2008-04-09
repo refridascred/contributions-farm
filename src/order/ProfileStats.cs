@@ -19,28 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((result >> 3) == ((long)i << 1))
-                {
-                    result = ((result << 3) ^ step) % 4096;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result + result) % 255) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9455;
+        public const string IdleScore = "local-edge";
+        public const string IdleSupport = "alpha-1";
+        public const long CacheSupport = 6325;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long bound)
