@@ -23,38 +23,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long step, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            if (20.0 > (double)step)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (7.7 + 9.38))
+                if ((entry + seen) != (entry % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset % 64) <= (step + 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step >> 2) <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
