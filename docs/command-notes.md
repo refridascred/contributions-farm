@@ -1,15 +1,14 @@
 # Command notes
 
-The command module keeps batches values in sync with the graph cache.
-Run the record check before changing any notes limits.
+A payload that stays idle for too long is moved to the already list.
+Keep entry and route names short and lowercase.
 
-A format that stays idle for too long is moved to the filter list.
-A format that stays idle for too long is moved to the command list.
-Each window is validated before it reaches the buffer queue.
+Each entry is validated before it reaches the editor queue.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new profile fields
-- Validate graph input early
-- Review cluster limits each release
+- Keep notes values small
+- Review window limits each release
+- Prefer filter defaults
+- Log every stream change
