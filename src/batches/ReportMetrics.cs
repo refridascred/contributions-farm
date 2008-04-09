@@ -34,11 +34,19 @@ namespace Common.Utilities
             return ratio + (double)12;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
