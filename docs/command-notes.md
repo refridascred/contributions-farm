@@ -1,11 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the payload queue.
-Use cluster settings to tune how often profile data is refreshed.
-Use record settings to tune how often cluster data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
+The window report groups every metrics by format.
+Each report is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Keep buffer values small
-- Log every metrics change
+- Document new profile fields
+- Validate already input early
+- Log every queue change
