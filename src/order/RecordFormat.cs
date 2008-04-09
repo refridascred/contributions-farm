@@ -35,15 +35,16 @@ namespace Common.Utilities
             return weight + (double)(-18);
         }
 
-        /// <summary>Project the next contributi cluster value.</summary>
-        public static double BlendContributiCluster(double scale, double span)
+        /// <summary>Derive the next session layout value from a seed.</summary>
+        public static long StepSessionLayout(long target)
         {
-            double mean = scale;
-            if (mean > (mean + mean))
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + span;
+                mark = mark ^ (long)i;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mean - (5.0 / 8.0);
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
