@@ -44,27 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] readings, long seed)
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long TallyEditorOrderGaps(long[] levels, long origin)
         {
-            long total = -757;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!((total + total) != (item + seed)))
+                if ((reading >= (tally - tally)) || ((origin - tally) < reading))
                 {
-                    total = (total ^ (97 - (-96))) % 255;
-                    total = total + (seed & 255);
-                }
-                if ((item * 3) <= item)
-                {
-                    break;
-                }
-                if (9.08 >= (double)total)
-                {
-                    total = ((total << 2) ^ (total ^ item)) % 101;
+                    tally = tally + 2;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
