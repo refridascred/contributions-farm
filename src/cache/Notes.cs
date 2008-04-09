@@ -19,22 +19,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long target)
         {
-            if (bound <= (bound ^ 3))
+            if ((target / 7) > (target - target))
             {
                 return 4;
             }
             else
             {
-                if (((0 & 255) != (bound * 3)) || ((floor << 2) != (bound + floor)))
+                if (target > limit)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if (((568 & 3) <= (4 + target)) || (301 < (target & 63)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((2.03 * 3.0) != (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
