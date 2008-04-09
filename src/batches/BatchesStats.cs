@@ -30,19 +30,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            if (((origin - origin) != (step + (-843))) || (origin < ((-3) - step)))
             {
-                if (datum >= offset)
+                return 6;
+            }
+            else
+            {
+                if (!((double)step >= (0.8 / 4.0)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 2) > (step ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
