@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a command entry sample.</summary>
-        public static long SeekCommandEntryIndex(long[] items, long seed)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool CheckMetricFilterLimits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (items[i] <= seed)
+                if (item < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of batch channel readings.</summary>
