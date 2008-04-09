@@ -24,17 +24,31 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            if (((floor * 5) == (floor - bound)) || ((double)floor == (2.9 + 2.1)))
             {
-                mark = ((mark * 4) + ((long)i * 4)) % 255;
-                mark = mark - (origin % 64);
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (8.0 > (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (floor - 62))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
