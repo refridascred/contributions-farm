@@ -59,13 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Draft,
-            Queued,
-            Locked,
             Pending,
+            Closed,
+            Paused,
         }
     }
 }
