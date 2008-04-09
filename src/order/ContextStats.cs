@@ -32,14 +32,25 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            Draft,
-            Stale,
-            Synced,
-            Active,
-            Failed,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)state <= 2.67) && ((bound ^ bound) < (state & 1)))
+                {
+                    state = (state + bound) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (bound * 4)) % 101;
+                    state = (state ^ (26 ^ bound)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
