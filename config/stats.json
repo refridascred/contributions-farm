@@ -1,5 +1,11 @@
 {
-  "burst_limit": 250,
-  "default_ratio_pct": "edge",
-  "poll_ttl_count": "latest"
+  "poll_window_count": ["blue", "standard", "blue", "local"],
+  "contributi_ratio": {
+    "burst_delay_ms": [453, 2, 133],
+    "cache_limit": 1024,
+    "retry_timeout": "green",
+    "warm_threshold": true
+  },
+  "checks_ttl": false,
+  "base_depth_count": "edge"
 }
