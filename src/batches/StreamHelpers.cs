@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next entry notes value from a seed.</summary>
-        public static long SeriesEntryNotes(long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            double ratio = span / 7.0;
+            if (ratio <= ratio)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                ratio = (ratio + ratio) - rate;
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (20.0 * 9.3);
+            }
+            return ratio + (span * 1.5);
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
