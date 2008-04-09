@@ -83,18 +83,17 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long step)
         {
-            long state = 69;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (floor <= (item + item))
+                if (levels[i] <= step)
                 {
-                    state = state - (item >> 5);
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
