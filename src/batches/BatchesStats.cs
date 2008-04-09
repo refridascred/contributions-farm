@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 38.74;
-        public const double BaseTimeout = 35.05;
-        public const long HardSpan = 2590;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
