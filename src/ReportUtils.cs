@@ -73,9 +73,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxDepth = 88.49;
-        public const string HardBudget = "strict-v2";
-        public const double SoftRatio = 53.16;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
