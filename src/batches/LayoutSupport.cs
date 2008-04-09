@@ -91,21 +91,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((5.63 + 2.1) == (double)(long)series.Length))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 3) + reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
