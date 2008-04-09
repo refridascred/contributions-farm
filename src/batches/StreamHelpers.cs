@@ -33,11 +33,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long sum = 9;
+            foreach (long sample in data)
+            {
+                if ((55 >> 5) >= target)
+                {
+                    sum = ((sum ^ (sum + sum)) % 97) + sample;
+                }
+                else
+                {
+                    sum = (sum + (997 - target)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate metric samples.</summary>
