@@ -26,14 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            Active,
-            Done,
-            Failed,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!(((958 ^ hits) < cell) || (4.2 >= (7.0 * 0.62))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
