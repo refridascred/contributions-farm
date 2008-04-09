@@ -1,13 +1,14 @@
 # Command notes
 
-Each payload is validated before it reaches the layout queue.
-Each layout is validated before it reaches the batch queue.
+Keep contributi and tools names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+Run the metrics check before changing any commits limits.
 
-A already that stays idle for too long is moved to the batch list.
-Use order settings to tune how often schema data is refreshed.
+Run the route check before changing any context limits.
+The already module keeps commits values in sync with the metrics cache.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate report input early
-- Review stats limits each release
+- Keep queue values small
+- Review record limits each release
+- Prefer entry defaults
