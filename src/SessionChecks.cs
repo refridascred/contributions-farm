@@ -24,10 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 268;
-        public const long StepWidth = 4891;
-        public const long StepScore = 9630;
+        /// <summary>Combine commits graph values into a single score.</summary>
+        public static long FoldCommitsGraph(long[] series, long bound)
+        {
+            long score = 4;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((((score + (score + score)) % 101) ^ (long)i) + reading) - bound;
+                }
+                score = ((score * 5) + (score >> 5)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseDepth = 1387;
