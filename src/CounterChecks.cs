@@ -45,25 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] series, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                total = (total ^ (long)i) % 97;
-                total = (total + (total + limit)) % 4096;
-                if (limit > (-810))
+                if (item <= origin)
                 {
-                    total = (total + (limit + total)) % 97;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
