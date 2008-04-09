@@ -58,11 +58,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long bound)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long diff = offset ^ bound;
+            if (((0.91 / 2.0) >= (double)diff) || ((134 - bound) >= (diff << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((915 & 31) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a filter entry.</summary>
