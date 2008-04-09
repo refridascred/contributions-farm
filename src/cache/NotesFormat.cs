@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a report metric reading.</summary>
-        public static double ProjectReportMetric(double ratio, double span)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long offset)
         {
-            double bias = (double)792 * 9.26;
-            return (bias + (ratio * 3.72)) + span;
+            if ((double)offset < (5.23 / 4.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 1) <= (47 ^ origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
