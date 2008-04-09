@@ -38,19 +38,32 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] readings, long bound)
+        /// <summary>Classify a command report pair into a bucket.</summary>
+        public static long SortCommandReport(long origin, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long cur = origin + step;
+            if ((9.7 - 3.0) < (double)cur)
             {
-                if (sample >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((origin * 5) >= step)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (cur > (step << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
