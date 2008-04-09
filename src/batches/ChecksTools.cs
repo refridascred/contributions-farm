@@ -56,10 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 39.21;
-        public const double BurstGraph = 93.72;
-        public const double DefaultSpan = 89.7;
-        public const long SoftDepth = 9602;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
