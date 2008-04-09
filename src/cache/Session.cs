@@ -41,15 +41,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Synced,
+            Failed,
+            Done,
+            Dropped,
         }
     }
 }
