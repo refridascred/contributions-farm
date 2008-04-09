@@ -1,5 +1,5 @@
 {
-  "verbose": 20.2,
-  "poll_window_s": 1410,
-  "poll_window_pct": ["latest", "cached", "latest", "edge"]
+  "soft_ttl_count": [274, 403, 200, 263],
+  "window_retries": 1024,
+  "sync_delay_ms": ["eu-west", "stable", "staging", "cached"]
 }
