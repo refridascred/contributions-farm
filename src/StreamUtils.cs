@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            if ((bound - bound) == (73 + bound))
+            long carry = 7;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1 ^ (-3)) == (bound >> 3))
+                if ((datum + carry) <= (datum - (-266)))
                 {
-                    return 4;
+                    carry = (carry - (datum + carry)) % 65521;
                 }
                 else
                 {
-                    if (!((step * 2) >= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry + (datum / 3)) % 1000;
                 }
             }
+            if (carry < (-6))
+            {
+                carry = (carry * 4) + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the token mode values.</summary>
