@@ -75,12 +75,24 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long floor, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            if (((-2) << 1) < (floor + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(limit <= (floor << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
