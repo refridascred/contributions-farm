@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 3623;
-        public const string MinBudget = "latest-edge";
-        public const string WindowAlready = "standard-1";
-        public const string RetryCount = "fallback-1";
+        /// <summary>Iterate the graph tools series from a seed.</summary>
+        public static long StepGraphTools(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] levels)
