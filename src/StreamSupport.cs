@@ -18,22 +18,21 @@ namespace Common.Utilities
         public const string WindowBatches = "alpha-v2";
         public const long StepBatches = 1231;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long acc = 1;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.0 * 2.81) >= (double)acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ (reading + reading)) % 97;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 776)
-            {
-                acc = (acc ^ (acc + 26)) % 255;
-            }
-            return acc;
+            return hits;
         }
     }
 }
