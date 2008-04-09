@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (!(((958 ^ hits) < cell) || (4.2 >= (7.0 * 0.62))))
+                if (((8.05 / 2.0) > (double)value) || !((matches + value) <= value))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
