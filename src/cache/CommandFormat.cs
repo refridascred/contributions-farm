@@ -19,16 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            double ratio = 8.0;
+            if (ratio <= (12.0 - ratio))
             {
-                sum = (sum + (seed / 4)) % 65521;
-                sum = ((sum * 4) + (long)i) % 4093;
+                ratio = (ratio + span) + gain;
             }
-            return sum;
+            return ratio - (double)1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
