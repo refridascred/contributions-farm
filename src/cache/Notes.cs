@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Locate a notes already reading by value.</summary>
+        public static long SeekNotesAlreadyIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading > (8.77 / 5.0))
+                if (levels[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
