@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            double mean = (double)(32 + 261);
-            if (mean <= (12.0 - mean))
+            double gain = span;
+            if (gain >= 4.47)
             {
-                mean = (mean - floor) + weight;
+                gain = (gain + gain) + rate;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + 1.0) + (double)(long)i;
+                gain = gain - (span * 9.0);
             }
-            return mean + 8.23;
+            return gain + gain;
         }
 
         /// <summary>Hold a tools summary.</summary>
