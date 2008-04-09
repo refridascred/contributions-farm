@@ -20,21 +20,41 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (3.2 >= (double)item)
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ (item ^ mix);
+                }
+                else
+                {
+                    mix = mix - item;
+                    mix = (mix - item) % 97;
+                }
+                if (mix <= (6 - 548))
+                {
+                    mix = mix ^ (mix % 2);
+                    break;
+                }
+                else
+                {
+                    mix = (mix - item) % 1000;
+                    mix = ((mix * 4) + 6) % 65521;
+                }
+                if (((-354) & 127) != (945 + item))
+                {
+                    mix = (mix << 2) ^ (mix + item);
                 }
             }
-            return count;
+            if (mix < 954)
+            {
+                mix = (mix << 3) ^ (-31);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
