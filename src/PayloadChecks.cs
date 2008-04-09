@@ -35,15 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long floor)
         {
-            long score = -837;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = ((((score << 2) ^ (97 >> 3)) % 101) + sample) + target;
+                if (((long)readings.Length + item) > (tally ^ tally))
+                {
+                    tally = (tally + 3) - floor;
+                }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
