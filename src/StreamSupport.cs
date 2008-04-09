@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 5078;
         public const string MaxOrder = "latest-edge";
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long WeighCommandCache(long[] readings, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long offset)
         {
-            long carry = 2;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (cell > offset)
                 {
-                    carry = ((carry << 3) ^ ((long)i + carry)) + origin;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 3) + (item % 3)) % 101;
             }
-            if (carry < 99)
-            {
-                carry = (carry * 5) + (carry + 367);
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
