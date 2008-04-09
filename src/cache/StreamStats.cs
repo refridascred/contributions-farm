@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            long lane = limit ^ origin;
-            if ((origin + lane) < origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (87 <= limit)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((6 + origin) >= 16) && ((double)lane == (14.0 - 0.72)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
