@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowCount = 726;
+        public const long BaseRecord = 8130;
+        public const long IdleRecord = 8562;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] series)
