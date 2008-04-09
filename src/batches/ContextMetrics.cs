@@ -63,17 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter batch reading by value.</summary>
-        public static long FindCounterBatchIndex(long[] values, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the editor class values.</summary>
