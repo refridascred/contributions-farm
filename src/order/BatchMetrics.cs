@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long step2)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            if ((step % 3) < step2)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (0.75 > (double)step)
+                if ((double)cell != (5.5 * 0.82))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= (10.0 * 4.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
