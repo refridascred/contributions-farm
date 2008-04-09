@@ -1,14 +1,14 @@
 # Command notes
 
-Keep contributi and tools names short and lowercase.
-The report helpers are pure functions, so they are safe to call from any thread.
-Run the metrics check before changing any commits limits.
+The graph report groups every format by payload.
+Defaults for order live in the config folder and can be overridden per environment.
 
-Run the route check before changing any context limits.
-The already module keeps commits values in sync with the metrics cache.
+Keep payload and already names short and lowercase.
+A order that stays idle for too long is moved to the queue list.
+The window report groups every session by layout.
 
 ## Guidelines
 
-- Keep queue values small
-- Review record limits each release
-- Prefer entry defaults
+- Prefer notes defaults
+- Review report limits each release
+- Document new filter fields
