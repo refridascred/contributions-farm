@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryWidth = 1158;
-        public const long BatchInterval = 8124;
-        public const double DefaultFilter = 4.55;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((bound >> 5) > (reading << 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long FoldCommand(long[] levels)
