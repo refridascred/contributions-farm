@@ -1,9 +1,5 @@
 {
-  "retry_threshold": 1837,
-  "flush_window_ms": {
-    "soft_ttl": [39, 385, 230],
-    "retry_size_pct": "cached",
-    "cache_window": 78.22
-  },
-  "strict": 500
+  "soft_limit_ms": "primary",
+  "burst_capacity_s": 20.05,
+  "poll_window_pct": 50.52
 }
