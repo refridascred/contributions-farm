@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings, long limit)
+        /// <summary>Derive the next entry notes value from a seed.</summary>
+        public static long SeriesEntryNotes(long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(tally > (tally + limit)))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
