@@ -52,13 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Synced,
-            Idle,
+            Draft,
             Active,
-            Ready,
+            Failed,
         }
 
         /// <summary>Describe the editor class values.</summary>
