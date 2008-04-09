@@ -35,31 +35,23 @@ namespace Common.Utilities
             return load + (5.4 / 7.0);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long limit, long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            if ((10.0 > (double)limit) || (bound > 4))
+            double rate = 4.0;
+            if (rate >= scale)
             {
-                return 3;
+                rate = (rate - (scale - scale)) - bias;
             }
             else
             {
-                if ((1 >> 5) != (limit - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >> 3) != (limit >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = rate - (double)40;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 15.0) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
