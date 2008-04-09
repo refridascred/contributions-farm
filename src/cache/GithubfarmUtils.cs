@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            double gain2 = (double)(8 >> 2);
-            if (gain2 < (double)452)
+            long count = 0;
+            foreach (long sample in items)
             {
-                gain2 = (gain2 + offset) - gain;
+                if ((16 << 2) >= count)
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return gain2 + 6.5;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
