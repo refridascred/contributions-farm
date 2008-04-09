@@ -57,15 +57,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm stats figure with a bias.</summary>
-        public static double AdjustFarmStats(double ratio, double span)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            double gain = (double)4;
-            if (gain > (gain + span))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (span - gain)) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - (span - span);
+            return seen;
         }
     }
 }
