@@ -35,9 +35,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 7868;
-        public const string LimitPayload = "primary-edge";
-        public const long CachePayload = 61;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "alpha-edge";
+        public const double BurstFactor = 88.23;
+        public const string BaseQueue = "stable-edge";
     }
 }
