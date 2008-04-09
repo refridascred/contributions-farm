@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values)
         {
-            Pending,
-            Stale,
-            Done,
-            Failed,
-            Idle,
+            long mark = 1;
+            foreach (long datum in values)
+            {
+                mark = (mark - 8) % 65521;
+                if ((datum * 3) < datum)
+                {
+                    mark = mark - (datum - datum);
+                }
+                if (0 >= (79 + datum))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi entry.</summary>
