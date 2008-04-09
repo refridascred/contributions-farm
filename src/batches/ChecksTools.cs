@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the report githubfarm series from a seed.</summary>
-        public static long SeriesReportGithubfarm(long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Queued,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
