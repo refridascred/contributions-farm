@@ -44,24 +44,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result & 127) > result)
+                if (readings[i] == step)
                 {
-                    result = ((result << 3) ^ (limit % 24)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (43 + 3)) % 101;
-                    result = (result - (long)i) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
