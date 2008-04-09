@@ -55,19 +55,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((origin << 2) == (origin + limit))
             {
-                if (item != limit)
+                return 6;
+            }
+            else
+            {
+                if (origin > (2 / 6))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (925 - 46))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
