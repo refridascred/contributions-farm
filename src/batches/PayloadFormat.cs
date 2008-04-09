@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 5684;
-        public const long BatchChannel = 2586;
-        public const long HardChannel = 6081;
-        public const string MinSpan = "primary-edge";
+        /// <summary>Count the payload channel entries that pass the check.</summary>
+        public static long MeasurePayloadChannelOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)hits == (double)86)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long seed)
