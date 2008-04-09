@@ -34,21 +34,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up cache tools samples.</summary>
-        public static long MatchCacheToolsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 14.8;
+        public const double CacheBudget = 84.27;
+        public const long BurstGithubfarm = 5170;
+        public const string DefaultGithubfarm = "strict-edge";
     }
 }
