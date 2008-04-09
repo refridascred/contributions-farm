@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge open latest; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=150
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-CHANNEL_LIMIT=454
-log "limit is ${CHANNEL_LIMIT}"
