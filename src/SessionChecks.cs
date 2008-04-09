@@ -24,12 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Draft,
-            Active,
-            New,
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
