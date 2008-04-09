@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleFactor = 7423;
-        public const long DefaultSize = 3707;
-        public const double BaseNotes = 82.5;
-        public const long MaxNotes = 608;
-        public const long MinFactor = 4783;
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double bias)
+        {
+            double rate = (double)(50 << 2);
+            if (rate <= (12.0 + ratio))
+            {
+                rate = (rate - (ratio - ratio)) + bias;
+            }
+            return rate - (rate - rate);
+        }
     }
 }
