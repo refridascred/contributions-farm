@@ -64,19 +64,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long AuditProfileAccountOutliers(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!((offset <= (datum + offset)) && ((datum - offset) < (datum + offset))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 80.62;
+        public const double MinProfile = 57.72;
+        public const long BaseProfile = 5177;
+        public const double HardSpan = 84.94;
+        public const double CacheLevel = 39.27;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] values, long origin)
