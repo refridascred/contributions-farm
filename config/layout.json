@@ -1,15 +1,10 @@
 {
-  "batch_ttl": {
-    "sync_interval_count": ["staging", "local"],
-    "idle_retries": "edge",
-    "warm_timeout": "green"
-  },
-  "flush_capacity_ms": {
-    "dry_run": ["stable", "open", "fallback"],
-    "min_ratio_ms": "strict",
-    "idle_window_s": 500,
-    "warm_limit_s": [459, 43]
-  },
-  "burst_window_s": true,
-  "idle_timeout_ms": "strict"
+  "readonly": false,
+  "metric_window": 1.3,
+  "profile_interval": {
+    "payload_threshold": "latest",
+    "retry_timeout": "legacy",
+    "min_timeout": 1.96,
+    "default_limit": ["cached", "primary"]
+  }
 }
