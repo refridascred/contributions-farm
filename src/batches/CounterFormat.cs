@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio + (5.6 * 0.8);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((floor << 1) >= 296))
+                if (readings[i] == step)
                 {
-                    state = (state << 2) ^ (long)i;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
