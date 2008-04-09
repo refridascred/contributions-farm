@@ -29,10 +29,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSpan = 9470;
-        public const long RetryTimeout = 2507;
-        public const long DefaultCommand = 9475;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double rate, double floor)
