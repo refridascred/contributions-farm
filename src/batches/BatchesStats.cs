@@ -45,9 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 9516;
-        public const long DefaultTimeout = 1228;
-        public const long MaxEntry = 3618;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
