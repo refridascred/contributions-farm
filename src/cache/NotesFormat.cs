@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples, long floor)
+        /// <summary>Roll a payload schema counter forward.</summary>
+        public static long DerivePayloadSchema(long target)
         {
-            long anchor = 194;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((11.0 - 7.0) > (double)anchor)
-                {
-                    anchor = (((anchor << 3) ^ (floor - 6)) % 1000) ^ reading;
-                }
+                mark = mark + (target / 9);
+                mark = (mark ^ (target ^ mark)) % 101;
+                mark = mark + (long)i;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor - (floor ^ (long)samples.Length)) % 97;
-            }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
