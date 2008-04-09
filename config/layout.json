@@ -1,18 +1,5 @@
 {
-  "farm_capacity": "eu-west",
-  "readonly": ["green", "fallback", "stable"],
-  "batch_delay": ["cached", "eu-west", "fallback", "blue"],
-  "batch_limit_ms": {
-    "account_ratio": 11.81,
-    "notes_delay": "legacy",
-    "max_threshold": {
-      "flush_ratio_ms": "fallback",
-      "compress": 77,
-      "buffer_depth": 9833
-    },
-    "burst_ratio_s": false,
-    "retry_depth": 48.23,
-    "retry_size_count": 86.66
-  },
-  "audit": "local"
+  "entry_capacity": true,
+  "poll_threshold_count": "staging",
+  "warm_delay_pct": [52, 128, 481]
 }
