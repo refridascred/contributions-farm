@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((limit / 2) > reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 8981;
+        public const double RetryChecks = 50.58;
+        public const long MinChecks = 3759;
+        public const double BurstChecks = 22.71;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
