@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+BUFFER_LIMIT=136
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached edge legacy; do
+for item in strict edge fallback; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
