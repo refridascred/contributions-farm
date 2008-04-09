@@ -1,6 +1,10 @@
 {
-  "verbose": 8804,
-  "warm_window_ms": "edge",
-  "sync_limit_count": 35.14,
-  "format_timeout": 30
+  "default_size_pct": {
+    "editor_window": 86.46,
+    "default_delay": 37.92,
+    "retry_ttl_count": ["primary", "standard"]
+  },
+  "compress": "strict",
+  "readonly": "green",
+  "batch_limit_pct": 36.68
 }
