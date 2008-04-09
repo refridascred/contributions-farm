@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Queued,
-            Locked,
-            Retry,
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
