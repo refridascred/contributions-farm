@@ -44,16 +44,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next session layout value from a seed.</summary>
-        public static long StepSessionLayout(long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark ^ (long)i;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((result & 127) > result)
+                {
+                    result = ((result << 3) ^ (limit % 24)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (43 + 3)) % 101;
+                    result = (result - (long)i) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
