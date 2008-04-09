@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Failed,
-            New,
-            Idle,
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
