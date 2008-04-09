@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultFactor = 6774;
-        public const double WindowLevel = 11.47;
-        public const long SoftCounter = 9148;
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool GuardBatchesCacheBounds(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double AdjustLayout(double ratio, double floor)
