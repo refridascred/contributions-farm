@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate buffer filter samples.</summary>
-        public static long WeighBufferFilter(long[] samples, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long result = 9;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result - result) % 1000) - value) + limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
