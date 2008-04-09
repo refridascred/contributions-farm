@@ -45,12 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] values, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
