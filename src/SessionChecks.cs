@@ -38,11 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 2978;
-        public const long DefaultSize = 3943;
-        public const long RetryReport = 8916;
-        public const long LimitReport = 4622;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 268;
+        public const long StepWidth = 4891;
+        public const long StepScore = 9630;
 
         /// <summary>Look up the position of a graph stats sample.</summary>
         public static long LocateGraphStatsIndex(long[] levels, long bound)
