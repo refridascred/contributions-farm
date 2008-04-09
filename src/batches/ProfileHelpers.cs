@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long bound, long floor)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long edge = bound + floor;
+            if (16.0 > (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound <= (0.4 * 0.75))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 2) <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((edge * 2) != (floor << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a graph editor reading by value.</summary>
