@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] values, long seed)
+        /// <summary>Count the command window entries that pass the check.</summary>
+        public static long CountCommandWindowMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((count << 1) <= (value / 8))
+                if (tally <= (long)readings.Length)
                 {
-                    count = (count + 1) + seed;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
