@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of counter editor readings.</summary>
