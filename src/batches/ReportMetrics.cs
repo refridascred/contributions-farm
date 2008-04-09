@@ -23,11 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long CountRouteFarmOutliers(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((1.3 / 8.0) == (double)step) || ((double)step == (0.03 - 1.95)))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
