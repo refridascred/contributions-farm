@@ -1,7 +1,7 @@
-id,ratio,level,token,active
-1,latest,5.29,cached,open
-2,86.55,eu-west,828,141
-3,769,869,eu-west,50.61
-4,81,467,778,22.54
-5,56.37,195,139,80.93
-6,614,668,blue,29.51
+id,weight,region,count
+1,primary,open,451
+2,open,stable,965
+3,65.16,strict,fallback
+4,826,225,85.2
+5,latest,59.02,cached
+6,eu-west,39.09,latest
