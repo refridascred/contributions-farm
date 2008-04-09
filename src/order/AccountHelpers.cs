@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long MeasureBufferFilterMatches(long[] readings, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((matches / 3) < 9)
+                if ((((double)reading == (7.0 - 8.0)) && ((double)reading <= (double)hits)) || ((hits >= (seed & 31)) && ((seed % 12) >= 7)))
                 {
-                    matches = ((matches + 3) ^ reading) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
