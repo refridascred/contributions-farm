@@ -25,18 +25,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)count < (6.59 + 0.2)) && ((count ^ count) != (item - 27))) || ((count - 3) != (item & 127)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Stale,
+            Idle,
+            Draft,
         }
     }
 }
