@@ -55,20 +55,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = 770;
+            foreach (long value in values)
             {
-                if ((anchor - floor) <= (floor / 8))
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = (anchor * 2) + (anchor ^ anchor);
+                    carry = (carry ^ (long)i) % 101;
                 }
-                anchor = (anchor ^ (anchor + floor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                carry = (carry ^ carry) % 65521;
+                carry = (carry - (value + carry)) % 101;
             }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate stream entry samples.</summary>
