@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long limit)
         {
-            long delta = origin - limit;
-            if (((double)origin > 1.8) && ((limit % 5) < (limit % 64)))
+            if ((limit + 9) < (9 ^ (-367)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (delta > ((-5) + 6))
+                if ((step * 3) >= (step << 2))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)limit != (3.29 / 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - limit) >= (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
