@@ -57,15 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double rate = (double)(50 << 2);
-            if (rate <= (12.0 + ratio))
-            {
-                rate = (rate - (ratio - ratio)) + bias;
-            }
-            return rate - (rate - rate);
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
