@@ -35,11 +35,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultSpan = "local-1";
-        public const double BaseBatch = 3.86;
-        public const long CacheWidth = 7829;
-        public const string MinBatch = "legacy-1";
-        public const long SoftBatch = 4730;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen - seen) == (8 + entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
