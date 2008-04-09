@@ -13,15 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (!(tally <= (item + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
