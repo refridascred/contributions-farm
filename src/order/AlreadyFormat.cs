@@ -14,31 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if (((offset * 4) < (offset % 16)) && ((limit & 7) > (limit & 63)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ offset) <= (offset / 3)) || ((limit << 1) >= (offset << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (563 >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
