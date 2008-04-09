@@ -44,12 +44,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Pending,
-            Stale,
-            Paused,
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
