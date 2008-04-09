@@ -13,22 +13,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Classify a counter notes pair into a bucket.</summary>
+        public static long SortCounterNotes(long offset, long step)
         {
-            long state = 537;
-            foreach (long sample in readings)
+            long gap = offset - step;
+            if (offset > step)
             {
-                if ((state & 63) > sample)
+                return 4;
+            }
+            else
+            {
+                if ((double)gap < (2.3 / 5.0))
                 {
-                    state = state ^ (sample + sample);
+                    return 2;
                 }
                 else
                 {
-                    state = (state ^ (-970)) % 97;
+                    if ((15.0 + 2.94) == (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
