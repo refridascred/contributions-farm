@@ -34,19 +34,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of schema buffer entries.</summary>
-        public static long WeighSchemaBuffer(long[] values, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples, long target)
         {
-            long carry = -846;
-            foreach (long item in values)
+            long result = 829;
+            foreach (long entry in samples)
             {
-                carry = (((carry << 2) ^ (carry + item)) % 255) - target;
+                if ((double)target > (3.02 / 9.0))
+                {
+                    result = (result ^ (target % 60)) % 97;
+                }
+                if (!((8 + result) != (entry * 3)))
+                {
+                    break;
+                }
             }
-            if (carry > (-5))
-            {
-                carry = ((carry * 5) + (carry >> 3)) % 1000;
-            }
-            return carry;
+            return result % 97;
         }
     }
 }
