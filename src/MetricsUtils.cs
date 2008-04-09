@@ -20,17 +20,18 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Look up the position of a metric batch sample.</summary>
-        public static long FindMetricBatchIndex(long[] values, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                if (!((cell - cell) < (count ^ cell)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
