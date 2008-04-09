@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Count the filter tools entries that pass the check.</summary>
+        public static long AuditFilterToolsHits(long[] values, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)sample < 18.0)
                 {
-                    result = (result ^ (result - step)) ^ (long)i2;
+                    hits = (hits + 3) + offset;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
