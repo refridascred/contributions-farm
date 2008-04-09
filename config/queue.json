@@ -1,21 +1,6 @@
 {
-  "tools_capacity": {
-    "idle_interval_pct": false,
-    "entry_timeout": "open",
-    "graph_limit": true,
-    "warm_retries_count": {
-      "soft_depth_ms": ["local", "blue", "cached"],
-      "idle_timeout": "primary",
-      "max_delay_ms": "stable"
-    },
-    "entry_interval": "local"
-  },
-  "soft_interval_pct": {
-    "warm_ratio_ms": 24,
-    "queue_capacity": 100,
-    "cache_window_ms": "standard",
-    "burst_limit_pct": "primary",
-    "default_interval_count": ["primary", "eu-west", "blue"]
-  },
-  "max_ttl": ["edge", "blue", "eu-west"]
+  "compress": ["fallback", "fallback", "green", "latest"],
+  "retry_limit_s": 3702,
+  "filter_retries": 2.52,
+  "max_interval": 500
 }
