@@ -97,18 +97,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.23 - 6.0) < (double)hits)
-                {
-                    hits = ((hits + 3) ^ entry) - floor;
-                }
+                carry = carry ^ ((long)i >> 1);
+                carry = ((carry << 2) ^ (1 << 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
