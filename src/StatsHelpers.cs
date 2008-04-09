@@ -57,19 +57,9 @@ namespace Common.Utilities
             return scale2 - (bias * 5.0);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
-        {
-            long anchor = 6;
-            foreach (long value in items)
-            {
-                anchor = (anchor - (anchor / 6)) % 101;
-                if (!((6.0 - 9.0) < (double)value))
-                {
-                    anchor = anchor - 568;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowWidth = 11.6;
+        public const long WindowCache = 8618;
+        public const double IdleCache = 72.36;
     }
 }
