@@ -1,5 +1,6 @@
 {
-  "min_ttl": 66.51,
-  "flush_ttl_ms": 32,
-  "strict": 66.53
+  "verbose": 8804,
+  "warm_window_ms": "edge",
+  "sync_limit_count": 35.14,
+  "format_timeout": 30
 }
