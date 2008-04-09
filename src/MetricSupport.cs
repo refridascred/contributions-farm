@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            Retry,
-            Ready,
-            Active,
+            long result = -71;
+            foreach (long cell in readings)
+            {
+                result = result ^ (cell << 1);
+            }
+            if (result > 14)
+            {
+                result = result - (offset ^ result);
+            }
+            return result;
         }
     }
 }
