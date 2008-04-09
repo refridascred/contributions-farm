@@ -51,10 +51,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7453;
-        public const long HardInterval = 8165;
-        public const string BurstMetric = "cached-v2";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long step)
+        {
+            long sum = 352;
+            foreach (long value in samples)
+            {
+                sum = ((sum ^ sum) + value) + step;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
