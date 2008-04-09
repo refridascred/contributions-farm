@@ -15,11 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Score { get; set; }
-            public double Mode { get; set; }
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
