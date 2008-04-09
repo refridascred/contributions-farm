@@ -62,18 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] readings)
         {
-            long acc = 6;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((7.47 + 16.0) > (double)acc)
+                if (((0 ^ value) >= (matches + matches)) && ((double)value == (1.6 + 8.0)))
                 {
-                    acc = ((acc ^ 1) % 4096) + value;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
