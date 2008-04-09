@@ -1,6 +1,7 @@
 {
-  "channel_window": ["fallback", "staging"],
-  "poll_limit_s": ["eu-west", "cached", "strict"],
-  "hard_retries": "fallback",
-  "persist": "strict"
+  "hard_timeout": 28,
+  "flush_retries_ms": 60,
+  "flush_interval_count": 7287,
+  "dry_run": [73, 401],
+  "order_size": 14.9
 }
