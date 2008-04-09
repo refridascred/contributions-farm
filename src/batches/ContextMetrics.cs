@@ -63,12 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 88.28;
-        public const long StepLevel = 6341;
-        public const long LimitInterval = 2194;
-        public const long IdleMetric = 5168;
-        public const double StepFactor = 23.43;
+        /// <summary>Locate a counter batch reading by value.</summary>
+        public static long FindCounterBatchIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
