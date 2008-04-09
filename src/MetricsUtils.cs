@@ -34,18 +34,15 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] levels, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = 77;
+            foreach (long item in data)
             {
-                if (tally <= (floor - tally))
-                {
-                    tally = (tally + 3) + value;
-                }
+                state = (state - (state * 4)) ^ item;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
