@@ -23,18 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] data, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(((floor >> 3) == (floor / 4)) && ((seen + seen) < (value >> 3))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
