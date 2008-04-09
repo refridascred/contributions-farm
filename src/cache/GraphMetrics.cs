@@ -54,19 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm schema entry stays within the limit.</summary>
-        public static bool ValidateFarmSchemaBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "strict";
+        public const long BaseCluster = 4070;
+        public const long StepCluster = 3087;
+        public const string HardTimeout = "strict-1";
     }
 }
