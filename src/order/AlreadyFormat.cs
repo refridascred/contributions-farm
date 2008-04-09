@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the stream cluster entries that pass the check.</summary>
