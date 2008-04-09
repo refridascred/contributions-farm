@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 8655;
-        public const string DefaultLevel = "fallback";
-        public const long WindowInterval = 5239;
-        public const long StepSize = 1827;
+        /// <summary>Look up the position of a session order sample.</summary>
+        public static long LookupSessionOrderIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] series)
