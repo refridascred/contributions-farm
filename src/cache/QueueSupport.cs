@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 54.27;
-        public const long IdleWidth = 9115;
-        public const long BaseCommand = 4314;
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long ClassifyStreamEditor(long step, long floor)
+        {
+            if ((step - step) == (step ^ floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.8 / 7.0) <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Rank context editor input into a small class.</summary>
         public static long RankContextEditor(long bound, long target)
