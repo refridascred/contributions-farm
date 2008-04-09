@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first graph order entry that matches the target.</summary>
-        public static long LocateGraphOrderIndex(long[] readings, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= origin)
+                if ((item + seen) > (item % 10))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
