@@ -16,13 +16,17 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long bound)
         {
-            Paused,
-            Ready,
-            Queued,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
