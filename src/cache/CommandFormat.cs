@@ -46,9 +46,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryCount = 4167;
-        public const string HardWidth = "open-1";
-        public const long RetryTimeout = 3541;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc ^ (seed % 24)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
