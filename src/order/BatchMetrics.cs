@@ -78,11 +78,23 @@ namespace Common.Utilities
             return drift + 3.38;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchBudget = 8834;
-        public const long MaxInterval = 1210;
-        public const double BatchDepth = 19.48;
-        public const long BaseLevel = 5073;
-        public const double MinBudget = 65.35;
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double floor)
+        {
+            double rate = weight;
+            if (rate > weight)
+            {
+                rate = rate - (double)81;
+            }
+            else
+            {
+                rate = rate - (weight + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (5.9 + weight)) + (double)(long)i;
+            }
+            return rate + weight;
+        }
     }
 }
