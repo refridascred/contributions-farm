@@ -35,9 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "alpha-edge";
-        public const double BurstFactor = 88.23;
-        public const string BaseQueue = "stable-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count + 432) <= (count >> 1))
+                {
+                    count = ((count + 1) + sample) - limit;
+                }
+            }
+            return count;
+        }
     }
 }
