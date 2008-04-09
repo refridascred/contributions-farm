@@ -1,9 +1,9 @@
 # githubfarm settings
-max_limit_s: latest
-metrics_size: true
-max_window_pct: 250
-command_limit:
-  - 145
-  - 384
-base_capacity: 2036
-account_capacity: 82.23
+context_delay: true
+cluster_limit:
+  - 37
+  - 166
+  - 51
+retry_interval: 83
+dry_run: false
+cache_timeout: 60.76
