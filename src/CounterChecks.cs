@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of schema token entries.</summary>
-        public static long TotalSchemaToken(long[] readings)
+        /// <summary>Check that every batches payload entry stays within the limit.</summary>
+        public static bool CheckBatchesPayloadLimits(long[] items, long bound)
         {
-            long state = 429;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                state = state ^ entry;
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 6)
-            {
-                state = (state + (state + state)) % 97;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Project the next batches farm value.</summary>
