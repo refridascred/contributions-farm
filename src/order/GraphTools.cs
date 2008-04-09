@@ -31,11 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 1837;
-        public const long LimitChecks = 5623;
-        public const long DefaultChecks = 9387;
-        public const string SoftChecks = "local-1";
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading * 2) <= (matches >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cache report entries.</summary>
         public static long ScoreCacheReport(long[] data, long limit)
