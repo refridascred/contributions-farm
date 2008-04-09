@@ -55,20 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long carry = 770;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (long)i) % 101;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = (carry ^ carry) % 65521;
-                carry = (carry - (value + carry)) % 101;
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
