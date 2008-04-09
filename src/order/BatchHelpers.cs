@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long StepContext = 7518;
         public const long LimitScore = 4805;
 
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long StepGithubfarmCounter(long floor)
+        /// <summary>Combine stream batch values into a single score.</summary>
+        public static long FoldStreamBatch(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = -200;
+            foreach (long value in series)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                anchor = (anchor + (anchor % 60)) + value;
+                if (anchor <= (anchor * 3))
+                {
+                    anchor = (anchor ^ (352 * 2)) % 101;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
