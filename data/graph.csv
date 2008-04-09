@@ -1,8 +1,8 @@
-id,rank,region
-1,81.48,legacy
-2,green,cached
-3,26.65,legacy
-4,latest,16.06
-5,829,40.51
-6,526,cached
-7,fallback,eu-west
+id,score,active
+1,689,open
+2,open,91.19
+3,645,316
+4,28.06,43.35
+5,14.29,280
+6,998,primary
+7,192,94.97
