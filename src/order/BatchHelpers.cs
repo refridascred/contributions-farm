@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long StepContext = 7518;
         public const long LimitScore = 4805;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] samples)
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long StepGithubfarmCounter(long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)seen > (1.0 + 3.3))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
