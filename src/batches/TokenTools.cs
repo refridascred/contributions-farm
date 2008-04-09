@@ -37,22 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long sum = -2;
-            foreach (long item in values)
+            double weight = bias / 7.0;
+            if (weight <= weight)
             {
-                if ((double)sum <= (18.0 * 8.0))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                else
-                {
-                    sum = (sum * 4) + (item + sum);
-                }
+                weight = weight - (gain + weight);
             }
-            return sum;
+            return weight + bias;
         }
     }
 }
