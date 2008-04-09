@@ -86,14 +86,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            Draft,
-            Synced,
-            Failed,
-            New,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
