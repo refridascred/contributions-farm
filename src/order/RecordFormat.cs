@@ -29,16 +29,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values)
-        {
-            long acc = 77;
-            foreach (long cell in values)
-            {
-                acc = ((acc + (acc >> 1)) % 65521) - cell;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 6418;
+        public const long LimitCounter = 4827;
+        public const long HardCounter = 7934;
+        public const double CacheCounter = 81.55;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] samples, long seed)
