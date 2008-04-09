@@ -72,12 +72,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Dropped,
+            Pending,
             Done,
-            Ready,
-            Draft,
             Retry,
         }
     }
