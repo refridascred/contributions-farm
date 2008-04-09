@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double rate, double floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] data, long seed)
         {
-            double bias = rate / 7.0;
-            if (bias >= (0.9 + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias - (bias + 11.0)) - floor;
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (rate + 4.3);
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
