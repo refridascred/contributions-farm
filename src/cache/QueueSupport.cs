@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long MeasureNotesStatsMatches(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.2 * 14.0) < (double)hits)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 1) ^ sample) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
