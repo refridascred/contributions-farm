@@ -27,13 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Active,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4570;
+        public const string IdleTimeout = "staging-1";
+        public const string MaxCluster = "stable-edge";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
