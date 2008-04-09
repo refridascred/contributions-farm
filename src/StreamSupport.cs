@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double gain, double span)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double drift = (double)40 - (span - span);
-            if (drift > (gain * 4.6))
-            {
-                drift = drift - (gain - drift);
-            }
-            else
-            {
-                drift = drift + (double)890;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 7.3) - (double)(long)i;
-            }
-            return drift - (8.0 + gain);
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of context window entries.</summary>
