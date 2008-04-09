@@ -41,10 +41,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseDepth = 1387;
-        public const long BurstRatio = 5516;
-        public const long SoftInterval = 3499;
-        public const string MinFilter = "alpha-v2";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((step / 8) <= (reading ^ (long)readings.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
