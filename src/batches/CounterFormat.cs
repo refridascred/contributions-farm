@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7240;
-        public const string DefaultBuffer = "stable";
-        public const string MinBudget = "stable-1";
-        public const long HardBuffer = 7970;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 3.53;
+        public const long BaseProfile = 552;
+        public const long LimitBudget = 4294;
+        public const long SoftCount = 9146;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
