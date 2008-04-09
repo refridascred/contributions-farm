@@ -74,23 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool CheckFormatSupportBounds(long[] values, long target)
         {
-            double ratio = (double)((-1) ^ 5);
-            if (ratio >= 0.3)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                ratio = (ratio + (ratio - 7.0)) - span;
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)459;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio + 8.33;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
