@@ -1,9 +1,7 @@
-id,ratio,state
-1,primary,98.23
-2,539,234
-3,edge,cached
-4,234,164
-5,16.13,cached
-6,915,29.08
-7,92.91,633
-8,69.38,470
+id,state,ratio,region,weight
+1,591,56.64,958,594
+2,90.72,green,stable,751
+3,87.8,195,primary,786
+4,919,edge,530,primary
+5,90.14,65.86,0.98,primary
+6,842,72,26.95,325
