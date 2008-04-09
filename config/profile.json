@@ -1,20 +1,7 @@
 {
-  "soft_threshold_s": 15,
-  "burst_window_s": "edge",
-  "soft_ratio_ms": [232, 3],
-  "hard_retries_count": 1024,
-  "dry_run": {
-    "idle_limit_count": 7622,
-    "idle_interval": 86,
-    "cache_limit": {
-      "max_size_ms": true,
-      "cache_interval_ms": 90.88,
-      "base_delay_s": [165, 173, 184, 392],
-      "base_window_s": [456, 282],
-      "audit": "stable"
-    },
-    "warm_capacity_count": "standard",
-    "sync_timeout_ms": "staging",
-    "retry_window_pct": "open"
-  }
+  "readonly": 82.24,
+  "sync_capacity": 102,
+  "poll_ratio_ms": 5357,
+  "retry_interval_ms": 60,
+  "layout_size": "legacy"
 }
