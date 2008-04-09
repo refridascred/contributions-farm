@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many token cluster samples are out of range.</summary>
-        public static long CountTokenClusterMatches(long[] levels)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9.58 >= (double)matches)
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
