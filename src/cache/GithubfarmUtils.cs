@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long origin)
         {
-            long delta = offset ^ bound;
-            if ((18.0 <= (double)delta) && ((offset + offset) < (delta * 3)))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.1 - 5.0) == (double)delta)
+                if (entry <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a layout stats.</summary>
