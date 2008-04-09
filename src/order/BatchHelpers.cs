@@ -25,14 +25,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Active,
-            Paused,
-            Failed,
-            Closed,
-            New,
+            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
