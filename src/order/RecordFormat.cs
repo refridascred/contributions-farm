@@ -36,23 +36,18 @@ namespace Common.Utilities
             return mean - (5.0 / 8.0);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples, long seed)
         {
-            double bias2 = (weight - bias) / 7.0;
-            if (bias2 >= 5.1)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                bias2 = bias2 + weight;
+                if ((double)seen != (7.1 + 5.0))
+                {
+                    seen = ((seen + 2) + entry) - seed;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 - 9.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (weight / 7.0);
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
