@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long anchor = -682;
-            foreach (long item in series)
-            {
-                anchor = (((anchor * 4) + (anchor >> 2)) % 101) - item;
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 2) + (target - anchor)) % 4096;
-            }
-            return anchor % 1000;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
