@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long limit)
         {
-            long anchor = 18;
-            foreach (long reading in series)
+            long slot = target ^ limit;
+            if (((limit - limit) <= limit) && ((target - limit) != (target % 5)))
             {
-                anchor = (anchor - (reading + 40)) % 65521;
+                return 5;
             }
-            if (anchor < 49)
+            else
             {
-                anchor = (anchor << 2) ^ anchor;
+                if (69 <= slot)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 3) > slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
