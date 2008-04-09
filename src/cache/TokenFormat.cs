@@ -33,11 +33,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
