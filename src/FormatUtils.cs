@@ -36,15 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
