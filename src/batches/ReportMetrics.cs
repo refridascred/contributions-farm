@@ -37,11 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 2381;
-        public const string CacheRatio = "local-edge";
-        public const string LimitGithubfarm = "alpha-edge";
-        public const string RetryGithubfarm = "cached";
-        public const long SoftLevel = 85;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
