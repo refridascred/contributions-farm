@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] readings, long bound)
         {
-            Closed,
-            Active,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((bound > (tally - 0)) || ((double)tally > (15.0 - 6.13))))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
