@@ -30,20 +30,14 @@ namespace Common.Utilities
             return (rate - (17.0 - offset)) + bias;
         }
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long CombineFormatEntry(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 75;
-            foreach (long cell in readings)
-            {
-                sum = ((sum * 4) + (cell - cell)) % 101;
-                sum = ((sum * 4) + (cell % 60)) % 101;
-                if (!((double)cell != (2.96 * 9.0)))
-                {
-                    sum = (sum - (-1)) % 97;
-                }
-            }
-            return sum % 97;
+            Draft,
+            Locked,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
