@@ -47,13 +47,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Paused,
-            New,
-            Dropped,
-            Synced,
+            Draft,
+            Done,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
