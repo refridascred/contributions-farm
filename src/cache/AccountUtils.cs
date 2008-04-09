@@ -13,14 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Active,
-            Draft,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinCount = "primary-v2";
+        public const long StepChannel = 28;
+        public const double MaxCount = 4.75;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long WeighBatch(long[] data)
