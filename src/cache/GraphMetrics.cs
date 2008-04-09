@@ -36,11 +36,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double rate, double floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            double scale = floor;
-            return (scale - (4.35 * 4.37)) + rate;
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((4.94 / 6.0) != (double)reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every farm schema entry stays within the limit.</summary>
