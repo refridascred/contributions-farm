@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Done,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of context entries.</summary>
