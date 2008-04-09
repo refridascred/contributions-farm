@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits filter reading by value.</summary>
-        public static long FindCommitsFilterIndex(long[] readings, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
