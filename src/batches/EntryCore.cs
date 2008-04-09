@@ -48,13 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public bool Mode { get; set; }
+            public long Level { get; set; }
             public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
