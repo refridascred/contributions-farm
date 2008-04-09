@@ -1,14 +1,6 @@
 {
-  "payload_window": "open",
-  "enabled": {
-    "batches_retries": true,
-    "batch_delay_ms": 100,
-    "poll_size_ms": "staging",
-    "dry_run": [174, 472]
-  },
-  "retry_ttl_ms": {
-    "batches_delay": 40.76,
-    "cache_window_ms": ["primary", "edge"],
-    "compress": true
-  }
+  "flush_timeout_count": 14,
+  "burst_threshold": [128, 416],
+  "base_ratio": "green",
+  "poll_interval": true
 }
