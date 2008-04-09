@@ -40,13 +40,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Pending,
-            Paused,
-            New,
-            Queued,
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
