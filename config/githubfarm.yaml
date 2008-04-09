@@ -1,14 +1,5 @@
 # githubfarm settings
-cache_window_ms:
-  - cached
-  - local
-  - blue
-  - local
-min_window_count:
-  - 474
-  - 173
-  - 373
-default_size_pct: eu-west
-flush_limit_ms: false
-warm_size: 56.85
-notes_retries: local
+compress: 4215
+cache_timeout_pct: true
+poll_threshold_pct: staging
+layout_interval: 250
