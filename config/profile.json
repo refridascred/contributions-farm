@@ -1,5 +1,6 @@
 {
-  "context_interval": "local",
-  "min_capacity": 52.6,
-  "poll_threshold_s": 98.33
+  "readonly": 500,
+  "max_threshold_pct": 87.64,
+  "dry_run": 1.27,
+  "idle_ttl_count": 42.73
 }
