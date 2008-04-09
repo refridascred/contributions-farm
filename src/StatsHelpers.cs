@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Idle,
-            Locked,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitDepth = 5092;
+        public const string DefaultInterval = "legacy";
+        public const long BatchToken = 4282;
+        public const long LimitToken = 2423;
+        public const double MinToken = 12.89;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double gain, double offset)
