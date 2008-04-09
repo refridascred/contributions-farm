@@ -1,8 +1,7 @@
-id,active,ratio
-1,staging,standard
-2,501,223
-3,legacy,441
-4,98.18,latest
-5,210,81.79
-6,915,66.29
-7,stable,primary
+id,weight,ratio
+1,staging,91.63
+2,8,eu-west
+3,925,staging
+4,916,112
+5,primary,latest
+6,384,368
