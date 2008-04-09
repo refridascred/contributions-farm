@@ -1,5 +1,9 @@
 # githubfarm settings
-compress: 4215
-cache_timeout_pct: true
-poll_threshold_pct: staging
-layout_interval: 250
+persist: 1024
+filter_ratio:
+  - primary
+  - fallback
+  - open
+  - open
+base_timeout: true
+tools_capacity: true
