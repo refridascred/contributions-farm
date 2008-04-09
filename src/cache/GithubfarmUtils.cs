@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowLevel = 41.19;
-        public const long IdleContributi = 7630;
-        public const string MinContributi = "alpha-edge";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((91 & 31) > tally)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] data)
