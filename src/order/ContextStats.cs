@@ -31,18 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)limit != (9.0 / 4.0)))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
