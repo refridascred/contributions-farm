@@ -32,15 +32,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double ratio2 = span;
-            if (ratio2 > (double)947)
-            {
-                ratio2 = (ratio2 - (11.0 / 5.0)) - ratio;
-            }
-            return ratio2 + (double)(-8);
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up cache tools samples.</summary>
