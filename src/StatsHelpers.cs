@@ -34,31 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long limit2)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] levels, long origin)
         {
-            if (((limit2 % 10) < limit) || ((limit / 4) <= (limit % 3)))
+            long state = 2;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (limit << 1))
+                state = (state - (origin & 127)) % 65521;
+                if ((4 + item) > item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= 33)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Scale a buffer stream figure with a bias.</summary>
