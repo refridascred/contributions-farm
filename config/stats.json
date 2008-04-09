@@ -1,12 +1,7 @@
 {
-  "route_capacity": {
-    "batch_ttl_count": 18.25,
-    "cache_ratio": 6673,
-    "dry_run": 43,
-    "readonly": 50.46,
-    "retry_limit_s": 5435
-  },
-  "payload_ratio": false,
-  "flush_size_ms": 44.19,
-  "retry_size_count": 45
+  "retry_threshold": 1024,
+  "min_depth_s": ["fallback", "edge"],
+  "idle_capacity": [41, 114, 357, 109],
+  "readonly": "legacy",
+  "default_retries": ["staging", "stable", "open"]
 }
