@@ -56,17 +56,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 215;
+            foreach (long reading in items)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + reading;
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
