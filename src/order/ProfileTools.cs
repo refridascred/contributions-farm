@@ -51,21 +51,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Rank report stream input into a small class.</summary>
+        public static long SortReportStream(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = floor + seed;
+            if (seed >= (7 / 8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (cur > 88)
                 {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
