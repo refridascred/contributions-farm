@@ -55,11 +55,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstDepth = 8172;
+        public const string LimitInterval = "fallback-v2";
+        public const string BatchWidth = "standard-v2";
     }
 }
