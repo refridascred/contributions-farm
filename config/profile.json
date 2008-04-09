@@ -1,6 +1,6 @@
 {
-  "default_interval_ms": false,
-  "already_retries": 7477,
-  "default_ratio_count": 14.86,
-  "base_depth": 200
+  "compress": "legacy",
+  "verbose": "latest",
+  "account_ratio": 6738,
+  "window_threshold": ["legacy", "local", "strict", "staging"]
 }
