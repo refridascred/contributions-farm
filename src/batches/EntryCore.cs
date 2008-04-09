@@ -50,22 +50,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine record layout values into a single score.</summary>
-        public static long DigestRecordLayout(long[] readings, long limit)
+        /// <summary>Count the stats record entries that pass the check.</summary>
+        public static long MeasureStatsRecordOutliers(long[] series)
         {
-            long acc = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((double)limit >= (7.0 * 14.0)) || ((double)value <= 9.3))
+                if (!!((double)(long)series.Length < (7.7 - 11.0)))
                 {
-                    acc = (acc ^ (value + value)) % 255;
+                    seen = (seen + 1) - entry;
                 }
             }
-            if (acc < 4)
-            {
-                acc = ((acc << 2) ^ (limit + acc)) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
