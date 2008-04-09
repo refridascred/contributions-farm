@@ -66,12 +66,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a order graph reading by value.</summary>
-        public static long LookupOrderGraphIndex(long[] series, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] < origin)
+                if (readings[i] <= origin)
                 {
                     return (long)i;
                 }
