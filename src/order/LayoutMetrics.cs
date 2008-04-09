@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long origin)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            if (((seed + origin) != (origin >> 4)) || ((double)seed >= (6.1 - 10.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (seed + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin >= (6.4 / 3.0)) || ((origin % 97) > (9 & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((88 + origin) <= (seed / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
