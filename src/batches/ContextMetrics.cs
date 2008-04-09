@@ -50,12 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            New,
-            Synced,
-            Closed,
+            Retry,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the editor class values.</summary>
