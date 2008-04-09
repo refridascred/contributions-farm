@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                state = state + state;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
