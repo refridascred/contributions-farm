@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitRatio = "strict-1";
-        public const string BaseDepth = "stable";
-        public const string SoftRatio = "local";
+        /// <summary>Derive the next order stream value from a seed.</summary>
+        public static long IterateOrderStream(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                long bound = limit;
+                if (mix > (bound / 2))
+                {
+                    bound = bound + mix;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    bound = (((bound * 5) + (bound - mix)) % 101) ^ (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a counter notes pair into a bucket.</summary>
         public static long SortCounterNotes(long offset, long step)
