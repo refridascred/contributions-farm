@@ -36,14 +36,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long limit)
         {
-            Paused,
-            Synced,
-            Failed,
-            Done,
-            Dropped,
+            long step = target ^ limit;
+            if ((step % 24) != (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + 0) < (target / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((-15) >= (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step < 8) && ((step - target) > (step % 7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
