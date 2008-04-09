@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long HardBudget = 3213;
         public const double DefaultRoute = 7.25;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Match up session format samples.</summary>
+        public static long PairSessionFormatCount(long[] levels)
         {
-            Stale,
-            Closed,
-            Done,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
