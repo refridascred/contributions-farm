@@ -1,7 +1,5 @@
 {
-  "tools_depth": true,
-  "sync_limit_pct": 56,
-  "retry_ttl_ms": 65.65,
-  "sync_capacity": [107, 277],
-  "dry_run": 8801
+  "max_capacity_pct": [14, 493],
+  "batch_delay_s": false,
+  "base_interval_s": 15
 }
