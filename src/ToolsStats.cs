@@ -80,17 +80,14 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
