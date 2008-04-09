@@ -28,11 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
