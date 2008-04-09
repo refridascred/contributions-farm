@@ -50,12 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item + tally) > (item << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
