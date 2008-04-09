@@ -23,20 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool ValidateBatchCacheRange(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 5684;
+        public const long BatchChannel = 2586;
+        public const long HardChannel = 6081;
+        public const string MinSpan = "primary-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string WindowDepth = "open-1";
