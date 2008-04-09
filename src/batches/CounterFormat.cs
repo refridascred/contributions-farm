@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Failed,
-            Paused,
-            Stale,
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
