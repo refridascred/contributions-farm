@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const long LimitChannel = 4475;
         public const long RetryFactor = 5101;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a layout batch counter forward.</summary>
+        public static long IterateLayoutBatch(long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
