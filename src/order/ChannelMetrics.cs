@@ -36,10 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryLevel = 89.59;
-        public const long MinSpan = 1038;
-        public const string BurstRatio = "cached-v2";
-        public const long HardStream = 6659;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
