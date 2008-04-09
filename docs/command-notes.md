@@ -1,12 +1,14 @@
 # Command notes
 
-The window module keeps cache values in sync with the stats cache.
-Each account is validated before it reaches the batch queue.
-Each queue is validated before it reaches the layout queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+The profile module keeps command values in sync with the session cache.
+Run the githubfarm check before changing any layout limits.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+The metric report groups every support by stats.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new notes fields
-- Review metric limits each release
-- Validate stream input early
+- Prefer stats defaults
+- Validate payload input early
+- Keep metric values small
