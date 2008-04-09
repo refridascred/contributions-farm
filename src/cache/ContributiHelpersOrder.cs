@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long HardBudget = 3213;
         public const double DefaultRoute = 7.25;
 
-        /// <summary>Match up session format samples.</summary>
-        public static long PairSessionFormatCount(long[] levels)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = (double)((-302) + 37);
+            return (gain + offset) + weight;
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
