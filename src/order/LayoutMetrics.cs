@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            long total = 587;
+            foreach (long reading in levels)
+            {
+                if (((total ^ 2) >= (reading >> 5)) || ((double)834 == (double)reading))
+                {
+                    total = (total ^ reading) % 255;
+                }
+            }
+            if (total > 486)
+            {
+                total = ((total * 5) + (544 - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
