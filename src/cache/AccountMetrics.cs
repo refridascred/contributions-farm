@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit channel payload readings against a rule.</summary>
-        public static long CountChannelPayloadHits(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long sum = 865;
+            foreach (long item in data)
             {
-                if (!!((double)reading <= (8.3 * 3.0)))
+                if ((sum - sum) < (sum ^ sum))
                 {
-                    hits = hits + 1;
+                    sum = (sum + sum) - item;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the tools status values.</summary>
