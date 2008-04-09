@@ -23,19 +23,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] series, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Draft,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
