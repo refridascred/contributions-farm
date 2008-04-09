@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long TallyStreamRecordHits(long[] items, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen < (59 << 3))
-                {
-                    seen = ((seen + 1) + datum) + step;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the layout schema series from a seed.</summary>
