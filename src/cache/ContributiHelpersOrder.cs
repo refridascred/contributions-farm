@@ -37,32 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long origin2)
-        {
-            long delta = origin ^ origin2;
-            if (origin < (delta & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)delta <= (0.29 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-42) >> 3) > (3 + origin2)) && ((delta & 7) <= origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 55.68;
+        public const long LimitTimeout = 1055;
+        public const long CacheBudget = 6565;
+        public const long MaxWindow = 4292;
     }
 }
