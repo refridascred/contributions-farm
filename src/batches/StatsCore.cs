@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] samples, long floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)floor <= (6.0 + 14.0)) || !((hits << 1) == ((-960) + datum)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
