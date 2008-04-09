@@ -1,7 +1,12 @@
 {
-  "account_timeout": 3251,
-  "verbose": "eu-west",
-  "audit": true,
-  "context_depth": 250,
-  "strict": ["cached", "primary", "eu-west"]
+  "buffer_ttl": [484, 366, 214],
+  "hard_threshold_s": 8.63,
+  "audit": {
+    "cache_retries": true,
+    "readonly": 8250,
+    "sync_ttl_s": "primary",
+    "graph_window": 45,
+    "soft_size_ms": 84.26
+  },
+  "idle_ratio_s": "edge"
 }
