@@ -56,9 +56,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstDepth = 8172;
-        public const string LimitInterval = "fallback-v2";
-        public const string BatchWidth = "standard-v2";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
+        {
+            long state = 0;
+            foreach (long entry in values)
+            {
+                state = ((state << 2) ^ ((-9) + entry)) % 65521;
+                state = state ^ (entry << 1);
+            }
+            return state;
+        }
     }
 }
