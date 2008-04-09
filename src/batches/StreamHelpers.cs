@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long RetryOrder = 2486;
         public const double DefaultOrder = 86.94;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((long)i < (origin % 24)))
+                if ((tally ^ sample) > sample)
                 {
-                    break;
+                    tally = tally + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
