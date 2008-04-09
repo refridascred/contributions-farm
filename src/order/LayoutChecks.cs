@@ -39,12 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long limit)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long acc = 0;
+            foreach (long sample in values)
+            {
+                if ((4.17 >= (double)limit) || ((sample ^ acc) >= (sample ^ limit)))
+                {
+                    acc = ((acc * 3) + sample) % 97;
+                }
+            }
+            if (acc > 403)
+            {
+                acc = (acc << 2) ^ (limit * 2);
+            }
+            return acc;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
