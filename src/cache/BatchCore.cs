@@ -27,11 +27,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long limit)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload schema samples are out of range.</summary>
