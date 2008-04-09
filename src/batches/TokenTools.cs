@@ -13,21 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Find the first payload buffer entry that matches the target.</summary>
+        public static long SeekPayloadBufferIndex(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < target)
                 {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
