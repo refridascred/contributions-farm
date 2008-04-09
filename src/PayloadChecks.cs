@@ -38,17 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch farm reading by value.</summary>
-        public static long LookupBatchFarmIndex(long[] readings, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (8.0 <= (double)limit)
             {
-                if (readings[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if (((seed + 533) <= (seed + limit)) || (seed <= (limit - seed)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
