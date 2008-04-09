@@ -43,11 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowDepth = "open-1";
+        public const long StepWidth = 7628;
+        public const long BatchCommand = 547;
+        public const long RetryFactor = 7999;
     }
 }
