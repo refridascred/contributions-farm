@@ -1,9 +1,8 @@
-id,count,token,label,region
-1,latest,standard,10.27,12.97
-2,strict,55.54,230,fallback
-3,edge,97.53,61.22,659
-4,eu-west,88.42,green,43.12
-5,85.78,stable,516,primary
-6,green,26.78,legacy,0.86
-7,617,901,36.81,latest
-8,423,eu-west,671,362
+id,rank,region,ratio
+1,979,16,27.05
+2,fallback,192,799
+3,151,22.16,16.58
+4,edge,eu-west,blue
+5,71.8,12.45,807
+6,18.44,242,81.36
+7,9,485,77.29
