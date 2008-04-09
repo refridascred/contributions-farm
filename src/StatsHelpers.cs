@@ -48,19 +48,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (((state * 5) + state) % 97) + (long)i2;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
