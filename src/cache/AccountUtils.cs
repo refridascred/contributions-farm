@@ -36,19 +36,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 8;
-            foreach (long item in values)
-            {
-                score = ((score << 3) ^ (score << 1)) + item;
-            }
-            if (score < 9)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score % 1000;
+            Pending,
+            Ready,
+            Paused,
+            Draft,
+            Stale,
         }
     }
 }
