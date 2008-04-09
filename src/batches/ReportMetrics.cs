@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 58.92;
-        public const double BurstBuffer = 27.23;
-        public const long BatchBuffer = 2970;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!(((floor >> 3) == (floor / 4)) && ((seen + seen) < (value >> 3))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamHits(long[] samples)
