@@ -1,12 +1,55 @@
 # support settings
-metrics_interval:
+max_depth_ms:
+  - open
+  - local
   - eu-west
-  - latest
-  - cached
-  - staging
-audit:
-  - cached
-  - green
-soft_depth_ms: stable
-retry_timeout_s: 83.3
-stats_retries: fallback
+base_window: cached
+record_limit:
+  min_limit_ms: fallback
+  burst_depth:
+    - primary
+    - blue
+    - local
+  hard_threshold: false
+  min_timeout_pct:
+    window_capacity: stable
+    min_window:
+      - 153
+      - 35
+      - 477
+    dry_run: 2907
+  enabled: 30.63
+window_interval: 60
+poll_interval_count: stable
+min_delay:
+  soft_limit:
+    poll_ratio_count: 65.61
+    base_limit_s:
+      - 487
+      - 81
+      - 395
+      - 238
+    min_limit_ms: 32
+    default_interval_pct: blue
+  token_delay:
+    soft_depth_ms: strict
+    route_delay: 60
+    commits_threshold: 30
+    warm_capacity_s: 67.94
+    batch_ttl_count: true
+    retry_window_count: 5
+  burst_capacity_ms:
+    burst_capacity_ms: 71
+    base_interval: 1811
+    strict: 30
+    format_capacity: local
+  channel_interval: 250
+  compress:
+    retry_interval_count: true
+    cluster_threshold:
+      - latest
+      - primary
+      - staging
+      - blue
+    max_interval: 27.24
+  context_limit: true
