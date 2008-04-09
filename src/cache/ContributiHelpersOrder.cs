@@ -30,23 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics entry values into a single score.</summary>
-        public static long TallyMetricsEntry(long[] readings)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mix = 7;
-            foreach (long reading in readings)
-            {
-                mix = (mix ^ (reading << 2)) % 101;
-                if ((double)mix <= (1.08 - 9.5))
-                {
-                    mix = (mix << 3) ^ (reading % 100);
-                }
-                if (((5.6 * 9.0) >= (double)mix) && (3.0 >= (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
