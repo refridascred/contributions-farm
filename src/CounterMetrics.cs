@@ -20,25 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long offset = seed + origin;
-            if (origin < (7 % 3))
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                result = (result - (limit & 31)) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!(offset > (seed - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
