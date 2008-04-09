@@ -31,15 +31,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate already checks samples.</summary>
-        public static long CombineAlreadyChecks(long[] items, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = 58;
-            foreach (long cell in items)
-            {
-                total = (((total << 2) ^ (limit >> 3)) % 1000) ^ cell;
-            }
-            return total % 65521;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the layout state values.</summary>
