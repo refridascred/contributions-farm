@@ -35,17 +35,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (floor > (floor - floor))
             {
-                if (values[i] <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((floor % 5) != (floor - (-7)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor - offset) == (offset * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
