@@ -49,21 +49,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = offset + step;
+            if (step >= (cur / 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((7 & 1) <= step)
                 {
-                    if ((items[i] ^ items[j]) == 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (0.9 + 6.6))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((2.0 + 2.5) > (3.56 - 2.04)) && ((double)step > 2.1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
