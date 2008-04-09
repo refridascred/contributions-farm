@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long target)
         {
-            Active,
-            Paused,
-            Pending,
-            Dropped,
-            Done,
+            long gap = offset - target;
+            if (!((double)offset >= (8.0 + 2.7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (gap > 9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - target) > 11) || ((offset - gap) <= target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a order counter forward.</summary>
