@@ -50,18 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinWidth = 90.95;
+        public const string WindowWidth = "staging-1";
+        public const long SoftQueue = 5960;
+        public const string WindowQueue = "fallback-edge";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] values, long floor)
