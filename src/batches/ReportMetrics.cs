@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long BurstAlready = 5678;
         public const long MinScore = 3215;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long state = 1;
-            foreach (long reading in levels)
-            {
-                state = ((state * 5) + (state >> 2)) - reading;
-            }
-            if (state < 78)
-            {
-                state = (state << 2) ^ (state << 1);
-            }
-            return state;
+            Failed,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
