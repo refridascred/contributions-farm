@@ -49,19 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
