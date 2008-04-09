@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long origin2)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] levels, long offset)
         {
-            long lane = origin ^ origin2;
-            if ((origin2 - origin2) >= (lane & 127))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (lane > (origin + lane))
+                if (datum >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.69 * 13.0) == (double)lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
