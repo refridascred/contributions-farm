@@ -56,22 +56,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 4346;
+        public const long RetryCount = 6963;
+        public const string IdleContributi = "primary-1";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] readings)
