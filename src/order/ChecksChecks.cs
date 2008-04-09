@@ -19,18 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] values)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (matches > entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Synced,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the graph status values.</summary>
