@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long BatchLayout = 4298;
         public const long BurstLayout = 3073;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 4496;
+        public const string IdleScore = "strict-v2";
+        public const double BaseCount = 2.15;
+        public const double BurstCount = 6.39;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheCount = 8286;
