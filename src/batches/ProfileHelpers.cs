@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph editor reading by value.</summary>
-        public static long FindGraphEditorIndex(long[] levels, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
