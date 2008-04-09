@@ -1,7 +1,11 @@
 {
-  "hard_window_s": 1212,
-  "audit": true,
-  "batch_interval_ms": 56.5,
-  "min_timeout_ms": false,
-  "retry_ratio_ms": true
+  "readonly": false,
+  "base_timeout_pct": 128,
+  "retry_retries": "primary",
+  "burst_ttl_ms": 30,
+  "poll_ratio": {
+    "soft_window_pct": 5131,
+    "poll_ratio_ms": "open",
+    "dry_run": "open"
+  }
 }
