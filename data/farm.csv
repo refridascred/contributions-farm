@@ -1,10 +1,7 @@
-id,active,weight,level
-1,81.45,87.78,local
-2,strict,blue,local
-3,fallback,89.6,759
-4,360,981,659
-5,48.46,22.76,primary
-6,fallback,653,12.83
-7,779,standard,343
-8,612,primary,0.94
-9,628,edge,standard
+id,score,label
+1,fallback,274
+2,fallback,854
+3,strict,621
+4,green,93.45
+5,72.0,29.43
+6,112,eu-west
