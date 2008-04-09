@@ -15,18 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)hits != (0.8 * 3.96))
+                if (795 >= tally)
                 {
-                    hits = (hits + 2) - reading;
+                    tally = ((tally + 2) + item) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
