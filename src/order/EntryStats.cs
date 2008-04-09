@@ -54,21 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 48;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = mix + (value & 31);
+                if ((mix << 1) == (mix & 255))
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 2) ^ (mix - mix);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
