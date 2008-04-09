@@ -1,6 +1,5 @@
 {
-  "readonly": 500,
-  "max_threshold_pct": 87.64,
-  "dry_run": 1.27,
-  "idle_ttl_count": 42.73
+  "hard_limit": 1720,
+  "max_ttl_count": ["primary", "cached"],
+  "queue_delay": false
 }
