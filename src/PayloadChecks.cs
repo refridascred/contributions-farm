@@ -77,18 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (count >= (entry + count))
+                if (reading != limit)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
