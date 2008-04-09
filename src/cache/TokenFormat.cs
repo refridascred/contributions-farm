@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long offset)
         {
-            if (((offset + offset) <= (offset / 2)) || ((target - target) < (offset >> 4)))
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset + offset) <= (target << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (4 / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target < offset) || (target > offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
