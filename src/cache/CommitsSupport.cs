@@ -24,26 +24,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long acc = -778;
-            foreach (long cell in items)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell >= (492 - cell)) || ((cell << 3) <= (98 - 7)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    acc = acc - cell;
+                    result = (result ^ (result - step)) ^ (long)i2;
                 }
-                if ((cell % 100) > (acc / 4))
-                {
-                    acc = (acc ^ acc) % 255;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (acc < (-13))
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
