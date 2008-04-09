@@ -37,15 +37,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Done,
-            Draft,
-            Queued,
-            Dropped,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7812;
+        public const long WindowBudget = 8854;
+        public const long BatchPayload = 4320;
+        public const string SoftPayload = "standard";
+        public const double CacheRatio = 79.14;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
