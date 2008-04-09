@@ -46,13 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            Retry,
-            Synced,
-            Active,
-            Queued,
+            long carry = 4;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry ^ (carry + 909)) + (long)i;
+                }
+                if ((value < (carry << 2)) || ((carry % 5) > (carry << 1)))
+                {
+                    carry = (carry << 2) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
