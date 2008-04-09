@@ -39,22 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long acc = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.17 >= (double)limit) || ((sample ^ acc) >= (sample ^ limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 3) + sample) % 97;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 403)
-            {
-                acc = (acc << 2) ^ (limit * 2);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
