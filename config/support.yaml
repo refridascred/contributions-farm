@@ -1,28 +1,9 @@
 # support settings
-report_delay: 8.56
-cache_threshold_pct:
-  base_threshold: true
-  batch_size: open
-  retry_window_ms: 7579
-  base_interval_s:
-    - edge
-    - stable
-  flush_retries: 1033
-  base_delay:
-    - strict
-    - cached
-    - staging
-    - green
-enabled: 533
-min_ratio:
-  strict: true
-  metric_limit:
-    soft_retries_count: cached
-    warm_depth: fallback
-    flush_limit_count: blue
-    payload_retries: 40.31
-  max_timeout_ms:
-    - stable
-    - standard
-    - open
-    - edge
+persist: cached
+retry_capacity_s: false
+report_ratio:
+  - 270
+  - 320
+  - 374
+max_size_ms: true
+channel_interval: 81.72
