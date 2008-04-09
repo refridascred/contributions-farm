@@ -1,16 +1,7 @@
 # entry settings
-cache_size_ms:
-  - 38
-  - 57
-  - 143
-  - 472
-flush_interval: staging
-verbose: local
-max_size:
-  filter_interval: edge
-  flush_threshold_count: 3726
-  audit:
-    - 457
-    - 84
-  cache_ratio_ms: 1024
-tools_ratio: 26
+base_delay_s: 90
+cache_ttl_pct: 18.77
+retry_timeout_count: 77.57
+warm_limit_pct: blue
+support_threshold: standard
+default_ttl_ms: edge
