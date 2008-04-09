@@ -12,20 +12,14 @@ namespace Common.Utilities
         public const string BurstTools = "primary-v2";
         public const long LimitTools = 1034;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long carry = 792;
-            foreach (long sample in levels)
-            {
-                carry = (carry ^ (sample >> 5)) % 97;
-                carry = carry - (step + carry);
-            }
-            if (carry > 6)
-            {
-                carry = (carry - (step << 3)) % 1000;
-            }
-            return carry % 65521;
+            Failed,
+            Active,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the checks mode values.</summary>
