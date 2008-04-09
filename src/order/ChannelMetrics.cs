@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long score = 591;
-            foreach (long reading in levels)
-            {
-                if ((double)step < (1.15 - 5.1))
-                {
-                    score = (score - reading) % 1000;
-                }
-            }
-            return score;
+            Synced,
+            Locked,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
