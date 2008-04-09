@@ -1,11 +1,13 @@
 {
-  "retry_ratio_ms": false,
-  "default_timeout": 500,
-  "audit": [102, 162],
-  "batch_limit": 1483,
-  "warm_capacity_count": {
-    "flush_size_count": "edge",
-    "farm_ttl": 1846,
-    "compress": 11
+  "readonly": true,
+  "dry_run": 2838,
+  "cache_delay": "eu-west",
+  "retry_capacity": ["fallback", "stable"],
+  "flush_interval_s": {
+    "soft_limit": true,
+    "readonly": 370,
+    "burst_retries": 58.14,
+    "metric_ttl": false,
+    "batch_limit": [280, 357]
   }
 }
