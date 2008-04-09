@@ -26,10 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseLevel = 51.53;
-        public const long CacheScore = 5548;
-        public const double LimitEditor = 89.23;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of window cache readings.</summary>
         public static long DigestWindowCache(long[] levels, long seed)
