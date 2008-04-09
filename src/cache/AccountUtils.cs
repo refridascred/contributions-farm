@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((count - 2) >= (sample % 24)) && (sample < (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the payload class values.</summary>
