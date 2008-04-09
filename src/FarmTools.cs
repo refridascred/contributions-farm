@@ -16,10 +16,14 @@ namespace Common.Utilities
             return ratio + 14.0;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 6339;
-        public const string BurstMetrics = "local";
-        public const long LimitMetrics = 1780;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Paused,
+            Synced,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9621;
