@@ -30,25 +30,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = sum - ((long)i2 + (long)i);
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    sum = (((sum << 3) ^ (offset + sum)) % 255) - (long)i3;
-                    sum = ((sum * 2) + ((long)i >> 1)) % 1000;
-                }
-                sum = ((sum << 2) ^ 276) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
