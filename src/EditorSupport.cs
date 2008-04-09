@@ -47,18 +47,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] data, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)origin >= (7.76 + 18.0))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
