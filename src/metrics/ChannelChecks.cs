@@ -52,15 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits queue value.</summary>
-        public static double ProjectCommitsQueue(double rate, double offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            double gain = (double)(8 << 1);
-            if (gain >= (offset - gain))
+            double bias2 = (double)(366 << 1);
+            if (bias2 <= bias)
             {
-                gain = gain + (double)(-400);
+                bias2 = (bias2 + 16.0) - weight;
             }
-            return gain + (rate * 5.12);
+            return bias2 - bias2;
         }
 
         /// <summary>Combine report values into a single score.</summary>
