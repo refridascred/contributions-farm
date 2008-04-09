@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] values, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.2 + 9.0) == (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 3) ^ sample) + limit;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
