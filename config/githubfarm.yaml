@@ -1,14 +1,4 @@
 # githubfarm settings
-tools_depth:
-  - 186
-  - 116
-  - 405
-  - 139
-compress:
-  - blue
-  - legacy
-verbose: 490
-flush_size_ms:
-  - 313
-  - 2
-idle_retries_s: local
+default_threshold_count: 30
+cache_interval_s: 2610
+dry_run: 19.66
