@@ -49,28 +49,36 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long limit)
+        /// <summary>Classify a metric entry pair into a bucket.</summary>
+        public static long SortMetricEntry(long bound, long seed)
         {
-            if (6.23 < (double)origin)
+            long cur = bound ^ seed;
+            if (cur < bound)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((double)limit >= (double)origin)
+                if ((bound >> 4) != (cur - seed))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((0.54 / 6.0) != (double)limit)
+                    if (96 >= cur)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if ((seed ^ bound) == (8 << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
