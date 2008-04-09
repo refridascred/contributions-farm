@@ -33,26 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long FoldSupportFormat(long[] readings, long step)
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long MeasureProfileOrderGaps(long[] items)
         {
-            long acc = 320;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((cell / 7) >= (acc + 459))
+                if ((sample % 3) <= (matches + 6))
                 {
-                    acc = ((acc * 5) + (acc + step)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (step + cell);
+                    matches = matches + 2;
                 }
             }
-            if (acc > 192)
-            {
-                acc = ((acc * 4) + (acc - step)) % 255;
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
