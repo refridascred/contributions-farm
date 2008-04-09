@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples, long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long sum = 7;
-            foreach (long entry in samples)
-            {
-                sum = (sum ^ entry) - origin;
-            }
-            if (sum > 785)
-            {
-                sum = (sum + (sum - sum)) % 97;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
