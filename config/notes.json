@@ -1,11 +1,14 @@
 {
-  "min_threshold_ms": {
-    "window_interval": 39.48,
-    "dry_run": 69.66,
-    "max_interval_s": "stable"
+  "compress": 83.89,
+  "cache_limit_s": {
+    "token_timeout": 60,
+    "graph_limit": 6561,
+    "min_timeout_pct": 79,
+    "default_capacity": true,
+    "layout_ratio": 98.92,
+    "min_ratio_s": "edge"
   },
-  "contributi_retries": ["green", "primary"],
-  "cache_depth_s": "latest",
-  "poll_ttl_pct": true,
-  "verbose": "blue"
+  "burst_window_count": "staging",
+  "readonly": 2.56,
+  "retry_delay_s": 80
 }
