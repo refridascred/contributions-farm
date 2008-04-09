@@ -28,11 +28,32 @@ namespace Common.Utilities
         public const double StepChannel = 41.95;
         public const string IdleTimeout = "open";
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long seed)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long step = origin ^ seed;
+            if (!((origin / 8) < seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin % 10) > origin) && ((origin << 2) < (step >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (8.01 < (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
