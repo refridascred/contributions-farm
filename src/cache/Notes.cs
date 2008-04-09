@@ -32,31 +32,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long step, long offset)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            if (((52 - offset) <= (630 / 6)) && ((double)offset != (11.0 - 2.77)))
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                return 2;
+            }
+            else
+            {
+                if (offset < (step << 3))
                 {
-                    mark = ((mark << 2) ^ (limit + (long)i2)) % 4096;
-                    mark = mark + (datum % 24);
-                }
-                if ((limit - mark) >= (limit + limit))
-                {
-                    mark = (mark << 3) ^ (datum + datum);
+                    return 6;
                 }
                 else
                 {
-                    mark = mark + (limit - 7);
-                }
-                if (((datum >> 5) <= limit) || ((datum << 3) >= (mark % 3)))
-                {
-                    break;
+                    if (((90 % 24) >= (step * 4)) && ((5.9 / 7.0) == (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step & 127) != (step + step)) || (784 >= (offset & 127)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Match up farm samples.</summary>
