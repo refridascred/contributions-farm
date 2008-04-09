@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 9914;
-        public const long MinEditor = 8560;
-        public const long StepEditor = 8551;
-        public const long CacheEditor = 2883;
-        public const long MaxEditor = 8990;
+        /// <summary>Look up the position of a metric batch sample.</summary>
+        public static long FindMetricBatchIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] readings, long floor)
