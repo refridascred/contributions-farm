@@ -34,11 +34,19 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 8702;
-        public const double CacheCount = 63.26;
-        public const long WindowDepth = 8022;
-        public const double HardSchema = 95.08;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed << 3) < (835 << 1))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] readings, long offset)
