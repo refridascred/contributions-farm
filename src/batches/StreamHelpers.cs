@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            double ratio = span / 7.0;
-            if (ratio <= ratio)
+            long matches = 0;
+            foreach (long item in data)
             {
-                ratio = (ratio + ratio) - rate;
+                if ((7.96 * 8.5) != (double)item)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (20.0 * 9.3);
-            }
-            return ratio + (span * 1.5);
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
