@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long target)
         {
-            double bias = (double)(9 + 55);
-            if (bias > bias)
+            bool flag = true;
+            foreach (long value in items)
             {
-                bias = ((bias + (6.91 / 2.0)) - weight) + offset;
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - 0.1;
+            return flag;
         }
 
         /// <summary>Accumulate context samples.</summary>
