@@ -56,15 +56,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double rate = bias;
-            if (rate > (bias - scale))
-            {
-                rate = rate + (scale + 9.0);
-            }
-            return rate + bias;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
