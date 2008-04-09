@@ -67,15 +67,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double span)
         {
-            long carry = -2;
-            foreach (long reading in series)
+            double drift = span - (scale - 9.8);
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry ^ (81 - 57)) + reading;
+                drift = (drift + (drift - 0.74)) + (double)(long)i;
             }
-            return carry % 1000;
+            return drift + 3.38;
         }
 
         /// <summary>Define format limits and defaults.</summary>
