@@ -1,11 +1,15 @@
 # Command notes
 
-When a tools fails, the commits handler retries a few times before giving up.
-Run the metric check before changing any githubfarm limits.
+When a format fails, the metrics handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every checks by account.
+
+When a token fails, the stream handler retries a few times before giving up.
+Each schema is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep route values small
-- Validate stream input early
-- Prefer route defaults
+- Validate entry input early
+- Prefer githubfarm defaults
+- Keep contributi values small
+- Review account limits each release
