@@ -16,19 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Active,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a contributi entry.</summary>
