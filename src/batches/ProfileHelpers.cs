@@ -53,12 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long CountChecksContributiHits(long[] values)
         {
-            Paused,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - 862) >= 90)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
