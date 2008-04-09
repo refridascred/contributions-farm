@@ -31,18 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] levels, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((tally & 1) == (datum / 3))
+                if (cell >= ((long)readings.Length * 3))
                 {
-                    tally = (tally + 1) - floor;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
