@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 78;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.57 - 18.0) == (double)sample)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 5) + (sum + sum);
                 }
             }
-            return count;
+            if (sum < 38)
+            {
+                sum = ((sum * 4) + origin) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache state values.</summary>
