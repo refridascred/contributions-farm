@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every queue report entry stays within the limit.</summary>
-        public static bool CheckQueueReportLimits(long[] readings, long target)
+        /// <summary>Roll a notes token counter forward.</summary>
+        public static long DeriveNotesToken(long floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
