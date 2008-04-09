@@ -12,18 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] readings, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 3;
+            foreach (long value in samples)
             {
-                if ((reading + reading) <= bound)
+                if ((step - step) >= (step << 1))
                 {
-                    matches = matches + 1;
+                    sum = (sum - (9 << 2)) ^ value;
+                }
+                else
+                {
+                    sum = (sum * 5) + step;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine metrics entry values into a single score.</summary>
