@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 11.35;
         public const long LimitCounter = 1100;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((hits & 255) != (reading & 1))
+                if (!(((double)count > (10.0 - 5.88)) || ((reading - count) <= count)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cluster status values.</summary>
