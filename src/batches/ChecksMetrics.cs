@@ -56,12 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 1399;
-        public const long WindowDepth = 6662;
-        public const string BatchFactor = "primary-1";
-        public const string CacheGithubfarm = "fallback-v2";
-        public const long HardCount = 4888;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 984;
+        public const string WindowRecord = "local";
+        public const long MinSpan = 9993;
+        public const double RetryCount = 61.96;
+        public const string BaseCount = "strict";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] levels)
