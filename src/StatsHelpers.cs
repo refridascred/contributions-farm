@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8060;
-        public const long LimitScore = 6725;
-        public const string WindowSpan = "alpha-v2";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            Locked,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
