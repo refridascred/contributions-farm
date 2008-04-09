@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
+            if (((offset + offset) <= (offset / 2)) || ((target - target) < (offset >> 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) <= (target << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > (4 / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target < offset) || (target > offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of context entries.</summary>
