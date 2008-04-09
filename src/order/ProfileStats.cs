@@ -41,18 +41,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] levels, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((limit >> 2) > limit)
             {
-                if (!((reading % 16) == (61 + reading)) || (((reading + origin) == (count + origin)) && ((count - count) <= (count + count))))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit2 <= (4.4 - 5.0))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((1.0 / 7.0) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit2 != (6.3 + 9.39)) && ((limit2 % 3) < limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
