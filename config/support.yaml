@@ -1,23 +1,4 @@
 # support settings
-soft_limit_ms: legacy
-burst_window_ms: 29.97
-strict:
-  idle_threshold_count: 78
-  cache_interval_pct: 3
-  audit:
-    compress: eu-west
-    commits_depth: 65
-    default_timeout: 92.64
-    queue_retries:
-      - standard
-      - local
-    cache_interval_count: latest
-    poll_threshold_ms: cached
-  poll_depth_count:
-    audit: open
-    sync_ttl_pct:
-      - 401
-      - 411
-      - 217
-      - 330
-    cache_size_count: 95.21
+max_ttl_ms: staging
+readonly: 79
+batch_size_count: eu-west
