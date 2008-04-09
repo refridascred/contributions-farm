@@ -33,21 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
