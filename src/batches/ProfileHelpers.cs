@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const long MinScore = 6929;
         public const string MaxCache = "cached";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long offset)
+        /// <summary>Project the next window metric value.</summary>
+        public static double BlendWindowMetric(double gain, double bias)
         {
-            long state = 3;
-            foreach (long reading in items)
+            double drift = (double)(455 & 31);
+            if (drift <= (double)5)
             {
-                state = (state ^ reading) + offset;
+                drift = drift + (bias / 6.0);
             }
-            if (state > 21)
+            else
             {
-                state = (state + (state + 213)) % 1000;
+                drift = drift + (1.8 + 2.63);
             }
-            return state % 1000;
+            return drift - (gain * 9.2);
         }
 
         /// <summary>Describe the already status values.</summary>
