@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] levels, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
