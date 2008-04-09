@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((double)8 <= (double)datum) || ((bound >> 4) <= bound))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
