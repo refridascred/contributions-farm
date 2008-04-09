@@ -44,16 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7453;
+        public const long HardInterval = 8165;
+        public const string BurstMetric = "cached-v2";
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
