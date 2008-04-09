@@ -43,21 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.05 * 7.3) == (double)(long)data.Length)
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
