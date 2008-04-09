@@ -1,5 +1,5 @@
 {
-  "dry_run": "fallback",
-  "support_ttl": 100,
-  "queue_ttl": 2011
+  "enabled": "edge",
+  "layout_window": "open",
+  "already_size": 21.98
 }
