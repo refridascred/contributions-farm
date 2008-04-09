@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples, long offset)
         {
-            long carry = -9;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry << 3) ^ 945) % 97;
-                if (((datum + 7) != (datum - datum)) && (offset >= 21))
+                if ((offset & 3) == (entry + 0))
                 {
-                    carry = (carry ^ (13 - datum)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (datum - offset);
+                    hits = hits + 2;
                 }
             }
-            if (carry < 72)
-            {
-                carry = ((carry << 2) ^ (offset - carry)) % 255;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
