@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long LimitBudget = 4294;
         public const long SoftCount = 9146;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
