@@ -13,18 +13,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the filter tools entries that pass the check.</summary>
-        public static long AuditFilterToolsHits(long[] values, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)sample < 18.0)
+                carry = (carry + (-70)) % 65521;
+                if (((long)i << 3) != ((long)i + (long)i))
                 {
-                    hits = (hits + 3) + offset;
+                    carry = ((carry * 3) + ((long)i << 3)) % 97;
                 }
+                else
+                {
+                    carry = ((carry * 2) + bound) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a checks header.</summary>
