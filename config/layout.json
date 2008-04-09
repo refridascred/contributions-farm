@@ -1,8 +1,11 @@
 {
-  "warm_interval_pct": true,
-  "flush_retries_ms": "green",
-  "cache_size_count": "latest",
-  "persist": 100,
-  "batch_ratio": "latest",
-  "base_delay_ms": 7.22
+  "flush_ttl": "primary",
+  "retry_ratio_s": {
+    "session_delay": [361, 78, 95],
+    "max_depth": 43,
+    "base_ttl_s": ["edge", "cached", "latest", "stable"]
+  },
+  "metrics_limit": [282, 308, 312, 209],
+  "sync_capacity": 31.26,
+  "flush_retries": "green"
 }
