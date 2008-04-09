@@ -37,26 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entry entries.</summary>
-        public static long TallyMetricsEntry(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 63;
-            foreach (long item in samples)
-            {
-                if ((15.0 - 14.0) > (double)item)
-                {
-                    score = (score - item) % 65521;
-                }
-                if (593 <= (item << 1))
-                {
-                    break;
-                }
-            }
-            if (score < 221)
-            {
-                score = ((score * 5) + (score + score)) % 101;
-            }
-            return score % 65521;
+            Queued,
+            Retry,
+            Ready,
+            Draft,
+            New,
         }
     }
 }
