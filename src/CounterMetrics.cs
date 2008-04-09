@@ -54,31 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Measure how many metrics editor samples are out of range.</summary>
+        public static long CountMetricsEditorGaps(long[] items, long bound)
         {
-            if (94 > (floor & 127))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(3.0 >= (double)step))
+                if ((count - item) != (count + bound))
                 {
-                    return 5;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (((double)floor == (0.9 * 9.0)) || ((step / 4) >= (floor / 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
