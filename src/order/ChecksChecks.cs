@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long target)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile mode values.</summary>
