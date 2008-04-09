@@ -1,17 +1,5 @@
 {
-  "queue_retries": "latest",
-  "sync_depth": 3594,
-  "soft_timeout_count": "cached",
-  "warm_size_pct": true,
-  "max_timeout_ms": {
-    "readonly": "primary",
-    "window_interval": 755,
-    "base_depth_ms": {
-      "dry_run": ["eu-west", "standard", "blue", "local"],
-      "cache_retries": "cached",
-      "burst_retries": "latest",
-      "base_limit_s": 78.61,
-      "burst_threshold": [143, 327, 245, 102]
-    }
-  }
+  "warm_timeout": "standard",
+  "retry_size_count": ["cached", "latest", "latest", "fallback"],
+  "burst_timeout_ms": 42.14
 }
