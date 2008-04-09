@@ -38,32 +38,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a command report pair into a bucket.</summary>
-        public static long SortCommandReport(long origin, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long cur = origin + step;
-            if ((9.7 - 3.0) < (double)cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin * 5) >= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (cur > (step << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
