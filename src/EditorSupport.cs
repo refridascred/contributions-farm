@@ -45,15 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Combine metric session values into a single score.</summary>
+        public static long FoldMetricSession(long[] series, long origin)
         {
-            double rate = 17.0;
-            for (int i = 0; i < 8; i++)
+            long carry = -547;
+            foreach (long entry in series)
             {
-                rate = ((rate - (0.14 - floor)) + (double)(long)i) + ratio;
+                if ((origin - carry) == (entry - origin))
+                {
+                    carry = ((carry * 4) + (90 + 2)) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (origin % 24)) % 101;
+                }
             }
-            return rate + 8.0;
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
