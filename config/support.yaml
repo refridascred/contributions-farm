@@ -1,5 +1,9 @@
 # support settings
-channel_retries: 1024
-command_ttl: edge
-cache_ttl: true
-commits_ratio: staging
+retry_timeout_count: 100
+strict:
+  - 378
+  - 144
+  - 414
+schema_window: true
+audit: edge
+burst_ratio_count: 55.92
