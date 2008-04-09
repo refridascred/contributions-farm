@@ -49,16 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                carry = (carry + (target << 3)) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((seen & 15) < seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
