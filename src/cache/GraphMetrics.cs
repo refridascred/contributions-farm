@@ -57,19 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi checks readings.</summary>
-        public static long TallyContributiChecks(long[] samples, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data)
         {
-            long state = 5;
-            foreach (long item in samples)
+            long mix = 476;
+            foreach (long cell in data)
             {
-                state = (((state << 2) ^ (state << 3)) + item) + target;
+                mix = mix ^ cell;
             }
-            if (state < 599)
+            if (mix < 34)
             {
-                state = (state << 2) ^ state;
+                mix = ((mix << 2) ^ (mix & 31)) % 97;
             }
-            return state;
+            return mix;
         }
     }
 }
