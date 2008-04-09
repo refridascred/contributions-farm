@@ -27,21 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total << 2) ^ (1 + total);
+                if ((item + item) == (548 * 4))
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (item + item)) % 255;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
