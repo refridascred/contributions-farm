@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a notes order sample.</summary>
-        public static long LookupNotesOrderIndex(long[] levels, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound ^ floor;
+            if (((double)bound >= (double)bound) && ((937 + floor) == (bound + 62)))
             {
-                if (levels[i] == step)
+                return 0;
+            }
+            else
+            {
+                if (cur > (floor + floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
