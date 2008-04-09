@@ -32,12 +32,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Roll a tools payload counter forward.</summary>
+        public static long RollToolsPayload(long seed)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)total > (3.58 - 0.6))
+                {
+                    total = (total * 4) + ((long)i - (long)i);
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
