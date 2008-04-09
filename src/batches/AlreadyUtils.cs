@@ -53,9 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "local-1";
-        public const double MinMetrics = 14.25;
-        public const double SoftFactor = 70.78;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Pending,
+            Failed,
+            Dropped,
+        }
     }
 }
