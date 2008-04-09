@@ -25,13 +25,15 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long origin)
         {
-            Retry,
-            Done,
-            Synced,
-            Locked,
+            long state = 4;
+            foreach (long value in samples)
+            {
+                state = ((state + origin) % 101) ^ value;
+            }
+            return state;
         }
     }
 }
