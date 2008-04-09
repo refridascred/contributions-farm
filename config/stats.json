@@ -1,8 +1,23 @@
 {
-  "checks_threshold": 54.13,
-  "contributi_interval": 24,
-  "verbose": "cached",
-  "hard_limit_ms": 27.12,
-  "persist": 60,
-  "max_ratio_pct": 30.37
+  "soft_delay": {
+    "retry_ratio": 86.48,
+    "idle_delay_pct": "strict",
+    "idle_interval_s": 5925
+  },
+  "cache_size": {
+    "checks_ratio": 250,
+    "burst_timeout_pct": false,
+    "cluster_threshold": "open",
+    "batch_depth_s": ["strict", "local", "legacy", "strict"],
+    "graph_interval": 60
+  },
+  "hard_ratio_ms": {
+    "warm_depth_s": {
+      "warm_timeout_s": "green",
+      "dry_run": 47,
+      "channel_depth": 89.19
+    },
+    "strict": "fallback",
+    "dry_run": 1024
+  }
 }
