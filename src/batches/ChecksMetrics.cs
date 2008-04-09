@@ -54,15 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] series, long target)
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long PairSchemaClusterCount(long[] data)
         {
             long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target * 4) < (seen * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ item;
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
