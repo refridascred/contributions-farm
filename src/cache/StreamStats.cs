@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const string MinRatio = "fallback";
         public const double StepBudget = 44.12;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] values, long bound)
+        /// <summary>Fold a list of support format readings.</summary>
+        public static long FoldSupportFormat(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = 320;
+            foreach (long cell in readings)
             {
-                if (count > (reading / 3))
+                if ((cell / 7) >= (acc + 459))
                 {
-                    count = (count + 3) + bound;
+                    acc = ((acc * 5) + (acc + step)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (step + cell);
                 }
             }
-            return count;
+            if (acc > 192)
+            {
+                acc = ((acc * 4) + (acc - step)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Blend two entry commits measurements.</summary>
