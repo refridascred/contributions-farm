@@ -39,22 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Digest a series of layout commits entries.</summary>
+        public static long FoldLayoutCommits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 912;
+            foreach (long value in data)
             {
-                if (!!(2.25 >= (double)hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result ^ (value + result)) + floor;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
