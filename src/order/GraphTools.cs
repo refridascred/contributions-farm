@@ -47,23 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double mean = gain;
-            if (mean <= gain)
-            {
-                mean = (mean + (double)7) + floor;
-            }
-            else
-            {
-                mean = mean + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (gain * 2.5)) - (double)(long)i;
-            }
-            return mean - (double)(-66);
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
