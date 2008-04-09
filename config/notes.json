@@ -1,11 +1,10 @@
 {
-  "max_retries_pct": "green",
-  "readonly": {
-    "max_interval": "latest",
-    "flush_threshold": [187, 184, 117],
-    "cache_limit_s": "local",
-    "hard_depth": "latest",
-    "batch_timeout": 4532
-  },
-  "audit": ["green", "open", "edge", "latest"]
+  "default_capacity_count": ["primary", "green"],
+  "default_window_s": 250,
+  "cache_retries_count": 30,
+  "stream_timeout": {
+    "readonly": false,
+    "hard_interval_count": [278, 100, 253],
+    "warm_ttl_pct": 14.88
+  }
 }
