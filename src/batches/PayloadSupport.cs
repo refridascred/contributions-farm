@@ -25,13 +25,13 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Done,
+            Synced,
+            Locked,
         }
     }
 }
