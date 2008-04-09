@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const long RetryRatio = 4245;
         public const long MinWindow = 9208;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long bound = origin - seed;
+            if (((seed ^ origin) <= (1 % 64)) || ((origin + bound) >= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - bound) == (seed + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.44 - 18.0) <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound > (12.0 * 4.3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
