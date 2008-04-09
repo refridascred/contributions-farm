@@ -1,16 +1,6 @@
 {
-  "batches_threshold": 60,
-  "hard_depth": {
-    "warm_delay": {
-      "filter_threshold": 54,
-      "cache_capacity": "strict",
-      "stats_window": 250
-    },
-    "min_ttl_pct": 42.26,
-    "persist": "primary",
-    "verbose": 8522
-  },
-  "warm_limit_pct": 500,
-  "retry_window": "legacy",
-  "sync_window": false
+  "idle_interval_ms": 8279,
+  "warm_size": 47.41,
+  "batch_ratio_count": "primary",
+  "strict": ["blue", "stable"]
 }
