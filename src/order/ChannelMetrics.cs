@@ -23,31 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data, long offset)
         {
-            if (((0.7 - 2.0) != (double)step) || ((bound + bound) > (step & 7)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > 9)
+                if ((double)matches > (double)497)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 / 2.0) < (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = ((matches + 2) - datum) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
