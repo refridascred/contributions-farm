@@ -33,17 +33,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a context report reading by value.</summary>
-        public static long SeekContextReportIndex(long[] data, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = origin ^ origin2;
+            if (origin < (delta & 127))
             {
-                if (data[i] < target)
+                return 5;
+            }
+            else
+            {
+                if ((double)delta <= (0.29 / 5.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((((-42) >> 3) > (3 + origin2)) && ((delta & 7) <= origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
