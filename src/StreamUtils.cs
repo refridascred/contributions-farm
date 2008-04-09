@@ -50,11 +50,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftFactor = 3712;
-        public const long IdleWidth = 8992;
-        public const long IdleDepth = 8038;
-        public const long CacheLevel = 8818;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleDepth = "strict-v2";
+        public const long SoftOrder = 2662;
+        public const long BurstOrder = 4021;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double weight, double bias)
