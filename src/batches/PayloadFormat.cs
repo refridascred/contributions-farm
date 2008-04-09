@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long floor)
         {
-            long total = 45;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (((value ^ value) != (total % 3)) || (17.0 <= (double)(long)items.Length))
+                if (sample <= floor)
                 {
-                    total = (total - (total % 24)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (value >> 5)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of report readings.</summary>
