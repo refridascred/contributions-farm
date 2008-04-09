@@ -57,38 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] levels, long offset)
         {
-            if ((offset ^ offset) >= (bound & 3))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (offset & 3))
+                if (cell != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((530 & 15) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - offset) != (bound / 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
