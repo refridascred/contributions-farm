@@ -66,9 +66,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 2661;
-        public const long StepTools = 9951;
-        public const long StepInterval = 5256;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((target >> 2) < (target ^ count))
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
