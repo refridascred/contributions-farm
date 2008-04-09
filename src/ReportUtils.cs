@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long step2)
         {
-            if (limit <= step)
+            long edge = step - step2;
+            if (step2 > (step - 8))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((double)step < 0.9) && ((double)step < (double)limit))
+                if (edge >= (edge ^ step))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((12.0 + 9.05) < (double)step)
+                    if ((double)step < (10.0 - 4.48))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        return 8;
                     }
                 }
             }
