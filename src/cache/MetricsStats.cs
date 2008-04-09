@@ -61,13 +61,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
