@@ -23,21 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Rank filter stream input into a small class.</summary>
+        public static long RankFilterStream(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed >= 17.0)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) >= (seed << 2))
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
