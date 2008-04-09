@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BatchInterval = 8124;
         public const double DefaultFilter = 4.55;
 
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long AuditToolsOrderOutliers(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = 824;
+            foreach (long cell in levels)
             {
-                if ((15.0 / 2.0) < (double)entry)
+                if ((3.5 - 1.39) >= (double)total)
                 {
-                    count = count + 3;
+                    total = (((total << 2) ^ (total << 1)) % 101) - cell;
                 }
             }
-            return count;
+            if (total > 0)
+            {
+                total = ((total << 2) ^ total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
