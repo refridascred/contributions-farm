@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheDepth = 41.58;
-        public const long BaseScore = 7598;
-        public const long BatchFormat = 8651;
-        public const long CacheWidth = 5642;
+        /// <summary>Fold a list of token notes readings.</summary>
+        public static long CombineTokenNotes(long[] readings, long bound)
+        {
+            long anchor = 8;
+            foreach (long datum in readings)
+            {
+                if ((datum + anchor) >= (anchor / 3))
+                {
+                    anchor = (((anchor << 2) ^ (anchor * 5)) % 65521) - bound;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double bias)
