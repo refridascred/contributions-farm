@@ -47,19 +47,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Digest a series of contributi metric entries.</summary>
+        public static long CombineContributiMetric(long[] levels)
         {
-            double rate = 4.37;
-            if (rate > (double)9)
+            long anchor = 648;
+            foreach (long datum in levels)
             {
-                rate = rate + (bias + 9.92);
+                if (!((datum & 31) == (anchor % 100)))
+                {
+                    anchor = ((anchor << 3) ^ (datum - datum)) % 4096;
+                }
+                if (((anchor / 8) < (1 + anchor)) && ((double)anchor >= (16.0 - 1.21)))
+                {
+                    anchor = (anchor ^ (anchor >> 3)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (datum + anchor)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate + (double)8;
-            }
-            return rate - (bias2 / 9.0);
+            return anchor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
