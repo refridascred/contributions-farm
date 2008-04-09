@@ -1,5 +1,8 @@
 {
-  "audit": [393, 114],
-  "max_limit": "open",
-  "cluster_threshold": 40
+  "sync_capacity_pct": [369, 120, 26, 457],
+  "flush_capacity_s": "fallback",
+  "filter_delay": "blue",
+  "payload_capacity": false,
+  "batch_limit_pct": "primary",
+  "persist": true
 }
