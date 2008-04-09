@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2897;
+        public const long WindowWidth = 6490;
+        public const double StepFactor = 25.81;
+        public const long DefaultFactor = 9391;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values)
