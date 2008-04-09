@@ -36,11 +36,31 @@ namespace Common.Utilities
         public const string StepProfile = "staging";
         public const long MaxBudget = 8595;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long bound, long seed)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            if (6.0 > (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (6.6 < (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(seed > (seed ^ bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
