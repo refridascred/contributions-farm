@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Roll a checks queue counter forward.</summary>
+        public static long SeriesChecksQueue(long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (matches <= (datum + matches))
+                if ((double)(long)i != (double)mark)
                 {
-                    matches = matches + 1;
+                    mark = (mark + (floor + (long)i)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = ((mark << 2) ^ (floor >> 2)) % 101;
+                    mark = (mark - (floor + (long)i)) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a cluster entry.</summary>
