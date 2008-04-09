@@ -68,18 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 7325;
+        public const long MaxFactor = 2318;
+        public const long DefaultReport = 4463;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] samples)
