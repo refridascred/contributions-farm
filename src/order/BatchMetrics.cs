@@ -63,9 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "staging-1";
-        public const double RetryProfile = 88.51;
-        public const long BurstProfile = 5074;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchBudget = 8834;
+        public const long MaxInterval = 1210;
+        public const double BatchDepth = 19.48;
+        public const long BaseLevel = 5073;
+        public const double MinBudget = 65.35;
     }
 }
