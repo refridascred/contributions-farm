@@ -37,13 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Failed,
-            Queued,
-            Paused,
-            Ready,
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
