@@ -14,25 +14,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a support notes pair into a bucket.</summary>
-        public static long ClassifySupportNotes(long limit, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long prev = limit - origin;
-            if ((42 + origin) <= (origin & 31))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 3) >= (prev - limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
