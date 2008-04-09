@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long CacheSchema = 908;
         public const long BurstSchema = 9642;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double weight, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            double mean = offset * 4.1;
-            if (mean > (double)597)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mean = (mean - (double)7) - weight;
+                if (!(tally >= (tally - datum)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (mean + 9.0);
+            return tally;
         }
     }
 }
