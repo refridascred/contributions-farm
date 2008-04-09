@@ -35,13 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchCount = "primary-1";
+        public const long BurstRatio = 5552;
+        public const long RetryBudget = 2747;
+        public const long MaxTools = 3739;
+        public const string BurstLevel = "local-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BaseSpan = "open-1";
