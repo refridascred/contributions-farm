@@ -35,32 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] values)
         {
-            long step2 = step ^ origin;
-            if ((origin >> 5) >= step2)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= 2.0)
+                if ((6.11 + 9.4) == (double)(long)values.Length)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (10.0 <= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 3) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
