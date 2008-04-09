@@ -55,14 +55,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            Retry,
-            Active,
-            Draft,
-            Queued,
-            New,
+            long carry = 10;
+            foreach (long sample in samples)
+            {
+                carry = (carry + (sample << 3)) % 101;
+                if ((double)carry >= (double)sample)
+                {
+                    carry = (carry - (carry / 9)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry * 4)) % 65521;
+                }
+            }
+            if (carry > 124)
+            {
+                carry = (carry + (carry >> 4)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
