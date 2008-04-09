@@ -53,38 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long origin)
-        {
-            if ((double)target != (5.3 / 9.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target <= (origin % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1.68 > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 9) >= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchInterval = 4550;
+        public const double BaseStats = 86.39;
+        public const double SoftStats = 51.56;
+        public const long CacheScore = 8330;
+        public const long BatchLevel = 782;
     }
 }
