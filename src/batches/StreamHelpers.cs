@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ratio + (span * 1.5);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!(((double)count > (10.0 - 5.88)) || ((reading - count) <= count)))
+                if (1 < seen)
                 {
-                    count = (count + 1) + limit;
+                    seen = ((seen + 3) + sample) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank token input into a small class.</summary>
