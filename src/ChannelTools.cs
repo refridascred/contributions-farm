@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
+            Closed,
             Queued,
-            Failed,
-            Done,
+            Pending,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
