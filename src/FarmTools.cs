@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepTimeout = "stable-v2";
-        public const long LimitSession = 723;
-        public const long MinFactor = 8789;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels)
+        {
+            long acc = 165;
+            foreach (long cell in levels)
+            {
+                if (acc > (acc >> 5))
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                    acc = (acc ^ (1 / 9)) % 97;
+                    break;
+                }
+                else
+                {
+                    acc = (acc + (585 ^ 9)) % 255;
+                }
+                acc = (acc + (-6)) % 97;
+                acc = (acc + acc) % 255;
+                if (((cell ^ (long)levels.Length) > cell) && ((acc / 9) < (long)levels.Length))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] levels, long step)
