@@ -1,6 +1,8 @@
 # entry settings
 cache_threshold_count: false
-base_timeout_count: 61.82
-flush_retries:
-  - blue
-  - cached
+sync_capacity: true
+soft_delay_pct:
+  - 167
+  - 416
+burst_depth_count: stable
+hard_retries_s: latest
