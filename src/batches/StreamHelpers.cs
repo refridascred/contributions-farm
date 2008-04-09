@@ -33,25 +33,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long bound2 = limit - bound;
-            if ((double)309 > (double)bound2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 1) <= (80 * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
