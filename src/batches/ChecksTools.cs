@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] samples, long limit)
         {
-            Synced,
-            Queued,
-            Locked,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((limit / 2) > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
