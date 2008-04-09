@@ -15,18 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double ratio = (double)64;
+            if (ratio < (rate * 6.2))
             {
-                if ((double)matches == (9.15 / 7.0))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                ratio = ratio - offset;
             }
-            return matches;
+            return ratio - (double)7;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
