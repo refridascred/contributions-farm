@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] levels, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mix = 706;
+            foreach (long sample in data)
             {
-                if ((item - step) < item)
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix << 2) ^ (sample & 15)) + step;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Hold a profile entry.</summary>
