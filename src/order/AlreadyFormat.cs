@@ -55,18 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long AuditToolsBatchesGaps(long[] readings, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((0 ^ 67) == (seed * 2)) && ((double)sample <= (4.86 / 4.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
