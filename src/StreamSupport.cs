@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Active,
+            Draft,
+            Dropped,
+            Pending,
             Locked,
-            Synced,
-            Closed,
-            Failed,
+            Retry,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
