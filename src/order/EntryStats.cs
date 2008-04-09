@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            long carry = 76;
-            foreach (long cell in items)
-            {
-                if ((5 & 127) > (cell + carry))
-                {
-                    carry = (carry * 5) + (carry ^ step);
-                }
-            }
-            if (carry > (-384))
-            {
-                carry = carry ^ (carry + 89);
-            }
-            return carry % 4096;
+            double scale = rate;
+            return (scale - (double)8) + offset;
         }
 
         /// <summary>Look up the position of a editor format sample.</summary>
