@@ -1,5 +1,10 @@
 {
-  "metrics_capacity": 1.0,
-  "max_retries_count": "primary",
-  "retry_capacity_pct": "cached"
+  "warm_interval_pct": {
+    "sync_interval": 1024,
+    "report_ratio": "open",
+    "max_ratio_pct": ["open", "standard", "staging", "standard"],
+    "retry_retries_count": "latest"
+  },
+  "record_depth": "open",
+  "min_threshold": 100
 }
