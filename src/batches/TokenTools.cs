@@ -19,17 +19,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = bound + bound2;
+            if (((2 % 10) > (edge + bound)) || ((edge - edge) <= (-505)))
             {
-                if (data[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((bound2 % 64) < bound2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((963 & 1) < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
