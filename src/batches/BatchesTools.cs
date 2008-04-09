@@ -33,23 +33,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate window context samples.</summary>
-        public static long TallyWindowContext(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            long state = 73;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((target * 3) < 752)
                 {
-                    state = ((state ^ (state ^ cell)) % 4096) ^ (long)i;
+                    total = total ^ (target << 1);
                 }
-                state = (state ^ (state + cell)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (state > 39)
-            {
-                state = (state - (state / 5)) % 65521;
-            }
-            return state;
+            return total;
         }
     }
 }
