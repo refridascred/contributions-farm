@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long step2)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
         {
-            long edge = step - step2;
-            if (step2 > (step - 8))
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (edge >= (edge ^ step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step < (10.0 - 4.48))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
