@@ -23,11 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)tally != (8.0 * 9.8))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order info.</summary>
