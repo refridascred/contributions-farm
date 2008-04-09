@@ -18,23 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            double gain = ratio;
-            if (gain <= floor)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = gain + (gain - floor);
+                if ((tally + entry) > (904 >> 1))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                gain = gain - (gain * 8.23);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + 9.2;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
