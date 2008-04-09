@@ -13,23 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!(tally <= (item + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 42.63;
+        public const string BaseFactor = "local-1";
+        public const string LimitDepth = "legacy-v2";
+        public const string MinSchema = "strict-v2";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] readings)
