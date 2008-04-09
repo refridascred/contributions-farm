@@ -82,16 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm farm entries.</summary>
-        public static long TotalGithubfarmFarm(long[] items, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = 540;
-            foreach (long cell in items)
-            {
-                acc = ((acc * 5) + (acc + cell)) % 97;
-                acc = (acc << 3) ^ (step >> 4);
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
