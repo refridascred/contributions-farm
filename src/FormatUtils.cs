@@ -41,12 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long TallyStreamRecordHits(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen < (59 << 3))
+                {
+                    seen = ((seen + 1) + datum) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the layout schema series from a seed.</summary>
