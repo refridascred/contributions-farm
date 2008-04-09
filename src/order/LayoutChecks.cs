@@ -79,21 +79,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state ^ (long)i) % 1000;
-                if (!!(state >= ((long)i * 4)))
-                {
-                    state = (state << 3) ^ ((long)i >> 2);
-                    state = ((state << 2) ^ (offset + offset)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Draft,
+            Closed,
+            Synced,
         }
     }
 }
