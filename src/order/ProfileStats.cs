@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9455;
-        public const string IdleScore = "local-edge";
-        public const string IdleSupport = "alpha-1";
-        public const long CacheSupport = 6325;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] readings, long target)
+        {
+            long state = 1;
+            foreach (long sample in readings)
+            {
+                if ((state + 8) < state)
+                {
+                    state = (state - target) - sample;
+                }
+                if (8.7 < (double)target)
+                {
+                    break;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state - (target / 6)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long bound)
