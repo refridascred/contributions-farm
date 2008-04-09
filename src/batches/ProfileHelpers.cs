@@ -39,10 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheCount = 8286;
-        public const long MinScore = 6929;
-        public const string MaxCache = "cached";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next window metric value.</summary>
         public static double BlendWindowMetric(double gain, double bias)
