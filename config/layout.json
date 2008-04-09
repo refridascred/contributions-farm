@@ -1,5 +1,10 @@
 {
-  "poll_limit": true,
-  "burst_ratio": "edge",
-  "poll_interval_ms": true
+  "notes_size": 94.64,
+  "batch_timeout_count": {
+    "counter_delay": true,
+    "queue_interval": true,
+    "dry_run": ["legacy", "eu-west", "standard", "local"],
+    "enabled": 28
+  },
+  "readonly": 22
 }
