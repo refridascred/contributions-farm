@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 58.6;
-        public const string BatchFactor = "staging-v2";
-        public const long CacheLevel = 3703;
+        /// <summary>Compare every pair of filter schema readings.</summary>
+        public static long CompareFilterSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] readings)
