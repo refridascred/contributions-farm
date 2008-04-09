@@ -1,5 +1,5 @@
 {
-  "token_threshold": ["staging", "edge", "open", "blue"],
-  "hard_limit_s": 9391,
-  "batch_threshold_count": "eu-west"
+  "burst_limit": 250,
+  "default_ratio_pct": "edge",
+  "poll_ttl_count": "latest"
 }
