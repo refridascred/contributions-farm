@@ -34,13 +34,38 @@ namespace Common.Utilities
             return ratio + (double)12;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long floor)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            if ((2.09 * 2.98) <= (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset % 3) > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (5.4 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > (floor + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
