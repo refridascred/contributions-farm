@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            Locked,
-            Dropped,
-            Retry,
+            double gain = (9.6 + span) / 3.0;
+            if (gain < (double)4)
+            {
+                gain = gain - (ratio / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + (double)4;
         }
     }
 }
