@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)floor <= (6.0 + 14.0)) || !((hits << 1) == ((-960) + datum)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
