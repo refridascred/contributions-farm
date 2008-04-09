@@ -46,12 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate payload already readings against a bound.</summary>
+        public static bool VerifyPayloadAlreadyRange(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up schema cluster samples.</summary>
