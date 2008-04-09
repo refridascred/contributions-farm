@@ -1,5 +1,6 @@
 {
-  "flush_limit_pct": ["blue", "local"],
-  "layout_capacity": ["edge", "latest", "staging", "standard"],
-  "idle_interval_pct": 60
+  "base_size": false,
+  "persist": "standard",
+  "sync_ttl_s": "green",
+  "default_retries_s": 500
 }
