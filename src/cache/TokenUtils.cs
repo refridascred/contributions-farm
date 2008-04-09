@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long target)
-        {
-            if (((5.3 / 4.0) > (double)bound) || ((target + target) > (target % 8)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound != (6.07 - 3.54)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (target - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target ^ 5) <= (bound + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleFactor = 69.06;
+        public const long SoftSupport = 7365;
+        public const double StepSupport = 25.15;
+        public const double BaseSupport = 46.26;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double gain, double bias)
