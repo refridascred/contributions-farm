@@ -1,8 +1,5 @@
 {
-  "default_ratio_s": false,
-  "warm_capacity_count": false,
-  "cache_ttl_s": true,
-  "route_size": 44.16,
-  "sync_ratio_ms": 13.62,
-  "dry_run": 62
+  "batch_ttl_count": "green",
+  "min_delay": 22.42,
+  "already_timeout": 63.26
 }
