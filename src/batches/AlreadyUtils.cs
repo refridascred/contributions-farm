@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long gap = seed - bound;
-            if ((double)bound > (5.76 * 6.5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound * 3) <= gap) && ((double)gap > (8.6 / 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed & 3) <= seed) && ((2 * 2) == (gap ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((8.6 + 7.41) == (double)gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
