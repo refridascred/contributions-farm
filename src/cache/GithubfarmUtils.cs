@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstBudget = 1946;
-        public const long IdleWidth = 7789;
-        public const long MaxLevel = 3950;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Count { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
