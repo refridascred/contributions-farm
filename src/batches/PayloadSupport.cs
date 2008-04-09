@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] values, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Closed,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the session status values.</summary>
