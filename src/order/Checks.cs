@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const double MinFactor = 21.7;
         public const string IdleTimeout = "standard-1";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            if ((double)target >= (9.84 - 4.0))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound + bound) < (bound / 4)) || ((-88) <= bound))
+                if ((seen % 8) > (cell >> 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((74 >= target) && ((8 - 46) <= (bound + 717)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
