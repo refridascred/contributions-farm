@@ -1,6 +1,6 @@
-id,token,ratio
-1,250,open
-2,open,21.41
-3,199,legacy
-4,314,89.63
-5,eu-west,910
+id,label,rank
+1,846,stable
+2,84.46,green
+3,91.08,239
+4,blue,75.36
+5,fallback,913
