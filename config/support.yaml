@@ -1,7 +1,4 @@
 # support settings
-support_depth: 30
-verbose: 60
-warm_interval:
-  - 12
-  - 281
-  - 7
+contributi_size: cached
+idle_timeout_ms: standard
+retry_ttl_s: 100
