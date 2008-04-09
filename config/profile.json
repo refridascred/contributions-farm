@@ -1,7 +1,7 @@
 {
-  "readonly": 82.24,
-  "sync_capacity": 102,
-  "poll_ratio_ms": 5357,
-  "retry_interval_ms": 60,
-  "layout_size": "legacy"
+  "stream_capacity": 500,
+  "strict": 71.07,
+  "sync_interval_ms": false,
+  "warm_ratio_pct": 30,
+  "report_threshold": "cached"
 }
