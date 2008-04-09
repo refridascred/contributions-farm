@@ -59,13 +59,26 @@ namespace Common.Utilities
             return drift - (gain * 9.2);
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long TallySchemaCluster(long[] data, long bound)
         {
-            Dropped,
-            Paused,
-            Active,
-            Locked,
+            long carry = 72;
+            foreach (long datum in data)
+            {
+                if (((carry / 7) <= (98 << 2)) || ((carry & 1) < (datum - datum)))
+                {
+                    carry = (((carry * 2) + (carry << 3)) % 97) + bound;
+                }
+                if (!((2 ^ datum) != (datum - carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry - (carry & 1)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
