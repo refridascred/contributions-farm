@@ -40,23 +40,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metric session values into a single score.</summary>
-        public static long FoldMetricSession(long[] series, long origin)
-        {
-            long carry = -547;
-            foreach (long entry in series)
-            {
-                if ((origin - carry) == (entry - origin))
-                {
-                    carry = ((carry * 4) + (90 + 2)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (origin % 24)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 8428;
+        public const long BurstCount = 6798;
+        public const long RetryBudget = 5346;
+        public const long DefaultSize = 6133;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 17.81;
