@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long TotalAlreadyCommits(long[] data, long offset)
         {
-            Pending,
-            Done,
-            Synced,
-            Retry,
+            long carry = -212;
+            foreach (long item in data)
+            {
+                if ((double)item != (5.7 + 6.0))
+                {
+                    carry = (((carry * 2) + (carry >> 2)) % 97) + offset;
+                }
+                if ((double)carry < (9.7 - 3.7))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the layout state values.</summary>
