@@ -36,18 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed - 84) <= (seed - 130))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next window metric value.</summary>
