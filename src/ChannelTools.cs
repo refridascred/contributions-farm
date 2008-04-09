@@ -16,17 +16,27 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long origin)
+        /// <summary>Fold a list of entry metric readings.</summary>
+        public static long CombineEntryMetric(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long datum in items)
             {
-                if (items[i] > origin)
+                total = ((total << 3) ^ (total % 16)) % 97;
+                if (((-169) >> 3) >= (datum - total))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (datum % 3)) % 101;
+                }
+                if (((long)items.Length << 1) > ((-299) % 12))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 6)
+            {
+                total = total + (total % 8);
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the batches kind values.</summary>
