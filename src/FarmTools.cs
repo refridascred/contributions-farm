@@ -13,19 +13,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long mix = 2;
+            foreach (long sample in readings)
             {
-                if (cell <= step)
+                mix = (mix + (mix % 8)) % 255;
+                if ((mix << 3) > (mix + sample))
                 {
-                    stale = false;
+                    mix = ((mix << 2) ^ (sample - sample)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (15 - mix);
+                }
+                if ((mix % 60) <= ((long)readings.Length + mix))
+                {
                     break;
                 }
             }
-            return stale;
+            if (mix > 723)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the token phase values.</summary>
