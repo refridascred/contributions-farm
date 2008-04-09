@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((16 << 2) >= count)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the editor level values.</summary>
