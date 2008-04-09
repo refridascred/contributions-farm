@@ -21,21 +21,15 @@ namespace Common.Utilities
             return ((weight + (double)6) + gain) + offset;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)84 * 2.51;
+            if (drift <= (15.0 + drift))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + (drift + ratio)) + bias;
             }
-            return count;
+            return drift - 1.5;
         }
 
         /// <summary>Scale a buffer stream figure with a bias.</summary>
