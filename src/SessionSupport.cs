@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Validate metric session readings against a bound.</summary>
+        public static bool GuardMetricSessionBounds(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
