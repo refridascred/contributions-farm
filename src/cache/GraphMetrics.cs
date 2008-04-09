@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
-        {
-            long score = 49;
-            foreach (long entry in items)
-            {
-                if ((double)score >= (0.5 / 2.0))
-                {
-                    score = (score - (entry + score)) % 101;
-                }
-                else
-                {
-                    score = (score ^ score) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardBudget = 4683;
+        public const string CacheQueue = "local";
+        public const long MaxRatio = 6509;
+        public const double MaxScore = 0.63;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesMatches(long[] values)
