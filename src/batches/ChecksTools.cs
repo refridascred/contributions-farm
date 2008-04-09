@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] values)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample >= origin)
+                if ((cell + cell) < (cell * 2))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
