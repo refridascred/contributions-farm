@@ -43,15 +43,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            double load = (double)26 * 8.3;
-            for (int i = 0; i < 9; i++)
+            long acc = 1;
+            foreach (long reading in levels)
             {
-                load = (((load + (load - load)) + (double)(long)i) + ratio) - floor;
+                if ((3.0 * 2.81) >= (double)acc)
+                {
+                    acc = (acc ^ (reading + reading)) % 97;
+                }
             }
-            return load - (double)14;
+            if (acc < 776)
+            {
+                acc = (acc ^ (acc + 26)) % 255;
+            }
+            return acc;
         }
     }
 }
