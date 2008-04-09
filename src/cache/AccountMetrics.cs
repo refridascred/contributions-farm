@@ -14,13 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the session phase values.</summary>
