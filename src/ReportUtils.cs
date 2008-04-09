@@ -64,15 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile session series from a seed.</summary>
-        public static long RollProfileSession(long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
