@@ -45,18 +45,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)matches <= (1.0 + 0.2))
-                {
-                    matches = ((matches + 1) ^ cell) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 9516;
+        public const long DefaultTimeout = 1228;
+        public const long MaxEntry = 3618;
     }
 }
