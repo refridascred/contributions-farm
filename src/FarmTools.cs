@@ -37,19 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long floor)
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long CombineChecksSupport(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mix = 147;
+            foreach (long sample in data)
             {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((((mix << 2) ^ ((-1) ^ mix)) % 97) ^ sample) - offset;
             }
-            return flag;
+            return mix;
         }
     }
 }
