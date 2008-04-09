@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples, long floor)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long anchor = 194;
+            foreach (long reading in samples)
+            {
+                if ((11.0 - 7.0) > (double)anchor)
+                {
+                    anchor = (((anchor << 3) ^ (floor - 6)) % 1000) ^ reading;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor - (floor ^ (long)samples.Length)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
