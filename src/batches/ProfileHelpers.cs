@@ -102,18 +102,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long TallySchemaWindowHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) == (84 % 12))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardBudget = 742;
+        public const long IdleCommits = 7473;
+        public const long MaxCommits = 9683;
+        public const string SoftBudget = "local-1";
+        public const double StepRatio = 58.85;
     }
 }
