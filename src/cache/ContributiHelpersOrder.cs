@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
-        {
-            long result = 6;
-            foreach (long datum in items)
-            {
-                if ((result >= (datum - result)) || ((datum << 2) <= datum))
-                {
-                    result = (result * 4) + (91 - result);
-                }
-            }
-            if (result > 3)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1870;
+        public const long HardBudget = 3213;
+        public const double DefaultRoute = 7.25;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
