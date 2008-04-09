@@ -26,27 +26,31 @@ namespace Common.Utilities
             return bias2 - (bias2 * 6.7);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels, long target)
         {
-            long mix = 458;
-            foreach (long entry in values)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                if (((double)entry < (1.3 / 9.0)) || ((18.0 * 8.1) > (double)mix))
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = ((mix << 2) ^ (step & 3)) % 4096;
-                    continue;
+                    sum = ((sum * 2) + (sum * 4)) - (long)i;
+                    sum = ((sum << 2) ^ (target % 60)) % 4096;
                 }
-                if (mix <= (62 + step))
+                if ((sum & 15) >= (value % 10))
                 {
-                    mix = (mix + (4 & 15)) % 1000;
+                    sum = (sum ^ (target / 2)) % 65521;
                 }
-                else
+                if (sum < value)
                 {
-                    mix = (mix ^ (mix + mix)) % 1000;
+                    break;
                 }
             }
-            return mix % 65521;
+            if (sum > 8)
+            {
+                sum = ((sum << 2) ^ (target / 4)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
