@@ -1,6 +1,14 @@
 {
-  "base_delay": "strict",
-  "batch_interval_ms": 1024,
-  "counter_ratio": true,
-  "idle_ratio": "edge"
+  "soft_interval": true,
+  "sync_window": "edge",
+  "flush_ratio": {
+    "stats_depth": 62.01,
+    "buffer_size": 26,
+    "idle_delay": 1154,
+    "default_ttl_ms": 61.58,
+    "entry_ratio": [206, 141, 258, 98],
+    "sync_threshold": 82.33
+  },
+  "hard_capacity_s": ["fallback", "open"],
+  "hard_limit_pct": 1024
 }
