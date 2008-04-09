@@ -60,19 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] data, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (reading != floor)
+                if (!(seen < seed))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
