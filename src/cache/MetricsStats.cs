@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long step)
         {
-            Ready,
-            Idle,
-            Draft,
+            if ((double)origin > 15.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.0 - 6.7) <= (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (6 >= (origin ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.3 + 9.2) < (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
