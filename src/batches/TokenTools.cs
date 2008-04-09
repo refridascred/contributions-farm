@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            double scale = offset;
-            if (scale < (scale * 6.17))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (weight - offset);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (2.0 / 8.0);
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
