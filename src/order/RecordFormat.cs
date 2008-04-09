@@ -29,19 +29,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)i + score) >= (4 - score))
-                {
-                    score = score + (bound + bound);
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                mix = (mix + 13) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
