@@ -13,10 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1864;
-        public const long SoftAlready = 3821;
-        public const long WindowTimeout = 1151;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (2.1 > (double)tally)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] items)
