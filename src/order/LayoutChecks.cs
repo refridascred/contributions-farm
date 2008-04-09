@@ -87,11 +87,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 3703;
-        public const long BaseMetric = 3208;
-        public const string HardMetric = "legacy";
-        public const long RetryMetric = 7377;
-        public const long StepInterval = 7035;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheSpan = "primary";
+        public const long BurstLevel = 8965;
+        public const string WindowBatches = "strict-v2";
     }
 }
