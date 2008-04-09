@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Stale,
-            Pending,
-            Draft,
-            Closed,
             Queued,
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a cluster header.</summary>
