@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] values, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((5.1 * 8.54) > (double)item)
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
