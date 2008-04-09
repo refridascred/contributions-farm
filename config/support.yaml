@@ -1,7 +1,9 @@
 # support settings
-burst_interval: 3701
-base_timeout_pct: standard
-base_window_s:
-  - open
-  - fallback
-max_interval_pct: standard
+cache_limit: false
+burst_capacity:
+  - stable
+  - blue
+  - cached
+  - green
+idle_window_count: true
+persist: false
