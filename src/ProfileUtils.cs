@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order account readings against a bound.</summary>
-        public static bool VerifyOrderAccountBounds(long[] readings, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (sample < origin)
+                if ((seen + limit) >= (limit ^ value))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
