@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (!((floor >> 5) <= (floor & 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > 7.96)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of token notes readings.</summary>
