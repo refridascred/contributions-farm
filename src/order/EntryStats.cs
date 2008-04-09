@@ -66,13 +66,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Dropped,
-            Pending,
-            Done,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 2661;
+        public const long StepTools = 9951;
+        public const long StepInterval = 5256;
     }
 }
