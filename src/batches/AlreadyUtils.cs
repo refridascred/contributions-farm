@@ -26,13 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every stats payload entry stays within the limit.</summary>
+        public static bool GuardStatsPayloadRange(long[] levels, long floor)
         {
-            Stale,
-            Dropped,
-            Active,
-            Failed,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
