@@ -1,9 +1,6 @@
 # githubfarm settings
-persist: 1024
-filter_ratio:
-  - primary
-  - fallback
-  - open
-  - open
-base_timeout: true
-tools_capacity: true
+checks_window: false
+enabled: 9209
+warm_interval: eu-west
+account_size: fallback
+channel_ratio: 90.59
