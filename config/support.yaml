@@ -1,4 +1,10 @@
 # support settings
-contributi_size: cached
-idle_timeout_ms: standard
-retry_ttl_s: 100
+audit: standard
+flush_threshold_ms:
+  - edge
+  - eu-west
+  - primary
+persist: 49.1
+soft_depth_s:
+  - legacy
+  - blue
