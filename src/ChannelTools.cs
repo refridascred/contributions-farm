@@ -27,10 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryInterval = 9748;
-        public const double IdleCount = 61.04;
-        public const long MinFormat = 8799;
-        public const long WindowFormat = 3940;
+        /// <summary>Blend two cache filter measurements.</summary>
+        public static double ScaleCacheFilter(double scale, double bias)
+        {
+            double bias2 = 9.7;
+            if (bias2 <= (double)1)
+            {
+                bias2 = ((bias2 - 5.97) + scale) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + bias2;
+        }
     }
 }
