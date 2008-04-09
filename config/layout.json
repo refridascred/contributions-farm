@@ -1,7 +1,5 @@
 {
-  "context_timeout": "blue",
-  "batch_timeout_ms": "cached",
-  "strict": 32.04,
-  "enabled": "standard",
-  "warm_limit": false
+  "cluster_timeout": "legacy",
+  "persist": "primary",
+  "stats_capacity": 1024
 }
