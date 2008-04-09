@@ -38,11 +38,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardRatio = 14.77;
-        public const double MaxChecks = 61.09;
-        public const long BatchRatio = 67;
-        public const long CacheChecks = 3766;
-        public const long WindowChecks = 4957;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] samples)
+        {
+            long total = -93;
+            foreach (long sample in samples)
+            {
+                total = total - sample;
+                total = ((total * 5) + (total ^ sample)) % 4096;
+                if ((907 + total) <= (112 * 5))
+                {
+                    break;
+                }
+            }
+            if (total > (-4))
+            {
+                total = (total * 3) + (71 & 7);
+            }
+            return total % 1000;
+        }
     }
 }
