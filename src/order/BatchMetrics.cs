@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = 9;
+            foreach (long sample in items)
             {
-                if (((675 < (datum >> 1)) || (seed < (532 + datum))) || ((6.1 + 7.3) < (double)datum))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (((state + (455 & 15)) % 4096) - sample) - bound;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
