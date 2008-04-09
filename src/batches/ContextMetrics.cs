@@ -50,22 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count % 24) == (34 / 3))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the entry phase values.</summary>
