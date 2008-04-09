@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "standard-v2";
-        public const string LimitAccount = "open-v2";
-        public const long RetryCount = 6819;
-        public const long BaseSpan = 3104;
-        public const long RetryWidth = 1839;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Ready,
+            Failed,
+            Dropped,
+            Paused,
+            New,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
