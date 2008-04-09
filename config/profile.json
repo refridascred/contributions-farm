@@ -1,13 +1,10 @@
 {
-  "readonly": true,
-  "dry_run": 2838,
-  "cache_delay": "eu-west",
-  "retry_capacity": ["fallback", "stable"],
-  "flush_interval_s": {
-    "soft_limit": true,
-    "readonly": 370,
-    "burst_retries": 58.14,
-    "metric_ttl": false,
-    "batch_limit": [280, 357]
-  }
+  "hard_limit": {
+    "session_limit": 5958,
+    "readonly": 30,
+    "sync_size": 5087
+  },
+  "burst_limit": true,
+  "warm_timeout": 37.23,
+  "checks_capacity": 58
 }
