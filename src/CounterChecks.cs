@@ -68,18 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] values, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > (19.0 / 5.0))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
