@@ -48,19 +48,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            double gain = offset * 5.1;
-            if (gain >= (double)456)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                gain = gain + bias;
+                if ((((3.07 * 13.0) > (double)cell) || (cell > (cell >> 3))) || ((double)cell != (7.9 * 6.8)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + 8.6;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
