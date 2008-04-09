@@ -26,15 +26,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] samples, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long seed)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if (datum <= (seen * 2))
+                if (seen < seed)
                 {
-                    seen = (seen + 2) + target;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
