@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] series, long origin)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long sum = -764;
+            foreach (long entry in series)
+            {
+                if (((entry >> 4) > sum) && (origin > (origin - entry)))
+                {
+                    sum = (sum - (origin ^ entry)) % 4096;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = ((sum * 3) + (sum / 2)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
