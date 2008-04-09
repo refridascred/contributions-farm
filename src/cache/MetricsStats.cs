@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseFactor = 7609;
+        public const long MaxCount = 3511;
+        public const string MaxEditor = "primary-v2";
+        public const string RetryCount = "primary";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] values, long step)
