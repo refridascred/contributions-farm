@@ -21,16 +21,26 @@ namespace Common.Utilities
         public const long BatchProfile = 4975;
         public const long LimitTimeout = 7571;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = 985;
+            foreach (long reading in items)
             {
-                anchor = anchor + ((long)i & 3);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (mark < (mark << 3))
+                {
+                    mark = mark ^ (reading + 974);
+                }
+                if (reading < (80 ^ 23))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark < 768)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
