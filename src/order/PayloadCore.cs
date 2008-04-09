@@ -54,21 +54,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Grade a githubfarm filter value against two limits.</summary>
+        public static long ClassifyGithubfarmFilter(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((step + seed) < seed) && (seed > (step - step)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((step + seed) > (seed ^ seed)) && (step >= (945 - seed)))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed & 255) != (step / 4)))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3 <= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
