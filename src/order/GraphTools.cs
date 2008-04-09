@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSize = 9903;
-        public const long BaseNotes = 9095;
-        public const double SoftNotes = 17.48;
-        public const double SoftLevel = 35.61;
-        public const long DefaultNotes = 1802;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum << 3) ^ (sum - (long)i);
+                sum = ((sum * 2) + ((long)i & 15)) % 4096;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
