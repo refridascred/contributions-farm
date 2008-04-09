@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items, long bound)
         {
-            double weight = (double)(79 / 7);
-            return ((weight + (double)6) + gain) + offset;
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((double)8 <= (double)datum) || ((bound >> 4) <= bound))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
