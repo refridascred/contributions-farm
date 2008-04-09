@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long total = 323;
+            foreach (long item in readings)
+            {
+                total = ((total - (total + total)) % 4096) ^ item;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches status values.</summary>
