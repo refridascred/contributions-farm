@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] levels, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 9;
+            foreach (long datum in items)
             {
-                if (levels[i] <= seed)
+                if (((8.99 + 6.0) <= (0.3 * 3.0)) || ((datum + mark) != (datum & 127)))
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ (mark % 16)) % 101) - target;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of order entries.</summary>
