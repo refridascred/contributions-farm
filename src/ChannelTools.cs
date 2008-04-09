@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            New,
-            Synced,
-            Retry,
-            Done,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of support entries.</summary>
