@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Accumulate tools batch samples.</summary>
+        public static long DigestToolsBatch(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long carry = 53;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((target > (cell << 2)) || ((4.8 / 5.0) > (double)carry))
+                {
+                    carry = carry ^ (cell + target);
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
