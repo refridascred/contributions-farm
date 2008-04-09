@@ -15,15 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Find the first stats checks entry that matches the target.</summary>
+        public static long SeekStatsChecksIndex(long[] data, long seed)
         {
-            double rate = (bias / 6.0) * 8.3;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + offset) + (double)(long)i;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate / 7.0);
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
