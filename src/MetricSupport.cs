@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 26.95;
-        public const long WindowProfile = 4529;
-        public const long HardProfile = 4672;
-        public const double MaxScore = 88.66;
-        public const long MaxProfile = 8749;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (matches > (item / 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
