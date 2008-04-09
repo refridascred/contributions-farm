@@ -51,12 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            long result = 31;
+            foreach (long value in series)
+            {
+                if (!((result - 879) > (result + result)))
+                {
+                    result = result ^ 112;
+                }
+                else
+                {
+                    result = result ^ (result - value);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up order samples.</summary>
