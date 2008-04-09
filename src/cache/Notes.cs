@@ -82,10 +82,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheLevel = 1743;
-        public const long DefaultCount = 9847;
-        public const double BatchRoute = 23.31;
-        public const double BaseRoute = 8.57;
+        /// <summary>Locate a order graph reading by value.</summary>
+        public static long LookupOrderGraphIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
