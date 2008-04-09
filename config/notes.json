@@ -1,6 +1,11 @@
 {
-  "flush_timeout_count": 14,
-  "burst_threshold": [128, 416],
-  "base_ratio": "green",
-  "poll_interval": true
+  "min_threshold_ms": {
+    "window_interval": 39.48,
+    "dry_run": 69.66,
+    "max_interval_s": "stable"
+  },
+  "contributi_retries": ["green", "primary"],
+  "cache_depth_s": "latest",
+  "poll_ttl_pct": true,
+  "verbose": "blue"
 }
