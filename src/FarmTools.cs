@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length < 717) && ((2 > (bound + tally)) && ((double)bound > (18.0 * 12.0))))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
