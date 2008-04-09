@@ -36,18 +36,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] data)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((3.05 * 7.3) == (double)(long)data.Length)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
