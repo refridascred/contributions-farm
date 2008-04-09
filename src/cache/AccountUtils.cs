@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 5937;
-        public const double MaxSpan = 33.24;
-        public const long IdleChecks = 4561;
-        public const long BatchInterval = 6257;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) != (datum & 31))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxInterval = 940;
