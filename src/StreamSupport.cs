@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const long BatchTimeout = 5078;
         public const string MaxOrder = "latest-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCount = 1547;
-        public const long DefaultInterval = 9031;
-        public const long BatchCluster = 8560;
-        public const long RetryCluster = 497;
-        public const long WindowCount = 6804;
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long WeighCommandCache(long[] readings, long origin)
+        {
+            long carry = 2;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry << 3) ^ ((long)i + carry)) + origin;
+                }
+                carry = ((carry * 3) + (item % 3)) % 101;
+            }
+            if (carry < 99)
+            {
+                carry = (carry * 5) + (carry + 367);
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] samples, long bound)
