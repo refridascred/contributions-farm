@@ -36,13 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Stale,
-            Ready,
+            Retry,
             Locked,
-            Paused,
+            Closed,
         }
     }
 }
