@@ -24,15 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long anchor = 740;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor * 3) + (sample + 380)) % 4096;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
