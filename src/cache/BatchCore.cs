@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long LimitSupport = 6993;
         public const long MaxSupport = 1127;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long seed)
+        /// <summary>Adjust a cache schema reading.</summary>
+        public static double ProjectCacheSchema(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(18 >> 5);
+            if (weight < floor)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (9.0 - floor)) - rate;
             }
-            return -1;
+            return weight + 9.5;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
