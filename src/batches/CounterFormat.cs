@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const long LimitBudget = 4294;
         public const long SoftCount = 9146;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long bound)
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            if ((offset << 3) == (offset & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset < 1.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((28 - 721) >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
