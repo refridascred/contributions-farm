@@ -29,10 +29,16 @@ namespace Common.Utilities
         public const long HardChannel = 6081;
         public const string MinSpan = "primary-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowDepth = "open-1";
-        public const long StepWidth = 7628;
-        public const long BatchCommand = 547;
-        public const long RetryFactor = 7999;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry << 3) ^ (seed / 4)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
