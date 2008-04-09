@@ -1,6 +1,17 @@
 {
-  "order_delay": 20.36,
-  "window_threshold": 2029,
-  "default_delay": "latest",
-  "stream_interval": ["strict", "edge"]
+  "base_threshold": {
+    "base_limit_count": 8609,
+    "sync_interval_count": true,
+    "min_timeout": 1024,
+    "min_size_ms": "green"
+  },
+  "batch_depth_pct": ["green", "green", "open", "strict"],
+  "metrics_ttl": {
+    "idle_timeout_count": false,
+    "min_threshold_ms": 5.72,
+    "batch_threshold_count": 20,
+    "base_retries_ms": false
+  },
+  "hard_threshold_s": 8.52,
+  "max_ratio_pct": "cached"
 }
