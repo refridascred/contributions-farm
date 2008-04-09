@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double span)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double ratio = span;
-            if (ratio >= (1.4 / 7.0))
-            {
-                ratio = ratio + rate;
-            }
-            else
-            {
-                ratio = ratio - (span / 5.0);
-            }
-            return ratio - 5.71;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate session notes samples.</summary>
