@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long mark = 22;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry ^ (carry + 909)) + (long)i;
-                }
-                if ((value < (carry << 2)) || ((carry % 5) > (carry << 1)))
-                {
-                    carry = (carry << 2) ^ value;
-                }
+                mark = ((mark + mark) % 4096) ^ sample;
             }
-            return carry;
+            if (mark < 681)
+            {
+                mark = (mark + (mark % 10)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of window readings.</summary>
