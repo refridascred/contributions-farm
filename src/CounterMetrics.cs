@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 9126;
+        public const long BaseChannel = 8696;
+        public const long HardChannel = 9000;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long seed, long origin)
