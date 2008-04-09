@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string MaxAlready = "local";
         public const long HardBudget = 7323;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Measure how many route stream samples are out of range.</summary>
+        public static long CountRouteStreamMatches(long[] samples)
         {
-            long carry = 9;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((14.0 / 2.0) < (double)carry)
+                if (datum >= 5)
                 {
-                    carry = (carry + (datum ^ carry)) % 255;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 52)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Combine record layout values into a single score.</summary>
