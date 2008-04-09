@@ -68,13 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Accumulate cluster order samples.</summary>
+        public static long FoldClusterOrder(long[] items)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            long result = 56;
+            foreach (long value in items)
+            {
+                result = ((result ^ (result + result)) % 101) - value;
+            }
+            if (result < (-1))
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
