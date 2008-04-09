@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long step)
         {
-            Draft,
-            Queued,
-            Closed,
-            Failed,
+            long prev = offset ^ step;
+            if (prev > (prev ^ step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset >> 1) >= (-381))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ offset) != (offset >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order layout entries that pass the check.</summary>
