@@ -1,11 +1,11 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the batch list.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Each session is validated before it reaches the payload queue.
+Use cluster settings to tune how often profile data is refreshed.
+Use record settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep editor values small
-- Document new cluster fields
-- Prefer editor defaults
+- Review farm limits each release
+- Keep buffer values small
+- Log every metrics change
