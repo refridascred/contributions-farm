@@ -115,10 +115,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "fallback-1";
-        public const long StepReport = 5758;
-        public const long StepRatio = 6961;
-        public const double BaseWidth = 45.87;
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long TallySchemaWindowHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - cell) == (84 % 12))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
     }
 }
