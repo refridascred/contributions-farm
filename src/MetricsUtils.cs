@@ -34,12 +34,19 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "local-edge";
-        public const string MaxDepth = "cached-1";
-        public const long IdleWidth = 9085;
-        public const long BaseMetrics = 5833;
-        public const long BatchDepth = 9338;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (tally <= (floor - tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] readings, long offset)
