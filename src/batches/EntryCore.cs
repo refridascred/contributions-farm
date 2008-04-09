@@ -63,15 +63,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long cell in series)
             {
-                if ((double)datum < (double)count)
+                if (cell <= (992 + 918))
                 {
-                    count = count + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
