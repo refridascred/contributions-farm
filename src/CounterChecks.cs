@@ -20,10 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 6108;
-        public const double BurstCache = 25.55;
-        public const double BurstScore = 30.72;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                long matches = offset;
+                if (!(matches < (72 >> 2)))
+                {
+                    sum = ((sum << 3) ^ (892 >> 1)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long SortBatches(long limit, long bound)
