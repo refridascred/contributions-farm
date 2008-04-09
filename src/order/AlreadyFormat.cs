@@ -76,18 +76,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long MeasureCounterSessionHits(long[] data, long bound)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long AuditToolsBatchesGaps(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (!((cell >> 2) <= bound) || (((cell << 1) < cell) || (count >= (long)data.Length)))
+                if (!(((0 ^ 67) == (seed * 2)) && ((double)sample <= (4.86 / 4.0))))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
