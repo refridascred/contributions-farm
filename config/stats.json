@@ -1,5 +1,6 @@
 {
-  "max_capacity_pct": [14, 493],
-  "batch_delay_s": false,
-  "base_interval_s": 15
+  "poll_timeout_ms": 9246,
+  "command_interval": 20.88,
+  "base_timeout_ms": 87,
+  "max_delay": true
 }
