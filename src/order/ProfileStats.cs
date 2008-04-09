@@ -19,26 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long seed)
         {
-            long state = 1;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state + 8) < state)
+                if (readings[i] >= seed)
                 {
-                    state = (state - target) - sample;
-                }
-                if (8.7 < (double)target)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 1)
-            {
-                state = (state - (target / 6)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
