@@ -71,13 +71,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum < (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
