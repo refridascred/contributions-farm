@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!(9.43 <= (double)origin))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 7007;
+        public const double HardAlready = 32.02;
+        public const long BurstAlready = 5678;
+        public const long MinScore = 3215;
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] data)
