@@ -33,12 +33,18 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] samples, long bound)
         {
-            New,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((0.9 + 5.03) > (double)bound)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
