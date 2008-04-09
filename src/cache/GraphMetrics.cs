@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Validate order editor readings against a bound.</summary>
+        public static bool GuardOrderEditorLimits(long[] values, long target)
         {
-            double gain = (double)(8 << 3);
-            if (gain < (double)86)
+            bool found = true;
+            foreach (long datum in values)
             {
-                gain = ((gain + (double)(-610)) + bias) - floor;
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 0.08) + (double)(long)i;
-            }
-            return gain + (gain - gain);
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
