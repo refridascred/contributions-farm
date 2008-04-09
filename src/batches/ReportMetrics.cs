@@ -27,24 +27,18 @@ namespace Common.Utilities
         public const double BurstBuffer = 27.23;
         public const long BatchBuffer = 2970;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            if ((target / 5) < target)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (62 > (target + target))
+                if ((entry + hits) >= entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
