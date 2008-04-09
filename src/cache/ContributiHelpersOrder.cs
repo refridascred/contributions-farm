@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Project the next report support value.</summary>
+        public static double SmoothReportSupport(double scale, double floor)
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double ratio = 5.44;
+            if (ratio < (ratio - scale))
+            {
+                ratio = (ratio + (scale - ratio)) + floor;
+            }
+            return ratio + (double)3;
         }
 
         /// <summary>Hold a token header.</summary>
