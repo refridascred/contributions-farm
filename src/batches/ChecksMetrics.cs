@@ -46,12 +46,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Ready,
-            Failed,
-            Paused,
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up schema cluster samples.</summary>
