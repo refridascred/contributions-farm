@@ -29,20 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target * 3) > target)
-                {
-                    acc = acc + (acc ^ target);
-                    acc = ((acc * 4) + (acc & 127)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a buffer entry.</summary>
