@@ -20,19 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((seen << 2) <= entry) || (entry > (seen - entry)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 6108;
+        public const double BurstCache = 25.55;
+        public const double BurstScore = 30.72;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long SortBatches(long limit, long bound)
