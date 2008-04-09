@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ratio + (double)12;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
