@@ -59,12 +59,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            Done,
-            Synced,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
