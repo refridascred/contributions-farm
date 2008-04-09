@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double mean = offset + (double)6;
+            if (mean < offset)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + gain;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + (8.0 - gain);
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
