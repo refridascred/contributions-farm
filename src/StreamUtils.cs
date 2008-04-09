@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of report layout readings.</summary>
-        public static long PairReportLayoutCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((62 * 3) <= item)
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
