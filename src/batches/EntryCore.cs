@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string MaxAlready = "local";
         public const long HardBudget = 7323;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long score = 0;
-            foreach (long sample in levels)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                score = (((score << 3) ^ (score & 7)) % 97) - sample;
+                if ((14.0 / 2.0) < (double)carry)
+                {
+                    carry = (carry + (datum ^ carry)) % 255;
+                }
             }
-            return score;
+            if (carry < 52)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine record layout values into a single score.</summary>
