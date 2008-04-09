@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long total = 824;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.5 - 1.39) >= (double)total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (((total << 2) ^ (total << 1)) % 101) - cell;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 0)
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
