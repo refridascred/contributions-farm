@@ -65,11 +65,16 @@ namespace Common.Utilities
             return drift + (drift + 4.07);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardScore = 6325;
-        public const long MaxRoute = 9629;
-        public const long BatchRatio = 1956;
-        public const long BurstTimeout = 8134;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
