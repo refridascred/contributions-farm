@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= 44)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinInterval = 9675;
+        public const double DefaultFilter = 35.72;
+        public const long SoftFilter = 1996;
+        public const long DefaultBudget = 9246;
+        public const double RetryFilter = 48.28;
     }
 }
