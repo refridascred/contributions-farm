@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            Ready,
-            Locked,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count + count) < (value + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
