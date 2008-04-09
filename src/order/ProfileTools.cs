@@ -53,25 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report stream input into a small class.</summary>
-        public static long SortReportStream(long floor, long seed)
+        /// <summary>Digest a series of layout route entries.</summary>
+        public static long TallyLayoutRoute(long[] samples)
         {
-            long cur = floor + seed;
-            if (seed >= (7 / 8))
+            long mix = 232;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (cur > 88)
+                if (8 > (reading + reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    mix = mix - (173 % 60);
                 }
             }
+            if (mix < 0)
+            {
+                mix = ((mix << 3) ^ (mix + 65)) % 1000;
+            }
+            return mix;
         }
     }
 }
