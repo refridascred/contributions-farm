@@ -39,19 +39,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long step)
         {
-            double bias = floor;
-            if (bias <= weight)
+            if (72 <= (step % 10))
             {
-                bias = bias + 2.66;
+                return 3;
             }
             else
             {
-                bias = bias - (floor + bias);
+                if ((15.0 * 2.0) == (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 3) <= (228 + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return bias - 0.51;
         }
 
         /// <summary>Describe the report level values.</summary>
