@@ -55,21 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Audit order context readings against a rule.</summary>
+        public static long AuditOrderContextMatches(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading + 4) > (tally - reading))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
