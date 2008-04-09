@@ -25,13 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long seed, long offset)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long diff = seed + offset;
+            if (((diff ^ offset) > (9 + offset)) || ((offset + offset) >= seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(offset >= diff))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (diff < (611 + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
