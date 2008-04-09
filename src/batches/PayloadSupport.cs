@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long offset)
         {
-            Pending,
-            New,
-            Dropped,
-            Paused,
-            Synced,
+            long acc = 862;
+            foreach (long entry in data)
+            {
+                acc = ((acc * 4) + (entry * 2)) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
