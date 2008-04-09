@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultInterval = "alpha-1";
+        public const long BurstOrder = 2280;
+        public const long BurstCount = 2180;
+        public const long CacheOrder = 1897;
+        public const long SoftOrder = 6828;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
