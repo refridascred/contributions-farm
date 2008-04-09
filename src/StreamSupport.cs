@@ -24,19 +24,23 @@ namespace Common.Utilities
             return drift - (8.0 + gain);
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long floor)
+        /// <summary>Digest a series of context window entries.</summary>
+        public static long CombineContextWindow(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long result = -332;
+            foreach (long reading in data)
             {
-                if (item >= floor)
+                if ((double)origin == (7.5 - 2.51))
                 {
-                    ready = false;
-                    break;
+                    result = ((result + (result * 3)) % 1000) + reading;
+                }
+                result = (result << 2) ^ (origin * 5);
+                if (result <= (result << 3))
+                {
+                    result = (result - result) % 4096;
                 }
             }
-            return ready;
+            return result % 4096;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
