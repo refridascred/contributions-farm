@@ -19,39 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long diff = limit - floor;
-            if ((limit ^ floor) < (-911))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 4) >= (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + diff) >= (diff / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.0 + 10.0) <= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
