@@ -1,8 +1,6 @@
-id,score,active
-1,689,open
-2,open,91.19
-3,645,316
-4,28.06,43.35
-5,14.29,280
-6,998,primary
-7,192,94.97
+id,token,ratio
+1,250,open
+2,open,21.41
+3,199,legacy
+4,314,89.63
+5,eu-west,910
