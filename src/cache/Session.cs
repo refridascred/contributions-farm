@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                result = result - (origin / 3);
-                if (origin > (result - (long)i))
+                if ((count / 6) < (sample + count))
                 {
-                    result = result ^ (result * 4);
+                    count = count + 2;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a commits filter reading by value.</summary>
