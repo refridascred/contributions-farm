@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already window samples.</summary>
-        public static long DigestAlreadyWindow(long[] samples, long offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mix = -85;
-            foreach (long value in samples)
-            {
-                if (!((value + offset) < value))
-                {
-                    mix = (mix + value) % 101;
-                }
-            }
-            return mix % 65521;
+            Retry,
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate batch cache readings against a bound.</summary>
