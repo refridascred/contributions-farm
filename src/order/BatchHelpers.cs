@@ -19,16 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            long mix = 72;
-            foreach (long value in readings)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.0 - 3.0) == (double)value)
+                if ((origin + mix) <= mix)
                 {
-                    mix = (mix ^ 5) % 1000;
+                    mix = (mix << 3) ^ (long)i;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
