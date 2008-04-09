@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a profile context reading.</summary>
-        public static double ProjectProfileContext(double ratio, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double mean = (double)44 / 7.0;
-            return ((mean + (double)508) + ratio) + offset;
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
