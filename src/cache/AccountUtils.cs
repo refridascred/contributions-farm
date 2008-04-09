@@ -28,14 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data)
         {
-            Pending,
-            Ready,
-            Paused,
-            Draft,
-            Stale,
+            long result = 84;
+            foreach (long datum in data)
+            {
+                result = (result + result) + datum;
+            }
+            return result % 65521;
         }
     }
 }
