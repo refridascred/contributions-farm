@@ -61,19 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] samples, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
