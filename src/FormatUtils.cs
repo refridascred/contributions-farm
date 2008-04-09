@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
-        public static bool ValidateQueueContributiRange(long[] data, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (reading != bound)
+                if (value > step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Hold a profile summary.</summary>
