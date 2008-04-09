@@ -24,19 +24,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long target)
         {
-            long score = 4;
-            foreach (long sample in items)
+            long prev = origin - target;
+            if ((687 % 5) < (origin + 667))
             {
-                score = (score + ((-32) - sample)) % 1000;
+                return 1;
             }
-            if (score > 612)
+            else
             {
-                score = ((score << 2) ^ (seed % 24)) % 255;
+                if (((prev + prev) > (origin >> 5)) && ((origin + 790) == (target + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
