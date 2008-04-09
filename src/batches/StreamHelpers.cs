@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] items, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((93 & 63) == (hits >> 3)) && (datum <= (hits >> 5))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a schema options.</summary>
