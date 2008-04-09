@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 435;
+        public const string SoftEntry = "stable-1";
+        public const long BatchDepth = 8494;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
