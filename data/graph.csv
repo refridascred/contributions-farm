@@ -1,6 +1,7 @@
-id,label,rank
-1,846,stable
-2,84.46,green
-3,91.08,239
-4,blue,75.36
-5,fallback,913
+id,owner,score
+1,62,73.45
+2,401,251
+3,7.83,latest
+4,40.72,70.82
+5,legacy,standard
+6,77.35,413
