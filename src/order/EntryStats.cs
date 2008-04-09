@@ -50,17 +50,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score + (score ^ score)) % 65521;
-                score = (score * 5) + (seed / 8);
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
