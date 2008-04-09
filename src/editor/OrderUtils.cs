@@ -31,12 +31,15 @@ namespace Common.Utilities
             return gain + (offset * 8.0);
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] readings, long step)
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 1;
+            foreach (long datum in readings)
+            {
+                state = ((state ^ (step % 7)) % 65521) + datum;
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a record reading by value.</summary>
