@@ -1,13 +1,7 @@
 # support settings
-soft_window_count: 1006
-idle_window_pct: 1962
-enabled: false
-cache_interval_count:
-  poll_delay_ms:
-    - 5
-    - 198
-    - 278
-    - 419
-  max_delay: eu-west
-  flush_delay: 500
-cache_limit_ms: 3211
+burst_interval: 3701
+base_timeout_pct: standard
+base_window_s:
+  - open
+  - fallback
+max_interval_pct: standard
