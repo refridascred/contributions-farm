@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            double gain = ratio;
+            if (gain >= (double)426)
+            {
+                gain = gain + (double)55;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (4.2 + ratio)) - (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Look up the position of a metric batch sample.</summary>
