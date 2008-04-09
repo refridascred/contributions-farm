@@ -13,18 +13,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((16 + seed) >= 5))
-                {
-                    total = total - (total - entry);
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
