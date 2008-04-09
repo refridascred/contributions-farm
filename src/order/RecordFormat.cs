@@ -25,11 +25,16 @@ namespace Common.Utilities
             return weight + (double)(-18);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "primary";
-        public const long HardScore = 8703;
-        public const long SoftLevel = 185;
-        public const double LimitCluster = 10.25;
+        /// <summary>Project the next contributi cluster value.</summary>
+        public static double BlendContributiCluster(double scale, double span)
+        {
+            double mean = scale;
+            if (mean > (mean + mean))
+            {
+                mean = mean + span;
+            }
+            return mean - (5.0 / 8.0);
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ScaleBatch(double weight, double bias)
