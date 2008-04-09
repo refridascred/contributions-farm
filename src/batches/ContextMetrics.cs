@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support window entries that pass the check.</summary>
-        public static long MeasureSupportWindowMatches(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(7.09 < (double)sample))
+                if (series[i] == origin)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
