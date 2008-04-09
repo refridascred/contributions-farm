@@ -53,12 +53,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double offset)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            double ratio = 6.0;
+            if (ratio > (bias - 9.3))
+            {
+                ratio = (ratio + (ratio * 4.09)) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (double)0) + (double)(long)i;
+            }
+            return ratio + (5.7 / 9.0);
         }
     }
 }
