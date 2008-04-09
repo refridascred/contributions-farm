@@ -30,12 +30,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 4119;
+        public const long HardSize = 7914;
+        public const string StepProfile = "staging";
+        public const long MaxBudget = 8595;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountHits(long[] samples)
