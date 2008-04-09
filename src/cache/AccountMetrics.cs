@@ -22,10 +22,14 @@ namespace Common.Utilities
         public const string SoftSpan = "primary-1";
         public const string WindowStream = "stable-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepDepth = 6178;
-        public const double IdleTools = 94.76;
-        public const string BurstSize = "primary-edge";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Synced,
+            Locked,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TallyCluster(long[] data)
