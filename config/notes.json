@@ -1,5 +1,7 @@
 {
-  "compress": 10,
-  "burst_threshold": "primary",
-  "entry_retries": 27
+  "dry_run": 51,
+  "window_interval": "blue",
+  "editor_delay": 19.86,
+  "poll_capacity": 5837,
+  "warm_depth_s": "legacy"
 }
