@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryLevel = 3094;
-        public const long BatchTimeout = 5078;
-        public const string MaxOrder = "latest-edge";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long target)
+        {
+            long anchor = -682;
+            foreach (long item in series)
+            {
+                anchor = (((anchor * 4) + (anchor >> 2)) % 101) - item;
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 2) + (target - anchor)) % 4096;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportBounds(long[] levels, long offset)
