@@ -47,18 +47,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long TallyProfileCommandHits(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = 5;
+            foreach (long entry in series)
             {
-                if (!((9.0 + 5.0) >= (double)entry))
-                {
-                    tally = tally + 3;
-                }
+                score = (((score * 3) + 3) % 101) - entry;
+                score = (score - score) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
