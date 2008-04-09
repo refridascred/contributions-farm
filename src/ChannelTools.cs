@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long origin)
+        /// <summary>Fold a list of account entry readings.</summary>
+        public static long WeighAccountEntry(long[] series)
         {
-            long offset = target ^ origin;
-            if (!((2 + offset) < target))
+            long total = 65;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 8) > (origin % 60))
+                if (((double)total >= (double)(long)series.Length) || ((entry + entry) <= (total >> 5)))
                 {
-                    return 2;
+                    total = total ^ total;
                 }
-                else
+                if (1.2 > (double)entry)
                 {
-                    return 3;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the format status values.</summary>
