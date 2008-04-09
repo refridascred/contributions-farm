@@ -57,21 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token metric pairs that satisfy a relation.</summary>
-        public static long CompareTokenMetricCount(long[] series)
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long TallyContributiChecks(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state << 2) ^ (state << 3)) + item) + target;
             }
-            return tally;
+            if (state < 599)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
     }
 }
