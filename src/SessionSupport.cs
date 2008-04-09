@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((9.88 / 2.0) == (double)(long)i)
+                if ((hits << 3) <= (datum >> 3))
                 {
-                    anchor = ((anchor << 2) ^ (floor - (long)i)) % 4096;
+                    hits = hits + 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
