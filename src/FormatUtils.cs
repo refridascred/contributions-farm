@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            Synced,
+            Ready,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
