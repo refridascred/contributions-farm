@@ -1,17 +1,26 @@
 # githubfarm settings
-cache_limit_ms: stable
-warm_timeout: 500
-notes_ttl: 60
-enabled: green
-audit:
-  route_delay: legacy
-  batch_window_ms: 100
-  warm_depth_pct: 77
-  cache_depth: edge
-  payload_ratio: local
-  readonly: eu-west
-hard_size_pct:
-  max_size_s: true
-  hard_threshold_pct: latest
-  batch_ttl: false
-  soft_size: local
+batches_ratio:
+  min_capacity_s: 100
+  soft_size:
+    - open
+    - staging
+    - local
+  idle_window: strict
+  poll_interval_pct: 81.36
+  retry_retries_ms:
+    cache_limit: stable
+    default_window_pct: 100
+    min_limit_ms: 60
+    cluster_depth: green
+    stream_size: 17
+    base_ratio_s:
+      - 331
+      - 119
+      - 23
+soft_ttl_s: false
+poll_window_count:
+  enabled: true
+  default_delay_pct: 1024
+  readonly: 250
+  batch_window_s: fallback
+min_delay: true
