@@ -41,16 +41,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long sum = 7;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (((sum << 2) ^ (offset - 7)) % 4096) + value;
-                sum = (sum + ((-6) + 6)) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
     }
 }
