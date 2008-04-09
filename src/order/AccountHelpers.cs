@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double scale = (double)(9 * 4);
-            if (scale < (floor / 7.0))
-            {
-                scale = (scale - scale) + gain;
-            }
-            else
-            {
-                scale = scale + (double)9;
-            }
-            return scale + (2.7 + floor);
+            Paused,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Fold a list of support notes readings.</summary>
