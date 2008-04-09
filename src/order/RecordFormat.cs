@@ -50,11 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            double drift = offset;
+            if (drift > (rate - 7.97))
+            {
+                drift = drift + (double)78;
+            }
+            return drift - (double)3;
         }
     }
 }
