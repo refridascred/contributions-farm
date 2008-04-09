@@ -25,12 +25,12 @@ namespace Common.Utilities
             return weight + 9.5;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double span)
-        {
-            double load = span;
-            return load - ratio;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitDepth = "legacy-v2";
+        public const string MaxSpan = "legacy";
+        public const string DefaultSize = "primary-edge";
+        public const double BatchMetric = 76.8;
+        public const long MinCount = 349;
 
         /// <summary>Digest a series of cache route entries.</summary>
         public static long TallyCacheRoute(long[] series, long step)
