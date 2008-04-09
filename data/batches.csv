@@ -1,7 +1,6 @@
-id,weight,region,count
-1,primary,open,451
-2,open,stable,965
-3,65.16,strict,fallback
-4,826,225,85.2
-5,latest,59.02,cached
-6,eu-west,39.09,latest
+id,rank,ratio,token
+1,675,staging,513
+2,47.95,352,951
+3,legacy,213,75.03
+4,30.2,65.72,34.23
+5,87.48,53.92,standard
