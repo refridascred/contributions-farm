@@ -16,18 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 % 16) != (2 ^ target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next batch batches value.</summary>
