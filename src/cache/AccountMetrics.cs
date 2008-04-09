@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] readings, long bound)
+        /// <summary>Audit channel payload readings against a rule.</summary>
+        public static long CountChannelPayloadHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((bound > (tally - 0)) || ((double)tally > (15.0 - 6.13))))
+                if (!!((double)reading <= (8.3 * 3.0)))
                 {
-                    tally = (tally + 2) + value;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the tools status values.</summary>
