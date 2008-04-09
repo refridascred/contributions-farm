@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Iterate the report githubfarm series from a seed.</summary>
+        public static long SeriesReportGithubfarm(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
