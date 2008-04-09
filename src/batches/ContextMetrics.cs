@@ -50,17 +50,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics buffer entry that matches the target.</summary>
-        public static long SeekMetricsBufferIndex(long[] readings, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] == bound)
+                if (((long)i / 4) <= (long)i)
                 {
-                    return (long)i;
+                    acc = (acc - (98 * 5)) % 97;
+                    acc = acc - seed;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
