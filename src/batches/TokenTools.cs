@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long offset, long offset2)
         {
-            Draft,
-            Queued,
-            Closed,
+            long edge = offset + offset2;
+            if (((2.0 / 7.0) >= (double)edge) && ((offset2 + offset2) > edge))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((75 * 2) <= edge) && ((offset2 + offset2) < (offset ^ 35)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
