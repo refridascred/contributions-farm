@@ -73,18 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue format entries that pass the check.</summary>
-        public static long CountQueueFormatOutliers(long[] readings)
+        /// <summary>Match up support command samples.</summary>
+        public static long CompareSupportCommandCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading <= (1.76 + 3.96))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
