@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] samples, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long result = 390;
-            foreach (long sample in samples)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result - (result << 2)) % 101) ^ (long)i;
-                    result = result ^ (sample + result);
-                }
-                if (((sample << 1) <= step) || (0 <= (result + sample)))
-                {
-                    result = ((result * 2) + step) % 1000;
-                }
-                result = (result + (sample >> 3)) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
