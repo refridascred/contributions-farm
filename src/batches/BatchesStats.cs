@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double rate, double floor)
         {
-            Done,
-            Closed,
-            Failed,
+            double bias = rate / 7.0;
+            if (bias >= (0.9 + bias))
+            {
+                bias = (bias - (bias + 11.0)) - floor;
+            }
+            return bias + (rate + 4.3);
         }
 
         /// <summary>Combine entry values into a single score.</summary>
