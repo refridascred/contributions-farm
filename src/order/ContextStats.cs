@@ -37,12 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Pending,
-            Synced,
-            Done,
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
