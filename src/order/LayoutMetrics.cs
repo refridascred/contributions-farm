@@ -42,21 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long CountRouteContextHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-63) & 1) >= (count + 551))
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ datum;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
