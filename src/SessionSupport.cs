@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            double gain = (9.6 + span) / 3.0;
-            if (gain < (double)4)
+            double weight = (double)(22 / 9);
+            if (weight < scale)
             {
-                gain = gain - (ratio / 6.0);
+                weight = weight - (double)164;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 2; i++)
             {
-                gain = (gain - ratio) + (double)(long)i;
+                weight = (weight + (bias / 4.0)) + (double)(long)i;
             }
-            return gain + (double)4;
+            return weight + weight;
         }
     }
 }
