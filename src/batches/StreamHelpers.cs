@@ -81,18 +81,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] levels)
+        /// <summary>Combine already farm values into a single score.</summary>
+        public static long FoldAlreadyFarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = -8;
+            foreach (long item in samples)
             {
-                if (((long)levels.Length / 4) != (sample * 4))
+                anchor = ((anchor * 5) + (anchor * 3)) + item;
+                if (!((anchor / 7) <= (anchor << 1)))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Describe the checks state values.</summary>
