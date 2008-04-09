@@ -33,21 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 510;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 2) + (cell - cell)) % 4096;
             }
-            return seen;
+            return state;
         }
     }
 }
