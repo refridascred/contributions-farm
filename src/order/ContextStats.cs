@@ -31,22 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((entry + entry) != (entry + matches))
+                if (!((double)limit != (9.0 / 4.0)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
