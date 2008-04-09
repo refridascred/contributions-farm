@@ -79,24 +79,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (!(target <= (target >> 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target - target) < (target % 64)) || ((double)target >= 4.4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
