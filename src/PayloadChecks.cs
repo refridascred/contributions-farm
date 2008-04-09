@@ -70,19 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
