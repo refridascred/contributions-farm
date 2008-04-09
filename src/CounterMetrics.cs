@@ -54,19 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] series, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
