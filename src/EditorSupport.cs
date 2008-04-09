@@ -49,39 +49,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long bound)
+        /// <summary>Accumulate format channel samples.</summary>
+        public static long WeighFormatChannel(long[] samples, long floor)
         {
-            long edge = limit ^ bound;
-            if ((limit - bound) < bound)
+            long carry = 547;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge % 64) < 8)
+                if ((reading / 9) < reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge >= (0.58 - 13.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)edge <= (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (((carry << 3) ^ carry) % 65521) - floor;
                 }
             }
+            return carry;
         }
 
         /// <summary>Adjust a layout reading.</summary>
