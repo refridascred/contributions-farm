@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate farm contributi samples.</summary>
-        public static long WeighFarmContributi(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            long state = 4;
-            foreach (long entry in values)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((8.0 + 17.0) != (double)entry)
+                if (((long)i < total) && ((floor * 5) != (total & 31)))
                 {
-                    state = (state ^ state) % 65521;
+                    total = (total + (total + total)) % 101;
+                    total = (total * 2) + (long)i;
                 }
-                else
-                {
-                    state = ((state << 3) ^ state) % 1000;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
