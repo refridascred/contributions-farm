@@ -30,15 +30,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a farm stats reading.</summary>
-        public static double BlendFarmStats(double weight, double span)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double ratio = (double)(515 / 5);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - 6.2) + (double)(long)i) - span;
-            }
-            return ratio + weight;
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
