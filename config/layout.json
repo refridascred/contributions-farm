@@ -1,12 +1,8 @@
 {
-  "cache_retries_s": ["primary", "latest", "open", "stable"],
-  "sync_window": 30,
-  "farm_ratio": true,
-  "max_timeout": {
-    "audit": true,
-    "account_ttl": 63,
-    "idle_retries": "cached"
-  },
-  "metric_interval": 250,
-  "enabled": false
+  "warm_interval_pct": true,
+  "flush_retries_ms": "green",
+  "cache_size_count": "latest",
+  "persist": 100,
+  "batch_ratio": "latest",
+  "base_delay_ms": 7.22
 }
