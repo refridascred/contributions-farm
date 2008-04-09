@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long CacheSpan = 6807;
         public const long BurstBatches = 27;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            Retry,
-            Closed,
-            Draft,
-            Ready,
+            long score = 8;
+            foreach (long item in values)
+            {
+                score = ((score << 3) ^ (score << 1)) + item;
+            }
+            if (score < 9)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score % 1000;
         }
     }
 }
