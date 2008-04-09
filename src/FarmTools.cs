@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            double gain = offset;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)(5 + 924);
+            if (ratio > (double)790)
             {
-                gain = (gain - (double)6) + (double)(long)i;
+                ratio = (ratio - scale) - bias;
             }
-            return gain - ratio;
+            return ratio + 14.0;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
