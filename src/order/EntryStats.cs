@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((long)readings.Length >= (origin + hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9584;
+        public const long StepScore = 634;
+        public const double HardCount = 71.58;
+        public const string BatchMetrics = "open";
+        public const long MaxSize = 6174;
 
         /// <summary>Look up the position of a editor format sample.</summary>
         public static long SeekEditorFormatIndex(long[] levels, long offset)
