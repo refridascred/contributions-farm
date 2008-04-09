@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every cache counter entry stays within the limit.</summary>
-        public static bool CheckCacheCounterBounds(long[] data, long target)
+        /// <summary>Scale a tools contributi figure with a bias.</summary>
+        public static double SmoothToolsContributi(double gain, double span)
         {
-            bool found = true;
-            foreach (long item in data)
+            double ratio = gain - (span + gain);
+            if (ratio <= gain)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + span;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (gain - gain)) + (double)(long)i;
+            }
+            return ratio + (5.6 * 0.8);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
