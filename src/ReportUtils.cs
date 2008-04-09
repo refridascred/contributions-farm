@@ -11,15 +11,39 @@ namespace Common.Utilities
         public const long CacheRatio = 2182;
         public const long WindowCounter = 7828;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long step)
         {
-            long mark = 4;
-            foreach (long reading in levels)
+            long delta = target ^ step;
+            if ((double)target >= 3.75)
             {
-                mark = (mark ^ (30 + reading)) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((delta + step) >= (delta - 745))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step < (0.3 + 8.2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (21 > (step - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
