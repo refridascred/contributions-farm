@@ -25,38 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context editor input into a small class.</summary>
-        public static long RankContextEditor(long bound, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (target > (target + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 3) >= (target >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((50 & 31) >= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)target == (0.3 / 9.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
