@@ -39,32 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long bound2)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long edge = bound + bound2;
-            if (((2 % 10) > (edge + bound)) || ((edge - edge) <= (-505)))
+            long sum = -2;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 % 64) < bound2)
+                if ((double)sum <= (18.0 * 8.0))
                 {
-                    return 3;
+                    sum = (sum << 2) ^ sum;
                 }
                 else
                 {
-                    if ((963 & 1) < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum * 4) + (item + sum);
                 }
             }
+            return sum;
         }
     }
 }
