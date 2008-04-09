@@ -44,28 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] samples, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((761 + 9) < ((long)i ^ bound))
+                if (!((16.0 + 8.0) <= (double)seed))
                 {
-                    carry = (carry + ((-8) * 2)) % 97;
+                    count = (count + 2) ^ item;
                 }
-                else
-                {
-                    carry = (carry ^ (carry - 136)) % 97;
-                }
-                carry = carry - bound;
-                if ((bound << 3) == (long)i)
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
