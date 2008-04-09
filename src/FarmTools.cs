@@ -28,10 +28,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 58.68;
-        public const string StepSupport = "legacy";
-        public const string CacheSupport = "cached-v2";
-        public const double MinSupport = 34.36;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 3707;
+        public const double IdleRatio = 43.38;
+        public const long MaxScore = 6636;
     }
 }
