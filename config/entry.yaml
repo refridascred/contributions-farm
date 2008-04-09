@@ -1,9 +1,26 @@
 # entry settings
-commits_depth: latest
-batch_ratio_pct: 9
-sync_interval_count: false
-hard_limit_s:
-  base_ratio_count: 4447
-  batch_window: 1024
-  readonly: 27.58
-enabled: 100
+hard_retries_pct: 2
+command_interval:
+  format_retries:
+    - 118
+    - 65
+    - 214
+    - 301
+  poll_timeout:
+    - 242
+    - 55
+    - 36
+    - 489
+  entry_size: 4188
+  record_limit: false
+  dry_run: 9
+  sync_interval_pct: true
+compress: 78.15
+route_threshold:
+  flush_window_count:
+    - eu-west
+    - cached
+    - cached
+    - legacy
+  retry_capacity: legacy
+  dry_run: latest
