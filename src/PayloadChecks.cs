@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] == limit)
+                anchor = ((anchor << 2) ^ ((-799) * 2)) % 65521;
+                if (((target ^ 0) < cell) || ((0.76 / 5.0) > (double)cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 3)
+            {
+                anchor = ((anchor << 3) ^ 158) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
