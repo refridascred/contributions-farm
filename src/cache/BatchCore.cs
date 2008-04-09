@@ -21,19 +21,11 @@ namespace Common.Utilities
             return weight + 9.5;
         }
 
-        /// <summary>Check that every context format entry stays within the limit.</summary>
-        public static bool CheckContextFormatLimits(long[] series, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double span)
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = span;
+            return load - ratio;
         }
 
         /// <summary>Digest a series of cache route entries.</summary>
