@@ -1,4 +1,13 @@
 # support settings
-max_ttl_ms: staging
-readonly: 79
-batch_size_count: eu-west
+idle_size: blue
+retry_retries_count: local
+flush_ratio: 100
+min_interval: 81
+max_threshold:
+  batch_threshold_s:
+    - local
+    - fallback
+    - edge
+  audit: 60
+  flush_retries_s: 100
+  warm_retries: 500
