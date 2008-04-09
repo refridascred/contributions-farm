@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long step)
         {
-            long carry = 7;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + carry) <= (datum - (-266)))
+                if (readings[i] == step)
                 {
-                    carry = (carry - (datum + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (datum / 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < (-6))
-            {
-                carry = (carry * 4) + (carry - carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
