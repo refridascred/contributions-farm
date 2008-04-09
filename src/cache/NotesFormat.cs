@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = 835;
-            foreach (long cell in values)
-            {
-                if (!(((6.67 + 8.88) <= (double)sum) && ((double)cell == (9.6 - 4.46))))
-                {
-                    sum = (sum * 5) + (sum - step);
-                }
-                if ((step % 12) > sum)
-                {
-                    sum = (sum - (-965)) % 1000;
-                }
-                sum = (sum - (sum + sum)) % 65521;
-            }
-            return sum;
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Accumulate queue samples.</summary>
