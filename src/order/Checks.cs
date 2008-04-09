@@ -31,18 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Combine notes stats values into a single score.</summary>
+        public static long FoldNotesStats(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 82;
+            foreach (long reading in levels)
             {
-                if (2.5 > (double)matches)
+                if ((state << 2) == (offset - reading))
                 {
-                    matches = (matches + 3) + cell;
+                    state = ((state * 4) + (state % 10)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + (reading * 3)) % 255;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
