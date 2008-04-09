@@ -28,9 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 3707;
-        public const double IdleRatio = 43.38;
-        public const long MaxScore = 6636;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
