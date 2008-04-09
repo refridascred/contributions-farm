@@ -1,6 +1,17 @@
 {
-  "compress": ["fallback", "fallback", "green", "latest"],
-  "retry_limit_s": 3702,
-  "filter_retries": 2.52,
-  "max_interval": 500
+  "queue_retries": "latest",
+  "sync_depth": 3594,
+  "soft_timeout_count": "cached",
+  "warm_size_pct": true,
+  "max_timeout_ms": {
+    "readonly": "primary",
+    "window_interval": 755,
+    "base_depth_ms": {
+      "dry_run": ["eu-west", "standard", "blue", "local"],
+      "cache_retries": "cached",
+      "burst_retries": "latest",
+      "base_limit_s": 78.61,
+      "burst_threshold": [143, 327, 245, 102]
+    }
+  }
 }
