@@ -14,12 +14,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxWidth = 9647;
-        public const string DefaultScore = "legacy-v2";
-        public const double StepProfile = 81.53;
-        public const long BatchProfile = 4975;
-        public const long LimitTimeout = 7571;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1864;
+        public const long SoftAlready = 3821;
+        public const long WindowTimeout = 1151;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] items)
