@@ -26,12 +26,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryBudget = 11.31;
-        public const long MinLevel = 7269;
-        public const double MaxCommand = 29.28;
-        public const long HardCommand = 4282;
-        public const long BaseSize = 1544;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first metric payload entry that matches the target.</summary>
         public static long LocateMetricPayloadIndex(long[] levels, long seed)
