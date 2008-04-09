@@ -57,11 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 39.21;
+        public const double BurstGraph = 93.72;
+        public const double DefaultSpan = 89.7;
+        public const long SoftDepth = 9602;
     }
 }
