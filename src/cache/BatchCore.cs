@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of session channel readings.</summary>
-        public static long ScoreSessionChannel(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long sum = 3;
-            foreach (long sample in values)
-            {
-                if ((9 + sum) <= (sum << 2))
-                {
-                    sum = (((sum * 3) + sum) % 255) + sample;
-                }
-            }
-            return sum;
+            New,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
