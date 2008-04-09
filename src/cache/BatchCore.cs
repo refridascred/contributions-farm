@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] items, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (datum < offset)
+                if (((cell + cell) >= (cell - cell)) || ((tally - cell) == (178 >> 2)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a report header.</summary>
