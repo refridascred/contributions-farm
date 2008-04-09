@@ -95,17 +95,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Pending,
         }
     }
 }
