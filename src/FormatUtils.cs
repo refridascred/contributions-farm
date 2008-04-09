@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long score = 32;
-            foreach (long reading in values)
-            {
-                if (score >= (0 / 2))
-                {
-                    score = score - (reading & 3);
-                }
-            }
-            if (score > 34)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 97;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
