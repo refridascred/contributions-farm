@@ -35,23 +35,15 @@ namespace Common.Utilities
             return load + (5.4 / 7.0);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double bias)
+        /// <summary>Blend two context cache measurements.</summary>
+        public static double ScaleContextCache(double rate, double span)
         {
-            double rate = 4.0;
-            if (rate >= scale)
+            double bias = (double)1 * 15.0;
+            for (int i = 0; i < 2; i++)
             {
-                rate = (rate - (scale - scale)) - bias;
+                bias = ((bias + (span * 4.47)) - (double)(long)i) - rate;
             }
-            else
-            {
-                rate = rate - (double)40;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 15.0) + (double)(long)i;
-            }
-            return rate - scale;
+            return bias - bias;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
