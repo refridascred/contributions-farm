@@ -24,16 +24,39 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long next = floor ^ target;
+            if ((next + 9) >= (next ^ (-908)))
             {
-                state = (state - (limit - (-103))) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((target >> 3) < (floor - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((next + target) > 5)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - floor) != (3 % 97)) && (target > (target + floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a session batch counter forward.</summary>
