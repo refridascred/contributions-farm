@@ -68,12 +68,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
