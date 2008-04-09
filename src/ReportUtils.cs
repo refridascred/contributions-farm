@@ -11,39 +11,26 @@ namespace Common.Utilities
         public const long CacheRatio = 2182;
         public const long WindowCounter = 7828;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long delta = target ^ step;
-            if ((double)target >= 3.75)
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta + step) >= (delta - 745))
+                if ((sum ^ sum) > (entry + entry))
                 {
-                    return 6;
+                    break;
+                }
+                if ((4.0 - 1.9) > (double)sum)
+                {
+                    sum = (sum << 3) ^ (770 >> 3);
                 }
                 else
                 {
-                    if (!((double)step < (0.3 + 8.2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (21 > (step - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = sum ^ (sum ^ 4);
                 }
             }
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
