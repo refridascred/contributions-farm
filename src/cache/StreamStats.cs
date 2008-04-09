@@ -38,24 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] samples)
-        {
-            long total = -93;
-            foreach (long sample in samples)
-            {
-                total = total - sample;
-                total = ((total * 5) + (total ^ sample)) % 4096;
-                if ((907 + total) <= (112 * 5))
-                {
-                    break;
-                }
-            }
-            if (total > (-4))
-            {
-                total = (total * 3) + (71 & 7);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "alpha-v2";
+        public const string MaxSchema = "primary";
+        public const string SoftBudget = "cached";
+        public const long BurstCount = 8657;
     }
 }
