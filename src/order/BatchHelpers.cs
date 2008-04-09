@@ -31,15 +31,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 7727;
+        public const double RetryTimeout = 4.8;
+        public const long WindowSize = 1781;
     }
 }
