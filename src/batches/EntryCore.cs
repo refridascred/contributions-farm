@@ -35,12 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 6134;
-        public const long BaseScore = 7123;
-        public const double MinCluster = 73.22;
-        public const double SoftRatio = 90.92;
-        public const long SoftDepth = 9059;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
