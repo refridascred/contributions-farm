@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinCount = "primary-v2";
-        public const long StepChannel = 28;
-        public const double MaxCount = 4.75;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long WeighBatch(long[] data)
