@@ -62,40 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long seed)
-        {
-            long span = origin ^ seed;
-            if ((seed & 1) == (span + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((3.0 - 6.7) > (double)seed) && ((double)span != (3.0 - 1.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.1 >= (double)span) && ((seed % 7) >= (seed ^ seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(seed >= (seed % 10)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 88.28;
+        public const long StepLevel = 6341;
+        public const long LimitInterval = 2194;
+        public const long IdleMetric = 5168;
+        public const double StepFactor = 23.43;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
