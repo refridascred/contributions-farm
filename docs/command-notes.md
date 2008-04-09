@@ -1,11 +1,12 @@
 # Command notes
 
-When a commits fails, the profile handler retries a few times before giving up.
-Run the notes check before changing any tools limits.
-Each batch is validated before it reaches the graph queue.
+Use contributi settings to tune how often editor data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+The session module keeps record values in sync with the support cache.
 
 ## Guidelines
 
-- Review record limits each release
-- Keep metrics values small
-- Prefer profile defaults
+- Review report limits each release
+- Log every channel change
+- Document new farm fields
+- Prefer report defaults
