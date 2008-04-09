@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
