@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long ScoreCounterReport(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long total = 8;
-            foreach (long reading in series)
-            {
-                if ((long)series.Length == (reading & 127))
-                {
-                    total = total + total;
-                }
-                if ((784 / 4) >= (total - 2))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a cache schema reading.</summary>
