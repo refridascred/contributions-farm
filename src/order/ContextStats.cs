@@ -46,18 +46,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] data, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 ^ target) < tally)
+                if (samples[i] < origin)
                 {
-                    tally = (tally + 3) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
