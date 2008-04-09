@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((bound >> 5) > (reading << 1))
+                if (((long)series.Length < 717) && ((2 > (bound + tally)) && ((double)bound > (18.0 * 12.0))))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
