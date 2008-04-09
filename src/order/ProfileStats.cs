@@ -43,13 +43,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels, long origin)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading % 16) == (61 + reading)) || (((reading + origin) == (count + origin)) && ((count - count) <= (count + count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
