@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const string MaxAlready = "local";
         public const long HardBudget = 7323;
 
-        /// <summary>Measure how many route stream samples are out of range.</summary>
-        public static long CountRouteStreamMatches(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= 5)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine record layout values into a single score.</summary>
