@@ -44,18 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long CountProfileGithubfarmMatches(long[] data, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((seen + 16) <= (seen - seen))
+                if (reading > limit)
                 {
-                    seen = ((seen + 1) - entry) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
