@@ -25,12 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record cluster sample.</summary>
-        public static long SeekRecordClusterIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a cache batches sample.</summary>
+        public static long FindCacheBatchesIndex(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= offset)
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
