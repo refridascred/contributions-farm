@@ -27,22 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] samples, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((9.63 + 19.0) <= (double)sample)
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
