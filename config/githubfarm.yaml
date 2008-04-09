@@ -1,8 +1,9 @@
 # githubfarm settings
-max_capacity_s:
-  - 279
-  - 29
-  - 165
-graph_size: strict
-readonly: 500
-strict: 94
+base_timeout:
+  - 483
+  - 402
+  - 326
+  - 332
+flush_ttl: stable
+order_threshold: 6.37
+filter_timeout: 3547
