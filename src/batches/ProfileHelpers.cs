@@ -29,12 +29,33 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinInterval = "staging-v2";
-        public const long WindowCommand = 8133;
-        public const long LimitCommand = 3606;
-        public const string DefaultCommand = "standard-v2";
-        public const long MaxSize = 3893;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long limit)
+        {
+            long step = offset ^ limit;
+            if (((double)limit == (7.5 - 6.5)) || ((limit / 6) < 211))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + 7) == (limit % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit >> 4) > 543)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next window metric value.</summary>
         public static double BlendWindowMetric(double gain, double bias)
