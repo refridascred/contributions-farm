@@ -1,10 +1,5 @@
 {
-  "default_size_pct": {
-    "editor_window": 86.46,
-    "default_delay": 37.92,
-    "retry_ttl_count": ["primary", "standard"]
-  },
-  "compress": "strict",
-  "readonly": "green",
-  "batch_limit_pct": 36.68
+  "commits_capacity": "edge",
+  "strict": 26,
+  "soft_window_count": "latest"
 }
