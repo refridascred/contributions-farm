@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum << 3) ^ (sum - (long)i);
-                sum = ((sum * 2) + ((long)i & 15)) % 4096;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
