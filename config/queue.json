@@ -1,8 +1,7 @@
 {
-  "burst_ratio_s": [443, 303, 295],
-  "token_ttl": ["legacy", "standard", "blue"],
-  "max_limit_s": "strict",
-  "flush_timeout_s": 250,
-  "cluster_limit": 16.02,
-  "batch_retries": ["staging", "blue", "eu-west", "green"]
+  "hard_window_s": 1212,
+  "audit": true,
+  "batch_interval_ms": 56.5,
+  "min_timeout_ms": false,
+  "retry_ratio_ms": true
 }
