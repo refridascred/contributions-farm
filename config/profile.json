@@ -1,7 +1,12 @@
 {
-  "stream_capacity": 500,
-  "strict": 71.07,
-  "sync_interval_ms": false,
-  "warm_ratio_pct": 30,
-  "report_threshold": "cached"
+  "stream_timeout": "open",
+  "cache_size_pct": {
+    "payload_size": 1,
+    "min_depth_s": true,
+    "min_capacity_pct": [367, 142, 482, 40],
+    "batch_limit": ["stable", "local", "local"],
+    "tools_retries": "edge"
+  },
+  "schema_interval": 500,
+  "max_threshold_s": "strict"
 }
