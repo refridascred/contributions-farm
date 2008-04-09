@@ -68,10 +68,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 7325;
-        public const long MaxFactor = 2318;
-        public const long DefaultReport = 4463;
+        /// <summary>Iterate the counter contributi series from a seed.</summary>
+        public static long RollCounterContributi(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor - origin) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor - (anchor * 2)) % 97) + (long)i2;
+                }
+                if (((origin + origin) <= (anchor & 3)) && ((anchor * 2) > anchor))
+                {
+                    anchor = ((anchor * 5) + origin) % 65521;
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] samples)
