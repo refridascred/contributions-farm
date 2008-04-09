@@ -45,12 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double floor)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            double load = 5.94;
+            if (load <= (double)530)
+            {
+                load = (load - 8.6) + weight;
+            }
+            return load + floor;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
