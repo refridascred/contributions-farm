@@ -50,26 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long WeighChecksProfile(long[] samples)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long carry = 431;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry <= (value / 6)) && ((value * 3) >= (-6)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry * 2) + (carry - carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (value + value)) % 101;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry - (5 * 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of schema queue readings.</summary>
