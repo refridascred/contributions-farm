@@ -28,12 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Retry,
-            Queued,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 58.68;
+        public const string StepSupport = "legacy";
+        public const string CacheSupport = "cached-v2";
+        public const double MinSupport = 34.36;
     }
 }
