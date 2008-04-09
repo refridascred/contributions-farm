@@ -14,19 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order editor readings against a bound.</summary>
-        public static bool GuardOrderEditorLimits(long[] values, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = 26;
+            foreach (long reading in readings)
             {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix + (mix + reading);
             }
-            return found;
+            if (mix < 88)
+            {
+                mix = (mix ^ origin) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
