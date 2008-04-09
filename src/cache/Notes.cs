@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            Done,
-            Locked,
-            Stale,
-            Ready,
+            double ratio = span;
+            if (ratio >= (1.4 / 7.0))
+            {
+                ratio = ratio + rate;
+            }
+            else
+            {
+                ratio = ratio - (span / 5.0);
+            }
+            return ratio - 5.71;
         }
 
         /// <summary>Accumulate session notes samples.</summary>
