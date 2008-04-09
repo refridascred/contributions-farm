@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const double RetryInterval = 10.67;
         public const double BaseStats = 29.93;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "fallback";
-        public const string WindowRatio = "alpha-1";
-        public const long StepSpan = 204;
-        public const long IdleWindow = 4153;
-        public const long MaxBudget = 2793;
+        /// <summary>Count the stats token entries that pass the check.</summary>
+        public static long TallyStatsTokenHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches + value) == (matches + 43)) || ((5.8 * 15.0) > (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
