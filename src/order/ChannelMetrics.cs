@@ -25,17 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a commits counter reading by value.</summary>
-        public static long LookupCommitsCounterIndex(long[] series, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                if (sample < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
