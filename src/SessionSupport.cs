@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1458;
-        public const long BatchChannel = 765;
-        public const long MaxChannel = 595;
-        public const long LimitChannel = 4475;
-        public const long RetryFactor = 5101;
+        /// <summary>Digest a series of checks record entries.</summary>
+        public static long WeighChecksRecord(long[] readings, long limit)
+        {
+            long sum = 19;
+            foreach (long datum in readings)
+            {
+                sum = (((sum << 2) ^ limit) % 1000) - datum;
+            }
+            if (sum > 33)
+            {
+                sum = ((sum * 5) + (limit >> 1)) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Roll a layout batch counter forward.</summary>
         public static long IterateLayoutBatch(long seed)
