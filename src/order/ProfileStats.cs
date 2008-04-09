@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 357;
-            foreach (long reading in series)
-            {
-                mark = (mark << 2) ^ (reading + reading);
-            }
-            if (mark < 66)
-            {
-                mark = ((mark * 5) + mark) % 65521;
-            }
-            return mark;
+            Pending,
+            Stale,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a contributi entry.</summary>
