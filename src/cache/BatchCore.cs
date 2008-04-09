@@ -43,26 +43,12 @@ namespace Common.Utilities
             return ratio2 + (double)(-8);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = 792;
-            foreach (long reading in series)
-            {
-                if ((9.92 + 7.0) >= (double)sum)
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + reading) % 97;
-                }
-            }
-            if (sum < 19)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 97;
-            }
-            return sum % 4096;
+            Locked,
+            Synced,
+            Active,
         }
     }
 }
