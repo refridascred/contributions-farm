@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Draft,
-            Pending,
-            Failed,
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
