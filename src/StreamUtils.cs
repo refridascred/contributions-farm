@@ -63,18 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] levels, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((7.99 >= (double)matches) && ((2.0 / 9.0) >= (double)77))
-                {
-                    matches = ((matches + 1) + cell) + limit;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
