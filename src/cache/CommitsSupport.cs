@@ -28,15 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout commits entries.</summary>
-        public static long FoldLayoutCommits(long[] data, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long result = 912;
-            foreach (long value in data)
-            {
-                result = (result ^ (value + result)) + floor;
-            }
-            return result % 1000;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
