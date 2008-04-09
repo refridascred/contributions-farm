@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstLevel = "cached-edge";
-        public const double MinFactor = 53.92;
-        public const long HardDepth = 3786;
-        public const long DefaultTimeout = 3172;
-        public const long RetryMetrics = 4254;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long step)
+        {
+            if ((offset << 3) <= 525)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)step != (double)54))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset == (0.15 + 7.0)) && ((offset + offset) <= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - offset) <= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BaseLevel = 51.53;
