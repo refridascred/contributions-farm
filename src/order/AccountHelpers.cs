@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Paused,
-            Idle,
-            Active,
-            Queued,
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
