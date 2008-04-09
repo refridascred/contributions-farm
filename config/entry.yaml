@@ -1,7 +1,22 @@
 # entry settings
-base_delay_s: 90
-cache_ttl_pct: 18.77
-retry_timeout_count: 77.57
-warm_limit_pct: blue
-support_threshold: standard
-default_ttl_ms: edge
+command_ratio:
+  max_retries_s: latest
+  buffer_timeout: 21
+  retry_interval_count: latest
+warm_capacity:
+  cache_capacity_count:
+    context_size:
+      - primary
+      - primary
+      - fallback
+    layout_size: primary
+    soft_timeout_count: 52.3
+    flush_size: 30
+    hard_size_pct: fallback
+  strict: edge
+  hard_ratio_count: cached
+  readonly: strict
+  layout_depth: 0.83
+strict: 33
+poll_threshold_ms: false
+min_limit_count: 1024
