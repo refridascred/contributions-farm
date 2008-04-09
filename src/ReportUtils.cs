@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheRatio = 2182;
         public const long WindowCounter = 7828;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 4;
+            foreach (long reading in levels)
             {
-                if ((double)matches < (3.0 + 4.0))
-                {
-                    matches = (matches + 3) + sample;
-                }
+                mark = (mark ^ (30 + reading)) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
