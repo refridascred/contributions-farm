@@ -37,30 +37,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Digest a series of metrics entry entries.</summary>
+        public static long TallyMetricsEntry(long[] samples)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long score = 63;
+            foreach (long item in samples)
             {
-                if ((score < (0 + score)) || ((datum & 3) > (datum - score)))
+                if ((15.0 - 14.0) > (double)item)
                 {
-                    score = (score << 2) ^ datum;
+                    score = (score - item) % 65521;
                 }
-                else
-                {
-                    score = (score - (35 ^ 766)) % 4096;
-                }
-                if ((datum + score) > (datum / 9))
+                if (593 <= (item << 1))
                 {
                     break;
                 }
             }
-            if (score > 6)
+            if (score < 221)
             {
-                score = (score - 6) % 65521;
+                score = ((score * 5) + (score + score)) % 101;
             }
-            return score;
+            return score % 65521;
         }
     }
 }
