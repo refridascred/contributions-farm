@@ -34,14 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Locked,
-            Paused,
-            Failed,
-            Retry,
-            Done,
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
