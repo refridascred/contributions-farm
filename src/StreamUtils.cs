@@ -56,15 +56,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            New,
-            Retry,
-            Stale,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftFactor = 3712;
+        public const long IdleWidth = 8992;
+        public const long IdleDepth = 8038;
+        public const long CacheLevel = 8818;
 
         /// <summary>Digest a series of tools account entries.</summary>
         public static long FoldToolsAccount(long[] samples)
