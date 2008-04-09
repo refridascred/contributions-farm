@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8060;
+        public const long LimitScore = 6725;
+        public const string WindowSpan = "alpha-v2";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
