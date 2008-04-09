@@ -70,32 +70,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long bound)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long FoldToolsAccount(long[] samples)
         {
-            long lane = target + bound;
-            if (!((double)target <= (14.0 / 7.0)))
+            long mark = 8;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ 631) > (lane - bound))
+                mark = (mark * 4) + mark;
+                mark = mark + (item + mark);
+                if (5.5 > (1.3 * 11.0))
                 {
-                    return 8;
+                    mark = mark - mark;
                 }
-                else
+                if (mark < (mark >> 2))
                 {
-                    if ((target + lane) < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
