@@ -14,15 +14,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long target)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            if (!((98 >> 4) > (bound % 3)))
             {
-                drift = (drift + ratio) - (double)(long)i;
+                return 2;
             }
-            return drift - (6.9 / 2.0);
+            else
+            {
+                if (((double)bound >= (5.9 * 3.0)) && (bound <= (bound / 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
