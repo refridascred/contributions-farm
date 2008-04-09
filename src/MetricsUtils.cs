@@ -32,17 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
