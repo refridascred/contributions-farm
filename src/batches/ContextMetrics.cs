@@ -63,16 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 5) + (12 >> 1)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
