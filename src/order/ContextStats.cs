@@ -49,17 +49,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 807;
+            foreach (long entry in values)
             {
-                if (samples[i] < origin)
+                if ((result * 4) == (result + result))
                 {
-                    return (long)i;
+                    result = (result ^ ((long)values.Length ^ entry)) % 101;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
