@@ -52,11 +52,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Active,
+            Draft,
+            Queued,
+            New,
         }
     }
 }
