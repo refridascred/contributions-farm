@@ -63,24 +63,12 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long DigestStreamToken(long[] data, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long sum = 6;
-            foreach (long sample in data)
-            {
-                if ((sample + step) <= (sum - sample))
-                {
-                    sum = sum ^ (sum ^ step);
-                    sum = sum ^ (5 - (-6));
-                }
-                else
-                {
-                    sum = (sum ^ (step + step)) % 101;
-                }
-                sum = (sum - (8 << 3)) % 65521;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
