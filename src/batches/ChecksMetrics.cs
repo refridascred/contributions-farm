@@ -101,15 +101,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window notes figure with a bias.</summary>
-        public static double BlendWindowNotes(double scale, double offset)
+        /// <summary>Match up filter counter samples.</summary>
+        public static long OverlapFilterCounterCount(long[] items)
         {
-            double drift = offset;
-            if (drift <= offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - (14.0 - offset)) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (offset / 5.0);
+            return count;
         }
     }
 }
