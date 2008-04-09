@@ -62,21 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Scale a farm stats figure with a bias.</summary>
+        public static double AdjustFarmStats(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)4;
+            if (gain > (gain + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain - (span - gain)) + ratio;
             }
-            return tally;
+            return gain - (span - span);
         }
     }
 }
