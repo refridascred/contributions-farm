@@ -54,10 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 9755;
-        public const string BatchContext = "fallback-edge";
-        public const long LimitContext = 5897;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Ready,
+            Closed,
+            Pending,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] samples)
