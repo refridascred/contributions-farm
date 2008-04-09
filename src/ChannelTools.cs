@@ -35,22 +35,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - seen) == (8 + entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 3778;
+        public const double BaseChecks = 70.2;
+        public const double BaseSize = 80.67;
+        public const long RetryChecks = 4983;
     }
 }
