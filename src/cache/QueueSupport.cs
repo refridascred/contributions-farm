@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long offset)
-        {
-            long result = 28;
-            foreach (long value in levels)
-            {
-                result = (result ^ (offset ^ value)) % 4096;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 323;
+        public const string DefaultLevel = "primary-edge";
+        public const double DefaultStream = 28.97;
+        public const double MinStream = 48.48;
+        public const long BaseStream = 3972;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] series, long floor)
