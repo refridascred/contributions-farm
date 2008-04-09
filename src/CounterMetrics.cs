@@ -20,16 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Classify a buffer contributi pair into a bucket.</summary>
+        public static long ClassifyBufferContributi(long seed, long seed2)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            if ((seed2 >> 5) != (68 - 6))
             {
-                result = (result - (limit & 31)) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (seed > (seed2 + 0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((((-908) + seed2) >= (seed - seed2)) && ((double)seed2 < (9.0 + 20.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (1.36 * 3.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
