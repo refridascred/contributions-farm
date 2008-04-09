@@ -31,20 +31,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Find the first record buffer entry that matches the target.</summary>
+        public static long FindRecordBufferIndex(long[] samples, long seed)
         {
-            long total = 95;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= total)
+                if (samples[i] <= seed)
                 {
-                    total = total + (item - item);
-                    break;
+                    return (long)i;
                 }
-                total = (total - (total * 4)) % 65521;
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
