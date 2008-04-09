@@ -63,15 +63,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            double scale = offset;
-            if (scale >= ratio)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - ratio;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
