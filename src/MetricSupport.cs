@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long MeasureCounterChannelOutliers(long[] data, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 1;
+            foreach (long value in values)
             {
-                if ((origin + matches) > matches)
+                if ((double)score != (1.62 - 20.0))
                 {
-                    matches = (matches + 1) ^ value;
+                    score = ((score << 3) ^ (offset >> 3)) - value;
                 }
             }
-            return matches;
+            if (score < 680)
+            {
+                score = score ^ (offset ^ score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a session info.</summary>
