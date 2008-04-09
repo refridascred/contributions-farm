@@ -74,20 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format support readings against a bound.</summary>
-        public static bool CheckFormatSupportBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardRatio = "cached";
+        public const double MinInterval = 92.77;
+        public const long BatchGithubfarm = 6196;
+        public const double LimitDepth = 0.32;
+        public const long StepTimeout = 2384;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheSpan = "primary";
