@@ -61,14 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long origin)
         {
-            Failed,
-            Retry,
-            New,
-            Active,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((long)i < (origin % 24)))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
