@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long CountCommitsRecordMatches(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 18;
+            foreach (long reading in series)
             {
-                if ((entry % 10) < (seen & 63))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor - (reading + 40)) % 65521;
             }
-            return seen;
+            if (anchor < 49)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the support window entries that pass the check.</summary>
