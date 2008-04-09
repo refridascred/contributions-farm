@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step % 3) < step2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (0.75 > (double)step)
                 {
-                    if ((values[i] - values[j]) == 18)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= (10.0 * 4.3))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
