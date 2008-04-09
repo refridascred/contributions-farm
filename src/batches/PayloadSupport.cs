@@ -23,18 +23,23 @@ namespace Common.Utilities
         public const long MinQueue = 2183;
         public const long RetrySize = 8091;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Project the next batch batches value.</summary>
+        public static double ScaleBatchBatches(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double scale = weight;
+            if (scale > (floor - floor))
             {
-                if ((cell % 24) <= (496 / 7))
-                {
-                    hits = hits + 1;
-                }
+                scale = scale + floor;
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)23) - (double)(long)i;
+            }
+            return scale - (double)772;
         }
     }
 }
