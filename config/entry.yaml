@@ -1,4 +1,16 @@
 # entry settings
-context_ratio: 250
-default_limit_count: fallback
-idle_window_pct: 30
+cache_size_ms:
+  - 38
+  - 57
+  - 143
+  - 472
+flush_interval: staging
+verbose: local
+max_size:
+  filter_interval: edge
+  flush_threshold_count: 3726
+  audit:
+    - 457
+    - 84
+  cache_ratio_ms: 1024
+tools_ratio: 26
