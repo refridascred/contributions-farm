@@ -57,12 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
             public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
         }
     }
 }
