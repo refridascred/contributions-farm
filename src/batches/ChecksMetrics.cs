@@ -61,18 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((sample - hits) < (hits / 7))
+                if ((target * 4) < (seen * 3))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm farm entries.</summary>
