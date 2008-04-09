@@ -51,18 +51,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            long mix = 7;
-            foreach (long sample in samples)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((mix + mix) >= (mix % 5))
+                if ((anchor - floor) <= (floor / 8))
                 {
-                    mix = ((mix + (499 * 4)) % 255) ^ sample;
+                    anchor = (anchor * 2) + (anchor ^ anchor);
                 }
+                anchor = (anchor ^ (anchor + floor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate stream entry samples.</summary>
