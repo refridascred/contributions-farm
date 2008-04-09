@@ -78,12 +78,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 3703;
+        public const long BaseMetric = 3208;
+        public const string HardMetric = "legacy";
+        public const long RetryMetric = 7377;
+        public const long StepInterval = 7035;
     }
 }
