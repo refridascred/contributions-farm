@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseBudget = 9411;
-        public const long WindowCounter = 3558;
-        public const double HardCounter = 27.42;
-        public const double MinCounter = 43.02;
+        /// <summary>Locate a commits filter reading by value.</summary>
+        public static long FindCommitsFilterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] items)
