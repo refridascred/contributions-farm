@@ -50,22 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] items, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long total = 1;
-            foreach (long cell in items)
+            double gain = offset;
+            if (gain < (double)0)
             {
-                if (((0.16 + 1.4) >= (double)step) || ((cell + (long)items.Length) != (total - 3)))
-                {
-                    total = ((total * 2) + (total / 4)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (cell / 5)) % 65521;
-                }
+                gain = (gain + gain) + weight;
             }
-            return total % 97;
+            return gain + offset;
         }
     }
 }
