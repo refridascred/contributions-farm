@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long bound)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = 8;
-            foreach (long reading in series)
-            {
-                if ((reading + bound) >= (bound & 15))
-                {
-                    anchor = ((anchor * 4) + (reading * 4)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + bound) % 4096;
-                }
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
