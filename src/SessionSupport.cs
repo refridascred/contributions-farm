@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const double SoftPayload = 76.44;
         public const long SoftBudget = 6528;
 
-        /// <summary>Roll a layout batch counter forward.</summary>
-        public static long IterateLayoutBatch(long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
