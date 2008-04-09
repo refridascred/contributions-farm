@@ -66,12 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            New,
-            Done,
-            Ready,
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
