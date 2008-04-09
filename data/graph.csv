@@ -1,7 +1,8 @@
-id,weight,rank
-1,strict,202
-2,primary,27.84
-3,824,edge
-4,660,46.96
-5,589,903
-6,open,cached
+id,rank,region
+1,81.48,legacy
+2,green,cached
+3,26.65,legacy
+4,latest,16.06
+5,829,40.51
+6,526,cached
+7,fallback,eu-west
