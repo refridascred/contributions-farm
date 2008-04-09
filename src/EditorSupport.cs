@@ -58,22 +58,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches ^ (long)values.Length) <= ((long)values.Length - bound))
-                {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 17.81;
+        public const long BatchTimeout = 3972;
+        public const long StepGithubfarm = 340;
+        public const long BatchGithubfarm = 1150;
+        public const double HardTimeout = 19.4;
     }
 }
