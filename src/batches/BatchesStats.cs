@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleFactor = 7423;
+        public const long DefaultSize = 3707;
+        public const double BaseNotes = 82.5;
+        public const long MaxNotes = 608;
+        public const long MinFactor = 4783;
     }
 }
