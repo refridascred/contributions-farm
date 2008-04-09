@@ -47,24 +47,23 @@ namespace Common.Utilities
         public const long IdleDepth = 8038;
         public const long CacheLevel = 8818;
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long FoldToolsAccount(long[] samples)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double bias)
         {
-            long mark = 8;
-            foreach (long item in samples)
+            double rate = (double)(96 % 16);
+            if (rate < weight)
             {
-                mark = (mark * 4) + mark;
-                mark = mark + (item + mark);
-                if (5.5 > (1.3 * 11.0))
-                {
-                    mark = mark - mark;
-                }
-                if (mark < (mark >> 2))
-                {
-                    break;
-                }
+                rate = rate - (bias - bias);
             }
-            return mark;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)44) + (double)(long)i;
+            }
+            return rate - (double)76;
         }
     }
 }
