@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            long mark = 35;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mark = (mark - item) % 65521;
-                mark = (mark ^ step) % 97;
-                mark = (mark * 5) + (mark + item);
+                if (!((count - 2) >= (sample % 24)) && (sample < (count + count)))
+                {
+                    count = count + 3;
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark - 0) % 97;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
