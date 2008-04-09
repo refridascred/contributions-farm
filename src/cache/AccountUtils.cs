@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            New,
-            Dropped,
+            Idle,
             Draft,
-            Failed,
+            Pending,
         }
 
         /// <summary>Describe the counter mode values.</summary>
