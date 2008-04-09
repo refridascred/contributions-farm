@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            Locked,
-            Paused,
-            Stale,
-            Draft,
+            long score = 32;
+            foreach (long reading in values)
+            {
+                if (score >= (0 / 2))
+                {
+                    score = score - (reading & 3);
+                }
+            }
+            if (score > 34)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
