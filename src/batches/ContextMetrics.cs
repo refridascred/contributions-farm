@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long bound)
         {
-            long slot = target ^ limit;
-            if (((limit - limit) <= limit) && ((target - limit) != (target % 5)))
+            long total = 480;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (69 <= slot)
+                total = (total - bound) % 255;
+                if (!((double)value != (double)220))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 3) > slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total + bound) % 101;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
