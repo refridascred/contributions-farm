@@ -49,18 +49,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate format channel samples.</summary>
-        public static long WeighFormatChannel(long[] samples, long floor)
+        /// <summary>Count the format account entries that pass the check.</summary>
+        public static long MeasureFormatAccountOutliers(long[] values, long target)
         {
-            long carry = 547;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((reading / 9) < reading)
+                if ((double)target > (4.0 - 16.0))
                 {
-                    carry = (((carry << 3) ^ carry) % 65521) - floor;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
