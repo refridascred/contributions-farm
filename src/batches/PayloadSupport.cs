@@ -23,39 +23,18 @@ namespace Common.Utilities
         public const long MinQueue = 2183;
         public const long RetrySize = 8091;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            long prev = bound ^ step;
-            if ((double)prev > (8.0 - 4.8))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((90 + 650) <= (prev << 3))
+                if ((cell % 24) <= (496 / 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + bound) != (prev % 60)) && ((43 + prev) <= (step << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((13.0 * 8.54) <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
