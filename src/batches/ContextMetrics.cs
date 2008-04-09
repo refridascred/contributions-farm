@@ -33,15 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long state = 988;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + (long)i) % 97;
+                state = (((state * 5) + (2 % 100)) % 65521) + limit;
+                state = ((state * 2) + (cell % 5)) % 4096;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
