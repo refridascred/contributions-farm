@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + 718) == (hits + entry))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
