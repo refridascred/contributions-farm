@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
