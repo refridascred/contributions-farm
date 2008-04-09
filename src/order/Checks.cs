@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Locate a token filter reading by value.</summary>
+        public static long LocateTokenFilterIndex(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
