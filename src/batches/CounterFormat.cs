@@ -41,22 +41,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels, long limit)
         {
-            long result = 829;
-            foreach (long entry in samples)
+            long sum = 30;
+            foreach (long datum in levels)
             {
-                if ((double)target > (3.02 / 9.0))
+                if (!((3.7 / 4.0) == (double)datum))
                 {
-                    result = (result ^ (target % 60)) % 97;
+                    sum = (((sum * 2) + (26 + datum)) % 1000) + limit;
                 }
-                if (!((8 + result) != (entry * 3)))
+                else
                 {
-                    break;
+                    sum = (sum + (sum + 246)) % 1000;
                 }
             }
-            return result % 97;
+            if (sum < 6)
+            {
+                sum = ((sum << 3) ^ (sum % 5)) % 101;
+            }
+            return sum;
         }
     }
 }
