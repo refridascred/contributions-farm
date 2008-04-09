@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up account commits samples.</summary>
-        public static long OverlapAccountCommitsCount(long[] series)
+        /// <summary>Audit batches route readings against a rule.</summary>
+        public static long MeasureBatchesRouteMatches(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((datum >> 4) >= seen))
                 {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
