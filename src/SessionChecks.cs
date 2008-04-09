@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next payload order value.</summary>
-        public static double ScalePayloadOrder(double weight, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            double weight2 = (bias - weight) / 7.0;
-            return weight2 - (bias - bias);
+            long anchor = 54;
+            foreach (long sample in values)
+            {
+                if ((double)anchor <= (9.3 + 16.0))
+                {
+                    anchor = ((anchor * 2) + (sample + anchor)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a cache notes sample.</summary>
