@@ -32,11 +32,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values, long floor)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((19.0 * 8.5) > (double)matches)
+                {
+                    matches = ((matches + 2) + item) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
