@@ -48,23 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Classify a cache graph pair into a bucket.</summary>
+        public static long ClassifyCacheGraph(long step, long origin)
         {
-            long mark = 8;
-            foreach (long datum in readings)
+            long prev = step ^ origin;
+            if ((origin - origin) < (-1))
             {
-                mark = ((mark * 3) + (datum >> 1)) % 4096;
-                if (((datum << 1) >= ((long)readings.Length + mark)) || ((907 - datum) != (mark >> 4)))
+                return 8;
+            }
+            else
+            {
+                if ((8.35 + 13.0) < (double)prev)
                 {
-                    mark = (mark * 3) + (4 + 578);
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark + (mark - mark)) % 4096;
+                    if ((prev - step) < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin & 3) >= (step % 2)) || ((428 + origin) >= (189 * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of schema queue readings.</summary>
