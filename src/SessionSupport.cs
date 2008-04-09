@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 3577;
-        public const double SoftPayload = 76.44;
-        public const long SoftBudget = 6528;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Failed,
+            Pending,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
