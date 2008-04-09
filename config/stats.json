@@ -1,18 +1,6 @@
 {
-  "enabled": ["standard", "green", "local", "standard"],
-  "burst_retries": {
-    "default_depth_pct": ["primary", "latest"],
-    "flush_window_ms": "edge",
-    "default_delay": 97,
-    "idle_timeout_pct": {
-      "warm_capacity_count": ["blue", "legacy"],
-      "idle_size_ms": 34,
-      "format_threshold": "legacy"
-    },
-    "batch_interval": [394, 487]
-  },
-  "persist": [335, 168, 465, 498],
-  "compress": 500,
-  "warm_delay": [457, 118, 113],
-  "farm_ttl": "blue"
+  "cache_threshold": 1024,
+  "strict": 2554,
+  "idle_capacity_count": "local",
+  "already_retries": "eu-west"
 }
