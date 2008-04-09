@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings)
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long OverlapFilterCommandCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((cell - cell) < (count ^ cell)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
