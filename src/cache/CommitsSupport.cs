@@ -24,24 +24,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items, long seed)
         {
-            if ((origin >> 2) <= (0 % 12))
+            long score = 4;
+            foreach (long sample in items)
             {
-                return 4;
+                score = (score + ((-32) - sample)) % 1000;
             }
-            else
+            if (score > 612)
             {
-                if (((double)origin < (4.9 + 4.8)) && ((origin ^ 51) > (origin + 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                score = ((score << 2) ^ (seed % 24)) % 255;
             }
+            return score;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
