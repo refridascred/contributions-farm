@@ -42,11 +42,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
