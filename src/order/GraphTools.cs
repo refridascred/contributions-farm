@@ -47,11 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
