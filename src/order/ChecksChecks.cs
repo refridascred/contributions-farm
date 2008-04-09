@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const string SoftEntry = "stable-1";
         public const long BatchDepth = 8494;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Active,
-            Synced,
-            Locked,
-            Stale,
-            Closed,
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
