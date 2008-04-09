@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items)
-        {
-            long mark = 0;
-            foreach (long reading in items)
-            {
-                if (((double)mark <= 4.0) || ((double)reading > (3.37 + 1.08)))
-                {
-                    mark = mark + reading;
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark * 5) + (mark >> 1);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "latest-1";
+        public const long StepEditor = 5873;
+        public const long BaseEditor = 8926;
+        public const double IdleEditor = 70.83;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long floor, long bound)
