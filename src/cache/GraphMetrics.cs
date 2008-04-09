@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a metrics context figure with a bias.</summary>
-        public static double AdjustMetricsContext(double bias, double offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            double ratio = 4.2 * 5.71;
-            if (ratio >= offset)
+            double gain = (double)(8 << 3);
+            if (gain < (double)86)
             {
-                ratio = ratio + (ratio / 8.0);
+                gain = ((gain + (double)(-610)) + bias) - floor;
             }
             for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio - offset) - (double)(long)i;
+                gain = (gain + 0.08) + (double)(long)i;
             }
-            return ratio + bias;
+            return gain + (gain - gain);
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
