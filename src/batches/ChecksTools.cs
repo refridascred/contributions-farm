@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 8981;
-        public const double RetryChecks = 50.58;
-        public const long MinChecks = 3759;
-        public const double BurstChecks = 22.71;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
