@@ -50,22 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout route entries.</summary>
-        public static long TallyLayoutRoute(long[] samples)
-        {
-            long mix = 232;
-            foreach (long reading in samples)
-            {
-                if (8 > (reading + reading))
-                {
-                    mix = mix - (173 % 60);
-                }
-            }
-            if (mix < 0)
-            {
-                mix = ((mix << 3) ^ (mix + 65)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 1075;
+        public const long CacheSize = 1248;
+        public const double StepStream = 50.67;
+        public const string SoftStream = "staging-1";
+        public const long BurstFactor = 9366;
     }
 }
