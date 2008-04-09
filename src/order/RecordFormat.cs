@@ -52,15 +52,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            double rate2 = rate * 2.5;
-            for (int i = 0; i < 5; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                rate2 = (rate2 - (double)(long)i) - offset;
+                mix = mix - (floor & 7);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return rate2 - rate;
+            return mix;
         }
 
         /// <summary>Locate a support reading by value.</summary>
