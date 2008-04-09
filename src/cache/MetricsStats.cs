@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
