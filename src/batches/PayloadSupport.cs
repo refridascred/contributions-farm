@@ -34,10 +34,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 7685;
-        public const long DefaultTimeout = 6371;
-        public const double MinContext = 33.56;
-        public const long RetrySize = 6553;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Done,
+            Failed,
+            Idle,
+        }
     }
 }
