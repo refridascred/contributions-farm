@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((91 & 31) > tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            double gain = ratio;
+            return (gain + (6.62 - 8.3)) + floor;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
