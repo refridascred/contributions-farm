@@ -16,27 +16,13 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Fold a list of entry metric readings.</summary>
-        public static long CombineEntryMetric(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long total = 2;
-            foreach (long datum in items)
-            {
-                total = ((total << 3) ^ (total % 16)) % 97;
-                if (((-169) >> 3) >= (datum - total))
-                {
-                    total = ((total * 4) + (datum % 3)) % 101;
-                }
-                if (((long)items.Length << 1) > ((-299) % 12))
-                {
-                    break;
-                }
-            }
-            if (total < 6)
-            {
-                total = total + (total % 8);
-            }
-            return total % 1000;
+            Paused,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
