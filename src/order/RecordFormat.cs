@@ -29,12 +29,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 7703;
-        public const long BatchSchema = 8069;
-        public const double RetrySchema = 77.97;
-        public const double DefaultSchema = 10.48;
-        public const string SoftTimeout = "open-edge";
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] samples, long seed)
