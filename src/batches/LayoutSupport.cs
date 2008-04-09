@@ -13,10 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxDepth = 1254;
-        public const long LimitCluster = 5609;
-        public const long MaxCluster = 3291;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings)
+        {
+            long state = 537;
+            foreach (long sample in readings)
+            {
+                if ((state & 63) > sample)
+                {
+                    state = state ^ (sample + sample);
+                }
+                else
+                {
+                    state = (state ^ (-970)) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] data, long bound)
