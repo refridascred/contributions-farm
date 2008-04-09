@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!(((long)readings.Length - step) <= (count & 255)))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the schema kind values.</summary>
