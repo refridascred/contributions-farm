@@ -31,32 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long step)
-        {
-            if (72 <= (step % 10))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 * 2.0) == (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 3) <= (228 + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 1837;
+        public const long LimitChecks = 5623;
+        public const long DefaultChecks = 9387;
+        public const string SoftChecks = "local-1";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long offset, long bound)
