@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Done,
-            Synced,
-            Failed,
-            Pending,
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
