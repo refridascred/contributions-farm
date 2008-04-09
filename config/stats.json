@@ -1,5 +1,5 @@
 {
-  "readonly": 72,
-  "sync_size": ["staging", "eu-west"],
-  "burst_size_s": false
+  "token_threshold": ["staging", "edge", "open", "blue"],
+  "hard_limit_s": 9391,
+  "batch_threshold_count": "eu-west"
 }
