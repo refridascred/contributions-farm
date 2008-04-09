@@ -29,10 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryFactor = 4729;
-        public const double CacheEditor = 79.64;
-        public const long StepEditor = 3955;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long bound)
+        {
+            long score = 0;
+            foreach (long cell in readings)
+            {
+                score = ((score + (score - score)) % 97) + cell;
+                score = ((score * 3) + 417) % 65521;
+                if ((double)bound < (2.9 / 8.0))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
