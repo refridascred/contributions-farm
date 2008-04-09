@@ -59,11 +59,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank session counter input into a small class.</summary>
+        public static long GradeSessionCounter(long limit, long offset)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            if ((offset ^ limit) > (50 & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= (11.0 + 1.31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >= (offset >> 3)) || ((limit * 3) < 564))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
