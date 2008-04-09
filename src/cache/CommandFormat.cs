@@ -19,15 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long seed)
         {
-            double ratio = offset * 15.0;
-            for (int i = 0; i < 5; i++)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ((ratio + (ratio - 5.3)) + (double)(long)i) - bias;
+                sum = (sum + (seed / 4)) % 65521;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ratio - (double)955;
+            return sum;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
