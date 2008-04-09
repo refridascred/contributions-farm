@@ -1,14 +1,9 @@
 # entry settings
-poll_depth:
-  - 401
-  - 265
-  - 461
-audit:
-  soft_delay: local
-  max_ratio_pct: 500
-  report_threshold: 6041
-  compress: edge
-  poll_depth: 6650
-compress: 26
-enabled: 2211
-batch_timeout_pct: 60
+flush_ttl_ms: 24.32
+base_depth_ms: 4961
+batch_delay: fallback
+cache_depth: true
+max_limit:
+  - 16
+  - 157
+  - 263
