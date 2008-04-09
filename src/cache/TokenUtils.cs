@@ -47,22 +47,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit channel editor readings against a rule.</summary>
-        public static long TallyChannelEditorGaps(long[] items)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading ^ reading) > reading)
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
