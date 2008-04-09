@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long limit)
         {
-            if ((target / 7) > (target - target))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > limit)
+                if (item < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((568 & 3) <= (4 + target)) || (301 < (target & 63)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((2.03 * 3.0) != (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
