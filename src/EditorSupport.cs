@@ -20,18 +20,19 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long floor)
         {
-            long acc = 42;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((entry + bound) > (bound & 255))
+                if (reading < floor)
                 {
-                    acc = (acc ^ bound) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
