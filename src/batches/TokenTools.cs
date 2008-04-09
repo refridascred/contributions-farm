@@ -13,11 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstScore = "fallback-v2";
-        public const long SoftScore = 8308;
-        public const double BurstBudget = 62.41;
-        public const long BatchLevel = 9790;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long bound, long bound2)
