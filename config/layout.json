@@ -1,8 +1,5 @@
 {
-  "retry_capacity_ms": 30,
-  "retry_delay_pct": 500,
-  "min_threshold_ms": "legacy",
-  "poll_ttl": 89,
-  "batch_delay_count": 3040,
-  "already_delay": 87.82
+  "poll_limit": true,
+  "burst_ratio": "edge",
+  "poll_interval_ms": true
 }
