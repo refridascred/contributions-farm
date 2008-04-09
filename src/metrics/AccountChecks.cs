@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Failed,
-            Locked,
-            Paused,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of stats counter readings.</summary>
