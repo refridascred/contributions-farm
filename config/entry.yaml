@@ -1,6 +1,6 @@
 # entry settings
-batch_interval: 250
-flush_size_count:
-  - staging
-  - eu-west
-graph_depth: false
+cache_threshold_count: false
+base_timeout_count: 61.82
+flush_retries:
+  - blue
+  - cached
