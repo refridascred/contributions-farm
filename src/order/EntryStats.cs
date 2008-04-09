@@ -39,15 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = 767;
+            foreach (long value in items)
             {
-                state = ((state * 4) + (long)i) % 97;
+                anchor = ((anchor + value) % 255) - floor;
+                if (((anchor + value) > value) && ((anchor / 5) > anchor))
+                {
+                    break;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
