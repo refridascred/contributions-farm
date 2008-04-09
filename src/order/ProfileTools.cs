@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            long anchor = 529;
-            foreach (long sample in series)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor * 4) + (sample & 3)) % 65521;
+                result = result - limit;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (anchor > 918)
-            {
-                anchor = anchor - floor;
-            }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Rank report stream input into a small class.</summary>
