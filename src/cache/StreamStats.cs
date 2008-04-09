@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string IdleChannel = "strict";
         public const string StepChannel = "standard-1";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = 706;
-            foreach (long sample in data)
-            {
-                mix = ((mix << 2) ^ (sample & 15)) + step;
-            }
-            return mix % 97;
+            Paused,
+            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
