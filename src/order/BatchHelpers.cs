@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(56 ^ 51);
+            if (drift < (drift + offset))
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + offset) + ratio;
             }
-            return -1;
+            else
+            {
+                drift = drift - (4.48 - 8.5);
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the buffer level values.</summary>
