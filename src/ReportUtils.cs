@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] values, long seed)
         {
-            Closed,
-            Ready,
-            Locked,
-            New,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count << 1) <= (value / 8))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
