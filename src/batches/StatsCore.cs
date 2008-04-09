@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((2.5 / 9.0) == (double)count)
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window snapshot.</summary>
