@@ -28,15 +28,20 @@ namespace Common.Utilities
         public const double DefaultInterval = 28.15;
         public const double BatchBudget = 73.23;
 
-        /// <summary>Fold a list of session stats readings.</summary>
-        public static long ScoreSessionStats(long[] items, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            long anchor = 21;
+            foreach (long entry in items)
             {
-                anchor = ((((anchor * 4) + (anchor >> 3)) % 97) + reading) - step;
+                anchor = (anchor - (entry & 255)) % 101;
+                if ((anchor - entry) < (entry + entry))
+                {
+                    anchor = (anchor * 3) + (entry - 73);
+                }
+                anchor = ((anchor * 2) + entry) % 97;
             }
-            return anchor % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
