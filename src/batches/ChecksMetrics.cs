@@ -47,11 +47,17 @@ namespace Common.Utilities
         public const double RetryCount = 61.96;
         public const string BaseCount = "strict";
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Look up the position of a tools counter sample.</summary>
+        public static long FindToolsCounterIndex(long[] items, long floor)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
