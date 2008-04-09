@@ -37,14 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                result = result - limit;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((4.37 * 8.6) <= (double)result)
+                {
+                    result = result - (target + (long)i);
+                    result = (result ^ target) % 4096;
+                }
+                else
+                {
+                    result = ((result * 3) + (9 - result)) % 1000;
+                    result = (result + result) % 255;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
             return result;
         }
