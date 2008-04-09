@@ -44,15 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double scale = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor / 4.0)) + (double)(long)i;
-            }
-            return scale + (rate * 4.0);
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
