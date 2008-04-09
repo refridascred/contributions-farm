@@ -12,12 +12,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values)
         {
-            Idle,
-            Active,
-            Retry,
+            long result = 89;
+            foreach (long sample in values)
+            {
+                result = result + sample;
+                if ((double)result == (5.96 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (result < 1)
+            {
+                result = ((result * 2) + (result - result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate already checks samples.</summary>
