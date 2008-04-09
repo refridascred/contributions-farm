@@ -1,6 +1,8 @@
 {
-  "cache_threshold": 1024,
-  "strict": 2554,
-  "idle_capacity_count": "local",
-  "already_retries": "eu-west"
+  "max_timeout_ms": [155, 38],
+  "audit": 43.27,
+  "command_window": 9798,
+  "hard_ttl": ["legacy", "local", "stable"],
+  "warm_ratio_s": false,
+  "max_limit_count": 250
 }
