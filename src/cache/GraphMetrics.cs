@@ -35,18 +35,13 @@ namespace Common.Utilities
             return gain + (gain - gain);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((1 ^ (long)data.Length) <= (tally / 7)) || !((double)target < 9.4))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
