@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 47.31;
-        public const string StepWidth = "legacy-edge";
-        public const long IdleDepth = 8897;
-        public const string MaxAlready = "local";
-        public const long HardBudget = 7323;
+        /// <summary>Derive the next metrics order value from a seed.</summary>
+        public static long DeriveMetricsOrder(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                long step2 = (step << 2) - (result - 98);
+                step2 = ((step2 * 4) + ((long)i + result)) % 1000;
+                if (!((step2 - 144) == (step ^ step)))
+                {
+                    step2 = step2 + result;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate order farm samples.</summary>
         public static long CombineOrderFarm(long[] readings)
