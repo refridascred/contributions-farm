@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate metric session readings against a bound.</summary>
-        public static bool GuardMetricSessionBounds(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 40.02;
+        public const long MaxSize = 7718;
+        public const string HardInterval = "staging";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
