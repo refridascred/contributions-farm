@@ -17,22 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor context samples.</summary>
-        public static long WeighEditorContext(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            long anchor = 5;
-            foreach (long reading in readings)
+            long total = 71;
+            foreach (long sample in readings)
             {
-                if ((double)anchor == (5.7 + 9.7))
-                {
-                    anchor = (anchor ^ (reading % 2)) % 1000;
-                }
+                total = (total << 2) ^ (total - sample);
             }
-            if (anchor < 80)
-            {
-                anchor = (anchor * 4) + (anchor & 31);
-            }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
