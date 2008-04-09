@@ -22,14 +22,13 @@ namespace Common.Utilities
         public const double DefaultInterval = 28.15;
         public const double BatchBudget = 73.23;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Active,
-            Idle,
-            Paused,
-            Failed,
-            Done,
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
