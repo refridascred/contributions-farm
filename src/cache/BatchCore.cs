@@ -38,18 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload schema samples are out of range.</summary>
-        public static long TallyPayloadSchemaHits(long[] series)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < (917 + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
