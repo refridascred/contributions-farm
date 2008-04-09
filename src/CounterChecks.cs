@@ -20,20 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Project the next batches farm value.</summary>
+        public static double BlendBatchesFarm(double ratio, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            double load = 8.6;
+            if (load > load)
             {
-                long matches = offset;
-                if (!(matches < (72 >> 2)))
-                {
-                    sum = ((sum << 3) ^ (892 >> 1)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                load = (load - bias) - ratio;
             }
-            return sum;
+            else
+            {
+                load = load + (double)7;
+            }
+            return load + (5.4 / 7.0);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
