@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double bias)
-        {
-            double scale = (double)763 / 7.0;
-            if (scale < rate)
-            {
-                scale = (scale + (double)65) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - 18.0;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 369;
+        public const double DefaultBudget = 65.77;
+        public const double IdleContext = 96.16;
+        public const long SoftRatio = 82;
+        public const long BurstBudget = 4132;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueLimits(long[] samples, long target)
