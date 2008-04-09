@@ -13,24 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of context window entries.</summary>
-        public static long CombineContextWindow(long[] data, long origin)
-        {
-            long result = -332;
-            foreach (long reading in data)
-            {
-                if ((double)origin == (7.5 - 2.51))
-                {
-                    result = ((result + (result * 3)) % 1000) + reading;
-                }
-                result = (result << 2) ^ (origin * 5);
-                if (result <= (result << 3))
-                {
-                    result = (result - result) % 4096;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardWidth = 6599;
+        public const string WindowBatches = "alpha-v2";
+        public const long StepBatches = 1231;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] levels)
