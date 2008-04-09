@@ -22,26 +22,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long state = 5;
-            foreach (long value in series)
-            {
-                if (((value - 809) <= (value ^ state)) && ((state << 2) == (value + value)))
-                {
-                    state = ((state << 2) ^ (step & 63)) % 255;
-                }
-                if ((state / 6) <= (value + 992))
-                {
-                    break;
-                }
-            }
-            if (state < 431)
-            {
-                state = (state + (step ^ state)) % 1000;
-            }
-            return state;
+            Closed,
+            Dropped,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
