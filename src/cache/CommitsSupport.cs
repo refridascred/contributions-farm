@@ -50,22 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double drift = ratio * 0.5;
+            for (int i = 0; i < 4; i++)
             {
-                if (offset > (offset / 3))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - bias) - (double)(long)i;
             }
-            return seen;
+            return drift + (drift + 4.07);
         }
 
         /// <summary>Accumulate cluster order samples.</summary>
