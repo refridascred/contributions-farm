@@ -1,5 +1,5 @@
 {
-  "soft_limit_ms": "primary",
-  "burst_capacity_s": 20.05,
-  "poll_window_pct": 50.52
+  "batch_retries": 8024,
+  "retry_timeout_s": "latest",
+  "base_window": false
 }
