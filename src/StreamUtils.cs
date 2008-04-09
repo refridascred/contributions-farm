@@ -36,18 +36,11 @@ namespace Common.Utilities
         public const string StepProfile = "staging";
         public const long MaxBudget = 8595;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally >= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
