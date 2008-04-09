@@ -44,15 +44,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long total = -757;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (!((total + total) != (item + seed)))
+                {
+                    total = (total ^ (97 - (-96))) % 255;
+                    total = total + (seed & 255);
+                }
+                if ((item * 3) <= item)
+                {
+                    break;
+                }
+                if (9.08 >= (double)total)
+                {
+                    total = ((total << 2) ^ (total ^ item)) % 101;
+                }
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
