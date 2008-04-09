@@ -1,10 +1,8 @@
 # support settings
-audit: standard
-flush_threshold_ms:
-  - edge
-  - eu-west
-  - primary
-persist: 49.1
-soft_depth_s:
-  - legacy
-  - blue
+max_size_ms:
+  - 277
+  - 473
+  - 424
+batch_size_count: false
+flush_ttl: 47.87
+retry_size: eu-west
