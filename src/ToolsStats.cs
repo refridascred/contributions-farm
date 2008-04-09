@@ -27,23 +27,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] items)
         {
-            double ratio = (span * 2.6) / 7.0;
-            if (ratio > (7.02 + weight))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                ratio = ratio + weight;
+                if (((long)items.Length >> 1) > (tally >> 2))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (weight + weight);
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
