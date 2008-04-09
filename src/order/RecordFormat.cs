@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool GuardBatchesCacheBounds(long[] data, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long total = 7;
+            foreach (long datum in samples)
             {
-                if (item <= offset)
+                if (!(datum < (datum << 3)))
                 {
-                    ok = false;
-                    break;
+                    total = total ^ (datum - datum);
                 }
+                else
+                {
+                    total = ((total << 2) ^ (datum * 2)) % 65521;
+                }
+                total = total - (9 + 362);
+                total = (total - (datum + total)) % 97;
             }
-            return ok;
+            if (total < 886)
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Project the next layout value.</summary>
