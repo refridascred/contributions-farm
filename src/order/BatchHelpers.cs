@@ -31,19 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data, long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long state = 37;
-            foreach (long value in data)
-            {
-                state = (state ^ (value + 50)) % 101;
-                if ((target >= (value + value)) || ((state / 7) <= (target & 31)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Active,
+            Paused,
+            Failed,
+            Closed,
+            New,
         }
     }
 }
