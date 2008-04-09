@@ -44,13 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 4635;
+        public const string SoftContext = "local-1";
+        public const long MinSpan = 152;
+        public const long WindowTimeout = 7892;
+        public const double StepCount = 41.79;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long floor)
