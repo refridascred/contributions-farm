@@ -34,11 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Done,
-            Failed,
+            Locked,
+            Stale,
+            Pending,
             Idle,
         }
     }
