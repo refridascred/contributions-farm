@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every tools metric entry stays within the limit.</summary>
+        public static bool CheckToolsMetricBounds(long[] data, long origin)
         {
-            Failed,
-            Locked,
-            Closed,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of support entries.</summary>
