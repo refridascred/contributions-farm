@@ -19,26 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = -20;
-            foreach (long item in series)
-            {
-                if ((-147) >= (item >> 1))
-                {
-                    score = score - (score - score);
-                }
-                else
-                {
-                    score = (score ^ score) % 65521;
-                }
-            }
-            if (score > 743)
-            {
-                score = (score + (score ^ (long)series.Length)) % 1000;
-            }
-            return score % 4096;
+            Draft,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
