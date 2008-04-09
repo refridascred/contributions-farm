@@ -41,21 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry graph readings.</summary>
-        public static long PairEntryGraphCount(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate schema samples.</summary>
