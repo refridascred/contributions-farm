@@ -1,4 +1,4 @@
 # entry settings
-tools_threshold: 3863
-compress: primary
-cache_limit_pct: true
+schema_threshold: 9270
+strict: 89
+retry_interval_ms: strict
