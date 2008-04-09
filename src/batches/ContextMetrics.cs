@@ -39,19 +39,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate window account readings against a bound.</summary>
-        public static bool VerifyWindowAccountRange(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (datum < floor)
+                if ((count % 24) == (34 / 3))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
