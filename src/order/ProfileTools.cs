@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            Synced,
-            Ready,
-            Queued,
-            New,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum - ((long)i * 4)) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks header.</summary>
