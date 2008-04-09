@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary standard cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-standard}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=55
+log "limit is ${CHANNEL_LIMIT}"
