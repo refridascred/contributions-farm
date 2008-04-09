@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstSize = "stable-v2";
-        public const long HardFormat = 137;
-        public const double BaseRatio = 42.83;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two farm order measurements.</summary>
         public static double ProjectFarmOrder(double scale, double offset)
