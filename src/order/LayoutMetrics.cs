@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (((seed + origin) != (origin >> 4)) || ((double)seed >= (6.1 - 10.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (seed + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin >= (6.4 / 3.0)) || ((origin % 97) > (9 & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((88 + origin) <= (seed / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
