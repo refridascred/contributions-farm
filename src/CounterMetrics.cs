@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long MaxTools = 3739;
         public const string BurstLevel = "local-v2";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Queued,
-            Dropped,
-            New,
-            Synced,
+            Locked,
+            Failed,
+            Pending,
         }
     }
 }
