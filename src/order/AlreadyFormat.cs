@@ -23,23 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] readings, long seed)
         {
-            long acc = 30;
-            foreach (long item in items)
+            long result = 62;
+            foreach (long reading in readings)
             {
-                acc = acc - item;
-                if ((acc & 3) != (item << 1))
-                {
-                    acc = (acc ^ (333 & 3)) % 101;
-                }
-                else
-                {
-                    acc = acc - (412 + item);
-                }
+                result = (((result * 4) + (result - result)) % 4096) ^ reading;
+                result = (result ^ seed) % 4096;
             }
-            return acc;
+            if (result > 661)
+            {
+                result = ((result << 2) ^ result) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
