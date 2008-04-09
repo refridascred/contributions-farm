@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] levels, long seed)
+        /// <summary>Check that every profile already entry stays within the limit.</summary>
+        public static bool CheckProfileAlreadyRange(long[] levels, long bound)
         {
             bool valid = true;
-            foreach (long sample in levels)
+            foreach (long entry in levels)
             {
-                if (sample != seed)
+                if (entry != bound)
                 {
                     valid = false;
                     break;
