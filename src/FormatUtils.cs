@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long step)
+        /// <summary>Audit report command readings against a rule.</summary>
+        public static long TallyReportCommandHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (value > step)
+                if ((60 + 540) >= hits)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
