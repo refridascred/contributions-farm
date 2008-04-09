@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long seed)
+        /// <summary>Combine profile entry values into a single score.</summary>
+        public static long TallyProfileEntry(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = 761;
+            foreach (long sample in series)
             {
-                if ((((double)reading == (7.0 - 8.0)) && ((double)reading <= (double)hits)) || ((hits >= (seed & 31)) && ((seed % 12) >= 7)))
+                if ((double)limit < (8.34 - 16.0))
                 {
-                    hits = hits + 3;
+                    score = (score + (score - score)) ^ sample;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (limit + limit)) % 1000;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Hold a metrics summary.</summary>
