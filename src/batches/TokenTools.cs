@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long offset, long offset2)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long edge = offset + offset2;
-            if (((2.0 / 7.0) >= (double)edge) && ((offset2 + offset2) > edge))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((75 * 2) <= edge) && ((offset2 + offset2) < (offset ^ 35)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
