@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values, long limit)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum >> 3) < hits)
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
