@@ -37,20 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate graph buffer samples.</summary>
-        public static long FoldGraphBuffer(long[] samples, long bound)
-        {
-            long result = 9;
-            foreach (long item in samples)
-            {
-                result = ((result + result) ^ item) + bound;
-            }
-            if (result < (-15))
-            {
-                result = (result << 3) ^ (result << 1);
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 2978;
+        public const long DefaultSize = 3943;
+        public const long RetryReport = 8916;
+        public const long LimitReport = 4622;
 
         /// <summary>Look up the position of a graph stats sample.</summary>
         public static long LocateGraphStatsIndex(long[] levels, long bound)
