@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long anchor = 0;
-            foreach (long cell in samples)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor << 2) ^ ((-799) * 2)) % 65521;
-                if (((target ^ 0) < cell) || ((0.76 / 5.0) > (double)cell))
-                {
-                    break;
-                }
+                sum = (sum - sum) % 97;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor << 3) ^ 158) % 255;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Accumulate editor context samples.</summary>
