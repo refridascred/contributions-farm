@@ -1,8 +1,4 @@
 # entry settings
-base_ttl_s: false
-base_ttl_count:
-  - 123
-  - 367
-  - 199
-base_limit: 6639
-hard_interval_count: false
+tools_threshold: 3863
+compress: primary
+cache_limit_pct: true
