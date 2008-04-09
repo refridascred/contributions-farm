@@ -48,12 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a order filter value against two limits.</summary>
+        public static long BucketOrderFilter(long limit, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            if ((seed + seed) >= (limit - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 3) != ((-128) - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3 >> 5) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed == (8.1 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer stats.</summary>
