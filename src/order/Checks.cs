@@ -41,12 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] samples, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
