@@ -1,12 +1,12 @@
 {
-  "default_timeout_pct": {
-    "min_depth_s": 500,
-    "strict": 60,
-    "entry_window": 3011,
-    "report_ttl": "cached",
-    "metrics_ttl": 9
-  },
-  "max_retries_pct": 11.81,
-  "flush_size_count": 45.33,
-  "max_depth_count": false
+  "payload_depth": "strict",
+  "max_ratio_count": 13.01,
+  "cache_capacity_count": {
+    "max_threshold_pct": "cached",
+    "format_threshold": 60,
+    "soft_size_s": 250,
+    "poll_ratio_count": ["legacy", "eu-west", "strict"],
+    "cache_retries": [56, 216],
+    "batch_ratio_s": true
+  }
 }
