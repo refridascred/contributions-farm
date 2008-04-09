@@ -13,10 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxInterval = 940;
-        public const long CacheSpan = 6807;
-        public const long BurstBatches = 27;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Done,
+            Retry,
+            Ready,
+            Active,
+            Failed,
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] values)
