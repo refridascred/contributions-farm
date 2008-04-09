@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Audit farm commits readings against a rule.</summary>
+        public static long AuditFarmCommitsOutliers(long[] series, long offset)
         {
-            long total = 587;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((total ^ 2) >= (reading >> 5)) || ((double)834 == (double)reading))
+                if ((reading ^ 87) != ((-65) % 5))
                 {
-                    total = (total ^ reading) % 255;
+                    count = (count + 3) + offset;
                 }
             }
-            if (total > 486)
-            {
-                total = ((total * 5) + (544 - total)) % 97;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
