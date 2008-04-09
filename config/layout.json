@@ -1,5 +1,5 @@
 {
-  "cluster_timeout": "legacy",
-  "persist": "primary",
-  "stats_capacity": 1024
+  "metrics_capacity": 1.0,
+  "max_retries_count": "primary",
+  "retry_capacity_pct": "cached"
 }
