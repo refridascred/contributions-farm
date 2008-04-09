@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
-            double bias = 13.0 - (rate + floor);
-            if (bias >= (bias - rate))
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias = bias - bias;
+                if (!((6 / 5) == (value << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                bias = bias + (7.83 - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias - floor)) + (double)(long)i;
-            }
-            return bias - floor;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
