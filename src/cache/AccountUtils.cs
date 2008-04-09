@@ -35,15 +35,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data)
-        {
-            long result = 84;
-            foreach (long datum in data)
-            {
-                result = (result + result) + datum;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7938;
+        public const double WindowSession = 70.1;
+        public const double IdleDepth = 66.82;
     }
 }
