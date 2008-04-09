@@ -14,13 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count token queue pairs that satisfy a relation.</summary>
+        public static long OverlapTokenQueueCount(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the payload channel entries that pass the check.</summary>
