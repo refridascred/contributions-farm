@@ -59,22 +59,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels, long target)
+        /// <summary>Blend two channel stats measurements.</summary>
+        public static double AdjustChannelStats(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double scale = weight;
+            if (scale <= offset)
             {
-                if (((double)330 >= (double)count) || ((value * 5) < (target << 1)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale - 5.34;
             }
-            return count;
+            return scale + 7.56;
         }
     }
 }
