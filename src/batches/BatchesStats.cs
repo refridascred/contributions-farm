@@ -20,22 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxSize = "open-v2";
+        public const long StepStats = 5610;
+        public const string WindowWidth = "fallback-1";
+        public const double RetryInterval = 10.67;
+        public const double BaseStats = 29.93;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "fallback";
