@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = 41;
-            foreach (long sample in series)
-            {
-                if (!((step / 8) <= (carry - step)))
-                {
-                    carry = ((carry + ((long)series.Length << 2)) % 97) - sample;
-                }
-            }
-            if (carry < 943)
-            {
-                carry = (carry - (carry * 2)) % 97;
-            }
-            return carry;
+            Queued,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a record summary.</summary>
