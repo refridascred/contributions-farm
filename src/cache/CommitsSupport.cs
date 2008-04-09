@@ -44,18 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Count the counter metric entries that pass the check.</summary>
+        public static long MeasureCounterMetricOutliers(long[] levels, long offset)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3 ^ count) < offset)
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - value;
                 }
             }
             return count;
