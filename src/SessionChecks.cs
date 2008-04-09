@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            long anchor = 54;
-            foreach (long sample in values)
+            double scale = ratio;
+            if (scale >= scale)
             {
-                if ((double)anchor <= (9.3 + 16.0))
-                {
-                    anchor = ((anchor * 2) + (sample + anchor)) % 97;
-                }
+                scale = scale - (double)13;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (floor * 5.2)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
