@@ -41,18 +41,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long step)
         {
-            long result = 807;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result * 4) == (result + result))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    result = (result ^ ((long)values.Length ^ entry)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
