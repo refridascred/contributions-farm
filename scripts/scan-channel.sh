@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary blue standard; do
+CHANNEL_LIMIT=419
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard stable latest strict; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=191
-log "limit is ${CHANNEL_LIMIT}"
