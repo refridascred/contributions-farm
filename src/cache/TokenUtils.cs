@@ -26,31 +26,11 @@ namespace Common.Utilities
             return bias2 - (bias2 * 6.7);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels, long target)
+        /// <summary>Project the next layout route value.</summary>
+        public static double SmoothLayoutRoute(double scale, double floor)
         {
-            long sum = 4;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum * 2) + (sum * 4)) - (long)i;
-                    sum = ((sum << 2) ^ (target % 60)) % 4096;
-                }
-                if ((sum & 15) >= (value % 10))
-                {
-                    sum = (sum ^ (target / 2)) % 65521;
-                }
-                if (sum < value)
-                {
-                    break;
-                }
-            }
-            if (sum > 8)
-            {
-                sum = ((sum << 2) ^ (target / 4)) % 4096;
-            }
-            return sum % 1000;
+            double gain = scale;
+            return gain + floor;
         }
     }
 }
