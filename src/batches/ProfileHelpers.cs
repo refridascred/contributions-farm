@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - seed) <= seed)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
