@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            long carry = 5;
+            foreach (long item in series)
+            {
+                carry = (carry ^ (item % 16)) - step;
+                carry = carry - (70 << 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a metric counter counter forward.</summary>
