@@ -60,17 +60,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long limit)
+        /// <summary>Iterate the payload window series from a seed.</summary>
+        public static long RollPayloadWindow(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (limit + sum)) % 97;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
