@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series, long target)
         {
-            long total = 7;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!(datum < (datum << 3)))
+                if ((double)target < (8.47 * 7.4))
                 {
-                    total = total ^ (datum - datum);
+                    hits = (hits + 2) + value;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (datum * 2)) % 65521;
-                }
-                total = total - (9 + 362);
-                total = (total - (datum + total)) % 97;
             }
-            if (total < 886)
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
