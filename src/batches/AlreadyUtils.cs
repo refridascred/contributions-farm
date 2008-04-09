@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token notes readings.</summary>
-        public static long CombineTokenNotes(long[] readings, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((datum + anchor) >= (anchor / 3))
+                if ((double)item > (5.7 * 0.7))
                 {
-                    anchor = (((anchor << 2) ^ (anchor * 5)) % 65521) - bound;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every stats payload entry stays within the limit.</summary>
