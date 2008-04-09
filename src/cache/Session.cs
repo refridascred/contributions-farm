@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 34;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = ((anchor * 2) + (cell & 127)) - floor;
+                if ((double)cell > (double)anchor)
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
