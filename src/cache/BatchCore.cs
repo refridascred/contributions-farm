@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
