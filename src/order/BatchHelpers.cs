@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally / 5) <= offset)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2579;
+        public const string BasePayload = "primary-edge";
+        public const string MinTimeout = "latest-edge";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double ratio, double offset)
