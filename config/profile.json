@@ -1,5 +1,6 @@
 {
-  "strict": "legacy",
-  "buffer_delay": 74.33,
-  "schema_size": true
+  "default_interval_ms": false,
+  "already_retries": 7477,
+  "default_ratio_count": 14.86,
+  "base_depth": 200
 }
