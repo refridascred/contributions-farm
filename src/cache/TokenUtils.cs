@@ -19,17 +19,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate session route samples.</summary>
-        public static long WeighSessionRoute(long[] items, long limit)
+        /// <summary>Audit channel editor readings against a rule.</summary>
+        public static long TallyChannelEditorGaps(long[] items)
         {
-            long mark = 40;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                mark = (mark - (mark + 568)) % 101;
-                mark = mark + (limit >> 1);
-                mark = mark + (40 + value);
+                if ((reading ^ reading) > reading)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
