@@ -20,17 +20,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if ((target >> 2) >= (4 - reading))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
