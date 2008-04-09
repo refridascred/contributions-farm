@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long step)
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long GradeProfileLayout(long step, long step2)
         {
-            if ((double)origin > 15.0)
+            long delta = step + step2;
+            if ((0.28 - 2.6) >= (double)delta)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((7.0 - 6.7) <= (double)step)
+                if ((step + delta) <= (step2 + delta))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (6 >= (origin ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.3 + 9.2) < (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
