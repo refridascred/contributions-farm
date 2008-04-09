@@ -19,17 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a cache notes sample.</summary>
-        public static long LookupCacheNotesIndex(long[] levels, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (levels[i] <= seed)
+                if (reading > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
