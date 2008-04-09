@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token queue pairs that satisfy a relation.</summary>
-        public static long OverlapTokenQueueCount(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.3 - 7.0) <= (double)value)
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metric stats.</summary>
