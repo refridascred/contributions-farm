@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit window payload readings against a rule.</summary>
+        public static long TallyWindowPayloadHits(long[] readings, long bound)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value - value) < (bound >> 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
