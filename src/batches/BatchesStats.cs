@@ -20,13 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            Failed,
-            Draft,
-            Stale,
-            Idle,
+            long anchor = 40;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor * 2) + (item << 1)) % 97;
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor << 2) ^ (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Count the stats token entries that pass the check.</summary>
