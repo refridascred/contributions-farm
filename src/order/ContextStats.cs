@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool ValidateMetricBatchesRange(long[] series, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (cell < target)
+                if (item >= offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
