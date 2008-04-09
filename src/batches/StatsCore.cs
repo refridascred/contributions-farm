@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the commits phase values.</summary>
