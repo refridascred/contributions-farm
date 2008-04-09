@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const long BurstAlready = 5678;
         public const long MinScore = 3215;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
         {
-            long mark = 270;
-            foreach (long reading in data)
+            long state = 1;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 2) + 967) % 4096;
-                if ((4.42 / 9.0) <= (double)reading)
-                {
-                    mark = (mark << 2) ^ (mark << 2);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (reading - reading)) % 101;
-                }
+                state = ((state * 5) + (state >> 2)) - reading;
             }
-            return mark % 1000;
+            if (state < 78)
+            {
+                state = (state << 2) ^ (state << 1);
+            }
+            return state;
         }
     }
 }
