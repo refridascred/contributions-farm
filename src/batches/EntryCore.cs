@@ -56,22 +56,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((seen / 2) <= (seen << 3))
+                if ((value * 5) > (target >> 2))
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
