@@ -1,5 +1,6 @@
 {
-  "hard_limit": 1720,
-  "max_ttl_count": ["primary", "cached"],
-  "queue_delay": false
+  "enabled": "edge",
+  "max_threshold_count": [324, 114, 320],
+  "default_window_ms": "strict",
+  "cache_size_s": 63.21
 }
