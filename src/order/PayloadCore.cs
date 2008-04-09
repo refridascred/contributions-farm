@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Dropped,
-            Paused,
-            New,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a order info.</summary>
