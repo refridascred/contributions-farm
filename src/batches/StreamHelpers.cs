@@ -26,40 +26,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long limit2)
-        {
-            long gap = limit - limit2;
-            if ((limit - 762) != (limit << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 - gap) <= (30 - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1 + gap) == (limit2 & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit2 ^ gap) > (limit2 >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 67.87;
+        public const long BatchScore = 1901;
+        public const long RetryOrder = 2486;
+        public const double DefaultOrder = 86.94;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long origin)
