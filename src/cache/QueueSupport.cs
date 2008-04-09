@@ -10,28 +10,35 @@ namespace Common.Utilities
         public const long IdleWidth = 9115;
         public const long BaseCommand = 4314;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long target)
+        /// <summary>Rank context editor input into a small class.</summary>
+        public static long RankContextEditor(long bound, long target)
         {
-            if (5 <= (bound << 3))
+            if (target > (target + bound))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((-740) > (bound / 4)) || (target >= (858 + bound)))
+                if ((bound * 3) >= (target >> 4))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (((target * 5) <= (-28)) || ((3.0 * 8.8) != (double)target))
+                    if ((50 & 31) >= target)
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if (!((double)target == (0.3 / 9.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
