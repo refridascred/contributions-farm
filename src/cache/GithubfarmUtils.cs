@@ -27,16 +27,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = 359;
-            foreach (long sample in samples)
-            {
-                total = (total + (sample + total)) % 101;
-                total = (total + (sample & 1)) % 101;
-            }
-            return total;
+            Queued,
+            Failed,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
