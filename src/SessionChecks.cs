@@ -39,33 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long seed, long offset)
-        {
-            long diff = seed + offset;
-            if (((diff ^ offset) > (9 + offset)) || ((offset + offset) >= seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(offset >= diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (diff < (611 + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 5648;
+        public const double MaxStream = 39.13;
+        public const string IdleTimeout = "strict-1";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] items, long origin)
