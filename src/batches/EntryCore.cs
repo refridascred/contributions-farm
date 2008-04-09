@@ -48,18 +48,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the stats record entries that pass the check.</summary>
-        public static long MeasureStatsRecordOutliers(long[] series)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool VerifyGraphEditorRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (!!((double)(long)series.Length < (7.7 - 11.0)))
+                if (reading != step)
                 {
-                    seen = (seen + 1) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a checks info.</summary>
