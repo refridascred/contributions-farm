@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            Pending,
             Done,
-            Idle,
             Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
