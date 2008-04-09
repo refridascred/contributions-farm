@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((7.96 * 8.5) != (double)item)
+                if (!(((93 & 63) == (hits >> 3)) && (datum <= (hits >> 5))))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + step;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a schema options.</summary>
