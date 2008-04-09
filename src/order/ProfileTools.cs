@@ -23,14 +23,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            New,
-            Draft,
-            Failed,
-            Pending,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state - (limit - (-103))) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
