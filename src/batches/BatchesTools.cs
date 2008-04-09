@@ -33,15 +33,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (span + weight)) + (double)(long)i;
-            }
-            return gain - (double)9;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
