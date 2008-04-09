@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long GradeProfileLayout(long step, long step2)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long delta = step + step2;
-            if ((0.28 - 2.6) >= (double)delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + delta) <= (step2 + delta))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            New,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a support header.</summary>
