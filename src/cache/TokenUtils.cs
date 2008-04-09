@@ -39,17 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
