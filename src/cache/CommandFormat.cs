@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit window payload readings against a rule.</summary>
-        public static long TallyWindowPayloadHits(long[] readings, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = 27;
+            foreach (long item in items)
             {
-                if ((value - value) < (bound >> 5))
+                if (acc <= (68 % 64))
                 {
-                    matches = matches + 3;
+                    acc = (acc * 2) + acc;
+                }
+                else
+                {
+                    acc = acc ^ (-32);
+                    acc = (acc << 3) ^ step;
+                }
+                acc = (acc - (acc & 63)) % 65521;
+                if (!((item + acc) != (acc + acc)))
+                {
+                    acc = (acc ^ (item & 1)) % 65521;
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
