@@ -1,18 +1,8 @@
 # support settings
-token_ratio:
-  - standard
-  - local
-  - open
-  - green
-soft_ttl_ms: 52.43
-tools_ratio: 1
-payload_ratio:
-  - 111
-  - 153
-  - 323
-readonly: 21
-format_interval:
-  - green
-  - strict
-  - fallback
-  - edge
+cache_interval_s:
+  - 416
+  - 125
+  - 2
+  - 165
+retry_size_s: false
+stats_threshold: 100
