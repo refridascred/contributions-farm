@@ -1,5 +1,17 @@
 # githubfarm settings
-persist: 62.85
-retry_size: 6207
-dry_run: local
-schema_capacity: local
+batches_interval: 56.61
+verbose: eu-west
+soft_depth_s:
+  - 181
+  - 286
+cache_depth_ms:
+  verbose: false
+  burst_ttl_s: 96.39
+  readonly: 58
+  sync_size:
+    - 456
+    - 207
+    - 324
+  queue_depth: true
+channel_ttl: false
+command_interval: green
