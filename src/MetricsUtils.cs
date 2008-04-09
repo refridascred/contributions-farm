@@ -29,12 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardLevel = 51.81;
+        public const string RetrySpan = "standard-edge";
+        public const string MinContributi = "latest-v2";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
