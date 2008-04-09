@@ -30,11 +30,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitRatio = 8075;
-        public const long BatchCount = 7484;
-        public const string StepMetrics = "cached-1";
-        public const double BurstTimeout = 53.69;
-        public const long LimitMetrics = 5688;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 26.95;
+        public const long WindowProfile = 4529;
+        public const long HardProfile = 4672;
+        public const double MaxScore = 88.66;
+        public const long MaxProfile = 8749;
     }
 }
