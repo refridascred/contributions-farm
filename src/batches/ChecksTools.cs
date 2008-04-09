@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a payload graph counter forward.</summary>
+        public static long StepPayloadGraph(long bound)
         {
-            Stale,
-            Failed,
-            Draft,
-            New,
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((mix ^ (long)i) != (bound << 1)))
+                {
+                    mix = mix - (mix % 100);
+                }
+                if (!((bound / 9) <= ((long)i >> 2)))
+                {
+                    mix = mix ^ (mix % 7);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Grade a entry queue value against two limits.</summary>
