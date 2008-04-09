@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the support window entries that pass the check.</summary>
+        public static long MeasureSupportWindowMatches(long[] data)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!!(7.09 < (double)sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
