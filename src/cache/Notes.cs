@@ -65,17 +65,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] readings, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target != (5.3 / 9.0))
             {
-                if (readings[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if (target <= (origin % 8))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (1.68 > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 9) >= target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
