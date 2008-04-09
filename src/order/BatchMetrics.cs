@@ -20,19 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = 6;
-            foreach (long reading in data)
-            {
-                mark = (mark + (reading * 2)) % 101;
-            }
-            if (mark > (-21))
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 4096;
+            Ready,
+            Synced,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
