@@ -64,10 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinSize = 1.88;
-        public const long BurstWidth = 6266;
-        public const long CacheCounter = 3186;
-        public const double CacheSize = 71.47;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
