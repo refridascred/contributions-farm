@@ -57,20 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5366;
+        public const string HardScore = "stable-edge";
+        public const double SoftFarm = 10.75;
+        public const string CacheFarm = "open-1";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] values, long step)
