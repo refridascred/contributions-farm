@@ -1,10 +1,12 @@
 {
-  "warm_interval_pct": {
-    "sync_interval": 1024,
-    "report_ratio": "open",
-    "max_ratio_pct": ["open", "standard", "staging", "standard"],
-    "retry_retries_count": "latest"
+  "profile_size": 7665,
+  "persist": "stable",
+  "warm_ttl_count": "edge",
+  "cache_interval_s": {
+    "min_size": ["staging", "edge", "staging", "eu-west"],
+    "sync_delay_s": 34.01,
+    "token_size": "cached",
+    "farm_depth": 100
   },
-  "record_depth": "open",
-  "min_threshold": 100
+  "format_depth": 80.17
 }
