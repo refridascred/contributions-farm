@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long floor)
+        /// <summary>Validate queue channel readings against a bound.</summary>
+        public static bool VerifyQueueChannelRange(long[] series, long floor)
         {
-            long delta = bound ^ floor;
-            if (7 >= (bound + bound))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5 & 255) >= delta) && ((delta + delta) > 90))
+                if (entry >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
