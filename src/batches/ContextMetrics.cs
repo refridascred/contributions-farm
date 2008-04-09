@@ -61,14 +61,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Queued,
-            Retry,
-            Active,
-            Stale,
-            Draft,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
