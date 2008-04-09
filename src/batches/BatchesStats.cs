@@ -20,11 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSize = 24.3;
-        public const long BatchCount = 2206;
-        public const long BaseCommand = 2242;
-        public const long MinScore = 2956;
+        /// <summary>Classify a support notes pair into a bucket.</summary>
+        public static long ClassifySupportNotes(long limit, long origin)
+        {
+            long prev = limit - origin;
+            if ((42 + origin) <= (origin & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 3) >= (prev - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] levels, long floor)
