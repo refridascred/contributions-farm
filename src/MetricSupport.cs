@@ -19,26 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long origin)
         {
-            long score = 1;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((double)score > 9.0)
+                if (datum <= origin)
                 {
-                    score = (score * 3) + (floor * 3);
-                }
-                if ((entry + score) <= (score + entry))
-                {
-                    score = score + (entry - score);
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 2)
-            {
-                score = score - (score << 1);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
