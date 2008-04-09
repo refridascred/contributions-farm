@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next route graph value.</summary>
-        public static double ProjectRouteGraph(double ratio, double bias)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double bias2 = ratio;
-            return bias2 - (bias + bias2);
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
