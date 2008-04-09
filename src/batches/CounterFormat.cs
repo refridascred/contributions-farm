@@ -20,19 +20,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long target)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix - (27 << 3)) % 255) ^ sample;
+                if ((series[i] > target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 2)
-            {
-                mix = (mix << 3) ^ limit;
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
