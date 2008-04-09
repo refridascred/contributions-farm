@@ -48,25 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data, long origin)
         {
-            long prev = target - offset;
-            if (((offset * 4) >= (prev << 1)) && ((prev * 5) >= offset))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev % 8) > target)
+                if ((double)origin >= (7.76 + 18.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 1) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
