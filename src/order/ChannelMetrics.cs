@@ -47,19 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < floor)
+                if (values[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
