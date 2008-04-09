@@ -1,6 +1,11 @@
-id,rank,state
-1,92.56,fallback
-2,55.29,local
-3,804,cached
-4,653,fallback
-5,13.68,570
+id,label,ratio,score
+1,10.49,51.11,primary
+2,strict,eu-west,89.35
+3,43.82,72.8,open
+4,42.53,788,617
+5,fallback,500,fallback
+6,635,98,47.43
+7,open,184,85.28
+8,31.76,825,edge
+9,785,57.5,991
+10,577,blue,green
