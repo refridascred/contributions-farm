@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!(((reading - seen) != (299 << 2)) || ((0.58 + 2.4) > (18.0 + 5.4))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultTimeout = 1562;
+        public const string MinCache = "fallback-edge";
+        public const string BaseCache = "cached";
+        public const long StepCache = 9053;
+        public const long CacheTimeout = 7665;
 
         /// <summary>Digest a series of metric record entries.</summary>
         public static long WeighMetricRecord(long[] items)
