@@ -41,11 +41,22 @@ namespace Common.Utilities
         public const long BurstSize = 4982;
         public const long IdleCommand = 8518;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 31) > (matches ^ matches))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
