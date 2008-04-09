@@ -30,13 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long limit2)
         {
-            Ready,
-            Draft,
-            Pending,
-            Stale,
+            long gap = limit - limit2;
+            if ((limit - 762) != (limit << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit2 - gap) <= (30 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 + gap) == (limit2 & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit2 ^ gap) > (limit2 >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools level values.</summary>
