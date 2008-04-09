@@ -14,20 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings, long origin)
-        {
-            long mix = 26;
-            foreach (long reading in readings)
-            {
-                mix = mix + (mix + reading);
-            }
-            if (mix < 88)
-            {
-                mix = (mix ^ origin) % 4096;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "strict";
+        public const long DefaultEditor = 6902;
+        public const long LimitEditor = 1444;
+        public const string WindowSpan = "cached";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] levels, long floor)
