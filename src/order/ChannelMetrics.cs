@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftDepth = "latest-v2";
+        public const string SoftCluster = "latest-v2";
+        public const long RetryCluster = 4375;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long bound, long target)
