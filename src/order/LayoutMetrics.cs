@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepSize = 77.29;
-        public const long MaxWindow = 1804;
-        public const long BatchCount = 4832;
-        public const double RetryWidth = 6.61;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxWidth = 9647;
