@@ -1,12 +1,10 @@
 # githubfarm settings
-batch_threshold_ms: 82.92
-hard_size_count: 845
-cache_interval_ms:
-  base_limit_ms: 100
-  githubfarm_threshold: 15
-  editor_window: 2499
-  readonly: local
-  enabled: 22
-  poll_capacity: legacy
-sync_ttl_count: true
-record_ratio: 78
+commits_window: 3
+window_capacity:
+  warm_depth: edge
+  readonly: 32
+  max_interval: 81
+  hard_ttl: fallback
+flush_threshold_s: true
+command_limit: blue
+readonly: false
