@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double CacheRoute = 12.29;
         public const long HardRoute = 223;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((reading - 34) >= tally)
+                if (((entry * 5) > (count - (long)series.Length)) || (entry <= (59 * 3)))
                 {
-                    tally = (tally + 2) + limit;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank record input into a small class.</summary>
