@@ -20,19 +20,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
