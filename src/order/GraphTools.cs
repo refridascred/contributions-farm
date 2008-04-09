@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Active,
-            Idle,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 26.96;
+        public const long BurstSize = 6683;
+        public const double MinRatio = 79.82;
+        public const long StepTimeout = 6093;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
