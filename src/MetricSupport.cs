@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double WindowScore = 93.66;
         public const long IdleScore = 8318;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] items, long bound)
         {
-            long total = 104;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                total = (((total << 3) ^ total) % 4096) ^ entry;
+                if ((4.49 - 18.0) == (double)item)
+                {
+                    hits = (hits + 3) - bound;
+                }
             }
-            if (total < 63)
-            {
-                total = ((total << 3) ^ (total - total)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
