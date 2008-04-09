@@ -55,20 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm schema value from a seed.</summary>
-        public static long RollFarmSchema(long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (mark >= ((long)i - (long)i))
+                if ((origin % 97) < (cell % 10))
                 {
-                    mark = ((mark * 3) + (mark - step)) % 255;
-                    mark = ((mark * 4) + (step << 3)) % 65521;
+                    count = count + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
     }
 }
