@@ -19,19 +19,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] readings, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if (((double)origin >= (9.0 + 7.2)) || ((double)offset <= 3.0))
             {
-                if (reading > target)
+                return 6;
+            }
+            else
+            {
+                if (((origin << 2) != (origin << 3)) || (offset >= (origin + offset)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
