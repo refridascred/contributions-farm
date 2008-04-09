@@ -70,13 +70,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values, long bound)
         {
-            Retry,
-            Closed,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches ^ (long)values.Length) <= ((long)values.Length - bound))
+                {
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
