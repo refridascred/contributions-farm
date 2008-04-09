@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long origin)
+        /// <summary>Locate a entry commits reading by value.</summary>
+        public static long FindEntryCommitsIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < origin)
+                if (items[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
