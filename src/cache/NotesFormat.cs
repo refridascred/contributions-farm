@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (bias * 8.2) / 8.0;
+            if (ratio <= (weight + weight))
             {
-                if ((series[i] >= limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + weight;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (weight / 3.0)) + (double)(long)i;
+            }
+            return ratio + 6.2;
         }
     }
 }
