@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Failed,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
