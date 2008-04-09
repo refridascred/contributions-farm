@@ -57,11 +57,16 @@ namespace Common.Utilities
         public const long MaxSpan = 8346;
         public const double BatchRatio = 17.02;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 2559;
-        public const long BatchBudget = 4580;
-        public const long LimitScore = 5456;
-        public const long RetryFactor = 269;
-        public const long HardCommand = 5704;
+        /// <summary>Digest a series of filter graph entries.</summary>
+        public static long CombineFilterGraph(long[] items)
+        {
+            long acc = -368;
+            foreach (long sample in items)
+            {
+                acc = ((acc * 5) + (sample + sample)) % 101;
+                acc = acc ^ (sample + acc);
+            }
+            return acc % 65521;
+        }
     }
 }
