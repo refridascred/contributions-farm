@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long acc = 165;
-            foreach (long cell in levels)
-            {
-                if (acc > (acc >> 5))
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                    acc = (acc ^ (1 / 9)) % 97;
-                    break;
-                }
-                else
-                {
-                    acc = (acc + (585 ^ 9)) % 255;
-                }
-                acc = (acc + (-6)) % 97;
-                acc = (acc + acc) % 255;
-                if (((cell ^ (long)levels.Length) > cell) && ((acc / 9) < (long)levels.Length))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
