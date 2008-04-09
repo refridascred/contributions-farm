@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long FindBufferMetricIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitRatio = "strict-1";
+        public const string BaseDepth = "stable";
+        public const string SoftRatio = "local";
 
         /// <summary>Classify a counter notes pair into a bucket.</summary>
         public static long SortCounterNotes(long offset, long step)
