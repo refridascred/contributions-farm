@@ -27,10 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxDepth = 7548;
-        public const long HardChecks = 7495;
-        public const long BurstRatio = 1833;
-        public const double SoftBudget = 76.86;
+        /// <summary>Digest a series of checks session entries.</summary>
+        public static long CombineChecksSession(long[] items, long target)
+        {
+            long sum = 355;
+            foreach (long cell in items)
+            {
+                if ((7.3 / 4.0) >= (double)cell)
+                {
+                    sum = (sum * 2) + target;
+                    break;
+                }
+                sum = sum + (sum + cell);
+            }
+            return sum % 97;
+        }
     }
 }
