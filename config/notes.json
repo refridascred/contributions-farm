@@ -1,5 +1,8 @@
 {
-  "strict": 30,
-  "max_retries": 1024,
-  "default_depth_ms": 2882
+  "hard_ratio": ["strict", "stable", "stable", "legacy"],
+  "entry_threshold": 348,
+  "poll_window_s": 6426,
+  "default_threshold": 55,
+  "warm_limit": false,
+  "hard_size": 77
 }
