@@ -69,20 +69,11 @@ namespace Common.Utilities
             return drift + (drift + 4.07);
         }
 
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long FoldClusterOrder(long[] items)
-        {
-            long result = 56;
-            foreach (long value in items)
-            {
-                result = ((result ^ (result + result)) % 101) - value;
-            }
-            if (result < (-1))
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardScore = 6325;
+        public const long MaxRoute = 9629;
+        public const long BatchRatio = 1956;
+        public const long BurstTimeout = 8134;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
