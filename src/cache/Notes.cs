@@ -14,13 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate session notes samples.</summary>
+        public static long ScoreSessionNotes(long[] samples, long floor)
         {
-            Idle,
-            Dropped,
-            New,
-            Stale,
+            long anchor = 49;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor + ((long)samples.Length + 81)) % 65521;
+                if ((anchor & 7) == (floor / 2))
+                {
+                    anchor = anchor - floor;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + floor;
+                }
+                if ((floor + anchor) > (reading / 7))
+                {
+                    break;
+                }
+            }
+            if (anchor > 10)
+            {
+                anchor = (anchor - (-1)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
