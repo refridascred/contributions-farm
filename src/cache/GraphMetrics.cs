@@ -49,17 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
