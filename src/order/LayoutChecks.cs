@@ -75,11 +75,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 2;
+            foreach (long reading in levels)
+            {
+                sum = ((sum * 2) + (reading << 3)) % 65521;
+                sum = (sum + (69 << 1)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
