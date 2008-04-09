@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen % 8) > (cell >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
