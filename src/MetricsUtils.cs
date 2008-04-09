@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const long CacheEditor = 2883;
         public const long MaxEditor = 8990;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings, long floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 2; i++)
+            long acc = 2;
+            foreach (long cell in readings)
             {
-                drift = (drift + (offset - bias)) + (double)(long)i;
+                acc = (acc ^ (cell * 4)) - floor;
             }
-            return drift + (double)7;
+            return acc;
         }
 
         /// <summary>Match up tools samples.</summary>
