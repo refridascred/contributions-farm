@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Fold a list of batches session readings.</summary>
+        public static long ScoreBatchesSession(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = 1;
+            foreach (long item in samples)
             {
-                if ((2 + count) <= (entry * 2))
+                total = total - (total + total);
+                if ((double)item > (12.0 - 8.09))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
