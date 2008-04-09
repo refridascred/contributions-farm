@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long CacheRatio = 2182;
         public const long WindowCounter = 7828;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long CountPayloadBufferHits(long[] series, long limit)
         {
-            Active,
-            Synced,
-            Dropped,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (limit < (limit / 4))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
