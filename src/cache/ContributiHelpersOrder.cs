@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)matches <= (4.4 + 9.01))
-                {
-                    matches = ((matches + 2) + sample) - bound;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
