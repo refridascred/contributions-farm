@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] readings, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)seen == (2.2 * 4.9)))
-                {
-                    seen = ((seen + 2) + value) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
