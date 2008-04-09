@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] readings, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > step)
+                if (!(((double)(long)i != (6.3 + 1.0)) || (origin <= (total % 64))))
                 {
-                    stale = false;
-                    break;
+                    total = total ^ (total ^ total);
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
