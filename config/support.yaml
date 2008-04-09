@@ -1,9 +1,24 @@
 # support settings
-cluster_window: 7949
-retry_delay_ms: local
-readonly: local
-schema_retries: open
-min_window_s:
-  - 107
-  - 80
-  - 444
+compress: 84.87
+idle_interval: staging
+verbose:
+  flush_threshold_s: legacy
+  poll_interval_pct: 85
+  batch_ratio: legacy
+  persist:
+    - fallback
+    - local
+    - legacy
+    - fallback
+  base_timeout_s: primary
+  retry_ttl_count: strict
+flush_interval_s: green
+batches_window:
+  max_interval:
+    - 8
+    - 26
+  compress: strict
+  poll_capacity: 1303
+  verbose: 1155
+  batch_delay_count: false
+  enabled: cached
