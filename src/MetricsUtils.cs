@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a editor format reading by value.</summary>
-        public static long LocateEditorFormatIndex(long[] levels, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
