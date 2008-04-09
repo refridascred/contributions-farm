@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream batch values into a single score.</summary>
-        public static long FoldStreamBatch(long[] series)
+        /// <summary>Compare every pair of account layout readings.</summary>
+        public static long OverlapAccountLayoutCount(long[] values)
         {
-            long anchor = -200;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (anchor % 60)) + value;
-                if (anchor <= (anchor * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor ^ (352 * 2)) % 101;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
