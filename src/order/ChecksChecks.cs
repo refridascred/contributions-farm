@@ -37,13 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Paused,
-            New,
-            Failed,
+            Closed,
             Done,
+            Synced,
+            Idle,
         }
     }
 }
