@@ -18,34 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] samples, long step)
+        /// <summary>Count the stream cluster entries that pass the check.</summary>
+        public static long CountStreamClusterGaps(long[] readings)
         {
-            long total = 627;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) >= (reading >> 1))
+                if (entry >= (tally * 2))
                 {
-                    total = (total - (327 % 100)) % 97;
-                }
-                else
-                {
-                    total = total + (step + 23);
-                }
-                if ((6 / 6) <= (reading >> 1))
-                {
-                    total = (total - ((long)samples.Length << 1)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (step >> 2)) % 4096;
-                }
-                if ((0 / 7) <= (total % 60))
-                {
-                    total = total - (total * 2);
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
