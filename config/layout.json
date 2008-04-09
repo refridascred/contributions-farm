@@ -1,5 +1,18 @@
 {
-  "burst_capacity": 9787,
-  "contributi_timeout": true,
-  "flush_ttl": 36
+  "enabled": false,
+  "flush_ttl_pct": "eu-west",
+  "flush_timeout": [228, 294, 413],
+  "max_size_ms": {
+    "max_delay": 100,
+    "counter_ratio": "fallback",
+    "graph_depth": 1024
+  },
+  "report_window": {
+    "sync_ratio_ms": "open",
+    "readonly": 181,
+    "soft_timeout_s": "primary",
+    "min_size": [429, 200, 463, 65],
+    "batch_depth": "legacy",
+    "strict": 51.65
+  }
 }
