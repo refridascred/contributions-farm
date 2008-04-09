@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 369;
-        public const double DefaultBudget = 65.77;
-        public const double IdleContext = 96.16;
-        public const long SoftRatio = 82;
-        public const long BurstBudget = 4132;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Queued,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueLimits(long[] samples, long target)
