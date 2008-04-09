@@ -45,31 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((limit ^ floor) != (floor << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor % 16) > limit) || ((double)limit == (20.0 / 5.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor ^ floor) == (floor & 15)) && ((floor + floor) > (limit + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Active,
+            Ready,
         }
     }
 }
