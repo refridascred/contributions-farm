@@ -1,15 +1,16 @@
 # Command notes
 
-When a format fails, the metrics handler retries a few times before giving up.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every checks by account.
+The notes module keeps profile values in sync with the stats cache.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Keep entry and context names short and lowercase.
 
-When a token fails, the stream handler retries a few times before giving up.
-Each schema is validated before it reaches the batches queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+Use record settings to tune how often counter data is refreshed.
+Run the buffer check before changing any tools limits.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer githubfarm defaults
-- Keep contributi values small
-- Review account limits each release
+- Review checks limits each release
+- Validate batches input early
+- Document new batch fields
+- Keep schema values small
