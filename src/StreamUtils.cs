@@ -26,11 +26,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 4119;
-        public const long HardSize = 7914;
-        public const string StepProfile = "staging";
-        public const long MaxBudget = 8595;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Pending,
+            Paused,
+            New,
+            Queued,
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
