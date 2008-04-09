@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double ratio, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            double bias = 16.0 + span;
-            if (bias <= (span * 4.64))
+            double gain = offset;
+            if (gain > (double)8)
             {
-                bias = bias - ratio;
+                gain = gain + (offset * 4.58);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias + (ratio / 9.0)) + (double)(long)i;
+                gain = gain + gain;
             }
-            return bias - (double)3;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (double)686) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
