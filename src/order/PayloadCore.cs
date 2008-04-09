@@ -22,22 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = 582;
-            foreach (long reading in readings)
-            {
-                if (((reading + reading) < (acc + acc)) && ((acc << 1) >= acc))
-                {
-                    acc = (acc ^ (reading >> 5)) % 101;
-                }
-            }
-            if (acc > 77)
-            {
-                acc = acc + (acc & 1);
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
