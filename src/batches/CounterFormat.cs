@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long target)
+        /// <summary>Check that every cache counter entry stays within the limit.</summary>
+        public static bool CheckCacheCounterBounds(long[] data, long target)
         {
-            long gap = offset - target;
-            if (!((double)offset >= (8.0 + 2.7)))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (gap > 9)
+                if (item != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset - target) > 11) || ((offset - gap) <= target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a order counter forward.</summary>
