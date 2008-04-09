@@ -49,21 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry < origin)
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
