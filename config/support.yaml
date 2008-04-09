@@ -1,8 +1,15 @@
 # support settings
-max_size_ms:
-  - 277
-  - 473
-  - 424
-batch_size_count: false
-flush_ttl: 47.87
-retry_size: eu-west
+retry_size_count: staging
+soft_ttl_s: strict
+sync_interval_pct: legacy
+batch_capacity:
+  counter_threshold: false
+  soft_size: latest
+  max_capacity_count: 100
+  audit: primary
+  notes_size: local
+warm_interval_pct:
+  sync_ratio_pct: standard
+  sync_depth: staging
+  poll_capacity: 100
+  strict: 1024
