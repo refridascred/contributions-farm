@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] values, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(((entry + entry) >= entry) && ((limit << 2) > entry)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Synced,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
