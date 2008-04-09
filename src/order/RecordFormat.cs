@@ -44,13 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            Stale,
-            Done,
-            Active,
-            Ready,
+            double scale = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor / 4.0)) + (double)(long)i;
+            }
+            return scale + (rate * 4.0);
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
