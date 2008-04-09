@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            if ((offset << 3) == (offset & 3))
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)offset < 1.7))
+                if ((2 & 63) > (anchor - (long)i))
                 {
-                    return 3;
+                    anchor = (anchor * 5) + (anchor << 2);
                 }
-                else
-                {
-                    if ((28 - 721) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Hold a layout info.</summary>
