@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MinChecks = 3759;
         public const double BurstChecks = 22.71;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits + hits) != (0 - 66))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the stream order entries that pass the check.</summary>
