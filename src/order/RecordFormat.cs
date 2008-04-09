@@ -67,13 +67,39 @@ namespace Common.Utilities
         public const long MinWidth = 1442;
         public const long IdleFarm = 9067;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Classify a support editor pair into a bucket.</summary>
+        public static long ClassifySupportEditor(long step, long limit)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long diff = step + limit;
+            if (!((diff - diff) > (2 + diff)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit > (step >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 2) < 301)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step * 4) != (diff >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
