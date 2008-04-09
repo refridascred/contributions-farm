@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "strict-1";
-        public const long RetryCount = 3026;
-        public const string HardLevel = "strict-v2";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
