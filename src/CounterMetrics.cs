@@ -42,10 +42,13 @@ namespace Common.Utilities
         public const long MaxTools = 3739;
         public const string BurstLevel = "local-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseSpan = "open-1";
-        public const long IdleCount = 5068;
-        public const long SoftToken = 7319;
-        public const long StepToken = 7116;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Queued,
+            Dropped,
+            New,
+            Synced,
+        }
     }
 }
