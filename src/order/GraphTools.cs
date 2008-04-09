@@ -58,11 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
