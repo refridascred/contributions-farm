@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a token filter reading by value.</summary>
-        public static long LocateTokenFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7716;
+        public const double RetryTimeout = 98.26;
+        public const double MinFactor = 21.7;
+        public const string IdleTimeout = "standard-1";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long target, long bound)
