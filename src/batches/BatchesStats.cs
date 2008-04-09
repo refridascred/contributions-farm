@@ -47,15 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats token entries that pass the check.</summary>
-        public static long TallyStatsTokenHits(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data, long step)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long cell in data)
             {
-                if (((matches + value) == (matches + 43)) || ((5.8 * 15.0) > (double)matches))
+                if ((double)matches <= (1.0 + 0.2))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 1) ^ cell) + step;
                 }
             }
             return matches;
