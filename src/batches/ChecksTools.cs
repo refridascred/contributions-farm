@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MinChecks = 3759;
         public const double BurstChecks = 22.71;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            New,
-            Synced,
-            Locked,
-            Done,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits + hits) != (0 - 66))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a record cluster sample.</summary>
