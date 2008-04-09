@@ -29,11 +29,17 @@ namespace Common.Utilities
             return bias2 - (bias2 * 6.7);
         }
 
-        /// <summary>Project the next layout route value.</summary>
-        public static double SmoothLayoutRoute(double scale, double floor)
+        /// <summary>Look up the position of a stats counter sample.</summary>
+        public static long LookupStatsCounterIndex(long[] series, long floor)
         {
-            double gain = scale;
-            return gain + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
