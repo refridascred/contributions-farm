@@ -33,12 +33,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
