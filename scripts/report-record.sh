@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard primary open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=293
+RECORD_LIMIT=415
 log "limit is ${RECORD_LIMIT}"
