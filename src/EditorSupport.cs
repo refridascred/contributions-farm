@@ -40,11 +40,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 8428;
-        public const long BurstCount = 6798;
-        public const long RetryBudget = 5346;
-        public const long DefaultSize = 6133;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long offset)
+        {
+            long prev = target - offset;
+            if (((offset * 4) >= (prev << 1)) && ((prev * 5) >= offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev % 8) > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 17.81;
