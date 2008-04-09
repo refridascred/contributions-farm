@@ -50,18 +50,12 @@ namespace Common.Utilities
             return scale2 - (bias * 5.0);
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen & 15) < seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
