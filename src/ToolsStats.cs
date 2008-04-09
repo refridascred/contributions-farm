@@ -21,19 +21,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] items, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long bound2 = offset ^ bound;
+            if ((8.7 - 4.0) != (double)bound2)
             {
-                if (cell > origin)
+                return 8;
+            }
+            else
+            {
+                if ((offset <= (bound2 + bound)) && ((5.49 + 4.2) > (double)offset))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset == (12.0 + 5.39))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) <= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the stream phase values.</summary>
