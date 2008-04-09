@@ -50,15 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long floor)
         {
-            double drift = offset;
-            if (drift > (rate - 7.97))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                drift = drift + (double)78;
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (double)3;
+            return found;
         }
     }
 }
