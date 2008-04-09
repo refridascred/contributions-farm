@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine profile entry values into a single score.</summary>
-        public static long TallyProfileEntry(long[] series, long limit)
+        /// <summary>Audit payload batch readings against a rule.</summary>
+        public static long AuditPayloadBatchHits(long[] readings, long bound)
         {
-            long score = 761;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((double)limit < (8.34 - 16.0))
+                if (!(hits > sample))
                 {
-                    score = (score + (score - score)) ^ sample;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (limit + limit)) % 1000;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
