@@ -25,12 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            long score = 4;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ reading) == (score * 2))
+                {
+                    score = ((score << 3) ^ (403 + reading)) % 1000;
+                }
+                else
+                {
+                    score = score - score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
