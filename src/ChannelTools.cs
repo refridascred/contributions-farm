@@ -25,21 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 5086;
+        public const long MaxPayload = 3025;
+        public const string MinInterval = "stable-edge";
+        public const long HardInterval = 8316;
+        public const double MinFactor = 5.09;
     }
 }
