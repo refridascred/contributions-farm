@@ -21,12 +21,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
