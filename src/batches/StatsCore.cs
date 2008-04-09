@@ -82,17 +82,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (samples[i] > floor)
+                if (datum < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
