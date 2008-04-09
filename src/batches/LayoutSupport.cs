@@ -38,16 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mark = (mark ^ 30) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
+                mix = mix ^ (long)i;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
