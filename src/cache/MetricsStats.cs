@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long limit)
         {
-            Closed,
-            New,
-            Draft,
-            Stale,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
