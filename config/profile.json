@@ -1,6 +1,8 @@
 {
-  "persist": 56,
-  "soft_size_pct": "strict",
-  "editor_delay": 65,
-  "retry_capacity_pct": 60
+  "strict": 252,
+  "idle_limit_count": "open",
+  "default_size_s": "strict",
+  "audit": ["edge", "fallback", "open"],
+  "verbose": "strict",
+  "enabled": false
 }
