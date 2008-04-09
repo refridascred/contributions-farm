@@ -53,21 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "primary-v2";
+        public const long StepScore = 1742;
+        public const long WindowScore = 4888;
+        public const double RetryPayload = 47.08;
     }
 }
