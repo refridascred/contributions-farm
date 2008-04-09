@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
