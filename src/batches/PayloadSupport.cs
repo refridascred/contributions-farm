@@ -34,15 +34,10 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long origin)
-        {
-            long state = 4;
-            foreach (long value in samples)
-            {
-                state = ((state + origin) % 101) ^ value;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 7685;
+        public const long DefaultTimeout = 6371;
+        public const double MinContext = 33.56;
+        public const long RetrySize = 6553;
     }
 }
