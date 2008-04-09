@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate order editor readings against a bound.</summary>
