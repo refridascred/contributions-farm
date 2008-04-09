@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long MaxRatio = 6509;
         public const double MaxScore = 0.63;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((double)(long)values.Length != (double)cell) || !(cell <= (611 + 450)))
+                if (((1 ^ (long)data.Length) <= (tally / 7)) || !((double)target < 9.4))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) - value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many editor order samples are out of range.</summary>
