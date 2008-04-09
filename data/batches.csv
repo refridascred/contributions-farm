@@ -1,9 +1,6 @@
-id,weight,score,region
-1,712,690,9.63
-2,88.02,22.9,852
-3,cached,37.17,34.48
-4,65.53,287,235
-5,423,714,63
-6,stable,259,stable
-7,23.11,59,353
-8,427,734,77.05
+id,rank,state
+1,825,primary
+2,771,477
+3,68.29,752
+4,73.81,fallback
+5,standard,strict
