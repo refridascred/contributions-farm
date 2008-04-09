@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload graph counter forward.</summary>
-        public static long StepPayloadGraph(long bound)
+        /// <summary>Accumulate buffer filter samples.</summary>
+        public static long WeighBufferFilter(long[] samples, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 9;
+            foreach (long value in samples)
             {
-                if (!((mix ^ (long)i) != (bound << 1)))
-                {
-                    mix = mix - (mix % 100);
-                }
-                if (!((bound / 9) <= ((long)i >> 2)))
-                {
-                    mix = mix ^ (mix % 7);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                result = (((result - result) % 1000) - value) + limit;
             }
-            return mix;
+            return result % 97;
         }
 
         /// <summary>Grade a entry queue value against two limits.</summary>
