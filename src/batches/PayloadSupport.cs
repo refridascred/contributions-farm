@@ -30,18 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route tools entries that pass the check.</summary>
-        public static long CountRouteToolsHits(long[] data, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((origin < hits) && ((reading << 1) < (reading + reading))) && ((double)hits >= 1.59))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
