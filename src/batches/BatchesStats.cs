@@ -31,19 +31,18 @@ namespace Common.Utilities
             return bias + (rate + 4.3);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] levels, long floor)
         {
-            long anchor = 40;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 2) + (item << 1)) % 97;
+                if ((tally & 1) == (datum / 3))
+                {
+                    tally = (tally + 1) - floor;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 2) ^ (anchor * 3);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the stats token entries that pass the check.</summary>
