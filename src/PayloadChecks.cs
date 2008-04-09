@@ -36,19 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double rate = floor * 1.4;
-            if (rate <= (floor / 3.0))
-            {
-                rate = rate - gain;
-            }
-            else
-            {
-                rate = rate + (floor * 6.0);
-            }
-            return rate - rate;
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of graph route entries.</summary>
