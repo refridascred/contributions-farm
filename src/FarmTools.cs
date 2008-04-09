@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long LimitSession = 723;
         public const long MinFactor = 8789;
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long CountStatsBatchGaps(long[] levels, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((-5) <= (tally + tally))
-                {
-                    tally = ((tally + 1) + cell) - seed;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
