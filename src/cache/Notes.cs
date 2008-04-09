@@ -23,38 +23,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long step, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            if (((52 - offset) <= (630 / 6)) && ((double)offset != (11.0 - 2.77)))
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset < (step << 3))
+                if ((bound % 100) != (1 - (long)i))
                 {
-                    return 6;
+                    total = ((total << 2) ^ ((long)i + 365)) % 101;
                 }
-                else
+                if ((double)total < (double)bound)
                 {
-                    if (((90 % 24) >= (step * 4)) && ((5.9 / 7.0) == (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step & 127) != (step + step)) || (784 >= (offset & 127)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total + ((long)i / 9)) % 65521;
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Match up farm samples.</summary>
