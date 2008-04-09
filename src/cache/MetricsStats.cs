@@ -53,10 +53,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7413;
-        public const long StepTimeout = 866;
-        public const string RetrySchema = "alpha";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches <= (7 & 63))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] readings)
