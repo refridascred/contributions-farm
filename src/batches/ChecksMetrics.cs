@@ -61,18 +61,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up schema cluster samples.</summary>
-        public static long PairSchemaClusterCount(long[] data)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long AuditProfileAccountOutliers(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((offset <= (datum + offset)) && ((datum - offset) < (datum + offset))))
                 {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
