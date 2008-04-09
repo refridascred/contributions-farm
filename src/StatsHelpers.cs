@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long MeasureBatchesFarmOutliers(long[] levels)
+        /// <summary>Digest a series of metric record entries.</summary>
+        public static long WeighMetricRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 9;
+            foreach (long datum in items)
             {
-                if ((double)597 > (double)seen)
-                {
-                    seen = (seen + 3) + entry;
-                }
+                score = (score - (datum + datum)) % 1000;
             }
-            return seen;
+            if (score > 680)
+            {
+                score = (score * 3) + ((long)items.Length + 663);
+            }
+            return score;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
