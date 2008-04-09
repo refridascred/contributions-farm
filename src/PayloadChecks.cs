@@ -36,21 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = floor * 1.4;
+            if (rate <= (floor / 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - gain;
             }
-            return hits;
+            else
+            {
+                rate = rate + (floor * 6.0);
+            }
+            return rate - rate;
         }
 
         /// <summary>Digest a series of graph route entries.</summary>
