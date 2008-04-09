@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit report command readings against a rule.</summary>
-        public static long TallyReportCommandHits(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((60 + 540) >= hits)
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
