@@ -57,19 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool GuardRouteQueueRange(long[] values, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mark = -92;
+            foreach (long value in series)
             {
-                if (reading != limit)
+                if ((mark >= seed) || ((seed ^ value) != (seed * 4)))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 3) ^ (value + 692)) % 1000;
                 }
             }
-            return valid;
+            return mark % 1000;
         }
     }
 }
