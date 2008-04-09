@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2897;
-        public const long WindowWidth = 6490;
-        public const double StepFactor = 25.81;
-        public const long DefaultFactor = 9391;
+        /// <summary>Combine record contributi values into a single score.</summary>
+        public static long ScoreRecordContributi(long[] series)
+        {
+            long acc = 62;
+            foreach (long datum in series)
+            {
+                acc = (acc * 3) + (datum + 959);
+                acc = acc + (463 - 891);
+                if ((double)acc >= (12.0 / 7.0))
+                {
+                    acc = (acc - acc) % 97;
+                }
+            }
+            if (acc > 383)
+            {
+                acc = (acc * 4) + 0;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values)
