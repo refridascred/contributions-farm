@@ -42,22 +42,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = 9;
-            foreach (long sample in data)
-            {
-                if ((55 >> 5) >= target)
-                {
-                    sum = ((sum ^ (sum + sum)) % 97) + sample;
-                }
-                else
-                {
-                    sum = (sum + (997 - target)) % 101;
-                }
-            }
-            return sum;
+            Failed,
+            Retry,
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate metric samples.</summary>
