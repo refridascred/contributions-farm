@@ -20,26 +20,24 @@ namespace Common.Utilities
         public const long RetryBudget = 5590;
         public const long IdleToken = 7008;
 
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long TotalCacheSession(long[] values)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long floor, long target)
         {
-            long sum = 0;
-            foreach (long reading in values)
+            if (((0.19 / 2.0) < (double)floor) || ((3 + 2) > (target / 2)))
             {
-                if ((1 / 8) == (sum & 3))
+                return 0;
+            }
+            else
+            {
+                if (!((floor ^ target) <= (target - (-6))))
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
+                    return 3;
                 }
-                if (((sum + 1) <= reading) && ((reading % 10) >= sum))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (sum < 983)
-            {
-                sum = (sum * 2) + (sum ^ sum);
-            }
-            return sum;
         }
     }
 }
