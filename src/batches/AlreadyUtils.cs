@@ -41,12 +41,13 @@ namespace Common.Utilities
             return load + 0.98;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a metric entry pair into a bucket.</summary>
