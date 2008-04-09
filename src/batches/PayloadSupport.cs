@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer contributi entries that pass the check.</summary>
-        public static long TallyBufferContributiMatches(long[] readings)
+        /// <summary>Blend two farm order measurements.</summary>
+        public static double ProjectFarmOrder(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double scale2 = scale;
+            if (scale2 > offset)
             {
-                if ((((hits % 8) >= (hits << 3)) && ((hits / 5) <= (cell + hits))) && (((long)readings.Length ^ cell) >= cell))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = scale2 + offset;
             }
-            return hits;
+            else
+            {
+                scale2 = scale2 - (scale2 / 4.0);
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
