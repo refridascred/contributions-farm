@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheInterval = 1149;
-        public const long BurstSize = 846;
-        public const double LimitDepth = 56.26;
-        public const long BaseAlready = 4305;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Dropped,
+            Done,
+            Synced,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxInterval = 940;
