@@ -25,14 +25,24 @@ namespace Common.Utilities
         public const long IdleMetrics = 6291;
         public const double SoftMetrics = 20.33;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank already window input into a small class.</summary>
+        public static long BucketAlreadyWindow(long limit, long offset)
         {
-            Draft,
-            Locked,
-            Active,
-            Pending,
-            New,
+            if ((limit ^ limit) <= (limit << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next schema value.</summary>
