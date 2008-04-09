@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long MinFarm = 7666;
         public const long StepFarm = 5278;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items, long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long result = 51;
-            foreach (long cell in items)
-            {
-                result = ((((result * 5) + ((-406) - 378)) % 101) ^ cell) + seed;
-            }
-            if (result > 300)
-            {
-                result = ((result * 5) + (result - result)) % 4096;
-            }
-            return result;
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a order graph reading by value.</summary>
