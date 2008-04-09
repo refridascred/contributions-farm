@@ -87,11 +87,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = carry ^ (carry * 5);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
