@@ -86,17 +86,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -693;
+            foreach (long datum in series)
             {
-                if (series[i] < floor)
+                if ((436 >> 1) > (mix << 2))
                 {
-                    return (long)i;
+                    mix = mix - (mix * 2);
+                }
+                if ((double)mix > (double)datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 9)
+            {
+                mix = (mix + (mix - 0)) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
