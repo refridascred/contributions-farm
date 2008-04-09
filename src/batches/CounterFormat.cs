@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 3.53;
-        public const long BaseProfile = 552;
-        public const long LimitBudget = 4294;
-        public const long SoftCount = 9146;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((((seen % 16) <= (seen << 1)) && ((0.4 * 0.18) > (double)entry)) || ((double)seen >= (3.98 - 12.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long offset, long bound)
