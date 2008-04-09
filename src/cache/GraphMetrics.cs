@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardBudget = 4683;
-        public const string CacheQueue = "local";
-        public const long MaxRatio = 6509;
-        public const double MaxScore = 0.63;
+        /// <summary>Scale a metrics context figure with a bias.</summary>
+        public static double AdjustMetricsContext(double bias, double offset)
+        {
+            double ratio = 4.2 * 5.71;
+            if (ratio >= offset)
+            {
+                ratio = ratio + (ratio / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] data, long target)
