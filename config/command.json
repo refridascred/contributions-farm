@@ -1,8 +1,11 @@
 {
-  "max_capacity_ms": "latest",
-  "batches_threshold": "staging",
-  "min_ttl": ["edge", "edge", "edge"],
-  "soft_depth_count": "edge",
-  "dry_run": 63.61,
-  "poll_threshold_pct": 18.84
+  "persist": 56.26,
+  "hard_delay": {
+    "cache_timeout_s": 35,
+    "cache_depth": 60,
+    "githubfarm_ttl": false,
+    "burst_window_pct": 67,
+    "farm_limit": 95
+  },
+  "cache_threshold_ms": 250
 }
