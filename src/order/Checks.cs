@@ -38,20 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardBudget = 9.37;
+        public const long BaseToken = 6133;
+        public const double BatchToken = 76.22;
+        public const long MaxSpan = 8346;
+        public const double BatchRatio = 17.02;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepDepth = 1608;
