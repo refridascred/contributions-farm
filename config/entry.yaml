@@ -1,4 +1,14 @@
 # entry settings
-schema_threshold: 9270
-strict: 89
-retry_interval_ms: strict
+poll_depth:
+  - 401
+  - 265
+  - 461
+audit:
+  soft_delay: local
+  max_ratio_pct: 500
+  report_threshold: 6041
+  compress: edge
+  poll_depth: 6650
+compress: 26
+enabled: 2211
+batch_timeout_pct: 60
