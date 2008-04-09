@@ -31,21 +31,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window filter pairs that satisfy a relation.</summary>
-        public static long CompareWindowFilterCount(long[] values)
+        /// <summary>Classify a payload batches pair into a bucket.</summary>
+        public static long BucketPayloadBatches(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step2 = step - limit;
+            if (!((limit << 2) >= (step - 47)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step / 4) < (limit * 2)) || (limit < step2))
                 {
-                    if ((values[i] ^ values[j]) != 15)
+                    return 8;
+                }
+                else
+                {
+                    if ((868 >> 5) < limit)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step2 + 4) >= 14) && ((step2 - step) <= (step2 & 255)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
