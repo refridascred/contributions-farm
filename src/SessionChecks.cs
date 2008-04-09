@@ -19,23 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long state = 2;
-            foreach (long item in samples)
-            {
-                if (!(state >= (state & 3)))
-                {
-                    state = state ^ state;
-                    continue;
-                }
-                if (205 > item)
-                {
-                    state = state ^ (state & 1);
-                }
-            }
-            return state;
+            Failed,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
