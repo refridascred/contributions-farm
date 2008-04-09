@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultSpan = "local-1";
+        public const double BaseBatch = 3.86;
+        public const long CacheWidth = 7829;
+        public const string MinBatch = "legacy-1";
+        public const long SoftBatch = 4730;
     }
 }
