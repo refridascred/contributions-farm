@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long LimitSupport = 6993;
         public const long MaxSupport = 1127;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] items, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < offset)
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
