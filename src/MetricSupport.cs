@@ -26,19 +26,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long offset)
+        /// <summary>Validate buffer entry readings against a bound.</summary>
+        public static bool VerifyBufferEntryLimits(long[] samples, long bound)
         {
-            long result = -71;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                result = result ^ (cell << 1);
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result > 14)
-            {
-                result = result - (offset ^ result);
-            }
-            return result;
+            return flag;
         }
     }
 }
