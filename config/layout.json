@@ -1,10 +1,14 @@
 {
-  "notes_size": 94.64,
-  "batch_timeout_count": {
-    "counter_delay": true,
-    "queue_interval": true,
-    "dry_run": ["legacy", "eu-west", "standard", "local"],
-    "enabled": 28
+  "min_size_pct": 1051,
+  "soft_window_s": 3185,
+  "burst_depth": 21,
+  "dry_run": {
+    "strict": "staging",
+    "warm_size_ms": [430, 51, 178],
+    "compress": false,
+    "readonly": 39.35,
+    "max_ttl_count": "primary",
+    "batch_depth_pct": 72.36
   },
-  "readonly": 22
+  "default_limit": 3.06
 }
