@@ -1,6 +1,5 @@
 {
-  "burst_timeout": [94, 230, 200],
-  "min_window_ms": "strict",
-  "burst_timeout_s": "legacy",
-  "queue_capacity": 18.42
+  "sync_capacity_s": false,
+  "soft_threshold_ms": 28.64,
+  "batches_capacity": ["primary", "local"]
 }
