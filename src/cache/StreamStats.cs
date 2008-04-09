@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] levels, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long lane = limit ^ origin;
+            if ((origin + lane) < origin)
             {
-                if (reading < step)
+                return 0;
+            }
+            else
+            {
+                if (87 <= limit)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((6 + origin) >= 16) && ((double)lane == (14.0 - 0.72)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of support format readings.</summary>
