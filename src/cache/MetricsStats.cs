@@ -26,17 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry commits reading by value.</summary>
-        public static long FindEntryCommitsIndex(long[] items, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
