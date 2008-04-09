@@ -28,17 +28,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
