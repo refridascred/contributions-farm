@@ -19,17 +19,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a stats counter sample.</summary>
-        public static long LookupStatsCounterIndex(long[] series, long floor)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long TallyContributiAlreadyOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (series[i] > floor)
+                if ((item + seen) >= (seen - item))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
