@@ -23,18 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools batch samples.</summary>
-        public static long DigestToolsBatch(long[] samples, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long floor)
         {
-            long carry = 53;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target > (cell << 2)) || ((4.8 / 5.0) > (double)carry))
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    carry = carry ^ (cell + target);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit account session readings against a rule.</summary>
