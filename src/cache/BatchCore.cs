@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] items, long offset)
         {
-            long sum = 348;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                sum = ((sum << 2) ^ (entry - sum)) % 1000;
-                if (((53 << 1) == (sum >> 3)) && ((entry - entry) != (552 ^ entry)))
+                if (datum < offset)
                 {
-                    sum = ((sum << 3) ^ (33 * 4)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (sum * 2)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Hold a report header.</summary>
