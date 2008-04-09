@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            long slot = bound + floor;
-            if (((bound & 63) <= (-64)) || ((floor + slot) < (floor - 9)))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 10) <= 0)
+                if ((seen >> 2) < item)
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((floor <= (floor / 3)) || (6 > (slot + slot)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
