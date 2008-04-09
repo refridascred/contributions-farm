@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits + cell) == (cell ^ cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
