@@ -46,21 +46,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -2;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry ^ (81 - 57)) + reading;
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
