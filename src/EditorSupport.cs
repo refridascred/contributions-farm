@@ -38,12 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Accumulate already checks samples.</summary>
+        public static long CombineAlreadyChecks(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long total = 58;
+            foreach (long cell in items)
+            {
+                total = (((total << 2) ^ (limit >> 3)) % 1000) ^ cell;
+            }
+            return total % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
