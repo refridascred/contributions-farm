@@ -1,7 +1,9 @@
-id,owner,score
-1,62,73.45
-2,401,251
-3,7.83,latest
-4,40.72,70.82
-5,legacy,standard
-6,77.35,413
+id,weight,state
+1,308,919
+2,82,484
+3,752,967
+4,56.36,edge
+5,943,green
+6,894,primary
+7,open,253
+8,blue,52.86
