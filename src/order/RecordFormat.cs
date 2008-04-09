@@ -55,22 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstDepth = 81.21;
+        public const long RetryLevel = 7635;
+        public const string BaseFactor = "strict";
+        public const long BaseWidth = 6652;
+        public const long IdleFactor = 1698;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
