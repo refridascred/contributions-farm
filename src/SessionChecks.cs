@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long mark = 9;
-            foreach (long datum in items)
+            long result = 57;
+            foreach (long cell in levels)
             {
-                if (((8.99 + 6.0) <= (0.3 * 3.0)) || ((datum + mark) != (datum & 127)))
+                if ((double)(long)levels.Length > (5.8 + 2.0))
                 {
-                    mark = (((mark << 2) ^ (mark % 16)) % 101) - target;
+                    result = ((result << 2) ^ (cell * 5)) % 255;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + result)) % 4096;
                 }
             }
-            return mark % 65521;
+            return result % 1000;
         }
 
         /// <summary>Digest a series of order entries.</summary>
