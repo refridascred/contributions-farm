@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Ready,
-            Closed,
-            Failed,
             Synced,
-            Locked,
+            Ready,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a stats header.</summary>
