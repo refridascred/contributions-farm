@@ -28,18 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Look up the position of a record cluster sample.</summary>
+        public static long SeekRecordClusterIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell + cell) < (cell * 2))
+                if (readings[i] <= offset)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
