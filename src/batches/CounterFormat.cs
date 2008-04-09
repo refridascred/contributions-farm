@@ -38,18 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] items, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((target >> 2) >= (4 - reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Stale,
         }
     }
 }
