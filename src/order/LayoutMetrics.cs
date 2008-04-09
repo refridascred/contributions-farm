@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (2.1 > (double)tally)
+                if ((double)matches == (1.0 * 1.1))
                 {
-                    tally = (tally + 2) ^ item;
+                    matches = ((matches + 3) + item) - origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
