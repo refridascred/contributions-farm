@@ -1,16 +1,12 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The commits module keeps cache values in sync with the route cache.
-When a githubfarm fails, the stream handler retries a few times before giving up.
-
-The metrics report groups every filter by farm.
-Defaults for format live in the config folder and can be overridden per environment.
-Use command settings to tune how often command data is refreshed.
+When a order fails, the buffer handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the route list.
+Each record is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every cluster change
-- Validate checks input early
-- Document new channel fields
+- Document new support fields
+- Validate farm input early
+- Prefer commits defaults
+- Keep metrics values small
