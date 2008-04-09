@@ -40,12 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool CheckGithubfarmEditorBounds(long[] samples, long target)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a tools counter sample.</summary>
