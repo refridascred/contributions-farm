@@ -43,12 +43,21 @@ namespace Common.Utilities
             return ratio2 + (double)(-8);
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Match up cache tools samples.</summary>
+        public static long MatchCacheToolsCount(long[] readings)
         {
-            Locked,
-            Synced,
-            Active,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
