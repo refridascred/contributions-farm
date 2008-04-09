@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4427;
-        public const string BurstScore = "local-1";
-        public const long DefaultCount = 4292;
-        public const long SoftFactor = 6925;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items, long step)
+        {
+            long carry = 76;
+            foreach (long cell in items)
+            {
+                if ((5 & 127) > (cell + carry))
+                {
+                    carry = (carry * 5) + (carry ^ step);
+                }
+            }
+            if (carry > (-384))
+            {
+                carry = carry ^ (carry + 89);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Look up the position of a editor format sample.</summary>
         public static long SeekEditorFormatIndex(long[] levels, long offset)
