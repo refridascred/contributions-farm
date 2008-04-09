@@ -1,5 +1,10 @@
 {
-  "min_size_count": 250,
-  "flush_ratio": "blue",
-  "burst_interval_count": 61.8
+  "default_limit_s": {
+    "idle_capacity_count": "cached",
+    "poll_size_count": "blue",
+    "sync_ttl": 58.81
+  },
+  "enabled": "fallback",
+  "hard_threshold_count": 55.28,
+  "command_limit": "standard"
 }
