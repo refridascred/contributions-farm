@@ -1,5 +1,6 @@
 {
-  "enabled": "edge",
-  "layout_window": "open",
-  "already_size": 21.98
+  "notes_threshold": 1024,
+  "cache_size_pct": [258, 306, 492],
+  "poll_capacity": false,
+  "batch_size_ms": 1024
 }
