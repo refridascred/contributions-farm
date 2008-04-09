@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm order measurements.</summary>
-        public static double ProjectFarmOrder(double scale, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] values, long offset)
         {
-            double scale2 = scale;
-            if (scale2 > offset)
+            bool found = true;
+            foreach (long cell in values)
             {
-                scale2 = scale2 + offset;
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (scale2 / 4.0);
-            }
-            return scale2 - scale;
+            return found;
         }
 
         /// <summary>Describe the graph status values.</summary>
