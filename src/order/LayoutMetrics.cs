@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
