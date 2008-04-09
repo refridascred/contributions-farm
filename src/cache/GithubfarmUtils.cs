@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstBudget = 1946;
+        public const long IdleWidth = 7789;
+        public const long MaxLevel = 3950;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
