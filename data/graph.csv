@@ -1,8 +1,6 @@
-id,level,weight
-1,open,33.31
-2,stable,64.95
-3,3.5,strict
-4,staging,91
-5,77.24,latest
-6,84.35,91.11
-7,1,primary
+id,region,owner,count
+1,36.95,primary,784
+2,28.04,780,11.48
+3,366,387,365
+4,primary,23.87,local
+5,444,staging,786
