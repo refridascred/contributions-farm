@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 3557;
+        public const string MaxCount = "staging-1";
+        public const string IdleChannel = "strict";
+        public const string StepChannel = "standard-1";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] data, long step)
