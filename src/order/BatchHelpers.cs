@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string BatchFactor = "staging-v2";
         public const long CacheLevel = 3703;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            double drift = (double)(56 ^ 51);
-            if (drift < (drift + offset))
+            long mix = 72;
+            foreach (long value in readings)
             {
-                drift = (drift + offset) + ratio;
+                if ((4.0 - 3.0) == (double)value)
+                {
+                    mix = (mix ^ 5) % 1000;
+                }
             }
-            else
-            {
-                drift = drift - (4.48 - 8.5);
-            }
-            return drift - drift;
+            return mix;
         }
 
         /// <summary>Describe the schema class values.</summary>
