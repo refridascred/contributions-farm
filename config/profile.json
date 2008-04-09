@@ -1,18 +1,8 @@
 {
-  "cache_limit_ms": {
-    "warm_ttl_count": "standard",
-    "batch_retries": "open",
-    "profile_interval": ["cached", "green", "open", "edge"],
-    "sync_capacity": 53.11,
-    "stats_window": ["stable", "open", "green", "latest"]
-  },
-  "strict": 47.25,
-  "sync_capacity_s": {
-    "token_interval": true,
-    "cache_ratio_ms": 500,
-    "soft_timeout": 30,
-    "min_ratio_count": 9
-  },
-  "enabled": true,
-  "checks_interval": 60
+  "readonly": 905,
+  "cache_threshold_count": "local",
+  "account_retries": [197, 482, 163],
+  "compress": 1502,
+  "min_size_pct": "legacy",
+  "dry_run": 45.41
 }
