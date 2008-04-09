@@ -34,15 +34,21 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long state = 77;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - (state * 4)) ^ item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
