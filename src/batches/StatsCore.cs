@@ -44,21 +44,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 2) ^ (2 + (-21))) % 65521;
-                if (!(13.0 < (double)score))
+                if (samples[i] > offset)
                 {
-                    score = score - (62 >> 3);
-                    score = ((score * 4) + (score & 255)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
