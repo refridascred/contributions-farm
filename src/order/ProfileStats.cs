@@ -19,17 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] == bound)
+                if ((result >> 3) == ((long)i << 1))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ step) % 4096;
                 }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result + result) % 255) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
