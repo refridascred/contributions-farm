@@ -47,13 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Synced,
-            Ready,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 6134;
+        public const long BaseScore = 7123;
+        public const double MinCluster = 73.22;
+        public const double SoftRatio = 90.92;
+        public const long SoftDepth = 9059;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
