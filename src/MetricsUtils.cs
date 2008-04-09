@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 9914;
+        public const long MinEditor = 8560;
+        public const long StepEditor = 8551;
+        public const long CacheEditor = 2883;
+        public const long MaxEditor = 8990;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double bias, double offset)
