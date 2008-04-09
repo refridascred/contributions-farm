@@ -38,10 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardDepth = 5648;
-        public const double MaxStream = 39.13;
-        public const string IdleTimeout = "strict-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 6147;
+        public const long MinQueue = 6074;
+        public const string BurstQueue = "fallback-v2";
+        public const long DefaultSize = 5714;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] items, long origin)
