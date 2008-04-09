@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Fold a list of session channel readings.</summary>
+        public static long ScoreSessionChannel(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = 3;
+            foreach (long sample in values)
             {
-                if (((cell + cell) >= (cell - cell)) || ((tally - cell) == (178 >> 2)))
+                if ((9 + sum) <= (sum << 2))
                 {
-                    tally = tally + 1;
+                    sum = (((sum * 3) + sum) % 255) + sample;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
