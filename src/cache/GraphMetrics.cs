@@ -66,18 +66,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result << 3) ^ (result + bound)) % 4096;
-                result = (result * 5) + (bound / 6);
-                result = (result * 4) + (bound + (long)i);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Stale,
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
