@@ -45,18 +45,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheDepth = 81.66;
+        public const long CacheChannel = 3130;
+        public const string MinSize = "fallback-1";
+        public const double DefaultSize = 59.48;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] readings, long offset)
