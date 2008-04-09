@@ -83,12 +83,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Stale,
-            Idle,
-            Paused,
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
