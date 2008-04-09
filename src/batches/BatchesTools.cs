@@ -32,19 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((target * 3) < 752)
-                {
-                    total = total ^ (target << 1);
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                gain = (gain + (span + weight)) + (double)(long)i;
             }
-            return total;
+            return gain - (double)9;
         }
     }
 }
