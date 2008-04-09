@@ -25,19 +25,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] series, long target)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
