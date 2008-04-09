@@ -57,12 +57,19 @@ namespace Common.Utilities
             return scale2 - (bias * 5.0);
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                anchor = (anchor - (anchor / 6)) % 101;
+                if (!((6.0 - 9.0) < (double)value))
+                {
+                    anchor = anchor - 568;
+                }
+            }
+            return anchor;
         }
     }
 }
