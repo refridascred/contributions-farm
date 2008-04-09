@@ -57,11 +57,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 17.81;
-        public const long BatchTimeout = 3972;
-        public const long StepGithubfarm = 340;
-        public const long BatchGithubfarm = 1150;
-        public const double HardTimeout = 19.4;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchBudget = 7223;
+        public const double BatchCluster = 26.13;
+        public const double MinCluster = 93.04;
+        public const string DefaultLevel = "alpha-edge";
+        public const long LimitLevel = 2251;
     }
 }
