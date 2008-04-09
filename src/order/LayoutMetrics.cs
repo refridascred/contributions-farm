@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample != (1.0 + 1.6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
