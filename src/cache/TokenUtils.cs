@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Paused,
+            Locked,
+            Queued,
             Synced,
             Closed,
+            Draft,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
