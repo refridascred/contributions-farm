@@ -61,18 +61,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((952 ^ datum) != (1 / 2)) && ((matches << 1) <= (4 >> 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Failed,
+            New,
+            Active,
         }
     }
 }
