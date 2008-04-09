@@ -1,7 +1,5 @@
 # support settings
-idle_ttl_pct:
-  - strict
-  - open
-order_ratio: local
-hard_window: true
-metric_threshold: 30
+channel_retries: 1024
+command_ttl: edge
+cache_ttl: true
+commits_ratio: staging
