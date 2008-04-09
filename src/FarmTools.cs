@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long LimitSession = 723;
         public const long MinFactor = 8789;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token phase values.</summary>
