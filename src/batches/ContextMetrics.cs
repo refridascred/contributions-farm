@@ -50,13 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Find the first metrics buffer entry that matches the target.</summary>
+        public static long SeekMetricsBufferIndex(long[] readings, long bound)
         {
-            Retry,
-            Stale,
-            Draft,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
