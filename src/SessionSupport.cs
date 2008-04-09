@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits << 3) <= (datum >> 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1458;
+        public const long BatchChannel = 765;
+        public const long MaxChannel = 595;
+        public const long LimitChannel = 4475;
+        public const long RetryFactor = 5101;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
