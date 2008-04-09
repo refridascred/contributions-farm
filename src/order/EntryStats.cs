@@ -22,22 +22,19 @@ namespace Common.Utilities
             return rate - (ratio / 6.0);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] readings, long step)
         {
-            long mix = -6;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((cell ^ cell) == (mix + mix))
+                if (reading > step)
                 {
-                    mix = (mix ^ (mix & 3)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix * 3) + (offset ^ offset)) % 4096;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Roll a filter schema counter forward.</summary>
