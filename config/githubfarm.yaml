@@ -1,7 +1,5 @@
 # githubfarm settings
-cache_timeout_s:
-  - 82
-  - 459
-strict: 6.26
-enabled: edge
-max_interval_pct: 85
+cache_limit: 6.26
+poll_depth_s: 36
+hard_window_ms: true
+metrics_size: 7265
