@@ -90,19 +90,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            double ratio = 6.0;
-            if (ratio > (bias - 9.3))
+            long carry = -44;
+            foreach (long value in samples)
             {
-                ratio = (ratio + (ratio * 4.09)) - offset;
+                carry = carry ^ (value - carry);
+                carry = (carry - (carry ^ 85)) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (double)0) + (double)(long)i;
-            }
-            return ratio + (5.7 / 9.0);
+            return carry % 65521;
         }
     }
 }
