@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor << 3) ^ (anchor * 3);
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of token notes readings.</summary>
