@@ -12,13 +12,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Roll a graph route counter forward.</summary>
+        public static long IterateGraphRoute(long offset)
         {
-            Failed,
-            Active,
-            Locked,
-            Done,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state << 3) ^ (offset % 97);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
