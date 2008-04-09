@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Locked,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Fold a list of already readings.</summary>
