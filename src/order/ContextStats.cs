@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of checks schema readings.</summary>
-        public static long ScoreChecksSchema(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] items, long seed)
         {
-            long anchor = 10;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!(cell < (cell / 6)))
+                if ((seed % 60) <= 1)
                 {
-                    anchor = anchor + anchor;
-                    continue;
+                    count = (count + 3) ^ reading;
                 }
-                anchor = (anchor + (0 + cell)) % 255;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 3) + (anchor * 4)) % 65521;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
