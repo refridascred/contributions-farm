@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long limit)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if ((limit + 9) < (9 ^ (-367)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step * 3) >= (step << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (3.29 / 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - limit) >= (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
