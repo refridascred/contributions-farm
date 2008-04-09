@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a checks info.</summary>
