@@ -104,18 +104,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data)
+        /// <summary>Digest a series of githubfarm farm entries.</summary>
+        public static long TotalGithubfarmFarm(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 540;
+            foreach (long cell in items)
             {
-                if (!((3.0 / 5.0) != (double)hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                acc = ((acc * 5) + (acc + cell)) % 97;
+                acc = (acc << 3) ^ (step >> 4);
             }
-            return hits;
+            return acc;
         }
     }
 }
