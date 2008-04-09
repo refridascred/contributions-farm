@@ -39,26 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter cluster values into a single score.</summary>
-        public static long WeighCounterCluster(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long origin)
         {
-            long total = 4;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (34 >= (total + datum))
+                if (reading < origin)
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                else
-                {
-                    total = total + (total >> 1);
+                    valid = false;
+                    break;
                 }
             }
-            if (total > (-2))
-            {
-                total = total ^ (total << 2);
-            }
-            return total % 4096;
+            return valid;
         }
 
         /// <summary>Describe the record class values.</summary>
