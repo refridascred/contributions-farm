@@ -50,15 +50,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            double gain = offset;
-            if (gain < (double)0)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                gain = (gain + gain) + weight;
+                score = (score + (score ^ score)) % 65521;
+                score = (score * 5) + (seed / 8);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return gain + offset;
+            return score;
         }
     }
 }
