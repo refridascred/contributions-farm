@@ -64,15 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
-        {
-            long score = 215;
-            foreach (long reading in items)
-            {
-                score = (score * 2) + reading;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinSize = 1.88;
+        public const long BurstWidth = 6266;
+        public const long CacheCounter = 3186;
+        public const double CacheSize = 71.47;
     }
 }
