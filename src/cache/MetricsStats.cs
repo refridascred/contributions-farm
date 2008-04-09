@@ -65,19 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long datum in levels)
             {
-                if (((0 ^ value) >= (matches + matches)) && ((double)value == (1.6 + 8.0)))
+                if (((952 ^ datum) != (1 / 2)) && ((matches << 1) <= (4 >> 3)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
