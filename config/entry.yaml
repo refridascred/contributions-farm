@@ -1,9 +1,8 @@
 # entry settings
-flush_ttl_ms: 24.32
-base_depth_ms: 4961
-batch_delay: fallback
-cache_depth: true
-max_limit:
-  - 16
-  - 157
-  - 263
+order_threshold:
+  - cached
+  - legacy
+sync_size: 500
+support_ratio:
+  - 445
+  - 390
