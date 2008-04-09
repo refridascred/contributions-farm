@@ -34,12 +34,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up batch metric samples.</summary>
