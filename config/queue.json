@@ -1,19 +1,8 @@
 {
-  "verbose": {
-    "audit": "blue",
-    "max_ratio_count": 23.42,
-    "verbose": 69,
-    "idle_window": "blue",
-    "batch_capacity": {
-      "schema_window": 2553,
-      "report_threshold": [411, 19, 94],
-      "min_timeout_s": "blue",
-      "filter_limit": true
-    }
-  },
-  "batch_delay_count": 1024,
-  "buffer_size": 59,
-  "cache_ratio_s": "fallback",
-  "format_timeout": true,
-  "dry_run": 37.87
+  "default_ratio_s": false,
+  "warm_capacity_count": false,
+  "cache_ttl_s": true,
+  "route_size": 44.16,
+  "sync_ratio_ms": 13.62,
+  "dry_run": 62
 }
