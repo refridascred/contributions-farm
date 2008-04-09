@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 10;
-        public const long LimitSupport = 6993;
-        public const long MaxSupport = 1127;
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long ScoreCounterReport(long[] series)
+        {
+            long total = 8;
+            foreach (long reading in series)
+            {
+                if ((long)series.Length == (reading & 127))
+                {
+                    total = total + total;
+                }
+                if ((784 / 4) >= (total - 2))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Adjust a cache schema reading.</summary>
         public static double ProjectCacheSchema(double rate, double floor)
