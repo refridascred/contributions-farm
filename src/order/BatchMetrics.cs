@@ -15,18 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double drift = bias - (bias + floor);
+            if (drift <= floor)
             {
-                if (795 >= tally)
-                {
-                    tally = ((tally + 2) + item) + target;
-                }
+                drift = drift - (floor / 9.0);
             }
-            return tally;
+            return drift + (bias - bias);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
