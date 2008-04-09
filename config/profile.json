@@ -1,10 +1,6 @@
 {
-  "profile_size": 30,
-  "session_depth": 77,
-  "report_retries": {
-    "min_size": 75.88,
-    "retry_threshold_count": 9297,
-    "dry_run": 13.56,
-    "idle_capacity": false
-  }
+  "persist": 56,
+  "soft_size_pct": "strict",
+  "editor_delay": 65,
+  "retry_capacity_pct": 60
 }
