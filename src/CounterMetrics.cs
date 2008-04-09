@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 9126;
-        public const long BaseChannel = 8696;
-        public const long HardChannel = 9000;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - (long)i) % 4096;
+                state = state - (floor << 3);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long seed, long origin)
