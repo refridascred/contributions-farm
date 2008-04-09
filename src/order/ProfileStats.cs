@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            long mark = 1;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mark = (mark - 8) % 65521;
-                if ((datum * 3) < datum)
+                if (((tally & 255) > tally) || ((tally >> 3) > (tally - entry)))
                 {
-                    mark = mark - (datum - datum);
-                }
-                if (0 >= (79 + datum))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
