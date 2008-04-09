@@ -15,13 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Ready,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 35.19;
+        public const double DefaultStream = 32.03;
+        public const string SoftDepth = "primary-edge";
+        public const string SoftSpan = "primary-1";
+        public const string WindowStream = "stable-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepDepth = 6178;
