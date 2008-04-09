@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long score = -2;
-            foreach (long cell in series)
-            {
-                score = (score - cell) % 101;
-            }
-            if (score < 902)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score;
+            Paused,
+            Failed,
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of support entries.</summary>
