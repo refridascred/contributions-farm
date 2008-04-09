@@ -19,15 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph tools series from a seed.</summary>
-        public static long StepGraphTools(long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            long offset = seed + origin;
+            if (origin < (7 % 3))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (!(offset > (seed - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
