@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long step)
-        {
-            long result = 2;
-            foreach (long item in series)
-            {
-                result = ((result << 2) ^ (241 << 3)) % 97;
-                if (item >= step)
-                {
-                    result = result ^ (result & 1);
-                }
-            }
-            if (result > 6)
-            {
-                result = ((result * 3) + (step + step)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "strict-1";
+        public const long RetryCount = 3026;
+        public const string HardLevel = "strict-v2";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
