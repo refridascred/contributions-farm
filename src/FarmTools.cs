@@ -17,18 +17,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!((limit << 2) <= cell) && (((seen & 255) > (cell + limit)) || ((double)seen > (1.28 * 6.7))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            New,
         }
     }
 }
