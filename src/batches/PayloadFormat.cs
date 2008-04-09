@@ -39,18 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload channel entries that pass the check.</summary>
-        public static long MeasurePayloadChannelOutliers(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits == (double)86)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
