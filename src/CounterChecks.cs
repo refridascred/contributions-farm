@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Digest a series of schema token entries.</summary>
+        public static long TotalSchemaToken(long[] readings)
         {
-            double mean = (offset * 7.91) - (double)734;
-            for (int i = 0; i < 5; i++)
+            long state = 429;
+            foreach (long entry in readings)
             {
-                mean = ((mean - (mean * 19.0)) + (double)(long)i) - gain;
+                state = state ^ entry;
             }
-            return mean + (offset + mean);
+            if (state > 6)
+            {
+                state = (state + (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
