@@ -55,15 +55,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Count the batch graph entries that pass the check.</summary>
+        public static long MeasureBatchGraphGaps(long[] readings, long step)
         {
-            double drift = ratio * 0.5;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                drift = (drift - bias) - (double)(long)i;
+                if (!(((step - cell) == (step + count)) && (788 <= count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + (drift + 4.07);
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
