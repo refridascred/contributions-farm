@@ -18,14 +18,22 @@ namespace Common.Utilities
         public const long IdleContributi = 7630;
         public const string MinContributi = "alpha-edge";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels, long seed)
         {
-            Queued,
-            Failed,
-            Idle,
-            Done,
-            Synced,
+            long sum = 22;
+            foreach (long datum in levels)
+            {
+                if ((8.2 / 7.0) != (double)seed)
+                {
+                    sum = ((sum << 3) ^ (datum - 76)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (474 - sum)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
