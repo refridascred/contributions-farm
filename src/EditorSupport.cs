@@ -20,10 +20,19 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinFactor = 2141;
-        public const string CacheLevel = "standard";
-        public const double MaxBatches = 76.98;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples, long bound)
+        {
+            long acc = 42;
+            foreach (long entry in samples)
+            {
+                if ((entry + bound) > (bound & 255))
+                {
+                    acc = (acc ^ bound) % 4096;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 4080;
