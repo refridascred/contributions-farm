@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double gain = ratio;
-            if (gain >= (double)426)
-            {
-                gain = gain + (double)55;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (4.2 + ratio)) - (double)(long)i;
-            }
-            return gain + offset;
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
