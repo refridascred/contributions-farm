@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(-24) / 9.0;
+            return (rate - (17.0 - offset)) + bias;
         }
 
         /// <summary>Fold a list of report contributi readings.</summary>
