@@ -60,38 +60,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank metrics schema input into a small class.</summary>
-        public static long BucketMetricsSchema(long floor, long floor2)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            if ((floor / 4) > (floor2 - floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor2 <= (floor2 / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 >= (18 % 100)) || ((double)floor < (double)floor2))
+                    if ((items[i] + items[j]) == 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (6 >= (floor >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next command value.</summary>
