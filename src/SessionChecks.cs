@@ -12,16 +12,24 @@ namespace Common.Utilities
             return weight2 - (bias - bias);
         }
 
-        /// <summary>Roll a graph route counter forward.</summary>
-        public static long IterateGraphRoute(long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long floor, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            if (!((double)seed != (9.97 + 9.0)))
             {
-                state = (state << 3) ^ (offset % 97);
-                state = ((state * 5) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((170 + (-856)) < (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
