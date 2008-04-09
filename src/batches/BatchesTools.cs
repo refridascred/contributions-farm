@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate queue channel readings against a bound.</summary>
-        public static bool VerifyQueueChannelRange(long[] series, long floor)
+        /// <summary>Accumulate editor counter samples.</summary>
+        public static long TotalEditorCounter(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long state = 447;
+            foreach (long value in levels)
             {
-                if (entry >= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ value) ^ (long)i;
+                    state = (state + state) % 65521;
+                }
+                state = (state + state) % 255;
+                if (value >= (value - value))
+                {
+                    state = ((state << 2) ^ ((long)levels.Length - value)) % 65521;
+                }
+                else
+                {
+                    state = (state - (state - value)) % 97;
                 }
             }
-            return stale;
+            if (state > 61)
+            {
+                state = (state + (1 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
