@@ -14,26 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long result = 49;
-            foreach (long entry in readings)
-            {
-                if (((result - result) == (entry & 127)) && ((result / 9) < entry))
-                {
-                    result = ((result << 3) ^ (entry + entry)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (628 >> 1)) % 4096;
-                }
-                if ((465 + entry) == (result - entry))
-                {
-                    break;
-                }
-            }
-            return result;
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
