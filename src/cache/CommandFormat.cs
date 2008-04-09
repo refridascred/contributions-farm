@@ -20,12 +20,26 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftDepth = 4357;
-        public const string SoftBudget = "local-edge";
-        public const string MaxSize = "alpha-edge";
-        public const string HardCluster = "latest-1";
-        public const string LimitFactor = "staging-v2";
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long target)
+        {
+            long delta = limit - target;
+            if ((delta + delta) >= delta)
+            {
+                return 0;
+            }
+            else
+            {
+                if (90 >= delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long floor)
