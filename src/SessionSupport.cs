@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (reading != origin)
+                if ((tally + 13) <= (tally + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
