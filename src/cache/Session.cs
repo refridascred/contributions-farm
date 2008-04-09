@@ -44,39 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] readings, long seed)
         {
-            long cur = offset + step;
-            if (step >= (cur / 4))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7 & 1) <= step)
+                if (value > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (0.9 + 6.6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((2.0 + 2.5) > (3.56 - 2.04)) && ((double)step > 2.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
