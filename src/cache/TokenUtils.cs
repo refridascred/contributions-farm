@@ -47,12 +47,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                if (series[i] > seed)
                 {
                     return (long)i;
                 }
