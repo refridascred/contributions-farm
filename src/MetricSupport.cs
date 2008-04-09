@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] readings)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (matches > (item / 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Active,
         }
     }
 }
