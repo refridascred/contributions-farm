@@ -23,17 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset;
+            if (rate < (double)171)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)571) - weight;
             }
-            return -1;
+            return rate - (double)(-99);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
