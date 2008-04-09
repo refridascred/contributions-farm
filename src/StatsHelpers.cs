@@ -31,21 +31,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Scale a batch checks figure with a bias.</summary>
+        public static double ProjectBatchChecks(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = 3.3;
+            if (scale2 <= (double)40)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = (scale2 - (double)0) + scale;
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 - (double)53;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 - (bias * 5.0);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
