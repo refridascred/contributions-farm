@@ -76,26 +76,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window stream counter forward.</summary>
-        public static long SeriesWindowStream(long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                long slot = 24;
-                slot = (slot * 5) + slot;
-                if ((target ^ slot) >= target)
+                state = (state ^ (long)i) % 1000;
+                if (!!(state >= ((long)i * 4)))
                 {
-                    slot = ((slot * 3) + ((long)i + target)) % 65521;
-                    slot = slot ^ mix;
+                    state = (state << 3) ^ ((long)i >> 2);
+                    state = ((state << 2) ^ (offset + offset)) % 4096;
                 }
-                else
-                {
-                    slot = ((slot * 3) + ((long)i * 2)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
     }
 }
