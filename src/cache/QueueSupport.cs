@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long MeasureNotesStatsMatches(long[] samples, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = 28;
+            foreach (long value in levels)
             {
-                if ((6.2 * 14.0) < (double)hits)
-                {
-                    hits = ((hits + 1) ^ sample) + limit;
-                }
+                result = (result ^ (offset ^ value)) % 4096;
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
