@@ -14,13 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long AuditOrderLayoutMatches(long[] series, long offset)
         {
-            Locked,
-            Failed,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((offset << 3) == ((-18) / 6)))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
