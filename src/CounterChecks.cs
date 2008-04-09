@@ -66,21 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session record pairs that satisfy a relation.</summary>
-        public static long MatchSessionRecordCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum > (19.0 / 5.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
