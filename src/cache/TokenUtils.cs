@@ -54,20 +54,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = 458;
+            foreach (long entry in values)
             {
-                if (((4.71 - 8.4) < (double)bound) || ((long)i <= (bound * 5)))
+                if (((double)entry < (1.3 / 9.0)) || ((18.0 * 8.1) > (double)mix))
                 {
-                    total = total - ((-7) - 71);
+                    mix = ((mix << 2) ^ (step & 3)) % 4096;
+                    continue;
                 }
-                total = (total - ((-39) & 255)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                if (mix <= (62 + step))
+                {
+                    mix = (mix + (4 & 15)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 1000;
+                }
             }
-            return total;
+            return mix % 65521;
         }
     }
 }
