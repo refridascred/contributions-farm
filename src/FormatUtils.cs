@@ -51,21 +51,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Iterate the layout schema series from a seed.</summary>
+        public static long StepLayoutSchema(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a route snapshot.</summary>
