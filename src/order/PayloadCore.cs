@@ -13,24 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a report support counter forward.</summary>
-        public static long StepReportSupport(long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long result = 49;
+            foreach (long entry in readings)
             {
-                if ((9.0 + 1.26) >= (double)mark)
+                if (((result - result) == (entry & 127)) && ((result / 9) < entry))
                 {
-                    break;
+                    result = ((result << 3) ^ (entry + entry)) % 101;
                 }
                 else
                 {
-                    mark = mark ^ (origin + 29);
-                    mark = (mark * 5) + ((long)i / 9);
+                    result = ((result << 3) ^ (628 >> 1)) % 4096;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((465 + entry) == (result - entry))
+                {
+                    break;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
