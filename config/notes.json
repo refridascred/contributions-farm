@@ -1,12 +1,7 @@
 {
-  "payload_depth": "strict",
-  "max_ratio_count": 13.01,
-  "cache_capacity_count": {
-    "max_threshold_pct": "cached",
-    "format_threshold": 60,
-    "soft_size_s": 250,
-    "poll_ratio_count": ["legacy", "eu-west", "strict"],
-    "cache_retries": [56, 216],
-    "batch_ratio_s": true
-  }
+  "compress": "local",
+  "batch_delay_s": 9310,
+  "batch_timeout_count": 54,
+  "min_limit_ms": 1027,
+  "strict": "cached"
 }
