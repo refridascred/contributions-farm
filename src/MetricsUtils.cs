@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of filter command readings.</summary>
-        public static long OverlapFilterCommandCount(long[] series)
+        /// <summary>Check that every payload batches entry stays within the limit.</summary>
+        public static bool ValidatePayloadBatchesLimits(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell < target)
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
