@@ -29,19 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats payload entry stays within the limit.</summary>
-        public static bool GuardStatsPayloadRange(long[] levels, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double load = scale;
+            if (load < (load / 6.0))
             {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (floor / 7.0);
             }
-            return ok;
+            else
+            {
+                load = load + 9.84;
+            }
+            return load + 0.98;
         }
 
         /// <summary>Hold a session summary.</summary>
