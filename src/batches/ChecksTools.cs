@@ -62,10 +62,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchDepth = "open-v2";
-        public const long MinCount = 4943;
-        public const long BatchSchema = 2313;
-        public const long MaxSchema = 2847;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long target)
+        {
+            long acc = 89;
+            foreach (long item in readings)
+            {
+                acc = acc + (item ^ acc);
+                if ((acc % 60) != (target - target))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
