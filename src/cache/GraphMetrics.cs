@@ -56,12 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 77.33;
-        public const string MinCounter = "stable-v2";
-        public const string CacheCounter = "primary-1";
-        public const long HardDepth = 9652;
-        public const long BurstCounter = 6569;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long bound)
