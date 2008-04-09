@@ -1,12 +1,8 @@
 {
-  "profile_size": 7665,
-  "persist": "stable",
-  "warm_ttl_count": "edge",
-  "cache_interval_s": {
-    "min_size": ["staging", "edge", "staging", "eu-west"],
-    "sync_delay_s": 34.01,
-    "token_size": "cached",
-    "farm_depth": 100
-  },
-  "format_depth": 80.17
+  "burst_timeout_pct": "open",
+  "default_limit": "stable",
+  "retry_limit_pct": 709,
+  "poll_interval_count": 100,
+  "burst_retries_s": "open",
+  "persist": "staging"
 }
