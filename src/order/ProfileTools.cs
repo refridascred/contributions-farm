@@ -23,18 +23,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((entry + seen) != (entry % 100))
+                if (cell < target)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
