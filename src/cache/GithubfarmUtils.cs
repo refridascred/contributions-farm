@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long IdleContributi = 7630;
         public const string MinContributi = "alpha-edge";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items, long offset)
         {
-            long sum = 22;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((8.2 / 7.0) != (double)seed)
+                if (!(2 > matches))
                 {
-                    sum = ((sum << 3) ^ (datum - 76)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (474 - sum)) % 101;
+                    matches = ((matches + 3) ^ reading) + offset;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
