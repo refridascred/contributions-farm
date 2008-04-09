@@ -1,14 +1,15 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the already list.
-Keep entry and route names short and lowercase.
+Run the metrics check before changing any checks limits.
+A stats that stays idle for too long is moved to the token list.
+A filter that stays idle for too long is moved to the order list.
 
-Each entry is validated before it reaches the editor queue.
-Defaults for tools live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+Keep stats and cache names short and lowercase.
 
 ## Guidelines
 
-- Keep notes values small
-- Review window limits each release
-- Prefer filter defaults
-- Log every stream change
+- Log every token change
+- Document new context fields
+- Validate channel input early
+- Review session limits each release
