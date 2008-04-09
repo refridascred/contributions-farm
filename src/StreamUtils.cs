@@ -20,17 +20,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a format window reading by value.</summary>
-        public static long LocateFormatWindowIndex(long[] series, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
