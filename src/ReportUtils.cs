@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values, long limit)
         {
-            long state = 483;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                state = (state + (cell + state)) % 255;
+                if (!(((entry + entry) >= entry) && ((limit << 2) > entry)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
