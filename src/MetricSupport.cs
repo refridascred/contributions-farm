@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix ^ (target % 12)) % 101;
-                mix = (mix << 3) ^ ((long)i - target);
-                mix = mix + ((long)i + target);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitRatio = 8075;
+        public const long BatchCount = 7484;
+        public const string StepMetrics = "cached-1";
+        public const double BurstTimeout = 53.69;
+        public const long LimitMetrics = 5688;
     }
 }
