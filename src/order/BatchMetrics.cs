@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Idle,
-            Failed,
-            Active,
-            New,
-            Synced,
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
