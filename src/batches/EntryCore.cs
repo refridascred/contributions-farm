@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every metric filter entry stays within the limit.</summary>
-        public static bool CheckMetricFilterLimits(long[] values, long offset)
+        /// <summary>Locate a batches context reading by value.</summary>
+        public static long SeekBatchesContextIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < offset)
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch channel readings.</summary>
