@@ -24,13 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepInterval = 64.74;
+        public const string MaxMetrics = "legacy-1";
+        public const long IdleMetrics = 6291;
+        public const double SoftMetrics = 20.33;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
