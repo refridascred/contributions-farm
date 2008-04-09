@@ -19,19 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long bound)
-        {
-            long anchor = 0;
-            foreach (long value in data)
-            {
-                if (bound > (anchor ^ value))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - value)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2303;
+        public const long LimitInterval = 8351;
+        public const long IdleTimeout = 7496;
+        public const string MaxSize = "local";
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
