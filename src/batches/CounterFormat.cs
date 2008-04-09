@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
