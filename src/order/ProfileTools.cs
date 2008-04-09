@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                sum = (sum - ((long)i * 4)) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
+                total = ((total * 4) + ((long)readings.Length + sample)) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a checks header.</summary>
