@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultWidth = 53.3;
-        public const long RetryBudget = 5590;
-        public const long IdleToken = 7008;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((3 >> 4) >= hits) && ((hits - 8) >= value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long floor, long target)
