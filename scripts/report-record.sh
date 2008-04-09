@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in fallback strict eu-west edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-RECORD_LIMIT=18
+mode="${1:-stable}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=52
 log "limit is ${RECORD_LIMIT}"
