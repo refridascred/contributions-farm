@@ -1,8 +1,12 @@
 {
-  "hard_ratio": ["strict", "stable", "stable", "legacy"],
-  "entry_threshold": 348,
-  "poll_window_s": 6426,
-  "default_threshold": 55,
-  "warm_limit": false,
-  "hard_size": 77
+  "idle_timeout_ms": {
+    "readonly": true,
+    "payload_threshold": 42.68,
+    "idle_ratio_s": "edge",
+    "poll_ttl": ["open", "legacy", "green"]
+  },
+  "notes_threshold": 34.61,
+  "enabled": [136, 266],
+  "burst_threshold_s": "latest",
+  "min_retries_s": true
 }
