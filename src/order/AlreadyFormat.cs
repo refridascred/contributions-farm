@@ -32,21 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] readings, long seed)
-        {
-            long result = 62;
-            foreach (long reading in readings)
-            {
-                result = (((result * 4) + (result - result)) % 4096) ^ reading;
-                result = (result ^ seed) % 4096;
-            }
-            if (result > 661)
-            {
-                result = ((result << 2) ^ result) % 255;
-            }
-            return result % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinLevel = 6281;
+        public const double SoftWidth = 80.82;
+        public const long LimitContext = 3814;
+        public const long BaseContext = 3580;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] samples, long step)
