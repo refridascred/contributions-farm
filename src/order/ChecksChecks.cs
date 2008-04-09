@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long origin2)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long lane = origin ^ origin2;
+            if ((origin2 - origin2) >= (lane & 127))
             {
-                if ((cell >> 4) >= cell)
+                return 1;
+            }
+            else
+            {
+                if (lane > (origin + lane))
                 {
-                    anchor = (anchor - cell) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((9.69 * 13.0) == (double)lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (anchor < 354)
-            {
-                anchor = ((anchor * 3) + 1) % 1000;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
