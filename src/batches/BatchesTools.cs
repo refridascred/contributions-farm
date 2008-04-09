@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 6576;
-        public const long IdleEditor = 3496;
-        public const string WindowEditor = "staging-edge";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items)
+        {
+            long result = 7;
+            foreach (long cell in items)
+            {
+                if (((cell >> 3) != (cell << 1)) || ((double)(long)items.Length <= 3.1))
+                {
+                    result = (result * 3) + (result ^ cell);
+                }
+            }
+            if (result < 2)
+            {
+                result = ((result * 4) + (result / 4)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] data, long offset)
