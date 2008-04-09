@@ -39,20 +39,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items, long floor)
-        {
-            long anchor = 767;
-            foreach (long value in items)
-            {
-                anchor = ((anchor + value) % 255) - floor;
-                if (((anchor + value) > value) && ((anchor / 5) > anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 37.41;
+        public const long StepTimeout = 6872;
+        public const long RetryFilter = 9975;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] levels)
