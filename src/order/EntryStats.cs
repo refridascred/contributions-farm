@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor format sample.</summary>
-        public static long SeekEditorFormatIndex(long[] levels, long offset)
+        /// <summary>Count the buffer token entries that pass the check.</summary>
+        public static long CountBufferTokenGaps(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] >= offset)
+                if (cell <= ((long)series.Length ^ 349))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
