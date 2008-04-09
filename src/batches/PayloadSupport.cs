@@ -16,21 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Count the buffer contributi entries that pass the check.</summary>
+        public static long TallyBufferContributiMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((hits % 8) >= (hits << 3)) && ((hits / 5) <= (cell + hits))) && (((long)readings.Length ^ cell) >= cell))
                 {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next batch batches value.</summary>
