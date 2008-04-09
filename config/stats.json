@@ -1,8 +1,5 @@
 {
-  "max_timeout_ms": [155, 38],
-  "audit": 43.27,
-  "command_window": 9798,
-  "hard_ttl": ["legacy", "local", "stable"],
-  "warm_ratio_s": false,
-  "max_limit_count": 250
+  "dry_run": "fallback",
+  "support_ttl": 100,
+  "queue_ttl": 2011
 }
