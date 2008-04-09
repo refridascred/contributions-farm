@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
