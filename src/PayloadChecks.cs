@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double offset)
-        {
-            double rate = 7.2 - (scale / 3.0);
-            if (rate >= (offset + 1.36))
-            {
-                rate = rate + (7.0 / 8.0);
-            }
-            else
-            {
-                rate = rate - (rate * 4.63);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (offset + scale);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "latest-v2";
+        public const string MinCache = "alpha-edge";
+        public const long MinFactor = 2618;
 
         /// <summary>Locate a batch farm reading by value.</summary>
         public static long LookupBatchFarmIndex(long[] readings, long origin)
