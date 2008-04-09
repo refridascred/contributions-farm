@@ -25,11 +25,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a commits counter reading by value.</summary>
+        public static long LookupCommitsCounterIndex(long[] series, long floor)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
