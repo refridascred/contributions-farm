@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] levels, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (reading > target)
+                if ((double)reading != (2.0 / 2.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Blend two farm order measurements.</summary>
