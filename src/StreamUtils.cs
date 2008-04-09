@@ -73,19 +73,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long bound)
         {
-            long total = 7;
-            foreach (long entry in items)
+            long lane = target + bound;
+            if (!((double)target <= (14.0 / 7.0)))
             {
-                total = ((total * 3) + ((long)items.Length & 63)) ^ entry;
+                return 7;
             }
-            if (total < (-4))
+            else
             {
-                total = (total - (seed - 616)) % 255;
+                if ((bound ^ 631) > (lane - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + lane) < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return total;
         }
     }
 }
