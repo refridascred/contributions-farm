@@ -1,7 +1,19 @@
 # githubfarm settings
-warm_capacity: stable
-strict: false
-burst_ttl_count:
-  - standard
+sync_delay_count:
+  notes_limit: edge
+  githubfarm_capacity: 500
+  burst_size_s: green
+  soft_delay_ms:
+    - 465
+    - 385
+    - 150
+  batch_limit: 5931
+  strict: green
+max_window_pct: 6541
+burst_threshold_ms: true
+strict: 1530
+flush_ttl: false
+sync_ratio_s:
   - staging
-  - primary
+  - standard
+  - edge
