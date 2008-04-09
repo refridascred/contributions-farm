@@ -1,8 +1,13 @@
 {
-  "idle_window_pct": false,
-  "flush_window_count": true,
-  "soft_ttl_pct": 868,
-  "default_limit_s": "edge",
-  "cache_ttl_s": "strict",
-  "idle_threshold_s": [154, 475, 270, 322]
+  "batches_limit": "latest",
+  "dry_run": {
+    "command_retries": false,
+    "poll_ttl": 48.38,
+    "farm_timeout": 91.89,
+    "verbose": [243, 29, 106]
+  },
+  "readonly": 13.03,
+  "persist": 47.71,
+  "order_capacity": false,
+  "enabled": 72
 }
