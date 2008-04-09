@@ -16,32 +16,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a entry queue value against two limits.</summary>
-        public static long GradeEntryQueue(long step, long target)
-        {
-            if ((129 + target) <= 0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= (1.0 - 2.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + target) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 4889;
+        public const long MaxBatches = 3136;
+        public const double DefaultInterval = 28.15;
+        public const double BatchBudget = 73.23;
 
         /// <summary>Fold a list of session stats readings.</summary>
         public static long ScoreSessionStats(long[] items, long step)
