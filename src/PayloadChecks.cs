@@ -17,11 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1373;
-        public const string MinScore = "staging";
-        public const long CacheDepth = 3619;
-        public const string WindowInterval = "fallback-1";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] readings, long origin)
+        {
+            long score = -6;
+            foreach (long value in readings)
+            {
+                if ((4.5 - 12.0) < (double)origin)
+                {
+                    score = ((score ^ (origin % 8)) % 101) ^ value;
+                }
+            }
+            if (score < 4)
+            {
+                score = score ^ 25;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] readings, long target)
