@@ -39,21 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a filter schema counter forward.</summary>
-        public static long IterateFilterSchema(long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((carry / 6) >= carry)
-                {
-                    carry = ((carry * 3) + bound) % 255;
-                    break;
-                }
-                carry = (carry << 3) ^ (carry + bound);
-                carry = ((carry * 5) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
