@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] readings, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            long score = -6;
-            foreach (long value in readings)
+            double rate = 7.2 - (scale / 3.0);
+            if (rate >= (offset + 1.36))
             {
-                if ((4.5 - 12.0) < (double)origin)
-                {
-                    score = ((score ^ (origin % 8)) % 101) ^ value;
-                }
+                rate = rate + (7.0 / 8.0);
             }
-            if (score < 4)
+            else
             {
-                score = score ^ 25;
+                rate = rate - (rate * 4.63);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (offset + scale);
         }
 
         /// <summary>Locate a batch farm reading by value.</summary>
