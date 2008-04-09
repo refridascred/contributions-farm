@@ -57,17 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 737;
+            foreach (long cell in items)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                if ((16 ^ anchor) == (seed * 4))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (cell - 597)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
