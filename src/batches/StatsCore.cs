@@ -15,13 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Compare every pair of already record readings.</summary>
+        public static long CompareAlreadyRecordCount(long[] values)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
