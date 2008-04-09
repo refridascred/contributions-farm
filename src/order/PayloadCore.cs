@@ -54,38 +54,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a githubfarm filter value against two limits.</summary>
-        public static long ClassifyGithubfarmFilter(long seed, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            if (((step + seed) < seed) && (seed > (step - step)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + seed) > (seed ^ seed)) && (step >= (945 - seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed & 255) != (step / 4)))
+                    if ((readings[i] - readings[j]) == 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3 <= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
