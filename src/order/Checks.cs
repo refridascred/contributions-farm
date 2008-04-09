@@ -45,12 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardBudget = 9.37;
-        public const long BaseToken = 6133;
-        public const double BatchToken = 76.22;
-        public const long MaxSpan = 8346;
-        public const double BatchRatio = 17.02;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Retry,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Digest a series of filter graph entries.</summary>
         public static long CombineFilterGraph(long[] items)
