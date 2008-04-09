@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Idle,
-            Locked,
-            Paused,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstTimeout = "staging";
+        public const long MaxPayload = 6249;
+        public const long SoftPayload = 2921;
+        public const long IdlePayload = 2769;
+        public const long BaseWidth = 9922;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long origin, long seed)
