@@ -27,26 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long mark = 985;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark < (mark << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (reading + 974);
-                }
-                if (reading < (80 ^ 23))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 768)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 4096;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
