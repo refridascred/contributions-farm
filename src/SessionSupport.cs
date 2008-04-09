@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 40.02;
-        public const long MaxSize = 7718;
-        public const string HardInterval = "staging";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long offset, long offset2)
