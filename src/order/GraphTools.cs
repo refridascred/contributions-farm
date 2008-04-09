@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const string LimitDepth = "legacy-v2";
         public const string MinSchema = "strict-v2";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of cache report entries.</summary>
