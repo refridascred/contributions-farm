@@ -14,11 +14,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            double scale = 6.1 / 9.0;
-            return ((scale + 2.0) + weight) + span;
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + ratio) - (double)(long)i;
+            }
+            return drift - (6.9 / 2.0);
         }
 
         /// <summary>Rank format input into a small class.</summary>
