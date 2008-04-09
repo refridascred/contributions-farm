@@ -27,13 +27,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Retry,
+            long total = 359;
+            foreach (long sample in samples)
+            {
+                total = (total + (sample + total)) % 101;
+                total = (total + (sample & 1)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
