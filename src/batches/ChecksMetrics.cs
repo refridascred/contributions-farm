@@ -47,24 +47,11 @@ namespace Common.Utilities
         public const double RetryCount = 61.96;
         public const string BaseCount = "strict";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 8;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 3) + (carry / 2)) % 4096;
-                carry = (carry * 5) + reading;
-                if (!((double)reading > (double)carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 46)
-            {
-                carry = (carry * 3) + (carry % 3);
-            }
-            return carry % 4096;
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
