@@ -37,14 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples, long floor)
         {
-            Queued,
-            Retry,
-            Ready,
-            Draft,
-            New,
+            long state = 105;
+            foreach (long entry in samples)
+            {
+                state = (((state * 4) + (state >> 3)) % 255) - entry;
+                state = state ^ (floor - floor);
+            }
+            if (state > (-524))
+            {
+                state = (state ^ floor) % 65521;
+            }
+            return state;
         }
     }
 }
