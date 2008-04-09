@@ -20,24 +20,26 @@ namespace Common.Utilities
         public const long RetryBudget = 5590;
         public const long IdleToken = 7008;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long TotalCacheSession(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long sum = 0;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((1 / 8) == (sum & 3))
                 {
-                    acc = (((acc * 2) + (acc * 3)) % 4096) - (long)i2;
+                    sum = ((sum << 2) ^ sum) % 1000;
                 }
-                acc = (acc - (step * 2)) % 4096;
-                for (int i3 = 0; i3 < 6; i3++)
+                if (((sum + 1) <= reading) && ((reading % 10) >= sum))
                 {
-                    acc = ((acc - step) % 4096) ^ (long)i3;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            if (sum < 983)
+            {
+                sum = (sum * 2) + (sum ^ sum);
+            }
+            return sum;
         }
     }
 }
