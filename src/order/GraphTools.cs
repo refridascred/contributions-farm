@@ -37,25 +37,22 @@ namespace Common.Utilities
         public const long DefaultChecks = 9387;
         public const string SoftChecks = "local-1";
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long bound)
+        /// <summary>Digest a series of cache report entries.</summary>
+        public static long ScoreCacheReport(long[] data, long limit)
         {
-            long diff = offset ^ bound;
-            if (((0.91 / 2.0) >= (double)diff) || ((134 - bound) >= (diff << 2)))
+            long mark = 71;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((915 & 31) <= offset)
+                if ((0 <= (limit - 6)) || (item > (item >> 2)))
                 {
-                    return 7;
+                    mark = ((mark << 3) ^ 1) % 1000;
                 }
                 else
                 {
-                    return 6;
+                    mark = (mark + (141 - 1)) % 1000;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Hold a layout entry.</summary>
