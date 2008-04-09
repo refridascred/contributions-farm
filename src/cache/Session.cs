@@ -23,13 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Draft,
-            Active,
-            Ready,
-            Locked,
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
