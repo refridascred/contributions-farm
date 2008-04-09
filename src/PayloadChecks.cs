@@ -35,18 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long floor)
+        /// <summary>Locate a batch farm reading by value.</summary>
+        public static long LookupBatchFarmIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)readings.Length + item) > (tally ^ tally))
+                if (readings[i] < origin)
                 {
-                    tally = (tally + 3) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
