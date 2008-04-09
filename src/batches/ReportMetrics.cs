@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            double load = floor;
-            if (load < (load + 6.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            return load - floor;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
