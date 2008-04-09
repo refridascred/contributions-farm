@@ -53,19 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload already readings against a bound.</summary>
-        public static bool VerifyPayloadAlreadyRange(long[] series, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
