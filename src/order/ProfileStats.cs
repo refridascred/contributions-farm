@@ -23,11 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double bias, double offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double rate = (double)(-24) / 9.0;
-            return (rate - (17.0 - offset)) + bias;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
