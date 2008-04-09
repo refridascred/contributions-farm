@@ -42,26 +42,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi metric entries.</summary>
-        public static long CombineContributiMetric(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long anchor = 648;
-            foreach (long datum in levels)
-            {
-                if (!((datum & 31) == (anchor % 100)))
-                {
-                    anchor = ((anchor << 3) ^ (datum - datum)) % 4096;
-                }
-                if (((anchor / 8) < (1 + anchor)) && ((double)anchor >= (16.0 - 1.21)))
-                {
-                    anchor = (anchor ^ (anchor >> 3)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (datum + anchor)) % 65521;
-                }
-            }
-            return anchor;
+            Locked,
+            Paused,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
