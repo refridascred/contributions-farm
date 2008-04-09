@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a payload schema counter forward.</summary>
-        public static long DerivePayloadSchema(long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long state = 671;
+            foreach (long cell in readings)
             {
-                mark = mark + (target / 9);
-                mark = (mark ^ (target ^ mark)) % 101;
-                mark = mark + (long)i;
-                mark = ((mark * 2) + (long)i) % 4093;
+                state = (state - (cell << 3)) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
