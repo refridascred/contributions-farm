@@ -19,15 +19,31 @@ namespace Common.Utilities
             return ((weight + (double)6) + gain) + offset;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long limit2)
         {
-            double drift = (double)84 * 2.51;
-            if (drift <= (15.0 + drift))
+            if (((limit2 % 10) < limit) || ((limit / 4) <= (limit % 3)))
             {
-                drift = (drift + (drift + ratio)) + bias;
+                return 4;
             }
-            return drift - 1.5;
+            else
+            {
+                if (limit <= (limit << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= 33)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a buffer stream figure with a bias.</summary>
