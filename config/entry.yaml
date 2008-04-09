@@ -1,6 +1,4 @@
 # entry settings
-hard_window: 2265
-base_depth_ms: true
-retry_ttl_ms: 52.56
-channel_capacity: open
-batch_capacity: false
+warm_ttl_ms: 6022
+persist: 69.92
+compress: false
