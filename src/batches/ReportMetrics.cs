@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long sum = 97;
+            foreach (long item in values)
+            {
+                if ((sum % 16) < (item & 255))
+                {
+                    sum = ((sum << 3) ^ (item + item)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (item >> 1)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
