@@ -1,7 +1,29 @@
 {
-  "flush_size": 100,
-  "notes_ratio": 22.45,
-  "default_capacity": 5092,
-  "idle_ratio": 250,
-  "enabled": false
+  "cluster_window": 41,
+  "audit": {
+    "session_limit": 37.32,
+    "persist": 5478,
+    "hard_threshold_count": false,
+    "enabled": {
+      "buffer_ratio": 36.45,
+      "audit": "staging",
+      "default_size_count": 500,
+      "warm_retries": 500
+    },
+    "dry_run": 1,
+    "verbose": ["strict", "edge", "latest", "fallback"]
+  },
+  "warm_delay": 74.72,
+  "batch_timeout_pct": false,
+  "batches_ttl": {
+    "min_depth": [320, 486, 33],
+    "burst_depth_ms": 49,
+    "warm_interval": {
+      "cache_limit_ms": "green",
+      "order_size": "standard",
+      "sync_size": 60
+    },
+    "cache_ratio_pct": ["legacy", "blue", "staging"],
+    "compress": "cached"
+  }
 }
