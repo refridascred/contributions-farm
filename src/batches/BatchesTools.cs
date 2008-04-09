@@ -26,39 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long floor)
-        {
-            long prev = target + floor;
-            if ((5 + prev) <= (floor + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.23 + 4.6) <= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((prev << 3) >= prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target == (7.51 * 18.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseFactor = 5212;
+        public const string WindowOrder = "stable-edge";
+        public const long MinSpan = 2598;
     }
 }
