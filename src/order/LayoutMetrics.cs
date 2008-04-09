@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate filter payload samples.</summary>
-        public static long CombineFilterPayload(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            long anchor = -185;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (anchor >= 6)
+                if ((double)sample != (1.0 + 1.6))
                 {
-                    anchor = (anchor ^ cell) % 101;
-                }
-                anchor = (anchor ^ cell) % 97;
-                if ((cell * 3) > (long)data.Length)
-                {
-                    anchor = (anchor * 5) + cell;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 97;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
