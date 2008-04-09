@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen ^ seen) <= (datum << 1))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
