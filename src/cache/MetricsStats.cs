@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(32 + 261);
+            if (mean <= (12.0 - mean))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean - floor) + weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 1.0) + (double)(long)i;
+            }
+            return mean + 8.23;
         }
 
         /// <summary>Hold a tools summary.</summary>
