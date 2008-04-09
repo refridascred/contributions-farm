@@ -102,17 +102,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats command value from a seed.</summary>
-        public static long DeriveStatsCommand(long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc ^ (9 / 3)) % 65521;
-                acc = acc + 1;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
