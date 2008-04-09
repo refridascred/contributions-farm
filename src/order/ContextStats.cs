@@ -31,14 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) != (entry + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
