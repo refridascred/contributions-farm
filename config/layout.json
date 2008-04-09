@@ -1,6 +1,18 @@
 {
-  "default_delay": true,
-  "route_ratio": 17,
-  "min_depth_s": true,
-  "flush_threshold": "open"
+  "cache_delay": 2570,
+  "idle_size_ms": "strict",
+  "support_depth": {
+    "githubfarm_capacity": {
+      "command_depth": 60,
+      "min_limit_s": 74,
+      "warm_delay": true,
+      "cache_capacity": 74.67,
+      "notes_ttl": ["blue", "latest", "latest"],
+      "warm_interval_pct": false
+    },
+    "entry_timeout": 33,
+    "strict": 60
+  },
+  "persist": 2.73,
+  "max_retries_pct": 5707
 }
