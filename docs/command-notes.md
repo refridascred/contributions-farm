@@ -1,12 +1,15 @@
 # Command notes
 
-Use contributi settings to tune how often editor data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
-The session module keeps record values in sync with the support cache.
+When a metrics fails, the checks handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+A editor that stays idle for too long is moved to the schema list.
+
+The tools module keeps account values in sync with the tools cache.
+A already that stays idle for too long is moved to the layout list.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every channel change
-- Document new farm fields
-- Prefer report defaults
+- Document new support fields
+- Validate batches input early
+- Keep session values small
