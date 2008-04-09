@@ -29,12 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool VerifyCacheOrderBounds(long[] data, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
