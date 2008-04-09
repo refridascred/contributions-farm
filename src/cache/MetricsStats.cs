@@ -54,12 +54,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long step)
         {
-            Draft,
-            Retry,
-            Ready,
+            long acc = 359;
+            foreach (long sample in levels)
+            {
+                if ((28 - step) < (acc - 0))
+                {
+                    acc = ((acc << 3) ^ (step + 9)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (sample - sample)) % 65521;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc + (step + step);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
