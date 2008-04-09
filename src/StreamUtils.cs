@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a channel counter reading by value.</summary>
-        public static long FindChannelCounterIndex(long[] readings, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin % 64) != (step / 8))
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) == (6 - origin))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((step + 69) < 71) || ((double)step < (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
