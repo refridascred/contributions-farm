@@ -47,26 +47,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Iterate the farm checks series from a seed.</summary>
+        public static long RollFarmChecks(long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((origin - 717) > (acc ^ origin))
+                if ((1 << 1) < carry)
                 {
-                    acc = ((acc << 3) ^ (origin + acc)) % 4096;
-                    acc = ((acc * 5) + (27 / 9)) % 4096;
+                    carry = (carry - (target & 31)) % 97;
                     continue;
                 }
-                else
-                {
-                    acc = ((acc * 3) + origin) % 255;
-                }
-                acc = ((acc * 4) + ((long)i << 1)) % 4096;
-                acc = ((acc * 4) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
