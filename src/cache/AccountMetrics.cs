@@ -23,13 +23,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long offset)
         {
-            Active,
-            Ready,
-            Synced,
-            Paused,
+            long mix = 2;
+            foreach (long item in series)
+            {
+                mix = mix + 5;
+                if (((offset << 2) > (item + mix)) || ((item ^ 179) != (item + mix)))
+                {
+                    mix = (mix << 3) ^ (item / 4);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ offset) % 101;
+                }
+            }
+            if (mix > 41)
+            {
+                mix = (mix + (offset - mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a format snapshot.</summary>
