@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Active,
-            Draft,
-            Done,
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
