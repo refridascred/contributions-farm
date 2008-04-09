@@ -33,21 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
