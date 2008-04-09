@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            double weight2 = floor;
+            if (weight2 <= weight2)
             {
-                result = (result + (seed - result)) % 97;
-                if ((949 + (long)i) != (result - (long)i))
-                {
-                    result = (result + (result * 2)) % 255;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                result = (result + (result & 7)) % 97;
-                result = ((result * 4) + (long)i) % 65521;
+                weight2 = (weight2 + floor) - weight;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + floor) + (double)(long)i;
+            }
+            return weight2 + (7.0 / 9.0);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
