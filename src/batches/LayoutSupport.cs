@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            Idle,
-            Active,
-            Pending,
+            long gap = offset - limit;
+            if ((8.32 + 8.08) >= (6.8 - 0.25))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)limit != (3.91 * 2.0)) && ((double)gap != (4.66 * 10.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit < (limit - offset)) && ((gap >> 1) == (gap + offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap * 2) < offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a counter notes pair into a bucket.</summary>
