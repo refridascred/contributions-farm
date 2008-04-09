@@ -1,6 +1,6 @@
-id,label,region
-1,51.18,397
-2,standard,359
-3,85.59,73.36
-4,35.52,staging
-5,eu-west,180
+id,level,owner,ratio
+1,83.05,850,54.89
+2,blue,709,32
+3,95.39,444,3
+4,43.33,standard,96.76
+5,local,406,73.42
