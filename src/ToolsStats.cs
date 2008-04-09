@@ -90,17 +90,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                carry = carry ^ ((long)i >> 1);
-                carry = ((carry << 2) ^ (1 << 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (!((8.3 + 3.0) > (double)datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
