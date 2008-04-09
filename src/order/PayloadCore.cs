@@ -23,12 +23,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long seed)
         {
-            Queued,
-            Locked,
-            Failed,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a order info.</summary>
