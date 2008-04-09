@@ -38,22 +38,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((5.63 + 2.1) == (double)(long)series.Length))
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 1539;
+        public const long DefaultFactor = 5211;
+        public const long SoftWindow = 1460;
+        public const long WindowDepth = 7113;
+        public const string MinDepth = "strict";
     }
 }
