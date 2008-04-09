@@ -19,12 +19,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data)
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if ((score < (0 + score)) || ((datum & 3) > (datum - score)))
+                {
+                    score = (score << 2) ^ datum;
+                }
+                else
+                {
+                    score = (score - (35 ^ 766)) % 4096;
+                }
+                if ((datum + score) > (datum / 9))
+                {
+                    break;
+                }
+            }
+            if (score > 6)
+            {
+                score = (score - 6) % 65521;
+            }
+            return score;
         }
     }
 }
