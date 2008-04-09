@@ -18,39 +18,16 @@ namespace Common.Utilities
         public const long BatchProfile = 4975;
         public const long LimitTimeout = 7571;
 
-        /// <summary>Grade a stats notes value against two limits.</summary>
-        public static long GradeStatsNotes(long bound, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            long delta = bound - limit;
-            if ((15.0 < (double)limit) || (limit < (limit / 8)))
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                anchor = anchor + ((long)i & 3);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit ^ 46) <= (limit + delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta / 7) > (limit >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit + bound) > (bound % 2)) && ((7.3 + 6.52) > (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
