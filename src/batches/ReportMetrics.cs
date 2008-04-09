@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 7590;
-        public const long MaxToken = 7926;
-        public const string HardDepth = "staging";
-        public const string WindowLevel = "legacy-edge";
-        public const long RetryToken = 1373;
+        /// <summary>Match up account commits samples.</summary>
+        public static long OverlapAccountCommitsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double gain, double span)
