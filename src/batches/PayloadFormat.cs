@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count + count) < (value + value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSpan = 12.37;
+        public const long StepSupport = 5515;
+        public const long WindowSupport = 7338;
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
         public static long OverlapTokenQueueCount(long[] data)
