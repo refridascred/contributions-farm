@@ -73,11 +73,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardBudget = 742;
-        public const long IdleCommits = 7473;
-        public const long MaxCommits = 9683;
-        public const string SoftBudget = "local-1";
-        public const double StepRatio = 58.85;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double floor)
+        {
+            double rate = 8.92;
+            if (rate <= (11.0 - floor))
+            {
+                rate = rate + floor;
+            }
+            return rate + (scale + floor);
+        }
     }
 }
