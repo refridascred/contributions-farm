@@ -30,22 +30,20 @@ namespace Common.Utilities
             return (rate - (17.0 - offset)) + bias;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] values)
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long CombineFormatEntry(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 75;
+            foreach (long cell in readings)
             {
-                if ((16.0 - 8.9) > (double)item)
+                sum = ((sum * 4) + (cell - cell)) % 101;
+                sum = ((sum * 4) + (cell % 60)) % 101;
+                if (!((double)cell != (2.96 * 9.0)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum - (-1)) % 97;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
