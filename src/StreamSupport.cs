@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values, long target)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (target <= 4)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
