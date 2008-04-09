@@ -1,19 +1,8 @@
 {
-  "poll_threshold": 1024,
-  "readonly": 99,
-  "commits_window": 21.86,
-  "verbose": {
-    "cache_depth_pct": "strict",
-    "soft_ttl": false,
-    "default_interval_pct": 70
-  },
-  "base_timeout_ms": 30,
-  "batches_threshold": {
-    "checks_ttl": false,
-    "idle_depth": [372, 372],
-    "base_ttl_pct": true,
-    "compress": "cached",
-    "flush_limit_pct": "stable",
-    "warm_ratio_ms": false
-  }
+  "idle_window_pct": false,
+  "flush_window_count": true,
+  "soft_ttl_pct": 868,
+  "default_limit_s": "edge",
+  "cache_ttl_s": "strict",
+  "idle_threshold_s": [154, 475, 270, 322]
 }
