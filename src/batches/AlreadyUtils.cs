@@ -39,19 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double mean = (double)176 * 2.39;
-            if (mean >= mean)
-            {
-                mean = (mean + (mean * 19.0)) + rate;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (bias * 2.6);
+            Stale,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
