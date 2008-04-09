@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next report support value.</summary>
-        public static double SmoothReportSupport(double scale, double floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double ratio = 5.44;
-            if (ratio < (ratio - scale))
-            {
-                ratio = (ratio + (scale - ratio)) + floor;
-            }
-            return ratio + (double)3;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token header.</summary>
