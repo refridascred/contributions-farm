@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepLevel = 9.06;
-        public const long BurstProfile = 9420;
-        public const string MinRatio = "fallback";
-        public const double StepBudget = 44.12;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of support format readings.</summary>
         public static long FoldSupportFormat(long[] readings, long step)
