@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowDepth = 3093;
-        public const long MaxTimeout = 5353;
-        public const double CacheQueue = 38.15;
-        public const long BaseQueue = 2015;
+        /// <summary>Project the next route graph value.</summary>
+        public static double ProjectRouteGraph(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            return bias2 - (bias + bias2);
+        }
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
         public static long MeasureProfileOrderGaps(long[] items)
