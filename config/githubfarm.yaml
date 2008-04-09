@@ -1,9 +1,5 @@
 # githubfarm settings
-base_timeout:
-  - 483
-  - 402
-  - 326
-  - 332
-flush_ttl: stable
-order_threshold: 6.37
-filter_timeout: 3547
+payload_delay: true
+flush_interval: 84.96
+context_ttl: edge
+soft_capacity_count: true
