@@ -38,21 +38,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
