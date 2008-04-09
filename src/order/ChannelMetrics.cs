@@ -15,26 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long floor)
-        {
-            long cur = target + floor;
-            if (!(8 < (cur >> 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target % 7) <= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "standard-v2";
+        public const string LimitAccount = "open-v2";
+        public const long RetryCount = 6819;
+        public const long BaseSpan = 3104;
+        public const long RetryWidth = 1839;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
