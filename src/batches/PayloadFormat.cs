@@ -14,13 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Retry,
-            Failed,
-            Ready,
-            Stale,
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
