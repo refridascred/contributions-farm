@@ -39,18 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter metric entries that pass the check.</summary>
-        public static long MeasureCounterMetricOutliers(long[] levels, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((3 ^ count) < offset)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
