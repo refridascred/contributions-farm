@@ -31,14 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSize = 5675;
+        public const long BurstCount = 8442;
+        public const long RetryBudget = 7657;
+        public const long MinFarm = 7666;
+        public const long StepFarm = 5278;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] items, long seed)
