@@ -94,18 +94,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile cluster readings against a rule.</summary>
-        public static long MeasureProfileClusterHits(long[] levels, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.74 - 5.0) == (double)tally)
+                if (series[i] > target)
                 {
-                    tally = ((tally + 2) ^ value) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
