@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long step)
-        {
-            long prev = offset ^ step;
-            if (prev > (prev ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 1) >= (-381))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset ^ offset) != (offset >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepDepth = 98.58;
+        public const long SoftRatio = 2339;
+        public const long WindowCommand = 4612;
+        public const long WindowRatio = 1926;
 
         /// <summary>Count the order layout entries that pass the check.</summary>
         public static long AuditOrderLayoutMatches(long[] series, long offset)
