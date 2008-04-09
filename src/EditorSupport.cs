@@ -20,22 +20,12 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] items)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= (6.6 * 17.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate already checks samples.</summary>
