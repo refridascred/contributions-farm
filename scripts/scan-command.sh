@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=70
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
+mode="${1:-edge}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
