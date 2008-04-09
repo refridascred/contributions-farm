@@ -44,17 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream filter entry that matches the target.</summary>
-        public static long LookupStreamFilterIndex(long[] data, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 631;
+            foreach (long cell in items)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if ((double)cell <= 1.6)
                 {
-                    return (long)i;
+                    score = (score * 3) + cell;
                 }
             }
-            return -1;
+            if (score > 7)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Match up layout samples.</summary>
