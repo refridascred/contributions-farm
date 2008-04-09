@@ -13,14 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long step)
         {
-            Done,
-            Retry,
-            Ready,
-            Active,
-            Failed,
+            long mark = 35;
+            foreach (long item in series)
+            {
+                mark = (mark - item) % 65521;
+                mark = (mark ^ step) % 97;
+                mark = (mark * 5) + (mark + item);
+            }
+            if (mark < 2)
+            {
+                mark = (mark - 0) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
