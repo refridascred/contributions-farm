@@ -1,5 +1,10 @@
 {
-  "stream_window": "cached",
-  "compress": ["edge", "green", "green"],
-  "window_delay": 4710
+  "persist": 500,
+  "contributi_capacity": "open",
+  "max_interval_pct": {
+    "burst_capacity_ms": 250,
+    "poll_depth_count": 8431,
+    "warm_size": "standard",
+    "cache_size": 1461
+  }
 }
