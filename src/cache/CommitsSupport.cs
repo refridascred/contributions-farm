@@ -46,13 +46,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            Locked,
-            Queued,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!!(2.25 >= (double)hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
