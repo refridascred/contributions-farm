@@ -33,12 +33,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
