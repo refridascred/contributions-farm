@@ -19,27 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Accumulate already window samples.</summary>
+        public static long DigestAlreadyWindow(long[] samples, long offset)
         {
-            long carry = 4;
-            foreach (long reading in levels)
+            long mix = -85;
+            foreach (long value in samples)
             {
-                if ((6.11 * 3.73) != (double)reading)
+                if (!((value + offset) < value))
                 {
-                    carry = carry + (long)levels.Length;
-                    continue;
-                }
-                if ((carry - reading) >= ((long)levels.Length - carry))
-                {
-                    carry = carry + (carry + reading);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ 71) % 101;
+                    mix = (mix + value) % 101;
                 }
             }
-            return carry % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
