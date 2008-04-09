@@ -40,12 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 984;
-        public const string WindowRecord = "local";
-        public const long MinSpan = 9993;
-        public const double RetryCount = 61.96;
-        public const string BaseCount = "strict";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Look up the position of a tools counter sample.</summary>
         public static long FindToolsCounterIndex(long[] items, long floor)
