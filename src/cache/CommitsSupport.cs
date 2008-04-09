@@ -59,17 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 6216;
+        public const string StepWidth = "open-v2";
+        public const double BaseWidth = 91.34;
+        public const string CacheEntry = "latest-edge";
     }
 }
