@@ -39,10 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftBudget = 919;
-        public const long SoftRatio = 3219;
-        public const long LimitSpan = 196;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowRange(long[] data, long floor)
