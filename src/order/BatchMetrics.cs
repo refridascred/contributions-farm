@@ -40,19 +40,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix - (mix ^ seed)) % 4096) ^ (long)i2;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
