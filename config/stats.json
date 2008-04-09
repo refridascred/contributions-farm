@@ -1,12 +1,5 @@
 {
-  "flush_depth_count": {
-    "batch_timeout": "strict",
-    "min_ratio": 6,
-    "default_window": 55,
-    "queue_interval": 62.65
-  },
-  "max_ratio_s": true,
-  "warm_retries_s": [156, 392, 101],
-  "dry_run": 7.39,
-  "enabled": 3454
+  "flush_limit_pct": ["blue", "local"],
+  "layout_capacity": ["edge", "latest", "staging", "standard"],
+  "idle_interval_pct": 60
 }
