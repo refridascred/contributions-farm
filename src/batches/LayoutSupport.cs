@@ -38,11 +38,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 1539;
-        public const long DefaultFactor = 5211;
-        public const long SoftWindow = 1460;
-        public const long WindowDepth = 7113;
-        public const string MinDepth = "strict";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftInterval = "staging-v2";
+        public const long MinDepth = 4255;
+        public const string BaseTimeout = "standard-1";
+        public const double LimitNotes = 11.18;
+        public const long MaxWidth = 6944;
     }
 }
