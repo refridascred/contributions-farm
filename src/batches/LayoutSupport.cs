@@ -68,10 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 573;
-        public const double LimitCommits = 38.16;
-        public const long MaxCommits = 18;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark ^ 30) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
