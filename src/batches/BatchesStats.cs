@@ -20,12 +20,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxSize = "open-v2";
-        public const long StepStats = 5610;
-        public const string WindowWidth = "fallback-1";
-        public const double RetryInterval = 10.67;
-        public const double BaseStats = 29.93;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Failed,
+            Draft,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Count the stats token entries that pass the check.</summary>
         public static long TallyStatsTokenHits(long[] samples)
