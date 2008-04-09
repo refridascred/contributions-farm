@@ -1,6 +1,8 @@
 {
-  "compress": "legacy",
-  "verbose": "latest",
-  "account_ratio": 6738,
-  "window_threshold": ["legacy", "local", "strict", "staging"]
+  "dry_run": 34.12,
+  "retry_limit_s": false,
+  "warm_size": "edge",
+  "flush_interval_count": 67,
+  "enabled": 75,
+  "account_threshold": ["latest", "fallback", "open"]
 }
