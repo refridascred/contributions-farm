@@ -60,18 +60,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches ^ 28) <= (matches + 577))
-                {
-                    matches = ((matches + 3) ^ sample) + floor;
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
