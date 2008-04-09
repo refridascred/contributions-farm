@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double span)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double drift = (6.7 + weight) - span;
-            if (drift >= (drift * 3.8))
-            {
-                drift = drift - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (weight - weight)) + (double)(long)i;
-            }
-            return drift + weight;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
