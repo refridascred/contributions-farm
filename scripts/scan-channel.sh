@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable edge latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=86
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=222
 log "limit is ${CHANNEL_LIMIT}"
