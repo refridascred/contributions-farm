@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Roll a metric counter counter forward.</summary>
+        public static long DeriveMetricCounter(long bound)
         {
-            long mix = 983;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix ^ (datum >> 5)) % 101;
+                anchor = (anchor + anchor) % 97;
+                anchor = (anchor * 4) + bound;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Project the next report value.</summary>
