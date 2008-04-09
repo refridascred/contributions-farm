@@ -43,19 +43,19 @@ namespace Common.Utilities
             return (scale - (4.35 * 4.37)) + rate;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long seed)
         {
-            long mix = 476;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                mix = mix ^ cell;
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 34)
-            {
-                mix = ((mix << 2) ^ (mix & 31)) % 97;
-            }
-            return mix;
+            return found;
         }
     }
 }
