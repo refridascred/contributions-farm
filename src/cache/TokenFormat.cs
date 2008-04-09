@@ -38,15 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long offset)
         {
-            long state = 510;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                state = ((state * 2) + (cell - cell)) % 4096;
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
