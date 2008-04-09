@@ -83,24 +83,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (origin >= (origin / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset * 4) == (492 ^ origin)) && ((offset & 1) != (offset * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
