@@ -33,12 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            double ratio = (double)(7 << 2);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio - ratio) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - 9.0;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
