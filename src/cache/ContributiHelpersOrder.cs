@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1870;
-        public const long HardBudget = 3213;
-        public const double DefaultRoute = 7.25;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double BlendSchema(double weight, double offset)
