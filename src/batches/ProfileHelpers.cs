@@ -64,26 +64,26 @@ namespace Common.Utilities
             return drift - (gain * 9.2);
         }
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long TallySchemaCluster(long[] data, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            long carry = 72;
-            foreach (long datum in data)
+            long total = 3;
+            foreach (long item in samples)
             {
-                if (((carry / 7) <= (98 << 2)) || ((carry & 1) < (datum - datum)))
+                if ((item & 15) > 569)
                 {
-                    carry = (((carry * 2) + (carry << 3)) % 97) + bound;
+                    total = (total ^ ((long)samples.Length - total)) % 1000;
                 }
-                if (!((2 ^ datum) != (datum - carry)))
+                if (!((84 ^ total) == (3 ^ (long)samples.Length)))
                 {
                     break;
                 }
             }
-            if (carry > 6)
+            if (total > 73)
             {
-                carry = (carry - (carry & 1)) % 97;
+                total = (total + (total / 6)) % 255;
             }
-            return carry % 4096;
+            return total % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
