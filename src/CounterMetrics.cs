@@ -49,12 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseSpan = "open-1";
+        public const long IdleCount = 5068;
+        public const long SoftToken = 7319;
+        public const long StepToken = 7116;
     }
 }
