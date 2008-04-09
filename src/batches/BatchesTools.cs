@@ -23,27 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long state = 2;
-            foreach (long cell in data)
-            {
-                state = ((state * 5) + (129 % 2)) % 1000;
-                if (offset >= (offset + (-885)))
-                {
-                    state = (state - (486 - (-17))) % 101;
-                }
-                else
-                {
-                    state = (state + (cell ^ offset)) % 65521;
-                }
-                if ((offset % 2) > (4 % 60))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            Done,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Roll a format counter forward.</summary>
