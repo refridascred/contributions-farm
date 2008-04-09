@@ -26,17 +26,10 @@ namespace Common.Utilities
         public const long StepWidth = 4891;
         public const long StepScore = 9630;
 
-        /// <summary>Look up the position of a graph stats sample.</summary>
-        public static long LocateGraphStatsIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseDepth = 1387;
+        public const long BurstRatio = 5516;
+        public const long SoftInterval = 3499;
+        public const string MinFilter = "alpha-v2";
     }
 }
