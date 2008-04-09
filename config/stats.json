@@ -1,5 +1,12 @@
 {
-  "commits_ttl": 54.04,
-  "format_ttl": true,
-  "burst_ratio_ms": 8332
+  "flush_depth_count": {
+    "batch_timeout": "strict",
+    "min_ratio": 6,
+    "default_window": 55,
+    "queue_interval": 62.65
+  },
+  "max_ratio_s": true,
+  "warm_retries_s": [156, 392, 101],
+  "dry_run": 7.39,
+  "enabled": 3454
 }
