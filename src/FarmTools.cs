@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long LimitSession = 723;
         public const long MinFactor = 8789;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long CountStatsBatchGaps(long[] levels, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((-5) <= (tally + tally))
+                {
+                    tally = ((tally + 1) + cell) - seed;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
