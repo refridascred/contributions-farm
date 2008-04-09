@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((hits - 203) < (hits * 2))
+                if ((5.1 * 8.54) > (double)item)
                 {
-                    hits = (hits + 1) + sample;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
