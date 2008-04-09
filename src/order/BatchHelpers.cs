@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2579;
-        public const string BasePayload = "primary-edge";
-        public const string MinTimeout = "latest-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 58.6;
+        public const string BatchFactor = "staging-v2";
+        public const long CacheLevel = 3703;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double ratio, double offset)
