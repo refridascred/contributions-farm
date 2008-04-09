@@ -30,14 +30,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            Active,
-            Queued,
-            New,
-            Closed,
-            Synced,
+            double rate = scale + bias;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)895) + (double)(long)i;
+            }
+            return rate - 18.0;
         }
     }
 }
