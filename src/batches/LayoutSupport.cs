@@ -20,38 +20,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a order filter value against two limits.</summary>
-        public static long BucketOrderFilter(long limit, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            if ((seed + seed) >= (limit - limit))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 3) != ((-128) - seed))
+                if (!((item ^ 406) != (item - hits)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3 >> 5) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed == (8.1 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
