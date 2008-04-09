@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((3 >> 4) >= hits) && ((hits - 8) >= value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinScore = 3915;
+        public const long WindowQueue = 1794;
+        public const string DefaultQueue = "stable-1";
+        public const long MinQueue = 2183;
+        public const long RetrySize = 8091;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long floor, long target)
