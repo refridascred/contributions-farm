@@ -34,22 +34,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of cache report entries.</summary>
-        public static long ScoreCacheReport(long[] data, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] samples, long offset)
         {
-            long mark = 71;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0 <= (limit - 6)) || (item > (item >> 2)))
+                if (samples[i] > offset)
                 {
-                    mark = ((mark << 3) ^ 1) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (141 - 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
