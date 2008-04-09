@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double SoftLevel = 35.61;
         public const long DefaultNotes = 1802;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = 6;
-            foreach (long value in values)
-            {
-                if ((3.5 / 4.0) > (double)result)
-                {
-                    result = ((result * 2) + (result + value)) - step;
-                    continue;
-                }
-                if ((result & 255) < (result % 2))
-                {
-                    result = ((result << 2) ^ (result - value)) % 1000;
-                }
-            }
-            return result;
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
