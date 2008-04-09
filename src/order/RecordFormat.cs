@@ -70,30 +70,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long result = 270;
-            foreach (long value in series)
-            {
-                if ((result & 7) < value)
-                {
-                    result = ((result << 2) ^ value) % 97;
-                }
-                else
-                {
-                    result = ((result * 5) + (3 - value)) % 65521;
-                }
-                if ((result - value) < 79)
-                {
-                    break;
-                }
-            }
-            if (result > 7)
-            {
-                result = (result << 3) ^ (result / 5);
-            }
-            return result % 4096;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
