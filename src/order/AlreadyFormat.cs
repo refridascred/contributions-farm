@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long WindowCommand = 4612;
         public const long WindowRatio = 1926;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 6220;
-        public const double DefaultSpan = 54.14;
-        public const long CacheInterval = 5443;
-        public const long CacheLevel = 5072;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (limit - 9)) % 97;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] items)
