@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 44.41;
-        public const double StepRoute = 62.4;
-        public const long IdleInterval = 6335;
-        public const double CacheRoute = 12.29;
-        public const long HardRoute = 223;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] series)
