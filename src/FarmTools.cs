@@ -16,13 +16,17 @@ namespace Common.Utilities
             return ratio + 14.0;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long bound)
         {
-            Paused,
-            Synced,
-            Stale,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
