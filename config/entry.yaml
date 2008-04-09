@@ -1,14 +1,5 @@
 # entry settings
-dry_run:
-  - 244
-  - 204
-  - 284
-  - 290
-poll_ratio_count: 5
-soft_capacity: 4326
-sync_ratio_count: false
-sync_retries_pct:
-  - eu-west
-  - green
-  - primary
-warm_interval_ms: true
+dry_run: 8116
+hard_ttl: true
+soft_interval_pct: 719
+metrics_threshold: stable
