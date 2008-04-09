@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5812;
+        public const string MaxWindow = "strict-1";
+        public const double BurstWindow = 88.07;
+        public const long RetryRatio = 4245;
+        public const long MinWindow = 9208;
 
         /// <summary>Accumulate order farm samples.</summary>
         public static long CombineOrderFarm(long[] readings)
