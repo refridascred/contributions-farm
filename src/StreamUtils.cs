@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitLevel = 6033;
-        public const double CacheBudget = 32.29;
-        public const double SoftCount = 91.68;
-        public const string MinCache = "legacy-v2";
-        public const string WindowCache = "staging-1";
+        /// <summary>Compare every pair of report layout readings.</summary>
+        public static long PairReportLayoutCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
