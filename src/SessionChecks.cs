@@ -12,24 +12,17 @@ namespace Common.Utilities
             return weight2 - (bias - bias);
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long floor, long seed)
+        /// <summary>Look up the position of a cache notes sample.</summary>
+        public static long LookupCacheNotesIndex(long[] levels, long seed)
         {
-            if (!((double)seed != (9.97 + 9.0)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((170 + (-856)) < (seed + seed))
+                if (levels[i] <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
