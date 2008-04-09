@@ -55,17 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a tools counter sample.</summary>
-        public static long FindToolsCounterIndex(long[] items, long floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
