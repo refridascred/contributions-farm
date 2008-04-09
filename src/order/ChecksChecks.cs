@@ -23,13 +23,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm mode values.</summary>
