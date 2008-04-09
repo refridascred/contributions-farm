@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long floor)
         {
-            long anchor = 51;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (origin <= (221 - (-77)))
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    anchor = (anchor ^ value) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
