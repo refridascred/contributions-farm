@@ -31,20 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (values[i] < seed)
                 {
-                    score = (((score * 5) + target) % 97) - (long)i2;
-                    score = ((score << 2) ^ (score + score)) % 101;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
     }
 }
