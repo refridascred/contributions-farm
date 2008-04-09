@@ -31,19 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool CheckGithubfarmEditorBounds(long[] samples, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (sample > target)
+                if (((double)seed < (20.0 + 9.02)) && ((double)seed > 8.72))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
