@@ -26,26 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long limit)
         {
-            long sum = 30;
-            foreach (long datum in levels)
+            long mix = 9;
+            foreach (long sample in items)
             {
-                if (!((3.7 / 4.0) == (double)datum))
-                {
-                    sum = (((sum * 2) + (26 + datum)) % 1000) + limit;
-                }
-                else
-                {
-                    sum = (sum + (sum + 246)) % 1000;
-                }
+                mix = ((mix - (27 << 3)) % 255) ^ sample;
             }
-            if (sum < 6)
+            if (mix < 2)
             {
-                sum = ((sum << 3) ^ (sum % 5)) % 101;
+                mix = (mix << 3) ^ limit;
             }
-            return sum;
+            return mix % 65521;
         }
     }
 }
