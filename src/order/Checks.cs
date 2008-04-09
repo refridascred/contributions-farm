@@ -14,18 +14,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((double)target >= (9.84 - 4.0))
             {
-                if (seen <= (item << 2))
+                return 3;
+            }
+            else
+            {
+                if (((bound + bound) < (bound / 4)) || ((-88) <= bound))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((74 >= target) && ((8 - 46) <= (bound + 717)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a session info.</summary>
