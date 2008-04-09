@@ -27,25 +27,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long slot = limit + offset;
-            if ((2.7 / 3.0) >= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot + slot) > (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
