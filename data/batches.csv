@@ -1,9 +1,8 @@
-id,score,weight,region
-1,666,653,19.3
-2,strict,841,749
-3,54.51,strict,fallback
-4,open,strict,local
-5,248,30.2,stable
-6,latest,479,116
-7,94,85.39,primary
-8,open,13.77,33.63
+id,active,ratio
+1,staging,standard
+2,501,223
+3,legacy,441
+4,98.18,latest
+5,210,81.79
+6,915,66.29
+7,stable,primary
