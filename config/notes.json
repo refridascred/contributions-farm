@@ -1,5 +1,5 @@
 {
-  "persist": 17.49,
-  "context_delay": "strict",
-  "dry_run": 100
+  "githubfarm_retries": "edge",
+  "report_depth": "staging",
+  "checks_delay": "cached"
 }
