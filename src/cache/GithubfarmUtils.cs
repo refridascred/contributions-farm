@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (entry <= origin)
+                if (reading < offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a buffer options.</summary>
