@@ -13,39 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a session counter pair into a bucket.</summary>
-        public static long GradeSessionCounter(long limit, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long prev = limit ^ origin;
-            if ((origin + prev) == (prev + 125))
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)origin >= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - prev) <= 313)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (prev >= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Grade a order filter value against two limits.</summary>
