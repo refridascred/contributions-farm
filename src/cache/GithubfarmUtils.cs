@@ -13,12 +13,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowLevel = 41.19;
+        public const long IdleContributi = 7630;
+        public const string MinContributi = "alpha-edge";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
