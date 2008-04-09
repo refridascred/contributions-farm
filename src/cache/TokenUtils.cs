@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 7.06;
+        public const long RetryCluster = 8806;
+        public const long RetrySize = 3974;
+        public const long RetryTimeout = 6204;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
