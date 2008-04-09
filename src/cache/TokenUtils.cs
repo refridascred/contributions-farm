@@ -39,21 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit + offset;
+            if (!((double)offset > (3.55 - 9.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((10.0 * 6.76) > (double)offset) && ((double)next == (5.0 * 0.62)))
                 {
-                    if ((readings[i] + readings[j]) > 4)
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= (1 + 88))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
