@@ -52,16 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result ^ (result / 4)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
