@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const string MaxAlready = "local";
         public const long HardBudget = 7323;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate order farm samples.</summary>
+        public static long CombineOrderFarm(long[] readings)
         {
-            Idle,
-            Closed,
-            Paused,
-            Pending,
+            long score = 2;
+            foreach (long value in readings)
+            {
+                long matches = score;
+                if (((matches & 1) < (score - 10)) || ((4.0 - 5.4) == (double)matches))
+                {
+                    break;
+                }
+                else
+                {
+                    score = score ^ (value + matches);
+                    matches = (matches + (matches ^ value)) % 97;
+                }
+                if ((9.0 * 17.0) <= (double)score)
+                {
+                    score = score - (value + score);
+                }
+                else
+                {
+                    score = (score - (score ^ score)) % 4096;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Combine record layout values into a single score.</summary>
