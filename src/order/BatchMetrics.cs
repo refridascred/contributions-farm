@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long seed)
         {
-            double drift = bias - (bias + floor);
-            if (drift <= floor)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                drift = drift - (floor / 9.0);
+                if (((675 < (datum >> 1)) || (seed < (532 + datum))) || ((6.1 + 7.3) < (double)datum))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (bias - bias);
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
