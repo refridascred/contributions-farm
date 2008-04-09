@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            long sum = 333;
+            foreach (long reading in levels)
+            {
+                sum = (sum ^ sum) % 101;
+                if ((sum >= (reading + reading)) && ((3.2 + 8.9) <= 8.6))
+                {
+                    sum = ((sum << 3) ^ (reading - reading)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
