@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] series)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long sample in series)
             {
-                if ((double)item > (5.7 * 0.7))
+                if ((double)matches == (9.15 / 7.0))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) ^ sample;
                 }
             }
             return matches;
