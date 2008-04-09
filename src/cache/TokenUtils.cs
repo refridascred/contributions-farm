@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of tools session readings.</summary>
+        public static long TotalToolsSession(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long total = 593;
+            foreach (long item in levels)
+            {
+                if ((total + total) > item)
+                {
+                    total = ((total * 2) + (total - (-90))) % 4096;
+                }
+                else
+                {
+                    total = (total - (total / 7)) % 101;
+                }
+            }
+            if (total < 8)
+            {
+                total = total ^ (total & 15);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
