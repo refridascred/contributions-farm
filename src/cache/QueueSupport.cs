@@ -57,18 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items, long seed)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool GuardRouteQueueRange(long[] values, long limit)
         {
-            long anchor = 737;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((16 ^ anchor) == (seed * 4))
+                if (reading != limit)
                 {
-                    anchor = ((anchor << 2) ^ (cell - 597)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
     }
 }
