@@ -57,13 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Idle,
+            Done,
+            Locked,
+            Retry,
         }
     }
 }
