@@ -1,22 +1,7 @@
 {
-  "readonly": 29.95,
-  "soft_size_ms": ["fallback", "stable"],
-  "sync_interval_count": "staging",
-  "strict": {
-    "sync_ratio": {
-      "metric_depth": "eu-west",
-      "min_window": [37, 52, 183, 435],
-      "warm_capacity_ms": ["edge", "latest", "staging"],
-      "verbose": [245, 105, 468]
-    },
-    "cache_capacity": "edge",
-    "contributi_interval": ["latest", "fallback", "green", "fallback"],
-    "compress": [252, 199, 167],
-    "warm_depth_s": [230, 414, 372, 69]
-  },
-  "burst_window_pct": {
-    "audit": ["edge", "primary"],
-    "enabled": 86.66,
-    "strict": "cached"
-  }
+  "flush_size": 100,
+  "notes_ratio": 22.45,
+  "default_capacity": 5092,
+  "idle_ratio": 250,
+  "enabled": false
 }
