@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepDepth = 98.58;
-        public const long SoftRatio = 2339;
-        public const long WindowCommand = 4612;
-        public const long WindowRatio = 1926;
+        /// <summary>Measure how many token cluster samples are out of range.</summary>
+        public static long CountTokenClusterMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (9.58 >= (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long limit)
