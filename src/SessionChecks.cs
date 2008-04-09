@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] items, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long state = 642;
-            foreach (long item in items)
-            {
-                if ((item / 8) <= (301 / 7))
-                {
-                    state = ((state << 2) ^ (item >> 1)) + limit;
-                }
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
