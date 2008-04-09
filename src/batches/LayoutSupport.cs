@@ -56,11 +56,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftInterval = "staging-v2";
-        public const long MinDepth = 4255;
-        public const string BaseTimeout = "standard-1";
-        public const double LimitNotes = 11.18;
-        public const long MaxWidth = 6944;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long limit2)
+        {
+            long step = limit - limit2;
+            if ((step < (limit ^ 14)) && ((limit2 >> 2) > step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit2 / 7) >= limit2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
