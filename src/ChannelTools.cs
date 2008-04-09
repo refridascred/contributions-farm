@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] series)
-        {
-            long mix = 19;
-            foreach (long sample in series)
-            {
-                mix = (mix - (sample - mix)) % 101;
-            }
-            if (mix < 381)
-            {
-                mix = (mix << 2) ^ (mix & 7);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepWidth = 7202;
+        public const long RetryGithubfarm = 545;
+        public const double LimitScore = 16.2;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 3778;
