@@ -1,5 +1,12 @@
 {
-  "max_threshold_count": ["eu-west", "local", "primary", "open"],
-  "enabled": [115, 91, 454, 303],
-  "burst_timeout_pct": 250
+  "filter_depth": {
+    "record_depth": "stable",
+    "strict": true,
+    "enabled": "local",
+    "persist": 74.46,
+    "warm_limit_s": 69.02,
+    "already_retries": "legacy"
+  },
+  "cache_timeout": false,
+  "flush_threshold_ms": ["local", "stable"]
 }
