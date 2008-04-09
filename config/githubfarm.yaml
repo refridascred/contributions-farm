@@ -1,4 +1,9 @@
 # githubfarm settings
-default_threshold_count: 30
-cache_interval_s: 2610
-dry_run: 19.66
+warm_ttl_count:
+  - staging
+  - staging
+  - stable
+  - legacy
+stats_depth: legacy
+enabled: false
+soft_interval: legacy
