@@ -27,17 +27,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a schema commits sample.</summary>
-        public static long SeekSchemaCommitsIndex(long[] data, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step2 = step ^ origin;
+            if ((origin >> 5) >= step2)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= 2.0)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (10.0 <= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next farm schema value from a seed.</summary>
