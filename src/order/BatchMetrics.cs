@@ -59,21 +59,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
