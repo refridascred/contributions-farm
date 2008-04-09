@@ -24,10 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "latest-v2";
-        public const string MinCache = "alpha-edge";
-        public const long MinFactor = 2618;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((limit & 7) == ((long)items.Length - limit))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a batch farm reading by value.</summary>
         public static long LookupBatchFarmIndex(long[] readings, long origin)
