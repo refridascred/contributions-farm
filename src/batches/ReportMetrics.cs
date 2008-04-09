@@ -38,38 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long floor)
+        /// <summary>Compare every pair of counter editor readings.</summary>
+        public static long MatchCounterEditorCount(long[] readings)
         {
-            if ((2.09 * 2.98) <= (double)floor)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 3) > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (5.4 / 7.0))
+                    if ((readings[i] ^ readings[j]) > 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > (floor + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
