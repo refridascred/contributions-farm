@@ -45,17 +45,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long step)
+        /// <summary>Count format schema pairs that satisfy a relation.</summary>
+        public static long PairFormatSchemaCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
