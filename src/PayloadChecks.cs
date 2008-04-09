@@ -70,21 +70,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count stream already pairs that satisfy a relation.</summary>
-        public static long PairStreamAlreadyCount(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)2 < (double)tally) || ((10.0 + 8.87) < (double)cell))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
