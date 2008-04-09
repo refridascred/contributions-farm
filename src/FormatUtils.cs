@@ -56,12 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a layout contributi sample.</summary>
-        public static long FindLayoutContributiIndex(long[] data, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] < limit)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
