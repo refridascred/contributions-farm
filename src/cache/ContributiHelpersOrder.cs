@@ -25,20 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools payload counter forward.</summary>
-        public static long RollToolsPayload(long seed)
+        /// <summary>Combine metrics entry values into a single score.</summary>
+        public static long TallyMetricsEntry(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                if ((double)total > (3.58 - 0.6))
+                mix = (mix ^ (reading << 2)) % 101;
+                if ((double)mix <= (1.08 - 9.5))
                 {
-                    total = (total * 4) + ((long)i - (long)i);
-                    continue;
+                    mix = (mix << 3) ^ (reading % 100);
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                if (((5.6 * 9.0) >= (double)mix) && (3.0 >= (double)mix))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix % 65521;
         }
     }
 }
