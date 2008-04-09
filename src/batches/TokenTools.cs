@@ -24,17 +24,15 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Find the first payload buffer entry that matches the target.</summary>
-        public static long SeekPayloadBufferIndex(long[] series, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 983;
+            foreach (long datum in series)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (datum >> 5)) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two stats measurements.</summary>
