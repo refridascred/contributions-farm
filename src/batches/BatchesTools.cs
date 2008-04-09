@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "strict-v2";
+        public const long BurstCommand = 5104;
+        public const string IdleDepth = "fallback-v2";
+        public const long MinCommand = 3611;
+        public const string WindowCommand = "open";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double weight, double span)
