@@ -37,14 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Retry,
-            Locked,
+            Failed,
             Queued,
-            Dropped,
             Paused,
+            Ready,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
