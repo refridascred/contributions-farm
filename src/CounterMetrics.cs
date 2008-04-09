@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine metric order values into a single score.</summary>
-        public static long TallyMetricOrder(long[] data, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long score = 6;
-            foreach (long item in data)
-            {
-                score = ((score - 91) % 65521) + item;
-                if (score >= (score ^ origin))
-                {
-                    score = ((score << 2) ^ origin) % 101;
-                }
-            }
-            return score % 97;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
