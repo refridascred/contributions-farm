@@ -60,15 +60,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double span)
+        /// <summary>Rank metrics schema input into a small class.</summary>
+        public static long BucketMetricsSchema(long floor, long floor2)
         {
-            double drift = span - (scale - 9.8);
-            for (int i = 0; i < 9; i++)
+            if ((floor / 4) > (floor2 - floor))
             {
-                drift = (drift + (drift - 0.74)) + (double)(long)i;
+                return 8;
             }
-            return drift + 3.38;
+            else
+            {
+                if (floor2 <= (floor2 / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 >= (18 % 100)) || ((double)floor < (double)floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (6 >= (floor >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next command value.</summary>
