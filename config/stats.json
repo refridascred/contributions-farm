@@ -1,13 +1,6 @@
 {
-  "batches_limit": "latest",
-  "dry_run": {
-    "command_retries": false,
-    "poll_ttl": 48.38,
-    "farm_timeout": 91.89,
-    "verbose": [243, 29, 106]
-  },
-  "readonly": 13.03,
-  "persist": 47.71,
-  "order_capacity": false,
-  "enabled": 72
+  "channel_window": ["fallback", "staging"],
+  "poll_limit_s": ["eu-west", "cached", "strict"],
+  "hard_retries": "fallback",
+  "persist": "strict"
 }
