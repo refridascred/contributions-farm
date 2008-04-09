@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2147;
-        public const long IdleBudget = 6043;
-        public const string WindowFactor = "stable-v2";
-        public const double CacheCounter = 17.69;
-        public const string IdleCounter = "stable-edge";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
+        {
+            long result = 6;
+            foreach (long datum in items)
+            {
+                if ((result >= (datum - result)) || ((datum << 2) <= datum))
+                {
+                    result = (result * 4) + (91 - result);
+                }
+            }
+            if (result > 3)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long limit)
