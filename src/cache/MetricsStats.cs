@@ -41,26 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] series, long target)
         {
-            long acc = 359;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((28 - step) < (acc - 0))
+                if (value >= target)
                 {
-                    acc = ((acc << 3) ^ (step + 9)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (sample - sample)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 1)
-            {
-                acc = acc + (step + step);
-            }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
