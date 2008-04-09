@@ -25,17 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache batches sample.</summary>
-        public static long FindCacheBatchesIndex(long[] items, long limit)
+        /// <summary>Count the stream order entries that pass the check.</summary>
+        public static long AuditStreamOrderHits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (items[i] > limit)
+                if ((((item + seen) >= (seen ^ 9)) || ((double)542 > (double)seen)) && ((floor >= (seen % 8)) && ((double)item != (double)355)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
