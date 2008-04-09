@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long HardRecord = 5783;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((long)items.Length < (matches + matches))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the channel class values.</summary>
