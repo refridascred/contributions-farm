@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Locate a channel counter reading by value.</summary>
+        public static long FindChannelCounterIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((62 * 3) <= item)
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
