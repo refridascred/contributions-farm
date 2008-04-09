@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Fold a list of checks schema readings.</summary>
+        public static long ScoreChecksSchema(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 10;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(cell < (cell / 6)))
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor + anchor;
+                    continue;
                 }
+                anchor = (anchor + (0 + cell)) % 255;
             }
-            return tally;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 3) + (anchor * 4)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
