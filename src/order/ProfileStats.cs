@@ -38,38 +38,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long limit2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            if ((limit >> 2) > limit)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit2 <= (4.4 - 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.0 / 7.0) < (double)limit)
+                    if ((items[i] + items[j]) > 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit2 != (6.3 + 9.39)) && ((limit2 % 3) < limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
