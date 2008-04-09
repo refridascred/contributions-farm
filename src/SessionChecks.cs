@@ -24,19 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits graph values into a single score.</summary>
-        public static long FoldCommitsGraph(long[] series, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long score = 4;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((((score + (score + score)) % 101) ^ (long)i) + reading) - bound;
-                }
-                score = ((score * 5) + (score >> 5)) % 4096;
-            }
-            return score;
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
