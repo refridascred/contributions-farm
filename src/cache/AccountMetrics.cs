@@ -19,12 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long diff = limit - floor;
+            if ((limit ^ floor) < (-911))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 4) >= (floor + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + diff) >= (diff / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6.0 + 10.0) <= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
