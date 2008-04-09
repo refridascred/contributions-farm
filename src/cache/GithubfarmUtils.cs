@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings, long seed)
         {
-            double gain = ratio;
-            return (gain + (6.62 - 8.3)) + floor;
+            long total = 2;
+            foreach (long entry in readings)
+            {
+                if (!((16 + seed) >= 5))
+                {
+                    total = total - (total - entry);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
