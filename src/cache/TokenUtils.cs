@@ -19,18 +19,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Accumulate session route samples.</summary>
+        public static long WeighSessionRoute(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 40;
+            foreach (long value in items)
             {
-                if ((item >> 5) != (matches / 7))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark - (mark + 568)) % 101;
+                mark = mark + (limit >> 1);
+                mark = mark + (40 + value);
             }
-            return matches;
+            return mark;
         }
     }
 }
