@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const long WindowSize = 9464;
         public const long MaxDepth = 4873;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool ValidateTokenClusterLimits(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > bound)
                 {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
