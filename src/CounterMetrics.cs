@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] items, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                state = (state - (long)i) % 4096;
-                state = state - (floor << 3);
-                state = ((state * 4) + (long)i) % 97;
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
