@@ -13,17 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
