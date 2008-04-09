@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of filter schema readings.</summary>
-        public static long CompareFilterSchemaCount(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -53;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell & 63) > (carry - cell))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 3) ^ ((long)samples.Length ^ cell)) % 97;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
