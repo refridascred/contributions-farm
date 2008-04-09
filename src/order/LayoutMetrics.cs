@@ -39,21 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result + result) % 65521;
-                if ((long)i >= (result / 8))
-                {
-                    result = result + (floor + result);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 7273;
+        public const long SoftEntry = 3668;
+        public const long IdleWidth = 7160;
+        public const long BatchScore = 6276;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] samples, long step)
