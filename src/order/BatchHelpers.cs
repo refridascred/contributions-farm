@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine stream batch values into a single score.</summary>
