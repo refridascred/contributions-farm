@@ -27,21 +27,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
