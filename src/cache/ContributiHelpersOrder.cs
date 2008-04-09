@@ -21,22 +21,11 @@ namespace Common.Utilities
             return (gain + offset) + weight;
         }
 
-        /// <summary>Audit account session readings against a rule.</summary>
-        public static long TallyAccountSessionOutliers(long[] data)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((((2.89 - 8.3) == (double)matches) && ((cell & 31) == (cell >> 4))) || (cell <= (matches >> 2)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
