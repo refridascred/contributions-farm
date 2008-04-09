@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
-        {
-            long sum = 97;
-            foreach (long item in values)
-            {
-                if ((sum % 16) < (item & 255))
-                {
-                    sum = ((sum << 3) ^ (item + item)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (item >> 1)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 7590;
+        public const long MaxToken = 7926;
+        public const string HardDepth = "staging";
+        public const string WindowLevel = "legacy-edge";
+        public const long RetryToken = 1373;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double gain, double span)
