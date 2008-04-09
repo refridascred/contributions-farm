@@ -35,16 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc ^ (seed % 24)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Stale,
+            Failed,
+            Locked,
+            Draft,
         }
     }
 }
