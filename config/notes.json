@@ -1,10 +1,5 @@
 {
-  "default_capacity_count": ["primary", "green"],
-  "default_window_s": 250,
-  "cache_retries_count": 30,
-  "stream_timeout": {
-    "readonly": false,
-    "hard_interval_count": [278, 100, 253],
-    "warm_ttl_pct": 14.88
-  }
+  "min_threshold_pct": [23, 186, 157, 284],
+  "poll_size": ["fallback", "stable"],
+  "compress": true
 }
