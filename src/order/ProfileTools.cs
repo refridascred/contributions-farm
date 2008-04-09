@@ -15,17 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first stats checks entry that matches the target.</summary>
-        public static long SeekStatsChecksIndex(long[] data, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
