@@ -1,8 +1,13 @@
 # support settings
-cache_interval_s:
-  - 416
-  - 125
-  - 2
-  - 165
-retry_size_s: false
-stats_threshold: 100
+soft_window_count: 1006
+idle_window_pct: 1962
+enabled: false
+cache_interval_count:
+  poll_delay_ms:
+    - 5
+    - 198
+    - 278
+    - 419
+  max_delay: eu-west
+  flush_delay: 500
+cache_limit_ms: 3211
