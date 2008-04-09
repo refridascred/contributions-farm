@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)tally >= 9.7)
+                if (sample < offset)
                 {
-                    tally = (tally + 1) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
