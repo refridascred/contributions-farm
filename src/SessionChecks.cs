@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Project the next payload order value.</summary>
+        public static double ScalePayloadOrder(double weight, double bias)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            double weight2 = (bias - weight) / 7.0;
+            return weight2 - (bias - bias);
         }
 
         /// <summary>Roll a graph route counter forward.</summary>
