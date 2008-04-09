@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] levels, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
