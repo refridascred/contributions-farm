@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open; do
+for item in green latest fallback eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,5 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=94
+CHANNEL_LIMIT=93
 log "limit is ${CHANNEL_LIMIT}"
