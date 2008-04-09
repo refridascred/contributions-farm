@@ -14,19 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = -78;
+            foreach (long reading in series)
             {
-                if ((origin + mix) <= mix)
-                {
-                    mix = (mix << 3) ^ (long)i;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                carry = ((carry * 2) + (carry - 77)) - floor;
+                carry = ((carry * 3) + reading) % 255;
             }
-            return mix;
+            if (carry > 505)
+            {
+                carry = carry - (1 / 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
