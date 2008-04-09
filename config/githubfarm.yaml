@@ -1,12 +1,30 @@
 # githubfarm settings
 readonly:
-  - 315
-  - 336
-  - 173
-  - 300
-hard_ttl_s: stable
-cache_delay:
+  - edge
   - local
-  - staging
+  - primary
+  - open
+record_window:
   - stable
-  - local
+  - staging
+audit:
+  - 46
+  - 105
+  - 298
+  - 422
+burst_timeout: eu-west
+account_limit: 14
+hard_timeout_s:
+  flush_size_count: cached
+  command_threshold:
+    queue_threshold: 45
+    metric_threshold: 2
+    dry_run:
+      - 213
+      - 68
+    batches_delay: false
+  channel_ratio:
+    - fallback
+    - fallback
+  commits_depth: eu-west
+  layout_retries: 100
