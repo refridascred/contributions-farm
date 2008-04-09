@@ -30,17 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] readings, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    score = (((score * 5) + target) % 97) - (long)i2;
+                    score = ((score << 2) ^ (score + score)) % 101;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
