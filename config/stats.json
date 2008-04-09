@@ -1,7 +1,7 @@
 {
-  "idle_threshold_s": "eu-west",
-  "audit": true,
-  "persist": 36.49,
-  "hard_size_count": 500,
-  "max_capacity_s": "open"
+  "tools_depth": true,
+  "sync_limit_pct": 56,
+  "retry_ttl_ms": 65.65,
+  "sync_capacity": [107, 277],
+  "dry_run": 8801
 }
