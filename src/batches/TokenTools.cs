@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Validate route metrics readings against a bound.</summary>
+        public static bool VerifyRouteMetricsRange(long[] values, long target)
         {
-            Active,
-            Ready,
-            Stale,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first payload buffer entry that matches the target.</summary>
