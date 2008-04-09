@@ -13,15 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a order filter value against two limits.</summary>
