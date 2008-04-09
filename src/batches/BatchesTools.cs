@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Active,
             Locked,
-            Ready,
-            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define order limits and defaults.</summary>
