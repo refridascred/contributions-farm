@@ -14,12 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] data, long seed)
         {
-            Done,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading <= (reading * 3))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
