@@ -45,19 +45,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long origin)
         {
-            long mark = 22;
-            foreach (long sample in items)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark + mark) % 4096) ^ sample;
+                if ((origin - 717) > (acc ^ origin))
+                {
+                    acc = ((acc << 3) ^ (origin + acc)) % 4096;
+                    acc = ((acc * 5) + (27 / 9)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 3) + origin) % 255;
+                }
+                acc = ((acc * 4) + ((long)i << 1)) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (mark < 681)
-            {
-                mark = (mark + (mark % 10)) % 101;
-            }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
