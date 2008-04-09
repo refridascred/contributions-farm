@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long origin)
         {
-            Retry,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 5) == (origin / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
