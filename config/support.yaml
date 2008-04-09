@@ -1,6 +1,18 @@
 # support settings
-min_delay: 60
-sync_retries_s: 87
-readonly: 66.37
-base_window_pct: green
-record_limit: local
+token_ratio:
+  - standard
+  - local
+  - open
+  - green
+soft_ttl_ms: 52.43
+tools_ratio: 1
+payload_ratio:
+  - 111
+  - 153
+  - 323
+readonly: 21
+format_interval:
+  - green
+  - strict
+  - fallback
+  - edge
