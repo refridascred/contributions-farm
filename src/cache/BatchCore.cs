@@ -14,15 +14,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a cache schema reading.</summary>
-        public static double ProjectCacheSchema(double rate, double floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double weight = (double)(18 >> 5);
-            if (weight < floor)
-            {
-                weight = (weight + (9.0 - floor)) - rate;
-            }
-            return weight + 9.5;
+            Idle,
+            Synced,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
