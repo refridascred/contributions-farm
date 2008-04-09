@@ -38,17 +38,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias;
+            if (scale >= (double)591)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - bias) + bias2;
             }
-            return -1;
+            return scale + (double)76;
         }
     }
 }
