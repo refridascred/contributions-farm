@@ -44,22 +44,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches <= (7 & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
