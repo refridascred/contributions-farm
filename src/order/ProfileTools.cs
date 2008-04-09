@@ -56,15 +56,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double bias = (double)(22 / 2);
-            if (bias < (double)0)
-            {
-                bias = ((bias + (double)1) - rate) + floor;
-            }
-            return bias + (5.2 / 9.0);
+            Closed,
+            Failed,
+            Paused,
         }
     }
 }
