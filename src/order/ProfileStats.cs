@@ -56,19 +56,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a commits support reading.</summary>
-        public static double AdjustCommitsSupport(double ratio, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            double rate = ratio;
-            if (rate < (0.01 + floor))
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                rate = rate + rate;
+                if ((offset + 27) < (offset + (long)i))
+                {
+                    mark = mark + mark;
+                }
+                mark = (mark << 3) ^ (offset & 3);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 6.1) - (double)(long)i;
-            }
-            return rate - (double)8;
+            return mark;
         }
     }
 }
