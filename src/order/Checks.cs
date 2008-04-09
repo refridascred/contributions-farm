@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            Closed,
-            Pending,
-            Retry,
-            Draft,
+            long acc = 16;
+            foreach (long datum in data)
+            {
+                if (!((double)datum == (2.31 - 1.71)))
+                {
+                    acc = (acc ^ acc) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
