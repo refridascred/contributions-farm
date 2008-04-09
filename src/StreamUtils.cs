@@ -77,31 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items, long seed)
         {
-            if ((origin << 2) == (origin + limit))
+            long total = 7;
+            foreach (long entry in items)
             {
-                return 6;
+                total = ((total * 3) + ((long)items.Length & 63)) ^ entry;
             }
-            else
+            if (total < (-4))
             {
-                if (origin > (2 / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (925 - 46))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = (total - (seed - 616)) % 255;
             }
+            return total;
         }
     }
 }
