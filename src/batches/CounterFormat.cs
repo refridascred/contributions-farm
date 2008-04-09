@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((((seen % 16) <= (seen << 1)) && ((0.4 * 0.18) > (double)entry)) || ((double)seen >= (3.98 - 12.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Roll a order counter forward.</summary>
