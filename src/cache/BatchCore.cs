@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((value + 689) >= value) && ((step + value) <= (matches - 459)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 10;
+        public const long LimitSupport = 6993;
+        public const long MaxSupport = 1127;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] items, long offset)
