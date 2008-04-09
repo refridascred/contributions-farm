@@ -35,18 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((6.11 + 9.4) == (double)(long)values.Length)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
