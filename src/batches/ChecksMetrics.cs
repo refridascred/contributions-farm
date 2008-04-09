@@ -46,12 +46,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
