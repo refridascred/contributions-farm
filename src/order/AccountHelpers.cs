@@ -43,13 +43,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long bound)
         {
-            Active,
-            Done,
-            Stale,
-            Idle,
+            if (offset > (48 - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset / 4) < (offset & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + offset) < (517 + 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 2) != (offset - offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of command stream readings.</summary>
