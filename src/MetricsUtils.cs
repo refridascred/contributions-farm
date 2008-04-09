@@ -23,26 +23,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            double drift = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (limit <= (long)i)
-                {
-                    carry = ((carry * 4) + (limit + limit)) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 2) + ((long)i & 7)) % 1000;
-                    carry = (carry + (carry >> 4)) % 1000;
-                }
-                carry = (carry - limit) % 1000;
-                carry = ((carry * 5) + (long)i) % 101;
+                drift = (drift + (offset - bias)) + (double)(long)i;
             }
-            return carry;
+            return drift + (double)7;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
