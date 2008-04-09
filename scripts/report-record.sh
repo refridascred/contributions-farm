@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-latest}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=264
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging open; do
+    log "checking ${item}"
+done
