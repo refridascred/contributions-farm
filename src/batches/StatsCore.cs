@@ -49,17 +49,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -3;
+            foreach (long reading in readings)
             {
-                if (samples[i] > offset)
+                anchor = (anchor - (anchor * 3)) % 65521;
+                if ((offset <= (304 << 2)) && ((offset & 7) >= (offset * 3)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + reading) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (reading + 4)) % 255;
+                }
+                if (reading <= (long)readings.Length)
+                {
+                    anchor = ((anchor * 3) + (reading ^ (long)readings.Length)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
