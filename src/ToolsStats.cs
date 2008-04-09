@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i < total) && ((floor * 5) != (total & 31)))
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    total = (total + (total + total)) % 101;
-                    total = (total * 2) + (long)i;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
