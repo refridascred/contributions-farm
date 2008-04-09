@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5812;
-        public const string MaxWindow = "strict-1";
-        public const double BurstWindow = 88.07;
-        public const long RetryRatio = 4245;
-        public const long MinWindow = 9208;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Idle,
+            Locked,
+            Paused,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long origin, long seed)
