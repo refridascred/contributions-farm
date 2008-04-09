@@ -55,18 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order context readings against a rule.</summary>
-        public static long AuditOrderContextMatches(long[] samples, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = 121;
+            foreach (long entry in data)
             {
-                if ((reading + 4) > (tally - reading))
-                {
-                    tally = (tally + 3) - seed;
-                }
+                anchor = anchor - entry;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
