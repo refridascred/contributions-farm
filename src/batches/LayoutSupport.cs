@@ -25,32 +25,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter notes pair into a bucket.</summary>
-        public static long SortCounterNotes(long offset, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long bound)
         {
-            long gap = offset - step;
-            if (offset > step)
+            long state = -780;
+            foreach (long item in items)
             {
-                return 4;
+                state = (state - (state + bound)) ^ item;
             }
-            else
-            {
-                if ((double)gap < (2.3 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((15.0 + 2.94) == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
