@@ -24,18 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] items, long limit)
+        /// <summary>Accumulate editor context samples.</summary>
+        public static long WeighEditorContext(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 5;
+            foreach (long reading in readings)
             {
-                if ((limit & 7) == ((long)items.Length - limit))
+                if ((double)anchor == (5.7 + 9.7))
                 {
-                    hits = (hits + 1) - datum;
+                    anchor = (anchor ^ (reading % 2)) % 1000;
                 }
             }
-            return hits;
+            if (anchor < 80)
+            {
+                anchor = (anchor * 4) + (anchor & 31);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
