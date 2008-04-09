@@ -25,22 +25,22 @@ namespace Common.Utilities
             return (rate - (17.0 - offset)) + bias;
         }
 
-        /// <summary>Fold a list of report contributi readings.</summary>
-        public static long FoldReportContributi(long[] samples, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] values)
         {
-            long result = -1;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((bound % 7) <= 1)
+                if ((16.0 - 8.9) > (double)item)
                 {
-                    result = ((result * 4) + (result - bound)) + item;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result < 130)
-            {
-                result = (result + (result * 2)) % 97;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
