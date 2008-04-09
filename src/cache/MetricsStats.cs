@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftLevel = 7535;
-        public const long MaxCount = 4081;
-        public const string DefaultFactor = "standard-v2";
-        public const long IdleSupport = 1689;
-        public const long BatchSupport = 7240;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
         public static long WeighCounterCluster(long[] values)
