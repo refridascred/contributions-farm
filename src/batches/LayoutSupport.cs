@@ -20,18 +20,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = 238;
+            foreach (long cell in data)
             {
-                if (!((item ^ 406) != (item - hits)))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor ^ (bound - bound)) % 255) + cell;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a buffer stats.</summary>
