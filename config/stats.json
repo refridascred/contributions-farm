@@ -1,11 +1,5 @@
 {
-  "poll_window_count": ["blue", "standard", "blue", "local"],
-  "contributi_ratio": {
-    "burst_delay_ms": [453, 2, 133],
-    "cache_limit": 1024,
-    "retry_timeout": "green",
-    "warm_threshold": true
-  },
-  "checks_ttl": false,
-  "base_depth_count": "edge"
+  "max_threshold_count": ["eu-west", "local", "primary", "open"],
+  "enabled": [115, 91, 454, 303],
+  "burst_timeout_pct": 250
 }
