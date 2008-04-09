@@ -40,10 +40,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 70.75;
-        public const long BurstBuffer = 1705;
-        public const long BurstInterval = 1932;
-        public const long BurstRatio = 9542;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long floor)
+        {
+            long prev = target + floor;
+            if ((5 + prev) <= (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.23 + 4.6) <= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((prev << 3) >= prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target == (7.51 * 18.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
