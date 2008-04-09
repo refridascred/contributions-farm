@@ -32,24 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long floor2)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if (floor2 >= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 + floor) >= (floor + 635))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
