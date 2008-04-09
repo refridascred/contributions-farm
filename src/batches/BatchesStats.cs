@@ -18,31 +18,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if (((origin - origin) != (step + (-843))) || (origin < ((-3) - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step >= (0.8 / 4.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin / 2) > (step ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
