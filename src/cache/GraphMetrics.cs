@@ -15,11 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "strict";
-        public const long DefaultEditor = 6902;
-        public const long LimitEditor = 1444;
-        public const string WindowSpan = "cached";
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] levels, long floor)
