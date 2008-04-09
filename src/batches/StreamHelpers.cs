@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels, long origin)
+        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsContributiCount(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1 < seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 3) + sample) + origin;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
