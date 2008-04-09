@@ -46,39 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long offset)
+        /// <summary>Derive the next farm schema value from a seed.</summary>
+        public static long RollFarmSchema(long step)
         {
-            long step = target ^ offset;
-            if ((step < target) && (offset <= (offset + offset)))
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (7.7 >= (double)step)
+                if (mark >= ((long)i - (long)i))
                 {
-                    return 1;
+                    mark = ((mark * 3) + (mark - step)) % 255;
+                    mark = ((mark * 4) + (step << 3)) % 65521;
                 }
-                else
-                {
-                    if ((double)(-676) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step << 2) <= (offset ^ offset)) || ((step + step) < (target >> 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
