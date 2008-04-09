@@ -25,15 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] readings, long target)
         {
-            long state = -780;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                state = (state - (state + bound)) ^ item;
+                if (!((target & 1) <= hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
