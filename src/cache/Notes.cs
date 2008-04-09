@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSize = 5675;
-        public const long BurstCount = 8442;
-        public const long RetryBudget = 7657;
-        public const long MinFarm = 7666;
-        public const long StepFarm = 5278;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowDepth = 3.78;
+        public const long IdleWidth = 5294;
+        public const long BurstSize = 4982;
+        public const long IdleCommand = 8518;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
