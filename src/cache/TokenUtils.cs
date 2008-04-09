@@ -19,22 +19,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long TallyContributiAlreadyOutliers(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((item + seen) >= (seen - item))
+                if ((item >> 5) != (matches / 7))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
