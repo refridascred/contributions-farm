@@ -13,12 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxDepth = 1254;
+        public const long LimitCluster = 5609;
+        public const long MaxCluster = 3291;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] data, long bound)
