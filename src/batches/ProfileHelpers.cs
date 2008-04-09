@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double BlendWindowMetric(double gain, double bias)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double drift = (double)(455 & 31);
-            if (drift <= (double)5)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (bias / 6.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (1.8 + 2.63);
-            }
-            return drift - (gain * 9.2);
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
