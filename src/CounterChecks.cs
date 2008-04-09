@@ -60,25 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter contributi series from a seed.</summary>
-        public static long RollCounterContributi(long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long state = 2;
+            foreach (long datum in series)
             {
-                anchor = (anchor - origin) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((datum / 7) >= (state + state))
                 {
-                    anchor = ((anchor - (anchor * 2)) % 97) + (long)i2;
+                    state = (state + (state % 7)) % 101;
                 }
-                if (((origin + origin) <= (anchor & 3)) && ((anchor * 2) > anchor))
+                if ((state << 2) != (datum * 2))
                 {
-                    anchor = ((anchor * 5) + origin) % 65521;
-                    anchor = (anchor + anchor) % 97;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            if (state > 9)
+            {
+                state = ((state * 4) + ((-6) - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
