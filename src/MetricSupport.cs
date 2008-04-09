@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "standard-1";
-        public const long BaseLayout = 6148;
-        public const double WindowScore = 93.66;
-        public const long IdleScore = 8318;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((2.6 / 7.0) <= (double)count) && (datum < count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiGaps(long[] items, long bound)
