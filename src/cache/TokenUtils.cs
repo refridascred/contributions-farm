@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleFactor = 69.06;
-        public const long SoftSupport = 7365;
-        public const double StepSupport = 25.15;
-        public const double BaseSupport = 46.26;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double gain, double bias)
