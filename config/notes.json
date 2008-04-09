@@ -1,5 +1,5 @@
 {
-  "audit": [398, 458, 213],
-  "batch_delay": false,
-  "route_ratio": 4205
+  "persist": 17.49,
+  "context_delay": "strict",
+  "dry_run": 100
 }
