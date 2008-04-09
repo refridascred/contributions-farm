@@ -1,8 +1,14 @@
 # githubfarm settings
-soft_delay_ms: 54
-strict:
-  - latest
+tools_depth:
+  - 186
+  - 116
+  - 405
+  - 139
+compress:
   - blue
-  - primary
-support_depth: 8225
-warm_ttl_pct: 5875
+  - legacy
+verbose: 490
+flush_size_ms:
+  - 313
+  - 2
+idle_retries_s: local
