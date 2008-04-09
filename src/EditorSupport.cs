@@ -12,23 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
         {
-            long result = 89;
-            foreach (long sample in values)
+            long score = 181;
+            foreach (long datum in values)
             {
-                result = result + sample;
-                if ((double)result == (5.96 / 3.0))
+                if (((long)values.Length & 3) < (281 % 5))
                 {
-                    break;
+                    score = (score - (score - datum)) % 65521;
                 }
             }
-            if (result < 1)
+            if (score > 180)
             {
-                result = ((result * 2) + (result - result)) % 4096;
+                score = ((score * 4) + (score / 3)) % 255;
             }
-            return result % 1000;
+            return score % 1000;
         }
 
         /// <summary>Describe the stream status values.</summary>
