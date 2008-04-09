@@ -73,18 +73,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value * 5) > (target >> 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Paused,
         }
     }
 }
