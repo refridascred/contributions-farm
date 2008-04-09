@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const long BaseRecord = 8130;
         public const long IdleRecord = 8562;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 792;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (sample >> 5)) % 97;
+                carry = carry - (step + carry);
             }
-            return count;
+            if (carry > 6)
+            {
+                carry = (carry - (step << 3)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
