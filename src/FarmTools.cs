@@ -13,31 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Audit tools order readings against a rule.</summary>
+        public static long AuditToolsOrderOutliers(long[] data)
         {
-            long mix = 2;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = (mix + (mix % 8)) % 255;
-                if ((mix << 3) > (mix + sample))
+                if ((15.0 / 2.0) < (double)entry)
                 {
-                    mix = ((mix << 2) ^ (sample - sample)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (15 - mix);
-                }
-                if ((mix % 60) <= ((long)readings.Length + mix))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (mix > 723)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
