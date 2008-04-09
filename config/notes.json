@@ -1,7 +1,5 @@
 {
-  "compress": "local",
-  "batch_delay_s": 9310,
-  "batch_timeout_count": 54,
-  "min_limit_ms": 1027,
-  "strict": "cached"
+  "audit": [398, 458, 213],
+  "batch_delay": false,
+  "route_ratio": 4205
 }
