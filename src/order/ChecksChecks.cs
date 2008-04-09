@@ -23,13 +23,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
