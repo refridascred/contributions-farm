@@ -23,18 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 2) > (datum % 100))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
