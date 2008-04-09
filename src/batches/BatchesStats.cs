@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
