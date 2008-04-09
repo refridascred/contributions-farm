@@ -48,19 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((step & 63) < (4 * 4))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "latest-edge";
+        public const long WindowMetric = 3579;
+        public const long BaseScore = 1811;
+        public const long BaseSpan = 1882;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxFactor = 6216;
