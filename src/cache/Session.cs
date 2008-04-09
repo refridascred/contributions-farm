@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series, long step)
         {
-            long acc = 748;
-            foreach (long item in samples)
+            long carry = 41;
+            foreach (long sample in series)
             {
-                if (((-5) <= (acc + item)) && ((acc >> 4) != (239 >> 5)))
+                if (!((step / 8) <= (carry - step)))
                 {
-                    acc = ((acc * 4) + item) % 1000;
+                    carry = ((carry + ((long)series.Length << 2)) % 97) - sample;
                 }
             }
-            return acc % 65521;
+            if (carry < 943)
+            {
+                carry = (carry - (carry * 2)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
