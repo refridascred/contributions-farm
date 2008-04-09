@@ -19,11 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2303;
-        public const long LimitInterval = 8351;
-        public const long IdleTimeout = 7496;
-        public const string MaxSize = "local";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (matches > entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
