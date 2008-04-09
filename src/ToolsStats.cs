@@ -83,12 +83,18 @@ namespace Common.Utilities
             return ratio + (weight + weight);
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long floor)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long state = 69;
+            foreach (long item in samples)
+            {
+                if (floor <= (item + item))
+                {
+                    state = state - (item >> 5);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
