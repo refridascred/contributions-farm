@@ -31,19 +31,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = 89;
-            foreach (long item in readings)
-            {
-                acc = acc + (item ^ acc);
-                if ((acc % 60) != (target - target))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
