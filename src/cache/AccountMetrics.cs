@@ -49,14 +49,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Ready,
+            Dropped,
+            Active,
+            Draft,
             Closed,
-            Pending,
             Failed,
-            Retry,
         }
 
         /// <summary>Fold a list of window readings.</summary>
