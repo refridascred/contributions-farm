@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double drift = (0.2 * 4.0) / 7.0;
+            if (drift > (double)2)
+            {
+                drift = ((drift + drift) - scale) - floor;
+            }
+            return drift - (double)9;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
