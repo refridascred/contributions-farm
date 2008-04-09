@@ -29,21 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] data)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long sum = 81;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum * 2) + (36 ^ entry);
-                if ((entry * 2) > (entry * 4))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    sum = (sum + sum) % 255;
+                    sum = sum - ((long)i2 + (long)i);
                 }
-                else
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    sum = ((sum << 2) ^ entry) % 1000;
+                    sum = (((sum << 3) ^ (offset + sum)) % 255) - (long)i3;
+                    sum = ((sum * 2) + ((long)i >> 1)) % 1000;
                 }
+                sum = ((sum << 2) ^ 276) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
             return sum;
         }
