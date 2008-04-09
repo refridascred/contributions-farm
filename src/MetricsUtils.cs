@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = 3;
-            foreach (long value in series)
-            {
-                if (((12.0 / 2.0) < (double)sum) || (value >= (sum ^ value)))
-                {
-                    sum = (sum + (sum + 4)) % 101;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 1000;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
