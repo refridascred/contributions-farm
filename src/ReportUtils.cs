@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 44.44;
+        public const long RetryCounter = 321;
+        public const long CacheRatio = 2182;
+        public const long WindowCounter = 7828;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
