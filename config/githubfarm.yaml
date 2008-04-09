@@ -1,19 +1,12 @@
 # githubfarm settings
-sync_delay_count:
-  notes_limit: edge
-  githubfarm_capacity: 500
-  burst_size_s: green
-  soft_delay_ms:
-    - 465
-    - 385
-    - 150
-  batch_limit: 5931
-  strict: green
-max_window_pct: 6541
-burst_threshold_ms: true
-strict: 1530
-flush_ttl: false
-sync_ratio_s:
-  - staging
-  - standard
-  - edge
+batch_threshold_ms: 82.92
+hard_size_count: 845
+cache_interval_ms:
+  base_limit_ms: 100
+  githubfarm_threshold: 15
+  editor_window: 2499
+  readonly: local
+  enabled: 22
+  poll_capacity: legacy
+sync_ttl_count: true
+record_ratio: 78
