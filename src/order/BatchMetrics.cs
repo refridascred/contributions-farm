@@ -53,22 +53,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] samples, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((cell & 31) >= (target / 8)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 1;
+                    mix = ((mix - (mix ^ seed)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
