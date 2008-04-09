@@ -25,22 +25,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((value ^ value) >= (9 - value)) && (2.9 <= (double)count)) || ((double)value <= 6.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryInterval = 9748;
+        public const double IdleCount = 61.04;
+        public const long MinFormat = 8799;
+        public const long WindowFormat = 3940;
     }
 }
