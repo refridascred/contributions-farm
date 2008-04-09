@@ -23,15 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double weight, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            double rate = offset;
-            if (rate < (double)171)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate + (double)571) - weight;
+                if ((9.88 / 2.0) == (double)(long)i)
+                {
+                    anchor = ((anchor << 2) ^ (floor - (long)i)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return rate - (double)(-99);
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
