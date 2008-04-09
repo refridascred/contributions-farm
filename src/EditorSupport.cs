@@ -80,31 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report channel input into a small class.</summary>
-        public static long SortReportChannel(long bound, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            if ((4.6 * 2.2) <= (double)bound)
+            double scale = offset;
+            if (scale >= ratio)
             {
-                return 4;
+                scale = scale + offset;
             }
-            else
-            {
-                if (!((7.69 * 4.6) >= (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 - bound) != (seed >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return scale - ratio;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
