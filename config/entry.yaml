@@ -1,8 +1,14 @@
 # entry settings
-cache_threshold_count: false
-sync_capacity: true
-soft_delay_pct:
-  - 167
-  - 416
-burst_depth_count: stable
-hard_retries_s: latest
+hard_depth_ms:
+  burst_depth_count: 100
+  dry_run:
+    - 99
+    - 120
+  cache_size:
+    - 332
+    - 149
+    - 267
+    - 351
+  payload_delay: 69.73
+default_ratio_ms: stable
+channel_ttl: true
