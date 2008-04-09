@@ -39,13 +39,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Pending,
-            Ready,
-            Idle,
+            Done,
+            Draft,
             Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
