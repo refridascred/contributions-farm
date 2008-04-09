@@ -52,19 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] items, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
