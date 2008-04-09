@@ -30,19 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
