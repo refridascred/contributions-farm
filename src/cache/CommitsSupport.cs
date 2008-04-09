@@ -73,15 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Count the queue format entries that pass the check.</summary>
+        public static long CountQueueFormatOutliers(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((double)reading <= (1.76 + 3.96))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a metric info.</summary>
