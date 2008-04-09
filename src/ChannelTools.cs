@@ -39,14 +39,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels)
         {
-            Queued,
-            Pending,
-            Stale,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((value ^ value) >= (9 - value)) && (2.9 <= (double)count)) || ((double)value <= 6.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
