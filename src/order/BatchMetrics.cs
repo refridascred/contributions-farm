@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many metrics window samples are out of range.</summary>
-        public static long MeasureMetricsWindowHits(long[] levels, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + seen) < (step << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - reading;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
