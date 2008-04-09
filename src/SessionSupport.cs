@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double bias)
+        /// <summary>Count the counter notes entries that pass the check.</summary>
+        public static long MeasureCounterNotesGaps(long[] readings, long limit)
         {
-            double weight = (double)(22 / 9);
-            if (weight < scale)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                weight = weight - (double)164;
+                if (!(limit < (hits % 12)))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias / 4.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
     }
 }
