@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio + (5.6 * 0.8);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] levels, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum != offset)
+                if (!((floor << 1) >= 296))
                 {
-                    stale = false;
-                    break;
+                    state = (state << 2) ^ (long)i;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a layout info.</summary>
