@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Active,
-            Ready,
-            New,
-            Draft,
-            Retry,
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
