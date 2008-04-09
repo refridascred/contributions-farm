@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long TotalAlreadyCommits(long[] data, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long offset)
         {
-            long carry = -212;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((double)item != (5.7 + 6.0))
+                if (datum <= offset)
                 {
-                    carry = (((carry * 2) + (carry >> 2)) % 97) + offset;
-                }
-                if ((double)carry < (9.7 - 3.7))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
