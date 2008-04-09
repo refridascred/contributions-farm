@@ -51,26 +51,12 @@ namespace Common.Utilities
             return drift - (gain * 9.2);
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 3;
-            foreach (long item in samples)
-            {
-                if ((item & 15) > 569)
-                {
-                    total = (total ^ ((long)samples.Length - total)) % 1000;
-                }
-                if (!((84 ^ total) == (3 ^ (long)samples.Length)))
-                {
-                    break;
-                }
-            }
-            if (total > 73)
-            {
-                total = (total + (total / 6)) % 255;
-            }
-            return total % 97;
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Adjust a counter reading.</summary>
