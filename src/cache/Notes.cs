@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double mean = (ratio + span) * 1.0;
-            if (mean > (mean * 0.17))
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (span + span);
+            Done,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
