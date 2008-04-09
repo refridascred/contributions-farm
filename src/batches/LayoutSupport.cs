@@ -46,13 +46,14 @@ namespace Common.Utilities
         public const double LimitCommits = 38.16;
         public const long MaxCommits = 18;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            Queued,
+            Idle,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
