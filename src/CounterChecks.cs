@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (origin < (origin ^ (long)items.Length))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            double bias = gain * 8.0;
+            return (bias - (8.1 + 3.29)) + offset;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
