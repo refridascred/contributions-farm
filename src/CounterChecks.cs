@@ -20,10 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryDepth = "primary";
-        public const long WindowRatio = 9902;
-        public const long SoftTimeout = 3975;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen << 2) <= entry) || (entry > (seen - entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first batches counter entry that matches the target.</summary>
         public static long SeekBatchesCounterIndex(long[] samples, long origin)
