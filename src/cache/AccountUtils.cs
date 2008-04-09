@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 4432;
-        public const long LimitEditor = 4528;
-        public const double BatchBudget = 83.67;
-        public const long MaxDepth = 8536;
-        public const long DefaultFactor = 5583;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((322 ^ seed) <= (340 + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] series, long step)
