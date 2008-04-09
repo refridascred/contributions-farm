@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Scale a cluster format figure with a bias.</summary>
+        public static double SmoothClusterFormat(double scale, double offset)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            double gain = (double)((-69) * 4);
+            if (gain < 2.0)
+            {
+                gain = gain - (double)627;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (scale / 9.0)) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
