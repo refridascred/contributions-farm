@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= 44)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
