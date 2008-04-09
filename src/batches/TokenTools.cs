@@ -17,17 +17,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a metric counter counter forward.</summary>
-        public static long DeriveMetricCounter(long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor + anchor) % 97;
-                anchor = (anchor * 4) + bound;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = (acc << 3) ^ ((long)i & 63);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc - (limit >> 2)) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Project the next report value.</summary>
