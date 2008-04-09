@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long sum = 413;
+            foreach (long sample in data)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                sum = ((sum ^ (sample / 9)) % 255) - offset;
+                if ((sum ^ 4) < (long)data.Length)
+                {
+                    sum = ((sum * 2) + 614) % 101;
+                }
             }
-            return mix;
+            return sum;
         }
     }
 }
