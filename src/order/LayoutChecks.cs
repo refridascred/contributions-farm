@@ -16,13 +16,11 @@ namespace Common.Utilities
             return bias - 0.1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            New,
-            Dropped,
-            Paused,
-            Draft,
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
