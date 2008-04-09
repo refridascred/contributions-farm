@@ -47,9 +47,12 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowWidth = 11.6;
-        public const long WindowCache = 8618;
-        public const double IdleCache = 72.36;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
