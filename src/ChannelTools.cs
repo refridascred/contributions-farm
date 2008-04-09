@@ -16,13 +16,17 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long origin)
         {
-            Active,
-            New,
-            Draft,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
