@@ -13,18 +13,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] values, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)matches == (1.0 * 1.1))
+                result = (result + result) % 65521;
+                if ((long)i >= (result / 8))
                 {
-                    matches = ((matches + 3) + item) - origin;
+                    result = result + (floor + result);
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
