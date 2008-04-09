@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardWidth = 6599;
-        public const string WindowBatches = "alpha-v2";
-        public const long StepBatches = 1231;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCount = 1547;
+        public const long DefaultInterval = 9031;
+        public const long BatchCluster = 8560;
+        public const long RetryCluster = 497;
+        public const long WindowCount = 6804;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] samples, long bound)
