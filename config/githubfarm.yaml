@@ -1,8 +1,16 @@
 # githubfarm settings
-audit: 36.52
-githubfarm_retries: 250
-warm_ttl: legacy
-idle_ratio:
-  - 202
-  - 90
-hard_size_ms: false
+tools_size: true
+persist: true
+min_delay_pct: standard
+poll_interval: 83
+burst_limit_s:
+  layout_retries: stable
+  flush_limit_pct:
+    audit: 29.74
+    warm_limit:
+      - standard
+      - green
+      - blue
+    dry_run: 500
+  default_delay_s: stable
+  burst_retries_ms: stable
