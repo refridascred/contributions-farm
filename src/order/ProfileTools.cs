@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Closed,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
