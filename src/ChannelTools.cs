@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] levels, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long origin)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            long offset = target ^ origin;
+            if (!((2 + offset) < target))
             {
-                if ((item >> 4) <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((target % 8) > (origin % 60))
                 {
-                    anchor = ((anchor * 5) + (anchor + 95)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor << 2) ^ (anchor * 4);
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the format status values.</summary>
