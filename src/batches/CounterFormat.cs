@@ -43,18 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window cache readings.</summary>
-        public static long DigestWindowCache(long[] levels, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long seed)
         {
-            long carry = -1;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed % 100) <= 5)
+                if (series[i] >= seed)
                 {
-                    carry = ((carry - (carry << 2)) % 255) - cell;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
