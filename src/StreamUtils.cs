@@ -32,31 +32,14 @@ namespace Common.Utilities
         public const string StepProfile = "staging";
         public const long MaxBudget = 8595;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long bound, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if (6.0 > (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (6.6 < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(seed > (seed ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
