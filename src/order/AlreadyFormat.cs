@@ -28,21 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Find the first metric account entry that matches the target.</summary>
+        public static long FindMetricAccountIndex(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
