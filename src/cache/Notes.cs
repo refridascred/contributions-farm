@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a notes already reading by value.</summary>
-        public static long SeekNotesAlreadyIndex(long[] levels, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (ratio + span) * 1.0;
+            if (mean > (mean * 0.17))
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + ratio;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (span + span);
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
