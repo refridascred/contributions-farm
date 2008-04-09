@@ -19,19 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster format figure with a bias.</summary>
-        public static double SmoothClusterFormat(double scale, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            double gain = (double)((-69) * 4);
-            if (gain < 2.0)
+            long carry = 4;
+            foreach (long reading in levels)
             {
-                gain = gain - (double)627;
+                if ((6.11 * 3.73) != (double)reading)
+                {
+                    carry = carry + (long)levels.Length;
+                    continue;
+                }
+                if ((carry - reading) >= ((long)levels.Length - carry))
+                {
+                    carry = carry + (carry + reading);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ 71) % 101;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (scale / 9.0)) + (double)(long)i;
-            }
-            return gain + offset;
+            return carry % 4096;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
