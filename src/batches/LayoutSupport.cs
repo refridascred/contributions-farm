@@ -41,16 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data, long bound)
-        {
-            long anchor = 238;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor ^ (bound - bound)) % 255) + cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 573;
+        public const double LimitCommits = 38.16;
+        public const long MaxCommits = 18;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
