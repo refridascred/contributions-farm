@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] readings, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = 51;
+            foreach (long value in samples)
             {
-                if ((seen ^ seen) <= (datum << 1))
+                if (origin <= (221 - (-77)))
                 {
-                    seen = (seen + 2) - offset;
+                    anchor = (anchor ^ value) % 4096;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
