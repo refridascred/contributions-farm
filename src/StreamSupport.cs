@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)40 - (span - span);
+            if (drift > (gain * 4.6))
             {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (gain - drift);
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)890;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 7.3) - (double)(long)i;
+            }
+            return drift - (8.0 + gain);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
