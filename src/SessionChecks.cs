@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Find the first graph order entry that matches the target.</summary>
+        public static long LocateGraphOrderIndex(long[] readings, long origin)
         {
-            double scale = ratio;
-            if (scale >= scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (double)13;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (floor * 5.2)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
