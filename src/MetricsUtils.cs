@@ -35,10 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardLevel = 51.81;
-        public const string RetrySpan = "standard-edge";
-        public const string MinContributi = "latest-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitTimeout = 4767;
+        public const long LimitInterval = 3295;
+        public const string IdleSpan = "latest-v2";
+        public const long WindowBudget = 6447;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
