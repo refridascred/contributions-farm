@@ -20,11 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
