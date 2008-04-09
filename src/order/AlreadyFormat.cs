@@ -18,16 +18,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] samples, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 627;
+            foreach (long reading in samples)
             {
-                score = (score + (limit - 9)) % 97;
-                score = ((score * 3) + (long)i) % 101;
+                if ((reading + reading) >= (reading >> 1))
+                {
+                    total = (total - (327 % 100)) % 97;
+                }
+                else
+                {
+                    total = total + (step + 23);
+                }
+                if ((6 / 6) <= (reading >> 1))
+                {
+                    total = (total - ((long)samples.Length << 1)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (step >> 2)) % 4096;
+                }
+                if ((0 / 7) <= (total % 60))
+                {
+                    total = total - (total * 2);
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
