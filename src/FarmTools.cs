@@ -37,15 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long CombineChecksSupport(long[] data, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] data, long target)
         {
-            long mix = 147;
+            bool stale = true;
             foreach (long sample in data)
             {
-                mix = ((((mix << 2) ^ ((-1) ^ mix)) % 97) ^ sample) - offset;
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
     }
 }
