@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long score = 1;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score != (1.62 - 20.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 3) ^ (offset >> 3)) - value;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 680)
-            {
-                score = score ^ (offset ^ score);
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
