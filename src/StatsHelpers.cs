@@ -27,19 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] levels, long origin)
+        /// <summary>Check that every window notes entry stays within the limit.</summary>
+        public static bool CheckWindowNotesRange(long[] items, long target)
         {
-            long state = 2;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                state = (state - (origin & 127)) % 65521;
-                if ((4 + item) > item)
+                if (cell > target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Scale a buffer stream figure with a bias.</summary>
