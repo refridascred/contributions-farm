@@ -58,39 +58,19 @@ namespace Common.Utilities
         public const long MinScore = 6929;
         public const string MaxCache = "cached";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long offset)
         {
-            long edge = origin + seed;
-            if ((6.35 - 3.78) > (double)edge)
+            long state = 3;
+            foreach (long reading in items)
             {
-                return 3;
+                state = (state ^ reading) + offset;
             }
-            else
+            if (state > 21)
             {
-                if (!(400 >= (edge & 127)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge != (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge & 63) > (edge & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = (state + (state + 213)) % 1000;
             }
+            return state % 1000;
         }
 
         /// <summary>Describe the already status values.</summary>
