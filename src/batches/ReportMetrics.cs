@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first command filter entry that matches the target.</summary>
-        public static long LocateCommandFilterIndex(long[] data, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = floor;
+            if (load < (load + 6.0))
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                load = load - weight;
             }
-            return -1;
+            else
+            {
+                load = load - floor;
+            }
+            return load - floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
