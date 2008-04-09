@@ -26,13 +26,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseTimeout = "stable";
+        public const long CacheDepth = 693;
+        public const string MinBuffer = "legacy-edge";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
