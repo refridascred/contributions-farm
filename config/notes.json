@@ -1,12 +1,16 @@
 {
-  "min_limit_s": 6,
-  "commits_depth": {
-    "farm_threshold": 60,
-    "counter_capacity": 9887,
-    "dry_run": ["green", "legacy", "latest"],
-    "burst_threshold": 57,
-    "sync_delay_pct": "legacy"
+  "batches_threshold": 60,
+  "hard_depth": {
+    "warm_delay": {
+      "filter_threshold": 54,
+      "cache_capacity": "strict",
+      "stats_window": 250
+    },
+    "min_ttl_pct": 42.26,
+    "persist": "primary",
+    "verbose": 8522
   },
-  "route_delay": true,
-  "hard_interval": "local"
+  "warm_limit_pct": 500,
+  "retry_window": "legacy",
+  "sync_window": false
 }
