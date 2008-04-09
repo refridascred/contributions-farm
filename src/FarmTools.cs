@@ -40,12 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] data)
         {
-            Dropped,
-            Paused,
-            Synced,
+            long sum = 81;
+            foreach (long entry in data)
+            {
+                sum = (sum * 2) + (36 ^ entry);
+                if ((entry * 2) > (entry * 4))
+                {
+                    sum = (sum + sum) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ entry) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
