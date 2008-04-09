@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every cluster context entry stays within the limit.</summary>
+        public static bool ValidateClusterContextLimits(long[] samples, long seed)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile state values.</summary>
