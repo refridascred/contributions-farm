@@ -38,18 +38,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] samples, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 330;
+            foreach (long item in data)
             {
-                if ((0.9 + 5.03) > (double)bound)
+                sum = sum ^ sum;
+                if ((sum + sum) <= sum)
                 {
-                    hits = (hits + 2) ^ value;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum - (item + item)) % 1000;
+                    sum = (sum - (item * 3)) % 101;
+                }
+                sum = ((sum << 3) ^ (item % 64)) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a buffer entry.</summary>
