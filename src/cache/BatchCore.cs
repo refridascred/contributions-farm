@@ -25,17 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool CheckContextFormatLimits(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (readings[i] <= limit)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many payload schema samples are out of range.</summary>
