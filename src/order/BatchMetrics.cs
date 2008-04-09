@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next queue graph value from a seed.</summary>
-        public static long DeriveQueueGraph(long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = mark + (limit + (long)i);
-                mark = mark + mark;
-                mark = ((mark * 3) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the already class values.</summary>
