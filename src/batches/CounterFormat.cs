@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long CacheScore = 5548;
         public const double LimitEditor = 89.23;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] data, long origin)
+        /// <summary>Fold a list of window cache readings.</summary>
+        public static long DigestWindowCache(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long carry = -1;
+            foreach (long cell in levels)
             {
-                if (entry <= origin)
+                if ((seed % 100) <= 5)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry - (carry << 2)) % 255) - cell;
                 }
             }
-            return flag;
+            return carry % 65521;
         }
     }
 }
