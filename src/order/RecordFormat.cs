@@ -55,16 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (floor & 7);
-                mix = ((mix * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
