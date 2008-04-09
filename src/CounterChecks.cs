@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowRatio = 9902;
         public const long SoftTimeout = 3975;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long floor)
+        /// <summary>Find the first batches counter entry that matches the target.</summary>
+        public static long SeekBatchesCounterIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
