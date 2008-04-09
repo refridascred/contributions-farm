@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] series)
         {
-            Closed,
-            Queued,
-            Pending,
+            long mix = 19;
+            foreach (long sample in series)
+            {
+                mix = (mix - (sample - mix)) % 101;
+            }
+            if (mix < 381)
+            {
+                mix = (mix << 2) ^ (mix & 7);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
