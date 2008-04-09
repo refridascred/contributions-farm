@@ -1,15 +1,15 @@
 # Command notes
 
-When a session fails, the cache handler retries a few times before giving up.
-The order module keeps counter values in sync with the schema cache.
-When a githubfarm fails, the layout handler retries a few times before giving up.
+The command module keeps batches values in sync with the graph cache.
+Run the record check before changing any notes limits.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the window list.
+A format that stays idle for too long is moved to the filter list.
+A format that stays idle for too long is moved to the command list.
+Each window is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer format defaults
-- Document new context fields
-- Validate notes input early
+- Prefer entry defaults
+- Document new profile fields
+- Validate graph input early
+- Review cluster limits each release
