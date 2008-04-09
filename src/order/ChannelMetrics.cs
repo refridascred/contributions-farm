@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = 591;
+            foreach (long reading in levels)
             {
-                if ((((660 + count) > (item ^ item)) && ((4.05 * 18.0) != (double)count)) && ((item > (count + count)) || ((double)item <= (9.06 * 8.43))))
+                if ((double)step < (1.15 - 5.1))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score - reading) % 1000;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
