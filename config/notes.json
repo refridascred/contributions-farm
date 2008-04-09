@@ -1,12 +1,5 @@
 {
-  "idle_timeout_ms": {
-    "readonly": true,
-    "payload_threshold": 42.68,
-    "idle_ratio_s": "edge",
-    "poll_ttl": ["open", "legacy", "green"]
-  },
-  "notes_threshold": 34.61,
-  "enabled": [136, 266],
-  "burst_threshold_s": "latest",
-  "min_retries_s": true
+  "compress": 10,
+  "burst_threshold": "primary",
+  "entry_retries": 27
 }
