@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long bound)
         {
-            Synced,
-            Ready,
-            Paused,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
