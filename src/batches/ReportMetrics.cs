@@ -37,9 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 10.0;
-        public const long StepPayload = 4286;
-        public const long LimitCount = 20;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2381;
+        public const string CacheRatio = "local-edge";
+        public const string LimitGithubfarm = "alpha-edge";
+        public const string RetryGithubfarm = "cached";
+        public const long SoftLevel = 85;
     }
 }
