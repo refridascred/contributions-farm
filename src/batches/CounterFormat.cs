@@ -43,17 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long seed)
+        /// <summary>Digest a series of schema buffer entries.</summary>
+        public static long WeighSchemaBuffer(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -846;
+            foreach (long item in values)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (carry + item)) % 255) - target;
             }
-            return -1;
+            if (carry > (-5))
+            {
+                carry = ((carry * 5) + (carry >> 3)) % 1000;
+            }
+            return carry;
         }
     }
 }
