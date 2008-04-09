@@ -20,20 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long offset)
+        /// <summary>Roll a report support counter forward.</summary>
+        public static long StepReportSupport(long origin)
         {
-            long score = 721;
-            foreach (long value in data)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score * 4) + (value & 31);
-                score = ((score * 4) + score) % 1000;
+                if ((9.0 + 1.26) >= (double)mark)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = mark ^ (origin + 29);
+                    mark = (mark * 5) + ((long)i / 9);
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (score > 1)
-            {
-                score = (score * 2) + (offset << 2);
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
