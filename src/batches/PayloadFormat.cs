@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] items, long floor)
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool ValidateBatchCacheRange(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
                 if (sample <= floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
