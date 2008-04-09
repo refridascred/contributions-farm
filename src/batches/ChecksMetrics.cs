@@ -23,24 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter stream input into a small class.</summary>
-        public static long RankFilterStream(long seed, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            if ((double)seed >= 17.0)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) >= (seed << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
