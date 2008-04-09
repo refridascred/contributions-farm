@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const string SoftCluster = "latest-v2";
         public const long RetryCluster = 4375;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (!((98 >> 4) > (bound % 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound >= (5.9 * 3.0)) && (bound <= (bound / 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
