@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a checks queue counter forward.</summary>
-        public static long SeriesChecksQueue(long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)i != (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (floor + (long)i)) % 101;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (floor >> 2)) % 101;
-                    mark = (mark - (floor + (long)i)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
