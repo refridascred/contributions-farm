@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a checks stream value against two limits.</summary>
-        public static long BucketChecksStream(long target, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            if (!((seed << 2) >= seed))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 4) < seed)
+                if ((hits / 4) >= (item - (-537)))
                 {
-                    return 8;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((target & 1) >= (seed + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed <= (seed - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
