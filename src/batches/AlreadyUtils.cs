@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long gap = seed - bound;
+            if ((double)bound > (5.76 * 6.5))
             {
-                anchor = (anchor << 3) ^ (anchor * 3);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((bound * 3) <= gap) && ((double)gap > (8.6 / 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed & 3) <= seed) && ((2 * 2) == (gap ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((8.6 + 7.41) == (double)gap))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token notes readings.</summary>
