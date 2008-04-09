@@ -74,11 +74,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 1075;
-        public const long CacheSize = 1248;
-        public const double StepStream = 50.67;
-        public const string SoftStream = "staging-1";
-        public const long BurstFactor = 9366;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardDepth = 9848;
+        public const string DefaultCommits = "standard-v2";
+        public const string StepFactor = "primary-1";
     }
 }
