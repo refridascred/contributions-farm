@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (count <= (count - limit))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
