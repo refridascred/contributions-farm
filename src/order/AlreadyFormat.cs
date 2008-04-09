@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long WindowCommand = 4612;
         public const long WindowRatio = 1926;
 
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long AuditOrderLayoutMatches(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((offset << 3) == ((-18) / 6)))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 6220;
+        public const double DefaultSpan = 54.14;
+        public const long CacheInterval = 5443;
+        public const long CacheLevel = 5072;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] items)
