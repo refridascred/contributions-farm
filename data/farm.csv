@@ -1,7 +1,8 @@
-id,token,level,rank
-1,764,871,87.58
-2,10.1,615,local
-3,622,open,577
-4,9.71,819,503
-5,681,strict,staging
-6,681,strict,86.21
+id,label,weight,owner
+1,23.29,12.49,872
+2,67.38,354,staging
+3,stable,cached,57
+4,915,standard,258
+5,open,110,661
+6,582,local,90
+7,328,167,latest
