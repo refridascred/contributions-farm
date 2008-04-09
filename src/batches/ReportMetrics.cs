@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 7007;
-        public const double HardAlready = 32.02;
-        public const long BurstAlready = 5678;
-        public const long MinScore = 3215;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 58.92;
+        public const double BurstBuffer = 27.23;
+        public const long BatchBuffer = 2970;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
