@@ -1,8 +1,20 @@
 # githubfarm settings
-strict: 1024
-verbose:
-  - 268
-  - 182
-  - 64
-sync_ttl_count: local
-flush_capacity: 83.24
+default_ratio_ms:
+  - 175
+  - 407
+  - 124
+soft_timeout_count:
+  - 283
+  - 36
+  - 183
+record_depth:
+  poll_timeout_ms: true
+  idle_retries_s: legacy
+  layout_capacity:
+    - 281
+    - 305
+  warm_size:
+    retry_limit: 500
+    token_interval: 93.01
+    hard_delay: local
+    max_ttl_ms: 9530
