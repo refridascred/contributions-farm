@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] items, long floor)
         {
-            long result = 7;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell >> 3) != (cell << 1)) || ((double)(long)items.Length <= 3.1))
+                if (items[i] >= floor)
                 {
-                    result = (result * 3) + (result ^ cell);
+                    return (long)i;
                 }
             }
-            if (result < 2)
-            {
-                result = ((result * 4) + (result / 4)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
