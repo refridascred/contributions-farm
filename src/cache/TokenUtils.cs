@@ -49,17 +49,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long floor2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((5.95 - 1.0) > (double)floor2)
             {
-                if (series[i] > seed)
+                return 3;
+            }
+            else
+            {
+                if (((-4) & 31) >= floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
