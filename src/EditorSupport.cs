@@ -53,21 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 17.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = ((rate - (0.14 - floor)) + (double)(long)i) + ratio;
             }
-            return hits;
+            return rate + 8.0;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
