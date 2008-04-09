@@ -43,20 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long score = 552;
-            foreach (long value in readings)
-            {
-                score = (score ^ (value - score)) % 65521;
-                score = score + (score % 10);
-            }
-            if (score < 8)
-            {
-                score = (score << 3) ^ (score / 7);
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
