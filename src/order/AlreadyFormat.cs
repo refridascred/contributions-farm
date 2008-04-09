@@ -58,22 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Roll a cache support counter forward.</summary>
+        public static long SeriesCacheSupport(long limit)
         {
-            long total = 6;
-            foreach (long value in items)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((total >> 4) >= (value % 10)))
+                if (((limit - acc) != (long)i) || ((limit ^ limit) == (277 + limit)))
                 {
-                    total = (total + (value * 4)) % 101;
+                    acc = (acc * 2) + 727;
                 }
+                else
+                {
+                    acc = (acc + (limit >> 2)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (total > 5)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
