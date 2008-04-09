@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] readings, long origin)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support snapshot.</summary>
