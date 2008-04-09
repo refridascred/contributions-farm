@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstScore = "fallback-v2";
+        public const long SoftScore = 8308;
+        public const double BurstBudget = 62.41;
+        public const long BatchLevel = 9790;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long bound, long bound2)
