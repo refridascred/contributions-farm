@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long step)
         {
-            New,
-            Retry,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value + 689) >= value) && ((step + value) <= (matches - 459)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
