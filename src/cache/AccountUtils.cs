@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((floor & 63) >= 790)
             {
-                if (!((6 / 5) == (value << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit >= 20.0)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
