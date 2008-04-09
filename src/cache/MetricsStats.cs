@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const string MaxEditor = "primary-v2";
         public const string RetryCount = "primary";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] values, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
