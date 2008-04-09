@@ -1,6 +1,7 @@
 {
-  "schema_threshold": "staging",
-  "window_threshold": 51.61,
-  "batch_size": false,
-  "token_retries": "open"
+  "account_timeout": 3251,
+  "verbose": "eu-west",
+  "audit": true,
+  "context_depth": 250,
+  "strict": ["cached", "primary", "eu-west"]
 }
