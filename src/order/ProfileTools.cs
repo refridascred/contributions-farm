@@ -37,13 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items, long bound)
         {
-            Queued,
-            Synced,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + 9) < (datum >> 5))
+                {
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
