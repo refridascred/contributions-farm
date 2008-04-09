@@ -23,12 +23,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "legacy";
-        public const long WindowCounter = 8013;
-        public const string LimitInterval = "alpha-v2";
-        public const string DefaultCounter = "staging-v2";
-        public const double BatchScore = 30.23;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] levels, long floor)
