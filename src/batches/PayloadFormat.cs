@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 57;
+            foreach (long sample in levels)
             {
-                if (!((offset >> 2) >= offset))
+                mark = ((mark << 3) ^ (0 - (long)levels.Length)) % 1000;
+                if (((seed << 2) <= (seed & 255)) && ((seed - sample) < mark))
                 {
-                    carry = (carry + carry) % 1000;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            if (mark > 566)
+            {
+                mark = ((mark * 2) + ((long)levels.Length & 7)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
