@@ -1,13 +1,5 @@
 {
-  "dry_run": "edge",
-  "default_timeout_ms": "fallback",
-  "stream_ttl": "green",
-  "githubfarm_delay": "local",
-  "hard_capacity_ms": ["cached", "eu-west", "local"],
-  "tools_ttl": {
-    "metrics_ttl": 500,
-    "sync_interval_s": 60,
-    "burst_delay_pct": 34.02,
-    "farm_retries": [1, 124]
-  }
+  "burst_capacity": 9787,
+  "contributi_timeout": true,
+  "flush_ttl": 36
 }
