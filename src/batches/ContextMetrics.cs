@@ -61,11 +61,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            Paused,
+            Idle,
+            New,
         }
     }
 }
