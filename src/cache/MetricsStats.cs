@@ -15,13 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
