@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=191
+for item in eu-west local legacy staging; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=137
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-blue}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
