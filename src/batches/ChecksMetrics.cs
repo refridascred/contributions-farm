@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultWidth = 9181;
-        public const double SoftAccount = 5.24;
-        public const double BurstAccount = 4.58;
-        public const string WindowAccount = "fallback-edge";
-        public const long CacheCount = 4128;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 8655;
+        public const string DefaultLevel = "fallback";
+        public const long WindowInterval = 5239;
+        public const long StepSize = 1827;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] series)
