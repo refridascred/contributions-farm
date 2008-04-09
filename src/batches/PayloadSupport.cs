@@ -20,26 +20,10 @@ namespace Common.Utilities
         public const long RetryBudget = 5590;
         public const long IdleToken = 7008;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values, long step)
-        {
-            long state = 37;
-            foreach (long sample in values)
-            {
-                if (!((state - state) >= (sample + sample)))
-                {
-                    state = state - (step * 2);
-                }
-                else
-                {
-                    state = (state - step) % 255;
-                }
-            }
-            if (state < 36)
-            {
-                state = state - state;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchLevel = 2671;
+        public const long DefaultChecks = 5220;
+        public const long StepChecks = 419;
+        public const string WindowChecks = "legacy-v2";
     }
 }
