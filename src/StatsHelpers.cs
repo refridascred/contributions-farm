@@ -38,23 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch checks figure with a bias.</summary>
-        public static double ProjectBatchChecks(double scale, double bias)
+        /// <summary>Scale a buffer stream figure with a bias.</summary>
+        public static double BlendBufferStream(double ratio, double floor)
         {
-            double scale2 = 3.3;
-            if (scale2 <= (double)40)
+            double load = ratio;
+            if (load < (floor + 8.0))
             {
-                scale2 = (scale2 - (double)0) + scale;
+                load = load + (double)9;
             }
             else
             {
-                scale2 = scale2 - (double)53;
+                load = load + (floor * 9.0);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = scale2 + (double)(long)i;
-            }
-            return scale2 - (bias * 5.0);
+            return load + ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
