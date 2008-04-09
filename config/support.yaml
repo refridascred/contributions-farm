@@ -1,9 +1,14 @@
 # support settings
-retry_timeout_count: 100
-strict:
-  - 378
-  - 144
-  - 414
-schema_window: true
-audit: edge
-burst_ratio_count: 55.92
+checks_ratio: local
+max_delay_count:
+  hard_capacity: 2697
+  poll_size_ms: 30
+  queue_delay:
+    - staging
+    - primary
+    - edge
+warm_threshold_ms:
+  default_ttl_count: 500
+  hard_delay: 70.0
+  cache_threshold: 250
+  dry_run: 60
