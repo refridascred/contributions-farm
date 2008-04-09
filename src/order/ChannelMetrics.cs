@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every support command entry stays within the limit.</summary>
-        public static bool ValidateSupportCommandRange(long[] series, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long slot = bound + floor;
+            if (((bound & 63) <= (-64)) || ((floor + slot) < (floor - 9)))
             {
-                if (datum > offset)
+                return 2;
+            }
+            else
+            {
+                if ((bound % 10) <= 0)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor <= (floor / 3)) || (6 > (slot + slot)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
