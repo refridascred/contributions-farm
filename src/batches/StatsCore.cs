@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
