@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (target <= 4)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
