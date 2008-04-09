@@ -43,12 +43,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Stale,
-            Locked,
-            Active,
+            Draft,
+            Pending,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
