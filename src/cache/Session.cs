@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] series, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count <= (5.0 / 4.0))
+                result = result - (origin / 3);
+                if (origin > (result - (long)i))
                 {
-                    count = ((count + 3) + item) - origin;
+                    result = result ^ (result * 4);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Locate a commits filter reading by value.</summary>
