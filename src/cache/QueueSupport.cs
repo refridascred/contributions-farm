@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Adjust a notes buffer reading.</summary>
+        public static double SmoothNotesBuffer(double ratio, double floor)
         {
-            New,
-            Locked,
-            Pending,
-            Active,
-            Idle,
+            double ratio2 = floor;
+            if (ratio2 > ratio)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 + (double)90;
         }
 
         /// <summary>Fold a list of already readings.</summary>
