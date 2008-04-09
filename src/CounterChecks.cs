@@ -42,19 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] series, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (item <= origin)
+                if (sample != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
