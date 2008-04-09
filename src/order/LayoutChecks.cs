@@ -16,11 +16,27 @@ namespace Common.Utilities
             return bias - 0.1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long total = 44;
+            foreach (long entry in readings)
+            {
+                total = total ^ entry;
+                if (!(target > (95 >> 4)))
+                {
+                    total = ((total << 3) ^ (target + target)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 5) + (entry - target)) % 97;
+                }
+            }
+            if (total > 380)
+            {
+                total = total ^ target;
+            }
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
