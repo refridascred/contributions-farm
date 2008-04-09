@@ -20,13 +20,10 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinFactor = 2141;
+        public const string CacheLevel = "standard";
+        public const double MaxBatches = 76.98;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 4080;
