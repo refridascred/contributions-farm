@@ -31,39 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload batches pair into a bucket.</summary>
-        public static long BucketPayloadBatches(long step, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long floor)
         {
-            long step2 = step - limit;
-            if (!((limit << 2) >= (step - 47)))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step / 4) < (limit * 2)) || (limit < step2))
+                if (value > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((868 >> 5) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step2 + 4) >= 14) && ((step2 - step) <= (step2 & 255)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
