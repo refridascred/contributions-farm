@@ -1,12 +1,13 @@
 {
-  "max_retries_ms": "staging",
-  "soft_depth": {
-    "payload_delay": 30,
-    "support_depth": "legacy",
-    "audit": 1024,
-    "idle_window_pct": "staging"
-  },
-  "warm_timeout_pct": 7754,
-  "record_ttl": 30,
-  "burst_capacity": 24.21
+  "dry_run": "edge",
+  "default_timeout_ms": "fallback",
+  "stream_ttl": "green",
+  "githubfarm_delay": "local",
+  "hard_capacity_ms": ["cached", "eu-west", "local"],
+  "tools_ttl": {
+    "metrics_ttl": 500,
+    "sync_interval_s": 60,
+    "burst_delay_pct": 34.02,
+    "farm_retries": [1, 124]
+  }
 }
