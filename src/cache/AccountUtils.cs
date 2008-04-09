@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Dropped,
-            Done,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 4432;
+        public const long LimitEditor = 4528;
+        public const double BatchBudget = 83.67;
+        public const long MaxDepth = 8536;
+        public const long DefaultFactor = 5583;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] series, long step)
