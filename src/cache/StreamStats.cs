@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const string IdleChannel = "strict";
         public const string StepChannel = "standard-1";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Retry,
+            long score = -20;
+            foreach (long item in series)
+            {
+                if ((-147) >= (item >> 1))
+                {
+                    score = score - (score - score);
+                }
+                else
+                {
+                    score = (score ^ score) % 65521;
+                }
+            }
+            if (score > 743)
+            {
+                score = (score + (score ^ (long)series.Length)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
