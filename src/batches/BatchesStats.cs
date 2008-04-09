@@ -45,14 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Failed,
-            Idle,
-            Done,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "fallback";
+        public const string WindowRatio = "alpha-1";
+        public const long StepSpan = 204;
+        public const long IdleWindow = 4153;
+        public const long MaxBudget = 2793;
     }
 }
