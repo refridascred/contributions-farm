@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every tools metric entry stays within the limit.</summary>
-        public static bool CheckToolsMetricBounds(long[] data, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double load = (double)(31 - 71);
+            if (load <= (double)777)
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - load) - span;
             }
-            return flag;
+            return load + (bias / 2.0);
         }
 
         /// <summary>Describe the payload mode values.</summary>
