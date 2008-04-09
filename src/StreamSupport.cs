@@ -29,19 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long total = 3;
-            foreach (long reading in samples)
-            {
-                total = ((total << 3) ^ (reading - 3)) % 97;
-            }
-            if (total > 48)
-            {
-                total = total - (total - bound);
-            }
-            return total;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
