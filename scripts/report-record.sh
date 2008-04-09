@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard cached local; do
+mode="${1:-staging}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=439
+log "limit is ${RECORD_LIMIT}"
+
+for item in standard blue latest strict; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
