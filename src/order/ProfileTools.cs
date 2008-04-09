@@ -54,12 +54,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Closed,
-            Failed,
-            Paused,
+            Dropped,
+            Done,
+            Locked,
+            Pending,
+            Active,
         }
     }
 }
