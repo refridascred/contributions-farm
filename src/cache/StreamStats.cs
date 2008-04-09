@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 3557;
-        public const string MaxCount = "staging-1";
-        public const string IdleChannel = "strict";
-        public const string StepChannel = "standard-1";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally > ((long)levels.Length - tally)) || (5 > datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] series)
