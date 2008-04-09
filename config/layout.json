@@ -1,5 +1,15 @@
 {
-  "entry_capacity": true,
-  "poll_threshold_count": "staging",
-  "warm_delay_pct": [52, 128, 481]
+  "soft_retries_pct": {
+    "persist": false,
+    "hard_retries_pct": "latest",
+    "dry_run": true
+  },
+  "idle_interval_s": 77.93,
+  "idle_capacity": {
+    "payload_delay": true,
+    "base_threshold_pct": 9729,
+    "soft_depth_pct": "eu-west",
+    "sync_ttl_s": "blue",
+    "soft_limit": 7
+  }
 }
