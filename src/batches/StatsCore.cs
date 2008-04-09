@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long step)
         {
-            Closed,
-            Ready,
-            Locked,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of already record readings.</summary>
