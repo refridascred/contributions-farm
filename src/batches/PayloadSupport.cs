@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Pending,
+            New,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
