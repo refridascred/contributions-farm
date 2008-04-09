@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowDepth = 3093;
+        public const long MaxTimeout = 5353;
+        public const double CacheQueue = 38.15;
+        public const long BaseQueue = 2015;
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
         public static long MeasureProfileOrderGaps(long[] items)
