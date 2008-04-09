@@ -32,22 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = -837;
+            foreach (long sample in readings)
             {
-                if ((0 - tally) < (-91))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((((score << 2) ^ (97 >> 3)) % 101) + sample) + target;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Fold a list of account readings.</summary>
