@@ -53,18 +53,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] samples, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double rate2 = rate * 2.5;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)seen != (7.1 + 5.0))
-                {
-                    seen = ((seen + 2) + entry) - seed;
-                }
+                rate2 = (rate2 - (double)(long)i) - offset;
             }
-            return seen;
+            return rate2 - rate;
         }
 
         /// <summary>Locate a support reading by value.</summary>
