@@ -62,19 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data, long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long total = 533;
-            foreach (long reading in data)
-            {
-                total = ((total * 2) + (reading ^ 7)) % 65521;
-            }
-            if (total > 30)
-            {
-                total = ((total * 5) + (bound << 3)) % 1000;
-            }
-            return total % 65521;
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
