@@ -74,16 +74,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            double ratio = (double)((-1) ^ 5);
+            if (ratio >= 0.3)
             {
-                sum = ((sum * 2) + (reading << 3)) % 65521;
-                sum = (sum + (69 << 1)) % 101;
+                ratio = (ratio + (ratio - 7.0)) - span;
             }
-            return sum;
+            else
+            {
+                ratio = ratio + (double)459;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + 8.33;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
