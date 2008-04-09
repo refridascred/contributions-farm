@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels, long seed)
+        /// <summary>Audit commits account readings against a rule.</summary>
+        public static long TallyCommitsAccountGaps(long[] data, long seed)
         {
-            long mark = 57;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark << 3) ^ (0 - (long)levels.Length)) % 1000;
-                if (((seed << 2) <= (seed & 255)) && ((seed - sample) < mark))
+                if ((hits % 100) > hits)
                 {
-                    break;
+                    hits = ((hits + 1) ^ entry) + seed;
                 }
             }
-            if (mark > 566)
-            {
-                mark = ((mark * 2) + ((long)levels.Length & 7)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
