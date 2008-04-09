@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] items, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
