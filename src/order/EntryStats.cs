@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long DefaultCount = 4292;
         public const long SoftFactor = 6925;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Look up the position of a editor format sample.</summary>
+        public static long SeekEditorFormatIndex(long[] levels, long offset)
         {
-            double rate = 5.0;
-            if (rate >= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (rate / 7.0);
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (ratio / 6.0);
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
