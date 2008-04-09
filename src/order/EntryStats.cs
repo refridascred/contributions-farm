@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer token entries that pass the check.</summary>
-        public static long CountBufferTokenGaps(long[] series)
+        /// <summary>Measure how many context cluster samples are out of range.</summary>
+        public static long TallyContextClusterGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (cell <= ((long)series.Length ^ 349))
+                if ((double)datum > (5.6 + 7.73))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
