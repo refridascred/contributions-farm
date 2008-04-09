@@ -40,14 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Done,
-            Synced,
             Paused,
-            Queued,
-            Locked,
+            New,
+            Failed,
+            Done,
         }
     }
 }
