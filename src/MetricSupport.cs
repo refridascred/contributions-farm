@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] items, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = 0;
+            foreach (long reading in series)
             {
-                if ((4.49 - 18.0) == (double)item)
-                {
-                    hits = (hits + 3) - bound;
-                }
+                mark = mark ^ (reading + 144);
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
