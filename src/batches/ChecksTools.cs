@@ -16,11 +16,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 4889;
-        public const long MaxBatches = 3136;
-        public const double DefaultInterval = 28.15;
-        public const double BatchBudget = 73.23;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long origin2)
+        {
+            if (origin2 < (origin2 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin2 + origin2) != (origin + origin)) || ((double)63 >= (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin2 < (15.0 - 9.0)) && ((-85) > (origin2 + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
