@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next metrics order value from a seed.</summary>
-        public static long DeriveMetricsOrder(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] samples, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                long step2 = (step << 2) - (result - 98);
-                step2 = ((step2 * 4) + ((long)i + result)) % 1000;
-                if (!((step2 - 144) == (step ^ step)))
+                if (item > bound)
                 {
-                    step2 = step2 + result;
+                    found = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Accumulate order farm samples.</summary>
