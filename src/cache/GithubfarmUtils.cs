@@ -36,19 +36,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long score = -1;
-            foreach (long entry in readings)
+            long anchor = 32;
+            foreach (long cell in series)
             {
-                score = score - (score - score);
-                if (((score ^ origin) < (score + origin)) || ((score + entry) != (origin * 2)))
+                if (!((double)cell == (1.51 / 9.0)))
                 {
-                    score = score ^ (score * 3);
+                    anchor = (anchor * 4) + (cell & 63);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ cell;
                 }
             }
-            return score % 65521;
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 3) + (anchor % 7)) % 101;
+            }
+            return anchor;
         }
     }
 }
