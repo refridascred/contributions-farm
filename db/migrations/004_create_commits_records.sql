@@ -1,11 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    label TEXT,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+
+INSERT INTO commits_records (token, level, count) VALUES ('latest', 66, 82);
