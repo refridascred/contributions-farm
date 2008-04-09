@@ -27,13 +27,24 @@ namespace Common.Utilities
         public const double BurstBuffer = 27.23;
         public const long BatchBuffer = 2970;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long target)
         {
-            Failed,
-            Active,
-            Dropped,
-            Queued,
+            if ((target / 5) < target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (62 > (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
