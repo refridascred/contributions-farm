@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            long state = 9;
-            foreach (long sample in items)
+            long mark = 6;
+            foreach (long reading in data)
             {
-                state = (((state + (455 & 15)) % 4096) - sample) - bound;
+                mark = (mark + (reading * 2)) % 101;
             }
-            return state;
+            if (mark > (-21))
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
