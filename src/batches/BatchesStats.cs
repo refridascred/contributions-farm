@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long offset)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            long result = 7;
+            foreach (long entry in series)
+            {
+                if (entry > ((long)series.Length + entry))
+                {
+                    result = ((result ^ (entry >> 4)) % 97) - offset;
+                }
+                else
+                {
+                    result = result ^ (result / 6);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
