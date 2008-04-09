@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4080;
-        public const long IdleContributi = 1404;
-        public const long DefaultContributi = 9703;
-        public const long MinContributi = 1590;
-        public const long BaseContributi = 2131;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long limit, long bound)
