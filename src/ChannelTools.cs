@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account entry readings.</summary>
-        public static long WeighAccountEntry(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series)
         {
-            long total = 65;
-            foreach (long entry in series)
+            long score = -2;
+            foreach (long cell in series)
             {
-                if (((double)total >= (double)(long)series.Length) || ((entry + entry) <= (total >> 5)))
-                {
-                    total = total ^ total;
-                }
-                if (1.2 > (double)entry)
-                {
-                    break;
-                }
+                score = (score - cell) % 101;
             }
-            return total;
+            if (score < 902)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of support entries.</summary>
