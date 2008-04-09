@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit counter channel readings against a rule.</summary>
+        public static long MeasureCounterChannelOutliers(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((origin + matches) > matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
