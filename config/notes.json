@@ -1,7 +1,5 @@
 {
-  "dry_run": 51,
-  "window_interval": "blue",
-  "editor_delay": 19.86,
-  "poll_capacity": 5837,
-  "warm_depth_s": "legacy"
+  "base_limit_count": 500,
+  "poll_threshold_pct": 62,
+  "burst_delay_s": "local"
 }
