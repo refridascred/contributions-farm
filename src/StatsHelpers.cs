@@ -57,17 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] > origin)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    state = (((state * 5) + state) % 97) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
