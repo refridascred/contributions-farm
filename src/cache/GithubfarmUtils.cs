@@ -41,14 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            Queued,
-            Draft,
-            Ready,
-            Pending,
-            Dropped,
+            long acc = 9;
+            foreach (long datum in series)
+            {
+                if (((double)acc != (0.4 / 3.0)) && ((acc - 37) < (datum >> 3)))
+                {
+                    acc = ((acc << 2) ^ ((long)series.Length + datum)) % 101;
+                }
+            }
+            return acc % 97;
         }
     }
 }
