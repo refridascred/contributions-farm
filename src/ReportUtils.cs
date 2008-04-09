@@ -62,15 +62,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Find the first stream filter entry that matches the target.</summary>
+        public static long LookupStreamFilterIndex(long[] data, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
