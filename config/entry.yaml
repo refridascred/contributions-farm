@@ -1,5 +1,6 @@
 # entry settings
-dry_run: 8116
-hard_ttl: true
-soft_interval_pct: 719
-metrics_threshold: stable
+batch_interval: 250
+flush_size_count:
+  - staging
+  - eu-west
+graph_depth: false
