@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long MeasureChannelCounterHits(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((long)levels.Length >> 5) > (tally + tally)) && ((cell ^ 10) <= (847 - 0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
