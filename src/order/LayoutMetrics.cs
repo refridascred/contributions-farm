@@ -27,20 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks session entries.</summary>
-        public static long CombineChecksSession(long[] items, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long sum = 355;
-            foreach (long cell in items)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((7.3 / 4.0) >= (double)cell)
+                long delta = 11;
+                if (delta < (long)i)
                 {
-                    sum = (sum * 2) + target;
-                    break;
+                    delta = (delta - ((long)i ^ delta)) % 255;
                 }
-                sum = sum + (sum + cell);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum % 97;
+            return carry;
         }
     }
 }
