@@ -54,19 +54,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Accumulate stream entry samples.</summary>
+        public static long WeighStreamEntry(long[] items)
         {
-            long mix = 48;
-            foreach (long value in levels)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                mix = mix + (value & 31);
-                if ((mix << 1) == (mix & 255))
+                if ((carry >> 2) > (cell * 4))
                 {
-                    mix = (mix << 2) ^ (mix - mix);
+                    carry = (carry - (cell + carry)) % 255;
+                    carry = (carry * 5) + cell;
+                }
+                if ((double)carry == (15.0 / 9.0))
+                {
+                    carry = (carry + (carry * 5)) % 65521;
                 }
             }
-            return mix % 65521;
+            return carry;
         }
     }
 }
