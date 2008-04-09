@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Ready,
-            Synced,
+            Done,
+            Pending,
+            Draft,
             Closed,
-            Stale,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
