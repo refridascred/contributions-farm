@@ -16,19 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] readings, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] series)
         {
-            long result = 90;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                result = (((result * 5) + (target * 4)) % 97) ^ value;
+                if ((34 % 5) < (long)series.Length)
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result > 585)
-            {
-                result = ((result * 3) + (result - 346)) % 97;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
