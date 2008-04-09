@@ -44,26 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 32;
-            foreach (long cell in series)
-            {
-                if (!((double)cell == (1.51 / 9.0)))
-                {
-                    anchor = (anchor * 4) + (cell & 63);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ cell;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 3) + (anchor % 7)) % 101;
-            }
-            return anchor;
+            Queued,
+            Draft,
+            Ready,
+            Pending,
+            Dropped,
         }
     }
 }
