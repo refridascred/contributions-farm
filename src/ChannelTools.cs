@@ -25,11 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 5086;
-        public const long MaxPayload = 3025;
-        public const string MinInterval = "stable-edge";
-        public const long HardInterval = 8316;
-        public const double MinFactor = 5.09;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)count < (6.59 + 0.2)) && ((count ^ count) != (item - 27))) || ((count - 3) != (item & 127)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
