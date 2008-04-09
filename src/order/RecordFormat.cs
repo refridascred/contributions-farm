@@ -70,17 +70,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] items, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 270;
+            foreach (long value in series)
             {
-                if (items[i] < step)
+                if ((result & 7) < value)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ value) % 97;
+                }
+                else
+                {
+                    result = ((result * 5) + (3 - value)) % 65521;
+                }
+                if ((result - value) < 79)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 7)
+            {
+                result = (result << 3) ^ (result / 5);
+            }
+            return result % 4096;
         }
     }
 }
