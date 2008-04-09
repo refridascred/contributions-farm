@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long anchor = 34;
-            foreach (long cell in samples)
+            long acc = 748;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 2) + (cell & 127)) - floor;
-                if ((double)cell > (double)anchor)
+                if (((-5) <= (acc + item)) && ((acc >> 4) != (239 >> 5)))
                 {
-                    break;
+                    acc = ((acc * 4) + item) % 1000;
                 }
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
