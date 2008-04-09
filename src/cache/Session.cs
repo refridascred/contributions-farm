@@ -35,39 +35,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values, long seed)
         {
-            long step = target ^ limit;
-            if ((step % 24) != (target + target))
+            long result = 61;
+            foreach (long cell in values)
             {
-                return 7;
+                result = (((result + 0) % 1000) - cell) - seed;
+                result = ((result * 5) + 4) % 1000;
             }
-            else
+            if (result < 395)
             {
-                if ((limit + 0) < (target / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-15) >= (limit - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step < 8) && ((step - target) > (step % 7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result << 2) ^ (result * 4)) % 4096;
             }
+            return result % 65521;
         }
     }
 }
