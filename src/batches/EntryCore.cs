@@ -40,19 +40,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every graph editor entry stays within the limit.</summary>
-        public static bool VerifyGraphEditorRange(long[] levels, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a checks info.</summary>
