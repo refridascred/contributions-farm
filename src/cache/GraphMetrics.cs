@@ -43,19 +43,19 @@ namespace Common.Utilities
             return (scale - (4.35 * 4.37)) + rate;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long seed)
+        /// <summary>Check that every farm schema entry stays within the limit.</summary>
+        public static bool ValidateFarmSchemaBounds(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (value > seed)
+                if (cell < step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
