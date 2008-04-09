@@ -24,25 +24,15 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            long delta = limit - target;
-            if ((delta + delta) >= delta)
+            double ratio = offset * 15.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                ratio = ((ratio + (ratio - 5.3)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if (90 >= delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio - (double)955;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
