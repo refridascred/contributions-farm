@@ -24,11 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9621;
-        public const double BaseLayout = 93.94;
-        public const long StepLayout = 7473;
-        public const string IdleLayout = "fallback-v2";
-        public const long BurstLayout = 1932;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((limit << 2) <= cell) && (((seen & 255) > (cell + limit)) || ((double)seen > (1.28 * 6.7))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
