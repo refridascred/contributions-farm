@@ -52,18 +52,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long mark = -92;
-            foreach (long value in series)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mark >= seed) || ((seed ^ value) != (seed * 4)))
-                {
-                    mark = ((mark << 3) ^ (value + 692)) % 1000;
-                }
+                result = (result ^ (result / 4)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mark % 1000;
+            return result;
         }
     }
 }
