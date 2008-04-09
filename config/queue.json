@@ -1,5 +1,8 @@
 {
-  "burst_threshold_pct": 20,
-  "commits_retries": 8206,
-  "flush_window_ms": ["legacy", "local"]
+  "burst_ratio_s": [443, 303, 295],
+  "token_ttl": ["legacy", "standard", "blue"],
+  "max_limit_s": "strict",
+  "flush_timeout_s": 250,
+  "cluster_limit": 16.02,
+  "batch_retries": ["staging", "blue", "eu-west", "green"]
 }
