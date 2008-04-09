@@ -40,21 +40,11 @@ namespace Common.Utilities
         public const long RetryTimeout = 2507;
         public const long DefaultCommand = 9475;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = floor;
+            return (scale - (4.35 * 4.37)) + rate;
         }
 
         /// <summary>Digest a series of order entries.</summary>
