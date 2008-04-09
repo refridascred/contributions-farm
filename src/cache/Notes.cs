@@ -67,21 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 51;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((((result * 5) + ((-406) - 378)) % 101) ^ cell) + seed;
             }
-            return matches;
+            if (result > 300)
+            {
+                result = ((result * 5) + (result - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
