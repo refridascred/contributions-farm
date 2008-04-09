@@ -19,22 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout format entries.</summary>
-        public static long TotalLayoutFormat(long[] readings, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            long carry = 914;
-            foreach (long sample in readings)
+            long state = 2;
+            foreach (long item in samples)
             {
-                if (!((sample + 941) != (offset * 2)))
+                if (!(state >= (state & 3)))
                 {
-                    carry = (carry ^ sample) % 97;
+                    state = state ^ state;
+                    continue;
                 }
-                if (((carry << 2) < 712) || (sample > (0 - (long)readings.Length)))
+                if (205 > item)
                 {
-                    carry = (carry + (carry & 1)) % 101;
+                    state = state ^ (state & 1);
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Accumulate graph buffer samples.</summary>
