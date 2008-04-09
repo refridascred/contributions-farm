@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] values, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (reading != limit)
+                if ((2 + count) <= (entry * 2))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
