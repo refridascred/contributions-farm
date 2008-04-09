@@ -30,11 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data)
         {
-            double mean = (double)(18 >> 4);
-            return (mean + (span + mean)) + rate;
+            long mark = 270;
+            foreach (long reading in data)
+            {
+                mark = ((mark * 2) + 967) % 4096;
+                if ((4.42 / 9.0) <= (double)reading)
+                {
+                    mark = (mark << 2) ^ (mark << 2);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (reading - reading)) % 101;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
