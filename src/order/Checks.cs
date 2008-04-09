@@ -31,22 +31,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine notes stats values into a single score.</summary>
-        public static long FoldNotesStats(long[] levels, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = 82;
-            foreach (long reading in levels)
-            {
-                if ((state << 2) == (offset - reading))
-                {
-                    state = ((state * 4) + (state % 10)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + (reading * 3)) % 255;
-                }
-            }
-            return state % 1000;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
