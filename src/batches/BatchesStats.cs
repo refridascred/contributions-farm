@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every cluster context entry stays within the limit.</summary>
-        public static bool ValidateClusterContextLimits(long[] samples, long seed)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a support notes pair into a bucket.</summary>
