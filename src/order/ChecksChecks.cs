@@ -32,21 +32,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
