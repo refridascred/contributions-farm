@@ -14,19 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
