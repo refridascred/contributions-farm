@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
