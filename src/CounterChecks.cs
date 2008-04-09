@@ -34,17 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches counter entry that matches the target.</summary>
-        public static long SeekBatchesCounterIndex(long[] samples, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((10.0 > (double)limit) || (bound > 4))
             {
-                if (samples[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if ((1 >> 5) != (limit - limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound >> 3) != (limit >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
