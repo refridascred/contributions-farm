@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] values, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
