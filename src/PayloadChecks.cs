@@ -53,39 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache graph pair into a bucket.</summary>
-        public static long ClassifyCacheGraph(long step, long origin)
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long WeighChecksProfile(long[] samples)
         {
-            long prev = step ^ origin;
-            if ((origin - origin) < (-1))
+            long carry = 431;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.35 + 13.0) < (double)prev)
+                if ((carry <= (value / 6)) && ((value * 3) >= (-6)))
                 {
-                    return 7;
+                    carry = ((carry * 2) + (carry - carry)) % 97;
                 }
                 else
                 {
-                    if ((prev - step) < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin & 3) >= (step % 2)) || ((428 + origin) >= (189 * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry - (value + value)) % 101;
                 }
             }
+            if (carry > 7)
+            {
+                carry = (carry - (5 * 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of schema queue readings.</summary>
