@@ -66,17 +66,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepDepth = 1608;
+        public const string DefaultToken = "primary";
+        public const long HardFactor = 8153;
+        public const double IdleToken = 80.48;
+        public const double WindowToken = 81.17;
     }
 }
