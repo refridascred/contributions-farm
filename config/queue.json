@@ -1,11 +1,5 @@
 {
-  "poll_limit_ms": 16,
-  "flush_size": {
-    "default_depth_pct": "fallback",
-    "min_interval_count": 23,
-    "dry_run": 100
-  },
-  "tools_ttl": 39.02,
-  "enabled": 36.69,
-  "persist": 1024
+  "min_ttl": 66.51,
+  "flush_ttl_ms": 32,
+  "strict": 66.53
 }
