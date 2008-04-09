@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Idle,
-            Ready,
-            Dropped,
+            Locked,
+            New,
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
