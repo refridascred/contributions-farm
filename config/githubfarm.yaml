@@ -1,5 +1,7 @@
 # githubfarm settings
-cache_limit: 6.26
-poll_depth_s: 36
-hard_window_ms: true
-metrics_size: 7265
+readonly: 59.39
+idle_delay_s: 4527
+hard_threshold: 75.26
+warm_interval: 88
+idle_timeout: false
+sync_ttl_pct: 19
