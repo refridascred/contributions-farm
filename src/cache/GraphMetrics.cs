@@ -44,21 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
