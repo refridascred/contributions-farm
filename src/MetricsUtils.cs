@@ -42,11 +42,11 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxCount = 19.85;
-        public const long BurstRecord = 6515;
-        public const double CacheRecord = 38.3;
-        public const long IdleInterval = 3375;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 8702;
+        public const double CacheCount = 63.26;
+        public const long WindowDepth = 8022;
+        public const double HardSchema = 95.08;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double gain, double offset)
