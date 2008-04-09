@@ -16,17 +16,15 @@ namespace Common.Utilities
             return ratio + 14.0;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
