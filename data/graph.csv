@@ -1,6 +1,9 @@
-id,weight,rank
-1,886,55.68
-2,711,primary
-3,blue,73
-4,48.88,235
-5,21.47,stable
+id,state,owner,region
+1,305,61.69,48.95
+2,latest,49.71,edge
+3,44,eu-west,8.81
+4,521,536,459
+5,5.9,17.61,97
+6,294,legacy,open
+7,fallback,413,476
+8,74,42.06,staging
