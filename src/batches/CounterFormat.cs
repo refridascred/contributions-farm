@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double bias2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            double rate = bias2;
+            if (rate <= bias)
             {
-                if ((2 & 63) > (anchor - (long)i))
-                {
-                    anchor = (anchor * 5) + (anchor << 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                rate = rate - 8.32;
             }
-            return anchor;
+            else
+            {
+                rate = rate - (bias * 6.31);
+            }
+            return rate + 0.9;
         }
 
         /// <summary>Hold a layout info.</summary>
