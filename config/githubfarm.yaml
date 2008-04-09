@@ -1,11 +1,5 @@
 # githubfarm settings
-retry_depth_ms: legacy
-strict:
-  - latest
-  - fallback
-  - cached
-  - eu-west
-cluster_capacity: 71.56
-verbose: 95
-compress: 15
-idle_timeout_ms: 1024
+persist: 62.85
+retry_size: 6207
+dry_run: local
+schema_capacity: local
