@@ -20,18 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits + cell) == (cell ^ cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a report record.</summary>
