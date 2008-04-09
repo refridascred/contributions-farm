@@ -25,28 +25,11 @@ namespace Common.Utilities
             return weight + (double)(-18);
         }
 
-        /// <summary>Fold a list of session cluster readings.</summary>
-        public static long DigestSessionCluster(long[] levels)
-        {
-            long sum = 223;
-            foreach (long item in levels)
-            {
-                sum = (sum ^ (item + sum)) % 65521;
-                if (8.58 <= (double)sum)
-                {
-                    sum = (sum ^ (item + (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (sum + sum);
-                }
-            }
-            if (sum < 9)
-            {
-                sum = ((sum * 3) + (sum / 6)) % 65521;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "primary";
+        public const long HardScore = 8703;
+        public const long SoftLevel = 185;
+        public const double LimitCluster = 10.25;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ScaleBatch(double weight, double bias)
