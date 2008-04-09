@@ -31,12 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            Stale,
+            Ready,
+            Locked,
+            Paused,
         }
     }
 }
