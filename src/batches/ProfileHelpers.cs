@@ -29,18 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinInterval = "staging-v2";
+        public const long WindowCommand = 8133;
+        public const long LimitCommand = 3606;
+        public const string DefaultCommand = "standard-v2";
+        public const long MaxSize = 3893;
 
         /// <summary>Project the next window metric value.</summary>
         public static double BlendWindowMetric(double gain, double bias)
