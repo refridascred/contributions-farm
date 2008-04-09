@@ -1,6 +1,7 @@
-id,ratio,label
-1,294,69.35
-2,fallback,87.18
-3,47.64,90
-4,59.93,76.88
-5,legacy,448
+id,ratio,level,token,active
+1,latest,5.29,cached,open
+2,86.55,eu-west,828,141
+3,769,869,eu-west,50.61
+4,81,467,778,22.54
+5,56.37,195,139,80.93
+6,614,668,blue,29.51
