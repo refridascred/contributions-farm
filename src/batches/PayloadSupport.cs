@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long offset)
+        /// <summary>Check that every queue report entry stays within the limit.</summary>
+        public static bool CheckQueueReportLimits(long[] readings, long target)
         {
-            long acc = 862;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 4) + (entry * 2)) - offset;
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
