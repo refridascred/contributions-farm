@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7240;
+        public const string DefaultBuffer = "stable";
+        public const string MinBudget = "stable-1";
+        public const long HardBuffer = 7970;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] samples, long limit)
