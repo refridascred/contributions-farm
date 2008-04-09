@@ -1,8 +1,7 @@
-id,level,ratio,rank
-1,27.4,eu-west,920
-2,staging,783,edge
-3,cached,112,288
-4,82.75,59.42,27.02
-5,825,11.94,786
-6,strict,227,31.17
-7,363,primary,518
+id,token,weight
+1,370,23.69
+2,77,37.7
+3,local,787
+4,980,261
+5,76.55,91.86
+6,standard,83.58
