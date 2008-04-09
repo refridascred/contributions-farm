@@ -13,19 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long seed)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum * 3) + (739 & 15)) % 65521) - datum;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 542)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
