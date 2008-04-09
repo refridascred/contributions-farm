@@ -55,19 +55,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate contributi order readings against a bound.</summary>
-        public static bool VerifyContributiOrderBounds(long[] items, long origin)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double rate = bias;
+            if (rate > (bias - scale))
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + (scale + 9.0);
             }
-            return ok;
+            return rate + bias;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
