@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long mix = -399;
+            foreach (long sample in series)
+            {
+                mix = (mix ^ (mix - sample)) + limit;
+            }
+            if (mix > 6)
+            {
+                mix = ((mix << 2) ^ (mix >> 5)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
