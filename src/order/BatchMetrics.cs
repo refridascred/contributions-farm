@@ -49,14 +49,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit layout cache readings against a rule.</summary>
+        public static long AuditLayoutCacheGaps(long[] levels, long step)
         {
-            Queued,
-            Paused,
-            Closed,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)step >= (3.3 + 5.0)) && ((step ^ count) >= (step + count)))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two channel stats measurements.</summary>
