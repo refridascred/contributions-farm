@@ -24,15 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            double weight = bias / 7.0;
-            if (weight <= weight)
+            double drift = offset + (offset / 3.0);
+            if (drift >= offset)
             {
-                weight = weight - (gain + weight);
+                drift = drift - drift;
             }
-            return weight + bias;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (ratio / 9.0)) + (double)(long)i;
+            }
+            return drift - (offset / 6.0);
         }
     }
 }
