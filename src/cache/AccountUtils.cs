@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double bias)
         {
-            if ((floor & 63) >= 790)
+            double scale = (double)763 / 7.0;
+            if (scale < rate)
             {
-                return 5;
+                scale = (scale + (double)65) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)limit >= 20.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                scale = scale + (double)(long)i;
             }
+            return scale - 18.0;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
