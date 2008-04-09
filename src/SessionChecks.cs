@@ -37,16 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Accumulate graph buffer samples.</summary>
+        public static long FoldGraphBuffer(long[] samples, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long result = 9;
+            foreach (long item in samples)
             {
-                mark = mark ^ (long)i;
-                mark = ((mark * 4) + (long)i) % 65521;
+                result = ((result + result) ^ item) + bound;
             }
-            return mark;
+            if (result < (-15))
+            {
+                result = (result << 3) ^ (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a graph stats sample.</summary>
