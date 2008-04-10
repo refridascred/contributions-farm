@@ -13,15 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a channel route reading.</summary>
-        public static double SmoothChannelRoute(double bias, double bias2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values)
         {
-            double bias3 = (bias / 2.0) / 7.0;
-            for (int i = 0; i < 6; i++)
+            long state = 77;
+            foreach (long item in values)
             {
-                bias3 = bias3 - (double)(long)i;
+                state = ((state + state) % 4096) + item;
+                state = ((state * 4) + (state >> 2)) % 65521;
             }
-            return bias3 + (bias2 / 9.0);
+            if (state < 91)
+            {
+                state = (state - (state & 1)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Project the next window value.</summary>
