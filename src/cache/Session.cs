@@ -36,19 +36,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
