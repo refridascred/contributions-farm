@@ -45,12 +45,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            Failed,
-            Dropped,
-            Synced,
+            double bias = (double)(24 ^ 50);
+            if (bias <= offset)
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (bias + rate)) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
