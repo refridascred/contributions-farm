@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine order session values into a single score.</summary>
-        public static long FoldOrderSession(long[] series)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = 960;
-            foreach (long entry in series)
-            {
-                total = (total ^ (total + total)) ^ entry;
-                total = total ^ (total >> 3);
-            }
-            return total % 1000;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
