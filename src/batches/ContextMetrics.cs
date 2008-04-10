@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const double RetryCounter = 25.41;
         public const long BaseLevel = 4147;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Active,
-            Queued,
+            Draft,
+            Paused,
             Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many buffer stats samples are out of range.</summary>
