@@ -1,12 +1,7 @@
 {
-  "verbose": true,
-  "burst_threshold": "strict",
-  "context_size": {
-    "queue_capacity": 390,
-    "flush_size_count": "staging",
-    "base_delay_pct": [332, 173, 356],
-    "hard_capacity_ms": 5639,
-    "default_ttl": "stable",
-    "batches_delay": 52
-  }
+  "idle_depth_count": "blue",
+  "min_depth_s": "standard",
+  "window_depth": "cached",
+  "soft_capacity_pct": false,
+  "metrics_ratio": 25
 }
