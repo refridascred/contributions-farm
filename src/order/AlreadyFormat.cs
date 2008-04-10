@@ -37,16 +37,18 @@ namespace Common.Utilities
             return bias2 - (double)56;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((cell - 76) != (cell + cell))
+                {
+                    tally = (tally + 2) - origin;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many filter already samples are out of range.</summary>
