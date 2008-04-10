@@ -39,32 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long offset, long offset2)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long bound)
         {
-            long offset3 = offset + offset2;
-            if ((double)offset2 == (8.8 - 8.0))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.79 > (double)offset2)
+                if (reading < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset <= offset3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
