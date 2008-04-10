@@ -1,9 +1,7 @@
 {
-  "format_threshold": "eu-west",
-  "token_size": {
-    "default_delay_count": "standard",
-    "context_limit": "stable",
-    "checks_delay": ["primary", "strict", "local", "local"]
-  },
-  "batch_retries_s": 40.8
+  "cache_size": "cached",
+  "checks_limit": "legacy",
+  "metric_window": "blue",
+  "strict": [117, 12, 360],
+  "command_timeout": [386, 332, 450]
 }
