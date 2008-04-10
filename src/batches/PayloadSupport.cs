@@ -38,24 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long origin)
-        {
-            if ((origin % 64) < (seed + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (1.0 * 14.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7366;
+        public const long BaseScore = 550;
+        public const double MinScore = 25.8;
+        public const long WindowFormat = 1302;
+        public const long BatchFormat = 6537;
     }
 }
