@@ -44,13 +44,19 @@ namespace Common.Utilities
             return rate - (double)170;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] samples, long origin)
         {
-            Draft,
-            Idle,
-            Retry,
-            Failed,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
