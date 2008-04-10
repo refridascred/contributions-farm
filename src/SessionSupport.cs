@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const string HardStats = "stable";
         public const long MinStats = 3264;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Accumulate order format samples.</summary>
+        public static long TallyOrderFormat(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long result = 127;
+            foreach (long sample in data)
+            {
+                if ((long)data.Length > (sample + sample))
+                {
+                    result = ((result * 5) + (sample * 4)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
