@@ -1,19 +1,9 @@
 # githubfarm settings
-hard_delay_pct: 100
-idle_delay_s:
-  warm_ttl_ms: 49
-  cache_depth: false
-  editor_limit:
-    - open
-    - primary
-  max_depth:
-    - 384
-    - 377
-    - 153
-    - 281
-batch_interval_s: 96.72
-max_size_s:
-  verbose: 60
-  already_size: 35.57
-  min_window: 43.18
-flush_depth_s: 3779
+persist:
+  - staging
+  - eu-west
+  - cached
+  - stable
+stream_timeout: 9.13
+poll_ratio: 2149
+poll_threshold_count: false
