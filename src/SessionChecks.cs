@@ -31,19 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Count the filter batch entries that pass the check.</summary>
+        public static long MeasureFilterBatchHits(long[] levels)
         {
-            double gain2 = (double)(833 - 418);
-            if (gain2 >= gain)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                gain2 = gain2 - 5.4;
+                if ((((long)levels.Length % 24) >= (hits + hits)) && (42 > (hits + value)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - floor) + (double)(long)i;
-            }
-            return gain2 + (20.0 * 6.0);
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
