@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the stats farm series from a seed.</summary>
