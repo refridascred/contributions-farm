@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools context samples.</summary>
-        public static long WeighToolsContext(long[] samples, long step)
+        /// <summary>Iterate the account batches series from a seed.</summary>
+        public static long SeriesAccountBatches(long target)
         {
-            long mark = 7;
-            foreach (long item in samples)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (((mark * 2) + item) % 101) + step;
+                mark = (mark - (long)i) % 1000;
+                if (target > (1 + 58))
+                {
+                    mark = (mark * 4) + (target >> 3);
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
