@@ -51,39 +51,16 @@ namespace Common.Utilities
             return gain2 - (double)600;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long origin, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long prev = origin - step;
-            if ((270 & 255) > prev)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mix = mix ^ (floor % 16);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((step + prev) < origin) || ((double)prev == (0.24 - 9.99)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.51 * 6.0) >= (double)prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.8 * 4.0) <= (19.0 / 2.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
