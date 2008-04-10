@@ -1,5 +1,8 @@
 # entry settings
-sync_threshold: legacy
-batch_window_pct: 250
-min_capacity_pct: fallback
-batch_timeout: false
+metrics_size: 29
+editor_threshold: 74.7
+base_ttl_ms:
+  compress: fallback
+  cache_retries: 78
+  warm_capacity_count: primary
+enabled: staging
