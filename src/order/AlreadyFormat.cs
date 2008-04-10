@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const string BurstBudget = "legacy";
 
-        /// <summary>Check that every command editor entry stays within the limit.</summary>
-        public static bool VerifyCommandEditorLimits(long[] data, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Pending,
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Adjust a notes order reading.</summary>
