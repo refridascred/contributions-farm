@@ -1,7 +1,6 @@
 # support settings
-verbose:
-  - latest
-  - latest
-  - stable
-min_threshold_count: fallback
-min_window_pct: false
+default_timeout_ms:
+  - 27
+  - 437
+batch_depth: false
+editor_ttl: 5634
