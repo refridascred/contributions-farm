@@ -37,33 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a already stats pair into a bucket.</summary>
-        public static long BucketAlreadyStats(long origin, long seed)
-        {
-            long edge = origin + seed;
-            if (((0 + edge) < (edge ^ 973)) && ((double)origin > 20.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge <= (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ seed) != (origin / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "primary-edge";
+        public const double MinRoute = 85.81;
+        public const double WindowRoute = 75.47;
+        public const long MaxScore = 192;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] series)
