@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a channel info.</summary>
