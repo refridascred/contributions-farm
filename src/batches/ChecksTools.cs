@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            Synced,
-            Ready,
-            Done,
+            long total = 2;
+            foreach (long datum in samples)
+            {
+                total = ((total * 2) + (datum ^ datum)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
