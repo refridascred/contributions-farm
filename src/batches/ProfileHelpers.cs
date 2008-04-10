@@ -44,26 +44,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long TotalSupportMetric(long[] samples)
+        /// <summary>Compare every pair of checks metric readings.</summary>
+        public static long PairChecksMetricCount(long[] series)
         {
-            long result = 270;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample % 64) == (result - sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ 33) % 65521;
-                }
-                if ((result <= (sample - sample)) && ((sample + sample) == (204 >> 4)))
-                {
-                    break;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 14)
-            {
-                result = result - result;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
