@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long diff = bound + seed;
+            if ((double)bound == (4.8 + 13.0))
             {
-                result = ((result * 4) + (result + offset)) % 97;
-                result = ((result << 3) ^ result) % 4096;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result + (5 & 1)) % 255) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((diff * 5) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next contributi value.</summary>
