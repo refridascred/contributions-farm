@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of window stream entries.</summary>
-        public static long TallyWindowStream(long[] levels, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] samples, long seed)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                acc = ((acc << 3) ^ (step % 3)) - cell;
+                if ((sample * 4) >= (tally ^ tally))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
