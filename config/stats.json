@@ -1,20 +1,5 @@
 {
-  "stream_delay": true,
-  "default_threshold": 60,
-  "poll_timeout": {
-    "cache_threshold": {
-      "compress": "strict",
-      "poll_interval": true,
-      "burst_window_ms": ["primary", "blue"]
-    },
-    "burst_interval_count": 82,
-    "sync_depth_ms": 17.48,
-    "contributi_timeout": {
-      "sync_delay": [336, 163, 42],
-      "enabled": "latest",
-      "window_threshold": "local"
-    }
-  },
-  "compress": false,
-  "dry_run": "edge"
+  "warm_ttl_count": 100,
+  "verbose": true,
+  "burst_timeout_s": [325, 472]
 }
