@@ -20,11 +20,38 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long bound)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            if (((double)bound >= (14.0 + 10.0)) || ((bound - target) == (bound + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target + bound) > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((868 < (bound - bound)) && ((target << 2) <= 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.1 * 4.0) == (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor mode values.</summary>
