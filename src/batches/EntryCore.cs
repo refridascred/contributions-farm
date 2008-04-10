@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Pending,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
