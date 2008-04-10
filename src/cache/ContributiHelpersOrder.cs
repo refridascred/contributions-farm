@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor stream pairs that satisfy a relation.</summary>
-        public static long PairEditorStreamCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 96.14;
+        public const double DefaultBudget = 80.48;
+        public const long CacheStats = 8203;
+        public const long WindowStats = 8125;
+        public const string BurstWidth = "strict-v2";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
