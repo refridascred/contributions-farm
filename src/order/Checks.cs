@@ -22,12 +22,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftSize = "legacy";
-        public const long HardRoute = 4378;
-        public const string IdleWidth = "local-1";
-        public const string BaseRoute = "primary-edge";
-        public const long BaseWidth = 8625;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long target)
+        {
+            long cur = step - target;
+            if (cur < step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((79 / 5) >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((702 - 9) != (step - target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
