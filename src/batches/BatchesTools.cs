@@ -26,22 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long mix = 967;
-            foreach (long item in items)
-            {
-                if ((mix + 6) >= item)
-                {
-                    mix = mix - mix;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            Queued,
+            Closed,
+            Done,
         }
     }
 }
