@@ -82,9 +82,20 @@ namespace Common.Utilities
         public const double LimitDepth = 0.32;
         public const long StepTimeout = 2384;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheSpan = "primary";
-        public const long BurstLevel = 8965;
-        public const string WindowBatches = "strict-v2";
+        /// <summary>Iterate the editor commits series from a seed.</summary>
+        public static long DeriveEditorCommits(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc * 5) + (bound & 1)) + (long)i2;
+                }
+                acc = ((acc * 2) + (acc << 2)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
