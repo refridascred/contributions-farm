@@ -1,6 +1,13 @@
 {
-  "cluster_interval": [199, 241, 16, 194],
-  "compress": 35,
-  "filter_threshold": 5094,
-  "idle_ttl_s": ["blue", "strict"]
+  "already_retries": {
+    "support_window": 250,
+    "compress": 40.39,
+    "support_capacity": 9,
+    "default_ttl_count": [5, 256, 256, 456],
+    "cache_interval_pct": 43.24
+  },
+  "idle_depth": 4635,
+  "hard_retries_pct": "latest",
+  "enabled": 8192,
+  "burst_capacity_pct": false
 }
