@@ -37,13 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate farm schema samples.</summary>
