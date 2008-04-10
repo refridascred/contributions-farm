@@ -33,19 +33,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data, long floor)
-        {
-            long total = -88;
-            foreach (long cell in data)
-            {
-                total = (((total ^ total) % 97) - cell) + floor;
-            }
-            if (total > (-5))
-            {
-                total = ((total * 3) + (90 % 2)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftLevel = 7711;
+        public const long MinInterval = 9383;
+        public const double WindowSpan = 97.01;
+        public const double MaxWidth = 30.35;
+        public const long CacheContributi = 147;
     }
 }
