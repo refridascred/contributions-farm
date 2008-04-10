@@ -52,10 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "primary-v2";
-        public const long StepScore = 1742;
-        public const long WindowScore = 4888;
-        public const double RetryPayload = 47.08;
+        /// <summary>Fold a list of command support readings.</summary>
+        public static long DigestCommandSupport(long[] data)
+        {
+            long sum = 54;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (2.8 + 1.3))
+                {
+                    sum = (sum * 2) + (sum + 2);
+                }
+                sum = sum + (datum / 7);
+            }
+            return sum % 65521;
+        }
     }
 }
