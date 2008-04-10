@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long seed, long origin)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
+            long bound = seed + origin;
+            if ((origin <= (origin + 73)) && ((bound - origin) <= (origin & 255)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin < (seed >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((117 - bound) >= (7 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound > (origin >> 1)) && ((bound - bound) < bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph header.</summary>
