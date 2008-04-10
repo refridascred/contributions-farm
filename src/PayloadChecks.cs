@@ -74,21 +74,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 5) + (floor ^ 8)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
