@@ -31,15 +31,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            if ((5 + 80) >= (offset + offset))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((seed % 8) <= (seed << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + (-7)) > (seed % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
