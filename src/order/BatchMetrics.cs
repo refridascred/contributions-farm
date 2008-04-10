@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 8711;
-        public const long LimitRatio = 6822;
-        public const long DefaultTools = 7201;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!((double)(long)samples.Length < 1.16))
+                {
+                    seen = ((seen + 1) + sample) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate tools context samples.</summary>
         public static long WeighToolsContext(long[] samples, long step)
