@@ -46,25 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long floor)
-        {
-            if ((double)origin < (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= (6.0 * 6.94))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 37.27;
+        public const string SoftDepth = "stable-v2";
+        public const long RetryBatches = 8349;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] items)
