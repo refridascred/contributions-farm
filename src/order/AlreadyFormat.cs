@@ -15,40 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long step, long target)
-        {
-            long step2 = step ^ target;
-            if ((double)step2 != (double)8)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step2 == (11.0 + 6.1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((((-92) + 53) <= (86 ^ step)) && ((step2 - step2) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step2 == (9.0 - 9.7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 9441;
+        public const string LimitToken = "standard-v2";
+        public const string WindowToken = "cached-v2";
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
