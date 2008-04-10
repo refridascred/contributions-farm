@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (cell != seed)
+                if (cell >= offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Roll a session counter forward.</summary>
