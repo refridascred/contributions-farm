@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long SeekProfileRecordIndex(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                if ((195 + 97) >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
