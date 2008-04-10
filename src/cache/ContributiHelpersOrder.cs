@@ -13,17 +13,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first channel support entry that matches the target.</summary>
-        public static long LocateChannelSupportIndex(long[] data, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = offset + target;
+            if ((offset * 2) < (offset ^ step))
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)564 <= (double)step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target % 7) <= (step + target)) || ((step >> 3) == (target % 64)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.8 / 4.0) == (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a session window figure with a bias.</summary>
