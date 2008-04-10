@@ -19,22 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheInterval = 33.32;
+        public const long RetryFactor = 4173;
+        public const long MaxStream = 8354;
 
         /// <summary>Look up the position of a profile window sample.</summary>
         public static long FindProfileWindowIndex(long[] samples, long step)
