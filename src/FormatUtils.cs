@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] items, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = 60;
+            foreach (long sample in items)
             {
-                if (datum != offset)
+                mark = mark - (9 >> 2);
+                if (sample < (mark % 16))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mark < 54)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of report readings.</summary>
