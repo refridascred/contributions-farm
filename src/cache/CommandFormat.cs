@@ -29,25 +29,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long lane = limit - bound;
-            if (!((bound % 10) != (bound & 15)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((lane * 5) <= (bound >> 1)) && (limit > (limit * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of account filter readings.</summary>
