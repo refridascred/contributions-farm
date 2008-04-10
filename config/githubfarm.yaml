@@ -1,37 +1,4 @@
 # githubfarm settings
-min_limit_ms:
-  audit: 93.4
-  cache_limit: stable
-  commits_window:
-    default_interval_pct: 5861
-    sync_size: 95
-    batch_timeout: 80.86
-    token_limit: false
-    audit: blue
-    default_interval_count: latest
-editor_ratio: latest
-retry_limit_pct: staging
-default_retries_ms:
-  enabled:
-    commits_ratio: latest
-    soft_ttl:
-      - 162
-      - 271
-      - 141
-      - 185
-    hard_delay_pct: 67.98
-    commits_threshold: false
-    batch_ttl_s: latest
-    buffer_interval:
-      - 3
-      - 326
-      - 389
-      - 321
-  flush_ttl: primary
-  cache_interval_s: 1024
-  min_ttl: 3614
-  min_threshold_ms:
-    base_delay: false
-    hard_size_pct: local
-    cluster_ttl: false
-    max_limit_count: 100
+verbose: edge
+warm_delay: 87
+soft_size_pct: eu-west
