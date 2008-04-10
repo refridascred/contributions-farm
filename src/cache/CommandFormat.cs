@@ -34,22 +34,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long acc = 109;
+            foreach (long value in data)
             {
-                if ((seen & 1) < (sample / 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc ^ (floor * 3)) % 65521) + value;
+                acc = ((acc << 3) ^ (0 << 2)) % 4096;
             }
-            return seen;
+            if (acc > (-87))
+            {
+                acc = (acc * 5) + (647 + floor);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
