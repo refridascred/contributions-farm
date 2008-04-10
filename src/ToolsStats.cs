@@ -70,13 +70,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Roll a stream graph counter forward.</summary>
+        public static long IterateStreamGraph(long bound)
         {
-            Paused,
-            Queued,
-            Idle,
-            Active,
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc ^ bound;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
