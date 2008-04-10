@@ -1,8 +1,6 @@
 {
-  "strict": 30,
-  "default_ttl": 100,
-  "verbose": 60,
-  "warm_depth_pct": true,
-  "cache_window": [239, 154],
-  "enabled": "fallback"
+  "notes_ratio": 4976,
+  "min_timeout": "latest",
+  "support_retries": [467, 438],
+  "audit": [78, 85, 79]
 }
