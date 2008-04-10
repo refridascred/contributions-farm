@@ -37,32 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long edge = bound - step;
-            if ((edge - step) <= 8)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - edge) <= (5 - edge)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (bound + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two queue schema measurements.</summary>
