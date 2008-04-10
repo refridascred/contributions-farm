@@ -28,24 +28,16 @@ namespace Common.Utilities
         public const long CacheSpan = 6218;
         public const double SoftLevel = 82.72;
 
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long TallyStatsPayload(long[] items)
+        /// <summary>Roll a payload graph counter forward.</summary>
+        public static long StepPayloadGraph(long floor)
         {
-            long acc = 3;
-            foreach (long cell in items)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = acc + (long)i;
-                    acc = acc ^ (long)i;
-                }
-                acc = acc + (cell >> 4);
-                if ((double)cell >= (1.07 + 17.0))
-                {
-                    acc = acc - (cell - (-238));
-                }
+                score = score + floor;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
