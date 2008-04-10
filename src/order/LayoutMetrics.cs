@@ -21,18 +21,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples, long step)
+        /// <summary>Count the batches notes entries that pass the check.</summary>
+        public static long AuditBatchesNotesOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((long)samples.Length >= (datum + tally))
+                if ((double)item == (double)offset)
                 {
-                    tally = (tally + 3) + step;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
