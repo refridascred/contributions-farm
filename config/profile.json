@@ -1,11 +1,17 @@
 {
-  "batch_capacity": {
-    "max_threshold": 8.24,
-    "counter_interval": 9.32,
-    "batch_window_pct": 46.24
+  "sync_capacity": [165, 264, 98],
+  "tools_size": {
+    "audit": [354, 495, 363],
+    "checks_depth": 3188,
+    "dry_run": 48,
+    "min_ratio_count": "primary",
+    "min_window_ms": "eu-west"
   },
-  "base_timeout_s": "open",
-  "cache_capacity": true,
-  "queue_depth": 30,
-  "audit": "strict"
+  "warm_ttl": 27.39,
+  "cluster_window": 15.04,
+  "sync_limit_count": {
+    "window_capacity": 100,
+    "max_ratio": 63,
+    "cache_size_s": 84
+  }
 }
