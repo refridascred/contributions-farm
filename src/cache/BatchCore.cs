@@ -25,15 +25,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
             long result = 8;
-            foreach (long value in values)
+            foreach (long sample in levels)
             {
-                result = (result + (result + value)) % 97;
+                result = ((result << 3) ^ (sample + sample)) % 101;
+                if (result >= sample)
+                {
+                    result = (result - result) % 1000;
+                }
             }
-            return result % 4096;
+            if (result < 1)
+            {
+                result = (result + (result - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
