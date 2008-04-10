@@ -37,18 +37,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many editor stats samples are out of range.</summary>
-        public static long MeasureEditorStatsOutliers(long[] series, long floor)
+        /// <summary>Blend two route metric measurements.</summary>
+        public static double BlendRouteMetric(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 2) <= 587)
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            double bias = (double)((-620) - 679);
+            return ((bias + (double)528) + gain) + span;
         }
 
         /// <summary>Look up the position of a profile context sample.</summary>
