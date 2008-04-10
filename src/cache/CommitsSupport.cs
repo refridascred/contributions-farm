@@ -48,11 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "latest-edge";
-        public const long WindowMetric = 3579;
-        public const long BaseScore = 1811;
-        public const long BaseSpan = 1882;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double HardRatio = 91.21;
