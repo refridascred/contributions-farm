@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 505;
+            foreach (long datum in data)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc + acc)) ^ datum;
             }
-            return -1;
+            if (acc < 619)
+            {
+                acc = (acc ^ (acc ^ target)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine batch contributi values into a single score.</summary>
