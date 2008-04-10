@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long CacheRatio = 7957;
         public const string SoftWindow = "primary-v2";
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            double scale = floor;
-            if (scale >= (scale / 9.0))
+            double mean = (bias / 6.0) - (bias + bias);
+            if (mean < span)
             {
-                scale = (scale - 2.0) - bias;
+                mean = mean + (mean - mean);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + floor) - (double)(long)i;
+                mean = mean - bias;
             }
-            return scale + scale;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - (bias * 0.7);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
