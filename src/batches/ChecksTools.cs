@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mean + 2.1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardLevel = 30.75;
+        public const long BatchFormat = 8884;
+        public const long BurstWidth = 8809;
+        public const long RetryRatio = 8566;
+        public const string CacheFormat = "standard";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] readings)
