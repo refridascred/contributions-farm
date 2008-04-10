@@ -26,12 +26,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 14.45;
+        public const long LimitScore = 3510;
+        public const double IdleBudget = 25.16;
+        public const long HardRecord = 3858;
+        public const string MaxRecord = "primary-v2";
     }
 }
