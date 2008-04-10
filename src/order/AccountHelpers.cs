@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] values, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long gap = bound + seed;
+            if ((gap + seed) != (gap * 5))
             {
-                if ((datum >> 3) < hits)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) < (gap / 8))
                 {
-                    hits = (hits + 2) + limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((((-17) * 5) <= bound) && ((30 * 2) < seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - bound) < 86)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
