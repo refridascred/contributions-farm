@@ -19,23 +19,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Accumulate account metric samples.</summary>
+        public static long WeighAccountMetric(long[] samples)
         {
-            double mean = rate;
-            if (mean >= (rate / 4.0))
+            long anchor = 902;
+            foreach (long item in samples)
             {
-                mean = mean + 15.0;
+                anchor = anchor + (anchor ^ item);
+                if ((4.4 / 6.0) == (double)item)
+                {
+                    anchor = (anchor * 2) + (item + 2);
+                }
             }
-            else
-            {
-                mean = mean - 9.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (rate * 0.06)) + (double)(long)i;
-            }
-            return mean - (bias / 7.0);
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
