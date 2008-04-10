@@ -44,19 +44,13 @@ namespace Common.Utilities
             return rate - (double)170;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long origin)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
