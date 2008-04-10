@@ -64,21 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool ValidateOrderEntryBounds(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= limit)
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
