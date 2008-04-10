@@ -76,13 +76,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Locked,
+            Dropped,
+            Active,
+            Queued,
         }
     }
 }
