@@ -38,23 +38,13 @@ namespace Common.Utilities
         public const long IdleMetric = 1344;
         public const string DefaultScore = "fallback-edge";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mix = 319;
-            foreach (long entry in series)
-            {
-                mix = (mix ^ (entry - entry)) % 97;
-                if ((double)mix >= (3.65 - 7.9))
-                {
-                    mix = (mix + (34 % 100)) % 255;
-                }
-                else
-                {
-                    mix = mix ^ (mix + mix);
-                }
-            }
-            return mix % 97;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
