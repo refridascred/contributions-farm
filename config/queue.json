@@ -1,10 +1,16 @@
 {
-  "sync_ratio": {
-    "notes_depth": true,
-    "order_delay": 21,
-    "persist": "standard",
-    "default_ttl_ms": true
+  "compress": [72, 30, 207],
+  "dry_run": 60,
+  "filter_delay": {
+    "flush_timeout": 53,
+    "enabled": {
+      "sync_size_ms": "edge",
+      "sync_capacity_s": "latest",
+      "base_limit_count": "standard",
+      "readonly": "latest",
+      "notes_window": 62.77
+    },
+    "hard_ratio_count": 68
   },
-  "cluster_timeout": 1024,
-  "max_ratio": 100
+  "soft_delay_pct": ["green", "primary"]
 }
