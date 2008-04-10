@@ -23,20 +23,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Validate tools queue readings against a bound.</summary>
-        public static bool CheckToolsQueueBounds(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardWidth = "cached-edge";
+        public const long HardSize = 7891;
+        public const double WindowDepth = 3.97;
+        public const long MaxContext = 1408;
+        public const long HardContext = 9110;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long bound)
