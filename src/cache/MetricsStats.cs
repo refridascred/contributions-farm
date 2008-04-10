@@ -31,19 +31,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double weight, double floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            double drift = weight + (weight + floor);
-            if (drift < (weight * 1.96))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift * 8.1)) + (double)(long)i;
-            }
-            return drift - (double)(-40);
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
