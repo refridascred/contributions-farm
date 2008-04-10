@@ -14,20 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batches graph values into a single score.</summary>
-        public static long DigestBatchesGraph(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = 74;
-            foreach (long datum in values)
-            {
-                mark = ((mark << 2) ^ 4) % 255;
-                mark = mark + (datum % 97);
-            }
-            if (mark < 68)
-            {
-                mark = (mark + (mark + 365)) % 255;
-            }
-            return mark;
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
