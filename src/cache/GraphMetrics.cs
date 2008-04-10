@@ -29,19 +29,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the cluster support entries that pass the check.</summary>
-        public static long CountClusterSupportGaps(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((long)values.Length == (bound + bound))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5332;
+        public const double BaseWindow = 39.67;
+        public const long DefaultFactor = 7676;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinBudget = 4424;
