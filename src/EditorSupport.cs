@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches != (2.7 - 8.04))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
