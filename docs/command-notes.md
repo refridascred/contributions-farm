@@ -1,10 +1,11 @@
 # Command notes
 
-When a order fails, the metric handler retries a few times before giving up.
-Run the tools check before changing any queue limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the support list.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new payload fields
-- Prefer session defaults
-- Validate already input early
+- Prefer window defaults
+- Review support limits each release
+- Validate layout input early
