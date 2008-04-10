@@ -57,12 +57,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 80.62;
-        public const double MinProfile = 57.72;
-        public const long BaseProfile = 5177;
-        public const double HardSpan = 84.94;
-        public const double CacheLevel = 39.27;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings, long offset)
+        {
+            long sum = 7;
+            foreach (long cell in readings)
+            {
+                sum = ((sum + (sum & 127)) ^ cell) + offset;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] readings)
