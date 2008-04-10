@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Synced,
-            Failed,
-            Closed,
-            Idle,
-            Queued,
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
