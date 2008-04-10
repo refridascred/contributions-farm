@@ -50,13 +50,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Roll a metric cache counter forward.</summary>
+        public static long SeriesMetricCache(long offset)
         {
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the stats status values.</summary>
