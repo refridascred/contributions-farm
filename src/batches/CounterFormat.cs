@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] values)
         {
-            long acc = 31;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                acc = (acc - cell) % 65521;
+                if (((double)value != (1.5 + 0.04)) || ((long)values.Length >= value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
