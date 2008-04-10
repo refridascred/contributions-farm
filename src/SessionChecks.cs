@@ -34,31 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches batch input into a small class.</summary>
-        public static long GradeBatchesBatch(long limit, long limit2)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if (1.0 < (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 + limit2) >= (limit2 & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9 & 127) >= (limit2 & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
