@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long MeasureOrderChannelOutliers(long[] levels, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((cell & 1) >= (4 << 2))
+                if ((tally ^ 94) < (687 + 0))
                 {
-                    count = (count + 3) + target;
+                    tally = ((tally + 3) - cell) - target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
