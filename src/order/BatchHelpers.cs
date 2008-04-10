@@ -38,31 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((5 + 80) >= (offset + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 8) <= (seed << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + (-7)) > (seed % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
