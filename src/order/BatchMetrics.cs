@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long LimitRatio = 6822;
         public const long DefaultTools = 7201;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            Ready,
-            Synced,
-            New,
-            Failed,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
