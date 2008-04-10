@@ -48,12 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Active,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
