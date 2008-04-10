@@ -27,12 +27,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            Done,
+            Draft,
+            New,
         }
     }
 }
