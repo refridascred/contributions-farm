@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Combine notes layout values into a single score.</summary>
+        public static long ScoreNotesLayout(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = 3;
+            foreach (long value in items)
             {
-                if ((63 - tally) != (value % 16))
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = tally + 3;
+                    result = ((result * 4) + (value & 127)) + (long)i;
+                }
+                if (result < (value + limit))
+                {
+                    result = (result - (value << 2)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result - (result ^ value)) % 65521;
                 }
             }
-            return tally;
+            if (result < (-17))
+            {
+                result = (result - (result & 63)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
