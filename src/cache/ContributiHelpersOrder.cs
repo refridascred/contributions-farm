@@ -27,17 +27,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] < floor)
+                if ((((long)i & 63) < (sum % 3)) || ((sum ^ floor) >= ((long)i / 2)))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (8 >> 4)) % 4096;
                 }
+                sum = ((sum * 3) + ((long)i + floor)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
