@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first account session entry that matches the target.</summary>
-        public static long LookupAccountSessionIndex(long[] readings, long seed)
+        /// <summary>Classify a context counter pair into a bucket.</summary>
+        public static long SortContextCounter(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = target + bound;
+            if (((diff + 0) < 45) && (target <= bound))
             {
-                if (readings[i] >= seed)
+                return 4;
+            }
+            else
+            {
+                if (((target - diff) <= 407) || ((bound - bound) >= (bound & 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate session token samples.</summary>
