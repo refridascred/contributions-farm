@@ -65,15 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Measure how many queue window samples are out of range.</summary>
+        public static long AuditQueueWindowMatches(long[] data)
         {
-            double rate = (double)(175 * 2);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                rate = (rate - (double)(long)i) - gain;
+                if (count >= (sample & 63))
+                {
+                    count = count + 2;
+                }
             }
-            return rate - span;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
