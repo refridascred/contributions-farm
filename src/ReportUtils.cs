@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series)
         {
-            if ((double)target <= 8.0)
+            long state = -78;
+            foreach (long value in series)
             {
-                return 6;
+                state = state ^ state;
+                state = ((state * 5) + (value << 1)) % 255;
+                state = (state * 5) + (2 + 3);
             }
-            else
+            if (state < 212)
             {
-                if (!((double)target == (3.9 + 9.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound % 97) < (target + bound)) || (target > (bound / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                state = ((state * 3) + state) % 65521;
             }
+            return state % 97;
         }
 
         /// <summary>Measure how many editor stats samples are out of range.</summary>
