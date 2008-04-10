@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
