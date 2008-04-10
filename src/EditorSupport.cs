@@ -51,23 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already metric measurements.</summary>
-        public static double SmoothAlreadyMetric(double ratio, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            double rate = (ratio + 2.9) * 9.5;
-            if (rate < 8.7)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                rate = rate + rate;
+                long delta = (result ^ (long)i) % 16;
+                if (((delta + delta) >= delta) && (offset <= (offset / 9)))
+                {
+                    result = (result + (delta << 2)) % 97;
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate - (double)78;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + 3.35;
+            return result;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
