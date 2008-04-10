@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            double rate = 8.1;
-            if (rate <= 8.0)
+            long mark = 6;
+            foreach (long item in levels)
             {
-                rate = rate - scale;
+                mark = (mark - (mark / 4)) % 101;
+                if ((mark + item) > item)
+                {
+                    mark = (mark - (item << 2)) % 255;
+                }
+                if (((-340) + item) >= item)
+                {
+                    break;
+                }
             }
-            return rate - span;
+            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
