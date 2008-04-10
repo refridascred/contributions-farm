@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string SoftCluster = "latest-v2";
         public const long RetryCluster = 4375;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((double)(long)samples.Length >= 11.0)
+                {
+                    tally = ((tally + 2) + reading) - target;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank format input into a small class.</summary>
