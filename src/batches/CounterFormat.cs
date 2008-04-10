@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = 31;
+            foreach (long cell in items)
+            {
+                acc = (acc - cell) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
