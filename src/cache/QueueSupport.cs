@@ -38,21 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
-        public static long CompareEditorChannelCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset * 2) >= (count + 1))
                 {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - cell;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
