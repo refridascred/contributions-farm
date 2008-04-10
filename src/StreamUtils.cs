@@ -45,14 +45,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Draft,
-            Pending,
             Synced,
-            Failed,
             Retry,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
