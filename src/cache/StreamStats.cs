@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long RetryCounter = 1171;
         public const long WindowCount = 658;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 2;
-            foreach (long sample in readings)
-            {
-                if (((double)acc != (1.47 / 7.0)) && ((acc - acc) != (sample & 127)))
-                {
-                    acc = (acc - sample) % 255;
-                }
-                if ((sample % 8) > (sample + sample))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the editor mode values.</summary>
