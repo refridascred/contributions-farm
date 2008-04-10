@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor % 2) < (floor + origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((floor * 3) >= (floor / 4)))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
