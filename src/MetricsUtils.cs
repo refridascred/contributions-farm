@@ -45,18 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine record farm values into a single score.</summary>
-        public static long TallyRecordFarm(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] levels)
         {
-            long anchor = 221;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((double)anchor >= (5.71 + 17.0)) && ((7.11 + 6.8) < (double)seed))
+                if (!(tally >= (reading % 3)))
                 {
-                    anchor = (anchor + anchor) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
