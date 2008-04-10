@@ -61,11 +61,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitSize = 1968;
-        public const string DefaultRecord = "cached-1";
-        public const long RetryRecord = 7008;
-        public const long SoftWidth = 5739;
-        public const long SoftSpan = 3707;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
