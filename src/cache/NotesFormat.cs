@@ -41,19 +41,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double bias)
-        {
-            double rate = scale;
-            if (rate < (bias / 3.0))
-            {
-                rate = rate - (scale + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryFactor = 7786;
+        public const long IdleRatio = 7729;
+        public const long MinCounter = 4111;
+        public const long RetryTimeout = 8046;
     }
 }
