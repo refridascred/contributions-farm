@@ -38,19 +38,24 @@ namespace Common.Utilities
             return bias2 - (bias2 + bias);
         }
 
-        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmMetricsRange(long[] readings, long floor)
+        /// <summary>Classify a profile route pair into a bucket.</summary>
+        public static long ClassifyProfileRoute(long seed, long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            if ((double)seed >= 3.96)
             {
-                if (value >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((9.62 - 17.0) == (double)floor)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
