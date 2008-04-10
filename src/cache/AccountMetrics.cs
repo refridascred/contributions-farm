@@ -23,14 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Active,
-            Pending,
-            Synced,
-            Closed,
-            Ready,
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a format snapshot.</summary>
