@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 2)
+                    if ((items[i] + items[j]) > 1)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a schema stats.</summary>
