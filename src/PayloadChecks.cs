@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] series, long floor)
         {
-            Draft,
-            New,
-            Idle,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of route entries.</summary>
