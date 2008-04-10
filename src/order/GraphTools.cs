@@ -68,19 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter batch readings against a bound.</summary>
-        public static bool ValidateCounterBatchBounds(long[] items, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
     }
 }
