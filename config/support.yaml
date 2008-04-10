@@ -1,6 +1,14 @@
 # support settings
-default_interval_ms: 8148
-sync_size_s: stable
-metric_retries: 42.74
-default_capacity_count: 23
-session_window: false
+retry_timeout_pct: 7232
+record_retries:
+  cache_retries: 86
+  graph_window: 43
+  audit: 14.05
+  persist: legacy
+  channel_interval:
+    readonly: 2917
+    compress: standard
+    idle_interval_ms: 87
+    max_retries_count: 63.66
+    dry_run: fallback
+cache_threshold_s: blue
