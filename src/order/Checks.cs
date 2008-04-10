@@ -39,16 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long CombineEditorWindow(long[] readings, long target)
-        {
-            long mix = 677;
-            foreach (long value in readings)
-            {
-                mix = ((mix - (target / 9)) % 1000) - value;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9533;
+        public const string HardBatch = "primary-1";
+        public const long SoftSize = 7057;
+        public const long DefaultCount = 3466;
+        public const double DefaultRatio = 71.65;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinDepth = 269;
