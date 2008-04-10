@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 82.26;
-        public const long CacheStream = 39;
-        public const long DefaultStream = 6173;
-        public const string MinDepth = "cached-edge";
-        public const long StepSpan = 3250;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((2.8 < (double)count) && (count <= (494 + 39))) || ((item << 1) < (89 - count)))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 501;
