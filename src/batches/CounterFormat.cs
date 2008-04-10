@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long seed)
         {
-            long result = 786;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5 % 8) < (result - result))
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
                 {
-                    result = ((result << 2) ^ (result + sample)) % 101;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
