@@ -25,23 +25,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = 8;
-            foreach (long sample in levels)
-            {
-                result = ((result << 3) ^ (sample + sample)) % 101;
-                if (result >= sample)
-                {
-                    result = (result - result) % 1000;
-                }
-            }
-            if (result < 1)
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
