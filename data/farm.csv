@@ -1,8 +1,6 @@
-id,score,count,label,owner
-1,81.29,195,strict,legacy
-2,edge,823,601,539
-3,800,local,807,open
-4,40.2,674,edge,21.05
-5,837,open,17,open
-6,438,local,11.08,426
-7,229,438,637,66.41
+id,state,rank,count
+1,494,141,72.35
+2,45.27,12.31,stable
+3,98,primary,local
+4,783,741,50.3
+5,827,962,906
