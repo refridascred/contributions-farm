@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowTimeout = "legacy-1";
-        public const long BaseDepth = 9341;
-        public const long StepRecord = 3814;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 4403;
+        public const long BatchRatio = 2702;
+        public const double RetryRatio = 1.51;
+        public const long SoftTimeout = 2916;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] items)
