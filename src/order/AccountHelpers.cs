@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long bound, long seed)
+        /// <summary>Fold a list of notes schema readings.</summary>
+        public static long FoldNotesSchema(long[] readings, long origin)
         {
-            long gap = bound + seed;
-            if ((gap + seed) != (gap * 5))
+            long acc = 66;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) < (gap / 8))
+                if ((entry - (long)readings.Length) < (acc * 3))
                 {
-                    return 4;
+                    acc = (acc ^ (entry + 765)) % 1000;
+                    continue;
                 }
-                else
+                if ((9 + acc) >= origin)
                 {
-                    if ((((-17) * 5) <= bound) && ((30 * 2) < seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - bound) < 86)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc ^ origin) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
