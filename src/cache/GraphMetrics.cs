@@ -48,13 +48,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long limit2)
         {
-            New,
-            Synced,
-            Active,
-            Paused,
+            if ((limit & 3) <= limit2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit2 + limit) > (407 + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < 13.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next order value.</summary>
