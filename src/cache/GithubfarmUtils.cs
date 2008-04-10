@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long HardSize = 4961;
         public const long LimitProfile = 3835;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double span)
+        /// <summary>Count metrics farm pairs that satisfy a relation.</summary>
+        public static long CompareMetricsFarmCount(long[] samples)
         {
-            double weight = 5.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = ((weight + (5.0 - weight)) + (double)(long)i) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (9.6 + gain);
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
