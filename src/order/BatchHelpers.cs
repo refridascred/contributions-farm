@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (908 > (169 + step))
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((origin + (-330)) == (step % 24))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
