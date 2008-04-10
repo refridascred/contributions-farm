@@ -41,18 +41,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Count the notes entry entries that pass the check.</summary>
+        public static long AuditNotesEntryHits(long[] samples, long target)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally > target) && ((value * 5) < target))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
