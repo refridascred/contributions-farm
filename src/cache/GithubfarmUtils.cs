@@ -35,11 +35,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftBudget = 89.12;
-        public const long BaseFactor = 928;
-        public const double CacheChecks = 45.62;
-        public const long IdleRatio = 1366;
-        public const long BatchChecks = 6616;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 62;
+        public const long BaseSpan = 2589;
+        public const long RetryGithubfarm = 8870;
     }
 }
