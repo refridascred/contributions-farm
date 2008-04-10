@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 556;
+        public const long BurstSize = 7656;
+        public const long HardContributi = 6080;
+        public const long BurstContributi = 55;
+        public const long SoftContributi = 1345;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
