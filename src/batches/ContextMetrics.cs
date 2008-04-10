@@ -51,17 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] readings, long limit)
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long MeasureCacheFilterMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                if (((8.5 + 2.2) < (double)count) && ((14.0 <= (double)sample) && ((double)14 <= (double)sample)))
                 {
-                    return (long)i;
+                    count = (count + 1) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
