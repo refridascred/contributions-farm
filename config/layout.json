@@ -1,18 +1,8 @@
 {
-  "cache_ttl": "blue",
-  "poll_timeout_pct": {
-    "min_timeout_count": ["blue", "green", "green", "fallback"],
-    "min_ratio": 100,
-    "verbose": 35.52,
-    "audit": {
-      "payload_delay": "strict",
-      "base_limit": 1450,
-      "min_ttl": "blue",
-      "readonly": true
-    },
-    "sync_delay_s": 100
-  },
-  "dry_run": 5.53,
-  "poll_delay": 7193,
-  "base_threshold": "blue"
+  "default_window_s": false,
+  "persist": true,
+  "route_ratio": ["cached", "open", "primary"],
+  "default_timeout_pct": ["strict", "stable", "staging", "local"],
+  "max_ratio": "blue",
+  "sync_ratio_s": 89.6
 }
