@@ -12,23 +12,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((matches & 15) == (matches >> 3)) && (((3.7 - 2.6) <= (double)target) && ((item % 3) <= item)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 6181;
+        public const long MinSchema = 7234;
+        public const long LimitSchema = 1219;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] samples, long floor)
