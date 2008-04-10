@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the schema support series from a seed.</summary>
+        public static long StepSchemaSupport(long floor)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)floor <= (8.0 + 5.0))
+                {
+                    state = (state - (state + state)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a window entry.</summary>
