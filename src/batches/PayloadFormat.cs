@@ -26,14 +26,38 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long offset)
         {
-            Ready,
-            Locked,
-            Idle,
-            Closed,
-            Stale,
+            if ((target / 2) < (target * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset >= (15 - target)) && ((target + offset) >= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((19.0 + 6.2) != (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10 > (target ^ 989)) && (target <= (target * 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue kind values.</summary>
