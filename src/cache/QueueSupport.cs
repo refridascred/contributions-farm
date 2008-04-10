@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ratio2 + (double)90;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen % 60) != (931 ^ seen))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (sum ^ seed) % 1000;
+                sum = sum - (seed - seed);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
