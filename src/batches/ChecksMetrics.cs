@@ -69,12 +69,21 @@ namespace Common.Utilities
         public const double HardSpan = 84.94;
         public const double CacheLevel = 39.27;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            Idle,
-            Dropped,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
