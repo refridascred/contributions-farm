@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] series, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit << 1) <= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
