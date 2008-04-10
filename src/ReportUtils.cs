@@ -50,22 +50,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Grade a context checks value against two limits.</summary>
+        public static long BucketContextChecks(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (!((268 - origin2) <= (9 & 31)))
             {
-                if (880 < (163 + cell))
+                return 5;
+            }
+            else
+            {
+                if ((origin2 - origin) > (origin ^ origin2))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (origin2 < (origin * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
