@@ -41,39 +41,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 32.41;
         public const string BaseBuffer = "staging-1";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            long lane = origin - step;
-            if ((lane - lane) >= (origin / 9))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane / 4) < (step << 2))
+                if (((count * 5) < (9 - value)) || (((605 ^ count) <= ((-427) + count)) && ((double)37 > (double)(long)series.Length)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8 << 1) > (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step > (53 >> 4)) || ((lane + 658) == (origin - origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
