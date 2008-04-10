@@ -58,19 +58,38 @@ namespace Common.Utilities
         public const string SoftPayload = "standard";
         public const double CacheRatio = 79.14;
 
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool ValidateNotesBufferBounds(long[] data, long step)
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long BucketFarmReport(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            if (((offset >> 1) < (offset << 2)) || ((origin + offset) > origin))
             {
-                if (datum >= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= (0.37 / 9.0))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin >> 1) != (900 & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
