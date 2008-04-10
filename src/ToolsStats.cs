@@ -53,15 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order batches figure with a bias.</summary>
-        public static double ScaleOrderBatches(double weight, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double weight2 = bias;
-            if (weight2 > weight2)
-            {
-                weight2 = (weight2 + (double)6) - weight;
-            }
-            return weight2 - (bias / 6.0);
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
