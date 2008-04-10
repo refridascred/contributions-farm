@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first route metrics entry that matches the target.</summary>
-        public static long SeekRouteMetricsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 5594;
+        public const long MinReport = 1188;
+        public const long CacheReport = 5983;
+        public const double DefaultTimeout = 65.04;
+        public const long DefaultRatio = 3928;
 
         /// <summary>Combine token notes values into a single score.</summary>
         public static long DigestTokenNotes(long[] samples, long limit)
