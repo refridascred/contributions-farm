@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const string IdleCommand = "staging-1";
         public const long BurstCommand = 8616;
 
-        /// <summary>Check that every tools commits entry stays within the limit.</summary>
-        public static bool CheckToolsCommitsLimits(long[] values, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != offset)
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
