@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long TallyCounterClusterGaps(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((16.0 - 5.16) <= (double)entry) || ((count >= (entry >> 1)) && ((count >> 4) < (entry << 1))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
