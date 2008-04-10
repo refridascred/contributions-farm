@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score + (seed - seed)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a farm summary.</summary>
