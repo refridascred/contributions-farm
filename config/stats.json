@@ -1,17 +1,17 @@
 {
-  "record_depth": {
-    "audit": 79,
-    "githubfarm_ratio": 60,
-    "burst_threshold_pct": 500,
-    "min_retries_count": {
-      "compress": false,
-      "record_threshold": 3,
-      "context_limit": "standard"
+  "strict": {
+    "strict": true,
+    "cache_capacity": {
+      "flush_window": 5066,
+      "queue_interval": 42,
+      "window_capacity": 83,
+      "warm_retries_pct": 1024
     },
-    "filter_depth": "fallback",
-    "layout_size": "strict"
+    "flush_timeout_s": "staging",
+    "default_capacity_pct": true,
+    "batch_ratio": 8,
+    "queue_retries": true
   },
-  "max_retries_ms": ["blue", "legacy", "open"],
-  "idle_window_count": 3275,
-  "command_ratio": 60
+  "token_ttl": 60,
+  "warm_delay_ms": 35.43
 }
