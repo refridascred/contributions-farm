@@ -34,23 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            long state = 61;
-            foreach (long entry in samples)
+            double rate = 20.0;
+            if (rate < 16.0)
             {
-                state = (state + (state + entry)) % 101;
-                if (state > entry)
-                {
-                    state = (state << 2) ^ (entry << 1);
-                }
+                rate = (rate - (floor + floor)) + ratio;
             }
-            if (state < 26)
-            {
-                state = (state - (77 + 53)) % 65521;
-            }
-            return state;
+            return rate - (double)170;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
