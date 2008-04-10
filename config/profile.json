@@ -1,15 +1,18 @@
 {
-  "poll_capacity": "green",
-  "compress": "legacy",
-  "enabled": {
-    "compress": "cached",
-    "dry_run": 25.86,
-    "persist": {
-      "contributi_capacity": "open",
-      "poll_size_count": 1734,
-      "burst_size_count": "staging",
-      "soft_size_pct": "eu-west"
-    }
+  "sync_timeout_pct": {
+    "batch_window_ms": 9581,
+    "context_ratio": "legacy",
+    "base_capacity": 15.93,
+    "order_window": "local"
   },
-  "cache_depth_pct": 13
+  "batch_ttl_s": false,
+  "contributi_window": false,
+  "metric_threshold": {
+    "hard_limit_pct": 96,
+    "idle_capacity_count": "green",
+    "notes_limit": "edge",
+    "farm_ttl": ["stable", "edge", "open", "eu-west"]
+  },
+  "commits_capacity": "staging",
+  "audit": ["fallback", "standard", "local", "cached"]
 }
