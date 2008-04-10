@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] data, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long origin2)
         {
-            long state = -87;
-            foreach (long item in data)
+            if (origin2 < 59)
             {
-                state = ((state + (target % 3)) % 1000) ^ item;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((9.25 + 5.7) != (double)origin) || (88 <= (origin + 906)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Blend two entry measurements.</summary>
