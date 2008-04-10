@@ -39,16 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream graph counter forward.</summary>
-        public static long IterateStreamGraph(long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc ^ bound;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
