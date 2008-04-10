@@ -38,18 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch contributi values into a single score.</summary>
-        public static long ScoreBatchContributi(long[] series, long seed)
-        {
-            long mark = 61;
-            foreach (long value in series)
-            {
-                if (((long)series.Length - value) <= value)
-                {
-                    mark = (mark - (seed * 4)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 71.52;
+        public const string LimitContext = "alpha";
+        public const long CacheContext = 6653;
+        public const long MinScore = 3092;
+        public const double IdleScore = 37.81;
     }
 }
