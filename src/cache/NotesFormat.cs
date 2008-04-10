@@ -41,12 +41,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Locked,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryRatio = "latest-1";
+        public const long BurstWidth = 9064;
+        public const long StepInterval = 1755;
     }
 }
