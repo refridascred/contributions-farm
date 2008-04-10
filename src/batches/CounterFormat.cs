@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 884;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor + 628) % 65521) ^ sample;
+                if ((anchor * 4) > (anchor << 1))
                 {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 4) + 4) % 4096;
                 }
             }
-            return seen;
+            if (anchor < 9)
+            {
+                anchor = (anchor + (anchor & 1)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next stream value.</summary>
