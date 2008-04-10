@@ -35,13 +35,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
+            Ready,
+            Queued,
+            Done,
+            Closed,
+            Retry,
         }
     }
 }
