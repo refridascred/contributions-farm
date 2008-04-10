@@ -33,31 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            if ((offset & 63) >= (offset % 10))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + floor) < floor)
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6 << 2) < (offset / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
