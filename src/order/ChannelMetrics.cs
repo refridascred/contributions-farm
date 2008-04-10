@@ -17,17 +17,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long origin)
+        /// <summary>Audit metrics contributi readings against a rule.</summary>
+        public static long AuditMetricsContributiGaps(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                if (!((3.26 / 4.0) == (double)hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - datum) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
