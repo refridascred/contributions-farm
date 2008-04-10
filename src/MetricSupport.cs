@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const long BatchFactor = 9397;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinInterval = 9675;
-        public const double DefaultFilter = 35.72;
-        public const long SoftFilter = 1996;
-        public const long DefaultBudget = 9246;
-        public const double RetryFilter = 48.28;
+        /// <summary>Fold a list of filter notes readings.</summary>
+        public static long CombineFilterNotes(long[] items)
+        {
+            long result = 67;
+            foreach (long datum in items)
+            {
+                result = result - (datum * 3);
+                result = ((result << 3) ^ ((long)items.Length << 2)) % 1000;
+            }
+            return result;
+        }
     }
 }
