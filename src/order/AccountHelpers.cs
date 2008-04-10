@@ -30,19 +30,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (item >= bound)
+                if ((step & 1) <= (step >> 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
