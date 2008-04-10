@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Active,
-            Done,
-            Locked,
+            Draft,
+            Queued,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
