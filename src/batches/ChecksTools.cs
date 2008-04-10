@@ -53,21 +53,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheScore = 70.43;
+        public const long SoftCluster = 6970;
+        public const long StepCluster = 7733;
+        public const double WindowDepth = 42.79;
+        public const long MaxCluster = 8008;
     }
 }
