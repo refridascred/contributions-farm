@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)162 * 0.7;
+            for (int i = 0; i < 3; i++)
             {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - offset) - (double)(long)i;
             }
-            return -1;
+            return rate + gain;
         }
 
         /// <summary>Hold a metric stats.</summary>
