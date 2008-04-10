@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((8.3 - 7.0) <= (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
