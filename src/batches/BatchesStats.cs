@@ -24,28 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long result = 943;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (19.0 > (double)result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + (result & 255)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ (value / 2)) % 255;
-                    result = (result ^ (origin + origin)) % 101;
-                }
-                if ((result - origin) > (value - origin))
-                {
-                    result = (result + (value ^ origin)) % 65521;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next window value.</summary>
