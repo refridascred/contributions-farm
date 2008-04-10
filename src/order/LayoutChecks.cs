@@ -40,13 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Queued,
-            Locked,
-            New,
-            Draft,
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
