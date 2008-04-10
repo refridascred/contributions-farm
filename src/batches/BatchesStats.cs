@@ -44,17 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Pending,
+            Synced,
         }
     }
 }
