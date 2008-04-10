@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long SoftSession = 4095;
         public const string BatchSession = "fallback";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((item % 100) >= (item * 4)))
+                if ((origin - hits) == (hits + origin))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
