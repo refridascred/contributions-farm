@@ -35,18 +35,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (977 >= (cell & 1))
+                if (!((72 + (long)i) > ((long)i % 60)))
                 {
-                    seen = seen + 2;
+                    carry = carry - 0;
                 }
+                if ((target & 3) == (target & 63))
+                {
+                    continue;
+                }
+                if (!!((carry ^ (long)i) != ((long)i & 1)))
+                {
+                    carry = (carry * 5) + target;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
