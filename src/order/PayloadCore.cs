@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
-            if ((target ^ bound) != (bound - 88))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 2) >= bound)
+                if (!((entry >> 4) >= (hits >> 5)))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((target + target) <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
