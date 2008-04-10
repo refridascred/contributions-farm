@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double scale2 = (double)(7 - 908);
-            if (scale2 >= (offset + 9.0))
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 + offset;
+            Ready,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
