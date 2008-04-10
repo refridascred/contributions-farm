@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the session batches series from a seed.</summary>
-        public static long RollSessionBatches(long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry - seed) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
