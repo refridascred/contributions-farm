@@ -1,10 +1,19 @@
 # entry settings
-checks_capacity: true
-burst_depth_ms: legacy
-sync_interval_count: 58
-burst_window_count:
-  - 67
-  - 90
-  - 258
-idle_depth_pct: 79.21
-retry_capacity_ms: open
+farm_capacity:
+  audit: true
+  compress: 100
+  context_delay:
+    idle_window_pct: 3
+    dry_run: 4718
+    contributi_timeout: 54.26
+    tools_limit: 285
+    strict: 25.2
+  min_size: 250
+burst_capacity:
+  - standard
+  - fallback
+  - local
+support_ratio: 64.35
+retry_ttl_s: stable
+order_limit: true
+queue_threshold: 49
