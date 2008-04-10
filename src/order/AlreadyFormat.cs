@@ -19,22 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            long result = 30;
-            foreach (long cell in values)
+            long state = 219;
+            foreach (long sample in levels)
             {
-                if (8.3 >= (double)result)
+                if (sample > (sample - sample))
                 {
-                    result = (((result * 2) + 4) % 4096) + cell;
+                    state = ((state << 2) ^ (sample - state)) % 255;
+                }
+                if ((sample - state) < (sample + state))
+                {
+                    state = (state ^ ((-1) + (long)levels.Length)) % 4096;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state + 139);
                 }
             }
-            if (result > 548)
+            if (state < 21)
             {
-                result = result + (result - result);
+                state = ((state * 5) + (state >> 2)) % 255;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
