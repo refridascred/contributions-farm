@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= origin)
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a batch entry.</summary>
