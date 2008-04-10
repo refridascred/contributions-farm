@@ -28,22 +28,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many metrics editor samples are out of range.</summary>
-        public static long CountMetricsEditorGaps(long[] items, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - item) != (count + bound))
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
