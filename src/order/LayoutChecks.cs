@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double bias2)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            double gain = bias2;
-            for (int i = 0; i < 2; i++)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain + bias) + (double)(long)i;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return gain + bias2;
+            return anchor;
         }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
