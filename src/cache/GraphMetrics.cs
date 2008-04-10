@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (3.2 > (double)seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
