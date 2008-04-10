@@ -39,11 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "open-v2";
+        public const double CacheContributi = 7.51;
+        public const long HardSize = 1023;
+        public const string CacheTimeout = "open-edge";
+        public const long MaxTimeout = 2909;
     }
 }
