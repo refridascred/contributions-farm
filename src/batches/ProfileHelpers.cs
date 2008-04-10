@@ -109,15 +109,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long TallyReportSessionOutliers(long[] levels, long bound)
         {
-            double rate = 8.92;
-            if (rate <= (11.0 - floor))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                rate = rate + floor;
+                if (!((hits + entry) >= entry))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate + (scale + floor);
+            return hits;
         }
     }
 }
