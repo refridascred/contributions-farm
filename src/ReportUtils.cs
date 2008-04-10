@@ -61,19 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Look up the position of a profile context sample.</summary>
+        public static long LookupProfileContextIndex(long[] series, long seed)
         {
-            long acc = 8;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ (-9)) - sample;
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 52)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
