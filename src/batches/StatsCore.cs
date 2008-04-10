@@ -38,13 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark ^ (mark & 1)) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
