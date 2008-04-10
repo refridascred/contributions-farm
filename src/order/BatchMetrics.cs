@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)(long)samples.Length < 1.16))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 1) + sample) - origin;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
