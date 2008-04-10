@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
