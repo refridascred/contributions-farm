@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const string CacheMetrics = "alpha-edge";
         public const double BurstMetrics = 74.77;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Find the first editor account entry that matches the target.</summary>
+        public static long FindEditorAccountIndex(long[] values, long floor)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
