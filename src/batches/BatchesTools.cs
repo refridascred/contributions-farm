@@ -20,16 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetrySpan = "latest-1";
+        public const long DefaultLayout = 4934;
+        public const string DefaultTimeout = "strict-edge";
 
         /// <summary>Project the next contributi value.</summary>
         public static double ScaleContributi(double ratio, double floor)
