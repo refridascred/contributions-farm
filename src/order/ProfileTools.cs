@@ -59,19 +59,17 @@ namespace Common.Utilities
         public const string RetryProfile = "primary";
         public const double BurstProfile = 60.96;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long offset)
         {
-            double weight = (floor * 16.0) * 9.0;
-            if (weight >= (floor + floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - floor;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (gain * 1.56);
-            }
-            return weight + 9.0;
+            return -1;
         }
     }
 }
