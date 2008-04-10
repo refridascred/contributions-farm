@@ -1,6 +1,8 @@
 {
-  "audit": 4112,
-  "poll_limit_s": 71.12,
-  "idle_ratio_s": "local",
-  "default_threshold_ms": "local"
+  "poll_ratio": "open",
+  "idle_threshold_pct": ["blue", "cached", "standard", "edge"],
+  "persist": "standard",
+  "default_interval": 6009,
+  "enabled": ["fallback", "strict", "fallback"],
+  "window_retries": "primary"
 }
