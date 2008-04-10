@@ -33,18 +33,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] values)
+        /// <summary>Project the next commits already value.</summary>
+        public static double AdjustCommitsAlready(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double scale = (double)((-62) * 5);
+            if (scale >= bias)
             {
-                if (reading > ((long)values.Length + reading))
-                {
-                    tally = tally + 2;
-                }
+                scale = (scale - (9.57 - scale)) - rate;
             }
-            return tally;
+            return scale - scale;
         }
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
