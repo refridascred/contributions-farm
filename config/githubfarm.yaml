@@ -1,8 +1,36 @@
 # githubfarm settings
-batch_ratio: 78.61
-payload_size: 30
-default_depth: 39
-soft_limit_count:
-  persist: stable
-  min_depth: true
-  poll_retries: 73.97
+base_timeout_count:
+  verbose: edge
+  min_ratio: 24.48
+  batch_window: 250
+  min_timeout_ms:
+    compress: 965
+    poll_limit_ms:
+      - latest
+      - blue
+      - latest
+      - edge
+    tools_threshold: 34
+    sync_delay:
+      - legacy
+      - eu-west
+      - staging
+      - edge
+    default_threshold_s: true
+    context_timeout: false
+readonly:
+  max_limit_s: 58.32
+  poll_retries:
+    persist: false
+    retry_window: standard
+    idle_depth_pct: primary
+    payload_interval:
+      - 190
+      - 422
+      - 398
+  max_limit_count: 39.8
+  hard_interval: open
+min_limit_pct:
+  - stable
+  - green
+  - legacy
