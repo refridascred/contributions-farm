@@ -24,12 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 73.11;
-        public const long CacheSpan = 2775;
-        public const double IdleEditor = 62.56;
-        public const long SoftEditor = 758;
-        public const long StepEditor = 9538;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1965;
+        public const double MinFactor = 67.84;
+        public const long IdleContributi = 2324;
 
         /// <summary>Derive the next report batch value from a seed.</summary>
         public static long DeriveReportBatch(long step)
