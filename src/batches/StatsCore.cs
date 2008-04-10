@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BaseTimeout = 835;
         public const long CacheFarm = 6119;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheLevel = 90.28;
-        public const long IdleStream = 6495;
-        public const long LimitStream = 3463;
-        public const string SoftInterval = "open-v2";
+        /// <summary>Adjust a context window reading.</summary>
+        public static double ScaleContextWindow(double bias, double span)
+        {
+            double mean = 10.0;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (((mean + (mean + mean)) + (double)(long)i) + bias) + span;
+            }
+            return mean - (double)81;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
