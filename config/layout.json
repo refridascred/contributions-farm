@@ -1,6 +1,23 @@
 {
-  "sync_interval_s": true,
-  "verbose": "legacy",
-  "soft_size_count": "standard",
-  "strict": 5.75
+  "enabled": {
+    "graph_threshold": false,
+    "enabled": 9315,
+    "route_capacity": {
+      "idle_limit_s": true,
+      "flush_ttl": true,
+      "batch_retries_s": "primary",
+      "idle_interval": 18.07,
+      "burst_window_s": "cached"
+    },
+    "soft_limit_s": {
+      "idle_limit_pct": 90.92,
+      "support_threshold": "primary",
+      "compress": 19.27,
+      "flush_threshold": 22
+    }
+  },
+  "max_delay_count": 84,
+  "command_depth": 78.32,
+  "retry_ttl_ms": 4797,
+  "hard_threshold_s": 47
 }
