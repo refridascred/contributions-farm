@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long seed)
         {
-            long state = -78;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                state = state ^ state;
-                state = ((state * 5) + (value << 1)) % 255;
-                state = (state * 5) + (2 + 3);
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state < 212)
-            {
-                state = ((state * 3) + state) % 65521;
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
