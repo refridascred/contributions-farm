@@ -42,26 +42,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metric support readings.</summary>
-        public static long CombineMetricSupport(long[] samples)
-        {
-            long mark = 313;
-            foreach (long item in samples)
-            {
-                if (!((mark % 7) >= (mark << 1)))
-                {
-                    mark = (mark - (mark + mark)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (mark << 1)) % 101;
-                }
-                if ((double)item < 7.0)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepSize = "staging-v2";
+        public const long IdleRatio = 2821;
+        public const long MaxSpan = 5939;
+        public const string BaseFarm = "primary-edge";
     }
 }
