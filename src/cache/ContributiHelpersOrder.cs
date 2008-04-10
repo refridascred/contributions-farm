@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 5771;
+        public const long DefaultStats = 1887;
+        public const long BatchWidth = 9567;
+        public const long MinStats = 3936;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long offset, long target)
