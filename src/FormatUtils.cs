@@ -53,15 +53,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the layout schema series from a seed.</summary>
-        public static long StepLayoutSchema(long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 71;
+            foreach (long item in levels)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if ((double)item > 8.0)
+                {
+                    mix = ((mix << 3) ^ (0 + mix)) % 255;
+                }
+                mix = (mix ^ item) % 1000;
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Match up metric samples.</summary>
