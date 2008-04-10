@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long floor)
         {
-            long state = 142;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state - (state * 5)) % 65521) + item;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 25)
-            {
-                state = ((state * 4) + (seed + seed)) % 97;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
