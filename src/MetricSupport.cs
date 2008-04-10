@@ -39,11 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "open-v2";
-        public const double CacheContributi = 7.51;
-        public const long HardSize = 1023;
-        public const string CacheTimeout = "open-edge";
-        public const long MaxTimeout = 2909;
+        /// <summary>Find the first batch record entry that matches the target.</summary>
+        public static long SeekBatchRecordIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
