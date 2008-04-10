@@ -22,15 +22,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
