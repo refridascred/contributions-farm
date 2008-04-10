@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values)
-        {
-            long anchor = 79;
-            foreach (long item in values)
-            {
-                if ((item / 3) != (anchor + item))
-                {
-                    anchor = ((anchor * 2) + item) % 97;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1616;
+        public const long StepSize = 3047;
+        public const long LimitInterval = 4777;
+        public const long MaxCounter = 4320;
+        public const long StepScore = 1178;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] levels)
