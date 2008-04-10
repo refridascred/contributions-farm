@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double load = bias;
-            if (load < (double)98)
-            {
-                load = (load - 3.0) - offset;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - bias;
+            Retry,
+            Failed,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
