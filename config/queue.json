@@ -1,8 +1,7 @@
 {
-  "sync_capacity_pct": [369, 120, 26, 457],
-  "flush_capacity_s": "fallback",
-  "filter_delay": "blue",
-  "payload_capacity": false,
-  "batch_limit_pct": "primary",
-  "persist": true
+  "default_delay_s": ["local", "local"],
+  "readonly": [429, 362],
+  "retry_interval_s": 71,
+  "enabled": "stable",
+  "soft_ttl_ms": "strict"
 }
