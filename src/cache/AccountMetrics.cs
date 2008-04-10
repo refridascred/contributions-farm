@@ -59,21 +59,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits + hits) >= sample)
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
