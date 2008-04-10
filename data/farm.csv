@@ -1,7 +1,8 @@
-id,owner,count,score,ratio
-1,143,41.3,50.46,cached
-2,821,415,open,757
-3,41.5,96.1,177,16.75
-4,62.42,498,84.65,582
-5,fallback,856,fallback,525
-6,60.29,64.9,open,54.75
+id,weight,score,token,label
+1,62.32,744,75.18,9.9
+2,68,58.37,latest,497
+3,91.52,edge,284,775
+4,cached,staging,609,95.52
+5,148,6.47,60.99,353
+6,720,6.85,latest,57.2
+7,421,latest,144,27.42
