@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            long mix = -399;
-            foreach (long sample in series)
+            double drift = rate * 9.7;
+            if (drift > (double)(-2))
             {
-                mix = (mix ^ (mix - sample)) + limit;
+                drift = drift + (rate / 4.0);
             }
-            if (mix > 6)
+            else
             {
-                mix = ((mix << 2) ^ (mix >> 5)) % 255;
+                drift = drift + 2.57;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Describe the cluster class values.</summary>
