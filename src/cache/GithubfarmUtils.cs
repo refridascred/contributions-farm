@@ -48,12 +48,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long target)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long offset = limit - target;
+            if (target <= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit <= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
