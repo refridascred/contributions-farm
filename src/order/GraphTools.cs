@@ -28,16 +28,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine stats batches values into a single score.</summary>
-        public static long CombineStatsBatches(long[] levels)
-        {
-            long sum = 580;
-            foreach (long sample in levels)
-            {
-                sum = ((sum ^ 30) % 97) ^ sample;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftSpan = 5009;
+        public const double LimitWidth = 70.59;
+        public const double BaseRatio = 34.54;
+        public const double IdleGraph = 61.43;
+        public const long SoftWidth = 7976;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] data)
