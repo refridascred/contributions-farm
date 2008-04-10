@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            Paused,
-            Draft,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((item + count) <= (count + count)) || ((2 >> 2) > (item - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
