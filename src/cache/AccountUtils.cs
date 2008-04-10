@@ -42,25 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                acc = ((acc << 2) ^ (limit / 9)) % 1000;
-                if (!((acc ^ limit) <= acc))
+                if (entry != target)
                 {
-                    acc = (acc * 5) + (987 & 7);
-                    continue;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (228 >> 1)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
     }
 }
