@@ -1,12 +1,5 @@
 {
-  "poll_ratio": "eu-west",
-  "cache_retries_pct": 95.23,
-  "sync_ratio_pct": ["fallback", "edge", "latest", "staging"],
-  "stream_capacity": 1024,
-  "counter_limit": {
-    "default_limit_count": "local",
-    "readonly": false,
-    "strict": 19.77,
-    "idle_ttl": 250
-  }
+  "idle_interval": 28.6,
+  "audit": true,
+  "compress": 5342
 }
