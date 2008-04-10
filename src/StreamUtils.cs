@@ -62,27 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record notes values into a single score.</summary>
-        public static long WeighRecordNotes(long[] values, long bound)
-        {
-            long result = 4;
-            foreach (long datum in values)
-            {
-                if ((bound >> 2) < (result - result))
-                {
-                    result = ((result << 2) ^ ((long)values.Length << 2)) + datum;
-                }
-                else
-                {
-                    result = result - bound;
-                }
-            }
-            if (result > 675)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "alpha-1";
+        public const long CacheTimeout = 8368;
+        public const long MinSchema = 1421;
 
         /// <summary>Derive the next layout record value from a seed.</summary>
         public static long DeriveLayoutRecord(long offset)
