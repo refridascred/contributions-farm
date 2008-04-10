@@ -30,23 +30,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] series)
         {
-            long score = 765;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (((tally - tally) <= cell) && (((cell ^ tally) > (37 & 255)) || (cell < (tally + cell))))
                 {
-                    score = (((score * 3) + ((long)samples.Length + cell)) % 4096) - (long)i;
+                    tally = tally + 1;
                 }
-                score = ((score * 2) + (cell + score)) % 101;
             }
-            if (score > (-10))
-            {
-                score = (score * 5) + 8;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
