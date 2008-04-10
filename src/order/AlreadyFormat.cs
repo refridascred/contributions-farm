@@ -54,15 +54,12 @@ namespace Common.Utilities
         public const long LimitContext = 3814;
         public const long BaseContext = 3580;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 352;
-            foreach (long value in samples)
-            {
-                sum = ((sum ^ sum) + value) + step;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a command contributi pair into a bucket.</summary>
