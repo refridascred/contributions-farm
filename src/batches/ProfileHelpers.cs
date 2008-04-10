@@ -38,35 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long sum = -5;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((907 << 2) >= value))
-                {
-                    sum = ((sum * 5) + (8 - value)) % 255;
-                }
-                if (!((13.0 - 3.4) < (double)origin))
-                {
-                    sum = (sum << 2) ^ (value >> 1);
-                }
-                else
-                {
-                    sum = (sum - (sum >> 3)) % 255;
-                    sum = sum - (sum & 255);
-                }
-                if ((59 / 5) < (value + origin))
-                {
-                    sum = ((sum << 2) ^ (origin / 3)) % 255;
-                }
-                else
-                {
-                    sum = sum - value;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
