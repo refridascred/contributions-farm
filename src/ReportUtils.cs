@@ -74,9 +74,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 4439;
-        public const double LimitBudget = 98.89;
-        public const long RetryBuffer = 2068;
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long seed)
+        {
+            long score = 5;
+            foreach (long datum in readings)
+            {
+                score = (score - datum) - seed;
+            }
+            return score % 4096;
+        }
     }
 }
