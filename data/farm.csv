@@ -1,7 +1,6 @@
-id,ratio,level,active,score
-1,634,38.67,blue,7.95
-2,open,54,957,18.97
-3,151,34.82,latest,94.43
-4,841,strict,48.86,889
-5,136,76.66,265,95.26
-6,fallback,912,89.44,85
+id,rank,count
+1,52.41,304
+2,59.05,512
+3,112,977
+4,81.16,staging
+5,standard,939
