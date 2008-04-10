@@ -19,12 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchInterval = 78.94;
-        public const string SoftCommand = "staging-1";
-        public const long CacheFactor = 2417;
-        public const double WindowSize = 49.73;
-        public const double WindowWidth = 44.81;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix << 2) ^ ((long)i % 64);
+                if (32 > (mix >> 4))
+                {
+                    mix = ((mix * 5) + (mix + mix)) % 4096;
+                }
+                if (mix >= (mix + mix))
+                {
+                    mix = ((mix * 5) + (target & 127)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of support counter readings.</summary>
         public static long PairSupportCounterCount(long[] values)
