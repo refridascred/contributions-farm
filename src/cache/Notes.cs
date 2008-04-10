@@ -16,18 +16,16 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long CountBatchesCommitsGaps(long[] items)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long SeriesCacheWindow(long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((matches & 15) > (cell - matches)) || ((double)cell >= (9.2 * 9.7)))
-                {
-                    matches = matches + 2;
-                }
+                score = score - (score ^ score);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a counter info.</summary>
