@@ -14,11 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "fallback";
-        public const double BurstScore = 53.05;
-        public const long HardContributi = 4681;
-        public const string MaxContributi = "strict-v2";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
