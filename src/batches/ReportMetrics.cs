@@ -19,11 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinInterval = 27.84;
-        public const double DefaultSpan = 47.12;
-        public const long WindowLevel = 3269;
-        public const long CacheAccount = 6458;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheDepth = 9730;
+        public const long RetryPayload = 894;
+        public const long MinPayload = 1249;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
