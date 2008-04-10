@@ -28,18 +28,30 @@ namespace Common.Utilities
         public const string HardStats = "stable";
         public const long MinStats = 3264;
 
-        /// <summary>Count the counter notes entries that pass the check.</summary>
-        public static long MeasureCounterNotesGaps(long[] readings, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 663;
+            foreach (long reading in samples)
             {
-                if (!(limit < (hits % 12)))
+                if (bound < result)
                 {
-                    hits = (hits + 1) ^ entry;
+                    result = result ^ 614;
+                }
+                else
+                {
+                    result = ((result << 2) ^ bound) % 255;
+                }
+                if ((3.3 < (double)bound) && ((bound - reading) >= (result / 9)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result > 121)
+            {
+                result = (result ^ (result - bound)) % 97;
+            }
+            return result;
         }
     }
 }
