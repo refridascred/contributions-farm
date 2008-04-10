@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long HardContributi = 4681;
         public const string MaxContributi = "strict-v2";
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)floor > 3.8) && ((908 >> 2) < (total % 2)))
+                if (levels[i] > target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
