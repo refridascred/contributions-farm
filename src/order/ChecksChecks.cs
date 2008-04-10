@@ -16,21 +16,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor > 3) && (bound >= floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((96 + floor) > (bound ^ bound))
                 {
-                    if ((items[i] + items[j]) != 16)
+                    return 5;
+                }
+                else
+                {
+                    if ((-6) >= (floor ^ bound))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.8 * 1.8) < (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
