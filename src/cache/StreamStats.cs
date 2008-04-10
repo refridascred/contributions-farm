@@ -48,9 +48,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 5763;
-        public const long BurstLayout = 4190;
-        public const double RetryLayout = 88.82;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 98.02;
+        public const double SoftLevel = 51.99;
+        public const string RetryEntry = "fallback-edge";
     }
 }
