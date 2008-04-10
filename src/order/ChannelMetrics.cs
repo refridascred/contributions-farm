@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long RetryReport = 7060;
         public const long RetryTimeout = 8593;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Idle,
-            Pending,
-            Dropped,
-            Locked,
-            Synced,
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
