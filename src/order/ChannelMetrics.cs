@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSize = 2116;
-        public const double BatchRecord = 85.04;
-        public const double BurstTimeout = 93.0;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(((double)797 >= (double)count) || ((datum ^ datum) >= datum)))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double rate, double span)
