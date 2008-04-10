@@ -60,19 +60,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            double ratio = (double)((-77) + (-32));
-            if (ratio >= span)
+            double ratio = (weight + weight) / 4.0;
+            if (ratio < (offset - weight))
             {
-                ratio = (ratio + (double)815) + rate;
+                ratio = ratio + 1.0;
             }
             else
             {
-                ratio = ratio - 6.9;
+                ratio = ratio - (double)57;
             }
-            return ratio + ratio;
+            return ratio - 9.0;
         }
     }
 }
