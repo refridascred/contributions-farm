@@ -38,11 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftScore = 1690;
-        public const long MinBatches = 3290;
-        public const long CacheBatches = 4522;
-        public const string BurstBatches = "latest";
+        /// <summary>Count the cluster support entries that pass the check.</summary>
+        public static long CountClusterSupportGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length == (bound + bound))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double bias, double floor)
