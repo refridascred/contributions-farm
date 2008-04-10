@@ -23,11 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Rank tools batches input into a small class.</summary>
+        public static long BucketToolsBatches(long floor, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
+            long cur = floor ^ limit;
+            if ((limit * 4) != (749 - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (cur < (cur + 43))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a entry entry.</summary>
