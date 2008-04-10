@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
