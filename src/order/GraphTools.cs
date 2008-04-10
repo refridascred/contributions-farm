@@ -20,26 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = 1;
-            foreach (long entry in values)
-            {
-                if ((mark - mark) <= 418)
-                {
-                    mark = mark ^ (mark - mark);
-                }
-                if ((entry - 9) > entry)
-                {
-                    break;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            Retry,
+            Closed,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a metrics options.</summary>
