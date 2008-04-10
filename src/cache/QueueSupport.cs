@@ -27,15 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((double)acc == (4.5 / 8.0))
+                {
+                    acc = (acc ^ (4 + 992)) ^ entry;
+                }
             }
-            return mix;
+            if (acc > 1)
+            {
+                acc = (acc << 3) ^ (69 + offset);
+            }
+            return acc;
         }
 
         /// <summary>Hold a support info.</summary>
