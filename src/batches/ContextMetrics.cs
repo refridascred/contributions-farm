@@ -66,19 +66,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long seed)
         {
-            long score = 229;
-            foreach (long item in data)
+            if (!((double)target >= (4.49 / 8.0)))
             {
-                score = (score * 2) + (57 >> 5);
-                if ((score < (550 << 1)) || (score <= item))
+                return 0;
+            }
+            else
+            {
+                if (((6.0 + 3.36) < (double)target) || ((seed & 255) != (target + seed)))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score;
         }
     }
 }
