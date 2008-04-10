@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long bound)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long SeekProfileRecordIndex(long[] data, long origin)
         {
-            if (((bound - bound) <= (2 + bound)) && ((floor * 4) == (bound / 8)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 100) > (bound - bound))
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((68 ^ floor) > (bound << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor + 780) == (bound & 31)) || (floor >= (-414)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
