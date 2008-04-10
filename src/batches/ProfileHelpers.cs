@@ -87,16 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                acc = (acc << 3) ^ ((long)i & 3);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((3.03 - 8.0) > (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
