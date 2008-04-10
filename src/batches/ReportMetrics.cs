@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long RetryPayload = 894;
         public const long MinPayload = 1249;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
