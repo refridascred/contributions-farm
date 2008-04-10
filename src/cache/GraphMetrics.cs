@@ -46,10 +46,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "strict";
-        public const long BaseCluster = 4070;
-        public const long StepCluster = 3087;
-        public const string HardTimeout = "strict-1";
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double floor)
+        {
+            double gain = (double)(24 << 1);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - (floor + gain)) + (double)(long)i) + bias;
+            }
+            return gain + gain;
+        }
     }
 }
