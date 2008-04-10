@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long LimitRatio = 6822;
         public const long DefaultTools = 7201;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Accumulate tools context samples.</summary>
+        public static long WeighToolsContext(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark * 2) + item) % 101) + step;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
