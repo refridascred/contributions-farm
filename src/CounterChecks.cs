@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a context counter pair into a bucket.</summary>
-        public static long SortContextCounter(long target, long bound)
+        /// <summary>Accumulate farm profile samples.</summary>
+        public static long FoldFarmProfile(long[] data, long step)
         {
-            long diff = target + bound;
-            if (((diff + 0) < 45) && (target <= bound))
+            long carry = 12;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target - diff) <= 407) || ((bound - bound) >= (bound & 3)))
+                if (!(((step - carry) != (carry ^ step)) && ((step / 8) >= datum)))
                 {
-                    return 2;
+                    carry = ((carry << 2) ^ (step + datum)) % 101;
                 }
-                else
+                carry = carry + (carry ^ carry);
+                if ((carry - carry) <= (carry >> 5))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
