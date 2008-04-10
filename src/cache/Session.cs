@@ -14,23 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series)
         {
-            long acc = 3;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                acc = (acc - (sample + acc)) % 101;
-                if (!((sample + 7) <= (733 + 0)))
+                if (!((hits / 5) >= hits))
                 {
-                    break;
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < 7)
-            {
-                acc = acc - (acc << 3);
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
