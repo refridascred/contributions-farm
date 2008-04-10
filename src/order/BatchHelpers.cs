@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings, long step)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long cell in readings)
             {
-                if ((sample << 3) != (seen << 3))
+                if ((double)seen < (double)cell)
                 {
-                    seen = (seen + 3) + bound;
+                    seen = (seen + 1) + step;
                 }
             }
             return seen;
