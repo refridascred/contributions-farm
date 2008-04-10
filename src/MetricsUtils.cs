@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = 813;
-            foreach (long value in series)
-            {
-                if ((sum - value) < value)
-                {
-                    sum = (sum ^ 4) + step;
-                }
-                else
-                {
-                    sum = (sum + (34 - sum)) % 65521;
-                }
-            }
-            return sum;
+            Draft,
+            Failed,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Project the next editor value.</summary>
