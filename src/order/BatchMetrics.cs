@@ -27,19 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] series, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
