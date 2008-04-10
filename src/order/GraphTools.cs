@@ -62,13 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
