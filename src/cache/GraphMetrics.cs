@@ -24,16 +24,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score - (score >> 3)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a route options.</summary>
