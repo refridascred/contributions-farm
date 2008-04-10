@@ -83,9 +83,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinWidth = 15.62;
-        public const double IdleCount = 14.58;
-        public const long SoftTimeout = 5453;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long floor)
+        {
+            long score = 96;
+            foreach (long reading in readings)
+            {
+                score = ((score ^ (score + reading)) % 255) + floor;
+            }
+            return score % 65521;
+        }
     }
 }
