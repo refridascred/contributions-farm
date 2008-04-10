@@ -46,39 +46,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long bound2)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long delta = bound + bound2;
-            if (bound > (delta + bound2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(bound2 > (delta + bound2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound2 == (1.6 + 16.0)) || (bound2 > (bound + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((delta + bound2) == (bound2 ^ bound2)) && ((delta & 1) >= (41 & 127)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
