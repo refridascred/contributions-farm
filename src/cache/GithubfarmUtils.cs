@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((sum % 60) < (5 + sum)) || ((offset & 1) > (offset - sum)))
-                {
-                    sum = (sum * 4) + (sum / 5);
-                    sum = (sum + (-457)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchDepth = 6460;
+        public const double WindowScore = 46.13;
+        public const long HardSize = 4961;
+        public const long LimitProfile = 3835;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double gain, double span)
