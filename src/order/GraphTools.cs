@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry + 85) > (entry + (-518)))
+                if ((step - (long)i) != ((long)i >> 1))
                 {
-                    count = (count + 1) - target;
+                    score = ((score << 2) ^ score) % 4096;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Blend two filter measurements.</summary>
