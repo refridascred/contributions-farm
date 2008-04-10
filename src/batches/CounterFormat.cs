@@ -12,10 +12,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 6794;
-        public const long CacheInterval = 5731;
-        public const string DefaultGraph = "fallback-v2";
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
         public static long WeighGithubfarmAlready(long[] series, long floor)
