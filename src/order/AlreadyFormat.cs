@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftFactor = 1730;
-        public const long MaxGithubfarm = 3442;
-        public const string BaseGithubfarm = "open-1";
-        public const string BurstRatio = "staging";
-        public const string StepInterval = "standard-edge";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Active,
+            Done,
+            Locked,
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long BucketGithubfarm(long step, long target)
