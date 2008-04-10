@@ -21,14 +21,10 @@ namespace Common.Utilities
         public const string RetryProfile = "cached-edge";
         public const string BatchSize = "stable-edge";
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Locked,
-            Idle,
-            Closed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowScore = "stable-edge";
+        public const long DefaultMetric = 6414;
+        public const double StepRatio = 11.58;
+        public const long BatchWidth = 3165;
     }
 }
