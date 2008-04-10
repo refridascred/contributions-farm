@@ -30,15 +30,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Classify a already metrics pair into a bucket.</summary>
+        public static long BucketAlreadyMetrics(long origin, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            if (origin < (floor / 2))
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((origin - floor) < floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 4) < 111)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
