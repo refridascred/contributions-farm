@@ -41,21 +41,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = floor + target;
+            if (((target - target) == (target + 75)) && (floor > (floor + target)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor >= (span * 4)) && (5.73 <= (double)span))
                 {
-                    if ((series[i] + series[j]) == 4)
+                    return 1;
+                }
+                else
+                {
+                    if ((9.15 <= (double)target) || (target <= (target << 3)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of account filter readings.</summary>
