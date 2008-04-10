@@ -39,12 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9533;
-        public const string HardBatch = "primary-1";
-        public const long SoftSize = 7057;
-        public const long DefaultCount = 3466;
-        public const double DefaultRatio = 71.65;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Locked,
+            Synced,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] samples, long step)
