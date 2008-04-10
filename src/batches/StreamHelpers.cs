@@ -56,15 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double BlendMetricCommand(double bias, double floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double bias2 = (bias + bias) - bias;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 + bias) + (double)(long)i) + floor;
-            }
-            return bias2 - (double)81;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the batches mode values.</summary>
