@@ -41,18 +41,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > (step * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - carry;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
