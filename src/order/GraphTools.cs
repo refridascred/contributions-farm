@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels, long target)
         {
-            long mix = 9;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ (73 % 64)) % 1000;
-                if (datum >= (mix << 1))
+                if ((entry + 85) > (entry + (-518)))
                 {
-                    mix = (mix << 3) ^ (45 + mix);
+                    count = (count + 1) - target;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Blend two filter measurements.</summary>
