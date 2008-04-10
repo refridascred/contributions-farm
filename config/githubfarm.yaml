@@ -1,4 +1,8 @@
 # githubfarm settings
-min_window: 8.24
-sync_threshold_pct: legacy
-burst_ratio: 46.87
+compress: 2.09
+base_retries_count: blue
+enabled:
+  - stable
+  - eu-west
+  - edge
+  - cached
