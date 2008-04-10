@@ -1,5 +1,19 @@
 {
-  "default_ratio_count": "cached",
-  "min_threshold": 4171,
-  "hard_size_s": 74.43
+  "cache_limit_count": 1024,
+  "persist": "stable",
+  "soft_capacity_ms": {
+    "burst_interval": 98,
+    "graph_window": "cached",
+    "base_depth": 250,
+    "idle_ttl_ms": {
+      "dry_run": "standard",
+      "soft_window_s": 80,
+      "retry_retries": 13.46,
+      "poll_size": "blue"
+    },
+    "max_depth_count": [343, 62, 169],
+    "batch_delay": 70.72
+  },
+  "dry_run": "blue",
+  "base_ratio_pct": ["legacy", "staging", "local"]
 }
