@@ -27,18 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] data)
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long MeasureMetricChannelMatches(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)reading != (0.74 + 9.0))
+                if (!(offset <= ((long)data.Length ^ (long)data.Length)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
