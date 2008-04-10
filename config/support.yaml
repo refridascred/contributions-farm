@@ -1,7 +1,8 @@
 # support settings
-base_threshold: true
-poll_depth_ms: primary
-retry_size: 739
-max_delay: standard
-max_size: latest
-min_limit_count: staging
+burst_delay: open
+hard_timeout: 250
+audit:
+  - local
+  - eu-west
+  - local
+  - legacy
