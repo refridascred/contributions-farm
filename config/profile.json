@@ -1,7 +1,6 @@
 {
-  "base_threshold": false,
-  "entry_delay": "staging",
-  "readonly": 62,
-  "warm_retries_count": "strict",
-  "poll_ratio": "local"
+  "persist": 26.86,
+  "burst_window_count": ["edge", "cached", "blue", "cached"],
+  "min_capacity": ["primary", "stable", "strict"],
+  "sync_ttl_s": ["green", "legacy", "green", "strict"]
 }
