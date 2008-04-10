@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter notes samples.</summary>
-        public static long PairFilterNotesCount(long[] items)
+        /// <summary>Derive the next report tools value from a seed.</summary>
+        public static long StepReportTools(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score * 4) + (long)i;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the report mode values.</summary>
