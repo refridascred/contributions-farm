@@ -29,39 +29,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long origin, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long bound = origin ^ seed;
-            if (bound < (seed + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.4 * 3.0) < (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed ^ bound) <= (origin % 7)) || ((double)bound > 9.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + seed) >= (seed + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            New,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of entry context readings.</summary>
