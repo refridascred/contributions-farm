@@ -28,26 +28,9 @@ namespace Common.Utilities
         public const string BaseEntry = "local-v2";
         public const double IdleFactor = 77.56;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items)
-        {
-            long result = 3;
-            foreach (long reading in items)
-            {
-                if (((result ^ result) != (result - reading)) || ((double)result != (6.0 - 9.68)))
-                {
-                    result = (result ^ (result + reading)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ result) % 1000;
-                }
-            }
-            if (result < 9)
-            {
-                result = (result * 3) + result;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 757;
+        public const long WindowRatio = 4279;
+        public const long StepTimeout = 8704;
     }
 }
