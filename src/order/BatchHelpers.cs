@@ -14,22 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] data, long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (reading <= (reading * 3))
+                if (entry > floor)
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
