@@ -43,19 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double floor)
-        {
-            double scale = bias;
-            if (scale > (scale / 4.0))
-            {
-                scale = scale - (bias - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinBudget = 4424;
+        public const string CacheRatio = "strict-v2";
+        public const long DefaultFilter = 63;
+        public const long MinFilter = 7317;
+        public const long SoftCount = 8870;
     }
 }
