@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
