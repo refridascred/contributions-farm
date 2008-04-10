@@ -16,11 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long LocateCommitsFormatIndex(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
