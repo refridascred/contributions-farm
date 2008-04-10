@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Audit stats cluster readings against a rule.</summary>
+        public static long TallyStatsClusterOutliers(long[] items, long target)
         {
-            double gain = (double)(475 & 31);
-            if (gain > floor)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                gain = gain - ratio;
+                if (target >= (target - target))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain + ratio;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
