@@ -31,14 +31,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Compare every pair of support counter readings.</summary>
+        public static long PairSupportCounterCount(long[] values)
         {
-            Draft,
-            Paused,
-            Idle,
-            Synced,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
