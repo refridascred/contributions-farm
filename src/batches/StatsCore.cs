@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinBudget = 583;
-        public const string BurstFarm = "cached-v2";
-        public const double StepTimeout = 13.48;
-        public const long BaseTimeout = 835;
-        public const long CacheFarm = 6119;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Retry,
+            Draft,
+            Pending,
+            Failed,
+            Done,
+        }
 
         /// <summary>Adjust a context window reading.</summary>
         public static double ScaleContextWindow(double bias, double span)
