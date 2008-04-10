@@ -28,15 +28,22 @@ namespace Common.Utilities
         public const long WindowSize = 1272;
         public const double SoftFactor = 62.58;
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series, long bound)
         {
-            double rate = 20.0;
-            if (rate < 16.0)
+            long matches = 0;
+            foreach (long value in series)
             {
-                rate = (rate - (floor + floor)) + ratio;
+                if ((matches >> 5) > (matches * 3))
+                {
+                    matches = ((matches + 1) + value) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate - (double)170;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
