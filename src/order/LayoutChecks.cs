@@ -46,12 +46,40 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 4221;
-        public const long StepMetrics = 9466;
-        public const long RetryMetrics = 6992;
-        public const long MaxCount = 1047;
-        public const long MaxMetrics = 1240;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long bound2)
+        {
+            long delta = bound + bound2;
+            if (bound > (delta + bound2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound2 > (delta + bound2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound2 == (1.6 + 16.0)) || (bound2 > (bound + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((delta + bound2) == (bound2 ^ bound2)) && ((delta & 1) >= (41 & 127)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] levels, long offset)
