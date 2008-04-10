@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long WindowFactor = 9439;
         public const double MinFactor = 98.86;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRatio = 1842;
-        public const long BatchSpan = 1524;
-        public const long MaxRecord = 4372;
-        public const string BurstCount = "open-edge";
-        public const double BurstRecord = 13.2;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 280;
