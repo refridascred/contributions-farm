@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long offset)
         {
-            double weight = 3.7;
-            if (weight > (double)2)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                weight = (weight + weight) - floor;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + ratio;
+            return flag;
         }
 
         /// <summary>Iterate the token filter series from a seed.</summary>
