@@ -68,12 +68,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Ready,
-            Failed,
-            Queued,
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
