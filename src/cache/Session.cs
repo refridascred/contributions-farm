@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long seed)
-        {
-            long total = 77;
-            foreach (long value in data)
-            {
-                total = (total - (value & 3)) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "latest";
+        public const double WindowSpan = 39.96;
+        public const long RetryScore = 3093;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] series)
