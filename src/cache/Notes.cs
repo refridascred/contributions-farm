@@ -42,18 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (hits > (reading + reading))
+                if ((double)mix == (7.53 + 9.8))
                 {
-                    hits = hits + 2;
+                    mix = (mix ^ (mix - (long)i)) % 101;
                 }
+                mix = ((mix * 4) + (mix * 4)) % 4096;
+                mix = ((mix * 3) + (272 + limit)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
