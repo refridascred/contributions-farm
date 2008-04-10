@@ -36,10 +36,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 3676;
-        public const string MinGraph = "latest";
-        public const long SoftSpan = 7390;
+        /// <summary>Rank batches batch input into a small class.</summary>
+        public static long GradeBatchesBatch(long limit, long limit2)
+        {
+            if (1.0 < (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 + limit2) >= (limit2 & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9 & 127) >= (limit2 & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
