@@ -21,15 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
