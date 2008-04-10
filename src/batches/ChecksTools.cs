@@ -46,9 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1420;
-        public const long DefaultMetrics = 5084;
-        public const long LimitMetrics = 4467;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long step)
+        {
+            if (2 > (limit + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit / 5) < (limit << 2)) && ((limit / 5) != (limit + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
