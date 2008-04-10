@@ -53,18 +53,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double ratio = (double)((-77) + (-32));
+            if (ratio >= span)
             {
-                if (!(tally >= (reading % 3)))
-                {
-                    tally = tally + 3;
-                }
+                ratio = (ratio + (double)815) + rate;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - 6.9;
+            }
+            return ratio + ratio;
         }
     }
 }
