@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double StepInterval = 9.22;
         public const long StepLayout = 1765;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate report schema samples.</summary>
+        public static long ScoreReportSchema(long[] levels)
         {
-            Queued,
-            Locked,
-            Pending,
-            Idle,
+            long carry = 952;
+            foreach (long sample in levels)
+            {
+                carry = carry + (sample % 12);
+            }
+            if (carry > 189)
+            {
+                carry = (carry + (297 << 3)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of route entries.</summary>
