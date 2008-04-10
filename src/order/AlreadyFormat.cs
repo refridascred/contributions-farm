@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Retry,
-            New,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 1730;
+        public const long MaxGithubfarm = 3442;
+        public const string BaseGithubfarm = "open-1";
+        public const string BurstRatio = "staging";
+        public const string StepInterval = "standard-edge";
 
         /// <summary>Count the stream cluster entries that pass the check.</summary>
         public static long CountStreamClusterGaps(long[] readings)
