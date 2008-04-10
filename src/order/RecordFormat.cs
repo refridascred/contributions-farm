@@ -46,39 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items, long floor)
         {
-            long slot = origin ^ limit;
-            if (origin >= limit)
+            long score = -1;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) <= slot)
+                if (9 > (score % 97))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot ^ slot) > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin * 2) != (slot / 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = ((score + (floor / 9)) % 1000) + reading;
                 }
             }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
