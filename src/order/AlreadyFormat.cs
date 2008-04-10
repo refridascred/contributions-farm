@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values)
         {
-            Draft,
-            Queued,
-            Idle,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (148 < (matches << 1))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
