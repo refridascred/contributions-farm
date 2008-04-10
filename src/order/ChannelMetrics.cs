@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] items, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (2 < (bound & 31))
             {
-                if (((2.8 < (double)count) && (count <= (494 + 39))) || ((item << 1) < (89 - count)))
+                return 6;
+            }
+            else
+            {
+                if (2.0 >= (double)offset)
                 {
-                    count = (count + 3) - step;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((offset ^ offset) < (bound << 1)) && (bound < (offset + offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset != (1.1 * 0.5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
