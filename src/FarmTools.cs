@@ -44,19 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            if (bound < (bound + 240))
             {
-                if (value != seed)
+                return 8;
+            }
+            else
+            {
+                if (((bound + limit) <= limit) || ((832 - limit) == (limit + bound)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((251 + bound) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
     }
 }
