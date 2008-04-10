@@ -15,27 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long total = 44;
-            foreach (long entry in readings)
-            {
-                total = total ^ entry;
-                if (!(target > (95 >> 4)))
-                {
-                    total = ((total << 3) ^ (target + target)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 5) + (entry - target)) % 97;
-                }
-            }
-            if (total > 380)
-            {
-                total = total ^ target;
-            }
-            return total;
+            Locked,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Look up the position of a payload order sample.</summary>
