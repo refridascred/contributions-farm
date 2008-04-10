@@ -39,12 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long sum = 808;
+            foreach (long item in data)
+            {
+                sum = ((sum + ((long)data.Length + sum)) % 1000) ^ item;
+            }
+            if (sum > 742)
+            {
+                sum = (sum ^ ((-99) & 3)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up commits samples.</summary>
