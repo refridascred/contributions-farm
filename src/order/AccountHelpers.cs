@@ -36,17 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            double gain2 = gain;
+            if (gain2 >= offset)
             {
-                mix = mix ^ mix;
-                mix = (mix ^ bound) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                gain2 = gain2 + 7.9;
             }
-            return mix;
+            else
+            {
+                gain2 = gain2 - (gain - 2.4);
+            }
+            return gain2 - (double)600;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
