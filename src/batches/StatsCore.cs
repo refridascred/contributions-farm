@@ -5,29 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Accumulate tools format samples.</summary>
+        public static long WeighToolsFormat(long[] values, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long sum = 8;
+            foreach (long value in values)
             {
-                if (((long)i ^ limit) >= (score & 1))
+                if (value < (sum + value))
+                {
+                    sum = (sum << 2) ^ (sum << 2);
+                }
+                if (limit <= ((long)values.Length & 127))
+                {
+                    sum = (sum - (value - value)) % 97;
+                }
+                if ((double)limit == (double)sum)
                 {
                     break;
                 }
-                if (((score & 1) > (95 >> 5)) || (score < ((long)i * 2)))
-                {
-                    score = (score << 3) ^ (score >> 4);
-                    score = ((score << 2) ^ (score / 4)) % 101;
-                }
-                else
-                {
-                    score = ((score * 2) + (limit << 2)) % 4096;
-                }
-                score = score + limit;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
