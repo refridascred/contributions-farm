@@ -33,21 +33,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm already readings.</summary>
-        public static long WeighGithubfarmAlready(long[] series, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long target2)
         {
-            long score = 80;
-            foreach (long value in series)
+            if (((target & 3) < (111 + target)) || ((11.0 - 9.2) == (double)target))
             {
-                score = ((score + (floor * 2)) % 101) - value;
-                score = ((score * 2) + (5 - 95)) % 65521;
-                score = ((score << 2) ^ (floor % 12)) % 4096;
+                return 4;
             }
-            if (score < 3)
+            else
             {
-                score = (score + (floor / 2)) % 255;
+                if (((double)target >= (double)378) && ((target2 * 5) <= target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.11 > (double)target) && ((target << 1) >= (target2 % 100)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((21 >> 1) > (target2 % 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return score % 1000;
         }
     }
 }
