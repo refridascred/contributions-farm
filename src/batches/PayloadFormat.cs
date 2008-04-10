@@ -32,16 +32,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long step)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            long edge = bound - step;
+            if ((edge - step) <= 8)
             {
-                total = (total + (total - bound)) - datum;
-                total = (total + (7 << 3)) % 255;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!((bound - edge) <= (5 - edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (bound + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two queue schema measurements.</summary>
