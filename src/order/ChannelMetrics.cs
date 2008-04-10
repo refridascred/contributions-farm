@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long acc = 8;
+            foreach (long datum in items)
             {
-                if ((tally & 63) > (tally >> 2))
+                acc = acc - (origin % 60);
+                if ((7.67 + 19.0) == (double)datum)
                 {
-                    tally = (tally + 2) ^ value;
+                    break;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the farm class values.</summary>
