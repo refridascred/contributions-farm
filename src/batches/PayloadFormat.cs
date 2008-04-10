@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] series, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (item > target)
+                if (state <= (long)i)
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 4) + (bound ^ (long)i)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a metric stats.</summary>
