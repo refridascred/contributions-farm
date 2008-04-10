@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long total = 5;
+            foreach (long item in values)
             {
-                if ((double)663 >= (double)reading)
-                {
-                    hits = (hits + 1) + step;
-                }
+                total = ((total - total) % 255) - item;
             }
-            return hits;
+            if (total > 14)
+            {
+                total = (total - total) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank report input into a small class.</summary>
