@@ -46,15 +46,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long step)
         {
-            double gain = (double)(24 << 1);
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                gain = ((gain - (floor + gain)) + (double)(long)i) + bias;
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ready;
         }
     }
 }
