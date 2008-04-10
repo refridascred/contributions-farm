@@ -40,14 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
+            Dropped,
+            Pending,
+            Retry,
+            Queued,
             Failed,
-            Active,
-            New,
-            Paused,
-            Ready,
         }
     }
 }
