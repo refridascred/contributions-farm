@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long mix = -669;
+            foreach (long reading in items)
             {
-                mix = (mix << 2) ^ ((long)i % 64);
-                if (32 > (mix >> 4))
+                if ((target >> 2) == (20 ^ target))
                 {
-                    mix = ((mix * 5) + (mix + mix)) % 4096;
+                    mix = (mix << 3) ^ (reading >> 5);
                 }
-                if (mix >= (mix + mix))
-                {
-                    mix = ((mix * 5) + (target & 127)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of support counter readings.</summary>
