@@ -58,38 +58,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long BucketFarmReport(long offset, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (((offset >> 1) < (offset << 2)) || ((origin + offset) > origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= (0.37 / 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 1) != (900 & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
