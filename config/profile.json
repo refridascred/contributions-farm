@@ -1,7 +1,5 @@
 {
-  "retry_window": false,
-  "filter_interval": 15,
-  "hard_threshold_ms": 73,
-  "default_capacity_count": 4390,
-  "metric_interval": ["strict", "edge", "primary"]
+  "flush_size_ms": false,
+  "poll_timeout": 38.54,
+  "cache_capacity_ms": "stable"
 }
