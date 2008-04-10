@@ -27,15 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 3; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                bias2 = ((bias2 - (bias - 8.0)) + (double)(long)i) + scale;
+                sum = sum - sum;
+                sum = (sum * 3) + (sum + sum);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return bias2 - (bias2 + bias);
+            return sum;
         }
 
         /// <summary>Classify a profile route pair into a bucket.</summary>
