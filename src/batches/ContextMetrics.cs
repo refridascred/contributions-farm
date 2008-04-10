@@ -50,20 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i / 4) <= (long)i)
-                {
-                    acc = (acc - (98 * 5)) % 97;
-                    acc = acc - seed;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
