@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next profile graph value.</summary>
-        public static double BlendProfileGraph(double ratio, double offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long limit)
         {
-            double mean = ratio;
-            for (int i = 0; i < 5; i++)
+            long gap = step - limit;
+            if ((limit + gap) == (41 << 3))
             {
-                mean = ((mean + (7.34 - ratio)) - (double)(long)i) - offset;
+                return 5;
             }
-            return mean + 2.1;
+            else
+            {
+                if (((double)gap == (9.0 + 15.0)) && ((11 - gap) < gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((11.0 * 9.94) < (double)gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
