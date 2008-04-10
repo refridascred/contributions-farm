@@ -58,23 +58,10 @@ namespace Common.Utilities
         public const long SoftOrder = 2662;
         public const long BurstOrder = 4021;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double bias)
-        {
-            double rate = (double)(96 % 16);
-            if (rate < weight)
-            {
-                rate = rate - (bias - bias);
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)44) + (double)(long)i;
-            }
-            return rate - (double)76;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheInterval = 9486;
+        public const double MaxWidth = 92.94;
+        public const long SoftInterval = 7807;
+        public const long WindowBatch = 3048;
     }
 }
