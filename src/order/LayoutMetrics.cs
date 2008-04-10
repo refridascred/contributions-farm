@@ -35,18 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batches notes entries that pass the check.</summary>
-        public static long AuditBatchesNotesOutliers(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)item == (double)offset)
+                if ((seen <= ((long)data.Length % 24)) && ((seen >> 1) > (item - (-90))))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
