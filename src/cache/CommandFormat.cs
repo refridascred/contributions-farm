@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a tools counter counter forward.</summary>
-        public static long IterateToolsCounter(long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result - ((long)i % 2)) % 4096;
-                result = (result + (origin / 8)) % 65521;
-                result = result - (519 * 3);
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
