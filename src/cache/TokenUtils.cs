@@ -51,17 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 994;
+            foreach (long sample in readings)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                acc = ((((acc * 4) + acc) % 101) ^ sample) - step;
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
