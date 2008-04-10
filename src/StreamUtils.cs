@@ -96,11 +96,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Derive the next layout record value from a seed.</summary>
+        public static long DeriveLayoutRecord(long offset)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((5.46 - 1.89) < (double)state)
+                {
+                    state = (state - (long)i) % 1000;
+                    state = (state - ((long)i ^ offset)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
