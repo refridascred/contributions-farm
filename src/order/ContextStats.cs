@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate checks account readings against a bound.</summary>
-        public static bool ValidateChecksAccountRange(long[] values, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long state = 1;
+            foreach (long cell in data)
             {
-                if (value > floor)
+                if ((seed - cell) != (state / 6))
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ (cell * 4)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (cell * 4);
+                }
+                if (!((cell % 2) == (seed << 1)))
+                {
+                    state = (state * 5) + (seed - seed);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a order entry.</summary>
