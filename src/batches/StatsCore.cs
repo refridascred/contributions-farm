@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 835;
         public const long CacheFarm = 6119;
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double offset)
-        {
-            double ratio = (double)31 * 3.03;
-            if (ratio < ratio)
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheLevel = 90.28;
+        public const long IdleStream = 6495;
+        public const long LimitStream = 3463;
+        public const string SoftInterval = "open-v2";
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
