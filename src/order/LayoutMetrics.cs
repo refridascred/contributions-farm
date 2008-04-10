@@ -35,14 +35,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Queued,
-            Failed,
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = result - (result - result);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
