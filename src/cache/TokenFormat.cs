@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long StepQueue = 5579;
         public const long HardQueue = 3573;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((origin - hits) == (hits + origin))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 64.02;
+        public const long BaseRatio = 4005;
+        public const string MaxTools = "legacy";
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] readings)
