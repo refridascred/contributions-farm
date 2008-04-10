@@ -1,5 +1,20 @@
 {
-  "min_limit": true,
-  "base_ratio_s": [451, 77, 301, 456],
-  "soft_timeout": "latest"
+  "enabled": ["edge", "blue", "primary", "eu-west"],
+  "dry_run": [230, 245],
+  "audit": ["latest", "standard"],
+  "min_retries_s": 100,
+  "poll_depth_ms": 29.7,
+  "soft_timeout": {
+    "poll_window_pct": "eu-west",
+    "dry_run": {
+      "account_delay": 88.41,
+      "strict": "green",
+      "persist": "staging",
+      "readonly": 26,
+      "stats_retries": [396, 75, 382, 266],
+      "tools_ttl": [94, 198]
+    },
+    "batch_interval_pct": false,
+    "window_threshold": true
+  }
 }
