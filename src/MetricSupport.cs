@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Derive the next commits contributi value from a seed.</summary>
+        public static long StepCommitsContributi(long target)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry ^ (carry - carry);
+                carry = (carry - (carry % 8)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
