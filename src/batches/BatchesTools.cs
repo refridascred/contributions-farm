@@ -31,21 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph stats pairs that satisfy a relation.</summary>
-        public static long CompareGraphStatsCount(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits > entry)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
