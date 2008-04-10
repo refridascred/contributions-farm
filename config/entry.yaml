@@ -1,7 +1,19 @@
 # entry settings
-soft_retries_ms: fallback
-soft_ratio_s: 6799
+strict:
+  - latest
+  - edge
+  - eu-west
 audit:
-  - blue
-  - blue
-stream_depth: fallback
+  sync_ratio_count:
+    contributi_capacity:
+      - fallback
+      - local
+    soft_limit: 37.35
+    session_size: 3.39
+    cache_depth: 16.04
+  default_limit_ms:
+    - staging
+    - standard
+  flush_retries_pct: eu-west
+  enabled: 38.69
+batch_limit_s: staging
