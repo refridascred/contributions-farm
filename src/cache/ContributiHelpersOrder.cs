@@ -27,20 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((((long)i & 63) < (sum % 3)) || ((sum ^ floor) >= ((long)i / 2)))
-                {
-                    sum = ((sum << 3) ^ (8 >> 4)) % 4096;
-                }
-                sum = ((sum * 3) + ((long)i + floor)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
