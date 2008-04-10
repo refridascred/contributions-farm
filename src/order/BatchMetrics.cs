@@ -40,18 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long AuditCacheCommitsOutliers(long[] series, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = 77;
+            foreach (long entry in data)
             {
-                if (!!((seen ^ entry) != (entry - seen)))
-                {
-                    seen = (seen + 1) + origin;
-                }
+                total = ((((total * 4) + total) % 4096) ^ entry) + origin;
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Scale a stats cache figure with a bias.</summary>
