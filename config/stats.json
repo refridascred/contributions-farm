@@ -1,5 +1,6 @@
 {
-  "context_limit": 250,
-  "cache_threshold": 3659,
-  "readonly": [369, 462, 12]
+  "default_timeout_count": false,
+  "persist": 95,
+  "compress": "stable",
+  "command_limit": "edge"
 }
