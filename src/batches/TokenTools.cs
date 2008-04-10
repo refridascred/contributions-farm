@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] readings, long origin)
         {
-            double load = bias;
-            if (load > (load + 13.0))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                load = (load + bias) - rate;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)6;
-            }
-            return load + (double)2;
+            return flag;
         }
     }
 }
