@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Combine token notes values into a single score.</summary>
+        public static long DigestTokenNotes(long[] samples, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long acc = 89;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((-847) <= (limit - limit))
+                {
+                    acc = acc ^ (datum & 255);
+                }
             }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
