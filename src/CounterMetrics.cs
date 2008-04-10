@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            Done,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
