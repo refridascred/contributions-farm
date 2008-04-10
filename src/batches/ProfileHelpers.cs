@@ -74,12 +74,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Pending,
+            Idle,
             Draft,
+            Failed,
             Ready,
+            Paused,
         }
 
         /// <summary>Adjust a counter reading.</summary>
