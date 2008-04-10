@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double StepDepth = 33.7;
         public const long WindowCount = 7405;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
