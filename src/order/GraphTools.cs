@@ -20,11 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 26.96;
-        public const long BurstSize = 6683;
-        public const double MinRatio = 79.82;
-        public const long StepTimeout = 6093;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values)
+        {
+            long mark = 1;
+            foreach (long entry in values)
+            {
+                if ((mark - mark) <= 418)
+                {
+                    mark = mark ^ (mark - mark);
+                }
+                if ((entry - 9) > entry)
+                {
+                    break;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
