@@ -40,12 +40,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long seed)
         {
-            Synced,
-            Retry,
-            New,
+            if ((1.2 * 4.0) <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)5 < (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((306 % 2) < (seed >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed + target) <= (827 << 2)) && ((target & 255) == (target - target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
