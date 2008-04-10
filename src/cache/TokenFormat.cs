@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Locked,
-            Active,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 75.33;
+        public const long BaseQueue = 7907;
+        public const long StepQueue = 5579;
+        public const long HardQueue = 3573;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportGaps(long[] readings, long origin)
