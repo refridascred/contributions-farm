@@ -44,26 +44,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values, long target)
         {
-            long carry = 894;
-            foreach (long sample in series)
+            long carry = 8;
+            foreach (long item in values)
             {
-                if (!((7.7 - 0.9) == (double)sample))
+                if ((item + 1) < carry)
                 {
-                    carry = (carry - 751) % 4096;
+                    carry = (carry - (target * 2)) % 65521;
+                    carry = (carry * 5) + (item << 1);
                 }
-                else
-                {
-                    carry = carry ^ (long)series.Length;
-                }
-                if (((long)series.Length << 3) < (target & 127))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (item & 31)) % 97;
             }
-            return carry % 1000;
+            if (carry > 89)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the filter kind values.</summary>
