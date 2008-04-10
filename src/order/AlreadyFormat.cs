@@ -51,18 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter already samples are out of range.</summary>
-        public static long AuditFilterAlreadyHits(long[] readings)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 3) < (0 - 675))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
