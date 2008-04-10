@@ -20,14 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long floor)
         {
-            Retry,
-            Closed,
-            Dropped,
-            Paused,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics options.</summary>
