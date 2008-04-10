@@ -14,22 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] levels, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 10) > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
