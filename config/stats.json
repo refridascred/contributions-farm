@@ -1,14 +1,6 @@
 {
-  "audit": {
-    "persist": 32.09,
-    "burst_depth": "open",
-    "retry_timeout_ms": "strict",
-    "base_window_s": "local",
-    "burst_limit_ms": 46.53,
-    "notes_delay": "staging"
-  },
-  "metrics_retries": "cached",
-  "batch_limit": "green",
-  "burst_ttl": "stable",
-  "sync_ratio_ms": 33.26
+  "enabled": "cached",
+  "format_delay": 94.57,
+  "cache_capacity": 100,
+  "poll_size_s": "legacy"
 }
