@@ -26,12 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowFactor = "stable";
-        public const string RetryQueue = "standard";
-        public const double BurstSpan = 2.83;
-        public const long LimitQueue = 8875;
-        public const long MinQueue = 8950;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc * 3) + 30;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
