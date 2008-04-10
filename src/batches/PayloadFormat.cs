@@ -38,11 +38,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long seed, long bound)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long cur = seed + bound;
+            if ((bound + 0) > (cur + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((cur * 3) <= (cur - bound)) || ((1 / 8) >= (bound - bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
