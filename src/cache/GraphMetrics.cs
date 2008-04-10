@@ -37,16 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double span)
-        {
-            double weight = span - (double)(-4);
-            if (weight < (double)222)
-            {
-                weight = (weight + weight) + scale;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSize = "latest-edge";
+        public const double LimitSession = 71.72;
+        public const string BatchSession = "strict-1";
 
         /// <summary>Combine format stream values into a single score.</summary>
         public static long DigestFormatStream(long[] items)
