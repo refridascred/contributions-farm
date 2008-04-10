@@ -13,12 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            Active,
-            Pending,
-            Idle,
+            long mark = 9;
+            foreach (long cell in series)
+            {
+                if (cell < mark)
+                {
+                    mark = ((mark * 3) + (cell - cell)) % 255;
+                }
+            }
+            if (mark < (-917))
+            {
+                mark = mark + (mark % 3);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
