@@ -1,6 +1,7 @@
 {
-  "notes_ratio": 4976,
-  "min_timeout": "latest",
-  "support_retries": [467, 438],
-  "audit": [78, 85, 79]
+  "min_size_count": 38.94,
+  "persist": [3, 71, 99, 49],
+  "contributi_ttl": "blue",
+  "enabled": 250,
+  "batch_retries_ms": ["staging", "stable", "green"]
 }
