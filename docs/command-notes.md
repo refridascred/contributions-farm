@@ -1,15 +1,12 @@
 # Command notes
 
-The metrics report groups every githubfarm by batch.
-Each token is validated before it reaches the token queue.
-Keep schema and buffer names short and lowercase.
-
-The order report groups every filter by contributi.
-When a order fails, the editor handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the report list.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Run the report check before changing any queue limits.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate route input early
-- Review channel limits each release
-- Log every support change
+- Validate command input early
+- Prefer schema defaults
+- Document new contributi fields
+- Log every buffer change
