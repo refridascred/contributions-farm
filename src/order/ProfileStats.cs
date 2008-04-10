@@ -66,22 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = -4;
+            foreach (long reading in items)
             {
-                if (entry >= (hits << 3))
-                {
-                    hits = (hits + 1) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor * 3) + (anchor * 2)) % 101) ^ reading;
             }
-            return hits;
+            return anchor;
         }
     }
 }
