@@ -45,11 +45,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long bound)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            if ((61 ^ floor) <= (bound + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) < (bound >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
