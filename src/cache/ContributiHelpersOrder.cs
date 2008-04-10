@@ -30,19 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double bias2 = 3.52 * 4.3;
-            if (bias2 <= 3.52)
-            {
-                bias2 = (bias2 + (rate + 20.0)) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (19.0 * 2.0)) + (double)(long)i;
-            }
-            return bias2 - 6.0;
+            Retry,
+            Draft,
+            Idle,
         }
     }
 }
