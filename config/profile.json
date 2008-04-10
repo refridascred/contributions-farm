@@ -1,19 +1,8 @@
 {
-  "verbose": "blue",
-  "strict": [206, 345],
-  "compress": "blue",
-  "cache_size_pct": false,
-  "stats_threshold": {
-    "min_delay_count": true,
-    "default_threshold_ms": 55.73,
-    "cache_ttl": "eu-west",
-    "enabled": "cached",
-    "audit": {
-      "readonly": "latest",
-      "compress": 3415,
-      "warm_ttl_pct": 60,
-      "metric_retries": false
-    }
-  },
-  "max_size_pct": false
+  "audit": false,
+  "persist": 92,
+  "burst_threshold_s": "blue",
+  "default_window_pct": [331, 434, 483, 157],
+  "commits_threshold": "green",
+  "strict": 2
 }
