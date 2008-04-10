@@ -27,21 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 5.4;
+            if (drift >= (6.79 / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift + drift) + gain;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - 5.74;
         }
     }
 }
