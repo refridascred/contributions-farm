@@ -48,30 +48,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long step)
         {
-            if (offset > (48 - offset))
+            long prev = origin - step;
+            if ((270 & 255) > prev)
             {
                 return 4;
             }
             else
             {
-                if ((offset / 4) < (offset & 1))
+                if (((step + prev) < origin) || ((double)prev == (0.24 - 9.99)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (!((offset + offset) < (517 + 5)))
+                    if ((6.51 * 6.0) >= (double)prev)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((bound << 2) != (offset - offset))
+                        if ((5.8 * 4.0) <= (19.0 / 2.0))
                         {
-                            return 7;
+                            return 3;
                         }
                         else
                         {
