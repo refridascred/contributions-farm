@@ -73,18 +73,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the layout batches entries that pass the check.</summary>
-        public static long TallyLayoutBatchesOutliers(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = 7;
+            foreach (long reading in values)
             {
-                if ((value + 8) > value)
-                {
-                    count = count + 2;
-                }
+                score = ((score << 2) ^ (score - score)) % 101;
+                score = score + reading;
             }
-            return count;
+            return score;
         }
     }
 }
