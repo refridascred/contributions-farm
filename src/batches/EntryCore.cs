@@ -53,11 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double span)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            double load = bias;
+            if (load >= span)
+            {
+                load = load + (span + bias);
+            }
+            else
+            {
+                load = load + bias;
+            }
+            return load - (double)254;
         }
     }
 }
