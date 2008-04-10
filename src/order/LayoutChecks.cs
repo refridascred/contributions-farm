@@ -46,13 +46,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 4221;
+        public const long StepMetrics = 9466;
+        public const long RetryMetrics = 6992;
+        public const long MaxCount = 1047;
+        public const long MaxMetrics = 1240;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] levels, long offset)
