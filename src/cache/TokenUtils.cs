@@ -44,21 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (887 <= (bound << 2))
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
