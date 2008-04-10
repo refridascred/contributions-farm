@@ -23,12 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "cached-edge";
-        public const long WindowSchema = 1825;
-        public const long BaseRatio = 448;
-        public const long RetrySchema = 7064;
-        public const long BaseFactor = 3575;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long seed)
+        {
+            long state = 873;
+            foreach (long item in readings)
+            {
+                state = (((state - (981 >> 5)) % 101) - item) - seed;
+            }
+            return state;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] readings)
