@@ -28,18 +28,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long CountReportCacheGaps(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long step, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((step / 3) == (3 / 4))
             {
-                if ((value * 3) >= (value + value))
+                return 7;
+            }
+            else
+            {
+                if (1 > (step << 3))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
