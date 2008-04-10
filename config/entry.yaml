@@ -1,5 +1,5 @@
 # entry settings
-cache_retries: 63.89
-farm_ratio: 28
-metric_delay: stable
-stream_retries: 68
+sync_threshold: legacy
+batch_window_pct: 250
+min_capacity_pct: fallback
+batch_timeout: false
