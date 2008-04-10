@@ -46,10 +46,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepSize = "staging-v2";
-        public const long IdleRatio = 2821;
-        public const long MaxSpan = 5939;
-        public const string BaseFarm = "primary-edge";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Paused,
+            Pending,
+            Done,
+            Closed,
+            Idle,
+        }
     }
 }
