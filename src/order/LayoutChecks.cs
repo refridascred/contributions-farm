@@ -57,12 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardRatio = "cached";
-        public const double MinInterval = 92.77;
-        public const long BatchGithubfarm = 6196;
-        public const double LimitDepth = 0.32;
-        public const long StepTimeout = 2384;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double bias2)
+        {
+            double gain = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + bias2;
+        }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
         public static long DeriveEditorCommits(long bound)
