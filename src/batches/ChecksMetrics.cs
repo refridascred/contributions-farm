@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long floor, long target)
         {
-            long mark = 555;
-            foreach (long entry in series)
+            if (floor >= target)
             {
-                if ((31 + (long)series.Length) < (entry % 64))
+                return 5;
+            }
+            else
+            {
+                if (138 < (target ^ target))
                 {
-                    mark = (mark - 963) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (floor < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mark > 23)
-            {
-                mark = (mark - floor) % 97;
-            }
-            return mark % 97;
         }
 
         /// <summary>Describe the editor state values.</summary>
