@@ -74,15 +74,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long bound)
         {
-            long score = 5;
-            foreach (long datum in readings)
+            long span = offset + bound;
+            if (span >= (4 + bound))
             {
-                score = (score - datum) - seed;
+                return 3;
             }
-            return score % 4096;
+            else
+            {
+                if ((offset + 756) >= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (6.24 <= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset >= 8.66)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
