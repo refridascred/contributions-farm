@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series, long floor)
         {
-            if ((4.4 * 4.29) <= (double)step)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + offset) <= (offset % 100))
+                if ((739 ^ floor) == (floor * 4))
                 {
-                    return 1;
+                    matches = (matches + 3) ^ sample;
                 }
                 else
                 {
-                    if (((step & 15) <= (offset + step)) && (step <= (step * 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
