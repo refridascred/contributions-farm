@@ -36,18 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (887 <= (bound << 2))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                carry = (carry ^ (203 * 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
