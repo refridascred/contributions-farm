@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            Queued,
-            Done,
-            Failed,
-            Synced,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((item % 100) >= (item * 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
