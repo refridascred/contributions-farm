@@ -35,39 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token profile value against two limits.</summary>
-        public static long GradeTokenProfile(long limit, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long edge = limit - seed;
-            if (seed > (seed / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((15 ^ seed) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >= (seed ^ edge)) || ((limit / 7) < limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Done,
         }
     }
 }
