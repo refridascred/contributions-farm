@@ -20,10 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "latest-v2";
-        public const long HardScore = 8694;
-        public const double CacheScore = 50.18;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((matches & 15) == (matches >> 3)) && (((3.7 - 2.6) <= (double)target) && ((item % 3) <= item)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
