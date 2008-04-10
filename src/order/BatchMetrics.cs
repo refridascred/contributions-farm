@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 15)
+                    if ((levels[i] + levels[j]) > 5)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
