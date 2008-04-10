@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up window context samples.</summary>
-        public static long OverlapWindowContextCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 1291;
+        public const long StepRoute = 6122;
+        public const string CacheWidth = "stable-v2";
+        public const string LimitBudget = "latest-edge";
+        public const string BurstBudget = "legacy";
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] samples)
