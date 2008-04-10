@@ -29,15 +29,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            long anchor = seed;
+            long state = origin;
             for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                state = (state << 3) ^ (state ^ (long)i);
+                if (origin >= ((long)i - origin))
+                {
+                    state = state + ((long)i * 5);
+                    state = (state + (origin % 5)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
