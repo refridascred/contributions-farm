@@ -1,7 +1,5 @@
 # entry settings
-warm_ratio_count: 13
-cache_delay_s: fallback
-burst_timeout_s:
-  - strict
-  - open
-sync_interval_s: 42.24
+dry_run: legacy
+min_retries_s: legacy
+base_ratio_ms: 83
+poll_limit: 96.5
