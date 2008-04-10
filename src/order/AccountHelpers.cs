@@ -99,16 +99,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the payload window series from a seed.</summary>
-        public static long RollPayloadWindow(long limit)
+        /// <summary>Compare every pair of editor account readings.</summary>
+        public static long PairEditorAccountCount(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (limit + sum)) % 97;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
