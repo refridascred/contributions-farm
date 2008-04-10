@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels)
         {
-            long sum = -694;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((2.4 / 3.0) >= (double)sample) || (sample >= (sample - sum)))
+                if ((102 - tally) >= tally)
                 {
-                    sum = (sum * 4) + (sample + sum);
-                }
-                else
-                {
-                    sum = (sum - (sum + sample)) % 65521;
+                    tally = (tally + 1) + value;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
