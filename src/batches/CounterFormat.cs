@@ -27,17 +27,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleFactor = 9071;
+        public const double BaseReport = 25.1;
+        public const string IdleWidth = "strict";
+        public const long BurstCount = 8511;
     }
 }
