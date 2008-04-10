@@ -24,19 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - hits) <= ((-6) * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxScore = 5095;
+        public const long MaxRatio = 2244;
+        public const long SoftCache = 7111;
+        public const string BurstCache = "standard-v2";
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
