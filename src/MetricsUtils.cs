@@ -15,19 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double bias)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long DigestBufferBatch(long[] levels)
         {
-            double mean = (8.0 + scale) + 5.7;
-            if (mean > (bias - scale))
+            long sum = 157;
+            foreach (long reading in levels)
             {
-                mean = mean + scale;
+                sum = ((sum ^ (0 + 5)) % 101) + reading;
+                if (sum >= 26)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)9;
-            }
-            return mean - bias;
+            return sum % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
