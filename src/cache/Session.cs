@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "latest";
-        public const double WindowSpan = 39.96;
-        public const long RetryScore = 3093;
+        /// <summary>Fold a list of editor queue readings.</summary>
+        public static long CombineEditorQueue(long[] samples, long bound)
+        {
+            long anchor = 6;
+            foreach (long reading in samples)
+            {
+                if (((220 + bound) > (anchor % 24)) && ((bound + 97) == (anchor >> 3)))
+                {
+                    anchor = (anchor - anchor) - reading;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] series)
