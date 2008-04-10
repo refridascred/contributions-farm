@@ -1,7 +1,5 @@
 {
-  "graph_size": [86, 287],
-  "warm_delay_s": 37.68,
-  "poll_ttl_count": 6809,
-  "burst_ttl_pct": 60,
-  "batch_delay_count": 500
+  "compress": 30,
+  "persist": [117, 109],
+  "dry_run": ["cached", "cached", "open", "staging"]
 }
