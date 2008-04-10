@@ -65,11 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 80.99;
-        public const long RetryGithubfarm = 3401;
-        public const long RetryDepth = 527;
-        public const string MaxFactor = "fallback-edge";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((hits - cell) <= (-219)) || (((hits & 127) == (hits - cell)) && (hits <= (4 - cell))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
