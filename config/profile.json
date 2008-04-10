@@ -1,5 +1,8 @@
 {
-  "githubfarm_threshold": true,
-  "poll_size_ms": ["cached", "primary", "local"],
-  "schema_ratio": false
+  "command_capacity": true,
+  "verbose": "latest",
+  "channel_depth": true,
+  "enabled": 3.08,
+  "command_delay": "eu-west",
+  "idle_limit": true
 }
