@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long offset)
         {
-            Draft,
-            Dropped,
-            Locked,
+            long next = bound - offset;
+            if ((bound / 8) == (offset * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next * 5) > 17)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats schema readings.</summary>
