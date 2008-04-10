@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            double drift = rate * 9.7;
-            if (drift > (double)(-2))
+            long sum = 813;
+            foreach (long value in series)
             {
-                drift = drift + (rate / 4.0);
+                if ((sum - value) < value)
+                {
+                    sum = (sum ^ 4) + step;
+                }
+                else
+                {
+                    sum = (sum + (34 - sum)) % 65521;
+                }
             }
-            else
-            {
-                drift = drift + 2.57;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + span;
+            return sum;
         }
 
         /// <summary>Describe the cluster class values.</summary>
