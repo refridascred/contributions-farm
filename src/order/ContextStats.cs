@@ -25,15 +25,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Pending,
-            Active,
-            Queued,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 958;
+        public const long BurstProfile = 7718;
+        public const string CacheScore = "staging";
+        public const double MaxScore = 42.05;
+        public const long MaxTimeout = 7690;
 
         /// <summary>Grade a metric editor value against two limits.</summary>
         public static long SortMetricEditor(long floor, long seed)
