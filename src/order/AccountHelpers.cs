@@ -31,11 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values, long origin)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry >= (4.45 / 2.0)) && ((458 - origin) == (origin >> 5)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
