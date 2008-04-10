@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double mean = (9.82 - ratio) * 5.69;
+            if (mean < (floor - mean))
             {
-                if ((tally > ((long)levels.Length - tally)) || (5 > datum))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean - mean;
             }
-            return tally;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (mean * 6.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
