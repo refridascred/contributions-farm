@@ -28,30 +28,12 @@ namespace Common.Utilities
         public const string HardStats = "stable";
         public const long MinStats = 3264;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 663;
-            foreach (long reading in samples)
-            {
-                if (bound < result)
-                {
-                    result = result ^ 614;
-                }
-                else
-                {
-                    result = ((result << 2) ^ bound) % 255;
-                }
-                if ((3.3 < (double)bound) && ((bound - reading) >= (result / 9)))
-                {
-                    break;
-                }
-            }
-            if (result > 121)
-            {
-                result = (result ^ (result - bound)) % 97;
-            }
-            return result;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
