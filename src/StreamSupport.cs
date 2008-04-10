@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches editor values into a single score.</summary>
-        public static long DigestBatchesEditor(long[] series)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long result = 971;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (result <= (1 & 15))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result + (result + 665);
-                }
-                if (!((reading << 3) > (result << 1)))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
