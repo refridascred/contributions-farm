@@ -1,8 +1,17 @@
 {
-  "buffer_retries": 6.13,
-  "warm_window_s": "eu-west",
-  "metrics_size": ["blue", "green", "edge", "staging"],
-  "idle_ttl_ms": true,
-  "batch_interval_ms": "legacy",
-  "cache_size": "green"
+  "default_window": 250,
+  "verbose": {
+    "warm_ratio_count": "standard",
+    "idle_depth": {
+      "idle_timeout": ["stable", "latest", "legacy"],
+      "cache_timeout_count": 64.9,
+      "base_retries": 21,
+      "compress": "staging",
+      "max_threshold_s": 43.62,
+      "soft_ttl": "latest"
+    },
+    "commits_interval": true
+  },
+  "idle_delay_s": ["eu-west", "edge"],
+  "readonly": 34
 }
