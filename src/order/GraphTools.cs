@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            if (step > (46 % 24))
             {
-                if ((step - (long)i) != ((long)i >> 1))
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((step + 63) <= (34 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 7) >= (step >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > (step >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two filter measurements.</summary>
