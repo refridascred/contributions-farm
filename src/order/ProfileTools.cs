@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long mark = 259;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = mark - (limit + value);
             }
-            return anchor;
+            return mark % 97;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
