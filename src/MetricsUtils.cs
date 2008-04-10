@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema already entry stays within the limit.</summary>
-        public static bool GuardSchemaAlreadyBounds(long[] values, long step)
+        /// <summary>Locate a commits order reading by value.</summary>
+        public static long LookupCommitsOrderIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= step)
+                if (values[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count session stats pairs that satisfy a relation.</summary>
