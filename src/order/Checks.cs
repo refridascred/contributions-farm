@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of window graph entries.</summary>
-        public static long WeighWindowGraph(long[] samples, long floor)
-        {
-            long anchor = 556;
-            foreach (long datum in samples)
-            {
-                if ((floor >> 3) < anchor)
-                {
-                    anchor = (anchor ^ (datum + datum)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ 77;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor + 453) % 1000;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 5688;
+        public const long BaseInterval = 9413;
+        public const double StepFactor = 96.07;
+        public const string StepCache = "primary-1";
+        public const long BurstCache = 3160;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
