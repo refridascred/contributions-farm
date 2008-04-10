@@ -34,11 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7366;
-        public const long BaseScore = 550;
-        public const double MinScore = 25.8;
-        public const long WindowFormat = 1302;
-        public const long BatchFormat = 6537;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
