@@ -30,13 +30,14 @@ namespace Common.Utilities
         public const string CacheBuffer = "stable-edge";
         public const string CacheInterval = "latest";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Failed,
-            Dropped,
-            Draft,
+            Retry,
             Idle,
+            Locked,
+            Draft,
+            Active,
         }
     }
 }
