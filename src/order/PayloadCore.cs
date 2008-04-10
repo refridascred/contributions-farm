@@ -62,11 +62,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 14.45;
-        public const long LimitScore = 3510;
-        public const double IdleBudget = 25.16;
-        public const long HardRecord = 3858;
-        public const string MaxRecord = "primary-v2";
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
