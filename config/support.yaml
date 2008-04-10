@@ -1,10 +1,9 @@
 # support settings
-batch_threshold_count: 24
-default_capacity_count: false
-poll_retries_s: 24.94
-commits_ratio: eu-west
-sync_timeout_count:
-  - 170
-  - 183
-  - 350
-  - 399
+record_size: cached
+session_depth: 36.47
+persist:
+  context_limit: primary
+  flush_threshold_ms: true
+  idle_capacity_ms: edge
+max_limit_pct: 86.49
+order_threshold: false
