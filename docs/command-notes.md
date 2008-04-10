@@ -1,15 +1,13 @@
 # Command notes
 
-The format module keeps editor values in sync with the order cache.
-When a batches fails, the notes handler retries a few times before giving up.
-The profile report groups every graph by filter.
+The layout report groups every commits by command.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-The checks report groups every notes by batch.
-The queue module keeps tools values in sync with the notes cache.
-Keep report and metrics names short and lowercase.
+Keep checks and payload names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Review support limits each release
-- Prefer buffer defaults
+- Review notes limits each release
+- Document new schema fields
+- Prefer session defaults
