@@ -47,25 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long prev = step + seed;
-            if (!((8.7 * 1.7) == (double)prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.7 + 17.0) <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
