@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long sum = 881;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum * 4) + (sum / 5)) % 97) + cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
