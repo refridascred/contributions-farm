@@ -1,5 +1,7 @@
 # entry settings
-idle_depth: 60
-min_ttl_s: strict
-idle_retries_ms: true
-persist: 60
+warm_ratio_count: 13
+cache_delay_s: fallback
+burst_timeout_s:
+  - strict
+  - open
+sync_interval_s: 42.24
