@@ -20,13 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Draft,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 3992;
+        public const double BurstLevel = 19.84;
+        public const double CacheFactor = 59.68;
+        public const long CacheInterval = 5834;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] readings, long step)
