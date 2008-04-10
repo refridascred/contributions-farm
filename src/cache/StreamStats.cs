@@ -30,14 +30,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples, long offset)
         {
-            Closed,
-            Pending,
-            Active,
-            Paused,
-            Failed,
+            long mix = 6;
+            foreach (long cell in samples)
+            {
+                if ((offset < (cell % 60)) && ((mix & 63) < (cell + mix)))
+                {
+                    mix = mix ^ cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
