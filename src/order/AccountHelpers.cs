@@ -30,39 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long limit, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long next = limit + seed;
-            if ((next < (seed - 5)) && ((double)limit >= (12.0 - 6.36)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (38 < (seed + 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next >> 5) <= next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((6.6 + 8.0) == (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
