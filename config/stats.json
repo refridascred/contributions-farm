@@ -1,8 +1,10 @@
 {
-  "burst_depth": true,
-  "hard_ratio_pct": 500,
-  "audit": 64,
-  "cache_threshold": false,
-  "schema_retries": 3936,
-  "base_interval": 33.13
+  "githubfarm_window": 30,
+  "cache_depth_count": {
+    "strict": 88.19,
+    "commits_limit": ["staging", "open", "blue"],
+    "batch_delay": 250
+  },
+  "max_interval_count": 47,
+  "strict": "cached"
 }
