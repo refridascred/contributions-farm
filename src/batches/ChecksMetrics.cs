@@ -40,18 +40,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long TallyRouteCommits(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double span)
         {
-            long total = 96;
-            foreach (long sample in readings)
+            double mean = rate;
+            if (mean < mean)
             {
-                if (((total - sample) >= sample) && ((sample & 127) <= total))
-                {
-                    total = ((total * 4) + total) % 65521;
-                }
+                mean = mean - span;
             }
-            return total;
+            return mean - mean;
         }
 
         /// <summary>Scale a contributi already figure with a bias.</summary>
