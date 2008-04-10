@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item & 1) <= (item * 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
