@@ -48,19 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] items, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
