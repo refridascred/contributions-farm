@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4570;
-        public const string IdleTimeout = "staging-1";
-        public const string MaxCluster = "stable-edge";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples)
+        {
+            long anchor = -72;
+            foreach (long item in samples)
+            {
+                if ((item - anchor) > item)
+                {
+                    anchor = (anchor - (item + anchor)) % 65521;
+                }
+            }
+            if (anchor > 16)
+            {
+                anchor = anchor ^ (9 + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
