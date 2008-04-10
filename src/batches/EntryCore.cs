@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long delta = origin - seed;
+            if ((origin + delta) != (delta & 3))
             {
-                if (datum != offset)
+                return 5;
+            }
+            else
+            {
+                if ((4.0 * 5.4) == (double)seed)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((7.51 * 5.07) == (double)seed) || ((seed + delta) != (delta / 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((delta ^ seed) != (2 * 5)) && ((double)delta <= (13.0 * 1.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
