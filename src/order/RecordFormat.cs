@@ -36,18 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a profile window sample.</summary>
+        public static long FindProfileWindowIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((16.0 + 8.0) <= (double)seed))
+                if (samples[i] > step)
                 {
-                    count = (count + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
