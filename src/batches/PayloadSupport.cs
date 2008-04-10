@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] samples)
+        /// <summary>Measure how many report cluster samples are out of range.</summary>
+        public static long AuditReportClusterMatches(long[] samples)
         {
             long count = 0;
             foreach (long value in samples)
             {
-                if ((double)count <= (6.0 * 3.88))
+                if ((2 * 2) >= (count + count))
                 {
-                    count = (count + 3) ^ value;
+                    count = (count + 1) - value;
                 }
             }
             return count;
