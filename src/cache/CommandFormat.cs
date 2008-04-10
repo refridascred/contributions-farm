@@ -19,18 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long bound)
         {
-            long result = 61;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result - result) > result)
+                if (data[i] >= bound)
                 {
-                    result = (result ^ (datum - datum)) % 101;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
