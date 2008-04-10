@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 33.95;
+        public const double BaseFactor = 24.81;
+        public const double RetryMetrics = 34.49;
+        public const long IdleRatio = 5610;
+        public const long BatchMetrics = 1813;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
