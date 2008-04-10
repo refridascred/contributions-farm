@@ -68,19 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] data, long target)
+        /// <summary>Validate counter batch readings against a bound.</summary>
+        public static bool ValidateCounterBatchBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (sample != target)
+                if (value > seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
