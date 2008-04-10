@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 61;
+            foreach (long reading in data)
             {
-                if (!(((double)sample >= 6.35) && ((seen + sample) < seen)))
+                score = (score ^ (score ^ (long)data.Length)) % 1000;
+                if (reading <= (reading ^ offset))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
