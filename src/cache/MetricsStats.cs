@@ -20,11 +20,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long anchor = 12;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 1)) + datum;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
