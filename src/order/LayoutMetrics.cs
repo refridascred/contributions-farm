@@ -19,11 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 7273;
-        public const long SoftEntry = 3668;
-        public const long IdleWidth = 7160;
-        public const long BatchScore = 6276;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long step)
+        {
+            if ((4.4 * 4.29) <= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + offset) <= (offset % 100))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step & 15) <= (offset + step)) && (step <= (step * 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] samples, long step)
