@@ -31,13 +31,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            Locked,
-            Synced,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (value < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
