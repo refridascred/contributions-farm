@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits >> 2) >= sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
