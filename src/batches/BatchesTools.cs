@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data, long bound)
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long LookupChecksFilterIndex(long[] values, long limit)
         {
-            long mark = 376;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + (bound - reading)) % 255;
-                if ((2.52 / 5.0) < (double)reading)
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
                 {
-                    mark = (mark << 3) ^ (reading >> 2);
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
