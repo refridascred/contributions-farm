@@ -1,22 +1,16 @@
 # entry settings
-command_ratio:
-  max_retries_s: latest
-  buffer_timeout: 21
-  retry_interval_count: latest
-warm_capacity:
-  cache_capacity_count:
-    context_size:
-      - primary
-      - primary
-      - fallback
-    layout_size: primary
-    soft_timeout_count: 52.3
-    flush_size: 30
-    hard_size_pct: fallback
-  strict: edge
-  hard_ratio_count: cached
-  readonly: strict
-  layout_depth: 0.83
-strict: 33
-poll_threshold_ms: false
-min_limit_count: 1024
+readonly: false
+support_window: 500
+persist:
+  - fallback
+  - staging
+  - local
+dry_run:
+  default_interval:
+    - 94
+    - 165
+    - 447
+    - 49
+  dry_run: true
+  session_threshold: 48
+poll_limit_count: 69.87
