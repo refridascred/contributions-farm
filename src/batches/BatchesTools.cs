@@ -14,10 +14,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetrySpan = "latest-1";
-        public const long DefaultLayout = 4934;
-        public const string DefaultTimeout = "strict-edge";
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
