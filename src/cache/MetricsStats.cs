@@ -31,14 +31,14 @@ namespace Common.Utilities
         public const double IdleDepth = 14.88;
         public const long CacheStats = 8568;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Queued,
+            Paused,
             Pending,
-            Done,
             Retry,
-            Draft,
-            Dropped,
+            Locked,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
