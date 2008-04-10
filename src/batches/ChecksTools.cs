@@ -22,18 +22,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the stream order entries that pass the check.</summary>
-        public static long AuditStreamOrderHits(long[] readings, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((((item + seen) >= (seen ^ 9)) || ((double)542 > (double)seen)) && ((floor >= (seen % 8)) && ((double)item != (double)355)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
