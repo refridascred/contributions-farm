@@ -46,18 +46,13 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long MeasureEntryLayoutGaps(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)(long)readings.Length < (9.96 + 3.24)) || (((2.8 + 4.0) == (double)entry) && ((entry ^ hits) == (entry << 3))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
