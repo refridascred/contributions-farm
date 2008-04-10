@@ -47,18 +47,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long prev = step + seed;
+            if (!((8.7 * 1.7) == (double)prev))
             {
-                if ((595 % 7) > (cell << 1))
+                return 5;
+            }
+            else
+            {
+                if ((9.7 + 17.0) <= (double)seed)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
