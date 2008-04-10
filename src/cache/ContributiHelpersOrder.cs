@@ -27,23 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] readings, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long floor)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)readings.Length <= (anchor - offset))
+                if (items[i] < floor)
                 {
-                    anchor = ((anchor * 2) + offset) % 1000;
-                    anchor = ((anchor << 3) ^ (cell - offset)) % 1000;
-                }
-                if (((offset << 2) < (cell << 1)) || (offset >= (cell >> 4)))
-                {
-                    anchor = (anchor << 2) ^ offset;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
