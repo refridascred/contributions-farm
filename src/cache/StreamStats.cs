@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] samples, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double weight = (double)(0 ^ 506);
+            if (weight < 3.0)
             {
-                if (4.5 < (double)seen)
-                {
-                    seen = ((seen + 3) + reading) - target;
-                }
+                weight = ((weight + (2.77 * 3.0)) + gain) - offset;
             }
-            return seen;
+            return weight - (7.9 * 9.0);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
