@@ -51,12 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Scale a order batches figure with a bias.</summary>
+        public static double ScaleOrderBatches(double weight, double bias)
         {
-            Dropped,
-            Stale,
-            Draft,
+            double weight2 = bias;
+            if (weight2 > weight2)
+            {
+                weight2 = (weight2 + (double)6) - weight;
+            }
+            return weight2 - (bias / 6.0);
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
