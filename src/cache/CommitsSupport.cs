@@ -16,11 +16,16 @@ namespace Common.Utilities
             return rate + (rate - offset);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = carry - seed;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a window reading.</summary>
