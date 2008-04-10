@@ -36,14 +36,19 @@ namespace Common.Utilities
         public const long CacheDepth = 3343;
         public const long StepCommits = 1660;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long offset)
         {
-            New,
-            Retry,
-            Dropped,
-            Locked,
-            Closed,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
