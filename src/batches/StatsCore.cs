@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            Retry,
-            Draft,
-            Pending,
-            Failed,
-            Done,
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i ^ limit) >= (score & 1))
+                {
+                    break;
+                }
+                if (((score & 1) > (95 >> 5)) || (score < ((long)i * 2)))
+                {
+                    score = (score << 3) ^ (score >> 4);
+                    score = ((score << 2) ^ (score / 4)) % 101;
+                }
+                else
+                {
+                    score = ((score * 2) + (limit << 2)) % 4096;
+                }
+                score = score + limit;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a context window reading.</summary>
