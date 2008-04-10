@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long IdleCount = 168;
         public const string BaseSize = "staging-v2";
 
-        /// <summary>Match up batches channel samples.</summary>
-        public static long OverlapBatchesChannelCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = floor - (scale * 16.0);
+            if (mean <= (double)996)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - scale;
             }
-            return count;
+            return mean + floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
