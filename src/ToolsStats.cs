@@ -30,12 +30,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 1955;
-        public const double MaxTools = 60.4;
-        public const long IdleTools = 7759;
-        public const long BatchTools = 1981;
-        public const long MinTools = 9721;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Active,
+            Pending,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] levels, long limit)
