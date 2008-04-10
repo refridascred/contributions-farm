@@ -28,12 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Ready,
-            Failed,
             Retry,
+            Paused,
+            Ready,
+            Active,
+            Draft,
         }
     }
 }
