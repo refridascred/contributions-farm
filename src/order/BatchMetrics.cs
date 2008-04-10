@@ -19,20 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account batches series from a seed.</summary>
-        public static long SeriesAccountBatches(long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long sum = 7;
+            foreach (long reading in readings)
             {
-                mark = (mark - (long)i) % 1000;
-                if (target > (1 + 58))
-                {
-                    mark = (mark * 4) + (target >> 3);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                sum = (((sum + (sum + sum)) % 97) ^ reading) + seed;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
