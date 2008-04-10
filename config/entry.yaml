@@ -1,4 +1,5 @@
 # entry settings
-enabled: true
-base_interval: 39
-flush_depth_s: 500
+persist: 5773
+verbose: latest
+enabled: standard
+strict: legacy
