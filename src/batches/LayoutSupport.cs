@@ -51,14 +51,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            Queued,
-            Idle,
-            Ready,
-            Done,
-            Failed,
+            double drift = bias / 3.0;
+            if (drift < (19.0 * 0.8))
+            {
+                drift = (drift + (double)686) + floor;
+            }
+            return drift + (9.41 * 2.6);
         }
 
         /// <summary>Define already limits and defaults.</summary>
