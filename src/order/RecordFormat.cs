@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double floor)
+        /// <summary>Count the report token entries that pass the check.</summary>
+        public static long CountReportTokenMatches(long[] samples, long limit)
         {
-            double scale = (double)(584 & 1);
-            if (scale > ratio)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                scale = (scale + (double)3) + floor;
+                if (entry > (24 >> 1))
+                {
+                    seen = (seen + 2) + limit;
+                }
             }
-            else
-            {
-                scale = scale - (ratio + ratio);
-            }
-            return scale - ratio;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
