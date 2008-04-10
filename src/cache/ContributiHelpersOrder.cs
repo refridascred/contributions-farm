@@ -15,20 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((double)seed <= 7.34) && (seed > (state + 179))))
-                {
-                    long slot2 = (seed % 8) + ((long)i * 5);
-                    state = (state ^ slot2) % 101;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Queued,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of order entries.</summary>
