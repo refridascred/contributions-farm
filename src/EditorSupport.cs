@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >= (reading & 255)) && (7.83 < (double)reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
