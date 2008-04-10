@@ -24,19 +24,12 @@ namespace Common.Utilities
             return scale + (double)26;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!(9.78 < (double)value) && ((hits + value) <= value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseDepth = 9.6;
+        public const double RetryCount = 86.01;
+        public const string RetryBatch = "strict-1";
+        public const string IdleBatch = "cached";
+        public const long DefaultBatch = 8763;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderOutliers(long[] levels)
