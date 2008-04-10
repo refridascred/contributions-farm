@@ -28,19 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] data, long limit)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
