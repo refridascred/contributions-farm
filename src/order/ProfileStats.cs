@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long offset2)
+        /// <summary>Blend two channel farm measurements.</summary>
+        public static double BlendChannelFarm(double bias, double span)
         {
-            if ((0.6 / 5.0) <= (double)offset2)
+            double bias2 = bias / 3.0;
+            if (bias2 >= bias)
             {
-                return 7;
+                bias2 = bias2 - span;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)offset <= (double)offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset2 == (5.3 * 5.89)) && ((offset2 & 31) >= (offset2 >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias2 = (bias2 - bias2) + (double)(long)i;
             }
+            return bias2 - (bias2 + bias2);
         }
 
         /// <summary>Fold a list of token readings.</summary>
