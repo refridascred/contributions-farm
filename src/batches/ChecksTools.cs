@@ -50,19 +50,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long score = 637;
+            foreach (long datum in samples)
             {
-                if (reading < bound)
+                if (!((double)score <= (4.42 * 1.8)))
                 {
-                    flag = false;
-                    break;
+                    score = (score - 5) ^ datum;
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
