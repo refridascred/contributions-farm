@@ -1,8 +1,6 @@
 # githubfarm settings
-compress: 2.09
-base_retries_count: blue
-enabled:
-  - stable
-  - eu-west
-  - edge
-  - cached
+tools_timeout: staging
+base_interval_count: 53
+compress: 7
+batch_delay_pct: 9652
+githubfarm_depth: 500
