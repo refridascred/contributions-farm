@@ -41,31 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context checks value against two limits.</summary>
-        public static long BucketContextChecks(long origin, long origin2)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if (!((268 - origin2) <= (9 & 31)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin2 - origin) > (origin ^ origin2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin2 < (origin * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
