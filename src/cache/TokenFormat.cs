@@ -13,17 +13,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
