@@ -47,12 +47,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1826;
-        public const long RetryInterval = 1474;
-        public const long SoftLevel = 8195;
-        public const string HardFactor = "standard";
-        public const long BurstBatches = 6394;
+        /// <summary>Audit notes window readings against a rule.</summary>
+        public static long MeasureNotesWindowOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length * 3) >= (tally + tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] series, long offset)
