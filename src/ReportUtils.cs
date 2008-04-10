@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long origin)
         {
-            long total = 5;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                total = ((total - total) % 255) - item;
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 14)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Rank report input into a small class.</summary>
