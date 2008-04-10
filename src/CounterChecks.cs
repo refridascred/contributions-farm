@@ -46,15 +46,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two context cache measurements.</summary>
-        public static double ScaleContextCache(double rate, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            double bias = (double)1 * 15.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias + (span * 4.47)) - (double)(long)i) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - bias;
+            return matches;
         }
 
         /// <summary>Hold a report entry.</summary>
