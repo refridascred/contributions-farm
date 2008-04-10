@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = 34;
-            foreach (long entry in samples)
-            {
-                mix = ((mix << 3) ^ 67) + entry;
-                if (((double)mix > 1.37) && (mix > (mix & 1)))
-                {
-                    mix = (mix + 953) % 1000;
-                }
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
