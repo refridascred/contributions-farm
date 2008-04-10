@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the already cluster entries that pass the check.</summary>
+        public static long CountAlreadyClusterGaps(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((matches <= (datum % 97)) || (62 > (datum % 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
