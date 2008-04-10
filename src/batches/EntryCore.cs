@@ -75,15 +75,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Compare every pair of layout already readings.</summary>
+        public static long CompareLayoutAlreadyCount(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
