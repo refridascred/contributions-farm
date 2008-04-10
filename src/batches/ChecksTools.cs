@@ -43,15 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch order reading.</summary>
-        public static double ScaleBatchOrder(double weight, double floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (weight * 7.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
