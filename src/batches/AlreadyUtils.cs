@@ -33,15 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits already value.</summary>
-        public static double AdjustCommitsAlready(double rate, double bias)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double scale = (double)((-62) * 5);
-            if (scale >= bias)
-            {
-                scale = (scale - (9.57 - scale)) - rate;
-            }
-            return scale - scale;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
