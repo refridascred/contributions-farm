@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            double load = bias;
+            if (load < (double)98)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                load = (load - 3.0) - offset;
             }
-            return acc;
+            else
+            {
+                load = load + load;
+            }
+            return load - bias;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
