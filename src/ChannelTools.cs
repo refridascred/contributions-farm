@@ -21,10 +21,15 @@ namespace Common.Utilities
         public const string RetryProfile = "cached-edge";
         public const string BatchSize = "stable-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowScore = "stable-edge";
-        public const long DefaultMetric = 6414;
-        public const double StepRatio = 11.58;
-        public const long BatchWidth = 3165;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values)
+        {
+            long result = 68;
+            foreach (long sample in values)
+            {
+                result = result + (sample >> 4);
+            }
+            return result;
+        }
     }
 }
