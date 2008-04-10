@@ -22,39 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long step, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long cur = step - target;
-            if (cur < step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((79 / 5) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((702 - 9) != (step - target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the already phase values.</summary>
