@@ -37,12 +37,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long origin)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            if ((origin / 9) == (367 << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin ^ seed) < (origin % 24)) || ((origin >> 4) >= (seed + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
