@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double offset)
-        {
-            double weight = (double)(0 ^ 506);
-            if (weight < 3.0)
-            {
-                weight = ((weight + (2.77 * 3.0)) + gain) - offset;
-            }
-            return weight - (7.9 * 9.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowCount = 82.23;
+        public const long MinBatches = 2309;
+        public const long BaseSize = 3917;
+        public const long BurstBatches = 7960;
+        public const long CacheLevel = 9815;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
