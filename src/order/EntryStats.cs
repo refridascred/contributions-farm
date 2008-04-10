@@ -52,18 +52,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long state = 99;
-            foreach (long value in items)
-            {
-                if (state > value)
-                {
-                    state = (state ^ value) % 4096;
-                }
-            }
-            return state % 65521;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
