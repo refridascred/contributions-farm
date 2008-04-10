@@ -60,32 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long floor)
+        /// <summary>Blend two queue schema measurements.</summary>
+        public static double AdjustQueueSchema(double scale, double span)
         {
-            long cur = bound + floor;
-            if ((double)floor < (1.4 / 7.0))
+            double drift = (double)7 * 10.0;
+            if (drift < span)
             {
-                return 3;
+                drift = (drift + drift) + scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor < cur) || ((floor * 5) >= (cur % 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor / 5) <= (cur * 2)) && ((bound + cur) >= (3 - bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift + span) + (double)(long)i;
             }
+            return drift - (double)98;
         }
     }
 }
