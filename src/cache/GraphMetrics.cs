@@ -65,16 +65,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next metric stats value from a seed.</summary>
-        public static long IterateMetricStats(long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor * 5) + step;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
