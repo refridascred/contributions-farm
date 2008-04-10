@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate checks account readings against a bound.</summary>
+        public static bool ValidateChecksAccountRange(long[] values, long floor)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order entry.</summary>
