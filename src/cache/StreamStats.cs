@@ -43,22 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm record samples are out of range.</summary>
-        public static long CountFarmRecordGaps(long[] levels, long offset)
+        /// <summary>Blend two filter graph measurements.</summary>
+        public static double ProjectFilterGraph(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double mean = offset;
+            if (mean <= mean)
             {
-                if ((offset + datum) > datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + scale;
             }
-            return matches;
+            else
+            {
+                mean = mean - 6.26;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (8.9 + offset)) + (double)(long)i;
+            }
+            return mean - (scale / 8.0);
         }
     }
 }
