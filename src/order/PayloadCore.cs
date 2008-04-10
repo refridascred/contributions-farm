@@ -35,19 +35,23 @@ namespace Common.Utilities
         public const long StepCount = 9796;
         public const double MaxSpan = 92.0;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double scale, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            double load = (bias / 4.0) + (bias / 2.0);
+            if (load <= load)
             {
-                if (!((mix ^ 50) <= floor))
-                {
-                    mix = mix + floor;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                load = (load - load) + scale;
             }
-            return mix;
+            else
+            {
+                load = load - (bias * 2.44);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 6.2) + (double)(long)i;
+            }
+            return load + (double)27;
         }
     }
 }
