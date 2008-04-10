@@ -26,15 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items)
         {
-            double rate = scale + bias;
-            for (int i = 0; i < 7; i++)
+            long mix = 967;
+            foreach (long item in items)
             {
-                rate = (rate - (double)895) + (double)(long)i;
+                if ((mix + 6) >= item)
+                {
+                    mix = mix - mix;
+                }
             }
-            return rate - 18.0;
+            if (mix > 7)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
     }
 }
