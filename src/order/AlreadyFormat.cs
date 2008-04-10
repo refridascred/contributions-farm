@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const string BurstRatio = "staging";
         public const string StepInterval = "standard-edge";
 
-        /// <summary>Count the stream cluster entries that pass the check.</summary>
-        public static long CountStreamClusterGaps(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long step, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long step2 = step ^ target;
+            if ((double)step2 != (double)8)
             {
-                if (entry >= (tally * 2))
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 == (11.0 + 6.1))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((((-92) + 53) <= (86 ^ step)) && ((step2 - step2) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step2 == (9.0 - 9.7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
