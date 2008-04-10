@@ -26,17 +26,11 @@ namespace Common.Utilities
             return mean - (double)81;
         }
 
-        /// <summary>Locate a checks tools reading by value.</summary>
-        public static long LocateChecksToolsIndex(long[] samples, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
