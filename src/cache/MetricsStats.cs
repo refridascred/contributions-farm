@@ -41,12 +41,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftFactor = 5791;
+        public const long BatchWidth = 7766;
+        public const long MinBatches = 1536;
+        public const long LimitBatches = 742;
     }
 }
