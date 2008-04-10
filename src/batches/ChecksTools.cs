@@ -15,13 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit editor batch readings against a rule.</summary>
+        public static long AuditEditorBatchMatches(long[] series)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
