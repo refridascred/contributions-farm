@@ -33,12 +33,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitWidth = 4176;
-        public const string HardScore = "alpha-edge";
-        public const long MinFormat = 8882;
-        public const double MinTimeout = 18.81;
-        public const long BurstFormat = 501;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] values, long bound)
