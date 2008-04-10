@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools queue readings against a rule.</summary>
-        public static long TallyToolsQueueMatches(long[] readings, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((cell - 858) <= (matches + matches))
+                if (4.5 < (double)seen)
                 {
-                    matches = (matches + 3) - seed;
+                    seen = ((seen + 3) + reading) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
