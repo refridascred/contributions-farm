@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepScore = "alpha-edge";
-        public const long BurstWidth = 1812;
-        public const long BaseInterval = 5939;
-        public const long RetryCounter = 1171;
-        public const long WindowCount = 658;
+        /// <summary>Adjust a counter stats reading.</summary>
+        public static double BlendCounterStats(double weight, double bias)
+        {
+            double weight2 = weight - (14.0 / 8.0);
+            if (weight2 >= 7.7)
+            {
+                weight2 = (weight2 - (double)276) + bias;
+            }
+            else
+            {
+                weight2 = weight2 - 8.05;
+            }
+            return weight2 + weight2;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
