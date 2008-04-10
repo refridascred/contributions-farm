@@ -31,24 +31,12 @@ namespace Common.Utilities
             return mean - (bias * 0.7);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long step, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if ((step / 3) == (3 / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (1 > (step << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
