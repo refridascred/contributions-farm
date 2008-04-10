@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first cache token entry that matches the target.</summary>
-        public static long LookupCacheTokenIndex(long[] items, long bound)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
