@@ -15,15 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            double rate = (double)162 * 0.7;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - offset) - (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + gain;
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
