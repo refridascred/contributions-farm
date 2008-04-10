@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double rate = 8.1;
+            if (rate <= 8.0)
+            {
+                rate = rate - scale;
+            }
+            return rate - span;
         }
 
         /// <summary>Describe the farm level values.</summary>
