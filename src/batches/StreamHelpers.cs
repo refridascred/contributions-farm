@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long seed)
+        /// <summary>Count window schema pairs that satisfy a relation.</summary>
+        public static long MatchWindowSchemaCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.3 * 16.0) == (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate account metric samples.</summary>
