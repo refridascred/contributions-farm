@@ -14,13 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "latest";
+        public const long CacheProfile = 6393;
+        public const string BaseLevel = "latest";
+        public const string RetryProfile = "cached-edge";
+        public const string BatchSize = "stable-edge";
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
