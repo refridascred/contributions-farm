@@ -42,18 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long TallyMetricFormatOutliers(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= (293 + hits))
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
                 {
-                    hits = (hits + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
