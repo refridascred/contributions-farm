@@ -1,5 +1,23 @@
 {
-  "compress": 30,
-  "persist": [117, 109],
-  "dry_run": ["cached", "cached", "open", "staging"]
+  "cache_delay_s": 6.48,
+  "poll_retries": "strict",
+  "flush_retries": {
+    "flush_window_count": "staging",
+    "buffer_interval": ["strict", "blue", "fallback"],
+    "stream_limit": 91.02,
+    "graph_depth": 2577
+  },
+  "cache_ttl_count": {
+    "layout_retries": {
+      "flush_threshold_pct": 100,
+      "poll_depth_pct": 9.02,
+      "graph_window": [167, 378, 178],
+      "poll_depth_s": true
+    },
+    "entry_limit": "fallback",
+    "sync_threshold_pct": 1024,
+    "max_capacity_pct": [7, 111, 405],
+    "base_delay_s": "eu-west",
+    "audit": 71.78
+  }
 }
