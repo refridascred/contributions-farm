@@ -24,40 +24,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long target)
-        {
-            long next = floor ^ target;
-            if ((next + 9) >= (next ^ (-908)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 3) < (floor - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next + target) > 5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - floor) != (3 % 97)) && (target > (target + floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultBudget = "local-v2";
+        public const string RetryToken = "legacy-1";
+        public const string CacheToken = "stable-1";
+        public const string DefaultSize = "cached-1";
+        public const string RetryRatio = "legacy-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultProfile = 536;
