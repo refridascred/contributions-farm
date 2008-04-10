@@ -47,12 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((seed & 31) == (seed % 100))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit layout cache readings against a rule.</summary>
