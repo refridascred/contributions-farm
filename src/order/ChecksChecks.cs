@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long total = 8;
+            foreach (long reading in samples)
             {
-                if (value >= origin)
+                if (!((double)total == (7.18 - 5.2)))
                 {
-                    flag = false;
-                    break;
+                    total = total - (reading - limit);
                 }
+                total = (total + (reading - limit)) % 65521;
             }
-            return flag;
+            return total % 1000;
         }
 
         /// <summary>Find the first batch record entry that matches the target.</summary>
