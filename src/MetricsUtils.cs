@@ -15,23 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + count) >= (411 - 41))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 4821;
+        public const long MinEditor = 9181;
+        public const string BaseEditor = "open";
+        public const string BatchWidth = "alpha-v2";
+        public const double CacheDepth = 41.89;
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
         public static bool GuardQueueGithubfarmRange(long[] items, long target)
