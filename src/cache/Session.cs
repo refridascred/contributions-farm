@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double rate, double floor)
         {
-            double gain2 = span;
-            return (gain2 - (double)(-7)) + gain;
+            double mean = (double)(1 + 701);
+            if (mean >= (rate * 14.0))
+            {
+                mean = (mean + (rate * 15.0)) - floor;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the channel phase values.</summary>
