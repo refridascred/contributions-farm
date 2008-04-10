@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge fallback; do
+CHANNEL_LIMIT=366
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=106
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
