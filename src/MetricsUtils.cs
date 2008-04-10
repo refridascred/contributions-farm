@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "alpha-v2";
-        public const long WindowChecks = 5646;
-        public const double HardChecks = 12.96;
-        public const long BaseBudget = 5274;
-        public const long SoftChecks = 5326;
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long TallyCounterClusterGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((16.0 - 5.16) <= (double)entry) || ((count >= (entry >> 1)) && ((count >> 4) < (entry << 1))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
         public static bool GuardSchemaAlreadyBounds(long[] values, long step)
