@@ -1,6 +1,6 @@
-id,rank,count
-1,52.41,304
-2,59.05,512
-3,112,977
-4,81.16,staging
-5,standard,939
+id,weight,label,active,region
+1,521,59.19,668,87.88
+2,strict,10.4,17.41,legacy
+3,green,cached,74.99,15.46
+4,cached,277,356,494
+5,146,771,885,latest
