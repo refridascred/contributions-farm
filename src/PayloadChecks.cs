@@ -88,19 +88,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order window entry stays within the limit.</summary>
-        public static bool VerifyOrderWindowBounds(long[] series, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (cell <= floor)
+                if ((seen - reading) <= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
