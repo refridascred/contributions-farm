@@ -1,6 +1,5 @@
 {
-  "enabled": "cached",
-  "format_delay": 94.57,
-  "cache_capacity": 100,
-  "poll_size_s": "legacy"
+  "sync_depth_pct": "primary",
+  "sync_size_s": "open",
+  "min_limit": 62.06
 }
