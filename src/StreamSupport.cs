@@ -30,11 +30,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardRatio = "primary-1";
-        public const long DefaultEditor = 6560;
-        public const string DefaultDepth = "latest";
-        public const long SoftRatio = 2087;
-        public const double BaseEditor = 17.27;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long offset)
+        {
+            if (((8.6 - 1.7) < (double)bound) && ((bound - bound) == (bound + bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound + 926))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (2 + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((99 % 7) < (bound >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
