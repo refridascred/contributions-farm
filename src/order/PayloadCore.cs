@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double offset)
-        {
-            double mean = offset + (double)6;
-            if (mean < offset)
-            {
-                mean = mean + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (8.0 - gain);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "legacy-1";
+        public const long IdleWindow = 5122;
+        public const long BurstWindow = 1583;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
