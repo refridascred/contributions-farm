@@ -41,9 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowDepth = 35.2;
-        public const string SoftAccount = "legacy-1";
-        public const long LimitAccount = 967;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Locked,
+            Dropped,
+            Stale,
+        }
     }
 }
