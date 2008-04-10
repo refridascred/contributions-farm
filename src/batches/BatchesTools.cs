@@ -31,19 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long offset)
+        /// <summary>Accumulate stats cluster samples.</summary>
+        public static long TotalStatsCluster(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = -78;
+            foreach (long reading in values)
             {
-                if (datum > offset)
+                result = result + (reading / 2);
+                if ((result % 5) > (reading << 3))
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 2) + (reading & 1)) % 255;
                 }
             }
-            return stale;
+            return result % 1000;
         }
     }
 }
