@@ -56,15 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool VerifyFormatSupportLimits(long[] levels, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
