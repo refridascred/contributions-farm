@@ -1,12 +1,14 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each counter is validated before it reaches the batches queue.
-Each buffer is validated before it reaches the tools queue.
+Use entry settings to tune how often order data is refreshed.
+Each contributi is validated before it reaches the support queue.
+
+Run the command check before changing any format limits.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review queue limits each release
-- Document new schema fields
-- Keep already values small
+- Document new layout fields
+- Validate queue input early
+- Prefer channel defaults
+- Review context limits each release
