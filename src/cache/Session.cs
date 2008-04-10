@@ -47,13 +47,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Locked,
+            Closed,
         }
     }
 }
