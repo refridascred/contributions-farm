@@ -53,14 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Failed,
-            Retry,
-            Stale,
-            Dropped,
-            Draft,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
