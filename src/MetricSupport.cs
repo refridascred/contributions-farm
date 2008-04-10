@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a batch buffer counter forward.</summary>
-        public static long RollBatchBuffer(long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((121 + 8) != (limit / 7))
-                {
-                    carry = (carry - carry) % 97;
-                    carry = (carry << 2) ^ limit;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ limit) % 1000;
-                }
-                carry = carry ^ (carry - carry);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a route reading by value.</summary>
