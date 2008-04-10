@@ -66,16 +66,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long seed)
         {
-            long result = -1;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = (result << 2) ^ (reading - reading);
-                result = (result - (reading / 7)) % 4096;
+                if (!((double)value >= (8.9 - 4.7)) || (((double)seed <= (5.56 / 9.0)) || ((seed % 64) < (count * 4))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
