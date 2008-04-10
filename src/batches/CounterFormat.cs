@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((double)value != (1.5 + 0.04)) || ((long)values.Length >= value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
