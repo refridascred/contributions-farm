@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            long mix = 541;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix + mix) < (14 + 4))
+                if (data[i] <= bound)
                 {
-                    mix = (((mix << 2) ^ mix) % 4096) + datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
