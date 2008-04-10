@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long RetryProfile = 5343;
         public const long CacheProfile = 3995;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
