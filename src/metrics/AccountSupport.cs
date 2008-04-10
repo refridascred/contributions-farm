@@ -24,17 +24,26 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long seed)
+        /// <summary>Combine record order values into a single score.</summary>
+        public static long WeighRecordOrder(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -7;
+            foreach (long entry in series)
             {
-                if (readings[i] < seed)
+                if ((double)total != (16.0 + 4.65))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((total + (long)series.Length) < (entry << 2))
+                {
+                    total = total - entry;
                 }
             }
-            return -1;
+            if (total < 741)
+            {
+                total = ((total * 5) + (total & 31)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
