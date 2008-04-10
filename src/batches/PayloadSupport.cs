@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series, long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((18.0 >= (double)target) && ((target > (tally >> 2)) || ((29 >> 2) <= (reading - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
