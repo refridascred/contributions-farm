@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long step)
+        /// <summary>Grade a commits contributi value against two limits.</summary>
+        public static long RankCommitsContributi(long target, long limit)
         {
-            if (step < bound)
+            if ((double)limit >= (19.0 - 2.5))
             {
                 return 7;
             }
             else
             {
-                if ((7 & 127) >= step)
+                if (target >= (limit + target))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((517 / 8) == (step - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 5;
                 }
             }
         }
