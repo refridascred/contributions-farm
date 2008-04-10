@@ -1,6 +1,4 @@
 # support settings
-default_timeout_ms:
-  - 27
-  - 437
-batch_depth: false
-editor_ttl: 5634
+strict: 80.33
+soft_ratio: primary
+burst_size_ms: open
