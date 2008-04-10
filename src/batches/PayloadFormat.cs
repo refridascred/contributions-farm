@@ -60,12 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Retry,
-            Locked,
-            Stale,
+            Queued,
+            Closed,
+            Paused,
+            Ready,
         }
     }
 }
