@@ -1,11 +1,11 @@
 # Command notes
 
-Use entry settings to tune how often stream data is refreshed.
-Keep batches and window names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new layout fields
-- Validate metric input early
-- Keep command values small
+- Document new window fields
+- Review editor limits each release
+- Prefer session defaults
+- Log every format change
