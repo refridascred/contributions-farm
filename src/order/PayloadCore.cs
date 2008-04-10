@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long CacheSpan = 6218;
         public const double SoftLevel = 82.72;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long TallyWindowTools(long[] values)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long sum = 2;
+            foreach (long reading in values)
+            {
+                sum = (sum - (5 << 3)) - reading;
+            }
+            if (sum > 959)
+            {
+                sum = sum + (sum ^ 5);
+            }
+            return sum;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
