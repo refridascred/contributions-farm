@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Iterate the session batches series from a seed.</summary>
+        public static long RollSessionBatches(long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset >> 1) > (acc * 4))
-                {
-                    acc = (acc * 5) + (acc + offset);
-                }
-                else
-                {
-                    acc = (acc + (offset * 4)) % 4096;
-                    acc = acc + (acc + acc);
-                }
-                acc = ((acc * 5) + ((long)i * 3)) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                carry = (carry - seed) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
