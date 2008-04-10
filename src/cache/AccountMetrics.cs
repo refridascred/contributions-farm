@@ -59,27 +59,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long carry = 10;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + (sample << 3)) % 101;
-                if ((double)carry >= (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry - (carry / 9)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry * 4)) % 65521;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 124)
-            {
-                carry = (carry + (carry >> 4)) % 65521;
-            }
-            return carry % 4096;
+            return count;
         }
     }
 }
