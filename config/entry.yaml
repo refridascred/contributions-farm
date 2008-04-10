@@ -1,32 +1,15 @@
 # entry settings
-idle_window_s: 86.45
-base_retries_count:
-  burst_timeout:
-    - 124
-    - 403
-    - 34
-    - 231
-  persist:
-    - 432
-    - 136
-  soft_retries:
-    tools_threshold: 63.25
-    readonly: 100
-    route_capacity: staging
-    order_limit: cached
-    account_threshold: true
-    flush_capacity_ms: 86.26
-  audit: 60.15
-  retry_size_count: edge
-  route_retries:
-    poll_threshold_ms:
-      - standard
-      - open
-      - open
-      - eu-west
-    commits_limit: true
-    audit: stable
-    min_ratio_ms: 60
-    command_timeout: eu-west
-batches_interval: 1508
-idle_capacity_s: primary
+hard_ratio_ms:
+  - blue
+  - cached
+  - staging
+  - edge
+idle_delay_count: 1024
+sync_delay: stable
+audit: 4.01
+compress:
+  persist: open
+  min_timeout: 76.05
+  graph_ttl: 30
+  max_capacity_count: 1024
+min_window_pct: 500
