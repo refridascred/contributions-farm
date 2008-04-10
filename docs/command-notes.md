@@ -1,14 +1,14 @@
 # Command notes
 
-Run the editor check before changing any buffer limits.
-Run the command check before changing any session limits.
-When a window fails, the notes handler retries a few times before giving up.
+Use profile settings to tune how often format data is refreshed.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-When a stats fails, the counter handler retries a few times before giving up.
-The schema module keeps farm values in sync with the stream cache.
+Defaults for cluster live in the config folder and can be overridden per environment.
+When a channel fails, the batch handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Review schema limits each release
-- Log every batch change
-- Document new queue fields
+- Log every record change
+- Document new context fields
+- Review profile limits each release
