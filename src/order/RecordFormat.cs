@@ -46,19 +46,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] readings, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long slot = origin ^ limit;
+            if (origin >= limit)
             {
-                if (entry <= limit)
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) <= slot)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot ^ slot) > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin * 2) != (slot / 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
