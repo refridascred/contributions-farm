@@ -32,11 +32,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6621;
-        public const long HardBatch = 2042;
-        public const long StepCount = 9796;
-        public const double MaxSpan = 92.0;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double bias)
