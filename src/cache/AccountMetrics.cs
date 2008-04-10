@@ -60,12 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
