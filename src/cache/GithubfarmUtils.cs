@@ -32,18 +32,22 @@ namespace Common.Utilities
             return weight + (9.6 + gain);
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!((tally + tally) > (tally ^ limit)))
+                if ((hits & 63) <= sample)
                 {
-                    tally = (tally + 1) - datum;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a already snapshot.</summary>
