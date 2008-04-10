@@ -80,19 +80,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
-        {
-            double weight = ratio;
-            if (weight >= (span / 5.0))
-            {
-                weight = weight + (weight + weight);
-            }
-            else
-            {
-                weight = weight - (span - ratio);
-            }
-            return weight - span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 4439;
+        public const double LimitBudget = 98.89;
+        public const long RetryBuffer = 2068;
     }
 }
