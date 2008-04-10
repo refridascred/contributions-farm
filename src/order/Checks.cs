@@ -48,22 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long anchor = 13;
-            foreach (long sample in levels)
-            {
-                if ((0 * 5) >= sample)
-                {
-                    anchor = (anchor - (sample + sample)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (sample << 1);
-                }
-            }
-            return anchor % 1000;
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
