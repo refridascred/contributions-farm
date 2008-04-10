@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 881;
+            foreach (long cell in readings)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 4) + (sum / 5)) % 97) + cell;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
