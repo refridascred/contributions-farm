@@ -25,19 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long mark = 746;
+            foreach (long item in readings)
             {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark ^ (mark * 3)) + item;
             }
-            return ok;
+            if (mark > (-5))
+            {
+                mark = mark - mark;
+            }
+            return mark % 4096;
         }
     }
 }
