@@ -1,7 +1,6 @@
 {
-  "default_delay_s": ["local", "local"],
-  "readonly": [429, 362],
-  "retry_interval_s": 71,
-  "enabled": "stable",
-  "soft_ttl_ms": "strict"
+  "burst_window": "standard",
+  "hard_ratio": 62.22,
+  "soft_interval_s": "primary",
+  "hard_delay_pct": false
 }
