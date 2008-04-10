@@ -53,19 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long offset)
         {
-            double load = bias;
-            if (load >= span)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                load = load + (span + bias);
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            return load - (double)254;
+            return found;
         }
     }
 }
