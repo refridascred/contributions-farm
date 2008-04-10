@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
