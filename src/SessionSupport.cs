@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const string CacheBuffer = "stable-edge";
         public const string CacheInterval = "latest";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Done,
-            Closed,
-            Paused,
-            Retry,
+            Failed,
+            Dropped,
+            Draft,
+            Idle,
         }
     }
 }
