@@ -32,11 +32,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstBudget = 6081;
-        public const long WindowCount = 5204;
-        public const long IdleWidth = 7314;
-        public const long MinSpan = 3699;
-        public const long RetryCount = 7217;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowDepth = 35.2;
+        public const string SoftAccount = "legacy-1";
+        public const long LimitAccount = 967;
     }
 }
