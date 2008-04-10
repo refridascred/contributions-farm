@@ -14,17 +14,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark ^ ((long)i - mark);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
