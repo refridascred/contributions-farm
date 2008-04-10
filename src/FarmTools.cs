@@ -24,19 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long score = 228;
+            foreach (long reading in series)
             {
-                if (entry <= target)
+                if (!((0.23 / 5.0) > (double)score))
                 {
-                    flag = false;
-                    break;
+                    score = (score << 2) ^ (reading >> 1);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score + 408);
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
