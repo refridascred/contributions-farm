@@ -14,19 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long floor)
         {
-            long mix = 63;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 5) + mix) % 4096) + value;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 410)
-            {
-                mix = ((mix * 2) + (floor % 60)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the metric kind values.</summary>
