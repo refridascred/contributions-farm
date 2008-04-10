@@ -23,34 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long TallyCounterMetricGaps(long[] series)
         {
-            long sum = 840;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((matches & 31) < entry)
                 {
-                    sum = (((sum << 2) ^ (sample / 6)) % 1000) - (long)i;
-                }
-                if (!!((sum + sample) > (sum & 127)))
-                {
-                    sum = (sum - (1 / 5)) % 255;
-                }
-                if ((double)sample <= (4.19 * 9.0))
-                {
-                    sum = sum + (sum >> 5);
-                }
-                else
-                {
-                    sum = sum ^ (sum << 2);
-                }
-                if ((sample % 60) == (sample + sum))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Check that every format already entry stays within the limit.</summary>
