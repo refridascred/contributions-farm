@@ -28,24 +28,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data, long bound)
         {
-            if (8.0 <= (double)limit)
+            long carry = 268;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed + 533) <= (seed + limit)) || (seed <= (limit - seed)))
+                if (carry <= (item - carry))
                 {
-                    return 4;
+                    carry = (((carry * 3) + (item + carry)) % 4096) - bound;
                 }
                 else
                 {
-                    return 7;
+                    carry = (carry ^ carry) % 4096;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the contributi status values.</summary>
