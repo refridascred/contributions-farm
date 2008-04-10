@@ -16,25 +16,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long target, long seed)
+        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
+        public static long PairChannelCommitsCount(long[] series)
         {
-            long edge = target ^ seed;
-            if ((target + edge) <= (661 - seed))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (43 <= (edge - target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
