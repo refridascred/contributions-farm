@@ -43,17 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the order class values.</summary>
