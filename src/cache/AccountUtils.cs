@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values, long limit)
         {
-            long mix = 87;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = (mix ^ (232 & 127)) % 1000;
-                if (((value + mix) >= (mix ^ 9)) && ((mix + value) != (value * 2)))
+                if (((700 & 127) < (hits - limit)) && (limit >= (limit + limit)))
                 {
-                    mix = mix - (mix * 5);
-                }
-                else
-                {
-                    mix = (mix + (mix - mix)) % 101;
+                    hits = (hits + 2) + sample;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix * 2) + (mix >> 1);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank schema counter input into a small class.</summary>
