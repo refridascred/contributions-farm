@@ -1,6 +1,8 @@
 {
-  "cache_threshold": true,
-  "schema_timeout": "latest",
-  "soft_threshold_count": "primary",
-  "burst_timeout_pct": "standard"
+  "buffer_retries": 6.13,
+  "warm_window_s": "eu-west",
+  "metrics_size": ["blue", "green", "edge", "staging"],
+  "idle_ttl_ms": true,
+  "batch_interval_ms": "legacy",
+  "cache_size": "green"
 }
