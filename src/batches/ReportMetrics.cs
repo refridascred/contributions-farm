@@ -19,10 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheDepth = 9730;
-        public const long RetryPayload = 894;
-        public const long MinPayload = 1249;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item << 1) == (limit / 6))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
