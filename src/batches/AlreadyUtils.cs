@@ -33,14 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardBudget = 82.09;
+        public const double MinDepth = 31.37;
+        public const string RetryCommand = "open-edge";
+        public const long MinCommand = 2450;
+        public const double SoftCount = 8.48;
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
         public static bool ValidateClusterLayoutRange(long[] levels, long target)
