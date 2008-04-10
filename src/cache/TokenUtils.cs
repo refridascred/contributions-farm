@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
