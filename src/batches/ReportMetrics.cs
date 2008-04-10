@@ -19,14 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Locked,
-            Paused,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinInterval = 27.84;
+        public const double DefaultSpan = 47.12;
+        public const long WindowLevel = 3269;
+        public const long CacheAccount = 6458;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
