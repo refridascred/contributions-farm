@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels, long target)
+        /// <summary>Project the next profile graph value.</summary>
+        public static double BlendProfileGraph(double ratio, double offset)
         {
-            long acc = 0;
-            foreach (long entry in levels)
+            double mean = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (((acc ^ acc) % 101) ^ entry) + target;
+                mean = ((mean + (7.34 - ratio)) - (double)(long)i) - offset;
             }
-            if (acc < 35)
-            {
-                acc = (acc << 3) ^ (acc - (long)levels.Length);
-            }
-            return acc;
+            return mean + 2.1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
