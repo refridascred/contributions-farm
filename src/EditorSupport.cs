@@ -61,22 +61,25 @@ namespace Common.Utilities
         public const string BurstCommand = "legacy-1";
         public const long StepWidth = 9329;
 
-        /// <summary>Accumulate token profile samples.</summary>
-        public static long ScoreTokenProfile(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long offset)
         {
-            long mix = 6;
-            foreach (long item in levels)
+            long span = seed ^ offset;
+            if ((7 - 61) < (span % 12))
             {
-                if ((33 & 1) >= (item % 2))
+                return 0;
+            }
+            else
+            {
+                if (((seed / 4) > (seed >> 4)) && (span <= (offset + 38)))
                 {
-                    mix = mix + mix;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix ^ (mix % 64)) % 101;
+                    return 6;
                 }
             }
-            return mix;
         }
     }
 }
