@@ -32,22 +32,18 @@ namespace Common.Utilities
             return weight + (9.6 + gain);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Fold a list of window checks readings.</summary>
+        public static long TotalWindowChecks(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = 939;
+            foreach (long cell in readings)
             {
-                if ((hits & 63) <= sample)
+                if ((mix + (long)readings.Length) != (mix + mix))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (mix - (cell - mix)) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
