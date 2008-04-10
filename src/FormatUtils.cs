@@ -22,16 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] items, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                score = (score ^ limit) % 101;
-                score = ((score * 5) + (long)i) % 4093;
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of report readings.</summary>
