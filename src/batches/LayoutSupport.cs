@@ -37,18 +37,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((-689) < (item - tally))
+                if ((cell / 6) > count)
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
