@@ -28,16 +28,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a buffer queue counter forward.</summary>
-        public static long DeriveBufferQueue(long limit)
+        /// <summary>Rank schema counter input into a small class.</summary>
+        public static long RankSchemaCounter(long floor, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            if ((1.4 - 7.97) == (double)offset)
             {
-                score = (score << 3) ^ (score - limit);
-                score = ((score * 5) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((double)offset != (5.0 + 8.7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
