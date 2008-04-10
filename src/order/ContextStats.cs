@@ -21,19 +21,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double mean = scale;
-            if (mean > (double)55)
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + offset;
+            Active,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
