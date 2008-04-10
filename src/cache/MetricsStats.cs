@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 7620;
-        public const double MinScore = 38.91;
-        public const long IdleRatio = 1338;
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long AuditCommandStatsOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (1 > tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstSize = 679;
