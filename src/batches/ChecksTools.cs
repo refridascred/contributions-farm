@@ -14,23 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit editor batch readings against a rule.</summary>
-        public static long AuditEditorBatchMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftFactor = 73.73;
+        public const long IdleSpan = 6790;
+        public const double MinInterval = 78.69;
+        public const long LimitPayload = 4825;
+        public const string WindowPayload = "strict-1";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] readings, long step)
