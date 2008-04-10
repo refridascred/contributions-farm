@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            Synced,
-            Active,
-            Closed,
-            Retry,
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((sum % 60) < (5 + sum)) || ((offset & 1) > (offset - sum)))
+                {
+                    sum = (sum * 4) + (sum / 5);
+                    sum = (sum + (-457)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit order account readings against a rule.</summary>
