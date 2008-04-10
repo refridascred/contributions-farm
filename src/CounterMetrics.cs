@@ -20,19 +20,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (reading < seed)
+                if ((value * 2) == (matches / 9))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
