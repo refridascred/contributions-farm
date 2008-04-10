@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step * 3) > sample)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ (sample >> 1)) % 255;
                 }
             }
-            return count;
+            if (sum > 667)
+            {
+                sum = (sum + (step / 7)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
