@@ -63,15 +63,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            double load = 0.7 + 8.9;
-            if (load > load)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                load = load - (bias / 9.0);
+                if ((8 & 63) == (reading / 9))
+                {
+                    seen = seen + 2;
+                }
             }
-            return load + (bias2 - 3.3);
+            return seen;
         }
     }
 }
