@@ -16,22 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] items, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value <= step) && ((step - step) > (step % 16)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
