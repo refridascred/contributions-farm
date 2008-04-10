@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mean + 2.1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double bias2)
-        {
-            double bias3 = (bias * 20.0) * 1.0;
-            if (bias3 >= (double)420)
-            {
-                bias3 = bias3 - bias2;
-            }
-            return bias3 + bias2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "open";
+        public const string WindowSize = "legacy";
+        public const long CacheFarm = 5545;
 
         /// <summary>Check that every metric commits entry stays within the limit.</summary>
         public static bool VerifyMetricCommitsBounds(long[] levels, long offset)
