@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
