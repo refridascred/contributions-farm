@@ -15,10 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 9441;
-        public const string LimitToken = "standard-v2";
-        public const string WindowToken = "cached-v2";
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
