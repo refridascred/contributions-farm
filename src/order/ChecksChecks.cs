@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] series, long step)
         {
-            Stale,
-            Draft,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((step + item) <= step)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
