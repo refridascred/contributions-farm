@@ -37,11 +37,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            New,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Project the next order value.</summary>
