@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Compare every pair of schema window readings.</summary>
+        public static long MatchSchemaWindowCount(long[] values)
         {
-            double load = gain;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load + (double)107) + (double)(long)i) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
