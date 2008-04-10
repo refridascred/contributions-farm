@@ -28,24 +28,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            if ((double)origin >= (double)seed)
+            double gain = scale;
+            if (gain > (scale + gain))
             {
-                return 8;
+                gain = gain - (floor - scale);
             }
             else
             {
-                if ((0 >> 2) > (origin - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                gain = gain + (floor + 5.88);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain - (gain + 17.0);
         }
     }
 }
