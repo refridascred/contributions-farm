@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next graph schema value from a seed.</summary>
-        public static long DeriveGraphSchema(long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry + ((long)i - carry)) % 255;
-                if (!(carry <= seed))
-                {
-                    carry = (carry - (carry / 6)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
