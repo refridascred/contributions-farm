@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Stale,
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
