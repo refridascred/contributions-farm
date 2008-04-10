@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultTimeout = 1562;
-        public const string MinCache = "fallback-edge";
-        public const string BaseCache = "cached";
-        public const long StepCache = 9053;
-        public const long CacheTimeout = 7665;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            New,
+            Active,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long bound, long target)
