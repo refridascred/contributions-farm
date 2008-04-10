@@ -38,18 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] series, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset * 2) >= (count + 1))
-                {
-                    count = (count + 2) - cell;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
