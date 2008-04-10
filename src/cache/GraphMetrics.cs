@@ -34,11 +34,22 @@ namespace Common.Utilities
         public const double BaseWindow = 39.67;
         public const long DefaultFactor = 7676;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinBudget = 4424;
-        public const string CacheRatio = "strict-v2";
-        public const long DefaultFilter = 63;
-        public const long MinFilter = 7317;
-        public const long SoftCount = 8870;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long limit)
+        {
+            long mark = 322;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((((mark * 4) + (588 - mark)) % 65521) + (long)i) - cell;
+                }
+                if ((91 & 7) != (limit ^ 214))
+                {
+                    mark = ((mark << 2) ^ (mark + 945)) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
