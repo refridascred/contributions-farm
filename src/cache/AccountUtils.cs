@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen << 1) > (seen * 3))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Queued,
         }
     }
 }
