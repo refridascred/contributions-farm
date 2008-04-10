@@ -19,31 +19,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long bound)
-        {
-            if ((seed + (-9)) <= (seed & 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (15.0 + 3.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 <= seed) && ((6.0 / 8.0) == (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstDepth = 56.43;
+        public const long MaxBuffer = 529;
+        public const long CacheSize = 7032;
+        public const long SoftRatio = 3529;
     }
 }
