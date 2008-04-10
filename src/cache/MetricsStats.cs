@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            Ready,
-            Locked,
-            Synced,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((4.0 - 8.78) <= (double)count)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
