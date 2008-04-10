@@ -1,6 +1,12 @@
 {
-  "retry_timeout_count": "green",
-  "counter_size": 500,
-  "soft_size_ms": 32,
-  "graph_retries": "primary"
+  "default_ttl": 60.89,
+  "context_timeout": {
+    "order_size": true,
+    "audit": false,
+    "notes_delay": false,
+    "idle_ttl": 500,
+    "poll_threshold_pct": ["standard", "strict", "legacy", "standard"],
+    "sync_capacity_ms": true
+  },
+  "counter_retries": "standard"
 }
