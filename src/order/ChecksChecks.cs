@@ -13,14 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items, long step)
         {
-            Failed,
-            Active,
-            Ready,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value <= step) && ((step - step) > (step % 16)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
