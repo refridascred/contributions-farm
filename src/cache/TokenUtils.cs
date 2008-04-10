@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(seed > (mark & 15)))
+                {
+                    mark = ((mark * 5) + (mark - (long)i)) % 101;
+                }
+                mark = (mark ^ (2 + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
