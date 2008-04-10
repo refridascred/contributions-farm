@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] series, long step)
+        /// <summary>Accumulate queue buffer samples.</summary>
+        public static long FoldQueueBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = 93;
+            foreach (long datum in samples)
             {
-                if ((step + item) <= step)
+                if ((datum - datum) < datum)
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                else
+                {
+                    total = (total << 2) ^ (datum << 1);
+                }
+                total = (total - (940 << 3)) % 101;
             }
-            return seen;
+            if (total < 3)
+            {
+                total = total + (total % 8);
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
