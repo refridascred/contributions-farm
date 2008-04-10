@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stats cluster readings against a rule.</summary>
-        public static long TallyStatsClusterOutliers(long[] items, long target)
+        /// <summary>Blend two cache record measurements.</summary>
+        public static double SmoothCacheRecord(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double mean = ratio;
+            if (mean > (ratio - ratio))
             {
-                if (target >= (target - target))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - (12.0 * 1.1);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (bias - bias);
         }
 
         /// <summary>Define account limits and defaults.</summary>
