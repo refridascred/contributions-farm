@@ -16,28 +16,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long step)
         {
-            if ((step & 63) > 5)
+            if (((step % 12) >= step) && ((double)target > (1.0 / 4.0)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((double)68 < (double)step) || ((target - step) != (target / 5)))
+                if (17.0 <= (double)target)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)step <= (8.78 + 5.36))
+                    if ((step + 3) != (73 + step))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if ((double)step > (3.7 / 9.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
