@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const long HardContributi = 4681;
         public const string MaxContributi = "strict-v2";
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] levels, long target)
+        /// <summary>Compare every pair of contributi entry readings.</summary>
+        public static long OverlapContributiEntryCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
