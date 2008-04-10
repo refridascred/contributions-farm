@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series, long origin)
         {
-            Idle,
-            Draft,
-            Stale,
-            New,
-            Paused,
+            long anchor = 95;
+            foreach (long sample in series)
+            {
+                if (!((double)origin == (double)anchor))
+                {
+                    anchor = anchor - (origin % 8);
+                }
+                if ((18.0 - 2.0) == (double)origin)
+                {
+                    anchor = (anchor - (anchor + sample)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (origin - origin)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
