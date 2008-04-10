@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheBudget = 37.81;
-        public const double RetryScore = 92.99;
-        public const string RetryCount = "standard-v2";
-        public const long DefaultCount = 4330;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
+        {
+            long mix = 56;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= 9.2)
+                {
+                    mix = (mix - (mix & 255)) % 101;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Grade a layout profile value against two limits.</summary>
         public static long GradeLayoutProfile(long offset, long offset2)
