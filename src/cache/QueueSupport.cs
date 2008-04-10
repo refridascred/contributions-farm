@@ -22,38 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((floor + target) <= 31)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(target <= (target * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - floor) > 38)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + target) >= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of window entries.</summary>
