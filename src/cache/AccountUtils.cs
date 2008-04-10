@@ -26,18 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)hits >= (7.8 - 1.16))
-                {
-                    hits = ((hits + 3) - entry) - step;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
