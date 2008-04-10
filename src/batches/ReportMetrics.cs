@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long anchor = -62;
+            foreach (long cell in items)
             {
-                if ((item << 1) == (limit / 6))
+                if (!(cell <= (cell >> 4)))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - cell) % 255;
                 }
+                anchor = anchor ^ (8 * 5);
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a layout header.</summary>
