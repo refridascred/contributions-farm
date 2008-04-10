@@ -43,13 +43,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long origin, long step)
         {
-            New,
-            Idle,
-            Queued,
-            Locked,
+            if ((origin + 78) <= (origin & 31))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.2 + 16.0) >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
