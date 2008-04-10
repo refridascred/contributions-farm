@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Active,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "alpha";
+        public const double LimitProfile = 96.52;
+        public const long IdleProfile = 1788;
+        public const string HardBudget = "standard";
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
