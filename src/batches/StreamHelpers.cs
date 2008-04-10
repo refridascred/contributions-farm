@@ -22,21 +22,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + anchor) % 4096;
-                long edge = (long)i;
-                if (!((anchor * 2) <= ((long)i + edge)))
-                {
-                    edge = ((edge << 3) ^ ((long)i - edge)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a already record.</summary>
