@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank support stats input into a small class.</summary>
-        public static long SortSupportStats(long origin, long origin2)
+        /// <summary>Find the first format notes entry that matches the target.</summary>
+        public static long LookupFormatNotesIndex(long[] data, long bound)
         {
-            if (origin2 > (origin2 ^ origin2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((404 + 251) >= (746 - origin)) || ((origin << 1) != (origin2 + origin2)))
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
