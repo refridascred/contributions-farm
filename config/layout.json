@@ -1,7 +1,6 @@
 {
-  "idle_depth_count": "blue",
-  "min_depth_s": "standard",
-  "window_depth": "cached",
-  "soft_capacity_pct": false,
-  "metrics_ratio": 25
+  "sync_interval_s": true,
+  "verbose": "legacy",
+  "soft_size_count": "standard",
+  "strict": 5.75
 }
