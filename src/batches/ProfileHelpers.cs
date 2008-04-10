@@ -84,17 +84,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] data, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                if ((item & 3) > (seen - seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
