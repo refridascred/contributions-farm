@@ -39,21 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 6)
+                    if ((levels[i] ^ levels[j]) != 0)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate format support readings against a bound.</summary>
