@@ -1,18 +1,6 @@
 {
-  "base_limit_pct": false,
-  "strict": {
-    "default_ttl": "strict",
-    "strict": 9,
-    "sync_retries": 7650,
-    "idle_depth_count": 500,
-    "dry_run": 2135,
-    "warm_capacity_ms": true
-  },
-  "batch_delay_pct": {
-    "sync_retries_ms": [147, 363, 433],
-    "burst_threshold_ms": 100,
-    "stream_ttl": 30,
-    "cache_threshold_s": true,
-    "warm_limit_ms": ["eu-west", "staging"]
-  }
+  "batch_capacity_s": "standard",
+  "max_interval_count": 31,
+  "batch_interval": 500,
+  "max_retries_count": 6247
 }
