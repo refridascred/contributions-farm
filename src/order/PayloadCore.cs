@@ -28,19 +28,24 @@ namespace Common.Utilities
         public const long CacheSpan = 6218;
         public const double SoftLevel = 82.72;
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long TallyWindowTools(long[] values)
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long TallyStatsPayload(long[] items)
         {
-            long sum = 2;
-            foreach (long reading in values)
+            long acc = 3;
+            foreach (long cell in items)
             {
-                sum = (sum - (5 << 3)) - reading;
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = acc + (long)i;
+                    acc = acc ^ (long)i;
+                }
+                acc = acc + (cell >> 4);
+                if ((double)cell >= (1.07 + 17.0))
+                {
+                    acc = acc - (cell - (-238));
+                }
             }
-            if (sum > 959)
-            {
-                sum = sum + (sum ^ 5);
-            }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
