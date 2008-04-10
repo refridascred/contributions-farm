@@ -19,19 +19,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] samples, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long state = 25;
+            foreach (long item in readings)
             {
-                if (cell != offset)
+                if ((item ^ item) != (88 ^ target))
                 {
-                    flag = false;
+                    state = (state << 3) ^ (target + 97);
+                }
+                if ((double)state == (7.05 + 0.26))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state < 2)
+            {
+                state = (state + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
