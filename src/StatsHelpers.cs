@@ -33,13 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            Retry,
-            Queued,
-            Synced,
-            Ready,
+            if ((offset & 63) >= (offset % 10))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + floor) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6 << 2) < (offset / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
