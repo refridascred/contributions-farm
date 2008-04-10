@@ -29,18 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((tally + 127) != (tally + bound))
+                if ((double)cell >= (6.0 - 1.11))
                 {
-                    tally = (tally + 2) + entry;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
