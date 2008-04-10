@@ -35,27 +35,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Grade a token profile value against two limits.</summary>
+        public static long GradeTokenProfile(long limit, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long edge = limit - seed;
+            if (seed > (seed / 7))
             {
-                if (!((72 + (long)i) > ((long)i % 60)))
-                {
-                    carry = carry - 0;
-                }
-                if ((target & 3) == (target & 63))
-                {
-                    continue;
-                }
-                if (!!((carry ^ (long)i) != ((long)i & 1)))
-                {
-                    carry = (carry * 5) + target;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((15 ^ seed) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >= (seed ^ edge)) || ((limit / 7) < limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
