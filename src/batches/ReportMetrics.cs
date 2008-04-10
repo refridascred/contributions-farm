@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] items, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long carry = 971;
+            foreach (long sample in readings)
             {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry ^ (carry + carry)) - sample;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a farm stats.</summary>
