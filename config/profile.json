@@ -1,12 +1,14 @@
 {
-  "metrics_retries": {
-    "cache_retries_ms": [104, 392, 336, 358],
-    "base_window": "fallback",
-    "queue_depth": false,
-    "order_ratio": false,
-    "cache_timeout": true,
-    "burst_timeout_s": [436, 368, 438]
+  "cache_interval_pct": 73,
+  "persist": "strict",
+  "queue_interval": "primary",
+  "metrics_size": {
+    "min_timeout_pct": ["fallback", "cached", "latest"],
+    "enabled": 60,
+    "retry_limit": "primary",
+    "layout_interval": "staging",
+    "base_threshold": false
   },
-  "strict": true,
-  "max_threshold_s": 3989
+  "retry_delay": 60,
+  "batch_depth_s": 500
 }
