@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (994 <= (tally / 4))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
