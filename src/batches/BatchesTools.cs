@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
+            long state = 286;
+            foreach (long sample in data)
+            {
+                state = (state << 3) ^ (78 % 64);
+                if (((state & 15) <= sample) || ((double)state <= (7.9 / 5.0)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
     }
 }
