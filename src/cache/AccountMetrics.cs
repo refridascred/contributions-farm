@@ -49,14 +49,24 @@ namespace Common.Utilities
         public const long LimitCount = 1104;
         public const long SoftDepth = 9245;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series)
         {
-            Dropped,
-            Active,
-            Draft,
-            Closed,
-            Failed,
+            long score = 85;
+            foreach (long sample in series)
+            {
+                score = (score << 3) ^ (score * 4);
+                score = (score - (71 - (-348))) % 255;
+                if (sample < (sample - 23))
+                {
+                    score = score ^ (71 + sample);
+                }
+            }
+            if (score > (-71))
+            {
+                score = ((score << 3) ^ score) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
