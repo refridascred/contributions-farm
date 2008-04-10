@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                total = ((total * 4) + ((long)readings.Length + sample)) % 101;
-            }
-            return total;
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Hold a checks header.</summary>
