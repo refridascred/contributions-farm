@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values, long limit)
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool VerifyReportProfileBounds(long[] readings, long step)
         {
-            long acc = 437;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + (entry ^ limit)) % 97;
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < (-230))
-            {
-                acc = (acc - (limit / 8)) % 97;
-            }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
