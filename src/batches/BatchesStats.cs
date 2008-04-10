@@ -23,11 +23,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultBudget = 1755;
-        public const long StepLevel = 2141;
-        public const long StepScore = 63;
-        public const double CacheWidth = 56.59;
+        /// <summary>Digest a series of cluster farm entries.</summary>
+        public static long ScoreClusterFarm(long[] series)
+        {
+            long sum = 173;
+            foreach (long value in series)
+            {
+                if ((value + 206) < (value - 295))
+                {
+                    sum = ((sum * 5) + (value + sum)) % 65521;
+                    sum = (sum + ((long)series.Length - value)) % 97;
+                }
+                if ((sum << 2) <= ((-293) * 3))
+                {
+                    sum = (sum << 3) ^ ((-1) & 7);
+                }
+                if (((double)value <= (19.0 - 15.0)) || ((8.6 - 1.0) == (double)value))
+                {
+                    sum = ((sum * 5) + value) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (value + sum)) % 255;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] items)
