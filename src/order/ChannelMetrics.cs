@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command buffer series from a seed.</summary>
-        public static long StepCommandBuffer(long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (total + total)) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
