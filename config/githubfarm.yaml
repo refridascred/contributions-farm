@@ -1,12 +1,7 @@
 # githubfarm settings
-retry_ratio: 41
-base_ratio_count: local
-filter_timeout:
-  enabled: true
-  poll_ttl_s: 22
-  hard_ttl: 92
-  persist: eu-west
-  flush_ratio_ms: 3
-sync_ttl_s: 7038
-flush_size_count: latest
-payload_size: false
+checks_interval: false
+burst_ratio_ms: stable
+entry_size: 64
+buffer_ttl: standard
+min_limit_s: 33.2
+sync_delay_pct: green
