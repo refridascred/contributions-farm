@@ -39,19 +39,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((tally - tally) <= cell) && (((cell ^ tally) > (37 & 255)) || (cell < (tally + cell))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxTimeout = 5948;
+        public const long MaxWidth = 2138;
+        public const long IdleGraph = 6378;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardFactor = 2094;
