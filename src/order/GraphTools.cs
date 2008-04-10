@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((538 + datum) == (532 % 7)) || (4 <= hits))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up commits samples.</summary>
