@@ -19,11 +19,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 67.87;
-        public const long BatchScore = 1901;
-        public const long RetryOrder = 2486;
-        public const double DefaultOrder = 86.94;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double bias)
+        {
+            double mean = rate;
+            if (mean >= (rate / 4.0))
+            {
+                mean = mean + 15.0;
+            }
+            else
+            {
+                mean = mean - 9.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (rate * 0.06)) + (double)(long)i;
+            }
+            return mean - (bias / 7.0);
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsOutliers(long[] series)
