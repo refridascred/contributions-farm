@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series, long step)
+        /// <summary>Look up the position of a checks buffer sample.</summary>
+        public static long SeekChecksBufferIndex(long[] data, long limit)
         {
-            long result = 8;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + entry) <= (result + result))
+                if (data[i] == limit)
                 {
-                    result = result + (result / 8);
-                }
-                if (!((result & 127) != (result + result)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
