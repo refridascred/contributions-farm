@@ -31,19 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool ValidateClusterLayoutBounds(long[] data, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double ratio = (bias / 2.0) * 16.0;
+            if (ratio < (bias - bias))
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + (span - ratio);
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio - bias)) + (double)(long)i;
+            }
+            return ratio + (bias / 4.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
