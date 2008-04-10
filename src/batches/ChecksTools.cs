@@ -16,10 +16,24 @@ namespace Common.Utilities
             return mean + 2.1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "open";
-        public const string WindowSize = "legacy";
-        public const long CacheFarm = 5545;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double span)
+        {
+            double gain2 = (gain - span) + span;
+            if (gain2 <= (gain - gain))
+            {
+                gain2 = gain2 + gain;
+            }
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - span) + (double)(long)i;
+            }
+            return gain2 - (gain - 3.0);
+        }
 
         /// <summary>Check that every metric commits entry stays within the limit.</summary>
         public static bool VerifyMetricCommitsBounds(long[] levels, long offset)
