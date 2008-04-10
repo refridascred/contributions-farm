@@ -53,21 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)mix == (7.53 + 9.8))
-                {
-                    mix = (mix ^ (mix - (long)i)) % 101;
-                }
-                mix = ((mix * 4) + (mix * 4)) % 4096;
-                mix = ((mix * 3) + (272 + limit)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardFactor = 2094;
+        public const double CacheWidth = 94.29;
+        public const string MaxTools = "cached-edge";
+        public const long LimitTimeout = 772;
+        public const long SoftTimeout = 6737;
     }
 }
