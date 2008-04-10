@@ -14,17 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
