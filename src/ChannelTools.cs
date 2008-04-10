@@ -38,15 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = 68;
-            foreach (long sample in values)
-            {
-                result = result + (sample >> 4);
-            }
-            return result;
+            Dropped,
+            Draft,
+            Queued,
         }
     }
 }
