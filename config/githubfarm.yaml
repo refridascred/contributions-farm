@@ -1,4 +1,4 @@
 # githubfarm settings
-warm_window_count: edge
-commits_timeout: 4688
-default_retries: blue
+window_size: 100
+soft_threshold_count: 55.27
+burst_ttl: 500
