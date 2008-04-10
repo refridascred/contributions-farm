@@ -12,13 +12,39 @@ namespace Common.Utilities
             return ((drift - (double)319) + scale) + span;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long floor)
         {
-            Idle,
-            Retry,
-            Ready,
-            Dropped,
+            long offset = target + floor;
+            if (!(target < (target ^ floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)247 == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + target) >= (target % 64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + target) >= (offset ^ target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two entry measurements.</summary>
