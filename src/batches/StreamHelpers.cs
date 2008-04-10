@@ -56,17 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window schema sample.</summary>
-        public static long FindWindowSchemaIndex(long[] readings, long bound)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double BlendMetricCommand(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (bias + bias) - bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + bias) + (double)(long)i) + floor;
             }
-            return -1;
+            return bias2 - (double)81;
         }
 
         /// <summary>Describe the batches mode values.</summary>
