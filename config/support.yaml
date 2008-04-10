@@ -1,13 +1,7 @@
 # support settings
-compress: 80
-verbose: latest
-batch_size_s: 19
-entry_delay:
-  - 59
-  - 330
-  - 334
-  - 246
-retry_delay_count: blue
-context_ratio:
-  - local
-  - primary
+default_threshold_count:
+  - 22
+  - 160
+  - 187
+max_ratio_s: latest
+sync_retries_count: 2911
