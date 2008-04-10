@@ -24,12 +24,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 6409;
-        public const long LimitReport = 5583;
-        public const long MinRatio = 3920;
-        public const string MaxInterval = "staging-1";
-        public const double CacheReport = 21.49;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Synced,
+            Queued,
+            Active,
+            Paused,
+        }
 
         /// <summary>Audit format stats readings against a rule.</summary>
         public static long CountFormatStatsMatches(long[] items)
