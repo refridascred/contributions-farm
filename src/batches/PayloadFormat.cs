@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] series, long target)
         {
-            long sum = 170;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                sum = (sum - sum) ^ cell;
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 0)
-            {
-                sum = sum ^ (sum / 6);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a metric stats.</summary>
