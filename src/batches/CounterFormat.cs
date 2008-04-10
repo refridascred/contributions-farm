@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long IdleCount = 168;
         public const string BaseSize = "staging-v2";
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long AuditClusterBatchesGaps(long[] series)
         {
-            double mean = floor - (scale * 16.0);
-            if (mean <= (double)996)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mean = mean - scale;
+                if ((entry * 3) == (entry & 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + floor;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
