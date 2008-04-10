@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm support entry stays within the limit.</summary>
-        public static bool VerifyFarmSupportLimits(long[] samples, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Stale,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of session entries.</summary>
