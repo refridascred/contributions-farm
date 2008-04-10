@@ -20,12 +20,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Done,
-            Draft,
-            New,
+            Dropped,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
