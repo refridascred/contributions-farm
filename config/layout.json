@@ -1,6 +1,10 @@
 {
-  "batch_limit": ["primary", "primary", "green", "cached"],
-  "idle_size": 14,
-  "poll_limit_s": "primary",
-  "verbose": [435, 419, 390, 88]
+  "min_interval": 1024,
+  "dry_run": {
+    "channel_size": "green",
+    "sync_threshold_ms": 7,
+    "window_retries": 4482
+  },
+  "flush_ratio": 30,
+  "profile_interval": 5769
 }
