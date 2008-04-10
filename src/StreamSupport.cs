@@ -26,25 +26,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the metric batch series from a seed.</summary>
-        public static long RollMetricBatch(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (((long)i - carry) < (floor / 8))
+                if ((double)datum < (2.74 - 14.0))
                 {
-                    carry = carry - floor;
-                    carry = (carry + (carry + floor)) % 1000;
-                    break;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
     }
 }
