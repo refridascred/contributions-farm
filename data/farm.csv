@@ -1,8 +1,8 @@
-id,owner,state
-1,269,72
-2,765,local
-3,244,58.38
-4,76.49,634
-5,86,60.86
-6,409,87.85
-7,stable,primary
+id,rank,label
+1,877,fallback
+2,96.87,713
+3,latest,747
+4,primary,fallback
+5,eu-west,fallback
+6,725,local
+7,1.61,44.46
