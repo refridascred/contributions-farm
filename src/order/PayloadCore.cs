@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long IdleWindow = 5122;
         public const long BurstWindow = 1583;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            Idle,
-            Pending,
-            Active,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a order info.</summary>
