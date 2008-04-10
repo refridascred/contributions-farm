@@ -1,18 +1,12 @@
 {
-  "support_ratio": ["eu-west", "staging", "stable", "strict"],
-  "report_limit": 60.82,
-  "flush_ttl_s": "standard",
-  "payload_limit": {
-    "min_capacity_pct": 4.7,
-    "base_timeout": "blue",
-    "verbose": 89,
-    "dry_run": 95.03,
-    "batch_capacity_s": {
-      "stream_limit": "standard",
-      "hard_depth_count": 60,
-      "verbose": 43.82,
-      "record_limit": 77.51
-    }
+  "flush_depth_count": ["staging", "stable", "blue"],
+  "profile_depth": {
+    "default_retries": "eu-west",
+    "cache_window": [475, 398, 387, 60],
+    "burst_limit_s": "eu-west",
+    "max_window_count": "standard",
+    "default_capacity_ms": "staging",
+    "persist": ["local", "local", "edge", "cached"]
   },
-  "batch_size": 18
+  "hard_timeout_s": true
 }
