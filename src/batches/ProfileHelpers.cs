@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every stream queue entry stays within the limit.</summary>
-        public static bool VerifyStreamQueueRange(long[] data, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (value >= bound)
+                if ((double)item == (8.0 / 4.0))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
