@@ -19,24 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long offset)
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long FoldFormatContributi(long[] data, long seed)
         {
-            if (((double)origin >= (9.0 + 7.2)) || ((double)offset <= 3.0))
+            long mix = 15;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 2) != (origin << 3)) || (offset >= (origin + offset)))
+                if ((9.5 * 6.9) != (double)mix)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    mix = ((mix * 4) + sample) - seed;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
