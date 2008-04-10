@@ -1,8 +1,6 @@
 {
-  "sync_capacity_ms": 23.17,
-  "default_delay": "latest",
-  "dry_run": 7055,
-  "compress": "staging",
-  "graph_delay": ["cached", "eu-west", "eu-west"],
-  "soft_threshold": true
+  "retry_timeout_count": "green",
+  "counter_size": 500,
+  "soft_size_ms": 32,
+  "graph_retries": "primary"
 }
