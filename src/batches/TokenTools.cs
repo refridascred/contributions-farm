@@ -23,12 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinCount = 59.69;
-        public const string BurstLevel = "standard";
-        public const long SoftTools = 6531;
-        public const long BurstTools = 9237;
-        public const long DefaultLevel = 496;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry << 2) ^ (carry >> 5);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a already metrics pair into a bucket.</summary>
         public static long BucketAlreadyMetrics(long origin, long floor)
