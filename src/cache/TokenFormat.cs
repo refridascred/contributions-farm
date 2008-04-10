@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the layout format entries that pass the check.</summary>
-        public static long TallyLayoutFormatGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!!((value + value) <= value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 5237;
+        public const long RetryCount = 5383;
+        public const long BaseBudget = 4594;
+        public const long SoftSession = 4095;
+        public const string BatchSession = "fallback";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] samples)
