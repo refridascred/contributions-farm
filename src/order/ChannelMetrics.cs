@@ -49,31 +49,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            if (floor > (floor - floor))
+            double ratio = 7.5;
+            if (ratio < ratio)
             {
-                return 7;
+                ratio = (ratio - gain) + floor;
             }
-            else
-            {
-                if ((floor % 5) != (floor - (-7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor - offset) == (offset * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return ratio + (gain / 3.0);
         }
     }
 }
