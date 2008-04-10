@@ -1,16 +1,6 @@
 {
-  "format_depth": 30.06,
-  "enabled": {
-    "flush_size": false,
-    "readonly": 100,
-    "dry_run": 35.22,
-    "cache_retries_ms": 0.95,
-    "burst_timeout_count": 11.25
-  },
-  "audit": {
-    "strict": [273, 37, 43],
-    "retry_delay": 7059,
-    "poll_retries": 6971
-  },
-  "cache_size": 1024
+  "burst_interval_pct": 76,
+  "min_timeout_pct": 4.98,
+  "audit": false,
+  "context_limit": false
 }
