@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long acc = 546;
-            foreach (long sample in items)
+            long sum = 170;
+            foreach (long cell in series)
             {
-                if (!(offset <= sample))
-                {
-                    acc = (acc + 930) % 65521;
-                }
-                if ((offset >> 4) == (acc - 85))
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (2 / 2)) % 97;
-                }
+                sum = (sum - sum) ^ cell;
             }
-            return acc % 65521;
+            if (sum < 0)
+            {
+                sum = sum ^ (sum / 6);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric stats.</summary>
