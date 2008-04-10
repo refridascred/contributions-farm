@@ -36,26 +36,18 @@ namespace Common.Utilities
         public const double IdleDepth = 14.88;
         public const long CacheStats = 8568;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels)
         {
-            long state = 51;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (reading >= (state / 2))
+                if (!(1 > count))
                 {
-                    state = (state ^ (6 & 127)) % 97;
-                }
-                else
-                {
-                    state = (state - (state * 4)) % 1000;
-                }
-                if (((reading - state) < state) || ((3.8 - 3.1) != (double)state))
-                {
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
