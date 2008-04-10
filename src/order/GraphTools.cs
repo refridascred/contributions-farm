@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            long mix = 9;
+            foreach (long datum in data)
+            {
+                mix = (mix ^ (73 % 64)) % 1000;
+                if (datum >= (mix << 1))
+                {
+                    mix = (mix << 3) ^ (45 + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
