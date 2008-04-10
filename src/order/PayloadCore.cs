@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Iterate the report stream series from a seed.</summary>
+        public static long RollReportStream(long origin)
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (total < (total & 1))
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
