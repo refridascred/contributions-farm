@@ -1,7 +1,9 @@
-id,state,level,weight
-1,406,296,73.27
-2,18.73,open,staging
-3,27.4,strict,920
-4,97.65,914,385
-5,latest,687,blue
-6,fallback,48.64,276
+id,active,region,level
+1,stable,613,793
+2,fallback,63.3,81.34
+3,791,stable,latest
+4,43,200,897
+5,754,854,latest
+6,87.33,34.06,722
+7,blue,994,94.18
+8,56.95,98.71,324
