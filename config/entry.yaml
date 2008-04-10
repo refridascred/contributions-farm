@@ -1,15 +1,11 @@
 # entry settings
-burst_depth:
-  - 70
-  - 143
-  - 453
-  - 225
-token_capacity: local
-max_threshold_ms:
-  dry_run: 1756
-  batch_ratio_count: 35.83
-  cache_ratio: 28
-  strict:
-    - 292
-    - 291
-enabled: 42
+token_ttl:
+  - 33
+  - 232
+  - 331
+  - 49
+readonly: staging
+audit: true
+verbose: 22.22
+farm_capacity: edge
+poll_depth: 500
