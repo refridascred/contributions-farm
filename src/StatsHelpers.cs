@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepCache = 9053;
         public const long CacheTimeout = 7665;
 
-        /// <summary>Digest a series of metric record entries.</summary>
-        public static long WeighMetricRecord(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 9;
-            foreach (long datum in items)
-            {
-                score = (score - (datum + datum)) % 1000;
-            }
-            if (score > 680)
-            {
-                score = (score * 3) + ((long)items.Length + 663);
-            }
-            return score;
+            Failed,
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every window notes entry stays within the limit.</summary>
