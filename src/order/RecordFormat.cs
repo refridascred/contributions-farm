@@ -50,12 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftSpan = 5887;
-        public const long HardRatio = 9696;
-        public const double BurstBudget = 66.38;
-        public const long MinWidth = 1442;
-        public const long IdleFarm = 9067;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Idle,
+            Synced,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Classify a support editor pair into a bucket.</summary>
         public static long ClassifySupportEditor(long step, long limit)
