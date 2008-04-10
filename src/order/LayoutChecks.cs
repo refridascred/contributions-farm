@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((count % 5) >= (count - 835)) && ((count >> 4) < ((-24) + count)))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
