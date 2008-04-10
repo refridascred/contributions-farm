@@ -44,21 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats schema readings.</summary>
-        public static long PairStatsSchemaCount(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 7)
+                    if ((series[i] - series[j]) != 12)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
