@@ -67,24 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long floor2)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((5.95 - 1.0) > (double)floor2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-4) & 31) >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
