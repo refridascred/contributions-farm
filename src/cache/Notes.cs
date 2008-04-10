@@ -21,19 +21,23 @@ namespace Common.Utilities
         public const string IdleCommand = "staging-1";
         public const long BurstCommand = 8616;
 
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long RollRecordOrder(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long score = 765;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int i = 0; i < 6; i++)
                 {
-                    total = ((total - (floor << 1)) % 101) ^ (long)i2;
+                    score = (((score * 3) + ((long)samples.Length + cell)) % 4096) - (long)i;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                score = ((score * 2) + (cell + score)) % 101;
             }
-            return total;
+            if (score > (-10))
+            {
+                score = (score * 5) + 8;
+            }
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
