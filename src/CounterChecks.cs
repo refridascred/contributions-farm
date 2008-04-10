@@ -44,22 +44,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultCount = 1034;
+        public const string IdleSize = "stable-1";
+        public const long MaxQueue = 5971;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
