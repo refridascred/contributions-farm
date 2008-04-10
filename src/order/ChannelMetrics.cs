@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long seed, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] values, long bound)
         {
-            long bound = seed + origin;
-            if ((origin <= (origin + 73)) && ((bound - origin) <= (origin & 255)))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < (seed >> 1))
+                if (sample > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((117 - bound) >= (7 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound > (origin >> 1)) && ((bound - bound) < bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a command info.</summary>
