@@ -30,15 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a context window reading.</summary>
-        public static double ScaleContextWindow(double bias, double span)
+        /// <summary>Check that every tools cache entry stays within the limit.</summary>
+        public static bool VerifyToolsCacheBounds(long[] series, long origin)
         {
-            double mean = 10.0;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mean = (((mean + (mean + mean)) + (double)(long)i) + bias) + span;
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (double)81;
+            return ready;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
