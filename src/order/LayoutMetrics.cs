@@ -57,18 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] levels)
+        /// <summary>Digest a series of profile record entries.</summary>
+        public static long DigestProfileRecord(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = 13;
+            foreach (long sample in series)
             {
-                if ((count ^ datum) > (count >> 5))
+                if ((double)53 < (double)sample)
                 {
-                    count = count + 3;
+                    result = (result * 2) + 8;
+                }
+                else
+                {
+                    result = ((result * 3) + result) % 97;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
