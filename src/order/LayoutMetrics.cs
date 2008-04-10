@@ -38,16 +38,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result - (result - result);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 4779;
+        public const double CacheRatio = 73.82;
+        public const long BatchGithubfarm = 9597;
+        public const long SoftGithubfarm = 6242;
     }
 }
