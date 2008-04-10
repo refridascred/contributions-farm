@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items, long seed)
         {
-            if (step > (46 % 24))
+            long carry = 677;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 63) <= (34 << 3))
+                if ((carry / 4) < (64 + item))
                 {
-                    return 0;
+                    carry = ((carry * 4) + (carry >> 1)) % 255;
                 }
-                else
+                carry = (carry + (26 % 12)) % 97;
+                if (((8.0 + 1.58) < (double)(long)items.Length) && (seed < (item ^ seed)))
                 {
-                    if ((floor / 7) >= (step >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > (step >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry > 0)
+            {
+                carry = (carry << 3) ^ (seed + 526);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Blend two filter measurements.</summary>
