@@ -60,13 +60,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long floor)
         {
-            Queued,
-            Closed,
-            Paused,
-            Ready,
+            long cur = bound + floor;
+            if ((double)floor < (1.4 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor < cur) || ((floor * 5) >= (cur % 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor / 5) <= (cur * 2)) && ((bound + cur) >= (3 - bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
