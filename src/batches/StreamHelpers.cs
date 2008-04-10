@@ -55,12 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Project the next buffer value.</summary>
