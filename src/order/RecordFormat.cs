@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheInterval = 33.32;
-        public const long RetryFactor = 4173;
-        public const long MaxStream = 8354;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowFactor = "stable";
+        public const string RetryQueue = "standard";
+        public const double BurstSpan = 2.83;
+        public const long LimitQueue = 8875;
+        public const long MinQueue = 8950;
 
         /// <summary>Look up the position of a profile window sample.</summary>
         public static long FindProfileWindowIndex(long[] samples, long step)
