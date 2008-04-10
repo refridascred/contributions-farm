@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryRatio = 4522;
-        public const string DefaultMetric = "stable-v2";
-        public const long BatchMetric = 5972;
-        public const long BatchTimeout = 6172;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
