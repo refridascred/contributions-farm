@@ -1,4 +1,15 @@
 # support settings
-tools_retries: 98
-account_ttl: primary
-min_ttl_s: true
+batch_ttl_count: 44.06
+default_ttl_s: 64.61
+verbose:
+  strict: 2786
+  default_capacity: 23.31
+  default_limit_ms: legacy
+  readonly: 189
+  filter_ttl:
+    window_size: 62
+    cache_interval: 16
+    poll_ratio: 263
+  default_ratio_s: 8010
+hard_depth_pct: 1674
+default_window_ms: 7392
