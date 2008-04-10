@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Iterate the graph counter series from a seed.</summary>
+        public static long StepGraphCounter(long seed)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
