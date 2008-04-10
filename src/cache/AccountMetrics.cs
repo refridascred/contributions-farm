@@ -29,21 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                state = (state << 3) ^ (state ^ (long)i);
-                if (origin >= ((long)i - origin))
+                if (61 < (cell ^ 7))
                 {
-                    state = state + ((long)i * 5);
-                    state = (state + (origin % 5)) % 101;
+                    count = count + 3;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
