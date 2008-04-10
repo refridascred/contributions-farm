@@ -60,17 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total - (origin ^ (long)i);
-                total = ((total << 3) ^ (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
