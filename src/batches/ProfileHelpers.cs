@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Match up order commits samples.</summary>
+        public static long MatchOrderCommitsCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((84 - (long)i) > acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - ((long)i + acc);
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!((target < (target * 2)) && (((long)i >> 1) < target)))
-                {
-                    acc = ((acc * 2) + (target + acc)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
