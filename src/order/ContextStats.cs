@@ -21,39 +21,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long floor, long floor2)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            long prev = floor + floor2;
-            if ((floor / 8) >= (floor2 - floor))
+            double mean = scale;
+            if (mean > (double)55)
             {
-                return 8;
+                mean = mean + (double)8;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)floor2 == (double)19) && (floor2 >= (prev << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (floor2 % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (92 > (floor2 / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean + offset;
         }
 
         /// <summary>Define report limits and defaults.</summary>
