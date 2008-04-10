@@ -1,28 +1,5 @@
 # githubfarm settings
-persist:
-  - 74
-  - 489
-dry_run: 62.53
-verbose: 7308
-tools_delay:
-  - primary
-  - local
-  - edge
-  - standard
-retry_limit_s:
-  strict: 52.52
-  retry_capacity: primary
-  retry_retries_s:
-    - blue
-    - fallback
-    - standard
-  sync_ttl:
-    - 49
-    - 52
-  githubfarm_delay: true
-  session_delay:
-    dry_run: false
-    route_capacity: 27
-    base_threshold_ms: latest
-    audit: 68.18
-    verbose: fallback
+poll_capacity_s: true
+poll_ttl_s: 500
+flush_capacity_count: edge
+soft_ratio: blue
