@@ -98,13 +98,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long BucketBatchToken(long limit, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long bound = limit ^ floor;
+            if ((limit % 64) > (bound >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((3.15 + 1.0) >= (double)bound) || (bound > (20 << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
