@@ -44,9 +44,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2658;
-        public const string MinCluster = "local";
-        public const long LimitLevel = 1908;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long seed)
+        {
+            long sum = 882;
+            foreach (long cell in values)
+            {
+                if (((sum >> 3) <= (sum ^ cell)) || ((9.6 / 4.0) <= (double)sum))
+                {
+                    sum = (sum + (sum % 12)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - cell) % 255;
+                }
+                if (((cell / 5) < sum) || (cell <= 11))
+                {
+                    sum = ((sum << 3) ^ (6 ^ seed)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + ((long)values.Length >> 2)) % 65521;
+                }
+            }
+            if (sum < 447)
+            {
+                sum = sum - (8 % 64);
+            }
+            return sum;
+        }
     }
 }
