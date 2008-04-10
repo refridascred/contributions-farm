@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
-        {
-            long anchor = 12;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 1)) + datum;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstScore = 39.12;
+        public const double CacheChannel = 48.29;
+        public const long BaseChannel = 7217;
+        public const long LimitChannel = 1223;
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] levels)
