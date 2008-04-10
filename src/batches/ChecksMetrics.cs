@@ -23,11 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 24;
-        public const long BurstSize = 1946;
-        public const long BaseTools = 2168;
-        public const long CacheWidth = 3632;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Retry,
+            Done,
+            New,
+        }
 
         /// <summary>Combine route commits values into a single score.</summary>
         public static long TallyRouteCommits(long[] readings)
