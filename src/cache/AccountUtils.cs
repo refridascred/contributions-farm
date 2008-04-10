@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double gain, double span)
-        {
-            double scale = gain;
-            if (scale >= (double)61)
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + span;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstScore = 1.52;
+        public const string SoftLevel = "staging";
+        public const long StepRatio = 9525;
+        public const long StepLayout = 6696;
+        public const long WindowLevel = 5951;
     }
 }
