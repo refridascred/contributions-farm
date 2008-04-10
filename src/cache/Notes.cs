@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRatio = 1842;
+        public const long BatchSpan = 1524;
+        public const long MaxRecord = 4372;
+        public const string BurstCount = "open-edge";
+        public const double BurstRecord = 13.2;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long bound)
