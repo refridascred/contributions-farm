@@ -19,19 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long floor)
+        /// <summary>Grade a cluster metrics value against two limits.</summary>
+        public static long BucketClusterMetrics(long bound, long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long cur = bound + origin;
+            if (bound > (origin / 8))
             {
-                if (datum > floor)
+                return 1;
+            }
+            else
+            {
+                if (((bound % 7) != (origin ^ cur)) || ((844 << 3) <= (cur + bound)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + origin) == (cur * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + origin) > 28)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
