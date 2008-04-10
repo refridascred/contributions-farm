@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit notes metric readings against a rule.</summary>
-        public static long AuditNotesMetricOutliers(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item / 2) < (item ^ item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
