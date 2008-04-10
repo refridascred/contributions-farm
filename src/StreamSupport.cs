@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 56.14;
+        public const long MinFactor = 5442;
+        public const long BatchQueue = 5542;
+        public const long SoftScore = 9812;
+        public const long StepDepth = 1691;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
