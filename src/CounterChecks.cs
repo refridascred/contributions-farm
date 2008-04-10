@@ -64,15 +64,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                score = score ^ (96 + 1);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (((score * 2) + (60 + 621)) % 4096) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
     }
 }
