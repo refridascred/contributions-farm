@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long IdleOrder = 863;
         public const long BatchOrder = 3743;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long score = 4;
-            foreach (long reading in samples)
+            long mix = 541;
+            foreach (long datum in items)
             {
-                if ((reading ^ reading) == (score * 2))
+                if ((mix + mix) < (14 + 4))
                 {
-                    score = ((score << 3) ^ (403 + reading)) % 1000;
-                }
-                else
-                {
-                    score = score - score;
+                    mix = (((mix << 2) ^ mix) % 4096) + datum;
                 }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
