@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (datum > step)
+                if ((7.3 * 16.0) == (double)seed)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Accumulate account metric samples.</summary>
