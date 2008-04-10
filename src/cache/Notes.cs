@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultTimeout = 3623;
-        public const string StepWindow = "legacy-edge";
-        public const double BatchFactor = 19.46;
-        public const string RetryDepth = "legacy-1";
-        public const string BaseWindow = "stable-v2";
+        /// <summary>Rank filter support input into a small class.</summary>
+        public static long ClassifyFilterSupport(long target, long origin)
+        {
+            long slot = target - origin;
+            if ((((-593) << 2) < (slot >> 5)) || ((5.11 * 1.3) > (6.69 + 0.43)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.0 >= (double)target) && (origin >= (target + slot)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin == (15.0 + 5.92)) && ((origin ^ origin) < (target % 16)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseLevel = 1635;
