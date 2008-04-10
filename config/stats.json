@@ -1,13 +1,9 @@
 {
-  "already_retries": {
-    "support_window": 250,
-    "compress": 40.39,
-    "support_capacity": 9,
-    "default_ttl_count": [5, 256, 256, 456],
-    "cache_interval_pct": 43.24
-  },
-  "idle_depth": 4635,
-  "hard_retries_pct": "latest",
-  "enabled": 8192,
-  "burst_capacity_pct": false
+  "enabled": ["standard", "local", "cached"],
+  "schema_depth": "eu-west",
+  "hard_ttl": {
+    "poll_size_ms": 70,
+    "entry_timeout": 9.27,
+    "readonly": "standard"
+  }
 }
