@@ -1,4 +1,6 @@
 # githubfarm settings
-window_size: 100
-soft_threshold_count: 55.27
-burst_ttl: 500
+strict:
+  - 222
+  - 113
+metrics_depth: staging
+compress: 2518
