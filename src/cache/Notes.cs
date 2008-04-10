@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long WindowFactor = 9439;
         public const double MinFactor = 98.86;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseLevel = 1635;
+        public const long IdleMetric = 1344;
+        public const string DefaultScore = "fallback-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 280;
