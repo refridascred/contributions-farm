@@ -1,7 +1,6 @@
 # support settings
-default_threshold_count:
-  - 22
-  - 160
-  - 187
-max_ratio_s: latest
-sync_retries_count: 2911
+default_interval_ms: 8148
+sync_size_s: stable
+metric_retries: 42.74
+default_capacity_count: 23
+session_window: false
