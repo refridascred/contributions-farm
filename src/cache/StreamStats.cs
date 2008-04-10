@@ -30,22 +30,11 @@ namespace Common.Utilities
             return weight - (7.9 * 9.0);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((74 + 329) >= (item & 63))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
