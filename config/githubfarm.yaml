@@ -1,9 +1,28 @@
 # githubfarm settings
-batch_timeout:
+persist:
+  - 74
+  - 489
+dry_run: 62.53
+verbose: 7308
+tools_delay:
+  - primary
   - local
+  - edge
   - standard
-  - standard
-context_threshold:
-  - 438
-  - 201
-metric_depth: true
+retry_limit_s:
+  strict: 52.52
+  retry_capacity: primary
+  retry_retries_s:
+    - blue
+    - fallback
+    - standard
+  sync_ttl:
+    - 49
+    - 52
+  githubfarm_delay: true
+  session_delay:
+    dry_run: false
+    route_capacity: 27
+    base_threshold_ms: latest
+    audit: 68.18
+    verbose: fallback
