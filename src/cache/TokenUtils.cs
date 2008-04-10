@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long bound)
         {
-            long mix = 966;
-            foreach (long entry in samples)
+            if (((bound - bound) <= (2 + bound)) && ((floor * 4) == (bound / 8)))
             {
-                if ((entry + 58) == (entry - mix))
+                return 0;
+            }
+            else
+            {
+                if ((bound % 100) > (bound - bound))
                 {
-                    mix = mix - entry;
+                    return 4;
+                }
+                else
+                {
+                    if (!((68 ^ floor) > (bound << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor + 780) == (bound & 31)) || (floor >= (-414)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mix > 786)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Describe the editor status values.</summary>
