@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
+            Dropped,
             Retry,
-            Closed,
-            Draft,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a checks info.</summary>
