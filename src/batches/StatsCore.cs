@@ -47,12 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheCount = "local";
-        public const long MinStream = 3850;
-        public const double SoftStream = 87.07;
-        public const double WindowFactor = 22.2;
-        public const long CacheStream = 719;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches <= (716 + step)) || (step >= (7 << 3)))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
