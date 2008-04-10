@@ -58,19 +58,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] levels, long seed)
+        /// <summary>Classify a batches report pair into a bucket.</summary>
+        public static long BucketBatchesReport(long target, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            if (((16.0 - 8.69) >= (double)target) && ((floor << 1) <= target))
             {
-                if (reading > seed)
+                return 7;
+            }
+            else
+            {
+                if (((double)target >= (7.02 * 6.2)) || (target >= floor))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((13.0 + 13.0) == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target <= 2.4)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
