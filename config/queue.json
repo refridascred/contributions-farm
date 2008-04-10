@@ -1,12 +1,6 @@
 {
-  "metrics_delay": 63.2,
-  "idle_limit_count": 8337,
-  "channel_interval": 63.53,
-  "farm_ttl": {
-    "verbose": 31,
-    "batch_size_count": "edge",
-    "audit": 46.92,
-    "readonly": true
-  },
-  "verbose": "blue"
+  "audit": false,
+  "default_retries_ms": "staging",
+  "max_window_pct": true,
+  "burst_depth": 98.86
 }
