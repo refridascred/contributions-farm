@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool VerifyReportProfileBounds(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftScore = 3276;
+        public const double SoftRatio = 57.44;
+        public const long BurstWidth = 7370;
+        public const string MaxRatio = "legacy-v2";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] items, long origin)
