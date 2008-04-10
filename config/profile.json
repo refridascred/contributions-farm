@@ -1,21 +1,9 @@
 {
-  "warm_timeout_ms": true,
-  "cache_delay_pct": "stable",
-  "audit": {
-    "dry_run": false,
-    "queue_timeout": {
-      "burst_retries_pct": false,
-      "contributi_timeout": [236, 4],
-      "compress": "edge",
-      "batch_threshold_s": 75.93,
-      "hard_ratio_pct": "blue"
-    },
-    "persist": 60,
-    "default_depth_ms": true,
-    "queue_ratio": ["local", "blue"],
-    "stats_ratio": "latest"
+  "strict": {
+    "max_depth": 93,
+    "flush_limit_pct": true,
+    "batch_timeout_count": 22.11
   },
-  "soft_size_ms": 79.95,
-  "enabled": 34,
-  "warm_ratio_pct": 1429
+  "cluster_ratio": 35,
+  "burst_size": 54.24
 }
