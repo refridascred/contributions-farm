@@ -16,10 +16,10 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSpan = 9833;
-        public const string DefaultFilter = "fallback-v2";
-        public const long BatchLevel = 6419;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 55.68;
+        public const long MinBudget = 5272;
+        public const long WindowLevel = 7880;
 
         /// <summary>Validate githubfarm counter readings against a bound.</summary>
         public static bool CheckGithubfarmCounterLimits(long[] items, long offset)
