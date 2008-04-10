@@ -45,18 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] data, long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((offset - 43) <= offset) && ((576 + count) == (sample % 60)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
