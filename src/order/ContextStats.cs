@@ -32,39 +32,10 @@ namespace Common.Utilities
         public const double MaxScore = 42.05;
         public const long MaxTimeout = 7690;
 
-        /// <summary>Grade a metric editor value against two limits.</summary>
-        public static long SortMetricEditor(long floor, long seed)
-        {
-            long cur = floor - seed;
-            if (!((double)floor <= (20.0 * 2.13)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (8.64 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)cur == (double)27))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 6525;
+        public const long BatchReport = 5741;
+        public const double CacheWidth = 58.95;
+        public const long RetryDepth = 456;
     }
 }
