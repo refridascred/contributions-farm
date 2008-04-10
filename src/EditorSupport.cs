@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count batch buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBatchBufferCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((745 + sample) > sample)
                 {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
