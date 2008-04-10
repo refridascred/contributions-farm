@@ -53,25 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long offset = limit - target;
-            if (target <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Locked,
+            Stale,
+            Failed,
         }
     }
 }
