@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit notes metric readings against a rule.</summary>
+        public static long AuditNotesMetricOutliers(long[] values)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 2) < (item ^ item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
