@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheWidth = 200;
+        public const long BaseQueue = 8604;
+        public const long CacheLevel = 7075;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] data, long bound)
