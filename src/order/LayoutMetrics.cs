@@ -14,22 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((739 ^ floor) == (floor * 4))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
