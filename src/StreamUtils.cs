@@ -49,12 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long step)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record notes values into a single score.</summary>
