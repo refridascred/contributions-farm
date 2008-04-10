@@ -53,20 +53,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool GuardLayoutPayloadLimits(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2920;
+        public const string BatchCount = "stable-1";
+        public const long DefaultSpan = 3567;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] levels, long limit)
