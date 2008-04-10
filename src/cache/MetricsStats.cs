@@ -35,10 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftFactor = 5791;
-        public const long BatchWidth = 7766;
-        public const long MinBatches = 1536;
-        public const long LimitBatches = 742;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
