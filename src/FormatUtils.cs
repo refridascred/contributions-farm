@@ -49,11 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
