@@ -44,18 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] values, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = 59;
+            foreach (long reading in items)
             {
-                if ((seed & 31) == (seed % 100))
-                {
-                    count = (count + 1) ^ reading;
-                }
+                score = (((score ^ 27) % 1000) ^ reading) + seed;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit layout cache readings against a rule.</summary>
