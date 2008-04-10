@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long floor, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] readings, long target)
         {
-            if ((floor % 2) < (floor + origin))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor * 3) >= (floor / 4)))
+                if (entry >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
