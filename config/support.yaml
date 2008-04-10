@@ -1,6 +1,24 @@
 # support settings
-stream_capacity: false
-cache_threshold: true
-warm_interval_s: true
-burst_window: 27.31
-soft_capacity_pct: 250
+retry_timeout:
+  audit: 94.89
+  soft_limit_s:
+    - 84
+    - 66
+  cache_threshold_s: staging
+  notes_size: 45
+editor_retries:
+  - standard
+  - strict
+hard_timeout_s: 60.58
+retry_ttl: green
+default_interval_s:
+  - stable
+  - primary
+githubfarm_ttl:
+  burst_interval_pct: 90
+  enabled:
+    - 117
+    - 66
+  base_capacity: false
+  poll_delay_s: 74
+  burst_size: true
