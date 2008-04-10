@@ -1,6 +1,7 @@
-id,owner,active,weight
-1,legacy,93.86,269
-2,38.8,standard,fallback
-3,506,local,fallback
-4,8.65,fallback,27.3
-5,legacy,32.39,standard
+id,count,owner,rank,active
+1,legacy,53.31,116,152
+2,490,staging,946,608
+3,blue,88,199,blue
+4,fallback,legacy,87.46,95.38
+5,187,stable,54.23,94.52
+6,49.7,edge,33.26,30.32
