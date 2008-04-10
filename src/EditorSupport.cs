@@ -73,25 +73,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long offset)
-        {
-            long span = seed ^ offset;
-            if ((7 - 61) < (span % 12))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed / 4) > (seed >> 4)) && (span <= (offset + 38)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinWidth = 15.62;
+        public const double IdleCount = 14.58;
+        public const long SoftTimeout = 5453;
     }
 }
