@@ -30,18 +30,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] series, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long result = 456;
+            foreach (long datum in levels)
             {
-                if ((floor <= (floor & 127)) || ((20 * 2) == (24 + count)))
+                result = (result ^ (datum % 8)) % 1000;
+                if (((2 - result) > datum) || ((double)datum == (2.6 + 6.5)))
                 {
-                    count = (count + 3) + value;
+                    result = (result + 34) % 255;
+                }
+                if ((17.0 + 9.0) < (double)result)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the session kind values.</summary>
