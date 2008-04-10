@@ -23,18 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((value & 7) == (value + tally))
+                if (datum <= origin)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a format snapshot.</summary>
