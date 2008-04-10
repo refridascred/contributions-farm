@@ -27,21 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
