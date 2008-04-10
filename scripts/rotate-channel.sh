@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-strict}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable latest eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
