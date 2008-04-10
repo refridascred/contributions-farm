@@ -15,16 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long limit)
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool VerifyReportNotesBounds(long[] readings, long seed)
         {
-            long state = 988;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                state = (((state * 5) + (2 % 100)) % 65521) + limit;
-                state = ((state * 2) + (cell % 5)) % 4096;
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
