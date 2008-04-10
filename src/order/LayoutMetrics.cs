@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit farm commits readings against a rule.</summary>
-        public static long AuditFarmCommitsOutliers(long[] series, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ 87) != ((-65) % 5))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
