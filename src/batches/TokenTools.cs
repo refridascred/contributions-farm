@@ -32,10 +32,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 6217;
-        public const double IdleAlready = 82.7;
-        public const long MinLevel = 8611;
-        public const long DefaultInterval = 6061;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
