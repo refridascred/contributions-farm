@@ -28,24 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout counter values into a single score.</summary>
-        public static long WeighLayoutCounter(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = 4;
-            foreach (long value in levels)
-            {
-                if ((mix % 12) < 400)
-                {
-                    mix = ((mix << 2) ^ value) % 97;
-                    mix = (mix - (mix + value)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 10)) % 255;
-                }
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
