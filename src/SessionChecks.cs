@@ -63,14 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Paused,
-            Synced,
-            Failed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 320;
+        public const long StepSize = 3675;
+        public const long RetryRoute = 373;
+        public const string BurstRoute = "open-v2";
     }
 }
