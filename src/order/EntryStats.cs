@@ -37,21 +37,19 @@ namespace Common.Utilities
             return rate - (double)170;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= origin)
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a order header.</summary>
