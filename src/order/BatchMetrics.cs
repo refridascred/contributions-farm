@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = 7;
-            foreach (long reading in readings)
-            {
-                sum = (((sum + (sum + sum)) % 97) ^ reading) + seed;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the profile route entries that pass the check.</summary>
