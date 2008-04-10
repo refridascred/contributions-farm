@@ -62,22 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] data, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((datum & 31) > (matches ^ matches))
+                if (reading <= offset)
                 {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a already stats.</summary>
