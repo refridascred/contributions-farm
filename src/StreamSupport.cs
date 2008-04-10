@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinBudget = 2895;
-        public const long WindowBudget = 6563;
-        public const long WindowLayout = 4716;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long floor, long floor2)
+        {
+            long span = floor - floor2;
+            if ((387 + floor2) < floor2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(span >= (floor2 + floor2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor2 > 2.19)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
