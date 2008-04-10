@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 96.14;
-        public const double DefaultBudget = 80.48;
-        public const long CacheStats = 8203;
-        public const long WindowStats = 8125;
-        public const string BurstWidth = "strict-v2";
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long ScoreCommandOrder(long[] series, long limit)
+        {
+            long sum = 64;
+            foreach (long cell in series)
+            {
+                sum = sum + (sum / 4);
+                if ((double)limit < (double)cell)
+                {
+                    sum = (sum + (sum >> 3)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (limit & 15);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
