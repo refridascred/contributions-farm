@@ -57,21 +57,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Combine entry token values into a single score.</summary>
+        public static long TallyEntryToken(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 71;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ (seed >> 2)) ^ value;
+                score = ((score << 2) ^ (880 + (long)data.Length)) % 255;
             }
-            return hits;
+            return score;
         }
     }
 }
