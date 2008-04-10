@@ -42,17 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long bound)
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmStreamBounds(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (values[i] <= bound)
+                if (cell < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
