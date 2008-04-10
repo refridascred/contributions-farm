@@ -30,17 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
