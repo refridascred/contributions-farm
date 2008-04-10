@@ -1,7 +1,11 @@
 {
-  "batch_interval_ms": 71,
-  "poll_limit": 81.27,
-  "strict": "legacy",
-  "soft_retries": [316, 463, 353],
-  "compress": 66
+  "strict": "fallback",
+  "account_size": {
+    "strict": "fallback",
+    "dry_run": false,
+    "hard_ttl_ms": 60
+  },
+  "window_delay": 1654,
+  "default_ratio": ["fallback", "primary", "stable", "open"],
+  "default_capacity_pct": [260, 98]
 }
