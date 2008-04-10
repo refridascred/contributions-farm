@@ -23,16 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry << 2) ^ (carry >> 5);
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a already metrics pair into a bucket.</summary>
