@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of order payload readings.</summary>
-        public static long TotalOrderPayload(long[] samples, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] series, long seed)
         {
-            long score = 62;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = (score - (bound & 1)) + entry;
+                if ((double)seed < (double)1)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
