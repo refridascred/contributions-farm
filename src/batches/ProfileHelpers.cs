@@ -38,32 +38,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long step = offset ^ limit;
-            if (((double)limit == (7.5 - 6.5)) || ((limit / 6) < 211))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + 7) == (limit % 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit >> 4) > 543)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of support metric readings.</summary>
