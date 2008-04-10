@@ -16,17 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits format sample.</summary>
-        public static long LocateCommitsFormatIndex(long[] data, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = bias * 9.4;
+            if (scale < scale)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                scale = scale - weight;
             }
-            return -1;
+            return scale - 4.84;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
