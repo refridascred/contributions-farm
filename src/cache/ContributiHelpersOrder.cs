@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 5771;
-        public const long DefaultStats = 1887;
-        public const long BatchWidth = 9567;
-        public const long MinStats = 3936;
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long CombineSupportFilter(long[] values)
+        {
+            long carry = 360;
+            foreach (long reading in values)
+            {
+                if ((9 ^ reading) <= (22 >> 2))
+                {
+                    carry = ((carry * 5) + (reading - (long)values.Length)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long offset)
