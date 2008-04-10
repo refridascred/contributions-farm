@@ -51,15 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long SeriesSupportRoute(long origin)
         {
-            double drift = bias / 3.0;
-            if (drift < (19.0 * 0.8))
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                drift = (drift + (double)686) + floor;
+                sum = (sum - (sum / 2)) % 101;
+                sum = sum - (sum ^ 531);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return drift + (9.41 * 2.6);
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
