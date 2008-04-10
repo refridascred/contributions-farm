@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a already layout reading by value.</summary>
-        public static long SeekAlreadyLayoutIndex(long[] values, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
