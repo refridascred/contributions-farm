@@ -71,13 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series, long floor)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches < (floor + 621))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
