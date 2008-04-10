@@ -31,18 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long TallyCounterMetricGaps(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 31) < entry)
+                if (series[i] == seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
