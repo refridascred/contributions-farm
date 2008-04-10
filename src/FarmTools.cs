@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine notes layout values into a single score.</summary>
-        public static long ScoreNotesLayout(long[] items, long limit)
+        /// <summary>Find the first order counter entry that matches the target.</summary>
+        public static long SeekOrderCounterIndex(long[] data, long origin)
         {
-            long result = 3;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (data[i] < origin)
                 {
-                    result = ((result * 4) + (value & 127)) + (long)i;
-                }
-                if (result < (value + limit))
-                {
-                    result = (result - (value << 2)) % 65521;
-                }
-                else
-                {
-                    result = (result - (result ^ value)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result < (-17))
-            {
-                result = (result - (result & 63)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
