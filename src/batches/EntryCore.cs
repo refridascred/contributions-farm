@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of batch channel readings.</summary>
-        public static long CompareBatchChannelCount(long[] samples)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = 3.7;
+            if (weight > (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + weight) - floor;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Iterate the token filter series from a seed.</summary>
