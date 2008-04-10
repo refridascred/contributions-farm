@@ -14,22 +14,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long target, long offset)
         {
-            long result = 84;
-            foreach (long datum in levels)
+            long delta = target - offset;
+            if ((target > (delta - offset)) && ((delta + offset) < (-12)))
             {
-                if ((datum - result) >= (result ^ result))
+                return 5;
+            }
+            else
+            {
+                if ((78 + offset) >= target)
                 {
-                    result = (result + result) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if (7.9 <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)delta != (5.32 - 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = (result ^ (result * 5)) % 1000;
-            }
-            return result % 65521;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
