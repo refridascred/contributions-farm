@@ -39,10 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultCount = 1034;
-        public const string IdleSize = "stable-1";
-        public const long MaxQueue = 5971;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values, long bound)
+        {
+            long state = 213;
+            foreach (long reading in values)
+            {
+                if ((double)reading > (3.33 * 6.2))
+                {
+                    state = (state - (bound + 331)) % 4096;
+                }
+            }
+            if (state > 90)
+            {
+                state = state - (bound - bound);
+            }
+            return state;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
