@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data, long limit)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift - 4.0) + (double)(long)i;
+                if (limit >= (seen & 15))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (ratio * 9.44);
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
