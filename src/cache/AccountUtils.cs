@@ -35,11 +35,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstScore = 1.52;
-        public const string SoftLevel = "staging";
-        public const long StepRatio = 9525;
-        public const long StepLayout = 6696;
-        public const long WindowLevel = 5951;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc << 2) ^ (limit / 9)) % 1000;
+                if (!((acc ^ limit) <= acc))
+                {
+                    acc = (acc * 5) + (987 & 7);
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (228 >> 1)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
