@@ -1,5 +1,7 @@
 # support settings
-editor_capacity: cached
-idle_size_count: false
-persist: blue
-min_ratio: false
+cache_retries_count:
+  - 215
+  - 71
+  - 410
+base_depth_s: false
+poll_delay: blue
