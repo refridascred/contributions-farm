@@ -14,17 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long origin)
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long TallyOrderAccountHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
+                if (52 < (entry - entry))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
