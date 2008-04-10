@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
