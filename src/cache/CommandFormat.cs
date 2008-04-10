@@ -29,14 +29,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long bound)
         {
-            Active,
-            Paused,
-            New,
-            Failed,
-            Ready,
+            long lane = limit - bound;
+            if (!((bound % 10) != (bound & 15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((lane * 5) <= (bound >> 1)) && (limit > (limit * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the record mode values.</summary>
