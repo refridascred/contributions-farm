@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > origin)
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
