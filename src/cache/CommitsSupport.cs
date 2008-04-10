@@ -13,24 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry + (-70)) % 65521;
-                if (((long)i << 3) != ((long)i + (long)i))
-                {
-                    carry = ((carry * 3) + ((long)i << 3)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + bound) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a window reading.</summary>
