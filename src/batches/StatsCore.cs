@@ -53,27 +53,15 @@ namespace Common.Utilities
         public const string MinSize = "fallback-1";
         public const double DefaultSize = 59.48;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long anchor = -3;
-            foreach (long reading in readings)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (anchor - (anchor * 3)) % 65521;
-                if ((offset <= (304 << 2)) && ((offset & 7) >= (offset * 3)))
-                {
-                    anchor = ((anchor * 4) + reading) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (reading + 4)) % 255;
-                }
-                if (reading <= (long)readings.Length)
-                {
-                    anchor = ((anchor * 3) + (reading ^ (long)readings.Length)) % 255;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
