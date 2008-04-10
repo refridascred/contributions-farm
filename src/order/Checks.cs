@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultInterval = 465;
-        public const long DefaultSpan = 8808;
-        public const long RetryCluster = 4957;
-        public const long BurstCluster = 3948;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Closed,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
