@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 2;
+            foreach (long entry in readings)
             {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark - (mark % 60)) ^ entry) - origin;
             }
-            return valid;
+            return mark % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
