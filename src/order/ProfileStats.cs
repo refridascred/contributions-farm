@@ -46,15 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            if ((double)origin < (double)floor)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((double)origin >= (6.0 * 6.94))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
