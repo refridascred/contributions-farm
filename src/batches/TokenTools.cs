@@ -35,15 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long origin)
         {
-            long carry = -69;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                carry = (((carry << 2) ^ (carry & 1)) % 97) ^ sample;
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
