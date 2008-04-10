@@ -33,10 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 37.27;
-        public const string SoftDepth = "stable-v2";
-        public const long RetryBatches = 8349;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long offset)
+        {
+            long mix = 55;
+            foreach (long sample in levels)
+            {
+                mix = (mix - (sample << 3)) + offset;
+            }
+            if (mix < 96)
+            {
+                mix = (mix ^ (55 << 2)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long floor)
