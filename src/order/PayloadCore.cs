@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long target)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((target ^ bound) != (bound - 88))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound / 2) >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + target) <= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
