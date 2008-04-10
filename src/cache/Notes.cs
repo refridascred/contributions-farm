@@ -69,11 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
             public long Level { get; set; }
-            public bool Score { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
