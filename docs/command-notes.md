@@ -1,12 +1,11 @@
 # Command notes
 
-Run the commits check before changing any record limits.
-The graph module keeps report values in sync with the entry cache.
-The farm module keeps graph values in sync with the commits cache.
+Keep support and session names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Log every support change
-- Document new checks fields
-- Validate notes input early
-- Keep cache values small
+- Prefer metric defaults
+- Log every record change
+- Document new cluster fields
