@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((item + count) <= (count + count)) || ((2 >> 2) > (item - count)))
+                if (reading > step)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
