@@ -36,13 +36,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long MeasureFilterCacheGaps(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (6.06 / 4.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
