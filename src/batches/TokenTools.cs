@@ -16,23 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate graph window samples.</summary>
-        public static long CombineGraphWindow(long[] series)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] samples, long origin)
         {
-            long carry = 631;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((carry * 4) >= carry) || (1 <= (carry / 8)))
+                if ((reading + hits) >= (reading - origin))
                 {
-                    carry = ((carry << 2) ^ carry) % 255;
+                    hits = hits + 3;
                 }
-                carry = (carry * 2) + (value & 3);
             }
-            if (carry > 79)
-            {
-                carry = carry + (-9);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
