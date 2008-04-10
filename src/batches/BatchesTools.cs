@@ -25,15 +25,20 @@ namespace Common.Utilities
         public const long DefaultLayout = 4934;
         public const string DefaultTimeout = "strict-edge";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long floor)
         {
-            double ratio2 = floor;
-            if (ratio2 > 16.0)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                ratio2 = (ratio2 - (ratio2 * 0.9)) + ratio;
+                if ((2 ^ (long)i) > mark)
+                {
+                    mark = (mark << 3) ^ floor;
+                    mark = mark ^ (mark - mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ratio2 - ratio2;
+            return mark;
         }
     }
 }
