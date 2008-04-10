@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up session graph samples.</summary>
-        public static long CompareSessionGraphCount(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long step2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = step ^ step2;
+            if (step > slot)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((-511) << 3) > (slot / 2))
                 {
-                    if ((values[i] + values[j]) != 10)
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step2 <= (double)(-95)) && (slot <= (step2 ^ step)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((13 >> 5) > (step % 10))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
