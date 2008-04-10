@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long RetryPayload = 894;
         public const long MinPayload = 1249;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
             public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
         }
     }
 }
