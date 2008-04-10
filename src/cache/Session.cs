@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
