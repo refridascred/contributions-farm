@@ -23,18 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((seen / 7) >= (datum >> 3))
+                if (!((34 - tally) < seed))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
