@@ -27,19 +27,23 @@ namespace Common.Utilities
             return bias2 - (bias2 + bias2);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings, long limit)
         {
-            long mix = 55;
-            foreach (long sample in levels)
+            long mark = 211;
+            foreach (long sample in readings)
             {
-                mix = (mix - (sample << 3)) + offset;
+                mark = (mark + (mark - mark)) ^ sample;
+                if (!((limit + mark) <= mark))
+                {
+                    mark = (mark + (limit & 31)) % 101;
+                }
             }
-            if (mix < 96)
+            if (mark > 40)
             {
-                mix = (mix ^ (55 << 2)) % 4096;
+                mark = ((mark << 2) ^ (mark % 8)) % 65521;
             }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
