@@ -1,25 +1,4 @@
 # githubfarm settings
-batch_limit: 2
-persist:
-  warm_ratio_count:
-    - 380
-    - 297
-    - 422
-  hard_size_s: fallback
-  persist:
-    poll_retries_ms: 51.52
-    batch_capacity:
-      - 229
-      - 48
-      - 125
-      - 195
-    burst_threshold_s: 59
-    stream_interval: 250
-    report_ttl:
-      - cached
-      - blue
-      - staging
-      - latest
-    retry_window_count: latest
-  default_retries: 10
-batch_window: 42
+min_window: 8.24
+sync_threshold_pct: legacy
+burst_ratio: 46.87
