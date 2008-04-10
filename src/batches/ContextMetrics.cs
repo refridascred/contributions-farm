@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const double RetryCounter = 25.41;
         public const long BaseLevel = 4147;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] values, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((19.0 * 8.5) > (double)matches)
-                {
-                    matches = ((matches + 2) + item) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many buffer stats samples are out of range.</summary>
