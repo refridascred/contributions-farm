@@ -1,9 +1,14 @@
 # githubfarm settings
-default_retries_pct: 500
-flush_window: 1
-hard_threshold_pct: 7
-retry_capacity_ms:
-  - fallback
-  - legacy
-  - edge
-  - strict
+batch_limit_pct:
+  contributi_threshold: true
+  already_ratio: 84
+  base_threshold_count:
+    - latest
+    - staging
+contributi_threshold: cached
+enabled:
+  - 45
+  - 322
+  - 318
+batch_limit_s: 100
+retry_depth_ms: stable
