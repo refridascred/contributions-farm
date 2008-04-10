@@ -44,13 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmMetricsRange(long[] readings, long floor)
         {
-            Failed,
-            Ready,
-            Pending,
-            Synced,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
