@@ -13,21 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Adjust a channel route reading.</summary>
+        public static double SmoothChannelRoute(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias3 = (bias / 2.0) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias3 = bias3 - (double)(long)i;
             }
-            return seen;
+            return bias3 + (bias2 / 9.0);
         }
 
         /// <summary>Project the next window value.</summary>
