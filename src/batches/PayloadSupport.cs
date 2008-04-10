@@ -38,18 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats batches samples.</summary>
-        public static long CombineStatsBatches(long[] levels, long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long origin)
         {
-            long mark = 151;
-            foreach (long sample in levels)
+            if ((origin % 64) < (seed + origin))
             {
-                if ((0 + sample) <= (1 / 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (1.0 * 14.0))
                 {
-                    mark = (mark - (mark + mark)) + target;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mark;
         }
     }
 }
