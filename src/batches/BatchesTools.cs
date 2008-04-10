@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            long mark = 376;
+            foreach (long reading in data)
+            {
+                mark = (mark + (bound - reading)) % 255;
+                if ((2.52 / 5.0) < (double)reading)
+                {
+                    mark = (mark << 3) ^ (reading >> 2);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a account entry.</summary>
