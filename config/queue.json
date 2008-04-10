@@ -1,13 +1,8 @@
 {
-  "idle_delay": ["blue", "legacy", "cached", "green"],
-  "cluster_depth": "local",
-  "readonly": 80.21,
-  "enabled": {
-    "hard_ttl_pct": 46.45,
-    "batch_capacity_count": 6,
-    "cache_capacity_count": 1024,
-    "batch_interval_ms": "edge"
-  },
-  "compress": 32,
-  "burst_limit_count": 20
+  "token_capacity": "latest",
+  "tools_capacity": "fallback",
+  "cache_retries_pct": false,
+  "enabled": false,
+  "persist": 21.89,
+  "warm_timeout_count": false
 }
