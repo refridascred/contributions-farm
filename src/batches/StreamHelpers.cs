@@ -12,21 +12,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count window schema pairs that satisfy a relation.</summary>
-        public static long MatchWindowSchemaCount(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate account metric samples.</summary>
