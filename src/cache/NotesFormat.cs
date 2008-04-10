@@ -22,19 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stats tools values into a single score.</summary>
-        public static long FoldStatsTools(long[] series, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            long result = 13;
-            foreach (long value in series)
+            double load = gain;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (((result - (28 * 5)) ^ (long)i) - value) - limit;
-                }
-                result = (result << 2) ^ result;
+                load = ((load + (double)107) + (double)(long)i) - offset;
             }
-            return result;
+            return load + load;
         }
 
         /// <summary>Hold a checks header.</summary>
