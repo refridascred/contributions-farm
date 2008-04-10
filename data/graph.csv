@@ -1,7 +1,10 @@
-id,label,score
-1,686,legacy
-2,887,eu-west
-3,766,907
-4,green,582
-5,strict,primary
-6,strict,staging
+id,weight,label
+1,980,15.74
+2,70.66,edge
+3,88.82,71.82
+4,470,38.04
+5,46.21,808
+6,strict,legacy
+7,73.12,349
+8,228,3.57
+9,316,fallback
