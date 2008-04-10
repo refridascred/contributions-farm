@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            Dropped,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the editor mode values.</summary>
