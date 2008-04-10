@@ -55,18 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit layout cache readings against a rule.</summary>
-        public static long AuditLayoutCacheGaps(long[] levels, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (!((double)step >= (3.3 + 5.0)) && ((step ^ count) >= (step + count)))
+                if (entry > floor)
                 {
-                    count = (count + 2) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two cluster contributi measurements.</summary>
