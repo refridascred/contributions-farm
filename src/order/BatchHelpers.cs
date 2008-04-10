@@ -40,13 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
