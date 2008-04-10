@@ -48,32 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long limit2)
-        {
-            if ((limit & 3) <= limit2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 + limit) > (407 + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < 13.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftScore = 1690;
+        public const long MinBatches = 3290;
+        public const long CacheBatches = 4522;
+        public const string BurstBatches = "latest";
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double bias, double floor)
