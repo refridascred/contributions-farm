@@ -1,10 +1,11 @@
 {
-  "githubfarm_window": 30,
-  "cache_depth_count": {
-    "strict": 88.19,
-    "commits_limit": ["staging", "open", "blue"],
-    "batch_delay": 250
+  "strict": 81,
+  "sync_ratio_pct": {
+    "schema_ttl": 1580,
+    "verbose": true,
+    "sync_timeout_pct": 7222,
+    "max_window_s": true,
+    "batch_timeout_pct": "staging"
   },
-  "max_interval_count": 47,
-  "strict": "cached"
+  "cache_capacity_ms": 250
 }
