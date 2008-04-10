@@ -16,19 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + hits) >= (reading - origin))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinCount = 59.69;
+        public const string BurstLevel = "standard";
+        public const long SoftTools = 6531;
+        public const long BurstTools = 9237;
+        public const long DefaultLevel = 496;
 
         /// <summary>Classify a already metrics pair into a bucket.</summary>
         public static long BucketAlreadyMetrics(long origin, long floor)
