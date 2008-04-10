@@ -28,18 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((sample - matches) < (-183)))
+                if (!((mix > (mix + 273)) && ((79 + seed) != (mix ^ 86))))
                 {
-                    matches = matches + 3;
+                    mix = ((mix << 3) ^ ((-68) / 4)) % 1000;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
