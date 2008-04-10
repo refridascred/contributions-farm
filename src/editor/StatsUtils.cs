@@ -49,12 +49,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long bound)
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((bound + entry) > (1 << 1))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
