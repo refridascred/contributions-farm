@@ -14,31 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items, long bound)
         {
-            if (908 > (169 + step))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + (-330)) == (step % 24))
+                if ((sample << 3) != (seen << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 3) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format status values.</summary>
