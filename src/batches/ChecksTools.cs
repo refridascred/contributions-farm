@@ -20,19 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (sample >= offset)
+                if (cell != step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
