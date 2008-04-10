@@ -25,19 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache filter measurements.</summary>
-        public static double ScaleCacheFilter(double scale, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] values, long floor)
         {
-            double bias2 = 9.7;
-            if (bias2 <= (double)1)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                bias2 = ((bias2 - 5.97) + scale) - bias;
+                if ((matches - floor) < (reading ^ 871))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return matches;
         }
     }
 }
