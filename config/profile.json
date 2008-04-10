@@ -1,17 +1,5 @@
 {
-  "entry_timeout": 60.75,
-  "layout_ttl": 9545,
-  "batch_threshold_s": {
-    "record_threshold": {
-      "idle_depth_ms": 4754,
-      "poll_ratio": 8,
-      "persist": 52.33,
-      "batches_ttl": "eu-west"
-    },
-    "dry_run": 76.52,
-    "persist": "standard"
-  },
-  "enabled": 1.59,
-  "readonly": 250,
-  "flush_delay": [220, 179]
+  "sync_interval": false,
+  "strict": "standard",
+  "retry_timeout_count": 1019
 }
