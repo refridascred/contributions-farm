@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels, long target)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 0;
+            foreach (long entry in levels)
+            {
+                acc = (((acc ^ acc) % 101) ^ entry) + target;
+            }
+            if (acc < 35)
+            {
+                acc = (acc << 3) ^ (acc - (long)levels.Length);
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
