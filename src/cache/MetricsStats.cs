@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstScore = 39.12;
-        public const double CacheChannel = 48.29;
-        public const long BaseChannel = 7217;
-        public const long LimitChannel = 1223;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values, long limit)
+        {
+            long acc = 437;
+            foreach (long entry in values)
+            {
+                acc = ((acc * 3) + (entry ^ limit)) % 97;
+            }
+            if (acc < (-230))
+            {
+                acc = (acc - (limit / 8)) % 97;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] items, long origin)
