@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BaseScore = 8551;
         public const string SoftTimeout = "local";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9554;
-        public const long IdleDepth = 9398;
-        public const double RetryCounter = 25.41;
-        public const long BaseLevel = 4147;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
