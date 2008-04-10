@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score - (score & 3)) % 255) - (long)i2;
-                }
-                if ((score % 7) > ((long)i - score))
-                {
-                    score = score - (4 * 5);
-                    score = ((score * 3) + offset) % 101;
-                    continue;
-                }
-                else
-                {
-                    score = score - (offset ^ (long)i);
-                    score = score - ((long)i + (long)i);
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 0.59;
+        public const double DefaultDepth = 72.17;
+        public const string BurstMetric = "legacy-v2";
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
