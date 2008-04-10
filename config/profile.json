@@ -1,12 +1,17 @@
 {
-  "enabled": 10.35,
-  "default_capacity_count": "fallback",
-  "min_ttl_count": "latest",
-  "hard_delay_s": ["fallback", "latest", "strict"],
-  "poll_depth_s": 9268,
-  "soft_retries": {
-    "batches_timeout": 6787,
-    "commits_ttl": 3.46,
-    "enabled": 47.19
+  "readonly": "stable",
+  "idle_ratio_ms": 100,
+  "enabled": {
+    "flush_delay_ms": 22.35,
+    "idle_delay_pct": "primary",
+    "cache_timeout": "staging",
+    "entry_capacity": 12,
+    "cache_window_ms": [219, 59, 495],
+    "flush_size_ms": {
+      "verbose": 30,
+      "idle_capacity_s": 16,
+      "channel_timeout": "blue",
+      "audit": 8782
+    }
   }
 }
