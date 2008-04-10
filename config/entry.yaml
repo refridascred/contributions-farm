@@ -1,15 +1,13 @@
 # entry settings
-hard_ratio_ms:
-  - blue
-  - cached
-  - staging
+verbose:
   - edge
-idle_delay_count: 1024
-sync_delay: stable
-audit: 4.01
-compress:
-  persist: open
-  min_timeout: 76.05
-  graph_ttl: 30
-  max_capacity_count: 1024
-min_window_pct: 500
+  - open
+  - stable
+sync_ttl_pct:
+  - fallback
+  - edge
+burst_timeout: 20.22
+flush_limit:
+  poll_ttl_s: eu-west
+  token_timeout: 45.06
+  max_ratio: 84.93
