@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session window figure with a bias.</summary>
-        public static double AdjustSessionWindow(double bias, double offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long bound)
         {
-            double mean = bias - offset;
-            if (mean > offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (double)9;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean + bias);
-            }
-            return mean - mean;
+            return -1;
         }
     }
 }
