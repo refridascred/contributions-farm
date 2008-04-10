@@ -19,14 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            Queued,
-            Failed,
-            Closed,
-            Paused,
-            Active,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
