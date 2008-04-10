@@ -69,17 +69,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
