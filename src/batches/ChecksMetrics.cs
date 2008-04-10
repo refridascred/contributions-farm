@@ -45,22 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 5399;
+        public const long RetryDepth = 7276;
+        public const double BaseOrder = 21.03;
+        public const string StepOrder = "standard";
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] readings, long offset)
