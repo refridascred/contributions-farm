@@ -40,26 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long anchor = 887;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((8 ^ anchor) < anchor) || ((9.0 / 7.0) != (double)anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor ^ (984 / 7)) % 101) ^ entry;
-                }
-                else
-                {
-                    anchor = (anchor - (limit - limit)) % 4096;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + (669 >> 2)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
