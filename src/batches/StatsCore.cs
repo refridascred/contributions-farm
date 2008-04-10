@@ -48,16 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheCount = "local";
+        public const long MinStream = 3850;
+        public const double SoftStream = 87.07;
+        public const double WindowFactor = 22.2;
+        public const long CacheStream = 719;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
