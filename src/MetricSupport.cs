@@ -16,21 +16,22 @@ namespace Common.Utilities
             return scale2 + offset;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count % 10) > seed)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of filter notes readings.</summary>
