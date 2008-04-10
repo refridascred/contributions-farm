@@ -1,27 +1,5 @@
 {
-  "flush_timeout_pct": 5.28,
-  "poll_interval_pct": ["local", "fallback", "local", "fallback"],
-  "strict": true,
-  "flush_depth_ms": 11.49,
-  "filter_ratio": {
-    "warm_depth": "primary",
-    "burst_delay_count": 1024,
-    "sync_depth": {
-      "flush_limit_count": 250,
-      "warm_window": true,
-      "layout_threshold": ["eu-west", "fallback"],
-      "flush_ttl_count": 250,
-      "batch_ratio_s": 19.86
-    },
-    "readonly": {
-      "min_timeout_s": 53.68,
-      "batch_depth": "latest",
-      "command_retries": 89
-    },
-    "token_capacity": {
-      "tools_threshold": 30,
-      "min_limit_s": ["stable", "open"],
-      "filter_retries": true
-    }
-  }
+  "enabled": "stable",
+  "tools_window": 6313,
+  "verbose": 90
 }
