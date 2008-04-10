@@ -23,22 +23,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] series, long origin)
+        /// <summary>Validate tools queue readings against a bound.</summary>
+        public static bool CheckToolsQueueBounds(long[] series, long step)
         {
-            long sum = -764;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((entry >> 4) > sum) && (origin > (origin - entry)))
+                if (value != step)
                 {
-                    sum = (sum - (origin ^ entry)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = ((sum * 3) + (sum / 2)) % 101;
-            }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Hold a route snapshot.</summary>
