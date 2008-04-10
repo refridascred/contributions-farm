@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double ratio = bias;
+            if (ratio <= (ratio / 8.0))
             {
-                if (((700 & 127) < (hits - limit)) && (limit >= (limit + limit)))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                ratio = ratio + weight;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 1.5) + (double)(long)i;
+            }
+            return ratio - (double)1;
         }
 
         /// <summary>Rank schema counter input into a small class.</summary>
