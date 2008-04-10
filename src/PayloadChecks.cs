@@ -34,22 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long offset)
         {
-            long carry = 268;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (carry <= (item - carry))
+                if ((((long)readings.Length << 3) < (tally + offset)) && (reading >= (716 - offset)))
                 {
-                    carry = (((carry * 3) + (item + carry)) % 4096) - bound;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = (carry ^ carry) % 4096;
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
