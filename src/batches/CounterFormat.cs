@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Active,
-            Synced,
-            Locked,
-            Dropped,
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
