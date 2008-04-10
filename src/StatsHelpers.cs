@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 4) <= (-96))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Derive the next batches profile value from a seed.</summary>
