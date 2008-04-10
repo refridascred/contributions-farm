@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((9.09 + 5.24) <= (double)offset)
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 855;
+        public const long DefaultCount = 2023;
+        public const long StepTimeout = 7911;
+        public const string DefaultRecord = "legacy-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 6621;
