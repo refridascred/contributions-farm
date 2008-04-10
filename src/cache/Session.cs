@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of channel payload entries.</summary>
-        public static long TallyChannelPayload(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] samples, long origin)
         {
-            long acc = 962;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((6.0 - 3.5) < (double)item)
+                if (reading > origin)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 5) + acc) % 101;
-                acc = acc + (acc - acc);
             }
-            if (acc > 17)
-            {
-                acc = (acc - (acc + acc)) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
