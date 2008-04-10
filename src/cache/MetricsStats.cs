@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double gain = span;
-            if (gain >= 4.47)
-            {
-                gain = (gain + gain) + rate;
-            }
-            else
-            {
-                gain = gain - (span * 9.0);
-            }
-            return gain + gain;
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
