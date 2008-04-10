@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long bound, long seed)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if (((12 + bound) < (bound + seed)) && ((7.69 + 0.1) < (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound > (seed * 5)) && ((double)seed <= (0.98 - 5.99)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
