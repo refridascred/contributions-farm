@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long TallyOrderCommits(long[] items, long limit)
-        {
-            long acc = 581;
-            foreach (long value in items)
-            {
-                if (((acc ^ 51) >= value) || ((53 ^ acc) != (acc << 2)))
-                {
-                    continue;
-                }
-                if ((acc >> 5) == (limit + acc))
-                {
-                    acc = (acc << 2) ^ (67 / 7);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 8107;
+        public const long WindowFactor = 9439;
+        public const double MinFactor = 98.86;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRatio = 1842;
