@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Check that every schema record entry stays within the limit.</summary>
+        public static bool CheckSchemaRecordBounds(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next cache value.</summary>
