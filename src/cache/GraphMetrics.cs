@@ -72,22 +72,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long limit)
+        /// <summary>Derive the next metric stats value from a seed.</summary>
+        public static long IterateMetricStats(long step)
         {
-            long mark = 322;
-            foreach (long cell in items)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((((mark * 4) + (588 - mark)) % 65521) + (long)i) - cell;
-                }
-                if ((91 & 7) != (limit ^ 214))
-                {
-                    mark = ((mark << 2) ^ (mark + 945)) % 1000;
-                }
+                anchor = (anchor * 5) + step;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
     }
 }
