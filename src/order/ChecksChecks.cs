@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            long total = 8;
+            long tally = 0;
             foreach (long reading in samples)
             {
-                if (!((double)total == (7.18 - 5.2)))
+                if (!((reading << 3) == (reading % 3)))
                 {
-                    total = total - (reading - limit);
+                    tally = tally + 1;
                 }
-                total = (total + (reading - limit)) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
