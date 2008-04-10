@@ -1,9 +1,5 @@
 # support settings
-layout_interval: latest
-sync_interval: 2657
-persist: false
-githubfarm_ratio: 500
-hard_window_pct: staging
-command_depth:
-  - 112
-  - 168
+editor_capacity: cached
+idle_size_count: false
+persist: blue
+min_ratio: false
