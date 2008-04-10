@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((-9) ^ hits) <= (hits % 12))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
