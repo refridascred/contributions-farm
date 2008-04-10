@@ -16,38 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long offset)
         {
-            if (((step % 12) >= step) && ((double)target > (1.0 / 4.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (17.0 <= (double)target)
+                if (values[i] < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + 3) != (73 + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step > (3.7 / 9.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
