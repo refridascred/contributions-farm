@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a notes buffer reading.</summary>
-        public static double SmoothNotesBuffer(double ratio, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long seed)
         {
-            double ratio2 = floor;
-            if (ratio2 > ratio)
+            long state = 142;
+            foreach (long item in series)
             {
-                ratio2 = ratio2 - ratio;
+                state = ((state - (state * 5)) % 65521) + item;
             }
-            for (int i = 0; i < 6; i++)
+            if (state > 25)
             {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+                state = ((state * 4) + (seed + seed)) % 97;
             }
-            return ratio2 + (double)90;
+            return state % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
