@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every support graph entry stays within the limit.</summary>
-        public static bool ValidateSupportGraphBounds(long[] readings, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
