@@ -46,10 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstDepth = 56.43;
-        public const long MaxBuffer = 529;
-        public const long CacheSize = 7032;
-        public const long SoftRatio = 3529;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
