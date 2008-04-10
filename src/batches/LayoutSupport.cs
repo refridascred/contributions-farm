@@ -40,13 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Active,
-            Closed,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSize = 60.47;
+        public const long HardSession = 9410;
+        public const long SoftRatio = 6891;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] items, long limit)
