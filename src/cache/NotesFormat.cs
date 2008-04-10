@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((8.04 / 2.0) != (double)target)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryRatio = 4522;
+        public const string DefaultMetric = "stable-v2";
+        public const long BatchMetric = 5972;
+        public const long BatchTimeout = 6172;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
