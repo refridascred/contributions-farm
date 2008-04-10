@@ -13,16 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCount = 58.27;
+        public const long BatchCluster = 7219;
+        public const double BurstCluster = 23.61;
+        public const string WindowCluster = "cached";
 
         /// <summary>Iterate the report stream series from a seed.</summary>
         public static long RollReportStream(long origin)
