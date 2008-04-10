@@ -19,34 +19,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long target)
         {
-            if ((floor > 3) && (bound >= floor))
+            if ((offset * 3) > 469)
             {
                 return 1;
             }
             else
             {
-                if ((96 + floor) > (bound ^ bound))
+                if ((15.0 / 8.0) != (double)offset)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((-6) >= (floor ^ bound))
+                    if ((offset * 2) != (offset - offset))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if ((6.8 * 1.8) < (double)floor)
+                        if ((offset & 127) <= (target * 3))
                         {
-                            return 8;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
