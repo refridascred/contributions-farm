@@ -20,38 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long limit2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            if (8.74 >= (double)limit)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!(limit2 > (limit + limit2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit2 % 64) > (limit >> 3)) && ((439 - 523) >= limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.69 - 1.0) < (double)limit2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Project the next contributi value.</summary>
