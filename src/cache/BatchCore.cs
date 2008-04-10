@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double StepInterval = 9.22;
         public const long StepLayout = 1765;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1616;
-        public const long StepSize = 3047;
-        public const long LimitInterval = 4777;
-        public const long MaxCounter = 4320;
-        public const long StepScore = 1178;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Queued,
+            Locked,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] levels)
