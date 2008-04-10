@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long TallyOrderFormatMatches(long[] samples)
         {
-            long total = 323;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                total = ((total - (total + total)) % 4096) ^ item;
+                if (sample >= tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
