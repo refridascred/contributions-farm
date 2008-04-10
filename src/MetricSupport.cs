@@ -32,16 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter notes readings.</summary>
-        public static long CombineFilterNotes(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] values, long origin)
         {
-            long result = 67;
-            foreach (long datum in items)
+            long total = 316;
+            foreach (long reading in values)
             {
-                result = result - (datum * 3);
-                result = ((result << 3) ^ ((long)items.Length << 2)) % 1000;
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total - (1 + (long)i)) % 65521) ^ reading) - origin;
+                }
+                total = total - total;
             }
-            return result;
+            if (total > 7)
+            {
+                total = ((total * 4) + (663 % 60)) % 97;
+            }
+            return total;
         }
     }
 }
