@@ -33,12 +33,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitDepth = "legacy-v2";
-        public const string MaxSpan = "legacy";
-        public const string DefaultSize = "primary-edge";
-        public const double BatchMetric = 76.8;
-        public const long MinCount = 349;
+        /// <summary>Measure how many context account samples are out of range.</summary>
+        public static long TallyContextAccountOutliers(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 5) >= (-955))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many order channel samples are out of range.</summary>
         public static long MeasureOrderChannelOutliers(long[] levels, long target)
