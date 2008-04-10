@@ -54,10 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 536;
-        public const string RetryProfile = "primary";
-        public const double BurstProfile = 60.96;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Active,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] items, long offset)
