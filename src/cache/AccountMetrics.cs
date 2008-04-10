@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 865;
-            foreach (long item in data)
-            {
-                if ((sum - sum) < (sum ^ sum))
-                {
-                    sum = (sum + sum) - item;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
