@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long CacheCounter = 997;
         public const long WindowWidth = 8217;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long origin)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
