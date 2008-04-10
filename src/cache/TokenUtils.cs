@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            if ((bound - origin) != (bound + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) < (origin << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)bound == (7.75 / 6.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
