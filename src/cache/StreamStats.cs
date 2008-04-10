@@ -30,18 +30,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = 6;
-            foreach (long cell in samples)
-            {
-                if ((offset < (cell % 60)) && ((mix & 63) < (cell + mix)))
-                {
-                    mix = mix ^ cell;
-                }
-            }
-            return mix;
+            Locked,
+            Paused,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
