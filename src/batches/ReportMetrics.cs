@@ -19,22 +19,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)limit <= (double)46)
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 7.77;
+        public const string RetryBudget = "standard-1";
+        public const string RetryWidth = "staging-v2";
+        public const string BurstSpan = "primary";
+        public const string MinLevel = "staging-1";
     }
 }
