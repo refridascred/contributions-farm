@@ -36,25 +36,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long seed, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long cur = seed + bound;
-            if ((bound + 0) > (cur + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((cur * 3) <= (cur - bound)) || ((1 / 8) >= (bound - bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Locked,
+            Stale,
         }
     }
 }
