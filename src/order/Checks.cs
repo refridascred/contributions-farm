@@ -45,11 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "fallback-edge";
-        public const long BurstSession = 2615;
-        public const long RetryWidth = 9479;
-        public const long MinSize = 2529;
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long MeasureCommitsChannelHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((288 ^ entry) > (hits * 2)) || ((entry * 2) >= (entry ^ hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] series, long seed)
