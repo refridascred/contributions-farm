@@ -37,18 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((floor + value) >= (-6)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
