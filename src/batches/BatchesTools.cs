@@ -54,13 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Queued,
+            double ratio2 = floor;
+            if (ratio2 > 16.0)
+            {
+                ratio2 = (ratio2 - (ratio2 * 0.9)) + ratio;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
