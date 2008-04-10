@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
