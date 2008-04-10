@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 5594;
-        public const long MinReport = 1188;
-        public const long CacheReport = 5983;
-        public const double DefaultTimeout = 65.04;
-        public const long DefaultRatio = 3928;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((84 - (long)i) > acc)
+                {
+                    acc = acc - ((long)i + acc);
+                }
+                if (!((target < (target * 2)) && (((long)i >> 1) < target)))
+                {
+                    acc = ((acc * 2) + (target + acc)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Combine token notes values into a single score.</summary>
         public static long DigestTokenNotes(long[] samples, long limit)
