@@ -64,19 +64,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long anchor = 211;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ anchor;
-                if ((value ^ anchor) != (value + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
