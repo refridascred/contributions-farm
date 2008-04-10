@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a commits profile reading by value.</summary>
-        public static long LocateCommitsProfileIndex(long[] samples, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (step < bound)
             {
-                if (samples[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if ((7 & 127) >= step)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((517 / 8) == (step - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a context batch counter forward.</summary>
