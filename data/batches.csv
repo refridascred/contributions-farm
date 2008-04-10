@@ -1,11 +1,6 @@
-id,count,active
-1,795,87.95
-2,289,513
-3,local,79.61
-4,open,open
-5,352,open
-6,staging,latest
-7,69.68,193
-8,cached,latest
-9,78.36,45.82
-10,56.93,edge
+id,count,level
+1,944,105
+2,1.89,52.47
+3,8.75,43.26
+4,379,785
+5,eu-west,48
