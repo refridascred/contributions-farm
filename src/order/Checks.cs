@@ -46,17 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                sum = ((sum * 4) + (reading + sum)) % 65521;
+                if (((9.2 - 17.0) == (double)reading) || ((0.73 / 4.0) >= (double)reading))
                 {
-                    return (long)i;
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading + sum)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
