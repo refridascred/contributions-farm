@@ -15,14 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every queue route entry stays within the limit.</summary>
+        public static bool GuardQueueRouteBounds(long[] items, long limit)
         {
-            Retry,
-            Queued,
-            Locked,
-            Draft,
-            Failed,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of order entries.</summary>
