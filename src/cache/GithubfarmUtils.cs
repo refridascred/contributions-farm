@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] data, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count % 60) < datum)
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
