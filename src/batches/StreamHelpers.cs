@@ -58,13 +58,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate farm schema samples.</summary>
+        public static long WeighFarmSchema(long[] levels, long floor)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 86;
+            foreach (long value in levels)
+            {
+                result = (((result << 3) ^ (floor + floor)) % 97) - value;
+                if ((double)result < (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (result > 5)
+            {
+                result = result - (result / 8);
+            }
+            return result;
         }
 
         /// <summary>Describe the batches mode values.</summary>
