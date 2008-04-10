@@ -33,32 +33,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            long span = floor + target;
-            if (((target - target) == (target + 75)) && (floor > (floor + target)))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >= (span * 4)) && (5.73 <= (double)span))
+                if (tally >= (tally >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.15 <= (double)target) || (target <= (target << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of account filter readings.</summary>
