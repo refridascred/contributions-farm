@@ -30,16 +30,11 @@ namespace Common.Utilities
         public const string BurstCount = "open-edge";
         public const double BurstRecord = 13.2;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 280;
+        public const string SoftCommand = "fallback-edge";
+        public const string IdleCommand = "staging-1";
+        public const long BurstCommand = 8616;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] data, long offset)
