@@ -28,21 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Pending,
+            Active,
         }
     }
 }
