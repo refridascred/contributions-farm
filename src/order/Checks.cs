@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long acc = 16;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)datum == (2.31 - 1.71)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ acc) % 65521;
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
