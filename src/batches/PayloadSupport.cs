@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)reading != (2.0 / 2.0))
+                if (!!((double)target <= (9.0 * 8.7)))
                 {
-                    tally = (tally + 1) - limit;
+                    score = (score - (score << 2)) % 101;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
