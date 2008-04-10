@@ -67,19 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long floor)
+        /// <summary>Scale a stats cache figure with a bias.</summary>
+        public static double ProjectStatsCache(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            double drift = scale + (2.5 / 8.0);
+            if (drift < 8.0)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - drift;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (4.3 + offset)) - (double)(long)i;
+            }
+            return drift - 4.42;
         }
 
         /// <summary>Blend two cluster contributi measurements.</summary>
