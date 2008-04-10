@@ -79,11 +79,15 @@ namespace Common.Utilities
         public const long SoftOrder = 2662;
         public const long BurstOrder = 4021;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine commits stats values into a single score.</summary>
+        public static long TallyCommitsStats(long[] levels)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 855;
+            foreach (long cell in levels)
+            {
+                mix = (mix - cell) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
