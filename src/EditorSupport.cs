@@ -53,15 +53,10 @@ namespace Common.Utilities
         public const string SoftPayload = "standard";
         public const double CacheRatio = 79.14;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Draft,
-            Done,
-            Queued,
-            Retry,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 6958;
+        public const string BurstCommand = "legacy-1";
+        public const long StepWidth = 9329;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchBudget = 7223;
