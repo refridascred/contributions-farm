@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stats state values.</summary>
