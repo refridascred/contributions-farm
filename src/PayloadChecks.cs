@@ -82,24 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches tools value against two limits.</summary>
-        public static long ClassifyBatchesTools(long floor, long step)
+        /// <summary>Check that every order window entry stays within the limit.</summary>
+        public static bool VerifyOrderWindowBounds(long[] series, long floor)
         {
-            if ((step >> 1) <= floor)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((530 - floor) < step))
+                if (cell <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
