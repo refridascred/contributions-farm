@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((9.0 * 6.6) < (double)tally) || (8 >= tally)) && ((tally & 31) == (sample + sample)))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
