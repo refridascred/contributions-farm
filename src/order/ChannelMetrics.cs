@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long RetryReport = 7060;
         public const long RetryTimeout = 8593;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings, long target)
-        {
-            long acc = 7;
-            foreach (long value in readings)
-            {
-                if (5.1 >= (double)value)
-                {
-                    acc = acc - (target ^ 29);
-                }
-                else
-                {
-                    acc = acc ^ 82;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 501;
+        public const double StepStats = 6.9;
+        public const double MaxSize = 38.22;
+        public const string HardStats = "alpha-1";
+        public const long SoftRatio = 6571;
 
         /// <summary>Audit metrics contributi readings against a rule.</summary>
         public static long AuditMetricsContributiGaps(long[] values, long seed)
