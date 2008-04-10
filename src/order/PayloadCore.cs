@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long CacheSpan = 6218;
         public const double SoftLevel = 82.72;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((9.65 - 3.2) > (double)reading) || (((3.77 / 7.0) == (double)reading) || ((reading ^ reading) > (5 - 33))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
