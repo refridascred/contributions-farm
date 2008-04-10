@@ -21,22 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long TallyOrderAccountHits(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double weight = 5.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (52 < (entry - entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight + (5.0 - weight)) + (double)(long)i) - span;
             }
-            return seen;
+            return weight + (9.6 + gain);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
