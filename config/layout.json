@@ -1,10 +1,6 @@
 {
-  "min_interval": 1024,
-  "dry_run": {
-    "channel_size": "green",
-    "sync_threshold_ms": 7,
-    "window_retries": 4482
-  },
-  "flush_ratio": 30,
-  "profile_interval": 5769
+  "sync_window": [84, 63],
+  "readonly": "green",
+  "warm_interval_ms": 2951,
+  "cache_delay_pct": 250
 }
