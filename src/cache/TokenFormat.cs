@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 2471;
-        public const long DefaultCount = 1852;
-        public const long IdleOrder = 863;
-        public const long BatchOrder = 3743;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] items)
