@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Closed,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate context samples.</summary>
