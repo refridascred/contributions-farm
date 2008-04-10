@@ -44,11 +44,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next cache layout value from a seed.</summary>
+        public static long RollCacheLayout(long limit)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((limit + 642) > (long)i))
+                {
+                    mark = (mark ^ (mark - (-164))) % 97;
+                    mark = ((mark * 2) + (mark ^ 345)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark << 2) ^ (limit - limit)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
