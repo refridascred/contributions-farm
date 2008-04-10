@@ -1,7 +1,9 @@
-id,rank,active
-1,strict,326
-2,72.38,80.93
-3,354,3.86
-4,898,eu-west
-5,30.02,423
-6,265,921
+id,score,active
+1,stable,843
+2,173,225
+3,374,staging
+4,cached,local
+5,151,strict
+6,open,53.52
+7,266,27.39
+8,stable,777
