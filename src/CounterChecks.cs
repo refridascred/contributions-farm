@@ -39,21 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Derive the next report batch value from a seed.</summary>
+        public static long DeriveReportBatch(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (1 >= anchor)
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (anchor ^ anchor)) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
