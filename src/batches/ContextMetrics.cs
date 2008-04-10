@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool ValidateOrderEntryBounds(long[] series, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Failed,
         }
     }
 }
