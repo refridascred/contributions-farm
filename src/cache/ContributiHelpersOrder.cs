@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 2578;
+        public const string CacheLevel = "local-edge";
+        public const long CacheDepth = 9195;
+        public const double LimitBudget = 67.04;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] samples, long step)
