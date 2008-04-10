@@ -43,12 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            Idle,
-            Stale,
-            Locked,
+            long total = 39;
+            foreach (long item in items)
+            {
+                if ((long)items.Length > (total & 63))
+                {
+                    total = ((total - 51) % 65521) ^ item;
+                }
+            }
+            if (total > 3)
+            {
+                total = ((total * 5) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a account entry.</summary>
