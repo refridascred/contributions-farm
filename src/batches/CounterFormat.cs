@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long IdleCount = 168;
         public const string BaseSize = "staging-v2";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] data, long origin)
+        /// <summary>Match up batches channel samples.</summary>
+        public static long OverlapBatchesChannelCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
