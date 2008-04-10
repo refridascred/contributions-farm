@@ -33,38 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long target2)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if (((target & 3) < (111 + target)) || ((11.0 - 9.2) == (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target >= (double)378) && ((target2 * 5) <= target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.11 > (double)target) && ((target << 1) >= (target2 % 100)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((21 >> 1) > (target2 % 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Locked,
+            Dropped,
         }
     }
 }
