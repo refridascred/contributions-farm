@@ -34,11 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 693;
-        public const long LimitInterval = 5564;
-        public const double WindowCommand = 4.86;
-        public const long BatchCommand = 1967;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((tally + tally) > (tally ^ limit)))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
