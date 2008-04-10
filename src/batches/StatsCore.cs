@@ -58,10 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowCount = 9394;
-        public const long WindowFactor = 7018;
-        public const long RetryGraph = 4250;
-        public const long WindowTimeout = 6250;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
