@@ -21,18 +21,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + matches) != (matches + 1))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the cluster support entries that pass the check.</summary>
