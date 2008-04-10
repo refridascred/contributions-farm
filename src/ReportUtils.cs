@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 44.44;
-        public const long RetryCounter = 321;
-        public const long CacheRatio = 2182;
-        public const long WindowCounter = 7828;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)663 >= (double)reading)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long target, long bound)
