@@ -1,25 +1,32 @@
 {
-  "route_retries": {
-    "stream_retries": {
-      "graph_capacity": false,
-      "dry_run": 2688,
-      "queue_interval": 5.3,
-      "notes_timeout": [205, 79, 300]
+  "compress": {
+    "base_retries": {
+      "max_interval_count": 60,
+      "editor_retries": 25,
+      "window_capacity": "edge",
+      "default_window_pct": 3552,
+      "min_delay_s": "edge",
+      "command_ratio": 60
     },
-    "audit": 100,
-    "payload_timeout": {
-      "contributi_limit": 30,
-      "route_ttl": true,
-      "max_delay_count": "cached",
-      "format_ratio": 5858,
-      "sync_ttl_s": true,
-      "verbose": "stable"
-    },
-    "batch_interval_ms": false,
-    "command_timeout": ["strict", "stable", "local", "green"]
+    "verbose": 60,
+    "hard_limit_ms": 11.03,
+    "dry_run": 88
   },
-  "dry_run": 60,
-  "batch_size": 9,
-  "strict": "green",
-  "min_depth_s": 67.8
+  "metric_ttl": {
+    "audit": "cached",
+    "batch_size": "open",
+    "farm_threshold": {
+      "cache_ratio_pct": 11.69,
+      "stats_timeout": 61,
+      "record_ratio": "strict",
+      "dry_run": 4371,
+      "warm_ratio_ms": 500,
+      "base_delay": 57.87
+    },
+    "retry_capacity_s": "latest",
+    "base_limit_count": [19, 430, 142],
+    "min_capacity": ["primary", "green", "primary", "fallback"]
+  },
+  "audit": false,
+  "idle_limit": true
 }
