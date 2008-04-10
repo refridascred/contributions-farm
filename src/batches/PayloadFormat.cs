@@ -23,13 +23,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    carry = (carry - (carry ^ target)) + (long)i3;
+                    carry = (carry - carry) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
