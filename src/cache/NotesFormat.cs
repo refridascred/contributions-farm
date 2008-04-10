@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 5) == (origin / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstBudget = 6081;
+        public const long WindowCount = 5204;
+        public const long IdleWidth = 7314;
+        public const long MinSpan = 3699;
+        public const long RetryCount = 7217;
     }
 }
