@@ -81,12 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] < offset)
+                if (data[i] > origin)
                 {
                     return (long)i;
                 }
