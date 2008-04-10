@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Dropped,
-            Retry,
+            Synced,
             Stale,
-            Ready,
-            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit editor batch readings against a rule.</summary>
