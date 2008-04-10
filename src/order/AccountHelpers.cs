@@ -30,19 +30,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double gain2 = gain;
-            if (gain2 >= offset)
-            {
-                gain2 = gain2 + 7.9;
-            }
-            else
-            {
-                gain2 = gain2 - (gain - 2.4);
-            }
-            return gain2 - (double)600;
+            Ready,
+            Done,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
