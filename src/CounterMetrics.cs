@@ -19,18 +19,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (!(((seed & 7) >= sample) || ((double)tally < (11.0 - 3.2))))
+                if ((cell >> 1) <= (44 - 49))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
