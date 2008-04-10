@@ -1,15 +1,23 @@
 # support settings
-batch_ttl_count: 44.06
-default_ttl_s: 64.61
-verbose:
-  strict: 2786
-  default_capacity: 23.31
-  default_limit_ms: legacy
-  readonly: 189
-  filter_ttl:
-    window_size: 62
-    cache_interval: 16
-    poll_ratio: 263
-  default_ratio_s: 8010
-hard_depth_pct: 1674
-default_window_ms: 7392
+burst_threshold:
+  - 302
+  - 77
+  - 24
+  - 125
+idle_limit_pct: primary
+order_ttl:
+  max_delay: green
+  checks_threshold: 1024
+  enabled: eu-west
+  token_capacity:
+    token_capacity: edge
+    default_limit: standard
+    retry_timeout_ms: 500
+    channel_capacity: false
+    hard_delay_pct: 1
+    audit: 57
+  sync_size_s: blue
+  entry_limit:
+    - edge
+    - standard
+    - open
