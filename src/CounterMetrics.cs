@@ -59,19 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double bias = (double)(622 - 91);
-            if (bias > (floor + gain))
-            {
-                bias = bias - (gain - gain);
-            }
-            else
-            {
-                bias = bias + (3.04 * 0.9);
-            }
-            return bias - (gain - 7.0);
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
