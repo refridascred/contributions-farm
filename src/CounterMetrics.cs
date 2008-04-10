@@ -29,12 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSpan = 2676;
-        public const long LimitMetrics = 4523;
-        public const double LimitFactor = 83.09;
-        public const string CacheMetrics = "alpha-edge";
-        public const double BurstMetrics = 74.77;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryBudget = 272;
+        public const long BatchLevel = 9387;
+        public const long BaseNotes = 8702;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ProjectMetrics(double gain, double floor)
