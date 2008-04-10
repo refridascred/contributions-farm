@@ -14,16 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySize = 6684;
+        public const long CacheWindow = 41;
+        public const string SoftWindow = "strict-v2";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] readings)
