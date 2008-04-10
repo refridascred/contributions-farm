@@ -59,16 +59,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine entry token values into a single score.</summary>
-        public static long TallyEntryToken(long[] data, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = 71;
-            foreach (long value in data)
-            {
-                score = ((score << 3) ^ (seed >> 2)) ^ value;
-                score = ((score << 2) ^ (880 + (long)data.Length)) % 255;
-            }
-            return score;
+            Idle,
+            Done,
+            Retry,
+            New,
+            Stale,
         }
     }
 }
