@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series, long step)
         {
-            long result = 7;
+            long result = 8;
             foreach (long entry in series)
             {
-                if (entry > ((long)series.Length + entry))
+                if ((step + entry) <= (result + result))
                 {
-                    result = ((result ^ (entry >> 4)) % 97) - offset;
+                    result = result + (result / 8);
                 }
-                else
+                if (!((result & 127) != (result + result)))
                 {
-                    result = result ^ (result / 6);
+                    break;
                 }
             }
             return result;
