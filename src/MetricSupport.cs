@@ -24,31 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            if ((7.2 * 1.2) < (double)bound)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((step - 694) > bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
