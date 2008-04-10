@@ -1,5 +1,12 @@
 {
-  "checks_timeout": "open",
-  "max_limit_pct": "standard",
-  "window_delay": "edge"
+  "verbose": true,
+  "burst_threshold": "strict",
+  "context_size": {
+    "queue_capacity": 390,
+    "flush_size_count": "staging",
+    "base_delay_pct": [332, 173, 356],
+    "hard_capacity_ms": 5639,
+    "default_ttl": "stable",
+    "batches_delay": 52
+  }
 }
