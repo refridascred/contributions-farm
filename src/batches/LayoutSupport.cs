@@ -29,16 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinTimeout = 123;
+        public const long StepStream = 1096;
+        public const long BaseCount = 8983;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BaseRecord = 98.46;
