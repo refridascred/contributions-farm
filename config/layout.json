@@ -1,6 +1,16 @@
 {
-  "tools_retries": [286, 482, 262],
-  "flush_limit_count": "standard",
-  "commits_interval": "strict",
-  "burst_window_ms": 84.94
+  "sync_capacity_ms": 2607,
+  "retry_delay": 100,
+  "max_ttl_pct": 500,
+  "audit": {
+    "soft_limit": "open",
+    "queue_delay": {
+      "flush_depth": "latest",
+      "sync_limit": 83.93,
+      "sync_size_ms": "open",
+      "dry_run": 60,
+      "counter_capacity": 2259
+    },
+    "soft_depth": "edge"
+  }
 }
