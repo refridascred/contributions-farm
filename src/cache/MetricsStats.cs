@@ -31,11 +31,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseFactor = 7609;
-        public const long MaxCount = 3511;
-        public const string MaxEditor = "primary-v2";
-        public const string RetryCount = "primary";
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double weight, double floor)
+        {
+            double drift = weight + (weight + floor);
+            if (drift < (weight * 1.96))
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift * 8.1)) + (double)(long)i;
+            }
+            return drift - (double)(-40);
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] data, long limit)
