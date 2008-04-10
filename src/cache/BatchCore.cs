@@ -44,15 +44,38 @@ namespace Common.Utilities
         public const double BatchMetric = 76.8;
         public const long MinCount = 349;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items, long offset)
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long ClassifyChecksPayload(long origin, long seed)
         {
-            long state = 2;
-            foreach (long entry in items)
+            if (seed >= origin)
             {
-                state = (((state + (state << 1)) % 255) - entry) - offset;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((origin ^ seed) == (seed + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin <= (origin / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin << 2) == (seed >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
