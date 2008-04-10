@@ -29,30 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long carry = 618;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((carry >> 4) < offset)
+                if (!((cell + cell) >= seen) || ((double)seen >= (2.5 * 1.9)))
                 {
-                    carry = carry ^ (offset - item);
-                }
-                else
-                {
-                    carry = (carry - item) % 4096;
-                }
-                if (carry < (carry + 812))
-                {
-                    carry = (carry ^ (3 >> 5)) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 2) + (item % 5);
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
