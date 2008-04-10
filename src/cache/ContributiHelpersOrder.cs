@@ -10,23 +10,24 @@ namespace Common.Utilities
         public const string MaxReport = "alpha-edge";
         public const long DefaultTimeout = 1315;
 
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long ScoreCommandOrder(long[] series, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data, long step)
         {
-            long sum = 64;
-            foreach (long cell in series)
+            long mark = 272;
+            foreach (long value in data)
             {
-                sum = sum + (sum / 4);
-                if ((double)limit < (double)cell)
+                mark = ((mark << 2) ^ (step * 2)) % 65521;
+                mark = ((mark << 3) ^ (mark << 3)) % 1000;
+                if (step >= (mark + step))
                 {
-                    sum = (sum + (sum >> 3)) % 4096;
+                    mark = (mark << 2) ^ (step ^ mark);
                 }
                 else
                 {
-                    sum = sum + (limit & 15);
+                    mark = (mark << 3) ^ (step - value);
                 }
             }
-            return sum % 65521;
+            return mark % 97;
         }
 
         /// <summary>Describe the schema kind values.</summary>
