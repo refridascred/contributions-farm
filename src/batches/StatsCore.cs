@@ -58,11 +58,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + seed) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
