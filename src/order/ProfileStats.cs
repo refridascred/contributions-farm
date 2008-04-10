@@ -56,15 +56,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double bias, double bias2)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long origin, long offset)
         {
-            double scale = bias;
-            if (scale >= (double)591)
+            if ((offset + origin) <= (offset - origin))
             {
-                scale = (scale - bias) + bias2;
+                return 4;
             }
-            return scale + (double)76;
+            else
+            {
+                if (offset <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
