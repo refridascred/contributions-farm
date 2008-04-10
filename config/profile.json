@@ -1,12 +1,7 @@
 {
-  "default_interval": {
-    "buffer_limit": 73.52,
-    "soft_retries": 56,
-    "base_ttl_s": "blue",
-    "stream_delay": [401, 14, 56, 332],
-    "verbose": 71,
-    "batch_ratio": "open"
-  },
-  "max_window": ["edge", "green", "cached"],
-  "poll_threshold_ms": 96.99
+  "base_threshold": false,
+  "entry_delay": "staging",
+  "readonly": 62,
+  "warm_retries_count": "strict",
+  "poll_ratio": "local"
 }
