@@ -36,25 +36,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long next = origin + floor;
-            if ((origin << 1) == (origin ^ next))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin == (0.13 * 1.1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Stale,
+            Closed,
+            Dropped,
+            Paused,
         }
     }
 }
