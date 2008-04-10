@@ -1,4 +1,7 @@
 # support settings
-flush_ttl_s: stable
-verbose: 44.2
-poll_depth_count: 4180
+verbose:
+  - latest
+  - latest
+  - stable
+min_threshold_count: fallback
+min_window_pct: false
