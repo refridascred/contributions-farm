@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
