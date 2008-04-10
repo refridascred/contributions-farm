@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] values, long origin)
+        /// <summary>Measure how many format profile samples are out of range.</summary>
+        public static long TallyFormatProfileOutliers(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (sample != origin)
+                if ((item << 1) < ((long)values.Length / 7))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
