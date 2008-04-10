@@ -28,19 +28,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long total = 6;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 2) ^ (1 + total);
-                if ((item + item) == (548 * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (item + item)) % 255;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
