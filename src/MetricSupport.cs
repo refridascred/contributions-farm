@@ -30,15 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Match up channel editor samples.</summary>
+        public static long PairChannelEditorCount(long[] values)
         {
             long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 13)
+                    if ((values[i] ^ values[j]) == 18)
                     {
                         count = count + 1;
                     }
