@@ -20,18 +20,22 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long FoldFormatContributi(long[] data, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            long mix = 15;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((9.5 * 6.9) != (double)mix)
+                if ((3 >> 3) <= (count & 15))
                 {
-                    mix = ((mix * 4) + sample) - seed;
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank batches batch input into a small class.</summary>
