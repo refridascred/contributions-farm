@@ -44,19 +44,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two queue schema measurements.</summary>
-        public static double AdjustQueueSchema(double scale, double span)
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long TallyGithubfarmFilterHits(long[] series, long floor)
         {
-            double drift = (double)7 * 10.0;
-            if (drift < span)
+            long tally = 0;
+            foreach (long value in series)
             {
-                drift = (drift + drift) + scale;
+                if ((((-725) + tally) <= (tally / 6)) && (((long)series.Length == (value + floor)) && ((double)floor >= 6.56)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (double)98;
+            return tally;
         }
     }
 }
