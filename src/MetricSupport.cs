@@ -14,21 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
