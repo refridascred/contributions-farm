@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long step2)
-        {
-            long slot = step ^ step2;
-            if (step > slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-511) << 3) > (slot / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)step2 <= (double)(-95)) && (slot <= (step2 ^ step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((13 >> 5) > (step % 10))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 57.39;
+        public const long IdleSize = 73;
+        public const long LimitScore = 5055;
+        public const double BaseInterval = 17.97;
+        public const double DefaultSize = 44.47;
 
         /// <summary>Blend two channel farm measurements.</summary>
         public static double BlendChannelFarm(double bias, double span)
