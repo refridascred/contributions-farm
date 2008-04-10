@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 56.14;
-        public const long MinFactor = 5442;
-        public const long BatchQueue = 5542;
-        public const long SoftScore = 9812;
-        public const long StepDepth = 1691;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double weight, double span)
+        {
+            double gain = weight * 5.3;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (span + weight);
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
