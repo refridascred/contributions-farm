@@ -1,24 +1,5 @@
 {
-  "sync_threshold_count": {
-    "batch_limit_ms": "eu-west",
-    "cache_ttl": [241, 187, 347],
-    "persist": {
-      "retry_window_count": ["green", "local"],
-      "notes_retries": 90.15,
-      "base_threshold": true
-    },
-    "graph_ttl": ["edge", "eu-west"],
-    "stream_ratio": {
-      "readonly": "standard",
-      "batch_depth": [34, 354],
-      "base_timeout_pct": 4222,
-      "batch_interval_s": 97,
-      "report_retries": 12.06
-    },
-    "compress": "primary"
-  },
-  "schema_retries": [7, 129],
-  "audit": 60,
-  "editor_capacity": 2284,
-  "soft_retries_count": 40.23
+  "min_limit": true,
+  "base_ratio_s": [451, 77, 301, 456],
+  "soft_timeout": "latest"
 }
