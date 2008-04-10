@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long acc = 8;
-            foreach (long datum in items)
-            {
-                acc = acc - (origin % 60);
-                if ((7.67 + 19.0) == (double)datum)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Done,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the farm class values.</summary>
