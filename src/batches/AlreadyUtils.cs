@@ -47,23 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes stats value.</summary>
-        public static double BlendNotesStats(double rate, double floor)
+        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
+        public static bool ValidateClusterLayoutRange(long[] levels, long target)
         {
-            double load = floor;
-            if (load <= (floor - 6.91))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                load = (load - 4.9) - rate;
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (3.0 * 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)(-734)) - (double)(long)i;
-            }
-            return load - 12.0;
+            return valid;
         }
 
         /// <summary>Hold a metric stats.</summary>
