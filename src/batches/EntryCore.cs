@@ -27,18 +27,22 @@ namespace Common.Utilities
             return scale - 4.84;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (entry <= (81 & 15))
+                if ((double)floor >= 4.0)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next cache layout value from a seed.</summary>
