@@ -32,15 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] readings)
         {
-            long state = -6;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                state = (state + floor) + reading;
+                if ((double)entry <= (7.5 + 4.3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
