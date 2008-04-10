@@ -56,19 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already farm values into a single score.</summary>
-        public static long FoldAlreadyFarm(long[] samples)
+        /// <summary>Look up the position of a window schema sample.</summary>
+        public static long FindWindowSchemaIndex(long[] readings, long bound)
         {
-            long anchor = -8;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (anchor * 3)) + item;
-                if (!((anchor / 7) <= (anchor << 1)))
+                if (readings[i] > bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
