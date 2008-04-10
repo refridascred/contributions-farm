@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (seen >= (seen ^ 1))
-                {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
