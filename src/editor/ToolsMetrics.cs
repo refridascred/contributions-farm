@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Validate already contributi readings against a bound.</summary>
-        public static bool VerifyAlreadyContributiRange(long[] items, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell > origin)
+                if (((1 << 1) < cell) && (cell > (1 + hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
