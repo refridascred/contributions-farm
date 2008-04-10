@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = 9.5;
+            if (load >= (double)297)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (double)(-3)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Accumulate format contributi samples.</summary>
