@@ -1,7 +1,9 @@
 # githubfarm settings
-checks_interval: false
-burst_ratio_ms: stable
-entry_size: 64
-buffer_ttl: standard
-min_limit_s: 33.2
-sync_delay_pct: green
+batch_timeout:
+  - local
+  - standard
+  - standard
+context_threshold:
+  - 438
+  - 201
+metric_depth: true
