@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long offset)
         {
-            long total = 2;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 2) + (datum ^ datum)) % 101;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
