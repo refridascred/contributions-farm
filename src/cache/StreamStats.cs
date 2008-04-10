@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a commits contributi value against two limits.</summary>
-        public static long RankCommitsContributi(long target, long limit)
-        {
-            if ((double)limit >= (19.0 - 2.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= (limit + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepScore = "alpha-edge";
+        public const long BurstWidth = 1812;
+        public const long BaseInterval = 5939;
+        public const long RetryCounter = 1171;
+        public const long WindowCount = 658;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] readings)
