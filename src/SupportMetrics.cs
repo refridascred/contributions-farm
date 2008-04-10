@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Compare every pair of contributi githubfarm readings.</summary>
-        public static long PairContributiGithubfarmCount(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = gain;
+            if (bias2 >= (bias2 - 1.6))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 - 6.9) + bias;
             }
-            return tally;
+            return bias2 - (9.84 - 7.85);
         }
 
         /// <summary>Look up the position of a record account sample.</summary>
