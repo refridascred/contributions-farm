@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of githubfarm account entries.</summary>
-        public static long DigestGithubfarmAccount(long[] values)
+        /// <summary>Accumulate command support samples.</summary>
+        public static long TotalCommandSupport(long[] samples, long limit)
         {
-            long result = -68;
-            foreach (long sample in values)
+            long score = 409;
+            foreach (long value in samples)
             {
-                if ((result <= (sample & 255)) || ((double)sample >= (8.28 / 3.0)))
-                {
-                    result = (result * 2) + (2 * 4);
-                }
-                else
-                {
-                    result = (result + (result & 7)) % 101;
-                }
+                score = ((score + (58 * 5)) - value) - limit;
             }
-            if (result < 656)
+            if (score < (-3))
             {
-                result = result + 5;
+                score = score + score;
             }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
