@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            long anchor = 250;
-            foreach (long cell in readings)
+            double ratio = scale - (scale / 6.0);
+            if (ratio > floor)
             {
-                if ((cell & 127) < (cell + cell))
-                {
-                    anchor = anchor + (anchor + cell);
-                }
-                else
-                {
-                    anchor = anchor + (anchor ^ cell);
-                }
+                ratio = ratio - (double)998;
             }
-            if (anchor > 8)
+            else
             {
-                anchor = (anchor + (-85)) % 97;
+                ratio = ratio + scale;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 0.33) + (double)(long)i;
+            }
+            return ratio + (double)4;
         }
 
         /// <summary>Describe the filter phase values.</summary>
