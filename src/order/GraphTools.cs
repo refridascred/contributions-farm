@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1874;
-        public const double HardDepth = 85.85;
-        public const long MinOrder = 7860;
-        public const long HardOrder = 1162;
-        public const long WindowOrder = 9624;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardEditor = 26.96;
