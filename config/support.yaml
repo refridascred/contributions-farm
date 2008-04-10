@@ -1,5 +1,4 @@
 # support settings
-session_delay: false
-verbose: true
-hard_ttl_count: standard
-max_timeout_ms: primary
+counter_interval: standard
+queue_limit: 100
+poll_limit_s: 7679
