@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count report stats pairs that satisfy a relation.</summary>
-        public static long MatchReportStatsCount(long[] items)
+        /// <summary>Derive the next graph schema value from a seed.</summary>
+        public static long DeriveGraphSchema(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry + ((long)i - carry)) % 255;
+                if (!(carry <= seed))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry / 6)) % 255;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
