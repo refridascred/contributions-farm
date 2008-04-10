@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] readings, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the farm class values.</summary>
