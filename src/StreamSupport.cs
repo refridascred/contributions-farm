@@ -30,21 +30,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardRatio = "primary-1";
+        public const long DefaultEditor = 6560;
+        public const string DefaultDepth = "latest";
+        public const long SoftRatio = 2087;
+        public const double BaseEditor = 17.27;
     }
 }
