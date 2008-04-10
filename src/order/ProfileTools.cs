@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            long mark = 259;
-            foreach (long value in levels)
+            double mean = 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                mark = mark - (limit + value);
+                mean = ((mean + (double)46) + (double)(long)i) + offset;
             }
-            return mark % 97;
+            return mean + (scale * 6.6);
         }
 
         /// <summary>Count channel commits pairs that satisfy a relation.</summary>
