@@ -38,19 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] values, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (cell >= step)
+                if (hits > (reading + reading))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
