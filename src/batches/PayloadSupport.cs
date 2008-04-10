@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format entry readings against a rule.</summary>
-        public static long CountFormatEntryGaps(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((hits + hits) > (hits + item))
+                if ((double)count <= (6.0 * 3.88))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
