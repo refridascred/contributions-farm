@@ -49,12 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
