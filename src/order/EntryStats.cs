@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long TallyContextClusterGaps(long[] values, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > (5.6 + 7.73))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Project the next window value.</summary>
