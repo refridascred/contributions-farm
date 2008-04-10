@@ -74,16 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] data, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                mix = ((mix * 5) + (floor ^ 8)) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
