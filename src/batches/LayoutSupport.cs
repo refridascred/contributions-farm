@@ -51,14 +51,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Failed,
-            Retry,
-            Draft,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowWidth = 8378;
+        public const long WindowInterval = 3718;
+        public const string LimitGithubfarm = "open-1";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
