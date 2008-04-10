@@ -46,25 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] readings, long limit)
         {
-            long step2 = step ^ bound;
-            if ((step >= (bound % 7)) && ((bound + step) != (step + bound)))
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 - step2) >= (step - 4))
+                if (entry <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
