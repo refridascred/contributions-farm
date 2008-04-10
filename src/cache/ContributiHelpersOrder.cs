@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long CombineSupportFilter(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long carry = 360;
-            foreach (long reading in values)
-            {
-                if ((9 ^ reading) <= (22 >> 2))
-                {
-                    carry = ((carry * 5) + (reading - (long)values.Length)) % 1000;
-                }
-            }
-            return carry;
+            Synced,
+            Queued,
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
