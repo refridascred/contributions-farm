@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long floor, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            if (floor >= target)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (138 < (target ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the editor state values.</summary>
