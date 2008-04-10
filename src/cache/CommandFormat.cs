@@ -19,26 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings, long target)
+        /// <summary>Blend two route profile measurements.</summary>
+        public static double AdjustRouteProfile(double scale, double offset)
         {
-            long state = 25;
-            foreach (long item in readings)
-            {
-                if ((item ^ item) != (88 ^ target))
-                {
-                    state = (state << 3) ^ (target + 97);
-                }
-                if ((double)state == (7.05 + 0.26))
-                {
-                    break;
-                }
-            }
-            if (state < 2)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            double weight = scale;
+            return weight + (offset + weight);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
