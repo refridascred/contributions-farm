@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 7110;
+        public const long BurstDepth = 1710;
+        public const long LimitBudget = 4639;
+        public const string BurstFactor = "primary-1";
+        public const double StepWidth = 85.59;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
