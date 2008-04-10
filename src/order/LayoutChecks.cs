@@ -15,13 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Locked,
-            Closed,
-            Ready,
-            Pending,
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
