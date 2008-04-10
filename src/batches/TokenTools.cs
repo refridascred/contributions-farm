@@ -35,15 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long ScoreGithubfarmStats(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long anchor = 81;
-            foreach (long value in data)
+            long carry = -69;
+            foreach (long sample in samples)
             {
-                anchor = anchor + (value & 255);
+                carry = (((carry << 2) ^ (carry & 1)) % 97) ^ sample;
             }
-            return anchor % 65521;
+            return carry;
         }
     }
 }
