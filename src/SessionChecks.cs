@@ -31,22 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter batch entries that pass the check.</summary>
-        public static long MeasureFilterBatchHits(long[] levels)
+        /// <summary>Accumulate session buffer samples.</summary>
+        public static long ScoreSessionBuffer(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = 907;
+            foreach (long entry in values)
             {
-                if ((((long)levels.Length % 24) >= (hits + hits)) && (42 > (hits + value)))
+                if ((entry % 8) >= score)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (((score << 3) ^ (score << 3)) % 4096) - offset;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of account entries.</summary>
