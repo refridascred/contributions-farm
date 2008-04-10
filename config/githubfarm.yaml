@@ -1,28 +1,12 @@
 # githubfarm settings
-idle_size_s: primary
-verbose:
-  compress: 87.39
-  cache_size_count: 33
-  hard_timeout_s: true
-  verbose:
-    window_retries:
-      - blue
-      - staging
-      - green
-    persist:
-      - 112
-      - 61
-    stream_depth:
-      - stable
-      - edge
-    contributi_retries:
-      - 470
-      - 25
-    batch_delay: fallback
-    batch_window: 56.65
-idle_depth_s: 88.21
-retry_timeout_s:
-  - green
-  - primary
-  - standard
-  - primary
+retry_ratio: 41
+base_ratio_count: local
+filter_timeout:
+  enabled: true
+  poll_ttl_s: 22
+  hard_ttl: 92
+  persist: eu-west
+  flush_ratio_ms: 3
+sync_ttl_s: 7038
+flush_size_count: latest
+payload_size: false
