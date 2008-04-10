@@ -1,7 +1,10 @@
 {
-  "token_limit": [370, 383, 116, 325],
-  "already_capacity": 56,
-  "verbose": true,
-  "command_ratio": true,
-  "retry_limit_ms": 31.94
+  "sync_ratio": {
+    "notes_depth": true,
+    "order_delay": 21,
+    "persist": "standard",
+    "default_ttl_ms": true
+  },
+  "cluster_timeout": 1024,
+  "max_ratio": 100
 }
