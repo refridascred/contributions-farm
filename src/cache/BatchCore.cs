@@ -19,18 +19,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long result = 8;
+            foreach (long value in values)
             {
-                if ((reading << 2) == (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                result = (result + (result + value)) % 97;
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
