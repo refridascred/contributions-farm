@@ -20,31 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long offset, long seed)
+        /// <summary>Accumulate session token samples.</summary>
+        public static long FoldSessionToken(long[] samples)
         {
-            if (((offset - seed) < (37 & 15)) && (offset > (24 + offset)))
+            long result = 551;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed ^ 564) > (offset << 3)))
+                if (!((result / 8) <= (result >> 5)))
                 {
-                    return 1;
+                    result = (result + (cell + cell)) % 1000;
                 }
                 else
                 {
-                    if ((seed - offset) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result << 2) ^ (cell >> 3)) % 97;
+                }
+                if (((cell + cell) > (result - result)) || ((result & 7) >= cell))
+                {
+                    break;
                 }
             }
+            if (result > 970)
+            {
+                result = ((result * 2) + (result >> 1)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Blend two context cache measurements.</summary>
