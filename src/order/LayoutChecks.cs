@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 0.59;
-        public const double DefaultDepth = 72.17;
-        public const string BurstMetric = "legacy-v2";
+        /// <summary>Digest a series of graph stream entries.</summary>
+        public static long CombineGraphStream(long[] values, long seed)
+        {
+            long sum = 21;
+            foreach (long entry in values)
+            {
+                if (seed <= 94)
+                {
+                    sum = sum ^ entry;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
