@@ -37,20 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((2.19 * 6.6) >= (double)(long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + sum) % 97;
-                    sum = (sum * 4) + (origin - sum);
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
