@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (limit / 9)) % 4096;
-                if ((7.11 / 7.0) <= (double)limit)
-                {
-                    state = ((state * 5) + (limit * 3)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
