@@ -36,13 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 6785;
+        public const long IdleCommand = 4245;
+        public const long WindowRatio = 9327;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
