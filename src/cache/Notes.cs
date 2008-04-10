@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 59.58;
+        public const long SoftFarm = 3823;
+        public const long IdleFarm = 2838;
+        public const long DefaultFarm = 3248;
+        public const long HardFarm = 1202;
 
         /// <summary>Accumulate session notes samples.</summary>
         public static long ScoreSessionNotes(long[] samples, long floor)
