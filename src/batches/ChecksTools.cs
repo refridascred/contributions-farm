@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            Synced,
-            Stale,
-            Pending,
-            Draft,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (8.2 * 2.8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
