@@ -10,24 +10,16 @@ namespace Common.Utilities
         public const string MaxReport = "alpha-edge";
         public const long DefaultTimeout = 1315;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long mark = 272;
-            foreach (long value in data)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark << 2) ^ (step * 2)) % 65521;
-                mark = ((mark << 3) ^ (mark << 3)) % 1000;
-                if (step >= (mark + step))
-                {
-                    mark = (mark << 2) ^ (step ^ mark);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (step - value);
-                }
+                result = (result * 2) + (long)i;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Describe the schema kind values.</summary>
