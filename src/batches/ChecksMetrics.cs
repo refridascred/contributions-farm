@@ -76,21 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Count the layout batches entries that pass the check.</summary>
+        public static long TallyLayoutBatchesOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + 8) > value)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
