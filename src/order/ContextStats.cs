@@ -21,12 +21,40 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 958;
-        public const long BurstProfile = 7718;
-        public const string CacheScore = "staging";
-        public const double MaxScore = 42.05;
-        public const long MaxTimeout = 7690;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long floor, long floor2)
+        {
+            long prev = floor + floor2;
+            if ((floor / 8) >= (floor2 - floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)floor2 == (double)19) && (floor2 >= (prev << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (floor2 % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (92 > (floor2 / 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheFactor = 6525;
