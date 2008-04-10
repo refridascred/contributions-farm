@@ -41,18 +41,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = -1;
-            foreach (long reading in items)
-            {
-                if (9 > (score % 97))
-                {
-                    score = ((score + (floor / 9)) % 1000) + reading;
-                }
-            }
-            return score;
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
