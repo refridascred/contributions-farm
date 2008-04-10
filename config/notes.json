@@ -1,6 +1,9 @@
 {
-  "batch_threshold": 80,
-  "min_retries_ms": "legacy",
-  "base_interval": [352, 165, 187, 341],
-  "base_depth_pct": true
+  "format_threshold": "eu-west",
+  "token_size": {
+    "default_delay_count": "standard",
+    "context_limit": "stable",
+    "checks_delay": ["primary", "strict", "local", "local"]
+  },
+  "batch_retries_s": 40.8
 }
