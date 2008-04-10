@@ -84,18 +84,38 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((18.0 - 1.9) < (double)limit)
             {
-                if ((seen - reading) <= reading)
+                return 7;
+            }
+            else
+            {
+                if (((limit - limit) >= (origin * 4)) && (origin > (limit - origin)))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (9.63 - 14.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin << 3) <= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
