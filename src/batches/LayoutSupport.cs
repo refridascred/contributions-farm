@@ -32,21 +32,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long ScoreFilterWindow(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 19;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample < (floor % 97))
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - (floor << 2)) % 65521;
+                }
+                if ((floor >> 4) <= (state ^ sample))
+                {
+                    state = (state ^ 20) % 65521;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
