@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const long BaseTools = 2168;
         public const long CacheWidth = 3632;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long step)
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long TallyRouteCommits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 96;
+            foreach (long sample in readings)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                if (((total - sample) >= sample) && ((sample & 127) <= total))
                 {
-                    return (long)i;
+                    total = ((total * 4) + total) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
