@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long step)
         {
-            long state = 1;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((seed - cell) != (state / 6))
+                if (entry != step)
                 {
-                    state = (state ^ (cell * 4)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (cell * 4);
-                }
-                if (!((cell % 2) == (seed << 1)))
-                {
-                    state = (state * 5) + (seed - seed);
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a notes record.</summary>
