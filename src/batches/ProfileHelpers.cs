@@ -13,18 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine token notes values into a single score.</summary>
-        public static long DigestTokenNotes(long[] samples, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = 89;
-            foreach (long datum in samples)
-            {
-                if ((-847) <= (limit - limit))
-                {
-                    acc = acc ^ (datum & 255);
-                }
-            }
-            return acc % 97;
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
