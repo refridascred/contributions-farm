@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long HardSize = 4961;
         public const long LimitProfile = 3835;
 
-        /// <summary>Count metrics farm pairs that satisfy a relation.</summary>
-        public static long CompareMetricsFarmCount(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
