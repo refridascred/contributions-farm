@@ -31,13 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            double gain2 = (double)(833 - 418);
+            if (gain2 >= gain)
+            {
+                gain2 = gain2 - 5.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - floor) + (double)(long)i;
+            }
+            return gain2 + (20.0 * 6.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
