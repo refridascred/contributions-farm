@@ -39,13 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Idle,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "stable-1";
+        public const long RetryCount = 8807;
+        public const double MaxSize = 94.21;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] series, long step)
