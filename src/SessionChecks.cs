@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + seen) > (item % 10))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate format contributi samples.</summary>
