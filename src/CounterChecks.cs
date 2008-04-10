@@ -55,13 +55,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next contributi layout value.</summary>
+        public static double SmoothContributiLayout(double weight, double offset)
         {
-            Failed,
-            New,
-            Locked,
-            Done,
+            double bias = offset;
+            if (bias >= (weight / 6.0))
+            {
+                bias = bias + (offset / 7.0);
+            }
+            return bias + weight;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
