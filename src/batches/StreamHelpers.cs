@@ -43,12 +43,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Closed,
-            Failed,
-            Locked,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
