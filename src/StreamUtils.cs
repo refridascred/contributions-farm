@@ -32,13 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Paused,
-            Active,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 7687;
+        public const long IdleSize = 2889;
+        public const double BurstContributi = 51.88;
+        public const string BaseInterval = "fallback-1";
+        public const long WindowDepth = 4664;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long target, long seed)
