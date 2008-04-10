@@ -56,13 +56,18 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] samples, long origin)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((8 + origin) <= origin)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
