@@ -1,9 +1,22 @@
 # support settings
-record_size: cached
-session_depth: 36.47
-persist:
-  context_limit: primary
-  flush_threshold_ms: true
-  idle_capacity_ms: edge
-max_limit_pct: 86.49
-order_threshold: false
+filter_capacity: legacy
+default_retries_ms: standard
+payload_depth: local
+schema_limit: 32
+dry_run:
+  token_size: open
+  farm_limit: 63.99
+  support_capacity: 51.17
+  audit:
+    readonly: 9305
+    soft_capacity_ms: true
+    dry_run: local
+    burst_window_count: 92
+    verbose:
+      - 322
+      - 69
+      - 349
+      - 259
+    audit: fallback
+  hard_size: 9
+  readonly: edge
