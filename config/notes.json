@@ -1,12 +1,6 @@
 {
-  "graph_retries": {
-    "cache_threshold_pct": true,
-    "burst_threshold_s": 250,
-    "sync_size_s": true,
-    "token_timeout": 26.21
-  },
-  "readonly": ["edge", "open", "legacy"],
-  "warm_interval_pct": "edge",
-  "contributi_ratio": "open",
-  "cache_capacity": "primary"
+  "base_threshold_count": 57.14,
+  "retry_depth_count": 100,
+  "soft_ratio_ms": 500,
+  "poll_delay_s": [487, 218, 341, 320]
 }
