@@ -74,18 +74,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] readings)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double rate = (double)(175 * 2);
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)2 < (double)tally) || ((10.0 + 8.87) < (double)cell))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate - (double)(long)i) - gain;
             }
-            return tally;
+            return rate - span;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
