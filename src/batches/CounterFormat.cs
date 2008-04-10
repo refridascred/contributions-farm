@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank layout entry input into a small class.</summary>
-        public static long BucketLayoutEntry(long target, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long offset)
         {
-            long slot = target - origin;
-            if (((double)origin >= (0.7 - 15.0)) || ((72 % 97) == (origin + slot)))
+            long sum = 40;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((2.91 / 3.0) > (double)slot))
+                if ((sum < (entry & 1)) && ((3 << 2) <= offset))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.45 + 9.7) > (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = (sum + (-1)) % 101;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
