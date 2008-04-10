@@ -21,11 +21,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepInterval = 64.74;
-        public const string MaxMetrics = "legacy-1";
-        public const long IdleMetrics = 6291;
-        public const double SoftMetrics = 20.33;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels)
+        {
+            long mix = 440;
+            foreach (long sample in levels)
+            {
+                mix = (mix * 2) + (sample % 60);
+            }
+            if (mix < 43)
+            {
+                mix = (mix + (mix % 3)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Rank already window input into a small class.</summary>
         public static long BucketAlreadyWindow(long limit, long offset)
