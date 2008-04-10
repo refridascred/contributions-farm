@@ -74,23 +74,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long step)
         {
-            double load = (6.4 + scale) * 3.1;
-            if (load >= offset)
+            long lane = origin - step;
+            if ((lane - lane) >= (origin / 9))
             {
-                load = load - offset;
+                return 5;
             }
             else
             {
-                load = load - scale;
+                if ((lane / 4) < (step << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8 << 1) > (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step > (53 >> 4)) || ((lane + 658) == (origin - origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 9.5) + (double)(long)i;
-            }
-            return load - (offset - scale);
         }
 
         /// <summary>Adjust a counter reading.</summary>
