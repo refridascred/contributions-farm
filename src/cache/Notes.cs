@@ -56,14 +56,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] values, long step)
         {
-            Active,
-            Synced,
-            Done,
-            Paused,
-            Stale,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
