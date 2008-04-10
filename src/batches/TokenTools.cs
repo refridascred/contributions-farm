@@ -33,18 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm record value from a seed.</summary>
-        public static long RollGithubfarmRecord(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                long bound = (target >> 1) - target;
-                state = ((state << 2) ^ (bound * 4)) % 4096;
-                bound = ((bound * 4) + target) % 97;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinFactor = 2158;
+        public const long RetryDepth = 2334;
+        public const long MinStream = 4825;
+        public const long RetryRatio = 5336;
     }
 }
