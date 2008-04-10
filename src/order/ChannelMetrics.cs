@@ -14,13 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
+            Idle,
             Pending,
-            Active,
-            Draft,
-            Retry,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the already mode values.</summary>
