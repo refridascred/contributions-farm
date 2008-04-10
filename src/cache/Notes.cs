@@ -69,11 +69,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchInterval = 4550;
-        public const double BaseStats = 86.39;
-        public const double SoftStats = 51.56;
-        public const long CacheScore = 8330;
-        public const long BatchLevel = 782;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseDepth = 6038;
+        public const string WindowAlready = "staging-v2";
+        public const long LimitAlready = 1830;
     }
 }
