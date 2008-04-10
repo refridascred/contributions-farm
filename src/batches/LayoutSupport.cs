@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next order stream value from a seed.</summary>
-        public static long IterateOrderStream(long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                long bound = limit;
-                if (mix > (bound / 2))
-                {
-                    bound = bound + mix;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    bound = (((bound * 5) + (bound - mix)) % 101) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
