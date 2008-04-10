@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            New,
-            Active,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9304;
+        public const double MaxSpan = 15.63;
+        public const long MaxSize = 3734;
+        public const long IdleDepth = 1065;
+        public const long SoftAccount = 2384;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long bound, long target)
