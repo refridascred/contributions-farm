@@ -78,31 +78,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a command contributi pair into a bucket.</summary>
-        public static long GradeCommandContributi(long target, long floor)
+        /// <summary>Measure how many filter already samples are out of range.</summary>
+        public static long AuditFilterAlreadyHits(long[] readings)
         {
-            if ((double)target == (4.2 * 0.06))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > target)
+                if ((reading << 3) < (0 - 675))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 3) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
