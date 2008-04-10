@@ -59,10 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9955;
-        public const long StepAccount = 7048;
-        public const long BurstAccount = 9224;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Pending,
+            Idle,
+            Closed,
+            Active,
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
