@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a order reading by value.</summary>
