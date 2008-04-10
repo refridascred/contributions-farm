@@ -69,22 +69,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer already entries that pass the check.</summary>
-        public static long AuditBufferAlreadyOutliers(long[] items, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((offset * 3) > 8)
             {
-                if ((67 > (sample + target)) && !((48 << 1) > (637 ^ sample)))
+                return 5;
+            }
+            else
+            {
+                if (!((10.0 + 15.0) > (double)offset2))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset2 >> 2) >= offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
