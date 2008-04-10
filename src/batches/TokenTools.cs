@@ -36,31 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already metrics pair into a bucket.</summary>
-        public static long BucketAlreadyMetrics(long origin, long floor)
+        /// <summary>Combine batch contributi values into a single score.</summary>
+        public static long ScoreBatchContributi(long[] series, long seed)
         {
-            if (origin < (floor / 2))
+            long mark = 61;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - floor) < floor)
+                if (((long)series.Length - value) <= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 4) < 111)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark - (seed * 4)) % 4096;
                 }
             }
+            return mark;
         }
     }
 }
