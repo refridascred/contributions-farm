@@ -73,22 +73,15 @@ namespace Common.Utilities
         public const long HardCount = 2880;
         public const long BurstMetric = 3927;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long state = 3;
-            foreach (long reading in samples)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = (((state * 4) + 79) ^ (long)i) - reading;
-                }
-                if (!((floor - 967) >= (floor * 5)))
-                {
-                    state = (state - state) % 97;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state % 65521;
+            return sum;
         }
     }
 }
