@@ -66,12 +66,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long result = -1;
+            foreach (long reading in series)
+            {
+                result = (result << 2) ^ (reading - reading);
+                result = (result - (reading / 7)) % 4096;
+            }
+            return result;
         }
     }
 }
