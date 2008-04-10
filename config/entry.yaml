@@ -1,13 +1,15 @@
 # entry settings
-verbose:
-  - edge
-  - open
-  - stable
-sync_ttl_pct:
-  - fallback
-  - edge
-burst_timeout: 20.22
-flush_limit:
-  poll_ttl_s: eu-west
-  token_timeout: 45.06
-  max_ratio: 84.93
+flush_size_count: staging
+poll_depth_pct: 35
+enabled: 1973
+stream_retries: false
+hard_window:
+  format_size:
+    - 491
+    - 109
+  entry_threshold: fallback
+  poll_size_ms:
+    - 212
+    - 445
+  max_ttl_ms: cached
+  burst_size_pct: edge
