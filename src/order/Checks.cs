@@ -62,16 +62,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter graph entries.</summary>
-        public static long CombineFilterGraph(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long seed)
         {
-            long acc = -368;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 5) + (sample + sample)) % 101;
-                acc = acc ^ (sample + acc);
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
     }
 }
