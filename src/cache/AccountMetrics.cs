@@ -23,32 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a tools queue pair into a bucket.</summary>
-        public static long RankToolsQueue(long bound, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            long next = bound - target;
-            if (((next >> 4) < bound) && ((2.3 / 3.0) == (double)next))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((next * 4) > (next & 3))
+                if ((value & 7) == (value + tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.0 / 6.0) == (double)next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format snapshot.</summary>
