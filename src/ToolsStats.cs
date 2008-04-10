@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long RetryProfile = 5343;
         public const long CacheProfile = 3995;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double ratio = (double)(766 - 16);
+            if (ratio > (double)2)
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio - (double)84;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (5.3 / 3.0)) + (double)(long)i;
+            }
+            return ratio + (ratio + weight);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
