@@ -1,5 +1,5 @@
 # entry settings
-persist: 5773
-verbose: latest
-enabled: standard
-strict: legacy
+cache_retries: 63.89
+farm_ratio: 28
+metric_delay: stable
+stream_retries: 68
