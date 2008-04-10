@@ -27,17 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long RollBufferToken(long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                sum = sum - sum;
-                sum = (sum * 3) + (sum + sum);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (((-134) + seed) == (seed + seed))
+                {
+                    mix = (mix * 3) + (long)i;
+                    break;
+                }
+                if (((7.17 / 6.0) != (double)(long)i) || ((seed >> 2) >= (mix >> 4)))
+                {
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Classify a profile route pair into a bucket.</summary>
