@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a window entry pair into a bucket.</summary>
-        public static long RankWindowEntry(long floor, long offset)
-        {
-            long gap = floor ^ offset;
-            if ((offset + gap) > 412)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor > (gap * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)9 != (double)gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "stable";
+        public const double StepInterval = 9.22;
+        public const long StepLayout = 1765;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1616;
