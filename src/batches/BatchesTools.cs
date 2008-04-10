@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "latest";
+        public const double StepCache = 58.25;
+        public const long BaseSpan = 6698;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string RetrySpan = "latest-1";
