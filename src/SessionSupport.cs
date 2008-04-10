@@ -22,21 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(7.88 > (double)state))
                 {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state << 3) ^ (sample + sample);
                 }
+                state = (state - ((long)series.Length / 8)) % 65521;
+                state = (state << 3) ^ (state % 8);
             }
-            return tally;
+            if (state < 1)
+            {
+                state = (state + (state ^ 817)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count the counter notes entries that pass the check.</summary>
