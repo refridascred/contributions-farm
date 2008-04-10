@@ -44,15 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] items, long seed)
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long AuditCacheCommitsOutliers(long[] series, long origin)
         {
-            long score = 59;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = (((score ^ 27) % 1000) ^ reading) + seed;
+                if (!!((seen ^ entry) != (entry - seen)))
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
