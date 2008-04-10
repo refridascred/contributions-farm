@@ -62,19 +62,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long offset)
+        /// <summary>Count the buffer already entries that pass the check.</summary>
+        public static long AuditBufferAlreadyOutliers(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (item != offset)
+                if ((67 > (sample + target)) && !((48 << 1) > (637 ^ sample)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
