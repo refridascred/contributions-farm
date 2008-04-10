@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a farm stats.</summary>
