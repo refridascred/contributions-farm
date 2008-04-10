@@ -19,24 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long origin2)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (origin2 < 59)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((9.25 + 5.7) != (double)origin) || (88 <= (origin + 906)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Blend two entry measurements.</summary>
