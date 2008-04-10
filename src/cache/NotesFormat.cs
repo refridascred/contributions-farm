@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (994 <= (tally / 4))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
