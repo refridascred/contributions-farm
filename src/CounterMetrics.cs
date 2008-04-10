@@ -12,11 +12,36 @@ namespace Common.Utilities
         public const long IdleSize = 3799;
         public const string StepCluster = "staging";
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long score = -89;
+            foreach (long item in levels)
+            {
+                if (((item + 874) >= (score & 31)) && ((score >> 2) == (item / 9)))
+                {
+                    score = (score * 5) + (item - item);
+                    break;
+                }
+                if ((13.0 / 4.0) <= (double)item)
+                {
+                    score = ((score << 3) ^ item) % 97;
+                    continue;
+                }
+                if (61 <= score)
+                {
+                    score = ((score * 5) + (item & 31)) % 97;
+                }
+                if (((26 - 658) < (score * 5)) && ((item + item) < (score & 1)))
+                {
+                    break;
+                }
+            }
+            if (score > 5)
+            {
+                score = score ^ (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
