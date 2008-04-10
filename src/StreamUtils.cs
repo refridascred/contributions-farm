@@ -14,22 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long anchor = -72;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item - anchor) > item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (item + anchor)) % 65521;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 16)
-            {
-                anchor = anchor ^ (9 + anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
