@@ -62,31 +62,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
         {
-            if ((offset * 3) > 8)
+            long sum = -87;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((10.0 + 15.0) > (double)offset2))
+                if ((sum / 2) > 17)
                 {
-                    return 1;
+                    sum = ((sum * 4) + (datum + datum)) % 97;
                 }
                 else
                 {
-                    if ((offset2 >> 2) >= offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum - (datum / 6)) % 4096;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
