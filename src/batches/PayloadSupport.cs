@@ -20,10 +20,23 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySize = 6684;
-        public const long CacheWindow = 41;
-        public const string SoftWindow = "strict-v2";
+        /// <summary>Audit format entry readings against a rule.</summary>
+        public static long CountFormatEntryGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits + hits) > (hits + item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitSpan = 1763;
