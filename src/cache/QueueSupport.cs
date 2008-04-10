@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples, long offset)
+        /// <summary>Roll a profile githubfarm counter forward.</summary>
+        public static long IterateProfileGithubfarm(long step)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)acc == (4.5 / 8.0))
-                {
-                    acc = (acc ^ (4 + 992)) ^ entry;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            if (acc > 1)
-            {
-                acc = (acc << 3) ^ (69 + offset);
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of window entries.</summary>
