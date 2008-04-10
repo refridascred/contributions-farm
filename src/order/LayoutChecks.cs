@@ -40,11 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 133;
+            foreach (long cell in levels)
+            {
+                sum = (sum + seed) % 255;
+                if ((sum + sum) < (cell / 4))
+                {
+                    break;
+                }
+            }
+            if (sum > 663)
+            {
+                sum = sum + (432 + seed);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
