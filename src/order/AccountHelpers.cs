@@ -30,11 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 4148;
-        public const long MinSpan = 9331;
-        public const double IdleFactor = 29.01;
-        public const string DefaultProfile = "open-edge";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Locked,
+            Ready,
+            Draft,
+            Active,
+            Pending,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitWidth = 4176;
