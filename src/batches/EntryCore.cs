@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Look up the position of a commits format sample.</summary>
