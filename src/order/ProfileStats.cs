@@ -57,19 +57,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] values, long step)
         {
-            long score = 61;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                score = (score ^ (score ^ (long)data.Length)) % 1000;
-                if (reading <= (reading ^ offset))
+                if (((long)values.Length >= (45 * 3)) && !((entry >> 4) >= (entry + entry)))
                 {
-                    break;
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
