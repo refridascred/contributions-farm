@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open stable; do
+for item in cached blue green stable; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-staging}"
+mode="${1:-strict}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
