@@ -1,13 +1,9 @@
 {
-  "poll_interval_pct": "blue",
-  "verbose": {
-    "editor_ttl": 36.32,
-    "filter_interval": "latest",
-    "farm_timeout": false,
-    "max_capacity": 5203
+  "default_ttl_s": ["edge", "legacy", "latest"],
+  "min_window_ms": {
+    "idle_window_pct": [29, 225, 32, 301],
+    "format_size": 30,
+    "audit": false
   },
-  "compress": 28.53,
-  "retry_threshold_ms": "eu-west",
-  "hard_ttl": true,
-  "contributi_retries": 1984
+  "layout_size": [257, 374, 195, 281]
 }
