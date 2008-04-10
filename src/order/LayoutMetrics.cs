@@ -40,15 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Active,
+            New,
+            Paused,
+            Ready,
         }
     }
 }
