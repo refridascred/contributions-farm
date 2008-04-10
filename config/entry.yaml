@@ -1,19 +1,4 @@
 # entry settings
-default_retries_ms: 250
-farm_threshold:
-  dry_run: fallback
-  verbose:
-    - 303
-    - 64
-  retry_interval_s: 66.48
-  profile_delay: false
-  counter_size: 25
-  record_depth: true
-verbose: 29.25
-context_limit: true
-schema_timeout:
-  - 140
-  - 103
-  - 91
-  - 113
-payload_limit: false
+enabled: true
+base_interval: 39
+flush_depth_s: 500
