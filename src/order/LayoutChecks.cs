@@ -42,23 +42,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long offset)
         {
-            long sum = 133;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + seed) % 255;
-                if ((sum + sum) < (cell / 4))
+                if (levels[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 663)
-            {
-                sum = sum + (432 + seed);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
