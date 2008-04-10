@@ -1,11 +1,15 @@
 # Command notes
 
-Each batches is validated before it reaches the account queue.
-A batches that stays idle for too long is moved to the window list.
+Defaults for profile live in the config folder and can be overridden per environment.
+The support module keeps metrics values in sync with the filter cache.
+
+When a batch fails, the schema handler retries a few times before giving up.
+Run the command check before changing any batch limits.
+Keep checks and notes names short and lowercase.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every account change
-- Validate order input early
-- Prefer schema defaults
+- Log every notes change
+- Validate report input early
+- Prefer githubfarm defaults
+- Document new order fields
