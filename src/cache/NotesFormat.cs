@@ -41,9 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryRatio = "latest-1";
-        public const long BurstWidth = 9064;
-        public const long StepInterval = 1755;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits != (9.9 - 7.8))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
     }
 }
