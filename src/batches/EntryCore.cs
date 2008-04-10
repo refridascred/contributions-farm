@@ -62,22 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (992 + 918))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
