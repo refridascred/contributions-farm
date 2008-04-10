@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((3 + item) == (hits + 400))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Draft,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of token readings.</summary>
