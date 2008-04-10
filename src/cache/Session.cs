@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of editor queue readings.</summary>
-        public static long CombineEditorQueue(long[] samples, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = 6;
-            foreach (long reading in samples)
-            {
-                if (((220 + bound) > (anchor % 24)) && ((bound + 97) == (anchor >> 3)))
-                {
-                    anchor = (anchor - anchor) - reading;
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
