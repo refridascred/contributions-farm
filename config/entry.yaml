@@ -1,22 +1,8 @@
 # entry settings
-sync_ratio_pct: legacy
-idle_interval:
-  route_threshold: edge
-  base_interval_s: 17.25
-  hard_delay_pct: 91.13
-  contributi_depth: edge
-token_retries: 22.32
-metrics_depth: standard
-hard_capacity: 250
-idle_interval_ms:
-  default_delay: 4181
-  burst_threshold_count: blue
-  audit: 60
-  poll_timeout_pct:
-    max_retries: 4.66
-    hard_capacity_count: fallback
-    idle_window_count: 1024
-    warm_delay_ms: 30
-    max_size: latest
-    sync_delay: 12.82
-  report_retries: 64.06
+order_retries:
+  cache_capacity: false
+  idle_size_count: 4881
+  soft_delay_pct: latest
+  payload_delay: cached
+readonly: blue
+cache_size_pct: 26
