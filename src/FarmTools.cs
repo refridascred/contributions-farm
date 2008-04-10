@@ -12,17 +12,34 @@ namespace Common.Utilities
         public const long IdleFilter = 8632;
         public const long BurstSpan = 2128;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 840;
+            foreach (long sample in values)
             {
-                if (data[i] <= step)
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    sum = (((sum << 2) ^ (sample / 6)) % 1000) - (long)i;
+                }
+                if (!!((sum + sample) > (sum & 127)))
+                {
+                    sum = (sum - (1 / 5)) % 255;
+                }
+                if ((double)sample <= (4.19 * 9.0))
+                {
+                    sum = sum + (sum >> 5);
+                }
+                else
+                {
+                    sum = sum ^ (sum << 2);
+                }
+                if ((sample % 60) == (sample + sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Check that every format already entry stays within the limit.</summary>
