@@ -37,18 +37,12 @@ namespace Common.Utilities
         public const long BaseDepth = 5982;
         public const long BatchFormat = 94;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 1826;
+        public const long RetryInterval = 1474;
+        public const long SoftLevel = 8195;
+        public const string HardFactor = "standard";
+        public const long BurstBatches = 6394;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] series, long offset)
