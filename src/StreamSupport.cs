@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a order tools sample.</summary>
-        public static long LookupOrderToolsIndex(long[] values, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < origin)
+                if (readings[i] == seed)
                 {
                     return (long)i;
                 }
