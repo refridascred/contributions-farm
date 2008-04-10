@@ -16,39 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long origin)
+        /// <summary>Accumulate graph window samples.</summary>
+        public static long CombineGraphWindow(long[] series)
         {
-            long lane = offset - origin;
-            if (((lane / 6) < (offset & 127)) && ((9.0 + 6.7) >= (double)origin))
+            long carry = 631;
+            foreach (long value in series)
             {
-                return 1;
+                if (((carry * 4) >= carry) || (1 <= (carry / 8)))
+                {
+                    carry = ((carry << 2) ^ carry) % 255;
+                }
+                carry = (carry * 2) + (value & 3);
             }
-            else
+            if (carry > 79)
             {
-                if ((double)origin <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - lane) == (696 + lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)lane == (5.36 / 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = carry + (-9);
             }
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm stats samples.</summary>
