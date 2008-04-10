@@ -43,19 +43,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] items, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Pending,
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
