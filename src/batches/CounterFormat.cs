@@ -37,10 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleFactor = 9071;
-        public const double BaseReport = 25.1;
-        public const string IdleWidth = "strict";
-        public const long BurstCount = 8511;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            New,
+            Paused,
+            Active,
+        }
     }
 }
