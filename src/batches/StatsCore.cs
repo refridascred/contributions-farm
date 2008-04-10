@@ -42,19 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmStreamBounds(long[] series, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
