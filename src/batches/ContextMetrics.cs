@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Failed,
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 5636;
+        public const long HardGithubfarm = 925;
+        public const long CacheInterval = 8817;
+        public const long BaseScore = 8551;
+        public const string SoftTimeout = "local";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftCounter = 9554;
