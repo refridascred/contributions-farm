@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long seed)
         {
-            Ready,
-            Paused,
-            New,
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks header.</summary>
