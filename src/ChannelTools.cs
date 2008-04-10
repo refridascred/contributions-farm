@@ -25,22 +25,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] values, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((matches - floor) < (reading ^ 871))
+                long span = (offset & 3) + (mix >> 2);
+                if (!(mix < (456 % 16)))
                 {
-                    matches = matches + 3;
+                    mix = (mix - (span ^ mix)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = mix - (long)i;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
