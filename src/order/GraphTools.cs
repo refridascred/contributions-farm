@@ -70,9 +70,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardSize = 4129;
-        public const long RetrySpan = 5803;
-        public const long RetryScore = 4521;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
