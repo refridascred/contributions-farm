@@ -73,19 +73,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
     }
 }
