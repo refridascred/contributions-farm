@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry - seed;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
