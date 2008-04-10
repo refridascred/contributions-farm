@@ -27,10 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitTimeout = "alpha-edge";
-        public const long SoftSpan = 2948;
-        public const long SoftDepth = 3619;
-        public const long LimitStream = 3009;
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
