@@ -1,14 +1,13 @@
 # Command notes
 
-The cluster report groups every counter by record.
-A report that stays idle for too long is moved to the commits list.
+The format helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the route list.
 
-The token report groups every contributi by queue.
-Each channel is validated before it reaches the batches queue.
-The support helpers are pure functions, so they are safe to call from any thread.
+The window module keeps contributi values in sync with the support cache.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new cache fields
-- Prefer graph defaults
+- Prefer filter defaults
+- Document new context fields
+- Log every editor change
