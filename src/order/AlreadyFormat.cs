@@ -64,21 +64,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Classify a command contributi pair into a bucket.</summary>
+        public static long GradeCommandContributi(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target == (4.2 * 0.06))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (floor > target)
                 {
-                    if ((items[i] ^ items[j]) > 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 3) > floor)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
     }
 }
