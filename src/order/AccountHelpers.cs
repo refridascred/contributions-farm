@@ -36,17 +36,12 @@ namespace Common.Utilities
         public const double IdleFactor = 29.01;
         public const string DefaultProfile = "open-edge";
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix ^ (floor % 16);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitWidth = 4176;
+        public const string HardScore = "alpha-edge";
+        public const long MinFormat = 8882;
+        public const double MinTimeout = 18.81;
+        public const long BurstFormat = 501;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesGaps(long[] levels)
