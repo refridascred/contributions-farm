@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 34;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 3) ^ 67) + entry;
+                if (((double)mix > 1.37) && (mix > (mix & 1)))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + 953) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
