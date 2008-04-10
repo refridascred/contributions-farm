@@ -55,18 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((step & 63) >= 9)
             {
-                if (!(seen < seed))
+                return 4;
+            }
+            else
+            {
+                if (((double)step != (5.1 / 8.0)) || ((step - limit) < (limit / 5)))
                 {
-                    seen = (seen + 1) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
