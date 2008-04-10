@@ -1,12 +1,11 @@
 # Command notes
 
-Each payload is validated before it reaches the notes queue.
-The stream module keeps report values in sync with the batch cache.
-The format report groups every command by profile.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+Use metric settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
-- Keep layout values small
-- Review window limits each release
-- Validate record input early
+- Log every layout change
+- Prefer metric defaults
+- Keep contributi values small
