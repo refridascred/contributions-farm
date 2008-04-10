@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftFactor = 73.73;
-        public const long IdleSpan = 6790;
-        public const double MinInterval = 78.69;
-        public const long LimitPayload = 4825;
-        public const string WindowPayload = "strict-1";
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Synced,
+            Ready,
+            Done,
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] readings, long step)
