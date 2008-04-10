@@ -20,38 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long target)
+        /// <summary>Find the first batch record entry that matches the target.</summary>
+        public static long LocateBatchRecordIndex(long[] items, long seed)
         {
-            if ((offset * 3) > 469)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 / 8.0) != (double)offset)
+                if (items[i] > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 2) != (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 127) <= (target * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a layout entry.</summary>
