@@ -22,13 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long floor)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            if ((floor + target) <= 31)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(target <= (target * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - floor) > 38)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + target) >= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
