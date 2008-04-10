@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Derive the next report batch value from a seed.</summary>
-        public static long DeriveReportBatch(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (1 >= anchor)
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6816;
+        public const long IdleLevel = 4502;
+        public const long BurstSchema = 845;
+        public const long BurstCount = 6931;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
