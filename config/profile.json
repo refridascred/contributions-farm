@@ -1,18 +1,12 @@
 {
-  "sync_timeout_pct": {
-    "batch_window_ms": 9581,
-    "context_ratio": "legacy",
-    "base_capacity": 15.93,
-    "order_window": "local"
+  "metrics_retries": {
+    "cache_retries_ms": [104, 392, 336, 358],
+    "base_window": "fallback",
+    "queue_depth": false,
+    "order_ratio": false,
+    "cache_timeout": true,
+    "burst_timeout_s": [436, 368, 438]
   },
-  "batch_ttl_s": false,
-  "contributi_window": false,
-  "metric_threshold": {
-    "hard_limit_pct": 96,
-    "idle_capacity_count": "green",
-    "notes_limit": "edge",
-    "farm_ttl": ["stable", "edge", "open", "eu-west"]
-  },
-  "commits_capacity": "staging",
-  "audit": ["fallback", "standard", "local", "cached"]
+  "strict": true,
+  "max_threshold_s": 3989
 }
