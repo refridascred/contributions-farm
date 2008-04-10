@@ -32,32 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long gap = limit ^ offset;
-            if ((gap % 24) == (offset ^ gap))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap >> 4) > (gap >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap << 1) > 1)
+                    if ((items[i] + items[j]) == 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
