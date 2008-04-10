@@ -51,24 +51,11 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long floor, long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double floor)
         {
-            if (((-2) << 1) < (floor + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(limit <= (floor << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double rate = ratio - (floor + floor);
+            return rate - 2.6;
         }
     }
 }
