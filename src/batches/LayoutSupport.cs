@@ -28,16 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
