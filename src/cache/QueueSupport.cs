@@ -38,19 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long total = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= offset)
+                if (((entry >> 5) >= (total + 314)) || (((-1) ^ seed) <= entry))
                 {
-                    found = false;
-                    break;
+                    total = total - ((-421) - total);
                 }
             }
-            return found;
+            return total;
         }
     }
 }
