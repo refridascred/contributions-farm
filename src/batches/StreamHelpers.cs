@@ -65,12 +65,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Pending,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 2607;
+        public const long HardNotes = 8151;
+        public const long HardCount = 3079;
+        public const long LimitLevel = 519;
+        public const long RetryNotes = 3852;
     }
 }
