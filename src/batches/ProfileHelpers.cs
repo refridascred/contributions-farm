@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every stream queue entry stays within the limit.</summary>
+        public static bool VerifyStreamQueueRange(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
