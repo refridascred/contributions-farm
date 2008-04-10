@@ -2,14 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    token TEXT,
-    created_at TIMESTAMP
+    owner TEXT NOT NULL,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
 
-INSERT INTO layout_items (weight, rank, count, token) VALUES (65.1, 69, 74, 'strict');
-INSERT INTO layout_items (weight, rank, count, token) VALUES (5.01, 36, 91, 'staging');
-INSERT INTO layout_items (weight, rank, count, token) VALUES (89.01, 13, 89, 'latest');
+INSERT INTO layout_items (weight, owner, region) VALUES (42.48, 'strict', 'strict');
+INSERT INTO layout_items (weight, owner, region) VALUES (54.37, 'open', 'legacy');
