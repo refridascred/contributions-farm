@@ -103,22 +103,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item & 3) > (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepDepth = 37.54;
+        public const string BurstPayload = "alpha-edge";
+        public const long BaseDepth = 104;
+        public const double SoftScore = 39.37;
     }
 }
