@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (item < offset)
+                if ((double)matches != (2.7 - 8.04))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
