@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.5 + 2.0) < (double)acc)
-                {
-                    acc = ((acc * 3) + (origin % 97)) % 1000;
-                    acc = acc + (63 - origin);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc % 3)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                acc = (acc << 3) ^ ((long)i + seed);
+                acc = (acc ^ (56 * 4)) % 4096;
+                acc = (acc << 3) ^ (acc % 2);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
             return acc;
         }
