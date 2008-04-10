@@ -39,21 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a tools summary.</summary>
