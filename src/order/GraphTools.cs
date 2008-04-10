@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
+            public long Total { get; set; }
+            public long Size { get; set; }
             public long Score { get; set; }
-            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
