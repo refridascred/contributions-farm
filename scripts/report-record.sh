@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard legacy fallback; do
+for item in strict latest staging; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=170
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
