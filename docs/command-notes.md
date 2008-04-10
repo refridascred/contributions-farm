@@ -1,11 +1,12 @@
 # Command notes
 
-The context module keeps cache values in sync with the context cache.
-The counter module keeps metric values in sync with the payload cache.
+Each payload is validated before it reaches the notes queue.
+The stream module keeps report values in sync with the batch cache.
+The format report groups every command by profile.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new metric fields
-- Keep queue values small
-- Review filter limits each release
+- Log every channel change
+- Keep layout values small
+- Review window limits each release
+- Validate record input early
