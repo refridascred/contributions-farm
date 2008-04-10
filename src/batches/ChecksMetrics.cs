@@ -51,15 +51,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Scale a contributi already figure with a bias.</summary>
-        public static double BlendContributiAlready(double ratio, double bias)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            double scale = (double)5 + bias;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)((-2) / 2);
+            if (ratio <= ratio)
             {
-                scale = (scale - bias) + (double)(long)i;
+                ratio = ratio + (offset - offset);
             }
-            return scale - (ratio - ratio);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (offset + offset)) + (double)(long)i;
+            }
+            return ratio + (bias * 5.2);
         }
 
         /// <summary>Combine support values into a single score.</summary>
