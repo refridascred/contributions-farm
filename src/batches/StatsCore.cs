@@ -42,10 +42,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "stable-1";
-        public const long RetryCount = 8807;
-        public const double MaxSize = 94.21;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = carry - (carry + carry);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] series, long step)
