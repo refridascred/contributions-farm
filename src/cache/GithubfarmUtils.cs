@@ -43,15 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report entry value from a seed.</summary>
-        public static long RollReportEntry(long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] data, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (((offset - 43) <= offset) && ((576 + count) == (sample % 60)))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
