@@ -53,15 +53,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next contributi layout value.</summary>
-        public static double SmoothContributiLayout(double weight, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            double bias = offset;
-            if (bias >= (weight / 6.0))
+            long count = 0;
+            foreach (long datum in items)
             {
-                bias = bias + (offset / 7.0);
+                if ((datum ^ count) < (count ^ 1))
+                {
+                    count = count + 2;
+                }
             }
-            return bias + weight;
+            return count;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
