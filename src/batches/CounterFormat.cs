@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate githubfarm commits readings against a bound.</summary>
-        public static bool CheckGithubfarmCommitsLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3823;
+        public const string CacheSpan = "primary-edge";
+        public const string StepRecord = "local";
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long offset)
