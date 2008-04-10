@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long BurstBatches = 7960;
         public const long CacheLevel = 9815;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
