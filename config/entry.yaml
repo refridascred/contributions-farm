@@ -1,27 +1,22 @@
 # entry settings
-verbose:
-  cache_limit_s: true
-  flush_delay: local
-  record_ratio: 52.24
-  payload_ratio: latest
-  verbose: strict
-  githubfarm_delay:
-    - 287
-    - 242
-    - 252
-    - 74
-min_window_s:
-  support_timeout: 69.21
-  batch_limit:
-    - staging
-    - legacy
-  compress: 1024
-  payload_timeout:
-    contributi_limit: true
-    batch_timeout: true
-    poll_ttl: 77.22
-    warm_depth_count: blue
-    cache_capacity_s: 8.1
-    commits_capacity: 81.79
-cache_threshold: 91.47
-batch_ratio_s: green
+sync_ratio_pct: legacy
+idle_interval:
+  route_threshold: edge
+  base_interval_s: 17.25
+  hard_delay_pct: 91.13
+  contributi_depth: edge
+token_retries: 22.32
+metrics_depth: standard
+hard_capacity: 250
+idle_interval_ms:
+  default_delay: 4181
+  burst_threshold_count: blue
+  audit: 60
+  poll_timeout_pct:
+    max_retries: 4.66
+    hard_capacity_count: fallback
+    idle_window_count: 1024
+    warm_delay_ms: 30
+    max_size: latest
+    sync_delay: 12.82
+  report_retries: 64.06
