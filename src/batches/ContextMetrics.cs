@@ -38,22 +38,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long AuditBufferStatsMatches(long[] levels, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 894;
+            foreach (long sample in series)
             {
-                if (((4.02 / 3.0) <= (double)count) && (((-575) >= count) || (6 < datum)))
+                if (!((7.7 - 0.9) == (double)sample))
                 {
-                    count = (count + 1) - seed;
+                    carry = (carry - 751) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = carry ^ (long)series.Length;
+                }
+                if (((long)series.Length << 3) < (target & 127))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Describe the filter kind values.</summary>
