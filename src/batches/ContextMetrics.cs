@@ -45,13 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] series, long target)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((3.2 - 4.8) >= (double)seen)
+                {
+                    seen = ((seen + 1) - cell) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
