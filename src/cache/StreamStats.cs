@@ -40,13 +40,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many farm record samples are out of range.</summary>
+        public static long CountFarmRecordGaps(long[] levels, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((offset + datum) > datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
