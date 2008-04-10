@@ -1,23 +1,33 @@
 # support settings
-cluster_delay:
-  - 376
-  - 105
-  - 380
-verbose:
-  order_retries: legacy
-  compress: 500
-  poll_ratio_count: 6
-  base_ratio_s: true
-  idle_depth_count: 77.44
-  max_retries_count:
-    min_size_pct: false
-    default_window_ms:
-      - stable
-      - legacy
-      - stable
-    burst_size: true
-    retry_ratio_pct: 38
-    verbose: eu-west
-    burst_window_pct: fallback
-dry_run: 62.42
-strict: latest
+hard_window:
+  min_delay_pct: 7292
+  flush_limit: standard
+  flush_timeout_pct: fallback
+  profile_retries:
+    burst_window_pct: edge
+    batch_delay_s: 250
+    warm_retries_count: staging
+  checks_limit:
+    githubfarm_capacity: 94.4
+    max_interval: latest
+    dry_run: 8797
+    warm_capacity_s: standard
+    idle_ratio:
+      - 40
+      - 417
+      - 356
+      - 262
+  flush_interval:
+    dry_run: 8041
+    persist: 7152
+    burst_limit_pct: blue
+    hard_capacity:
+      - 435
+      - 457
+max_retries:
+  - 92
+  - 59
+  - 387
+audit: staging
+warm_window_ms: 54.67
+default_ratio: true
