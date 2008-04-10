@@ -11,39 +11,15 @@ namespace Common.Utilities
         public const long BatchWidth = 9567;
         public const long MinStats = 3936;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            long step = offset + target;
-            if ((offset * 2) < (offset ^ step))
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)564 <= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target % 7) <= (step + target)) || ((step >> 3) == (target % 64)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.8 / 4.0) == (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
