@@ -40,19 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 6) > count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 98.46;
+        public const long HardRecord = 697;
+        public const long StepInterval = 5732;
+        public const string SoftSpan = "stable-edge";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] items, long limit)
