@@ -69,21 +69,12 @@ namespace Common.Utilities
         public const double HardSpan = 84.94;
         public const double CacheLevel = 39.27;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Synced,
         }
     }
 }
