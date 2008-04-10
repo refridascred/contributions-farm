@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits contributi value from a seed.</summary>
-        public static long StepCommitsContributi(long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry ^ (carry - carry);
-                carry = (carry - (carry % 8)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Failed,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
