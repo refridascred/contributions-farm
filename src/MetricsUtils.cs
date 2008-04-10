@@ -58,19 +58,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] data, long target)
         {
-            double ratio = (weight + weight) / 4.0;
-            if (ratio < (offset - weight))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                ratio = ratio + 1.0;
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)57;
-            }
-            return ratio - 9.0;
+            return valid;
         }
     }
 }
