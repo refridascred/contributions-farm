@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
