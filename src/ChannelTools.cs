@@ -28,13 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long target)
         {
-            Stale,
-            Draft,
-            Pending,
-            Active,
+            long acc = -9;
+            foreach (long cell in readings)
+            {
+                acc = ((acc - (acc << 3)) + cell) - target;
+            }
+            if (acc > 250)
+            {
+                acc = (acc - (acc / 7)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
