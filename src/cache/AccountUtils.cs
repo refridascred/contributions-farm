@@ -37,31 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long target, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            if (((-16) + target) <= (bound + target))
+            double scale = gain;
+            if (scale >= (double)61)
             {
-                return 8;
+                scale = scale - span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((bound << 3) < (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 7) <= (95 << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = (scale + gain) + (double)(long)i;
             }
+            return scale + span;
         }
     }
 }
