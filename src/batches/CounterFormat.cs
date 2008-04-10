@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string CacheSpan = "primary-edge";
         public const string StepRecord = "local";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] data, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
