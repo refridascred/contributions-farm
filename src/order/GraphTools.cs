@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1874;
+        public const double HardDepth = 85.85;
+        public const long MinOrder = 7860;
+        public const long HardOrder = 1162;
+        public const long WindowOrder = 9624;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardEditor = 26.96;
