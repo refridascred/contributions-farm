@@ -1,6 +1,11 @@
 {
-  "persist": 26.86,
-  "burst_window_count": ["edge", "cached", "blue", "cached"],
-  "min_capacity": ["primary", "stable", "strict"],
-  "sync_ttl_s": ["green", "legacy", "green", "strict"]
+  "batch_capacity": {
+    "max_threshold": 8.24,
+    "counter_interval": 9.32,
+    "batch_window_pct": 46.24
+  },
+  "base_timeout_s": "open",
+  "cache_capacity": true,
+  "queue_depth": 30,
+  "audit": "strict"
 }
