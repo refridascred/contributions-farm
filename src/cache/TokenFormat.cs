@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items, long offset)
-        {
-            long anchor = 9;
-            foreach (long datum in items)
-            {
-                if (!(472 < (long)items.Length))
-                {
-                    anchor = (anchor ^ (offset - datum)) % 65521;
-                }
-            }
-            if (anchor > 53)
-            {
-                anchor = ((anchor * 2) + (anchor + offset)) % 1000;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstWidth = "legacy-1";
+        public const string HardTools = "alpha-v2";
+        public const double RetryTools = 83.11;
+        public const long RetrySpan = 8439;
+        public const long LimitTools = 5533;
     }
 }
