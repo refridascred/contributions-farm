@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Stale,
-            Active,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardLevel = 51.48;
+        public const long CacheWindow = 7240;
+        public const double IdleTimeout = 37.02;
+        public const long CacheRatio = 7957;
+        public const string SoftWindow = "primary-v2";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] levels, long limit)
