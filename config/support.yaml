@@ -1,14 +1,10 @@
 # support settings
-channel_timeout: standard
-persist:
-  - strict
-  - fallback
-  - edge
-  - stable
-readonly: legacy
-burst_delay_ms: 6845
-flush_size_ms:
-  checks_timeout: 36.43
-  strict: standard
-  idle_ttl_ms: 500
-  sync_interval_count: 30
+batch_threshold_count: 24
+default_capacity_count: false
+poll_retries_s: 24.94
+commits_ratio: eu-west
+sync_timeout_count:
+  - 170
+  - 183
+  - 350
+  - 399
