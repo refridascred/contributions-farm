@@ -27,21 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Check that every support graph entry stays within the limit.</summary>
+        public static bool ValidateSupportGraphBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
