@@ -1,12 +1,12 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the report list.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Run the report check before changing any queue limits.
+Each account is validated before it reaches the notes queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer schema defaults
-- Document new contributi fields
-- Log every buffer change
+- Review record limits each release
+- Keep format values small
+- Prefer channel defaults
+- Log every token change
