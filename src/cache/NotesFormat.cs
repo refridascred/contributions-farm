@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long bound, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long diff = bound + seed;
-            if ((double)bound == (4.8 + 13.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff * 5) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of schema window readings.</summary>
