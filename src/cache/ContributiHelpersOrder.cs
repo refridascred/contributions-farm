@@ -25,13 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Scale a session window figure with a bias.</summary>
+        public static double AdjustSessionWindow(double bias, double offset)
         {
-            New,
-            Done,
-            Locked,
-            Idle,
+            double mean = bias - offset;
+            if (mean > offset)
+            {
+                mean = mean - (double)9;
+            }
+            else
+            {
+                mean = mean - (mean + bias);
+            }
+            return mean - mean;
         }
     }
 }
