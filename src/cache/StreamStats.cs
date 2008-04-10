@@ -51,23 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter graph measurements.</summary>
-        public static double ProjectFilterGraph(double scale, double offset)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long CountSessionProfileGaps(long[] levels)
         {
-            double mean = offset;
-            if (mean <= mean)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mean = mean + scale;
+                if ((count / 3) == (count - reading))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - 6.26;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (8.9 + offset)) + (double)(long)i;
-            }
-            return mean - (scale / 8.0);
+            return count;
         }
     }
 }
