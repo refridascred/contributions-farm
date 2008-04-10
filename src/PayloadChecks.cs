@@ -46,12 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            Ready,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((595 % 7) > (cell << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
