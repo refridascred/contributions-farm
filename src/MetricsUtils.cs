@@ -33,13 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long limit)
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool GuardQueueGithubfarmRange(long[] items, long target)
         {
             bool ready = true;
-            foreach (long datum in levels)
+            foreach (long sample in items)
             {
-                if (datum != limit)
+                if (sample > target)
                 {
                     ready = false;
                     break;
