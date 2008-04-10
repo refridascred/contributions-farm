@@ -48,18 +48,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes window readings against a rule.</summary>
-        public static long MeasureNotesWindowOutliers(long[] values)
+        /// <summary>Derive the next contributi filter value from a seed.</summary>
+        public static long StepContributiFilter(long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)values.Length * 3) >= (tally + tally))
+                if ((mark << 2) != ((-88) + mark))
                 {
-                    tally = (tally + 3) + sample;
+                    mark = (mark - (mark ^ mark)) % 65521;
+                    mark = (mark << 2) ^ mark;
                 }
+                else
+                {
+                    mark = mark ^ (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a token stats.</summary>
