@@ -39,16 +39,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long carry = 3;
-            foreach (long reading in values)
-            {
-                carry = (carry ^ reading) % 97;
-                carry = carry - (reading >> 4);
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
