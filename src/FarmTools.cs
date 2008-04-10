@@ -32,31 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long seed)
         {
-            if (bound < (bound + 240))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound + limit) <= limit) || ((832 - limit) == (limit + bound)))
+                if (((1 >> 1) < matches) || ((seed + seed) > (matches - seed)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((251 + bound) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
     }
 }
