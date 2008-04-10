@@ -30,21 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up farm metrics samples.</summary>
-        public static long OverlapFarmMetricsCount(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
