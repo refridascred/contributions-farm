@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data, long target)
+        /// <summary>Derive the next order checks value from a seed.</summary>
+        public static long SeriesOrderChecks(long floor)
         {
-            long acc = 505;
-            foreach (long datum in data)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc - (acc + acc)) ^ datum;
+                sum = sum ^ (sum << 1);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (acc < 619)
-            {
-                acc = (acc ^ (acc ^ target)) % 4096;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
