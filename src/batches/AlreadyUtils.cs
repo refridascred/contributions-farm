@@ -15,15 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            double ratio = (double)64;
-            if (ratio < (rate * 6.2))
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - offset;
+                total = (total + (limit - total)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ratio - (double)7;
+            return total;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
