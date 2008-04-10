@@ -58,10 +58,20 @@ namespace Common.Utilities
         public const string SoftPayload = "standard";
         public const double CacheRatio = 79.14;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 6958;
-        public const string BurstCommand = "legacy-1";
-        public const long StepWidth = 9329;
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool ValidateNotesBufferBounds(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long offset)
