@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySpan = 9983;
-        public const long RetryBudget = 8417;
-        public const long HardFilter = 3452;
-        public const long IdleFilter = 8632;
-        public const long BurstSpan = 2128;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((63 - tally) != (value % 16))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] values)
