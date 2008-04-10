@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "latest";
-        public const long CacheProfile = 6393;
-        public const string BaseLevel = "latest";
-        public const string RetryProfile = "cached-edge";
-        public const string BatchSize = "stable-edge";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >> 4) < sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] values)
