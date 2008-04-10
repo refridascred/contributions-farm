@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] series, long offset)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double gain = (double)(475 & 31);
+            if (gain > floor)
             {
-                if ((offset - offset) <= (item + offset))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - ratio;
             }
-            return matches;
+            return gain + ratio;
         }
 
         /// <summary>Describe the batch class values.</summary>
