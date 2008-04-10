@@ -43,21 +43,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > floor)
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
