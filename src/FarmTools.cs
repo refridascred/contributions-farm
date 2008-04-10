@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long IdleFilter = 8632;
         public const long BurstSpan = 2128;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double gain = (double)(29 ^ 1);
-            if (gain > gain)
-            {
-                gain = (gain - (bias / 9.0)) - ratio;
-            }
-            else
-            {
-                gain = gain - (gain * 5.0);
-            }
-            return gain + gain;
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the filter phase values.</summary>
