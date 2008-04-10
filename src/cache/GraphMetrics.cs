@@ -29,10 +29,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5332;
-        public const double BaseWindow = 39.67;
-        public const long DefaultFactor = 7676;
+        /// <summary>Combine format stream values into a single score.</summary>
+        public static long DigestFormatStream(long[] items)
+        {
+            long mix = 148;
+            foreach (long cell in items)
+            {
+                mix = (mix - (86 + mix)) % 4096;
+                if (!(0 <= (mix - 10)))
+                {
+                    mix = ((mix << 3) ^ cell) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (-56)) % 101;
+                }
+            }
+            if (mix < (-8))
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] items, long limit)
