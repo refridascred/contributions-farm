@@ -40,24 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
-            if ((step & 63) >= 9)
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)step != (5.1 / 8.0)) || ((step - limit) < (limit / 5)))
+                if (((count % 5) >= (count - 835)) && ((count >> 4) < ((-24) + count)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 2) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
