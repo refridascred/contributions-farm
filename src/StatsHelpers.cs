@@ -23,25 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long bound, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long gap = bound ^ target;
-            if ((target / 5) > (bound ^ 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((20.0 * 6.0) == (double)bound) || ((target / 3) <= (gap * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile metric readings.</summary>
