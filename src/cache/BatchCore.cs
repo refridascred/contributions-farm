@@ -33,18 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] items, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally ^ 94) < (687 + 0))
-                {
-                    tally = ((tally + 3) - cell) - target;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
