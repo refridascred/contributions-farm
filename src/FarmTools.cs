@@ -20,13 +20,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every format already entry stays within the limit.</summary>
+        public static bool VerifyFormatAlreadyRange(long[] series, long target)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Queued,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
