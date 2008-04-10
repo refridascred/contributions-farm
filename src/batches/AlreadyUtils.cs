@@ -42,12 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] values)
         {
-            Failed,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (reading > ((long)values.Length + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a metric cache counter forward.</summary>
