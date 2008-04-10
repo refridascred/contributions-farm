@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            double ratio = scale - (scale / 6.0);
-            if (ratio > floor)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio - (double)998;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 0.33) + (double)(long)i;
-            }
-            return ratio + (double)4;
+            return score;
         }
 
         /// <summary>Describe the filter phase values.</summary>
