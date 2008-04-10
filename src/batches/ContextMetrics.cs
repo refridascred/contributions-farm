@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] readings, long step)
+        /// <summary>Check that every metrics contributi entry stays within the limit.</summary>
+        public static bool GuardMetricsContributiLimits(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (item != step)
+                if (sample < bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Digest a series of already entries.</summary>
