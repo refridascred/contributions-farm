@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6621;
+        public const long HardBatch = 2042;
+        public const long StepCount = 9796;
+        public const double MaxSpan = 92.0;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long floor)
