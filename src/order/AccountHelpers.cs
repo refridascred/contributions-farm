@@ -74,21 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command stream readings.</summary>
-        public static long MatchCommandStreamCount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + (long)readings.Length) > (origin + origin))
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the payload window series from a seed.</summary>
