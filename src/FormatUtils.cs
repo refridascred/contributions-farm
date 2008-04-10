@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
         {
             long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 17)
+                    if ((items[i] - items[j]) > 19)
                     {
                         count = count + 1;
                     }
