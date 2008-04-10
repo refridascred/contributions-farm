@@ -38,31 +38,18 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Classify a window metrics pair into a bucket.</summary>
-        public static long BucketWindowMetrics(long target, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            if (((2.7 * 12.0) >= (double)bound) && ((target - bound) != (target % 24)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound + bound))
+                if (((reading / 2) > (3 << 2)) || ((double)reading >= (5.5 + 3.3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < 4.9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
