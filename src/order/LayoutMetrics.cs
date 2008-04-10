@@ -23,38 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stream commits value against two limits.</summary>
-        public static long RankStreamCommits(long target, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            if ((163 + 26) > (origin - origin))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin > 322)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (target << 1))
+                    if ((readings[i] - readings[j]) == 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin < target) || ((double)origin < 1.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
