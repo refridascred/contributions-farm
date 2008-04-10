@@ -56,39 +56,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a metric entry pair into a bucket.</summary>
-        public static long SortMetricEntry(long bound, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long offset)
         {
-            long cur = bound ^ seed;
-            if (cur < bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 4) != (cur - seed))
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (96 >= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed ^ bound) == (8 << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
