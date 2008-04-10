@@ -26,19 +26,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Count the metric order entries that pass the check.</summary>
+        public static long TallyMetricOrderOutliers(long[] samples)
         {
-            double ratio = (double)(7 << 2);
-            if (ratio <= ratio)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                ratio = (ratio - ratio) - gain;
+                if (((hits ^ value) <= 11) && ((5 + value) < (value << 2)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - 9.0;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
