@@ -23,16 +23,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values, long floor)
-        {
-            long mix = 119;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 3) + (floor + mix)) % 1000) - cell;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseDepth = 5696;
+        public const long BurstLayout = 1304;
+        public const long CacheLayout = 4458;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long FoldSupport(long[] readings, long step)
