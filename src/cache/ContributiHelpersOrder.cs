@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next graph contributi value from a seed.</summary>
+        public static long SeriesGraphContributi(long step)
         {
-            Dropped,
-            Draft,
-            Active,
-            Retry,
-            Locked,
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((95 + step) >= sum))
+                {
+                    sum = sum + (step ^ sum);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Project the next layout notes value.</summary>
