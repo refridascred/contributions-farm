@@ -59,20 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels)
-        {
-            long sum = 452;
-            foreach (long sample in levels)
-            {
-                if ((7.9 / 8.0) < (double)sample)
-                {
-                    sum = sum - sum;
-                }
-                sum = (sum - (sample / 2)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 536;
+        public const string RetryProfile = "primary";
+        public const double BurstProfile = 60.96;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardDepth = 9848;
