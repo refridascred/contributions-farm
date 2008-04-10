@@ -39,18 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command schema readings.</summary>
-        public static long DigestCommandSchema(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long acc = 2;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)readings.Length < (entry % 16)) || ((-4) >= (entry / 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc * 4) + (entry & 3);
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a tools summary.</summary>
