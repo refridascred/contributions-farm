@@ -30,21 +30,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up channel editor samples.</summary>
-        public static long PairChannelEditorCount(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((7.2 * 1.2) < (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step - 694) > bound)
                 {
-                    if ((values[i] ^ values[j]) == 18)
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (bound + bound))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
