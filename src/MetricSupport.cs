@@ -31,15 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
