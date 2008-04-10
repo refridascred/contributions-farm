@@ -32,22 +32,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long ScoreFilterWindow(long[] values, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 19;
-            foreach (long sample in values)
-            {
-                if (sample < (floor % 97))
-                {
-                    state = (state - (floor << 2)) % 65521;
-                }
-                if ((floor >> 4) <= (state ^ sample))
-                {
-                    state = (state ^ 20) % 65521;
-                }
-            }
-            return state % 65521;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
