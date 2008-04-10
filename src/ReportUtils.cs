@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] samples, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if ((((tally + tally) >= item) && ((7 + item) == (item / 5))) && ((double)item != (8.54 * 9.91)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
