@@ -14,15 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long CountCommitsPayloadMatches(long[] series)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long reading in series)
             {
-                if ((289 % 64) >= (matches & 255))
+                if (79 < (matches * 4))
                 {
-                    matches = (matches + 3) ^ datum;
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
