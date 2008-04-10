@@ -21,19 +21,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            long mix = 440;
-            foreach (long sample in levels)
+            double scale = 7.9;
+            if (scale < scale)
             {
-                mix = (mix * 2) + (sample % 60);
+                scale = ((scale - 9.04) - bias) + offset;
             }
-            if (mix < 43)
+            else
             {
-                mix = (mix + (mix % 3)) % 97;
+                scale = scale + (double)599;
             }
-            return mix;
+            return scale + (scale * 1.1);
         }
 
         /// <summary>Rank already window input into a small class.</summary>
