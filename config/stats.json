@@ -1,11 +1,20 @@
 {
-  "strict": 81,
-  "sync_ratio_pct": {
-    "schema_ttl": 1580,
-    "verbose": true,
-    "sync_timeout_pct": 7222,
-    "max_window_s": true,
-    "batch_timeout_pct": "staging"
+  "stream_delay": true,
+  "default_threshold": 60,
+  "poll_timeout": {
+    "cache_threshold": {
+      "compress": "strict",
+      "poll_interval": true,
+      "burst_window_ms": ["primary", "blue"]
+    },
+    "burst_interval_count": 82,
+    "sync_depth_ms": 17.48,
+    "contributi_timeout": {
+      "sync_delay": [336, 163, 42],
+      "enabled": "latest",
+      "window_threshold": "local"
+    }
   },
-  "cache_capacity_ms": 250
+  "compress": false,
+  "dry_run": "edge"
 }
