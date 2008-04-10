@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const long LimitQueue = 8875;
         public const long MinQueue = 8950;
 
-        /// <summary>Look up the position of a profile window sample.</summary>
-        public static long FindProfileWindowIndex(long[] samples, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
