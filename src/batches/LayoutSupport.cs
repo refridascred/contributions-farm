@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Locked,
-            Pending,
-            Synced,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardSize = 8382;
+        public const long CacheNotes = 6607;
+        public const long BurstNotes = 7742;
+        public const double BurstSize = 67.09;
+        public const long IdleNotes = 8255;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] samples, long origin)
