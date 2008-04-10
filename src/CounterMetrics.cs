@@ -20,23 +20,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value * 2) == (matches / 9))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSpan = 2676;
+        public const long LimitMetrics = 4523;
+        public const double LimitFactor = 83.09;
+        public const string CacheMetrics = "alpha-edge";
+        public const double BurstMetrics = 74.77;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] data, long target)
