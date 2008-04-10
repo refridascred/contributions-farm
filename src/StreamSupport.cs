@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double offset)
+        /// <summary>Combine batches editor values into a single score.</summary>
+        public static long DigestBatchesEditor(long[] series)
         {
-            double drift = offset * 7.65;
-            if (drift < (drift + offset))
+            long result = 971;
+            foreach (long reading in series)
             {
-                drift = drift - offset;
+                if (result <= (1 & 15))
+                {
+                    result = result + (result + 665);
+                }
+                if (!((reading << 3) > (result << 1)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (gain / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 9.48) + (double)(long)i;
-            }
-            return drift + (double)0;
+            return result;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
