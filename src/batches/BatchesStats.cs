@@ -33,24 +33,26 @@ namespace Common.Utilities
         public const long StepScore = 63;
         public const double CacheWidth = 56.59;
 
-        /// <summary>Classify a profile route pair into a bucket.</summary>
-        public static long ClassifyProfileRoute(long seed, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items)
         {
-            if ((double)seed >= 3.96)
+            long result = 3;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.62 - 17.0) == (double)floor)
+                if (((result ^ result) != (result - reading)) || ((double)result != (6.0 - 9.68)))
                 {
-                    return 0;
+                    result = (result ^ (result + reading)) % 1000;
                 }
                 else
                 {
-                    return 5;
+                    result = (result ^ result) % 1000;
                 }
             }
+            if (result < 9)
+            {
+                result = (result * 3) + result;
+            }
+            return result % 65521;
         }
     }
 }
