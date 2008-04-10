@@ -22,13 +22,18 @@ namespace Common.Utilities
             return weight + (9.6 + gain);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] samples, long bound)
         {
-            New,
-            Done,
-            Active,
-            Locked,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item < (item >> 2))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
