@@ -32,22 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double load = bias;
+            if (load > (load + 13.0))
             {
-                if ((((double)matches != (4.2 / 3.0)) || ((double)matches < (6.8 / 7.0))) || (matches <= (origin + (long)items.Length)))
-                {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load + bias) - rate;
             }
-            return matches;
+            else
+            {
+                load = load + (double)6;
+            }
+            return load + (double)2;
         }
     }
 }
