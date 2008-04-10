@@ -63,17 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseWidth = 9003;
+        public const long DefaultCommand = 4822;
+        public const string IdleCommand = "primary-v2";
+        public const long BurstSpan = 3216;
+        public const double StepCommand = 0.42;
     }
 }
