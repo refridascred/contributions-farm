@@ -1,13 +1,14 @@
 # Command notes
 
-The layout report groups every commits by command.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the account queue.
+Defaults for session live in the config folder and can be overridden per environment.
 
-Keep checks and payload names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a counter fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new schema fields
-- Prefer session defaults
+- Validate window input early
+- Document new token fields
+- Prefer support defaults
+- Log every cache change
