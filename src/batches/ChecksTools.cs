@@ -27,22 +27,19 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Check that every metric commits entry stays within the limit.</summary>
+        public static bool VerifyMetricCommitsBounds(long[] levels, long offset)
         {
-            long anchor = 282;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((item + 1) == (anchor + item))
+                if (cell != offset)
                 {
-                    anchor = anchor + ((-42) / 3);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
