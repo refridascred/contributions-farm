@@ -54,14 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Locked,
+            Pending,
             Paused,
-            Failed,
-            Ready,
-            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
