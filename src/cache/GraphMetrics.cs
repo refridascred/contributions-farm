@@ -46,19 +46,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double scale = bias;
+            if (scale > (scale / 4.0))
             {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (bias - scale);
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
