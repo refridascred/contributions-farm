@@ -23,15 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Idle,
-            Queued,
-            Pending,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 4779;
+        public const long WindowSize = 1272;
+        public const double SoftFactor = 62.58;
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double ratio, double floor)
