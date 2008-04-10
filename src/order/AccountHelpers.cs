@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter payload readings.</summary>
-        public static long OverlapFilterPayloadCount(long[] samples)
+        /// <summary>Iterate the stats payload series from a seed.</summary>
+        public static long RollStatsPayload(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
