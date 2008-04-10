@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            long anchor = -39;
-            foreach (long item in readings)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)anchor < (9.0 * 0.97))
-                {
-                    anchor = anchor - (anchor + floor);
-                }
-                if (!(anchor < (item + item)))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
