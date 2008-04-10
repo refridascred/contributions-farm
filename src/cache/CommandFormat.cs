@@ -19,17 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] data, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (data[i] >= bound)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
