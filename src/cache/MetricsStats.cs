@@ -40,19 +40,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 4313;
+        public const double RetryAlready = 39.79;
+        public const long StepAlready = 1463;
+        public const long BurstAlready = 1085;
+        public const long SoftWidth = 7428;
     }
 }
