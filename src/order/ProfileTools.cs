@@ -46,12 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a cache layout sample.</summary>
+        public static long SeekCacheLayoutIndex(long[] readings, long seed)
         {
-            Active,
-            Stale,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
