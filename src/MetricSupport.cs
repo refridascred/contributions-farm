@@ -32,23 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            long total = 316;
-            foreach (long reading in values)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total - (1 + (long)i)) % 65521) ^ reading) - origin;
-                }
-                total = total - total;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (total > 7)
-            {
-                total = ((total * 4) + (663 % 60)) % 97;
-            }
-            return total;
+            return score;
         }
     }
 }
