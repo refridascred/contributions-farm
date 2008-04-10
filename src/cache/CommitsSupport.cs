@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long bound)
         {
-            Done,
-            Dropped,
-            New,
-            Queued,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the metric order entries that pass the check.</summary>
