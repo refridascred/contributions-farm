@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long SoftLayout = 7480;
         public const string CacheLayout = "fallback-edge";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Closed,
-            New,
-            Paused,
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
