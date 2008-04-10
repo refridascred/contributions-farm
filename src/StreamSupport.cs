@@ -29,18 +29,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum < (2.74 - 14.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
