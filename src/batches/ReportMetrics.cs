@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin >> 5) == (seed << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin - seed) >= origin)
                 {
-                    if ((values[i] - values[j]) == 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed >> 4) > 7)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
