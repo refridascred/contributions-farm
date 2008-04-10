@@ -1,9 +1,6 @@
-id,score,active
-1,stable,843
-2,173,225
-3,374,staging
-4,cached,local
-5,151,strict
-6,open,53.52
-7,266,27.39
-8,stable,777
+id,owner,state,ratio
+1,32.61,714,562
+2,865,strict,96.18
+3,70.09,88.8,245
+4,cached,5.5,439
+5,3.06,216,324
