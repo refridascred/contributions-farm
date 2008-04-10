@@ -51,21 +51,16 @@ namespace Common.Utilities
             return bias2 - (double)56;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many filter already samples are out of range.</summary>
