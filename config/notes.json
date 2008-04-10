@@ -1,10 +1,6 @@
 {
-  "default_ttl": ["stable", "primary", "latest", "staging"],
-  "cache_interval": {
-    "route_depth": 9501,
-    "audit": 36.2,
-    "hard_threshold_pct": "eu-west",
-    "poll_ratio_ms": 43.84
-  },
-  "metric_ratio": "legacy"
+  "cache_threshold": true,
+  "schema_timeout": "latest",
+  "soft_threshold_count": "primary",
+  "burst_timeout_pct": "standard"
 }
