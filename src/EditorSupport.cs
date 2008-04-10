@@ -51,11 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Blend two already metric measurements.</summary>
+        public static double SmoothAlreadyMetric(double ratio, double offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            double rate = (ratio + 2.9) * 9.5;
+            if (rate < 8.7)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate - (double)78;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + 3.35;
         }
 
         /// <summary>Hold a session header.</summary>
