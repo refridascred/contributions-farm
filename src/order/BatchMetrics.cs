@@ -30,21 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Count the profile route entries that pass the check.</summary>
+        public static long TallyProfileRouteHits(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally / 9) != (84 + offset))
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
