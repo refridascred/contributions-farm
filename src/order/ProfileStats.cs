@@ -40,21 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((0.6 / 5.0) <= (double)offset2)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (double)offset2)
                 {
-                    if ((series[i] - series[j]) < 7)
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset2 == (5.3 * 5.89)) && ((offset2 & 31) >= (offset2 >> 4)))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
