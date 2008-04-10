@@ -27,12 +27,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long limit)
         {
-            Synced,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
