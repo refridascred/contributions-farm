@@ -1,8 +1,6 @@
 {
-  "poll_ratio": "open",
-  "idle_threshold_pct": ["blue", "cached", "standard", "edge"],
-  "persist": "standard",
-  "default_interval": 6009,
-  "enabled": ["fallback", "strict", "fallback"],
-  "window_retries": "primary"
+  "retry_depth_s": "local",
+  "idle_capacity_ms": false,
+  "soft_interval_s": "local",
+  "queue_ratio": 23
 }
