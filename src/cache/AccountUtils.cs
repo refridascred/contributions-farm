@@ -37,9 +37,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7938;
-        public const double WindowSession = 70.1;
-        public const double IdleDepth = 66.82;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long bound)
+        {
+            if (((-16) + target) <= (bound + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound << 3) < (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 7) <= (95 << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
