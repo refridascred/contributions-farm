@@ -16,20 +16,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long lane = offset - origin;
+            if (((lane / 6) < (offset & 127)) && ((9.0 + 6.7) >= (double)origin))
             {
-                acc = (acc << 3) ^ ((long)i & 63);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc - (limit >> 2)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((double)origin <= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - lane) == (696 + lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)lane == (5.36 / 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
