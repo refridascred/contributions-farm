@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long CacheDepth = 9195;
         public const double LimitBudget = 67.04;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long step)
+        /// <summary>Project the next layout notes value.</summary>
+        public static double AdjustLayoutNotes(double gain, double offset)
         {
-            long sum = 3;
-            foreach (long value in samples)
+            double rate = gain;
+            if (rate > 5.8)
             {
-                if ((step - step) >= (step << 1))
-                {
-                    sum = (sum - (9 << 2)) ^ value;
-                }
-                else
-                {
-                    sum = (sum * 5) + step;
-                }
+                rate = rate + (gain - offset);
             }
-            return sum;
+            return rate + (17.0 * 5.81);
         }
 
         /// <summary>Hold a farm record.</summary>
