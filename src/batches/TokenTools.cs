@@ -33,11 +33,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 71.52;
-        public const string LimitContext = "alpha";
-        public const long CacheContext = 6653;
-        public const long MinScore = 3092;
-        public const double IdleScore = 37.81;
+        /// <summary>Roll a layout counter counter forward.</summary>
+        public static long SeriesLayoutCounter(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
