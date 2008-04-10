@@ -50,17 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
