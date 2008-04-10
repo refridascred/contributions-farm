@@ -1,7 +1,7 @@
 {
-  "account_window": 250,
-  "default_depth": 27,
-  "flush_timeout_count": 32.92,
-  "default_retries": "blue",
-  "verbose": 30
+  "batch_ratio_ms": "primary",
+  "schema_limit": 6521,
+  "metrics_size": false,
+  "hard_timeout": 14,
+  "sync_size": 7.58
 }
