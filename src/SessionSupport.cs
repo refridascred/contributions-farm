@@ -19,12 +19,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxCount = 2386;
-        public const long BaseBuffer = 4997;
-        public const long MinBuffer = 7281;
-        public const string CacheBuffer = "stable-edge";
-        public const string CacheInterval = "latest";
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
