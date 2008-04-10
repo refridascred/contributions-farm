@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftScore = 3276;
-        public const double SoftRatio = 57.44;
-        public const long BurstWidth = 7370;
-        public const string MaxRatio = "legacy-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 7620;
+        public const double MinScore = 38.91;
+        public const long IdleRatio = 1338;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstSize = 679;
