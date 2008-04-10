@@ -26,30 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session token samples.</summary>
-        public static long FoldSessionToken(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long seed)
         {
-            long result = 551;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((result / 8) <= (result >> 5)))
+                if (data[i] > seed)
                 {
-                    result = (result + (cell + cell)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (cell >> 3)) % 97;
-                }
-                if (((cell + cell) > (result - result)) || ((result & 7) >= cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 970)
-            {
-                result = ((result * 2) + (result >> 1)) % 255;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
