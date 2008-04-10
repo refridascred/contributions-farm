@@ -21,19 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            double load = scale;
-            if (load < scale)
+            long result = 786;
+            foreach (long sample in readings)
             {
-                load = load - (scale + 4.79);
+                if ((5 % 8) < (result - result))
+                {
+                    result = ((result << 2) ^ (result + sample)) % 101;
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            return load + (double)77;
+            return result % 4096;
         }
     }
 }
