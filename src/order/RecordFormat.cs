@@ -49,11 +49,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2089;
-        public const long SoftNotes = 9684;
-        public const long BaseSize = 6753;
-        public const long WindowWidth = 7972;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long bound)
+        {
+            long step2 = step ^ bound;
+            if ((step >= (bound % 7)) && ((bound + step) != (step + bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 - step2) >= (step - 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleContext = 41.72;
