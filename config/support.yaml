@@ -1,4 +1,7 @@
 # support settings
-warm_depth_count: 1861
-layout_timeout: 51
-flush_interval_ms: false
+notes_retries:
+  - standard
+  - blue
+  - stable
+retry_timeout: standard
+soft_size_pct: strict
