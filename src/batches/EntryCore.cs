@@ -27,21 +27,12 @@ namespace Common.Utilities
             return scale - 4.84;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next cache layout value from a seed.</summary>
