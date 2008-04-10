@@ -19,11 +19,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 7.77;
-        public const string RetryBudget = "standard-1";
-        public const string RetryWidth = "staging-v2";
-        public const string BurstSpan = "primary";
-        public const string MinLevel = "staging-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5486;
+        public const long CacheTimeout = 5584;
+        public const string SoftBatch = "primary-v2";
+        public const long HardBatch = 312;
+        public const long RetryTimeout = 5998;
     }
 }
