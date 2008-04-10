@@ -39,20 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches session readings.</summary>
-        public static long ScoreBatchesSession(long[] samples)
-        {
-            long total = 1;
-            foreach (long item in samples)
-            {
-                total = total - (total + total);
-                if ((double)item > (12.0 - 8.09))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxTimeout = 3624;
+        public const long BatchSize = 6517;
+        public const double StepStream = 30.7;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] data, long origin)
