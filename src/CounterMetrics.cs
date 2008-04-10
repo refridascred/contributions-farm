@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mark = 820;
-            foreach (long entry in samples)
-            {
-                if ((double)mark < (double)entry)
-                {
-                    mark = (mark << 3) ^ floor;
-                }
-            }
-            return mark;
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many metrics editor samples are out of range.</summary>
