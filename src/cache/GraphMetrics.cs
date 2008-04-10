@@ -39,22 +39,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = 3;
+            foreach (long reading in values)
             {
-                if ((4.94 / 6.0) != (double)reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry ^ reading) % 97;
+                carry = carry - (reading >> 4);
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
