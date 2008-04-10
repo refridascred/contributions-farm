@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const long WindowSize = 1272;
         public const double SoftFactor = 62.58;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((matches >> 5) > (matches * 3))
+                if (reading > step)
                 {
-                    matches = ((matches + 1) + value) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
