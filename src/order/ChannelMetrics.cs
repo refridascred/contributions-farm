@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 17.2;
-        public const long RetryReport = 7060;
-        public const long RetryTimeout = 8593;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 82.26;
+        public const long CacheStream = 39;
+        public const long DefaultStream = 6173;
+        public const string MinDepth = "cached-edge";
+        public const long StepSpan = 3250;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 501;
