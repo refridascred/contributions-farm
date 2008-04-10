@@ -29,22 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long MeasureEntrySupportOutliers(long[] samples)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (0.25 <= (double)value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
