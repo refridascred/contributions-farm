@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Find the first route metrics entry that matches the target.</summary>
+        public static long SeekRouteMetricsIndex(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
