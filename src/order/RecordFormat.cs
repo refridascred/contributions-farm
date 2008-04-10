@@ -49,14 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Idle,
-            Synced,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2089;
+        public const long SoftNotes = 9684;
+        public const long BaseSize = 6753;
+        public const long WindowWidth = 7972;
 
         /// <summary>Classify a support editor pair into a bucket.</summary>
         public static long ClassifySupportEditor(long step, long limit)
