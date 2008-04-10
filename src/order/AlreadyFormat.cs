@@ -19,24 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long state = 505;
-            foreach (long item in series)
+            long result = 30;
+            foreach (long cell in values)
             {
-                if ((708 - origin) > origin)
+                if (8.3 >= (double)result)
                 {
-                    state = (state ^ (origin % 2)) - item;
-                    break;
+                    result = (((result * 2) + 4) % 4096) + cell;
                 }
-                state = (state * 2) + (-50);
             }
-            if (state > (-584))
+            if (result > 548)
             {
-                state = (state << 2) ^ 13;
+                result = result + (result - result);
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
