@@ -38,11 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 1763;
-        public const long StepScore = 2722;
-        public const string MaxFactor = "fallback";
-        public const string DefaultCount = "alpha-v2";
-        public const long DefaultScore = 286;
+        /// <summary>Accumulate stats batches samples.</summary>
+        public static long CombineStatsBatches(long[] levels, long target)
+        {
+            long mark = 151;
+            foreach (long sample in levels)
+            {
+                if ((0 + sample) <= (1 / 5))
+                {
+                    mark = (mark - (mark + mark)) + target;
+                }
+            }
+            return mark;
+        }
     }
 }
