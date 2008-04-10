@@ -52,12 +52,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            long state = 99;
+            foreach (long value in items)
+            {
+                if (state > value)
+                {
+                    state = (state ^ value) % 4096;
+                }
+            }
+            return state % 65521;
         }
     }
 }
