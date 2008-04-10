@@ -1,19 +1,17 @@
 # entry settings
-farm_capacity:
-  audit: true
-  compress: 100
-  context_delay:
-    idle_window_pct: 3
-    dry_run: 4718
-    contributi_timeout: 54.26
-    tools_limit: 285
-    strict: 25.2
-  min_size: 250
-burst_capacity:
-  - standard
-  - fallback
-  - local
-support_ratio: 64.35
-retry_ttl_s: stable
-order_limit: true
-queue_threshold: 49
+profile_ttl: 54.77
+order_capacity:
+  - 131
+  - 490
+burst_window_ms:
+  - 258
+  - 422
+metric_size: 2.75
+window_timeout: false
+graph_ttl:
+  warm_retries_s:
+    - primary
+    - staging
+  base_window: standard
+  route_depth: 250
+  retry_delay_ms: 500
