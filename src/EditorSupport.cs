@@ -81,15 +81,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long step)
         {
-            long score = 96;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score ^ (score + reading)) % 255) + floor;
+                if ((values[i] == step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
