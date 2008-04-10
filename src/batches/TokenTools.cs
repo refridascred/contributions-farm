@@ -32,11 +32,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftLevel = 7711;
-        public const long MinInterval = 9383;
-        public const double WindowSpan = 97.01;
-        public const double MaxWidth = 30.35;
-        public const long CacheContributi = 147;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 6217;
+        public const double IdleAlready = 82.7;
+        public const long MinLevel = 8611;
+        public const long DefaultInterval = 6061;
     }
 }
