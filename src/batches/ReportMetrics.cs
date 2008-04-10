@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batches route readings against a rule.</summary>
-        public static long MeasureBatchesRouteMatches(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum >> 4) >= seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank tools batches input into a small class.</summary>
