@@ -57,11 +57,22 @@ namespace Common.Utilities
         public const string BurstCommand = "legacy-1";
         public const long StepWidth = 9329;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 7223;
-        public const double BatchCluster = 26.13;
-        public const double MinCluster = 93.04;
-        public const string DefaultLevel = "alpha-edge";
-        public const long LimitLevel = 2251;
+        /// <summary>Accumulate token profile samples.</summary>
+        public static long ScoreTokenProfile(long[] levels)
+        {
+            long mix = 6;
+            foreach (long item in levels)
+            {
+                if ((33 & 1) >= (item % 2))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix ^ (mix % 64)) % 101;
+                }
+            }
+            return mix;
+        }
     }
 }
