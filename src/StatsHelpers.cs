@@ -47,19 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer stream figure with a bias.</summary>
-        public static double BlendBufferStream(double ratio, double floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series, long floor)
         {
-            double load = ratio;
-            if (load < (floor + 8.0))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                load = load + (double)9;
+                if (((long)series.Length * 3) < seen)
+                {
+                    seen = ((seen + 3) + entry) - floor;
+                }
             }
-            else
-            {
-                load = load + (floor * 9.0);
-            }
-            return load + ratio;
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
