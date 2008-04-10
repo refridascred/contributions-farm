@@ -19,39 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster metrics value against two limits.</summary>
-        public static long BucketClusterMetrics(long bound, long origin)
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long IterateCounterFormat(long bound)
         {
-            long cur = bound + origin;
-            if (bound > (origin / 8))
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 7) != (origin ^ cur)) || ((844 << 3) <= (cur + bound)))
+                if (((mark / 6) > (bound >> 3)) || ((bound << 1) > (bound + bound)))
                 {
-                    return 0;
+                    mark = ((mark << 2) ^ bound) % 255;
+                    break;
                 }
-                else
-                {
-                    if ((bound + origin) == (cur * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + origin) > 28)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = (mark ^ (2 - mark)) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
