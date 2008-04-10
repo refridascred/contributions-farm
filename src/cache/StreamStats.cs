@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Roll a context batch counter forward.</summary>
+        public static long StepContextBatch(long floor)
         {
-            double scale = bias;
-            if (scale > (bias * 6.0))
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale - (13.0 / 2.0)) - floor;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return scale - (bias + scale);
+            return result;
         }
 
         /// <summary>Match up format samples.</summary>
