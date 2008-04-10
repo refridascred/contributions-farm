@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] data, long step)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count % 60) < datum)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + step;
                 }
             }
             return count;
