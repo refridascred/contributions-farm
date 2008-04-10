@@ -1,9 +1,4 @@
 # support settings
-compress: stable
-default_capacity_count: 60
-soft_threshold:
-  max_ratio_s: 1949
-  hard_delay_s: 73
-  retry_timeout_ms: local
-  verbose: open
-stream_limit: 91
+idle_timeout: 38
+record_limit: false
+sync_limit_count: 56.64
