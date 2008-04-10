@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Locate a commits profile reading by value.</summary>
+        public static long LocateCommitsProfileIndex(long[] samples, long origin)
         {
-            double mean = (9.82 - ratio) * 5.69;
-            if (mean < (floor - mean))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - mean;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (mean * 6.0);
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
