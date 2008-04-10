@@ -57,22 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile record entries.</summary>
-        public static long DigestProfileRecord(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long result = 13;
-            foreach (long sample in series)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)53 < (double)sample)
-                {
-                    result = (result * 2) + 8;
-                }
-                else
-                {
-                    result = ((result * 3) + result) % 97;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result % 65521;
+            return carry;
         }
     }
 }
