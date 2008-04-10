@@ -1,12 +1,10 @@
 # support settings
-enabled: 60
-retry_threshold_pct: 100
-max_ratio_s: 5451
-persist:
-  record_capacity: 73.65
-  cache_capacity: 890
-  sync_size_pct:
-    flush_delay_s: blue
-    notes_limit: 250
-    burst_ratio_count: 100
-    context_size: 32.37
+cache_size:
+  sync_threshold: 250
+  base_interval_s: false
+  dry_run: blue
+dry_run: 72
+enabled: true
+default_capacity_ms:
+  - standard
+  - stable
