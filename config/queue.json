@@ -1,5 +1,6 @@
 {
-  "enabled": "stable",
-  "tools_window": 6313,
-  "verbose": 90
+  "persist": [185, 302, 405, 156],
+  "session_depth": 99,
+  "readonly": 71.42,
+  "sync_capacity_pct": false
 }
