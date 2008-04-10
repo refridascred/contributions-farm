@@ -30,11 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 2011;
-        public const string CacheSpan = "fallback-v2";
-        public const long CacheDepth = 3343;
-        public const long StepCommits = 1660;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] series, long offset)
