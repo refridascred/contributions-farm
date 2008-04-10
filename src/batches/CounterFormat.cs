@@ -32,12 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of githubfarm already readings.</summary>
+        public static long WeighGithubfarmAlready(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long score = 80;
+            foreach (long value in series)
+            {
+                score = ((score + (floor * 2)) % 101) - value;
+                score = ((score * 2) + (5 - 95)) % 65521;
+                score = ((score << 2) ^ (floor % 12)) % 4096;
+            }
+            if (score < 3)
+            {
+                score = (score + (floor / 2)) % 255;
+            }
+            return score % 1000;
         }
     }
 }
