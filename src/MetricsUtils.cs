@@ -32,10 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 8275;
-        public const long BaseDepth = 5982;
-        public const long BatchFormat = 94;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 1826;
