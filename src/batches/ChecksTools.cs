@@ -43,13 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate token command readings against a bound.</summary>
+        public static bool CheckTokenCommandRange(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
