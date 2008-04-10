@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score ^ limit) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
