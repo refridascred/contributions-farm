@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const string CacheMetrics = "alpha-edge";
         public const double BurstMetrics = 74.77;
 
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long RollQueueFilter(long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            double bias = (double)(622 - 91);
+            if (bias > (floor + gain))
             {
-                if ((double)(long)i != (4.0 / 9.0))
-                {
-                    continue;
-                }
-                total = (total ^ (total + total)) % 101;
-                total = (total ^ (75 * 4)) % 65521;
-                total = ((total * 2) + (long)i) % 101;
+                bias = bias - (gain - gain);
             }
-            return total;
+            else
+            {
+                bias = bias + (3.04 * 0.9);
+            }
+            return bias - (gain - 7.0);
         }
     }
 }
