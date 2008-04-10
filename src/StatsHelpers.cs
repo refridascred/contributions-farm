@@ -47,18 +47,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] series, long floor)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long SeriesBatchesProfile(long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)series.Length * 3) < seen)
-                {
-                    seen = ((seen + 3) + entry) - floor;
-                }
+                result = (result + result) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
