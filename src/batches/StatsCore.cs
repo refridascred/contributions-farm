@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate tools format samples.</summary>
-        public static long WeighToolsFormat(long[] values, long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long step)
         {
-            long sum = 8;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < (sum + value))
+                if (readings[i] > step)
                 {
-                    sum = (sum << 2) ^ (sum << 2);
-                }
-                if (limit <= ((long)values.Length & 127))
-                {
-                    sum = (sum - (value - value)) % 97;
-                }
-                if ((double)limit == (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
