@@ -25,11 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long target)
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
