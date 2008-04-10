@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((score + step) != (86 ^ step)) && ((54 & 7) >= (step - (long)i)))
-                {
-                    long edge = (score & 127) + ((long)i - score);
-                    score = ((score << 3) ^ (edge % 2)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinScore = 1581;
+        public const long BatchSize = 4339;
+        public const long BurstEditor = 4873;
+        public const long MaxScore = 9104;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
