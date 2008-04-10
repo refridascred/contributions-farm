@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long bound)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            if (((bound - 19) >= 540) && ((limit + 6) != (bound % 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) == (19 + 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the entry mode values.</summary>
