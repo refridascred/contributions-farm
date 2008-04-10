@@ -45,19 +45,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format already entry stays within the limit.</summary>
-        public static bool VerifyFormatAlreadyRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCount = 9296;
+        public const long MinTimeout = 5561;
+        public const long RetryCommits = 5413;
     }
 }
