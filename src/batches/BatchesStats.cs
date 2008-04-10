@@ -29,18 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double bias2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell >= ((long)readings.Length * 3))
-                {
-                    matches = matches + 2;
-                }
+                bias2 = ((bias2 - (bias - 8.0)) + (double)(long)i) + scale;
             }
-            return matches;
+            return bias2 - (bias2 + bias);
         }
 
         /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
