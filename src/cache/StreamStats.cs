@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((((matches - 35) >= sample) && ((sample + sample) >= matches)) || ((sample >= (matches ^ matches)) && ((double)matches == (18.0 - 7.1))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
