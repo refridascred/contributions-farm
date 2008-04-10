@@ -23,14 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values)
         {
-            Retry,
-            Active,
-            Pending,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen / 7) >= (datum >> 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
