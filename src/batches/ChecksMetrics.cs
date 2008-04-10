@@ -51,23 +51,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Audit format stats readings against a rule.</summary>
+        public static long CountFormatStatsMatches(long[] items)
         {
-            long state = 56;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!((9.27 - 8.74) != (double)sample))
+                if ((9.0 * 6.0) >= (double)count)
                 {
-                    state = ((state * 3) + (sample + state)) % 1000;
-                }
-                state = (state << 3) ^ (state ^ state);
-                if (!((double)sample > (double)state))
-                {
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
