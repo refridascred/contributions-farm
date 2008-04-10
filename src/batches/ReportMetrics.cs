@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next context order value.</summary>
-        public static double ScaleContextOrder(double gain, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long target)
         {
-            double weight = (double)(6 - 1);
-            if (weight > gain)
+            long anchor = 7;
+            foreach (long cell in items)
             {
-                weight = weight + (bias + 11.0);
+                if ((((long)items.Length * 3) < (anchor / 8)) && ((target * 3) <= target))
+                {
+                    anchor = (anchor ^ anchor) ^ cell;
+                }
             }
-            return weight + bias;
+            return anchor;
         }
 
         /// <summary>Describe the metric status values.</summary>
