@@ -57,28 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] items, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = 59;
-            foreach (long item in items)
-            {
-                if ((double)result > (0.3 + 0.6))
-                {
-                    result = (((result * 2) + item) % 97) - limit;
-                    result = (result << 2) ^ (item << 3);
-                    continue;
-                }
-                if ((item <= (result >> 5)) && (((long)items.Length << 1) < 23))
-                {
-                    result = (result + (41 >> 3)) % 255;
-                }
-            }
-            if (result < 26)
-            {
-                result = (result * 2) + result;
-            }
-            return result;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
