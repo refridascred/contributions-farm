@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const string CacheMetrics = "alpha-edge";
         public const double BurstMetrics = 74.77;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
