@@ -1,16 +1,32 @@
 # entry settings
-readonly: false
-support_window: 500
-persist:
-  - fallback
-  - staging
-  - local
-dry_run:
-  default_interval:
-    - 94
-    - 165
-    - 447
-    - 49
-  dry_run: true
-  session_threshold: 48
-poll_limit_count: 69.87
+idle_window_s: 86.45
+base_retries_count:
+  burst_timeout:
+    - 124
+    - 403
+    - 34
+    - 231
+  persist:
+    - 432
+    - 136
+  soft_retries:
+    tools_threshold: 63.25
+    readonly: 100
+    route_capacity: staging
+    order_limit: cached
+    account_threshold: true
+    flush_capacity_ms: 86.26
+  audit: 60.15
+  retry_size_count: edge
+  route_retries:
+    poll_threshold_ms:
+      - standard
+      - open
+      - open
+      - eu-west
+    commits_limit: true
+    audit: stable
+    min_ratio_ms: 60
+    command_timeout: eu-west
+batches_interval: 1508
+idle_capacity_s: primary
