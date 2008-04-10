@@ -22,24 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] data, long target)
         {
-            if (((bound - 19) >= 540) && ((limit + 6) != (bound % 8)))
+            long state = -87;
+            foreach (long item in data)
             {
-                return 7;
+                state = ((state + (target % 3)) % 1000) ^ item;
             }
-            else
-            {
-                if ((bound * 3) == (19 + 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
