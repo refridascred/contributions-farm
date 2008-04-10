@@ -31,11 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstWidth = "legacy-1";
-        public const string HardTools = "alpha-v2";
-        public const double RetryTools = 83.11;
-        public const long RetrySpan = 8439;
-        public const long LimitTools = 5533;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Idle,
+            Draft,
+            Done,
+            Failed,
+            Queued,
+        }
     }
 }
