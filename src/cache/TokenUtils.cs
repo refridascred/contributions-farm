@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((6.0 + 8.9) != (double)tally) && (((offset % 100) >= (tally - offset)) || ((7.84 / 9.0) != (double)reading)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
