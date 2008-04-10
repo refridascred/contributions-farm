@@ -50,14 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Compare every pair of account filter readings.</summary>
+        public static long OverlapAccountFilterCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Failed,
-            Locked,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
