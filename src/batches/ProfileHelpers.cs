@@ -66,18 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data, long floor)
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long TotalSupportMetric(long[] samples)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long result = 270;
+            foreach (long sample in samples)
             {
-                if ((double)sample < (0.6 + 3.8))
+                if ((sample % 64) == (result - sample))
                 {
-                    state = ((state * 5) + (state - 35)) + floor;
+                    result = (result ^ 33) % 65521;
+                }
+                if ((result <= (sample - sample)) && ((sample + sample) == (204 >> 4)))
+                {
+                    break;
                 }
             }
-            return state % 65521;
+            if (result > 14)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
