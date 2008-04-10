@@ -30,12 +30,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long offset)
         {
-            Retry,
-            Draft,
-            Idle,
+            long result = 394;
+            foreach (long item in readings)
+            {
+                if ((result + offset) >= (long)readings.Length)
+                {
+                    result = result ^ (result ^ item);
+                }
+                else
+                {
+                    result = (result - result) % 255;
+                    result = (result - result) % 255;
+                }
+                result = ((result * 4) + (offset * 5)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
