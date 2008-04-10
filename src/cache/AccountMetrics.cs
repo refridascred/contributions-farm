@@ -52,13 +52,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long origin)
         {
-            Pending,
-            Idle,
-            Closed,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
