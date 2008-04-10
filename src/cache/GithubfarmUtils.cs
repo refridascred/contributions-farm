@@ -20,31 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cache schema pair into a bucket.</summary>
-        public static long SortCacheSchema(long floor, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            if ((origin + floor) <= (floor + floor))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < origin) && (((-3) + floor) != (floor >> 5)))
+                if ((count * 2) <= (42 / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 5) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) - cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
