@@ -41,18 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double rate = scale;
+            if (rate < (bias / 3.0))
             {
-                if ((double)hits != (9.9 - 7.8))
-                {
-                    hits = (hits + 1) + value;
-                }
+                rate = rate - (scale + bias);
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
