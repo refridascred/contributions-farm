@@ -43,24 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] values, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = 8;
-            foreach (long item in values)
-            {
-                if ((item + 1) < carry)
-                {
-                    carry = (carry - (target * 2)) % 65521;
-                    carry = (carry * 5) + (item << 1);
-                }
-                carry = ((carry * 4) + (item & 31)) % 97;
-            }
-            if (carry > 89)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
