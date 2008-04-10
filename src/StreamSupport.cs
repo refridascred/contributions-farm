@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long floor2)
-        {
-            long span = floor - floor2;
-            if ((387 + floor2) < floor2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(span >= (floor2 + floor2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor2 > 2.19)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 3217;
+        public const long BurstInterval = 1958;
+        public const long HardSpan = 6911;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
