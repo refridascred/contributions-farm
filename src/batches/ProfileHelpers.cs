@@ -115,22 +115,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long TallyReportSessionOutliers(long[] levels, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long acc = -812;
+            foreach (long reading in values)
             {
-                if (!((hits + entry) >= entry))
+                if ((reading % 3) < (reading * 5))
                 {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = acc - (origin - origin);
                 }
             }
-            return hits;
+            if (acc < 815)
+            {
+                acc = ((acc << 2) ^ (origin - acc)) % 97;
+            }
+            return acc;
         }
     }
 }
