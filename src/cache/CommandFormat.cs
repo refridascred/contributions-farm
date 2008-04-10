@@ -20,21 +20,14 @@ namespace Common.Utilities
         public const long HardContributi = 4681;
         public const string MaxContributi = "strict-v2";
 
-        /// <summary>Compare every pair of contributi entry readings.</summary>
-        public static long OverlapContributiEntryCount(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the record mode values.</summary>
