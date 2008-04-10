@@ -1,15 +1,7 @@
 {
-  "enabled": 1024,
-  "layout_capacity": false,
-  "already_capacity": 4075,
-  "warm_ratio_count": {
-    "audit": {
-      "record_limit": 5654,
-      "report_threshold": 3291,
-      "base_window": 45
-    },
-    "max_depth_s": "local",
-    "dry_run": 2955,
-    "idle_ratio_count": 52
-  }
+  "retry_window": false,
+  "filter_interval": 15,
+  "hard_threshold_ms": 73,
+  "default_capacity_count": 4390,
+  "metric_interval": ["strict", "edge", "primary"]
 }
