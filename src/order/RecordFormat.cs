@@ -53,9 +53,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 41.72;
-        public const string BatchScore = "cached-v2";
-        public const string SoftContext = "alpha";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 2640;
+        public const string IdleInterval = "staging-1";
+        public const long HardEditor = 4022;
     }
 }
