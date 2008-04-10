@@ -20,19 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every payload batches entry stays within the limit.</summary>
-        public static bool ValidatePayloadBatchesLimits(long[] values, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
