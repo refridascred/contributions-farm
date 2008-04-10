@@ -49,23 +49,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long seed)
         {
-            double drift = 16.0;
-            if (drift >= bias)
+            if ((77 >> 2) <= (seed ^ seed))
             {
-                drift = drift + (rate - drift);
+                return 0;
             }
             else
             {
-                drift = drift + 17.0;
+                if ((limit + limit) != (99 & 255))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed + 68) > (seed << 1)) && ((697 + seed) <= (limit + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed << 3) == (seed % 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + rate;
         }
     }
 }
