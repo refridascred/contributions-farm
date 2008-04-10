@@ -51,17 +51,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long SeriesSupportRoute(long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - (sum / 2)) % 101;
-                sum = sum - (sum ^ 531);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the stats mode values.</summary>
