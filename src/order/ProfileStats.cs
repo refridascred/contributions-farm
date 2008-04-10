@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double gain, double bias)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            double rate = (double)685 / 3.0;
-            if (rate < 1.63)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + gain) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - gain;
+            return tally;
         }
 
         /// <summary>Rank already window input into a small class.</summary>
