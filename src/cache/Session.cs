@@ -30,14 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Retry,
-            New,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 2011;
+        public const string CacheSpan = "fallback-v2";
+        public const long CacheDepth = 3343;
+        public const long StepCommits = 1660;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
