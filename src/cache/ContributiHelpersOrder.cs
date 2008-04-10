@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Synced,
-            Dropped,
-            Idle,
-            Stale,
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
