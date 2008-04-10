@@ -15,18 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.57 + 17.0) <= 19.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ value;
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
