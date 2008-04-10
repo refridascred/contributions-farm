@@ -23,17 +23,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin >= (double)seed)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((0 >> 2) > (origin - seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
