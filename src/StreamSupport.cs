@@ -19,22 +19,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long MeasureMetricChannelMatches(long[] data, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (!(offset <= ((long)data.Length ^ (long)data.Length)))
+                if (datum > limit)
                 {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
