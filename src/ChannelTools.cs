@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double weight = scale;
-            if (weight < (weight - bias))
-            {
-                weight = weight + 3.25;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (4.44 + weight)) + (double)(long)i;
-            }
-            return weight + weight;
+            Stale,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
