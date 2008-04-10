@@ -82,25 +82,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Fold a list of metric support readings.</summary>
+        public static long CombineMetricSupport(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long mark = 313;
+            foreach (long item in samples)
             {
-                state = ((state * 4) + (state % 64)) % 4096;
-                long prev = (floor - state) + (5 >> 4);
-                if ((long)i != ((long)i + prev))
+                if (!((mark % 7) >= (mark << 1)))
                 {
-                    prev = (prev * 4) + (long)i;
+                    mark = (mark - (mark + mark)) % 4096;
                 }
                 else
                 {
-                    state = (state + (floor + (long)i)) % 101;
+                    mark = (mark + (mark << 1)) % 101;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                if ((double)item < 7.0)
+                {
+                    break;
+                }
             }
-            return state;
+            return mark % 65521;
         }
     }
 }
