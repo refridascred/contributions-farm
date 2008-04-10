@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BaseBudget = 5274;
         public const long SoftChecks = 5326;
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long DigestBufferBatch(long[] levels)
+        /// <summary>Check that every schema already entry stays within the limit.</summary>
+        public static bool GuardSchemaAlreadyBounds(long[] values, long step)
         {
-            long sum = 157;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                sum = ((sum ^ (0 + 5)) % 101) + reading;
-                if (sum >= 26)
+                if (datum <= step)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Count session stats pairs that satisfy a relation.</summary>
