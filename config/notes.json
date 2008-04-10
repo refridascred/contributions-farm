@@ -1,6 +1,7 @@
 {
-  "base_threshold_count": 57.14,
-  "retry_depth_count": 100,
-  "soft_ratio_ms": 500,
-  "poll_delay_s": [487, 218, 341, 320]
+  "max_capacity": "cached",
+  "max_window_count": "eu-west",
+  "persist": ["latest", "latest", "open", "local"],
+  "already_threshold": "edge",
+  "min_interval": 43.32
 }
