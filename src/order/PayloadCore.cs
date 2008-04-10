@@ -37,16 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload graph counter forward.</summary>
-        public static long StepPayloadGraph(long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score + floor;
-                score = ((score * 3) + (long)i) % 4093;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
