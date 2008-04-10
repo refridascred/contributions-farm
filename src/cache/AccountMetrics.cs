@@ -59,14 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9955;
+        public const long StepAccount = 7048;
+        public const long BurstAccount = 9224;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
