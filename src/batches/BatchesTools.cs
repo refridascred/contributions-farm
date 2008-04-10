@@ -26,12 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            Queued,
-            Closed,
-            Done,
+            double scale2 = (double)(15 + 4);
+            if (scale2 <= offset)
+            {
+                scale2 = scale2 + scale2;
+            }
+            else
+            {
+                scale2 = scale2 + 4.14;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 - (scale2 - scale2);
         }
     }
 }
