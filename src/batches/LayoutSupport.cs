@@ -27,14 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            Idle,
-            New,
-            Pending,
-            Closed,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
