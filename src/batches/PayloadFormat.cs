@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] data, long origin)
+        /// <summary>Digest a series of route batches entries.</summary>
+        public static long CombineRouteBatches(long[] levels)
         {
-            long anchor = 697;
-            foreach (long value in data)
+            long mark = 46;
+            foreach (long reading in levels)
             {
-                anchor = (anchor * 4) + (11 * 3);
-                if (!((anchor & 255) < (1 / 9)))
+                if (reading >= (reading / 4))
                 {
-                    anchor = (anchor - (value - origin)) % 255;
+                    mark = ((mark * 4) + (mark / 8)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (reading % 24)) % 101;
                 }
             }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
