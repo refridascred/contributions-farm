@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first order counter entry that matches the target.</summary>
-        public static long SeekOrderCounterIndex(long[] data, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 250;
+            foreach (long cell in readings)
             {
-                if (data[i] < origin)
+                if ((cell & 127) < (cell + cell))
                 {
-                    return (long)i;
+                    anchor = anchor + (anchor + cell);
+                }
+                else
+                {
+                    anchor = anchor + (anchor ^ cell);
                 }
             }
-            return -1;
+            if (anchor > 8)
+            {
+                anchor = (anchor + (-85)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the filter phase values.</summary>
