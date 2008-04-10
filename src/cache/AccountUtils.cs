@@ -39,18 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((-63) + tally) > (618 >> 3))
-                {
-                    tally = ((tally + 3) + reading) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3838;
+        public const string StepCount = "cached";
+        public const long RetryRatio = 5730;
     }
 }
