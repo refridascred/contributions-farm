@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] data, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (limit >= (seen & 15))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
