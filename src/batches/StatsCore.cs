@@ -58,16 +58,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + seed) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowCount = 9394;
+        public const long WindowFactor = 7018;
+        public const long RetryGraph = 4250;
+        public const long WindowTimeout = 6250;
     }
 }
