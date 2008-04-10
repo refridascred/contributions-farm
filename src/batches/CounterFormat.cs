@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = 40;
-            foreach (long entry in samples)
-            {
-                if ((sum < (entry & 1)) && ((3 << 2) <= offset))
-                {
-                    sum = (sum + (-1)) % 101;
-                }
-            }
-            return sum % 97;
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
