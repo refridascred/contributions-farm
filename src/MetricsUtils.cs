@@ -62,13 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] data, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long entry in data)
+            foreach (long sample in series)
             {
-                if (entry < target)
+                if (sample >= offset)
                 {
                     valid = false;
                     break;
