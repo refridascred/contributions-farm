@@ -77,22 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((3.03 - 8.0) > (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ bound) % 65521;
+                anchor = anchor - (anchor - anchor);
+                anchor = (anchor << 2) ^ bound;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
