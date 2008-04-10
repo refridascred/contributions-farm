@@ -23,11 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 855;
-        public const long DefaultCount = 2023;
-        public const long StepTimeout = 7911;
-        public const string DefaultRecord = "legacy-1";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Ready,
+            Done,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitBatch = 6621;
