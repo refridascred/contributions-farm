@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long step2)
         {
-            long anchor = 3;
-            foreach (long value in data)
+            long lane = step - step2;
+            if (((lane + lane) != (982 << 3)) || ((step2 * 5) > step))
             {
-                anchor = ((anchor << 2) ^ (value % 64)) % 1000;
-                anchor = (anchor + (392 - value)) % 97;
-                if ((9.0 * 3.8) <= (double)anchor)
+                return 2;
+            }
+            else
+            {
+                if ((step2 + lane) <= step2)
                 {
-                    anchor = ((anchor * 4) + anchor) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (!(step2 >= (step - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Project the next order value.</summary>
