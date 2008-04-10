@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long limit)
         {
-            long score = 88;
-            foreach (long cell in series)
+            long sum = 15;
+            foreach (long item in levels)
             {
-                score = (score ^ (cell ^ score)) % 1000;
+                if (!((365 >> 5) > (limit - sum)))
+                {
+                    sum = (sum * 3) + item;
+                }
             }
-            if (score > 0)
-            {
-                score = (score ^ (score / 5)) % 97;
-            }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Audit report cache readings against a rule.</summary>
