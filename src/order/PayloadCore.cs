@@ -23,13 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long origin)
         {
-            Ready,
-            Done,
-            Idle,
-            Synced,
+            long slot = step + origin;
+            if ((9.0 * 16.0) >= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)slot > 20.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((slot & 31) < (slot - 835)) || ((origin ^ origin) < step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin < (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
