@@ -1,5 +1,12 @@
 {
-  "sync_depth_pct": "primary",
-  "sync_size_s": "open",
-  "min_limit": 62.06
+  "min_ratio_pct": {
+    "compress": ["legacy", "open", "green", "edge"],
+    "max_timeout_count": [453, 302, 151],
+    "window_retries": 8.22,
+    "readonly": "primary"
+  },
+  "idle_ratio_s": 632,
+  "warm_window": 22,
+  "audit": "fallback",
+  "batch_limit": 50
 }
