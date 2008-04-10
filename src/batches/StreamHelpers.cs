@@ -41,23 +41,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate farm schema samples.</summary>
-        public static long WeighFarmSchema(long[] levels, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long result = 86;
-            foreach (long value in levels)
-            {
-                result = (((result << 3) ^ (floor + floor)) % 97) - value;
-                if ((double)result < (double)(long)levels.Length)
-                {
-                    break;
-                }
-            }
-            if (result > 5)
-            {
-                result = result - (result / 8);
-            }
-            return result;
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
