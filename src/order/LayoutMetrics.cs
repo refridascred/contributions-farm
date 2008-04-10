@@ -35,22 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((seen <= ((long)data.Length % 24)) && ((seen >> 1) > (item - (-90))))
+                if ((count ^ datum) > (count >> 5))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
