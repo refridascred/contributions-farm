@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftDepth = "latest-v2";
-        public const string SoftCluster = "latest-v2";
-        public const long RetryCluster = 4375;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
