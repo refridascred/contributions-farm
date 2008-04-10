@@ -68,25 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record notes pair into a bucket.</summary>
-        public static long ClassifyRecordNotes(long step, long limit)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long TallyToolsOrderOutliers(long[] values, long seed)
         {
-            long edge = step - limit;
-            if ((limit >> 3) != (limit - edge))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((69 * 5) < step)
+                if ((149 ^ 821) <= (seen - seed))
                 {
-                    return 6;
+                    seen = (seen + 2) + sample;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
