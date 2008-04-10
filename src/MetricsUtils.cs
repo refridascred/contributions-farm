@@ -48,14 +48,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 4290;
+        public const double WindowSpan = 25.82;
+        public const long HardStream = 7044;
+        public const long BatchStream = 4151;
+        public const long BaseCount = 4674;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] data, long floor)
