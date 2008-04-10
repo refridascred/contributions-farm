@@ -1,8 +1,7 @@
-id,label,score,state,count
-1,stable,fallback,stable,staging
-2,legacy,294,open,606
-3,edge,49.28,861,8.97
-4,126,878,strict,523
-5,eu-west,931,456,standard
-6,701,staging,standard,612
-7,22.45,498,622,216
+id,state,level,weight
+1,406,296,73.27
+2,18.73,open,staging
+3,27.4,strict,920
+4,97.65,914,385
+5,latest,687,blue
+6,fallback,48.64,276
