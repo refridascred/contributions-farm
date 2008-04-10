@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if ((1.4 * 8.82) < (2.31 + 17.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (floor ^ floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
