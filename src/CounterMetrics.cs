@@ -44,18 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell >> 1) <= (44 - 49))
+                if ((step % 10) == (809 + step))
                 {
-                    count = count + 1;
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
