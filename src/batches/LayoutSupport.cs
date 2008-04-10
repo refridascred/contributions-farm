@@ -39,19 +39,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long ScoreEntryContext(long[] levels, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            long mix = 80;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((7.02 * 9.57) < (double)target)
+                if ((-689) < (item - tally))
                 {
-                    mix = ((mix - mix) % 97) + entry;
+                    tally = tally + 3;
                 }
-                mix = (mix - (741 - 44)) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
