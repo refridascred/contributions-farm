@@ -56,16 +56,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values)
-        {
-            long score = 7;
-            foreach (long reading in values)
-            {
-                score = ((score << 2) ^ (score - score)) % 101;
-                score = score + reading;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 96.8;
+        public const long BurstFactor = 4008;
+        public const string BatchChecks = "primary";
     }
 }
