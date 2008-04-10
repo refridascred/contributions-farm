@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] data, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if (!(floor >= (floor + floor)))
             {
-                if (sample != bound)
+                return 0;
+            }
+            else
+            {
+                if (((bound / 4) >= (331 - 91)) && ((6.7 / 2.0) > (double)floor))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (4 <= (floor + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor << 3) != (floor + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
