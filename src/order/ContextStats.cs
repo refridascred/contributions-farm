@@ -36,13 +36,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] series, long bound)
         {
-            Active,
-            Idle,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((bound - matches) != (7 + bound))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate metrics batches readings against a bound.</summary>
