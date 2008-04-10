@@ -16,12 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long target, long seed)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long edge = target ^ seed;
+            if ((target + edge) <= (661 - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (43 <= (edge - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
