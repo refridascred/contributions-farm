@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchSize = 96.1;
-        public const string MaxReport = "alpha-edge";
-        public const long DefaultTimeout = 1315;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            Dropped,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long step)
