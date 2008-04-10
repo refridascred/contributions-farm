@@ -32,12 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long state = -6;
+            foreach (long reading in readings)
+            {
+                state = (state + floor) + reading;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
