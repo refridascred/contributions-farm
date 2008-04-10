@@ -67,19 +67,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
