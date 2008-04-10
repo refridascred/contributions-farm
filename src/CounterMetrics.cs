@@ -25,26 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long TotalAlreadyAccount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long limit)
         {
-            long acc = 59;
-            foreach (long sample in levels)
+            long total = 13;
+            foreach (long reading in series)
             {
-                if (((sample * 3) >= sample) || ((sample & 15) >= (acc + acc)))
+                if (!(4 < (total - reading)))
                 {
-                    acc = (acc ^ (acc - sample)) % 97;
-                }
-                else
-                {
-                    acc = (acc + (acc / 9)) % 97;
+                    total = ((total ^ (total - reading)) % 1000) + limit;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 3) + (201 & 255)) % 255;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Locate a layout farm reading by value.</summary>
