@@ -21,17 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] items, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Digest a series of route entries.</summary>
