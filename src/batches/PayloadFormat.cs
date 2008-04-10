@@ -39,22 +39,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
-        public static long TallyGithubfarmFilterHits(long[] series, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long carry = 8;
+            foreach (long item in series)
             {
-                if ((((-725) + tally) <= (tally / 6)) && (((long)series.Length == (value + floor)) && ((double)floor >= 6.56)))
+                if (item >= (item / 6))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry ^ origin;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
     }
 }
