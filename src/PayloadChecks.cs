@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] samples, long bound)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long CountChannelOrderOutliers(long[] values, long target)
         {
-            long score = 538;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((score << 3) > score) && ((2.0 - 6.3) < (double)bound))
+                if (!((9.2 / 4.0) != (double)entry))
                 {
-                    score = score - (score % 60);
-                }
-                if ((bound / 8) > cell)
-                {
-                    break;
+                    matches = (matches + 2) + target;
                 }
             }
-            if (score < 3)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
