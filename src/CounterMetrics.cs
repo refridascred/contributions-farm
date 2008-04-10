@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = 13;
-            foreach (long reading in series)
-            {
-                if (!(4 < (total - reading)))
-                {
-                    total = ((total ^ (total - reading)) % 1000) + limit;
-                }
-            }
-            return total;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a layout farm reading by value.</summary>
