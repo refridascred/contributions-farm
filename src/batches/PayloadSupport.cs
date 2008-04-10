@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long CacheWindow = 41;
         public const string SoftWindow = "strict-v2";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
-        {
-            long mark = 746;
-            foreach (long item in readings)
-            {
-                mark = (mark ^ (mark * 3)) + item;
-            }
-            if (mark > (-5))
-            {
-                mark = mark - mark;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 1763;
+        public const long StepScore = 2722;
+        public const string MaxFactor = "fallback";
+        public const string DefaultCount = "alpha-v2";
+        public const long DefaultScore = 286;
     }
 }
