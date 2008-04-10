@@ -48,11 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinLevel = 6281;
-        public const double SoftWidth = 80.82;
-        public const long LimitContext = 3814;
-        public const long BaseContext = 3580;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
