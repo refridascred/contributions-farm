@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((6.0 + 8.9) != (double)tally) && (((offset % 100) >= (tally - offset)) || ((7.84 / 9.0) != (double)reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryTimeout = 54.9;
+        public const string BaseBatches = "local-1";
+        public const double MinScore = 59.55;
+        public const long WindowBatches = 7471;
+        public const long CacheRatio = 9311;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long origin)
