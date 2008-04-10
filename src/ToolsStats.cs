@@ -29,13 +29,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Pending,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 1955;
+        public const double MaxTools = 60.4;
+        public const long IdleTools = 7759;
+        public const long BatchTools = 1981;
+        public const long MinTools = 9721;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionOutliers(long[] items)
