@@ -61,20 +61,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long limit)
-        {
-            long mix = 44;
-            foreach (long item in levels)
-            {
-                mix = (mix * 3) + (limit / 6);
-                if (((7 + mix) > (item - limit)) && ((79 + limit) != (mix >> 3)))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "stable";
+        public const long BatchSize = 4620;
+        public const long RetryFormat = 1755;
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
         public static long DeriveEditorCommits(long bound)
