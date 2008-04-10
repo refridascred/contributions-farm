@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            New,
+            Stale,
         }
     }
 }
