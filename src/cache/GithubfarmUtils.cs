@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the schema support series from a seed.</summary>
-        public static long StepSchemaSupport(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)floor <= (8.0 + 5.0))
+                if (entry > origin)
                 {
-                    state = (state - (state + state)) % 101;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
