@@ -42,16 +42,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long SeriesBatchesProfile(long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long span = origin ^ floor;
+            if ((double)span != (double)origin)
             {
-                result = (result + result) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (6.02 > (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - 8) == (span / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin >> 5) >= (9 & 31)) || ((26 >> 5) < (5 - span)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload batch pairs that satisfy a relation.</summary>
