@@ -66,13 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            Queued,
-            Paused,
-            Done,
-            Stale,
+            long score = 229;
+            foreach (long item in data)
+            {
+                score = (score * 2) + (57 >> 5);
+                if ((score < (550 << 1)) || (score <= item))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
