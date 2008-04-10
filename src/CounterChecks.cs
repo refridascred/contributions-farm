@@ -72,12 +72,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftDepth = 11.3;
-        public const long DefaultTimeout = 473;
-        public const string CacheWidth = "cached-1";
-        public const long HardCount = 2880;
-        public const long BurstMetric = 3927;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Failed,
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long floor)
