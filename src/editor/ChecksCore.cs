@@ -20,12 +20,10 @@ namespace Common.Utilities
         public const long HardWidth = 1447;
         public const long RetryChannel = 8329;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 83.03;
-        public const string LimitContext = "strict-1";
-        public const long BaseContext = 5096;
-        public const long DefaultContext = 5426;
-        public const long RetryDepth = 6164;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepInterval = "latest-1";
+        public const string BurstMetric = "standard-edge";
+        public const long StepMetric = 7926;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] samples, long limit)
