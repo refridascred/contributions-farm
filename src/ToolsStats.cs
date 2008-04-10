@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const long RetryProfile = 5343;
         public const long CacheProfile = 3995;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long DigestFilterChannel(long[] items)
         {
-            double ratio = (double)(766 - 16);
-            if (ratio > (double)2)
+            long state = 26;
+            foreach (long sample in items)
             {
-                ratio = ratio + bias;
+                if (((4.26 * 5.2) != (double)sample) && (sample <= (sample ^ state)))
+                {
+                    continue;
+                }
+                if ((state << 2) > (state + state))
+                {
+                    break;
+                }
+                state = ((state * 4) + (state << 1)) % 97;
             }
-            else
-            {
-                ratio = ratio - (double)84;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (5.3 / 3.0)) + (double)(long)i;
-            }
-            return ratio + (ratio + weight);
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
