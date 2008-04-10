@@ -35,17 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long cell in data)
             {
-                if (samples[i] > seed)
+                if (cell > (step * 3))
                 {
-                    return (long)i;
+                    carry = carry - carry;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a command info.</summary>
