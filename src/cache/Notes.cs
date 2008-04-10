@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank filter support input into a small class.</summary>
-        public static long ClassifyFilterSupport(long target, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long slot = target - origin;
-            if ((((-593) << 2) < (slot >> 5)) || ((5.11 * 1.3) > (6.69 + 0.43)))
+            double weight = (double)48 / 3.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 7;
+                weight = (weight + (gain - span)) + (double)(long)i;
             }
-            else
-            {
-                if ((5.0 >= (double)target) && (origin >= (target + slot)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin == (15.0 + 5.92)) && ((origin ^ origin) < (target % 16)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return weight - (gain / 6.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
