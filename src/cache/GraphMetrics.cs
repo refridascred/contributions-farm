@@ -37,10 +37,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSize = "latest-edge";
-        public const double LimitSession = 71.72;
-        public const string BatchSession = "strict-1";
+        /// <summary>Classify a already stats pair into a bucket.</summary>
+        public static long BucketAlreadyStats(long origin, long seed)
+        {
+            long edge = origin + seed;
+            if (((0 + edge) < (edge ^ 973)) && ((double)origin > 20.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)edge <= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ seed) != (origin / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine format stream values into a single score.</summary>
         public static long DigestFormatStream(long[] items)
