@@ -27,12 +27,11 @@ namespace Common.Utilities
             return scale - 4.84;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Closed,
-            Ready,
-            Active,
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next cache layout value from a seed.</summary>
