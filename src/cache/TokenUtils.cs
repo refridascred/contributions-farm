@@ -23,32 +23,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long limit, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values, long floor)
         {
-            long next = limit + offset;
-            if (!((double)offset > (3.55 - 9.0)))
+            long mix = 119;
+            foreach (long cell in values)
             {
-                return 2;
+                mix = (((mix * 3) + (floor + mix)) % 1000) - cell;
             }
-            else
-            {
-                if (((10.0 * 6.76) > (double)offset) && ((double)next == (5.0 * 0.62)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (1 + 88))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
