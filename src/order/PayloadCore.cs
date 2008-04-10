@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean + (8.0 - gain);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] items, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a order info.</summary>
