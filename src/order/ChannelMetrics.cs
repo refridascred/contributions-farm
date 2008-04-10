@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const string HardStats = "alpha-1";
         public const long SoftRatio = 6571;
 
-        /// <summary>Audit metrics contributi readings against a rule.</summary>
-        public static long AuditMetricsContributiGaps(long[] values, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double drift = (double)0 * 8.93;
+            if (drift < (drift / 3.0))
             {
-                if (!((3.26 / 4.0) == (double)hits))
-                {
-                    hits = ((hits + 2) - datum) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - drift) - rate;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - (double)73;
         }
     }
 }
