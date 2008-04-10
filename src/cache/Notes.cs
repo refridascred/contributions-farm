@@ -38,11 +38,24 @@ namespace Common.Utilities
         public const long IdleMetric = 1344;
         public const string DefaultScore = "fallback-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 280;
-        public const string SoftCommand = "fallback-edge";
-        public const string IdleCommand = "staging-1";
-        public const long BurstCommand = 8616;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series)
+        {
+            long mix = 319;
+            foreach (long entry in series)
+            {
+                mix = (mix ^ (entry - entry)) % 97;
+                if ((double)mix >= (3.65 - 7.9))
+                {
+                    mix = (mix + (34 % 100)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (mix + mix);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] samples)
