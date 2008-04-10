@@ -23,21 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 15;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = ((total << 3) ^ (cell - total)) % 255;
+                if (((16.0 + 6.16) == (double)cell) || ((double)total > (9.46 + 6.87)))
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total << 3) ^ (cell + total);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
