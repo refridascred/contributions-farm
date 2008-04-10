@@ -40,38 +40,18 @@ namespace Common.Utilities
         public const double BatchMetric = 76.8;
         public const long MinCount = 349;
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long ClassifyChecksPayload(long origin, long seed)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long MeasureOrderChannelOutliers(long[] levels, long target)
         {
-            if (seed >= origin)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ seed) == (seed + seed))
+                if ((cell & 1) >= (4 << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (origin <= (origin / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin << 2) == (seed >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 3) + target;
                 }
             }
+            return count;
         }
     }
 }
