@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long target)
         {
-            double load = rate;
-            if (load < (8.49 / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (load + 5.98);
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            return load - span;
+            return -1;
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
