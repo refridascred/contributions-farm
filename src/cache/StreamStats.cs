@@ -37,9 +37,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 98.02;
-        public const double SoftLevel = 51.99;
-        public const string RetryEntry = "fallback-edge";
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
