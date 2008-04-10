@@ -31,19 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Count graph stats pairs that satisfy a relation.</summary>
+        public static long CompareGraphStatsCount(long[] readings)
         {
-            long state = 286;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 3) ^ (78 % 64);
-                if (((state & 15) <= sample) || ((double)state <= (7.9 / 5.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return tally;
         }
     }
 }
