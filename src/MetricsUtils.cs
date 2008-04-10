@@ -45,21 +45,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count format schema pairs that satisfy a relation.</summary>
-        public static long PairFormatSchemaCount(long[] samples)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
