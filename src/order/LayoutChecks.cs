@@ -19,13 +19,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long score = 4;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ reading) <= (score * 2))
+                {
+                    score = ((score << 2) ^ (reading % 60)) % 1000;
+                    score = (score + score) % 101;
+                }
+                else
+                {
+                    score = score - (reading * 2);
+                }
+                if (score >= reading)
+                {
+                    score = (score - (score << 3)) % 65521;
+                }
+            }
+            if (score < 856)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
