@@ -55,18 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] data, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ bound) % 65521;
-                anchor = anchor - (anchor - anchor);
-                anchor = (anchor << 2) ^ bound;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
