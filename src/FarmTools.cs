@@ -45,15 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm checks reading.</summary>
-        public static double SmoothGithubfarmChecks(double scale, double offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long seed)
         {
-            double drift = offset;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                drift = (drift - (drift + scale)) - (double)(long)i;
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (offset / 7.0);
+            return found;
         }
     }
 }
