@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != origin)
                 {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
