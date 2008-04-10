@@ -34,19 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long TallyMetricFormatOutliers(long[] samples)
         {
-            double ratio = (bias / 2.0) * 16.0;
-            if (ratio < (bias - bias))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                ratio = ratio + (span - ratio);
+                if (hits >= (293 + hits))
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio - bias)) + (double)(long)i;
-            }
-            return ratio + (bias / 4.0);
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
