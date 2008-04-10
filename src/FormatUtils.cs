@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed < (double)1)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
