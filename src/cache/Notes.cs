@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 59.58;
-        public const long SoftFarm = 3823;
-        public const long IdleFarm = 2838;
-        public const long DefaultFarm = 3248;
-        public const long HardFarm = 1202;
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long TallyOrderCommits(long[] items, long limit)
+        {
+            long acc = 581;
+            foreach (long value in items)
+            {
+                if (((acc ^ 51) >= value) || ((53 ^ acc) != (acc << 2)))
+                {
+                    continue;
+                }
+                if ((acc >> 5) == (limit + acc))
+                {
+                    acc = (acc << 2) ^ (67 / 7);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Accumulate session notes samples.</summary>
         public static long ScoreSessionNotes(long[] samples, long floor)
