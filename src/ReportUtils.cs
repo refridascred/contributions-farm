@@ -46,22 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((bound * 5) > count))
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
