@@ -55,13 +55,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Dropped,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 52.6;
+        public const long MaxSpan = 218;
+        public const string HardCounter = "standard-edge";
+        public const long LimitCount = 1104;
+        public const long SoftDepth = 9245;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
