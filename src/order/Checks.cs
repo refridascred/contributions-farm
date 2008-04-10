@@ -12,21 +12,38 @@ namespace Common.Utilities
         public const string StepCache = "primary-1";
         public const long BurstCache = 3160;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((707 + 489) < (seed * 2)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) >= 997)
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
+                    return 8;
+                }
+                else
+                {
+                    if (((floor & 127) != (seed % 16)) && ((floor + floor) >= (23 & 31)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor + floor) > (seed + seed)) || ((seed + floor) <= (floor % 12)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
