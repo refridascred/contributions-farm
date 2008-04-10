@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long CombineProfileCache(long[] samples, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long score = 62;
+            foreach (long datum in samples)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((datum >> 1) < floor)
+                {
+                    score = ((score * 3) + (floor >> 5)) % 97;
+                }
+            }
+            if (score > (-36))
+            {
+                score = ((score * 3) + (floor << 2)) % 97;
             }
             return score;
         }
