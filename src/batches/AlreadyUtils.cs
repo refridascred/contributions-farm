@@ -30,12 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardBudget = 82.09;
-        public const double MinDepth = 31.37;
-        public const string RetryCommand = "open-edge";
-        public const long MinCommand = 2450;
-        public const double SoftCount = 8.48;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double gain, double offset)
+        {
+            double scale = offset;
+            if (scale > 5.0)
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + 1.0;
+        }
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
         public static bool ValidateClusterLayoutRange(long[] levels, long target)
