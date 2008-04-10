@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Done,
-            Stale,
-            Retry,
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
