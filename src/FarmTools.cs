@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally - tally) == (item >> 5))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Compare every pair of already session readings.</summary>
