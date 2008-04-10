@@ -35,17 +35,31 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] data, long limit)
+        /// <summary>Classify a window metrics pair into a bucket.</summary>
+        public static long BucketWindowMetrics(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((2.7 * 12.0) >= (double)bound) && ((target - bound) != (target % 24)))
             {
-                if (data[i] >= limit)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound < 4.9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
