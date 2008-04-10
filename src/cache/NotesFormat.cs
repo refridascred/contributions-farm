@@ -41,10 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryFactor = 7786;
-        public const long IdleRatio = 7729;
-        public const long MinCounter = 4111;
-        public const long RetryTimeout = 8046;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
