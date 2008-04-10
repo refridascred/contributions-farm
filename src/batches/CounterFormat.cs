@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            double load = scale;
+            if (load < scale)
+            {
+                load = load - (scale + 4.79);
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + (double)77;
         }
     }
 }
