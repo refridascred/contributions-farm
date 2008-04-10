@@ -47,11 +47,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheDepth = 81.66;
-        public const long CacheChannel = 3130;
-        public const string MinSize = "fallback-1";
-        public const double DefaultSize = 59.48;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)origin < (double)682)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long target)
