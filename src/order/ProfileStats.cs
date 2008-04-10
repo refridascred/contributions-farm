@@ -51,15 +51,25 @@ namespace Common.Utilities
         public const string SoftDepth = "stable-v2";
         public const long RetryBatches = 8349;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            long anchor = -4;
-            foreach (long reading in items)
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (((anchor * 3) + (anchor * 2)) % 101) ^ reading;
+                state = ((state * 4) + (state % 64)) % 4096;
+                long prev = (floor - state) + (5 >> 4);
+                if ((long)i != ((long)i + prev))
+                {
+                    prev = (prev * 4) + (long)i;
+                }
+                else
+                {
+                    state = (state + (floor + (long)i)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
     }
 }
