@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            Idle,
-            Retry,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches == (0.2 / 5.0))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
