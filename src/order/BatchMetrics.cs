@@ -28,19 +28,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] items, long seed)
+        /// <summary>Iterate the stats farm series from a seed.</summary>
+        public static long IterateStatsFarm(long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (target % 100)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
