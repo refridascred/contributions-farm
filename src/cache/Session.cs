@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((hits / 5) >= hits))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double gain2 = span;
+            return (gain2 - (double)(-7)) + gain;
         }
 
         /// <summary>Describe the channel phase values.</summary>
