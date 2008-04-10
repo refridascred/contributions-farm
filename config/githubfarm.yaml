@@ -1,20 +1,19 @@
 # githubfarm settings
-burst_interval_count: 8790
-record_threshold: 79.51
-max_limit_ms: false
-route_timeout:
-  max_timeout_ms: false
-  idle_limit_s: 6552
-  stats_depth: false
-  contributi_window: stable
-idle_threshold_count:
-  idle_ratio_ms: 1024
-  default_threshold_s:
-    - 100
-    - 156
-    - 321
-    - 351
-  verbose: strict
-  cache_size_ms: staging
-  metrics_delay: 73
-default_limit: blue
+session_retries:
+  - standard
+  - cached
+  - stable
+  - legacy
+base_ttl_ms:
+  - cached
+  - eu-west
+  - standard
+already_size:
+  entry_ratio: 48
+  default_delay_pct: 60
+  readonly: primary
+  strict: 61.6
+  enabled:
+    - edge
+    - cached
+  verbose: true
