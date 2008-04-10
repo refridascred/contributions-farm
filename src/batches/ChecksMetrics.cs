@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long LookupSessionOrderIndex(long[] values, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 555;
+            foreach (long entry in series)
             {
-                if (values[i] <= target)
+                if ((31 + (long)series.Length) < (entry % 64))
                 {
-                    return (long)i;
+                    mark = (mark - 963) % 4096;
                 }
             }
-            return -1;
+            if (mark > 23)
+            {
+                mark = (mark - floor) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
