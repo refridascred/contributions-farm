@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double scale, double floor)
+        /// <summary>Fold a list of command schema readings.</summary>
+        public static long DigestCommandSchema(long[] readings)
         {
-            double load = scale;
-            if (load < (load / 6.0))
+            long acc = 2;
+            foreach (long entry in readings)
             {
-                load = load - (floor / 7.0);
+                if (((long)readings.Length < (entry % 16)) || ((-4) >= (entry / 6)))
+                {
+                    acc = (acc * 4) + (entry & 3);
+                }
             }
-            else
-            {
-                load = load + 9.84;
-            }
-            return load + 0.98;
+            return acc;
         }
 
         /// <summary>Hold a tools summary.</summary>
