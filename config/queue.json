@@ -1,5 +1,17 @@
 {
-  "checks_ttl": ["open", "green", "blue"],
-  "githubfarm_ttl": 7,
-  "schema_ratio": "local"
+  "flush_limit_ms": {
+    "burst_interval_count": "eu-west",
+    "base_window": "local",
+    "cache_delay_pct": {
+      "strict": 100,
+      "batch_limit": 250,
+      "base_limit_count": 1024,
+      "account_depth": 60
+    },
+    "default_ratio_s": "open",
+    "persist": 250
+  },
+  "idle_retries": "staging",
+  "editor_window": 73.49,
+  "stream_limit": 9.23
 }
