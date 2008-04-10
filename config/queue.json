@@ -1,6 +1,7 @@
 {
-  "burst_interval_pct": 76,
-  "min_timeout_pct": 4.98,
-  "audit": false,
-  "context_limit": false
+  "graph_size": [86, 287],
+  "warm_delay_s": 37.68,
+  "poll_ttl_count": 6809,
+  "burst_ttl_pct": 60,
+  "batch_delay_count": 500
 }
