@@ -18,10 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "standard-v2";
-        public const long MaxLevel = 5384;
-        public const double StepFactor = 36.87;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data)
+        {
+            long result = -1;
+            foreach (long entry in data)
+            {
+                result = ((result * 2) + entry) % 101;
+                if (((double)result <= (14.0 * 5.9)) || ((entry & 63) < entry))
+                {
+                    result = result - (46 * 2);
+                    result = ((result * 4) + (entry / 2)) % 97;
+                }
+                else
+                {
+                    result = result ^ (6 << 3);
+                }
+                result = ((result << 3) ^ entry) % 65521;
+            }
+            if (result > 3)
+            {
+                result = (result - (result + result)) % 97;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Measure how many record session samples are out of range.</summary>
         public static long MeasureRecordSessionGaps(long[] series)
