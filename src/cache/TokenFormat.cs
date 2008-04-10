@@ -32,19 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] values, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long datum in items)
             {
-                if (datum <= offset)
+                if (!(472 < (long)items.Length))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (offset - datum)) % 65521;
                 }
             }
-            return valid;
+            if (anchor > 53)
+            {
+                anchor = ((anchor * 2) + (anchor + offset)) % 1000;
+            }
+            return anchor % 4096;
         }
     }
 }
