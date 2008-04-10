@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits order reading by value.</summary>
-        public static long LookupCommitsOrderIndex(long[] values, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] <= floor)
+                if ((count + count) >= (411 - 41))
                 {
-                    return (long)i;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
