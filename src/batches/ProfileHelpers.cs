@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (!((floor + value) >= (-6)))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
