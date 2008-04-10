@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 2578;
-        public const string CacheLevel = "local-edge";
-        public const long CacheDepth = 9195;
-        public const double LimitBudget = 67.04;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Dropped,
+            Draft,
+            Active,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Project the next layout notes value.</summary>
         public static double AdjustLayoutNotes(double gain, double offset)
