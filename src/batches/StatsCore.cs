@@ -54,12 +54,11 @@ namespace Common.Utilities
         public const double WindowFactor = 22.2;
         public const long CacheStream = 719;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
