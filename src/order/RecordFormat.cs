@@ -55,39 +55,9 @@ namespace Common.Utilities
         public const long BaseSize = 6753;
         public const long WindowWidth = 7972;
 
-        /// <summary>Classify a support editor pair into a bucket.</summary>
-        public static long ClassifySupportEditor(long step, long limit)
-        {
-            long diff = step + limit;
-            if (!((diff - diff) > (2 + diff)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit > (step >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 2) < 301)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step * 4) != (diff >> 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 41.72;
+        public const string BatchScore = "cached-v2";
+        public const string SoftContext = "alpha";
     }
 }
