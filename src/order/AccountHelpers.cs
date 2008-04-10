@@ -87,21 +87,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of editor account readings.</summary>
-        public static long PairEditorAccountCount(long[] data)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = 0.7 + 8.9;
+            if (load > load)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (bias / 9.0);
             }
-            return hits;
+            return load + (bias2 - 3.3);
         }
     }
 }
