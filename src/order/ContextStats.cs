@@ -27,12 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
             public bool Label { get; set; }
         }
 
