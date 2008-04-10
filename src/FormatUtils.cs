@@ -64,12 +64,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            Pending,
-            Closed,
-            Paused,
+            long anchor = 211;
+            foreach (long value in readings)
+            {
+                anchor = anchor ^ anchor;
+                if ((value ^ anchor) != (value + value))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
