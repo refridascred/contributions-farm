@@ -35,22 +35,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of checks metric readings.</summary>
-        public static long PairChecksMetricCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 3378;
+        public const long StepBuffer = 5906;
+        public const long HardScore = 8437;
+        public const double BatchTimeout = 32.41;
+        public const string BaseBuffer = "staging-1";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long origin, long step)
