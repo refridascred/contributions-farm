@@ -1,6 +1,6 @@
 {
-  "profile_ratio": 30,
-  "default_retries_count": 60,
-  "burst_retries_pct": 8050,
-  "readonly": false
+  "batches_threshold": "stable",
+  "cluster_interval": 1024,
+  "channel_limit": 66.21,
+  "verbose": true
 }
