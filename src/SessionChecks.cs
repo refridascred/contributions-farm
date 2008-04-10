@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] samples, long seed)
         {
-            double load = 9.5;
-            if (load >= (double)297)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                load = (load - (double)(-3)) + bias;
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + weight;
+            return valid;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
