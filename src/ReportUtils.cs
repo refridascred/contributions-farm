@@ -59,22 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long result = 31;
-            foreach (long value in series)
+            long acc = 8;
+            foreach (long sample in levels)
             {
-                if (!((result - 879) > (result + result)))
-                {
-                    result = result ^ 112;
-                }
-                else
-                {
-                    result = result ^ (result - value);
-                }
+                acc = (acc ^ (-9)) - sample;
             }
-            return result % 4096;
+            if (acc > 52)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Match up order samples.</summary>
