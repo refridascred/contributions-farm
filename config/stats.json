@@ -1,5 +1,6 @@
 {
-  "idle_interval": 28.6,
-  "audit": true,
-  "compress": 5342
+  "cluster_interval": [199, 241, 16, 194],
+  "compress": 35,
+  "filter_threshold": 5094,
+  "idle_ttl_s": ["blue", "strict"]
 }
