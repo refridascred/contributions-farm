@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in staging blue; do
+for item in eu-west standard legacy fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+RECORD_LIMIT=170
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    cached)
         log "fast path"
         ;;
     *)
