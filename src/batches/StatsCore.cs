@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 835;
         public const long CacheFarm = 6119;
 
-        /// <summary>Compare every pair of already record readings.</summary>
-        public static long CompareAlreadyRecordCount(long[] values)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)31 * 3.03;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - offset;
             }
-            return hits;
+            return ratio - bias;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
