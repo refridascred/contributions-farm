@@ -74,19 +74,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] readings, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double load = (6.4 + scale) * 3.1;
+            if (load >= offset)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - offset;
             }
-            return flag;
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 9.5) + (double)(long)i;
+            }
+            return load - (offset - scale);
         }
 
         /// <summary>Adjust a counter reading.</summary>
