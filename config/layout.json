@@ -1,14 +1,5 @@
 {
-  "max_capacity": {
-    "retry_ttl": false,
-    "default_timeout_s": "edge",
-    "sync_delay": "green",
-    "base_limit": 66.49,
-    "hard_timeout": 26
-  },
-  "poll_retries_pct": 6040,
-  "metrics_capacity": "stable",
-  "sync_depth": "standard",
-  "cache_timeout": 20.86,
-  "warm_window": [77, 13, 197, 206]
+  "checks_timeout": "open",
+  "max_limit_pct": "standard",
+  "window_delay": "edge"
 }
