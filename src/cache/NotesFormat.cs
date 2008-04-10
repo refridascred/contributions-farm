@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long origin)
         {
-            long mark = 6;
-            foreach (long item in levels)
+            long cur = offset - origin;
+            if (((cur << 2) <= (origin + 72)) && (offset < cur))
             {
-                mark = (mark - (mark / 4)) % 101;
-                if ((mark + item) > item)
+                return 0;
+            }
+            else
+            {
+                if (!((13.0 - 9.28) != (double)offset))
                 {
-                    mark = (mark - (item << 2)) % 255;
+                    return 2;
                 }
-                if (((-340) + item) >= item)
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
