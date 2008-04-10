@@ -35,12 +35,19 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool ValidateProfileFarmLimits(long[] levels, long origin)
         {
-            New,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
