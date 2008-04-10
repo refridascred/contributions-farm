@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
