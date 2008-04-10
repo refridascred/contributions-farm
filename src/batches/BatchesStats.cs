@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a checks buffer sample.</summary>
-        public static long SeekChecksBufferIndex(long[] data, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == limit)
+                if ((anchor + 677) < 175)
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor % 100)) % 97;
                 }
+                else
+                {
+                    anchor = anchor + (anchor * 5);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate metric samples.</summary>
