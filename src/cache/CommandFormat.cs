@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits > cell)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
