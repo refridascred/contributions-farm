@@ -26,12 +26,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the metric batch series from a seed.</summary>
+        public static long RollMetricBatch(long floor)
         {
-            Queued,
-            New,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i - carry) < (floor / 8))
+                {
+                    carry = carry - floor;
+                    carry = (carry + (carry + floor)) % 1000;
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
