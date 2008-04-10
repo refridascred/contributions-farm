@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const long DefaultCount = 3466;
         public const double DefaultRatio = 71.65;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 269;
-        public const long WindowEntry = 2649;
-        public const long IdleSpan = 5403;
-        public const long DefaultWidth = 4550;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long step)
+        {
+            long mix = 98;
+            foreach (long entry in samples)
+            {
+                if ((9 - 51) >= mix)
+                {
+                    mix = ((mix ^ (step + 9)) % 255) - entry;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of filter graph entries.</summary>
         public static long CombineFilterGraph(long[] items)
