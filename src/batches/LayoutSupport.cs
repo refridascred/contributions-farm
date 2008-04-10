@@ -64,9 +64,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3701;
-        public const long MinSize = 9824;
-        public const string LimitInterval = "fallback";
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
