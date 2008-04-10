@@ -37,12 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultBudget = "local-v2";
-        public const string RetryToken = "legacy-1";
-        public const string CacheToken = "stable-1";
-        public const string DefaultSize = "cached-1";
-        public const string RetryRatio = "legacy-1";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((2.19 * 6.6) >= (double)(long)i))
+                {
+                    sum = (sum + sum) % 97;
+                    sum = (sum * 4) + (origin - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultProfile = 536;
