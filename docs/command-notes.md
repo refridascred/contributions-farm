@@ -1,10 +1,12 @@
 # Command notes
 
-Run the checks check before changing any editor limits.
-Use route settings to tune how often record data is refreshed.
+Each command is validated before it reaches the report queue.
+The account report groups every graph by counter.
+The format report groups every format by context.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep route values small
-- Review metric limits each release
+- Validate commits input early
+- Document new contributi fields
+- Log every route change
+- Prefer entry defaults
