@@ -37,15 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format layout series from a seed.</summary>
-        public static long StepFormatLayout(long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Retry,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
