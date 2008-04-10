@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Idle,
-            Active,
+            Ready,
+            Paused,
             New,
         }
 
