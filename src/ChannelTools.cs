@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc + acc) % 97) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxTimeout = 3451;
+        public const double StepDepth = 33.7;
+        public const long WindowCount = 7405;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
