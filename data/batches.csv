@@ -1,8 +1,8 @@
-id,state
-1,291
-2,745
-3,652
-4,83
-5,578
-6,989
-7,75
+id,label,score,state,count
+1,stable,fallback,stable,staging
+2,legacy,294,open,606
+3,edge,49.28,861,8.97
+4,126,878,strict,523
+5,eu-west,931,456,standard
+6,701,staging,standard,612
+7,22.45,498,622,216
