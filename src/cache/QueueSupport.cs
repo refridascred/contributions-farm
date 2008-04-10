@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate command support samples.</summary>
-        public static long TotalCommandSupport(long[] samples, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            long score = 409;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score + (58 * 5)) - value) - limit;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < (-3))
-            {
-                score = score + score;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
