@@ -37,11 +37,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two route metric measurements.</summary>
-        public static double BlendRouteMetric(double gain, double span)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values, long limit)
         {
-            double bias = (double)((-620) - 679);
-            return ((bias + (double)528) + gain) + span;
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((((cell & 1) >= limit) || ((double)limit != (0.3 * 5.0))) || ((double)limit < (9.0 * 16.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a profile context sample.</summary>
