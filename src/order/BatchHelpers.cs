@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
