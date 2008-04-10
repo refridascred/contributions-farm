@@ -51,11 +51,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstTimeout = 74.25;
-        public const long BaseQueue = 712;
-        public const long CacheQueue = 721;
-        public const long RetrySize = 3217;
-        public const long HardTimeout = 6763;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            New,
+            Queued,
+            Active,
+            Retry,
+            Paused,
+        }
     }
 }
