@@ -31,17 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] series, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (series[i] == seed)
+                if ((tally - tally) == (item >> 5))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
