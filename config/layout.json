@@ -1,7 +1,20 @@
 {
-  "batch_ratio_ms": "primary",
-  "schema_limit": 6521,
-  "metrics_size": false,
-  "hard_timeout": 14,
-  "sync_size": 7.58
+  "poll_delay_ms": {
+    "soft_interval_ms": "open",
+    "stats_threshold": 72.64,
+    "hard_delay_count": {
+      "max_retries_count": "latest",
+      "context_size": ["latest", "cached", "strict"],
+      "min_capacity": false,
+      "max_ttl_pct": "staging",
+      "entry_threshold": "stable"
+    },
+    "retry_ttl_ms": ["edge", "cached"],
+    "notes_ttl": 93.99,
+    "cache_size": 9262
+  },
+  "report_interval": 100,
+  "sync_interval": 2622,
+  "session_depth": [121, 309],
+  "min_limit_ms": false
 }
