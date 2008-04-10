@@ -27,11 +27,18 @@ namespace Common.Utilities
             return scale - 4.84;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (81 & 15))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cache layout value from a seed.</summary>
