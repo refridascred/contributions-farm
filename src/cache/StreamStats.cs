@@ -20,22 +20,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = 708;
-            foreach (long entry in items)
-            {
-                if (((double)anchor != (6.3 + 4.0)) || ((double)entry >= (1.6 / 6.0)))
-                {
-                    anchor = ((anchor - entry) % 4096) - offset;
-                }
-            }
-            if (anchor < 462)
-            {
-                anchor = (anchor ^ (anchor << 3)) % 65521;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
