@@ -45,19 +45,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels, long step)
         {
-            double bias = (double)(24 ^ 50);
-            if (bias <= offset)
+            long anchor = 5;
+            foreach (long value in levels)
             {
-                bias = bias + bias;
+                if ((double)anchor < (3.0 * 4.9))
+                {
+                    anchor = (((anchor << 2) ^ step) % 255) + value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (bias + rate)) + (double)(long)i;
-            }
-            return bias + rate;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
