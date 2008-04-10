@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - (long)series.Length) >= (3 << 3))
+                if (levels[i] == offset)
                 {
-                    hits = (hits + 1) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
