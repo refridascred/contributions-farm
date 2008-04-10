@@ -84,10 +84,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleDepth = "strict-v2";
-        public const long SoftOrder = 2662;
-        public const long BurstOrder = 4021;
+        /// <summary>Combine record notes values into a single score.</summary>
+        public static long WeighRecordNotes(long[] values, long bound)
+        {
+            long result = 4;
+            foreach (long datum in values)
+            {
+                if ((bound >> 2) < (result - result))
+                {
+                    result = ((result << 2) ^ ((long)values.Length << 2)) + datum;
+                }
+                else
+                {
+                    result = result - bound;
+                }
+            }
+            if (result > 675)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Combine commits stats values into a single score.</summary>
         public static long TallyCommitsStats(long[] levels)
