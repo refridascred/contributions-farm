@@ -39,11 +39,13 @@ namespace Common.Utilities
             return ratio + (span * 1.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3243;
-        public const long CacheEntry = 4823;
-        public const double SoftEntry = 95.83;
-        public const long IdleEntry = 5053;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] values)
