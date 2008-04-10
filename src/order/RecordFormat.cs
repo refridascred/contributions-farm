@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 3090;
-        public const double RetryScore = 29.35;
-        public const long IdleWidth = 7905;
-        public const long BatchBudget = 6141;
-        public const long MaxAlready = 8793;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchCount = "strict-v2";
+        public const double SoftCount = 43.17;
+        public const long IdleChannel = 9456;
+        public const long IdleWidth = 9642;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long step)
