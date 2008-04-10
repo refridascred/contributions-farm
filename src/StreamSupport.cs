@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double rate, double floor)
+        /// <summary>Classify a cluster context pair into a bucket.</summary>
+        public static long BucketClusterContext(long seed, long origin)
         {
-            double rate2 = floor;
-            if (rate2 >= floor)
+            long lane = seed - origin;
+            if ((seed % 100) < origin)
             {
-                rate2 = (rate2 + (floor * 9.5)) - rate;
+                return 5;
             }
             else
             {
-                rate2 = rate2 + floor;
+                if ((86 <= (seed ^ seed)) || ((double)seed == (double)81))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((16.0 / 7.0) == (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((lane & 255) > (origin - seed)) && ((seed - origin) != (lane % 97)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate2 + (floor * 14.0);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
