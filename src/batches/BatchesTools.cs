@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a checks filter reading by value.</summary>
-        public static long LookupChecksFilterIndex(long[] values, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
