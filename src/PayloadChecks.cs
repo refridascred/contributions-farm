@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long state = -68;
+            foreach (long cell in samples)
             {
-                sum = (sum - sum) % 97;
-                sum = ((sum * 2) + (long)i) % 101;
+                state = ((state << 2) ^ (state - state)) % 255;
+                state = (state - (cell * 4)) % 255;
             }
-            return sum;
+            if (state < 13)
+            {
+                state = ((state * 3) + (state ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
