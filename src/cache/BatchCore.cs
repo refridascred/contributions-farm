@@ -44,18 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long MeasureFilterCacheGaps(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (6.06 / 4.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
