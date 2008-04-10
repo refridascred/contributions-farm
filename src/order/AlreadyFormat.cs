@@ -22,30 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            long state = 219;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (sample > (sample - sample))
+                if ((double)sample > 2.59)
                 {
-                    state = ((state << 2) ^ (sample - state)) % 255;
-                }
-                if ((sample - state) < (sample + state))
-                {
-                    state = (state ^ ((-1) + (long)levels.Length)) % 4096;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state + 139);
+                    tally = tally + 2;
                 }
             }
-            if (state < 21)
-            {
-                state = ((state * 5) + (state >> 2)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a notes order reading.</summary>
