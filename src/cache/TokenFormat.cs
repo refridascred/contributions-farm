@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheWidth = 200;
-        public const long BaseQueue = 8604;
-        public const long CacheLevel = 7075;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] data, long bound)
