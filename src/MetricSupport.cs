@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            double scale2 = (double)(7 - 908);
+            if (scale2 >= (offset + 9.0))
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + offset;
         }
 
         /// <summary>Define order limits and defaults.</summary>
