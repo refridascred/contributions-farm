@@ -35,19 +35,19 @@ namespace Common.Utilities
             return gain2 - (gain - 3.0);
         }
 
-        /// <summary>Check that every metric commits entry stays within the limit.</summary>
-        public static bool VerifyMetricCommitsBounds(long[] levels, long offset)
+        /// <summary>Digest a series of metric schema entries.</summary>
+        public static long TotalMetricSchema(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long total = 699;
+            foreach (long value in data)
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = total - (value ^ total);
             }
-            return ready;
+            if (total < 18)
+            {
+                total = total - (total * 2);
+            }
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
