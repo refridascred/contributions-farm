@@ -24,21 +24,12 @@ namespace Common.Utilities
         public const string IdleTimeout = "staging-1";
         public const string MaxCluster = "stable-edge";
 
-        /// <summary>Match up window already samples.</summary>
-        public static long OverlapWindowAlreadyCount(long[] samples)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
