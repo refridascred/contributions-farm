@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 545;
+            foreach (long value in items)
             {
-                if (!((reading << 3) == (reading % 3)))
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 1;
+                    carry = (((carry << 2) ^ (carry * 4)) - (long)i) - value;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry << 2) ^ (57 ^ step)) % 65521;
             }
-            return tally;
+            if (carry < (-520))
+            {
+                carry = (carry ^ (step >> 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
