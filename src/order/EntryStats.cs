@@ -43,15 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long anchor = 121;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
