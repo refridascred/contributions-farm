@@ -27,10 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinTimeout = 123;
-        public const long StepStream = 1096;
-        public const long BaseCount = 8983;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
