@@ -40,14 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            New,
-            Pending,
-            Ready,
-            Queued,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
