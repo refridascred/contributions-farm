@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 47;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor ^ reading) % 1000) ^ (long)i;
+                }
+                if ((anchor ^ reading) != (bound & 63))
+                {
+                    anchor = (anchor << 2) ^ (bound % 3);
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Locate a order reading by value.</summary>
