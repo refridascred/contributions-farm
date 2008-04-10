@@ -1,5 +1,4 @@
 # githubfarm settings
-poll_capacity_s: true
-poll_ttl_s: 500
-flush_capacity_count: edge
-soft_ratio: blue
+poll_retries_ms: 58
+flush_window: 30
+sync_interval_ms: edge
