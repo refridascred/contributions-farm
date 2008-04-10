@@ -54,11 +54,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double floor)
+        /// <summary>Count payload batch pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadBatchCount(long[] levels)
         {
-            double rate = ratio - (floor + floor);
-            return rate - 2.6;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
