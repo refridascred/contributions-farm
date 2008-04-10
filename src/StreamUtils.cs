@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((6.0 - 5.3) < (double)cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
