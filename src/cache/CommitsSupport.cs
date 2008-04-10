@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] series, long limit)
         {
-            double rate = offset;
-            if (rate < (bias + bias))
+            long count = 0;
+            foreach (long datum in series)
             {
-                rate = rate - (offset * 10.0);
+                if ((limit << 1) <= datum)
+                {
+                    count = count + 1;
+                }
             }
-            return rate + (rate - offset);
+            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
