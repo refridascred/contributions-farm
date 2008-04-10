@@ -1,6 +1,7 @@
 {
-  "audit": false,
-  "default_retries_ms": "staging",
-  "max_window_pct": true,
-  "burst_depth": 98.86
+  "retry_window_s": 14,
+  "persist": [38, 473, 457, 375],
+  "soft_capacity_pct": ["edge", "fallback", "latest"],
+  "readonly": ["cached", "fallback"],
+  "burst_capacity": false
 }
