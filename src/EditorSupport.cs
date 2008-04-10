@@ -51,12 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 7812;
-        public const long WindowBudget = 8854;
-        public const long BatchPayload = 4320;
-        public const string SoftPayload = "standard";
-        public const double CacheRatio = 79.14;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
         public static long BucketFarmReport(long offset, long origin)
