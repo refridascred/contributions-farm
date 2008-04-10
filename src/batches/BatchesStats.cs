@@ -18,15 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels, long origin)
         {
-            long state = 873;
-            foreach (long item in readings)
+            long result = 943;
+            foreach (long value in levels)
             {
-                state = (((state - (981 >> 5)) % 101) - item) - seed;
+                if (19.0 > (double)result)
+                {
+                    result = (result + (result & 255)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ (value / 2)) % 255;
+                    result = (result ^ (origin + origin)) % 101;
+                }
+                if ((result - origin) > (value - origin))
+                {
+                    result = (result + (value ^ origin)) % 65521;
+                }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Project the next window value.</summary>
