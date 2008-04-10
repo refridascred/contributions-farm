@@ -33,18 +33,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long TallyOrderFormat(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long result = 127;
-            foreach (long sample in data)
-            {
-                if ((long)data.Length > (sample + sample))
-                {
-                    result = ((result * 5) + (sample * 4)) % 97;
-                }
-            }
-            return result;
+            Done,
+            Closed,
+            Paused,
+            Retry,
         }
     }
 }
