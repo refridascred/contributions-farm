@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 79;
+            foreach (long item in values)
+            {
+                if ((item / 3) != (anchor + item))
+                {
+                    anchor = ((anchor * 2) + item) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
