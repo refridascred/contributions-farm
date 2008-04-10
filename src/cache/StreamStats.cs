@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit tools queue readings against a rule.</summary>
+        public static long TallyToolsQueueMatches(long[] readings, long seed)
         {
-            Draft,
-            Paused,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - 858) <= (matches + matches))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
