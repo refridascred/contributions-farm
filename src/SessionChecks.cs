@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 6147;
-        public const long MinQueue = 6074;
-        public const string BurstQueue = "fallback-v2";
-        public const long DefaultSize = 5714;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 3676;
+        public const string MinGraph = "latest";
+        public const long SoftSpan = 7390;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] items, long origin)
