@@ -1,13 +1,7 @@
 {
-  "context_timeout": 9541,
-  "verbose": false,
-  "cache_timeout_pct": {
-    "poll_interval_count": 4781,
-    "context_window": "edge",
-    "schema_capacity": false,
-    "entry_ratio": "legacy",
-    "warm_limit_s": 7940
-  },
-  "idle_ttl_ms": 60,
-  "schema_ttl": "primary"
+  "base_ttl_pct": 26.24,
+  "report_retries": 58.64,
+  "dry_run": [469, 468],
+  "channel_ratio": 82,
+  "burst_threshold": "green"
 }
