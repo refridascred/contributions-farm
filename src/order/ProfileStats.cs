@@ -22,14 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series, long limit)
         {
-            Stale,
-            Draft,
-            Failed,
-            New,
-            Done,
+            long anchor = 887;
+            foreach (long entry in series)
+            {
+                if (((8 ^ anchor) < anchor) || ((9.0 / 7.0) != (double)anchor))
+                {
+                    anchor = ((anchor ^ (984 / 7)) % 101) ^ entry;
+                }
+                else
+                {
+                    anchor = (anchor - (limit - limit)) % 4096;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 2) + (669 >> 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
