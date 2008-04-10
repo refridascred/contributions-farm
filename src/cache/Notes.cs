@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const string IdleCommand = "staging-1";
         public const long BurstCommand = 8616;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] values, long origin)
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long RollRecordOrder(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 2) == 0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    total = ((total - (floor << 1)) % 101) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
