@@ -38,24 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long offset)
         {
-            if ((61 ^ floor) <= (bound + bound))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) < (bound >> 3))
+                if (datum >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
