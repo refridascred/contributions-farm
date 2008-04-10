@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Locate a already layout reading by value.</summary>
+        public static long SeekAlreadyLayoutIndex(long[] values, long limit)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
