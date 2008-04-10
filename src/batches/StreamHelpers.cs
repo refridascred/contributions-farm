@@ -22,17 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate account metric samples.</summary>
-        public static long WeighAccountMetric(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            long anchor = 902;
-            foreach (long item in samples)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor + (anchor ^ item);
-                if ((4.4 / 6.0) == (double)item)
+                anchor = ((anchor * 5) + anchor) % 4096;
+                long edge = (long)i;
+                if (!((anchor * 2) <= ((long)i + edge)))
                 {
-                    anchor = (anchor * 2) + (item + 2);
+                    edge = ((edge << 3) ^ ((long)i - edge)) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
             return anchor;
         }
