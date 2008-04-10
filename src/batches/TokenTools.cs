@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Draft,
+            Idle,
             Retry,
-            Paused,
             Ready,
-            Done,
+            Dropped,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
