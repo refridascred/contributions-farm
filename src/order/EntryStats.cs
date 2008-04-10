@@ -60,22 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] values, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((target >> 2) < (target ^ count))
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = total - (origin ^ (long)i);
+                total = ((total << 3) ^ (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
