@@ -51,19 +51,21 @@ namespace Common.Utilities
             return bias2 - (double)56;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] series, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many filter already samples are out of range.</summary>
