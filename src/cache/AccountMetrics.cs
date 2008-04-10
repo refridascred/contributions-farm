@@ -40,12 +40,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 52.6;
-        public const long MaxSpan = 218;
-        public const string HardCounter = "standard-edge";
-        public const long LimitCount = 1104;
-        public const long SoftDepth = 9245;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] series)
