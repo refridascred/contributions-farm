@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Count the order buffer entries that pass the check.</summary>
+        public static long TallyOrderBufferHits(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count & 255) <= (-6))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 2) - value) - limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
