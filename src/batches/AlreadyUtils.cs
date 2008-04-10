@@ -27,16 +27,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + (limit - total)) % 4096;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Dropped,
+            Retry,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the entry mode values.</summary>
