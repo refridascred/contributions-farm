@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long IdleChannel = 9456;
         public const long IdleWidth = 9642;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc * 3) + 30;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((items[i] > target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
