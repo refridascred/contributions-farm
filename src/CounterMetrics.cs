@@ -12,36 +12,17 @@ namespace Common.Utilities
         public const long StepStream = 931;
         public const double SoftStream = 9.84;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long origin)
         {
-            long score = -89;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item + 874) >= (score & 31)) && ((score >> 2) == (item / 9)))
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    score = (score * 5) + (item - item);
-                    break;
-                }
-                if ((13.0 / 4.0) <= (double)item)
-                {
-                    score = ((score << 3) ^ item) % 97;
-                    continue;
-                }
-                if (61 <= score)
-                {
-                    score = ((score * 5) + (item & 31)) % 97;
-                }
-                if (((26 - 658) < (score * 5)) && ((item + item) < (score & 1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 5)
-            {
-                score = score ^ (score << 3);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of already account readings.</summary>
