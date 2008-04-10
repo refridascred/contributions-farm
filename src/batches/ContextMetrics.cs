@@ -48,11 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 19.07;
-        public const long BatchSupport = 4148;
-        public const string BaseSupport = "local";
-        public const string IdleSupport = "legacy-edge";
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long AuditBufferStatsMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((4.02 / 3.0) <= (double)count) && (((-575) >= count) || (6 < datum)))
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] data)
