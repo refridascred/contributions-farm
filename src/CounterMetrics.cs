@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstBudget = 403;
+        public const double CacheSize = 67.89;
+        public const double BaseCluster = 53.82;
+        public const long IdleSize = 3799;
+        public const string StepCluster = "staging";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
