@@ -44,19 +44,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long step)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long TotalAlreadyAccount(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long acc = 59;
+            foreach (long sample in levels)
             {
-                if ((step % 10) == (809 + step))
+                if (((sample * 3) >= sample) || ((sample & 15) >= (acc + acc)))
                 {
-                    continue;
+                    acc = (acc ^ (acc - sample)) % 97;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc + (acc / 9)) % 97;
+                }
             }
-            return carry;
+            if (acc < 0)
+            {
+                acc = ((acc * 3) + (201 & 255)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
