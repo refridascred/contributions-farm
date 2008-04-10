@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the layout format entries that pass the check.</summary>
+        public static long TallyLayoutFormatGaps(long[] series)
         {
-            Failed,
-            Synced,
-            Closed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!!((value + value) <= value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
