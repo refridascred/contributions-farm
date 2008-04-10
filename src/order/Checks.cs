@@ -59,18 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long MeasureCommitsChannelHits(long[] levels)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((288 ^ entry) > (hits * 2)) || ((entry * 2) >= (entry ^ hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
