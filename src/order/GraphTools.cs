@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = span + span;
+            if (ratio >= span)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)7) + gain;
             }
-            return -1;
+            return ratio + (span * 1.0);
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
