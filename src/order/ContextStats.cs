@@ -45,10 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 6525;
-        public const long BatchReport = 5741;
-        public const double CacheWidth = 58.95;
-        public const long RetryDepth = 456;
+        /// <summary>Validate metrics batches readings against a bound.</summary>
+        public static bool ValidateMetricsBatchesLimits(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
