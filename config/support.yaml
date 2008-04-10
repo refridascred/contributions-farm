@@ -1,17 +1,9 @@
 # support settings
-token_limit:
-  verbose: blue
-  idle_retries: legacy
-  graph_capacity: true
-  cache_depth_pct: green
-  min_interval_ms: 243
-  editor_threshold: cached
-audit: false
-format_depth:
-  - fallback
-  - primary
-  - standard
-readonly:
-  strict: local
-  checks_timeout: 39.14
-  sync_retries_ms: latest
+layout_interval: latest
+sync_interval: 2657
+persist: false
+githubfarm_ratio: 500
+hard_window_pct: staging
+command_depth:
+  - 112
+  - 168
