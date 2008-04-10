@@ -32,12 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many farm record samples are out of range.</summary>
