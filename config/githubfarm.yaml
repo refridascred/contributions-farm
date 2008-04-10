@@ -1,19 +1,4 @@
 # githubfarm settings
-session_retries:
-  - standard
-  - cached
-  - stable
-  - legacy
-base_ttl_ms:
-  - cached
-  - eu-west
-  - standard
-already_size:
-  entry_ratio: 48
-  default_delay_pct: 60
-  readonly: primary
-  strict: 61.6
-  enabled:
-    - edge
-    - cached
-  verbose: true
+warm_window_count: edge
+commits_timeout: 4688
+default_retries: blue
