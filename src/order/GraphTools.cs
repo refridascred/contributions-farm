@@ -28,15 +28,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Combine stats batches values into a single score.</summary>
+        public static long CombineStatsBatches(long[] levels)
         {
-            double ratio = span + span;
-            if (ratio >= span)
+            long sum = 580;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + (double)7) + gain;
+                sum = ((sum ^ 30) % 97) ^ sample;
             }
-            return ratio + (span * 1.0);
+            return sum;
         }
 
         /// <summary>Hold a stats entry.</summary>
