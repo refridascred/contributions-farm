@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 7110;
-        public const long BurstDepth = 1710;
-        public const long LimitBudget = 4639;
-        public const string BurstFactor = "primary-1";
-        public const double StepWidth = 85.59;
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long BucketFormatSupport(long offset, long bound)
+        {
+            if (88 <= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((761 / 4) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset % 97) != (bound - bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
