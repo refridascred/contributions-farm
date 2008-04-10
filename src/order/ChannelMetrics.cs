@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] values, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a command info.</summary>
