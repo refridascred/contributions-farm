@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine command notes values into a single score.</summary>
-        public static long TallyCommandNotes(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = 74;
-            foreach (long sample in series)
-            {
-                sum = sum - (sample - sample);
-            }
-            if (sum > 8)
-            {
-                sum = sum + (533 + 3);
-            }
-            return sum;
+            Synced,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
