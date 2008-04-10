@@ -26,11 +26,14 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Locked,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the queue kind values.</summary>
