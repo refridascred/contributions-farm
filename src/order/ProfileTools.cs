@@ -49,9 +49,19 @@ namespace Common.Utilities
         public const string RetryProfile = "primary";
         public const double BurstProfile = 60.96;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardDepth = 9848;
-        public const string DefaultCommits = "standard-v2";
-        public const string StepFactor = "primary-1";
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double floor)
+        {
+            double weight = (floor * 16.0) * 9.0;
+            if (weight >= (floor + floor))
+            {
+                weight = weight - floor;
+            }
+            else
+            {
+                weight = weight + (gain * 1.56);
+            }
+            return weight + 9.0;
+        }
     }
 }
