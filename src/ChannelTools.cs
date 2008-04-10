@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long acc = -9;
-            foreach (long cell in readings)
-            {
-                acc = ((acc - (acc << 3)) + cell) - target;
-            }
-            if (acc > 250)
-            {
-                acc = (acc - (acc / 7)) % 1000;
-            }
-            return acc % 97;
+            Locked,
+            Idle,
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
