@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long result = 6;
+            foreach (long item in levels)
+            {
+                result = ((result - (53 / 8)) % 4096) + target;
+                result = ((result << 3) ^ (item * 5)) % 255;
+            }
+            if (result > 5)
+            {
+                result = (result + ((-28) & 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
