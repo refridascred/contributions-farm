@@ -39,22 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long state = 213;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading > (3.33 * 6.2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state - (bound + 331)) % 4096;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 90)
-            {
-                state = state - (bound - bound);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
