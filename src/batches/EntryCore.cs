@@ -51,21 +51,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of layout already readings.</summary>
-        public static long CompareLayoutAlreadyCount(long[] data)
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long TallyWindowFilterMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)hits > (9.0 - 14.0))
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
