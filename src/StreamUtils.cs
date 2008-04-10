@@ -32,12 +32,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 7687;
-        public const long IdleSize = 2889;
-        public const double BurstContributi = 51.88;
-        public const string BaseInterval = "fallback-1";
-        public const long WindowDepth = 4664;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] readings)
+        {
+            long carry = 0;
+            foreach (long item in readings)
+            {
+                if (carry <= (carry * 2))
+                {
+                    carry = ((carry ^ carry) % 255) ^ item;
+                }
+            }
+            if (carry < 71)
+            {
+                carry = (carry + (27 + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long target, long seed)
