@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long TallyOrderFormatMatches(long[] samples)
+        /// <summary>Classify a window entry pair into a bucket.</summary>
+        public static long RankWindowEntry(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long gap = floor ^ offset;
+            if ((offset + gap) > 412)
             {
-                if (sample >= tally)
+                return 0;
+            }
+            else
+            {
+                if (floor > (gap * 3))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)9 != (double)gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
