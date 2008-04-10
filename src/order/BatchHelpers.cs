@@ -14,18 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] readings, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long slot = origin - step;
+            if (726 > (7 + step))
             {
-                if ((double)seen < (double)cell)
+                return 2;
+            }
+            else
+            {
+                if ((double)step >= (4.0 * 5.3))
                 {
-                    seen = (seen + 1) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((slot << 1) != (slot & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
