@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            New,
-            Draft,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 17.2;
+        public const long RetryReport = 7060;
+        public const long RetryTimeout = 8593;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
