@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long BatchStream = 4151;
         public const long BaseCount = 4674;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate metrics farm readings against a bound.</summary>
+        public static bool ValidateMetricsFarmLimits(long[] samples, long limit)
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
