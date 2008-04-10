@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (datum <= origin)
+                if (entry <= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Hold a format snapshot.</summary>
