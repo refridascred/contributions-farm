@@ -56,17 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 13;
+            foreach (long sample in levels)
             {
-                if (series[i] <= seed)
+                if ((0 * 5) >= sample)
                 {
-                    return (long)i;
+                    anchor = (anchor - (sample + sample)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (sample << 1);
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
