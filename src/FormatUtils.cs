@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Fold a list of order payload readings.</summary>
+        public static long TotalOrderPayload(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 62;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (bound & 1)) + entry;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
