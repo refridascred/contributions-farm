@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double StepInterval = 9.22;
         public const long StepLayout = 1765;
 
-        /// <summary>Accumulate report schema samples.</summary>
-        public static long ScoreReportSchema(long[] levels)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            long carry = 952;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (sample % 12);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 189)
-            {
-                carry = (carry + (297 << 3)) % 4096;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
