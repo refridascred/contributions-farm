@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long MeasureAccountCommitsHits(long[] values, long limit)
         {
-            Draft,
-            Failed,
-            Ready,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= (limit + 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer batch values into a single score.</summary>
