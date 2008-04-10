@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
             public bool Limit { get; set; }
-            public long Score { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
