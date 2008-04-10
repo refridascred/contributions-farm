@@ -43,14 +43,19 @@ namespace Common.Utilities
         public const double MinTimeout = 18.81;
         public const long BurstFormat = 501;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long bound)
         {
-            Done,
-            Retry,
-            Ready,
-            Dropped,
-            Draft,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
