@@ -35,19 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token command readings against a bound.</summary>
-        public static bool CheckTokenCommandRange(long[] samples, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long offset3 = offset + offset2;
+            if ((double)offset2 == (8.8 - 8.0))
             {
-                if (cell <= target)
+                return 8;
+            }
+            else
+            {
+                if (8.79 > (double)offset2)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= offset3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
