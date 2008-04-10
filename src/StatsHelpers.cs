@@ -62,39 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long span = origin ^ floor;
-            if ((double)span != (double)origin)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (6.02 > (double)span)
+                if ((((cell / 5) <= matches) || ((0.3 / 4.0) == (double)matches)) && (((matches + 5) > (cell * 5)) || ((matches % 60) <= matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - 8) == (span / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin >> 5) >= (9 & 31)) || ((26 >> 5) < (5 - span)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count payload batch pairs that satisfy a relation.</summary>
