@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)matches == (9.7 - 20.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 3) + datum) + target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
