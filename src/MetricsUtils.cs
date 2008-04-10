@@ -48,24 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next contributi filter value from a seed.</summary>
-        public static long StepContributiFilter(long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] items, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((mark << 2) != ((-88) + mark))
+                if (reading != step)
                 {
-                    mark = (mark - (mark ^ mark)) % 65521;
-                    mark = (mark << 2) ^ mark;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mark = mark ^ (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a token stats.</summary>
