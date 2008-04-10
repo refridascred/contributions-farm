@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetrySpan = 712;
+        public const double HardChannel = 9.36;
+        public const long BurstChannel = 9229;
 
         /// <summary>Project the next layout notes value.</summary>
         public static double AdjustLayoutNotes(double gain, double offset)
