@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 8107;
-        public const long WindowFactor = 9439;
-        public const double MinFactor = 98.86;
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double gain, double span)
+        {
+            double scale = span;
+            return scale - (gain / 6.0);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseLevel = 1635;
