@@ -69,18 +69,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + hits) >= sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Queued,
         }
     }
 }
