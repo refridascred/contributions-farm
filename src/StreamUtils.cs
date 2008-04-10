@@ -48,17 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                if ((reading >> 1) <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine record notes values into a single score.</summary>
