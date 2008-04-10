@@ -29,22 +29,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long MeasureEntrySupportOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((seen < (value % 5)) && ((5.5 * 2.0) < (double)value)) && (((value + seen) >= (value & 255)) || ((value << 2) > (337 + seen))))
+                if (0.25 <= (double)value)
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
