@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long BurstEditor = 4873;
         public const long MaxScore = 9104;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Blend two window layout measurements.</summary>
+        public static double ScaleWindowLayout(double ratio, double floor)
         {
-            New,
-            Pending,
-            Done,
-            Dropped,
-            Synced,
+            double drift = (double)(11 + 56);
+            if (drift > (double)72)
+            {
+                drift = drift - (ratio / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (ratio - floor)) - (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
