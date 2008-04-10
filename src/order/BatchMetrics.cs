@@ -27,21 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 7)
+                    if ((series[i] - series[j]) != 0)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
