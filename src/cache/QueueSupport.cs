@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Queued,
-            Locked,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "cached-v2";
+        public const double MaxStream = 40.77;
+        public const string DefaultInterval = "strict-v2";
+        public const double RetryWidth = 91.28;
+        public const long HardTimeout = 4392;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] samples, long seed)
