@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of stats contributi readings.</summary>
-        public static long TallyStatsContributi(long[] levels)
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long CountTokenContextMatches(long[] data, long step)
         {
-            long total = 361;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                total = ((total << 3) ^ (item - item)) % 255;
+                if (!((reading + reading) == (reading + 14)) && (reading > 28))
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
