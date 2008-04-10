@@ -1,8 +1,6 @@
 # support settings
-flush_limit_s: true
-enabled: true
-verbose: 7017
-support_ratio:
-  - local
-  - local
-  - staging
+stream_capacity: false
+cache_threshold: true
+warm_interval_s: true
+burst_window: 27.31
+soft_capacity_pct: 250
