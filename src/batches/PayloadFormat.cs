@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 4403;
-        public const long BatchRatio = 2702;
-        public const double RetryRatio = 1.51;
-        public const long SoftTimeout = 2916;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] data, long origin)
+        {
+            long anchor = 697;
+            foreach (long value in data)
+            {
+                anchor = (anchor * 4) + (11 * 3);
+                if (!((anchor & 255) < (1 / 9)))
+                {
+                    anchor = (anchor - (value - origin)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] items)
