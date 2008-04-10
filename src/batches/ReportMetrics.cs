@@ -19,11 +19,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 5486;
-        public const long CacheTimeout = 5584;
-        public const string SoftBatch = "primary-v2";
-        public const long HardBatch = 312;
-        public const long RetryTimeout = 5998;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - tally) >= (tally & 15))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
