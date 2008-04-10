@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            if ((double)offset >= (double)seed)
+            long mix = 966;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.34 - 0.26) >= (double)offset)
+                if ((entry + 58) == (entry - mix))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 1) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset ^ 543) != (offset >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = mix - entry;
                 }
             }
+            if (mix > 786)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
