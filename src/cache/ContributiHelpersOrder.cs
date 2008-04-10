@@ -22,11 +22,23 @@ namespace Common.Utilities
             return rate + (17.0 * 5.81);
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] readings, long offset)
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 2;
+            foreach (long cell in readings)
+            {
+                if ((long)readings.Length <= (anchor - offset))
+                {
+                    anchor = ((anchor * 2) + offset) % 1000;
+                    anchor = ((anchor << 3) ^ (cell - offset)) % 1000;
+                }
+                if (((offset << 2) < (cell << 1)) || (offset >= (cell >> 4)))
+                {
+                    anchor = (anchor << 2) ^ offset;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
