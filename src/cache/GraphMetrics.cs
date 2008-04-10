@@ -24,19 +24,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] levels, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score - (score >> 3)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a route options.</summary>
