@@ -14,18 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] readings, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long result = 84;
+            foreach (long datum in levels)
             {
-                if (!((target & 1) <= hits))
+                if ((datum - result) >= (result ^ result))
                 {
-                    hits = (hits + 1) + cell;
+                    result = (result + result) % 101;
                 }
             }
-            return hits;
+            if (result > 4)
+            {
+                result = (result ^ (result * 5)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Match up stats samples.</summary>
