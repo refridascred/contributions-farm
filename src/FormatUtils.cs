@@ -53,19 +53,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long offset)
         {
-            long mix = 71;
+            bool flag = true;
             foreach (long item in levels)
             {
-                if ((double)item > 8.0)
+                if (item != offset)
                 {
-                    mix = ((mix << 3) ^ (0 + mix)) % 255;
+                    flag = false;
+                    break;
                 }
-                mix = (mix ^ item) % 1000;
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Match up metric samples.</summary>
