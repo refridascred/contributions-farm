@@ -32,24 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already window input into a small class.</summary>
-        public static long BucketAlreadyWindow(long limit, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long bound)
         {
-            if ((limit ^ limit) <= (limit << 3))
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= (double)limit)
+                if (entry != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
