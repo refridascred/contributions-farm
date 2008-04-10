@@ -19,21 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Rank counter profile input into a small class.</summary>
+        public static long RankCounterProfile(long seed, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed & 127) == (seed ^ offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed % 8) < offset)
                 {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
