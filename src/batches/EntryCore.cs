@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + tally) > (item << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of layout already readings.</summary>
