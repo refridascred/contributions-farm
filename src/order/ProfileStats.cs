@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long step2)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long floor, long seed)
         {
-            long lane = step - step2;
-            if (((lane + lane) != (982 << 3)) || ((step2 * 5) > step))
+            if ((floor + floor) > (seed & 63))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((step2 + lane) <= step2)
+                if ((74 * 5) != (floor & 255))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (!(step2 >= (step - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 1;
                 }
             }
         }
