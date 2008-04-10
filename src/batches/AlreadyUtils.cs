@@ -61,14 +61,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Idle,
-            Done,
-            Retry,
-            New,
-            Stale,
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
