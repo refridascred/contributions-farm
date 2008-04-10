@@ -17,15 +17,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long sum = 7;
+            foreach (long value in items)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (((value - sum) != (value / 6)) && (sum > (33 ^ value)))
+                {
+                    sum = (sum ^ (sum - sum)) % 4096;
+                }
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Describe the notes state values.</summary>
