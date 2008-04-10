@@ -33,9 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 8825;
-        public const long BatchBuffer = 3280;
-        public const long StepBuffer = 8509;
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long MeasureRecordSessionGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches + 379) <= (matches - 61))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
