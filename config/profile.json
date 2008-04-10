@@ -1,9 +1,6 @@
 {
-  "strict": {
-    "max_depth": 93,
-    "flush_limit_pct": true,
-    "batch_timeout_count": 22.11
-  },
-  "cluster_ratio": 35,
-  "burst_size": 54.24
+  "base_window_ms": 96.71,
+  "persist": [177, 161, 13],
+  "warm_threshold_ms": [219, 88, 53],
+  "hard_ratio_ms": 6805
 }
