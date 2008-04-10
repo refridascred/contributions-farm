@@ -30,16 +30,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long score = 5;
-            foreach (long entry in series)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                score = (((score * 3) + 3) % 101) - entry;
-                score = (score - score) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
