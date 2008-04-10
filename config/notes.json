@@ -1,12 +1,6 @@
 {
-  "support_size": 16.86,
-  "soft_window_pct": "green",
-  "readonly": 6099,
-  "verbose": {
-    "min_ratio_ms": 46.44,
-    "account_window": false,
-    "max_threshold_pct": "strict"
-  },
-  "flush_depth": "fallback",
-  "record_ttl": 1024
+  "batch_threshold": 80,
+  "min_retries_ms": "legacy",
+  "base_interval": [352, 165, 187, 341],
+  "base_depth_pct": true
 }
