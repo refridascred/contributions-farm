@@ -14,17 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (items[i] <= floor)
+                if (item > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
