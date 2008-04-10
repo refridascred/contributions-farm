@@ -1,11 +1,4 @@
 # support settings
-queue_window: 500
-strict: 62.17
-soft_timeout_pct: 23.61
-hard_threshold_count: eu-west
-burst_capacity_ms:
-  - 462
-  - 160
-  - 146
-  - 287
-soft_threshold_count: blue
+flush_ttl_s: stable
+retry_timeout: cached
+enabled: 60
