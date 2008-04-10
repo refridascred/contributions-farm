@@ -1,12 +1,11 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new',
-    label TEXT,
-    ratio REAL
+    ratio REAL,
+    level INTEGER,
+    token TEXT,
+    rank INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
-
-INSERT INTO stats_logs (state, label, ratio) VALUES ('strict', 'latest', 84.79);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
