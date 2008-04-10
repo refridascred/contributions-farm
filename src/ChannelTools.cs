@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardLevel = 51.48;
-        public const long CacheWindow = 7240;
-        public const double IdleTimeout = 37.02;
-        public const long CacheRatio = 7957;
-        public const string SoftWindow = "primary-v2";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + acc) % 97) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double AdjustCounter(double bias, double span)
