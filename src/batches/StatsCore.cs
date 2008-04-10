@@ -65,38 +65,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batches report pair into a bucket.</summary>
-        public static long BucketBatchesReport(long target, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if (((16.0 - 8.69) >= (double)target) && ((floor << 1) <= target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target >= (7.02 * 6.2)) || (target >= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((13.0 + 13.0) == (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target <= 2.4)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
