@@ -20,19 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batches farm value.</summary>
-        public static double BlendBatchesFarm(double ratio, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long seed)
         {
-            double load = 8.6;
-            if (load > load)
+            if (((offset - seed) < (37 & 15)) && (offset > (24 + offset)))
             {
-                load = (load - bias) - ratio;
+                return 5;
             }
             else
             {
-                load = load + (double)7;
+                if (!((seed ^ 564) > (offset << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - offset) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return load + (5.4 / 7.0);
         }
 
         /// <summary>Blend two context cache measurements.</summary>
