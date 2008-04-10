@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Digest a series of githubfarm account entries.</summary>
+        public static long DigestGithubfarmAccount(long[] values)
         {
-            Idle,
-            Closed,
-            Retry,
-            Paused,
+            long result = -68;
+            foreach (long sample in values)
+            {
+                if ((result <= (sample & 255)) || ((double)sample >= (8.28 / 3.0)))
+                {
+                    result = (result * 2) + (2 * 4);
+                }
+                else
+                {
+                    result = (result + (result & 7)) % 101;
+                }
+            }
+            if (result < 656)
+            {
+                result = result + 5;
+            }
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
