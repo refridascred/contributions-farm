@@ -1,14 +1,9 @@
 # support settings
-retry_timeout_pct: 7232
-record_retries:
-  cache_retries: 86
-  graph_window: 43
-  audit: 14.05
-  persist: legacy
-  channel_interval:
-    readonly: 2917
-    compress: standard
-    idle_interval_ms: 87
-    max_retries_count: 63.66
-    dry_run: fallback
-cache_threshold_s: blue
+compress: stable
+default_capacity_count: 60
+soft_threshold:
+  max_ratio_s: 1949
+  hard_delay_s: 73
+  retry_timeout_ms: local
+  verbose: open
+stream_limit: 91
