@@ -51,11 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "fallback-v2";
-        public const long MaxBudget = 8674;
-        public const long BatchMetric = 9945;
-        public const long IdleMetric = 190;
-        public const double MinTimeout = 62.05;
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long ScoreGithubfarmStats(long[] data)
+        {
+            long anchor = 81;
+            foreach (long value in data)
+            {
+                anchor = anchor + (value & 255);
+            }
+            return anchor % 65521;
+        }
     }
 }
