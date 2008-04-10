@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            long anchor = 95;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)origin == (double)anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (origin % 8);
-                }
-                if ((18.0 - 2.0) == (double)origin)
-                {
-                    anchor = (anchor - (anchor + sample)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (origin - origin)) % 4096;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
