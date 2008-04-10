@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
