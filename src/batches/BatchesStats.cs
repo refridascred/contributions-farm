@@ -13,20 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            long state = 77;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                state = ((state + state) % 4096) + item;
-                state = ((state * 4) + (state >> 2)) % 65521;
+                if ((hits - (long)series.Length) >= (3 << 3))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            if (state < 91)
-            {
-                state = (state - (state & 1)) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next window value.</summary>
