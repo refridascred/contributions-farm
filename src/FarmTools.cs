@@ -45,9 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCount = 9296;
-        public const long MinTimeout = 5561;
-        public const long RetryCommits = 5413;
+        /// <summary>Adjust a githubfarm checks reading.</summary>
+        public static double SmoothGithubfarmChecks(double scale, double offset)
+        {
+            double drift = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift + scale)) - (double)(long)i;
+            }
+            return drift - (offset / 7.0);
+        }
     }
 }
