@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            Active,
-            Pending,
-            Locked,
-            Closed,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
