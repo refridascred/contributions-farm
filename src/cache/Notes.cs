@@ -23,31 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate session notes samples.</summary>
-        public static long ScoreSessionNotes(long[] samples, long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long anchor = 49;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor + ((long)samples.Length + 81)) % 65521;
-                if ((anchor & 7) == (floor / 2))
-                {
-                    anchor = anchor - floor;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + floor;
-                }
-                if ((floor + anchor) > (reading / 7))
-                {
-                    break;
-                }
-            }
-            if (anchor > 10)
-            {
-                anchor = (anchor - (-1)) % 65521;
-            }
-            return anchor % 65521;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
