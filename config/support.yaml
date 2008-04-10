@@ -1,15 +1,19 @@
 # support settings
-verbose: latest
-window_depth:
-  - 483
-  - 20
-  - 207
-hard_timeout_ms:
-  - 390
-  - 166
-  - 378
-  - 429
-burst_depth_count:
-  buffer_retries: false
-  session_size: 89.46
-  enabled: true
+min_timeout_s: staging
+poll_interval_ms: 8121
+route_delay:
+  window_retries: 3347
+  base_window_count: 9387
+  cache_interval_pct:
+    poll_capacity_ms: 1024
+    verbose: 4436
+    counter_threshold: 250
+  soft_ratio_ms:
+    poll_ratio_ms: fallback
+    min_depth_pct: 19.37
+    cache_window: true
+    idle_limit_s: 100
+  batch_ratio_s: 44.99
+  flush_depth_count: false
+readonly: 100
+filter_threshold: 98.01
