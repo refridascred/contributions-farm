@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool VerifyReportNotesBounds(long[] readings, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry < seed)
+                if ((5.57 + 17.0) <= 19.0)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
