@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long acc = 546;
+            foreach (long sample in items)
+            {
+                if (!(offset <= sample))
+                {
+                    acc = (acc + 930) % 65521;
+                }
+                if ((offset >> 4) == (acc - 85))
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (2 / 2)) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a metric stats.</summary>
