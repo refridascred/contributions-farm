@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double rate, double floor)
         {
-            Paused,
-            Queued,
-            Synced,
+            double rate2 = floor;
+            if (rate2 >= floor)
+            {
+                rate2 = (rate2 + (floor * 9.5)) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + floor;
+            }
+            return rate2 + (floor * 14.0);
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
