@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((34 % 5) < (long)series.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
