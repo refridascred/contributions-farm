@@ -64,13 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            long state = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (0.6 + 3.8))
+                {
+                    state = ((state * 5) + (state - 35)) + floor;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the metrics level values.</summary>
