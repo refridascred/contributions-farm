@@ -16,12 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Failed,
-            Done,
             Stale,
+            Dropped,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
