@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] values, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long entry in data)
             {
-                if ((double)matches == (9.7 - 20.0))
+                if ((50 + matches) > (392 - matches))
                 {
-                    matches = ((matches + 3) + datum) + target;
+                    matches = (matches + 3) + entry;
                 }
             }
             return matches;
