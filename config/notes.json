@@ -1,6 +1,12 @@
 {
-  "batches_threshold": "stable",
-  "cluster_interval": 1024,
-  "channel_limit": 66.21,
-  "verbose": true
+  "support_size": 16.86,
+  "soft_window_pct": "green",
+  "readonly": 6099,
+  "verbose": {
+    "min_ratio_ms": 46.44,
+    "account_window": false,
+    "max_threshold_pct": "strict"
+  },
+  "flush_depth": "fallback",
+  "record_ttl": 1024
 }
