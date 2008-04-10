@@ -49,38 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if ((1.2 * 4.0) <= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)5 < (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((306 % 2) < (seed >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed + target) <= (827 << 2)) && ((target & 255) == (target - target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine record notes values into a single score.</summary>
