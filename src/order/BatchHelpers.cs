@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)matches == (0.2 / 5.0))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                drift = (drift - 4.0) + (double)(long)i;
             }
-            return matches;
+            return drift - (ratio * 9.44);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
