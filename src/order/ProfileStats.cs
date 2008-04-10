@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            double scale = 7.9;
-            if (scale < scale)
+            double rate = (double)685 / 3.0;
+            if (rate < 1.63)
             {
-                scale = ((scale - 9.04) - bias) + offset;
+                rate = (rate + gain) - bias;
             }
             else
             {
-                scale = scale + (double)599;
+                rate = rate + rate;
             }
-            return scale + (scale * 1.1);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Rank already window input into a small class.</summary>
