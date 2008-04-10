@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Done,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Count the metric order entries that pass the check.</summary>
