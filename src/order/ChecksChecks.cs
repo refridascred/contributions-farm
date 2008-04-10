@@ -20,31 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings)
         {
-            long state = 7;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = (state ^ (seed - 66)) % 1000;
-                if ((5.42 - 5.96) < (double)cell)
+                if ((sample - hits) <= ((-6) * 2))
                 {
-                    state = ((state << 3) ^ (cell + seed)) % 1000;
-                }
-                if ((75 << 2) < seed)
-                {
-                    state = (state + (cell & 63)) % 255;
-                }
-                else
-                {
-                    state = (state + seed) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (state < 96)
-            {
-                state = (state - 6) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
