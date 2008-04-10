@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series, long target)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!!((double)target <= (9.0 * 8.7)))
+                if ((18.0 >= (double)target) && ((target > (tally >> 2)) || ((29 >> 2) <= (reading - tally))))
                 {
-                    score = (score - (score << 2)) % 101;
+                    tally = tally + 1;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
