@@ -37,13 +37,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items, long offset)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 479;
+            foreach (long entry in items)
+            {
+                if ((offset >> 3) > (state << 1))
+                {
+                    state = (((state << 2) ^ (913 * 3)) % 97) + entry;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (11 + state)) % 65521;
+                }
+            }
+            if (state < 225)
+            {
+                state = (state * 4) + (offset + (-8));
+            }
+            return state % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
