@@ -1,23 +1,7 @@
 # entry settings
-default_delay:
-  compress: open
-  idle_depth_ms:
-    readonly: fallback
-    default_limit_s: 49.56
-    compress: 25.66
-    persist:
-      - local
-      - primary
-      - eu-west
-  min_limit_pct: 75.83
-  readonly: true
-  hard_retries_pct: 37.54
-  strict:
-    - 196
-    - 122
-    - 19
-    - 96
-flush_threshold_ms: green
-cache_delay: blue
-flush_ttl_pct: standard
-route_delay: 250
+stream_depth: 63
+cache_threshold_count: false
+poll_threshold_ms: strict
+burst_retries_s: latest
+account_timeout: true
+channel_retries: false
