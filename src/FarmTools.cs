@@ -26,21 +26,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long MatchAlreadySessionCount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (977 >= (cell & 1))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
