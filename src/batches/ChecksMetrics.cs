@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 24;
+        public const long BurstSize = 1946;
+        public const long BaseTools = 2168;
+        public const long CacheWidth = 3632;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LookupAlreadyIndex(long[] levels, long step)
