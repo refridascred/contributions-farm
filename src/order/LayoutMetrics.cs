@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] values, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (reading != seed)
+                if (956 > (sample + 9))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
