@@ -16,10 +16,19 @@ namespace Common.Utilities
             return weight - (gain / 6.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseLevel = 1635;
-        public const long IdleMetric = 1344;
-        public const string DefaultScore = "fallback-edge";
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long CountBatchesCommitsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((matches & 15) > (cell - matches)) || ((double)cell >= (9.2 * 9.7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
