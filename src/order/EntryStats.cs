@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] series, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (value < step)
+                if ((offset - offset) <= (item + offset))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
