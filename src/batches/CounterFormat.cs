@@ -14,23 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long anchor = 884;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor + 628) % 65521) ^ sample;
-                if ((anchor * 4) > (anchor << 1))
-                {
-                    anchor = ((anchor * 4) + 4) % 4096;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor + (anchor & 1)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Project the next stream value.</summary>
