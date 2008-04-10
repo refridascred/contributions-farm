@@ -33,19 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Derive the next githubfarm record value from a seed.</summary>
+        public static long RollGithubfarmRecord(long target)
         {
-            double drift = offset + (offset / 3.0);
-            if (drift >= offset)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift - drift;
+                long bound = (target >> 1) - target;
+                state = ((state << 2) ^ (bound * 4)) % 4096;
+                bound = ((bound * 4) + target) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (ratio / 9.0)) + (double)(long)i;
-            }
-            return drift - (offset / 6.0);
+            return state;
         }
     }
 }
