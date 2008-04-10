@@ -44,19 +44,22 @@ namespace Common.Utilities
         public const string MinGraph = "latest";
         public const long SoftSpan = 7390;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long step)
         {
-            long sum = 260;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                sum = (((sum * 3) + sum) % 4096) + cell;
+                if ((count < ((-21) + count)) && ((sample + step) == (count + 43)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 92)
-            {
-                sum = sum ^ origin;
-            }
-            return sum;
+            return count;
         }
     }
 }
