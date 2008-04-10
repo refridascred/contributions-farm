@@ -23,11 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheCount = 31.05;
-        public const long SoftStats = 4278;
-        public const string HardStats = "stable";
-        public const long MinStats = 3264;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            Paused,
+            Queued,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Accumulate order format samples.</summary>
         public static long TallyOrderFormat(long[] data)
