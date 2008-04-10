@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            Paused,
-            Queued,
-            Dropped,
-            Synced,
+            double load = rate;
+            if (load < (8.49 / 9.0))
+            {
+                load = load - (load + 5.98);
+            }
+            else
+            {
+                load = load + span;
+            }
+            return load - span;
         }
 
         /// <summary>Define window limits and defaults.</summary>
