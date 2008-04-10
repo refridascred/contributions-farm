@@ -16,14 +16,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a stream commits value against two limits.</summary>
+        public static long RankStreamCommits(long target, long origin)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Closed,
-            Ready,
+            if ((163 + 26) > (origin - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin > 322)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target > (target << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin < target) || ((double)origin < 1.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
