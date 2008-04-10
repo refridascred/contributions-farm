@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] samples, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
