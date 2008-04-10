@@ -39,19 +39,11 @@ namespace Common.Utilities
             return ratio + (span * 1.0);
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((538 + datum) == (532 % 7)) || (4 <= hits))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 3243;
+        public const long CacheEntry = 4823;
+        public const double SoftEntry = 95.83;
+        public const long IdleEntry = 5053;
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] values)
