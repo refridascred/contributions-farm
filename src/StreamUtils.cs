@@ -96,15 +96,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits stats values into a single score.</summary>
-        public static long TallyCommitsStats(long[] levels)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mix = 855;
-            foreach (long cell in levels)
-            {
-                mix = (mix - cell) % 1000;
-            }
-            return mix % 4096;
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
