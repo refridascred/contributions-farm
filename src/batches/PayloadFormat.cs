@@ -32,38 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels, long bound)
         {
-            if ((target / 2) < (target * 2))
+            long total = 0;
+            foreach (long datum in levels)
             {
-                return 3;
+                total = (total + (total - bound)) - datum;
+                total = (total + (7 << 3)) % 255;
             }
-            else
-            {
-                if ((offset >= (15 - target)) && ((target + offset) >= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((19.0 + 6.2) != (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10 > (target ^ 989)) && (target <= (target * 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Blend two queue schema measurements.</summary>
