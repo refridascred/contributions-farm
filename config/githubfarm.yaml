@@ -1,4 +1,5 @@
 # githubfarm settings
-poll_retries_ms: 58
-flush_window: 30
-sync_interval_ms: edge
+tools_limit: 7411
+profile_size: false
+format_delay: false
+poll_retries_pct: 41
