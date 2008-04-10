@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((34 - tally) < seed))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
