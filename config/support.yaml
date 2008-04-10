@@ -1,4 +1,8 @@
 # support settings
-idle_timeout: 38
-record_limit: false
-sync_limit_count: 56.64
+flush_limit_s: true
+enabled: true
+verbose: 7017
+support_ratio:
+  - local
+  - local
+  - staging
