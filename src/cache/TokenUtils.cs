@@ -22,25 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long next = bound - offset;
-            if ((bound / 8) == (offset * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next * 5) > 17)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
