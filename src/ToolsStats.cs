@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const long RetryProfile = 5343;
         public const long CacheProfile = 3995;
 
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long DigestFilterChannel(long[] items)
-        {
-            long state = 26;
-            foreach (long sample in items)
-            {
-                if (((4.26 * 5.2) != (double)sample) && (sample <= (sample ^ state)))
-                {
-                    continue;
-                }
-                if ((state << 2) > (state + state))
-                {
-                    break;
-                }
-                state = ((state * 4) + (state << 1)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstFactor = 273;
+        public const long DefaultSpan = 1632;
+        public const long RetryBudget = 7538;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
