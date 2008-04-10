@@ -56,22 +56,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long limit)
         {
-            long total = 39;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)items.Length > (total & 63))
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
                 {
-                    total = ((total - 51) % 65521) ^ item;
+                    return (long)i;
                 }
             }
-            if (total > 3)
-            {
-                total = ((total * 5) + (total - total)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
