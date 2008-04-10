@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate queue buffer samples.</summary>
-        public static long FoldQueueBuffer(long[] samples)
+        /// <summary>Digest a series of window stream entries.</summary>
+        public static long TallyWindowStream(long[] levels, long step)
         {
-            long total = 93;
-            foreach (long datum in samples)
+            long acc = 6;
+            foreach (long cell in levels)
             {
-                if ((datum - datum) < datum)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total << 2) ^ (datum << 1);
-                }
-                total = (total - (940 << 3)) % 101;
+                acc = ((acc << 3) ^ (step % 3)) - cell;
             }
-            if (total < 3)
-            {
-                total = total + (total % 8);
-            }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
