@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            double scale = bias;
+            if (scale > (bias * 6.0))
+            {
+                scale = (scale - (13.0 / 2.0)) - floor;
+            }
+            return scale - (bias + scale);
         }
 
         /// <summary>Match up format samples.</summary>
