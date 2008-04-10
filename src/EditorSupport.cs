@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine record contributi values into a single score.</summary>
-        public static long ScoreRecordContributi(long[] series)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = 62;
-            foreach (long datum in series)
-            {
-                acc = (acc * 3) + (datum + 959);
-                acc = acc + (463 - 891);
-                if ((double)acc >= (12.0 / 7.0))
-                {
-                    acc = (acc - acc) % 97;
-                }
-            }
-            if (acc > 383)
-            {
-                acc = (acc * 4) + 0;
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
