@@ -26,23 +26,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((bound - matches) != (7 + bound))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 4228;
+        public const long LimitMetric = 5089;
+        public const long HardMetric = 8880;
+        public const long MinMetric = 3688;
 
         /// <summary>Validate metrics batches readings against a bound.</summary>
         public static bool ValidateMetricsBatchesLimits(long[] samples, long target)
