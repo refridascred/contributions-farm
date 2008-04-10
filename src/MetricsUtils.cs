@@ -26,19 +26,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool GuardQueueGithubfarmRange(long[] items, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((double)581 < (double)bound)
             {
-                if (sample > target)
+                return 6;
+            }
+            else
+            {
+                if (((double)bound > (6.1 + 9.0)) && (limit < (limit >> 2)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (647 > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
