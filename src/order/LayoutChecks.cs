@@ -59,21 +59,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 44;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix * 3) + (limit / 6);
+                if (((7 + mix) > (item - limit)) && ((79 + limit) != (mix >> 3)))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
