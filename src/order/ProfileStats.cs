@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long floor, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            if ((floor + floor) > (seed & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((74 * 5) != (floor & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Retry,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
