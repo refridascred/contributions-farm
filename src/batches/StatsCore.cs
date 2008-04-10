@@ -23,12 +23,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardWidth = "cached-edge";
-        public const long HardSize = 7891;
-        public const double WindowDepth = 3.97;
-        public const long MaxContext = 1408;
-        public const long HardContext = 9110;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long bound)
