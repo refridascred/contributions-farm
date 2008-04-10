@@ -22,15 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile githubfarm counter forward.</summary>
-        public static long IterateProfileGithubfarm(long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
