@@ -21,12 +21,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Retry,
-            Done,
-            Dropped,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine format stream values into a single score.</summary>
