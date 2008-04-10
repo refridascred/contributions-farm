@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long anchor = 47;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor ^ reading) % 1000) ^ (long)i;
-                }
-                if ((anchor ^ reading) != (bound & 63))
-                {
-                    anchor = (anchor << 2) ^ (bound % 3);
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            return anchor;
+            Active,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a order reading by value.</summary>
