@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a order entry.</summary>
