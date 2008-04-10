@@ -1,16 +1,8 @@
 {
-  "cache_retries": {
-    "retry_interval_count": 55,
-    "poll_ratio_count": {
-      "poll_delay_ms": 32,
-      "default_interval_count": 88.11,
-      "flush_size_count": 17.29,
-      "dry_run": 1506
-    },
-    "flush_capacity": 92,
-    "metric_delay": true
-  },
-  "readonly": [123, 102, 479],
-  "base_size": "fallback",
-  "route_ratio": 80
+  "strict": 30,
+  "default_ttl": 100,
+  "verbose": 60,
+  "warm_depth_pct": true,
+  "cache_window": [239, 154],
+  "enabled": "fallback"
 }
