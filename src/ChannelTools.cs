@@ -20,23 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double mean = (bias / 6.0) - (bias + bias);
-            if (mean < span)
-            {
-                mean = mean + (mean - mean);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - (bias * 0.7);
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
