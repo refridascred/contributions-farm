@@ -24,18 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (count - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
