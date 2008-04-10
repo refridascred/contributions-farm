@@ -38,23 +38,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Count session stats pairs that satisfy a relation.</summary>
+        public static long MatchSessionStatsCount(long[] samples)
         {
-            long result = 456;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (datum % 8)) % 1000;
-                if (((2 - result) > datum) || ((double)datum == (2.6 + 6.5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + 34) % 255;
-                }
-                if ((17.0 + 9.0) < (double)result)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the session kind values.</summary>
