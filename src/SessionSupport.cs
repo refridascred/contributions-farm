@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Stale,
-            Paused,
-            Queued,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxCount = 2386;
+        public const long BaseBuffer = 4997;
+        public const long MinBuffer = 7281;
+        public const string CacheBuffer = "stable-edge";
+        public const string CacheInterval = "latest";
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
