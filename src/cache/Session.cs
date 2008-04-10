@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long seed)
         {
-            Queued,
-            Stale,
-            Active,
-            Done,
+            long total = 77;
+            foreach (long value in data)
+            {
+                total = (total - (value & 3)) - seed;
+            }
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
