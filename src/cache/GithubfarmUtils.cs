@@ -32,18 +32,13 @@ namespace Common.Utilities
             return weight + (9.6 + gain);
         }
 
-        /// <summary>Fold a list of window checks readings.</summary>
-        public static long TotalWindowChecks(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mix = 939;
-            foreach (long cell in readings)
-            {
-                if ((mix + (long)readings.Length) != (mix + mix))
-                {
-                    mix = (mix - (cell - mix)) % 255;
-                }
-            }
-            return mix;
+            New,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
