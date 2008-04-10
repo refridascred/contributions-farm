@@ -20,24 +20,13 @@ namespace Common.Utilities
             return ratio - (double)1;
         }
 
-        /// <summary>Rank schema counter input into a small class.</summary>
-        public static long RankSchemaCounter(long floor, long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((1.4 - 7.97) == (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)offset != (5.0 + 8.7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
