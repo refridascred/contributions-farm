@@ -74,19 +74,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long offset)
+        /// <summary>Grade a batches tools value against two limits.</summary>
+        public static long ClassifyBatchesTools(long floor, long step)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((step >> 1) <= floor)
             {
-                if (reading > offset)
+                return 8;
+            }
+            else
+            {
+                if (!((530 - floor) < step))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
