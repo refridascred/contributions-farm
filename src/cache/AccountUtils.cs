@@ -42,17 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] == limit) && ((items[i] % 3) != 0))
+                if ((seen << 1) > (seen * 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
