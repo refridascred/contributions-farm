@@ -1,16 +1,6 @@
 {
-  "sync_capacity_ms": 2607,
-  "retry_delay": 100,
-  "max_ttl_pct": 500,
-  "audit": {
-    "soft_limit": "open",
-    "queue_delay": {
-      "flush_depth": "latest",
-      "sync_limit": 83.93,
-      "sync_size_ms": "open",
-      "dry_run": 60,
-      "counter_capacity": 2259
-    },
-    "soft_depth": "edge"
-  }
+  "audit": 4112,
+  "poll_limit_s": 71.12,
+  "idle_ratio_s": "local",
+  "default_threshold_ms": "local"
 }
