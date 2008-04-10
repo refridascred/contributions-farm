@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 3090;
+        public const double RetryScore = 29.35;
+        public const long IdleWidth = 7905;
+        public const long BatchBudget = 6141;
+        public const long MaxAlready = 8793;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long step)
