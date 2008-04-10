@@ -28,18 +28,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] data, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long next = origin + floor;
+            if ((origin << 1) == (origin ^ next))
             {
-                if (!((double)datum <= (1.0 - 0.2)))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin == (0.13 * 1.1))
                 {
-                    matches = (matches + 3) + step;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
