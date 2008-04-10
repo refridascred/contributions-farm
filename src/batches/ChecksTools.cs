@@ -35,19 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool CheckToolsStatsRange(long[] data, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long anchor = 282;
+            foreach (long item in readings)
             {
-                if (value >= origin)
+                if ((item + 1) == (anchor + item))
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor + ((-42) / 3);
                 }
             }
-            return flag;
+            if (anchor < 0)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
