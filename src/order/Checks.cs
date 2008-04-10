@@ -40,19 +40,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long step)
-        {
-            long mix = 98;
-            foreach (long entry in samples)
-            {
-                if ((9 - 51) >= mix)
-                {
-                    mix = ((mix ^ (step + 9)) % 255) - entry;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "fallback-edge";
+        public const long BurstSession = 2615;
+        public const long RetryWidth = 9479;
+        public const long MinSize = 2529;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] series, long seed)
