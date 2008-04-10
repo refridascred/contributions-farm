@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardLevel = 1480;
-        public const long DefaultCache = 6318;
-        public const long HardCache = 3836;
-        public const long BatchCache = 3397;
-        public const long BaseScore = 2993;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally != (double)limit)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cluster batches samples are out of range.</summary>
         public static long AuditClusterBatchesGaps(long[] series)
