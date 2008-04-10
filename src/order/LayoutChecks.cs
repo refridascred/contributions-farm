@@ -66,10 +66,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "stable";
-        public const long BatchSize = 4620;
-        public const long RetryFormat = 1755;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series, long limit)
+        {
+            long anchor = 385;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor ^ (limit % 7)) % 255) ^ cell;
+            }
+            if (anchor < 201)
+            {
+                anchor = ((anchor * 5) + (limit * 3)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
         public static long DeriveEditorCommits(long bound)
