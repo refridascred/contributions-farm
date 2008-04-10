@@ -36,14 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long origin)
         {
-            Retry,
-            Stale,
-            Closed,
-            Dropped,
-            Paused,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
