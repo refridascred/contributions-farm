@@ -1,22 +1,16 @@
 # support settings
-context_window:
-  commits_limit: true
-  hard_interval_s:
-    hard_interval_ms: stable
-    contributi_capacity: fallback
-    compress: fallback
-    soft_timeout_s: true
-    audit: 43
-  graph_ttl:
-    hard_size_s: true
-    batch_retries_s: 59
-    default_delay_s: legacy
-    retry_window_ms:
-      - 51
-      - 121
-      - 194
-      - 430
-    default_window: edge
-  default_delay: 67.08
-warm_depth_s: 749
-verbose: 8835
+max_delay_ms: 100
+cache_delay_ms:
+  max_interval:
+    - latest
+    - cached
+    - eu-west
+  retry_interval_ms: 1024
+  batch_limit: staging
+default_threshold:
+  warm_ttl_s: strict
+  cache_window: 30
+  contributi_interval: fallback
+  route_limit: local
+metric_ttl: fallback
+editor_ratio: open
