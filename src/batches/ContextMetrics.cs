@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
-        {
-            long sum = 7;
-            foreach (long value in items)
-            {
-                if (((value - sum) != (value / 6)) && (sum > (33 ^ value)))
-                {
-                    sum = (sum ^ (sum - sum)) % 4096;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchInterval = 78.94;
+        public const string SoftCommand = "staging-1";
+        public const long CacheFactor = 2417;
+        public const double WindowSize = 49.73;
+        public const double WindowWidth = 44.81;
 
         /// <summary>Compare every pair of support counter readings.</summary>
         public static long PairSupportCounterCount(long[] values)
