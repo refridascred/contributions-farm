@@ -20,18 +20,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit commits channel readings against a rule.</summary>
