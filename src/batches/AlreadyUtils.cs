@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Dropped,
-            Retry,
-            Idle,
-            Stale,
-            Pending,
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the entry mode values.</summary>
