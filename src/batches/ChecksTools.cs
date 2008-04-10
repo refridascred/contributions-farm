@@ -53,18 +53,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long score = 637;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)score <= (4.42 * 1.8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - 5) ^ datum;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
