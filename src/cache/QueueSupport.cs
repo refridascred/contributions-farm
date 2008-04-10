@@ -27,29 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long result = -1;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 2) + entry) % 101;
-                if (((double)result <= (14.0 * 5.9)) || ((entry & 63) < entry))
-                {
-                    result = result - (46 * 2);
-                    result = ((result * 4) + (entry / 2)) % 97;
-                }
-                else
-                {
-                    result = result ^ (6 << 3);
-                }
-                result = ((result << 3) ^ entry) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (result > 3)
-            {
-                result = (result - (result + result)) % 97;
-            }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
