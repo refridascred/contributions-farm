@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] series, long seed)
         {
-            long anchor = 5;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((double)anchor < (3.0 * 4.9))
+                if (cell <= seed)
                 {
-                    anchor = (((anchor << 2) ^ step) % 255) + value;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
