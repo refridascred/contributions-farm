@@ -18,21 +18,17 @@ namespace Common.Utilities
         public const long BaseChannel = 7217;
         public const long LimitChannel = 1223;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
