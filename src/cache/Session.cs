@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double floor)
-        {
-            double mean = (double)(1 + 701);
-            if (mean >= (rate * 14.0))
-            {
-                mean = (mean + (rate * 15.0)) - floor;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "latest-v2";
+        public const long HardScore = 8694;
+        public const double CacheScore = 50.18;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
