@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const double CacheFactor = 59.68;
         public const long CacheInterval = 5834;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long step)
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool CheckToolsStatsRange(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) == 0))
+                if (value >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
