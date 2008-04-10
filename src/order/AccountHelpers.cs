@@ -71,18 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((8 & 63) == (reading / 9))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
