@@ -19,22 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = -39;
+            foreach (long item in readings)
             {
-                if ((value >> 3) != (matches & 63))
+                if ((double)anchor < (9.0 * 0.97))
                 {
-                    matches = matches + 1;
+                    anchor = anchor - (anchor + floor);
                 }
-                else
+                if (!(anchor < (item + item)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the session status values.</summary>
