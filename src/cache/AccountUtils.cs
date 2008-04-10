@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] items, long origin)
         {
-            Done,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((-63) + tally) > (618 >> 3))
+                {
+                    tally = ((tally + 3) + reading) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
