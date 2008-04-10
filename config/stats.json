@@ -1,9 +1,7 @@
 {
-  "enabled": ["standard", "local", "cached"],
-  "schema_depth": "eu-west",
-  "hard_ttl": {
-    "poll_size_ms": 70,
-    "entry_timeout": 9.27,
-    "readonly": "standard"
-  }
+  "audit": 613,
+  "order_size": 69,
+  "format_capacity": false,
+  "stream_limit": "strict",
+  "min_retries": "primary"
 }
