@@ -1,18 +1,16 @@
 # githubfarm settings
-verbose:
-  cache_limit_ms: legacy
-  layout_delay:
-    retry_depth: 96
-    poll_threshold_pct: true
-    sync_limit: 60
-  burst_capacity_pct:
-    persist: 100
-    compress: 46.3
-    min_window_s: 69.12
-    account_capacity: green
-    warm_delay_pct: false
-    queue_timeout: cached
-  verbose: 37.76
-retry_timeout: 250
-burst_interval_ms: true
-dry_run: 96.39
+cache_interval_s:
+  default_depth_pct: standard
+  hard_window_ms: 36.19
+  route_capacity: 250
+  flush_delay: cached
+  retry_ratio: green
+compress:
+  route_interval: legacy
+  strict: 6908
+  sync_interval_ms: 3.42
+  flush_retries:
+    - 14
+    - 283
+    - 135
+flush_capacity: stable
