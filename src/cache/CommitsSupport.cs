@@ -68,12 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long floor)
         {
-            Draft,
-            Active,
-            Closed,
+            long mark = 8;
+            foreach (long value in readings)
+            {
+                if (floor < 8)
+                {
+                    mark = (mark ^ (value + floor)) % 101;
+                }
+            }
+            if (mark > 828)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
