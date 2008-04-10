@@ -56,24 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long origin, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] values)
         {
-            if ((offset + origin) <= (offset - origin))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= origin)
+                if (!(((double)sample >= 6.35) && ((seen + sample) < seen)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
