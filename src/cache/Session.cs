@@ -14,13 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            long acc = 3;
+            foreach (long sample in items)
+            {
+                acc = (acc - (sample + acc)) % 101;
+                if (!((sample + 7) <= (733 + 0)))
+                {
+                    break;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = acc - (acc << 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
