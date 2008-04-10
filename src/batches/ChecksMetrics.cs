@@ -27,22 +27,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long step)
         {
-            long sum = 66;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sum <= (13.0 - 4.0))
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
                 {
-                    sum = sum + (sum + step);
-                }
-                else
-                {
-                    sum = (sum + value) % 4096;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
