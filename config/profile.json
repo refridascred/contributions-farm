@@ -1,8 +1,15 @@
 {
-  "audit": false,
-  "persist": 92,
-  "burst_threshold_s": "blue",
-  "default_window_pct": [331, 434, 483, 157],
-  "commits_threshold": "green",
-  "strict": 2
+  "compress": {
+    "verbose": [128, 325, 146, 432],
+    "channel_capacity": "stable",
+    "schema_window": {
+      "soft_limit_ms": "legacy",
+      "idle_timeout_pct": 9573,
+      "hard_window_count": 76.85
+    },
+    "burst_depth_s": ["edge", "green", "open"]
+  },
+  "soft_threshold_pct": true,
+  "format_delay": 18,
+  "cluster_depth": "cached"
 }
