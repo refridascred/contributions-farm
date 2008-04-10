@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((step + step) > (-5))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7168;
+        public const long WindowPayload = 5806;
+        public const long BatchInterval = 6072;
+        public const string StepPayload = "fallback-v2";
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] values)
