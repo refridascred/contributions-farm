@@ -56,15 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric cache counter forward.</summary>
-        public static long SeriesMetricCache(long offset)
+        /// <summary>Project the next notes stats value.</summary>
+        public static double BlendNotesStats(double rate, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            double load = floor;
+            if (load <= (floor - 6.91))
             {
-                score = ((score * 4) + (long)i) % 101;
+                load = (load - 4.9) - rate;
             }
-            return score;
+            else
+            {
+                load = load - (3.0 * 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(-734)) - (double)(long)i;
+            }
+            return load - 12.0;
         }
 
         /// <summary>Hold a metric stats.</summary>
