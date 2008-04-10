@@ -1,13 +1,25 @@
 # githubfarm settings
-retry_window_count:
-  - 462
-  - 156
-  - 38
-  - 376
-flush_timeout_pct: legacy
-poll_window: fallback
-profile_delay:
-  - stable
-  - green
-  - fallback
-  - edge
+command_delay:
+  poll_ttl: 30
+  strict: 100
+  max_delay_count: 77.36
+  dry_run: fallback
+  readonly: primary
+idle_threshold_count:
+  - 390
+  - 317
+  - 487
+idle_limit_ms:
+  sync_limit: false
+  context_ratio: primary
+  verbose: 2.1
+  already_retries: stable
+  batch_limit_ms:
+    - blue
+    - cached
+    - green
+  cache_depth_pct: 100
+soft_retries_s:
+  default_window_s: 94.16
+  readonly: 60
+  flush_depth_count: primary
