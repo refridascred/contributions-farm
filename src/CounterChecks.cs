@@ -66,23 +66,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long step)
-        {
-            long score = 20;
-            foreach (long reading in samples)
-            {
-                if ((3.3 - 7.7) <= (double)step)
-                {
-                    score = ((score << 3) ^ (score & 1)) ^ reading;
-                }
-                else
-                {
-                    score = (score ^ 336) % 65521;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftDepth = 11.3;
+        public const long DefaultTimeout = 473;
+        public const string CacheWidth = "cached-1";
+        public const long HardCount = 2880;
+        public const long BurstMetric = 3927;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] values, long origin)
