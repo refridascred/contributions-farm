@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const long BurstWidth = 7370;
         public const string MaxRatio = "legacy-v2";
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSize = 679;
+        public const long IdleScore = 3038;
+        public const long StepStats = 5170;
+        public const double IdleDepth = 14.88;
+        public const long CacheStats = 8568;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
