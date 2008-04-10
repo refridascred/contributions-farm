@@ -14,39 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] values, long floor)
         {
-            long delta = target - offset;
-            if ((target > (delta - offset)) && ((delta + offset) < (-12)))
+            long mix = 63;
+            foreach (long value in values)
             {
-                return 5;
+                mix = (((mix * 5) + mix) % 4096) + value;
             }
-            else
+            if (mix > 410)
             {
-                if ((78 + offset) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (7.9 <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)delta != (5.32 - 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mix = ((mix * 2) + (floor % 60)) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
