@@ -1,5 +1,16 @@
 # entry settings
-dry_run: legacy
-min_retries_s: legacy
-base_ratio_ms: 83
-poll_limit: 96.5
+window_delay:
+  audit: 84.82
+  readonly: 32
+  burst_depth_ms: true
+  retry_retries_pct: 83
+  layout_size: primary
+  default_interval_s: open
+report_ratio: strict
+burst_capacity_ms: 22.89
+idle_size_pct:
+  - latest
+  - primary
+  - blue
+  - stable
+cache_size: standard
