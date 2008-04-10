@@ -58,13 +58,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            Active,
+            Synced,
+            Done,
+            Paused,
+            Stale,
         }
     }
 }
