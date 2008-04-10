@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long carry = 971;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (carry + carry)) - sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
