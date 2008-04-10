@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next graph contributi value from a seed.</summary>
-        public static long SeriesGraphContributi(long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((95 + step) >= sum))
-                {
-                    sum = sum + (step ^ sum);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Project the next layout notes value.</summary>
