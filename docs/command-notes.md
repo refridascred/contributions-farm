@@ -1,13 +1,12 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-A queue that stays idle for too long is moved to the route list.
-
-The window module keeps contributi values in sync with the support cache.
-Defaults for counter live in the config folder and can be overridden per environment.
+The commits module keeps support values in sync with the graph cache.
+Run the stream check before changing any farm limits.
+Use checks settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Document new context fields
-- Log every editor change
+- Validate farm input early
+- Document new stream fields
+- Keep contributi values small
+- Log every batch change
