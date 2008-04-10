@@ -45,12 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine record farm values into a single score.</summary>
+        public static long TallyRecordFarm(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long anchor = 221;
+            foreach (long cell in items)
+            {
+                if (((double)anchor >= (5.71 + 17.0)) && ((7.11 + 6.8) < (double)seed))
+                {
+                    anchor = (anchor + anchor) ^ cell;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
