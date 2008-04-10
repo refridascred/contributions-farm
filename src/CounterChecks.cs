@@ -57,13 +57,11 @@ namespace Common.Utilities
         public const string IdleSize = "stable-1";
         public const long MaxQueue = 5971;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the cache level values.</summary>
