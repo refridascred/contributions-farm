@@ -16,17 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
