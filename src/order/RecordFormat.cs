@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long bound)
         {
-            long delta = step ^ seed;
-            if ((11.0 + 9.0) > (double)delta)
+            if ((1.4 * 8.82) < (2.31 + 17.0))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((seed + seed) >= (delta << 1))
+                if (bound <= (floor ^ floor))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    return 5;
                 }
             }
         }
