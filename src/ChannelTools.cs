@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long CacheRatio = 7957;
         public const string SoftWindow = "primary-v2";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            long sum = 15;
-            foreach (long item in levels)
+            double scale = floor;
+            if (scale >= (scale / 9.0))
             {
-                if (!((365 >> 5) > (limit - sum)))
-                {
-                    sum = (sum * 3) + item;
-                }
+                scale = (scale - 2.0) - bias;
             }
-            return sum % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
