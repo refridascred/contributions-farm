@@ -1,6 +1,13 @@
 {
-  "poll_window_ms": 100,
-  "readonly": 500,
-  "idle_threshold_ms": "eu-west",
-  "cache_window_pct": 7581
+  "poll_interval_pct": "blue",
+  "verbose": {
+    "editor_ttl": 36.32,
+    "filter_interval": "latest",
+    "farm_timeout": false,
+    "max_capacity": 5203
+  },
+  "compress": 28.53,
+  "retry_threshold_ms": "eu-west",
+  "hard_ttl": true,
+  "contributi_retries": 1984
 }
