@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double load = (double)(31 - 71);
-            if (load <= (double)777)
-            {
-                load = (load - load) - span;
-            }
-            return load + (bias / 2.0);
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
