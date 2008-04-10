@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in green cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-
-CHANNEL_LIMIT=318
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
