@@ -35,19 +35,17 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool ValidateProfileFarmLimits(long[] levels, long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= origin)
+                if (data[i] >= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
