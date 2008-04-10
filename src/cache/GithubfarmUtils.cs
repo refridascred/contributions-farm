@@ -14,15 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Combine batches graph values into a single score.</summary>
+        public static long DigestBatchesGraph(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = 74;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                mark = ((mark << 2) ^ 4) % 255;
+                mark = mark + (datum % 97);
             }
-            return total;
+            if (mark < 68)
+            {
+                mark = (mark + (mark + 365)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
