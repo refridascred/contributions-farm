@@ -1,11 +1,12 @@
 # Command notes
 
-Keep support and session names short and lowercase.
-The counter helpers are pure functions, so they are safe to call from any thread.
-A farm that stays idle for too long is moved to the session list.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each counter is validated before it reaches the batches queue.
+Each buffer is validated before it reaches the tools queue.
 
 ## Guidelines
 
 - Prefer metric defaults
-- Log every record change
-- Document new cluster fields
+- Review queue limits each release
+- Document new schema fields
+- Keep already values small
