@@ -28,24 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long span = (offset & 3) + (mix >> 2);
-                if (!(mix < (456 % 16)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - (span ^ mix)) % 1000;
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix - (long)i;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
     }
 }
