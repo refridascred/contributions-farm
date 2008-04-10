@@ -57,12 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Paused,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstTimeout = 74.25;
+        public const long BaseQueue = 712;
+        public const long CacheQueue = 721;
+        public const long RetrySize = 3217;
+        public const long HardTimeout = 6763;
     }
 }
