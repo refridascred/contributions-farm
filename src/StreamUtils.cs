@@ -61,10 +61,11 @@ namespace Common.Utilities
         public const long SoftOrder = 2662;
         public const long BurstOrder = 4021;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheInterval = 9486;
-        public const double MaxWidth = 92.94;
-        public const long SoftInterval = 7807;
-        public const long WindowBatch = 3048;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
