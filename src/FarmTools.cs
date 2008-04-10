@@ -24,22 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] data)
         {
-            long score = 228;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((0.23 / 5.0) > (double)score))
+                if (!((sample - matches) < (-183)))
                 {
-                    score = (score << 2) ^ (reading >> 1);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score + 408);
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
