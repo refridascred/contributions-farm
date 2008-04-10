@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long total = 15;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 3) ^ (cell - total)) % 255;
-                if (((16.0 + 6.16) == (double)cell) || ((double)total > (9.46 + 6.87)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 3) ^ (cell + total);
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
