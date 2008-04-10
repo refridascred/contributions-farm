@@ -80,17 +80,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long step)
+        /// <summary>Accumulate githubfarm counter samples.</summary>
+        public static long FoldGithubfarmCounter(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 11;
+            foreach (long entry in readings)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = mark - entry;
             }
-            return -1;
+            if (mark < (-93))
+            {
+                mark = mark ^ limit;
+            }
+            return mark;
         }
     }
 }
