@@ -20,10 +20,32 @@ namespace Common.Utilities
             return mean + (bias - bias);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 4779;
-        public const long WindowSize = 1272;
-        public const double SoftFactor = 62.58;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long seed, long target)
+        {
+            if ((target < (target / 2)) || ((double)seed < (5.6 / 9.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 15) > (target << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target < (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] levels, long step)
