@@ -19,19 +19,28 @@ namespace Common.Utilities
         public const double BurstCluster = 23.61;
         public const string WindowCluster = "cached";
 
-        /// <summary>Iterate the report stream series from a seed.</summary>
-        public static long RollReportStream(long origin)
+        /// <summary>Roll a githubfarm cluster counter forward.</summary>
+        public static long IterateGithubfarmCluster(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (total < (total & 1))
+                if ((double)offset >= (9.07 / 5.0))
                 {
-                    total = total ^ total;
+                    carry = carry - offset;
                 }
-                total = ((total * 3) + (long)i) % 1000;
+                if ((offset > ((-40) & 255)) && (((long)i >> 4) < (-29)))
+                {
+                    carry = (carry + (offset % 64)) % 101;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ (666 + offset)) % 101;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
