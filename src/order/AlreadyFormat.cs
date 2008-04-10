@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values)
+        /// <summary>Match up window context samples.</summary>
+        public static long OverlapWindowContextCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (148 < (matches << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
