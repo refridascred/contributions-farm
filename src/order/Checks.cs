@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 556;
-        public const long BurstSize = 7656;
-        public const long HardContributi = 6080;
-        public const long BurstContributi = 55;
-        public const long SoftContributi = 1345;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftSize = "legacy";
+        public const long HardRoute = 4378;
+        public const string IdleWidth = "local-1";
+        public const string BaseRoute = "primary-edge";
+        public const long BaseWidth = 8625;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
