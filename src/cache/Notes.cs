@@ -69,9 +69,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseDepth = 6038;
-        public const string WindowAlready = "staging-v2";
-        public const long LimitAlready = 1830;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
