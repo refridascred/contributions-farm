@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long cur = offset - origin;
-            if (((cur << 2) <= (origin + 72)) && (offset < cur))
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((13.0 - 9.28) != (double)offset))
+                result = ((result * 4) + (result + offset)) % 97;
+                result = ((result << 3) ^ result) % 4096;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 2;
+                    result = ((result + (5 & 1)) % 255) - (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Combine stats tools values into a single score.</summary>
