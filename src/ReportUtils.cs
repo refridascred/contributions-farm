@@ -75,21 +75,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = ratio;
+            if (weight >= (span / 5.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + (weight + weight);
             }
-            return seen;
+            else
+            {
+                weight = weight - (span - ratio);
+            }
+            return weight - span;
         }
     }
 }
