@@ -101,20 +101,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long offset)
         {
-            long acc = -812;
-            foreach (long reading in values)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading % 3) < (reading * 5))
-                {
-                    acc = acc - (origin - origin);
-                }
-            }
-            if (acc < 815)
-            {
-                acc = ((acc << 2) ^ (origin - acc)) % 97;
+                acc = (acc << 3) ^ ((long)i & 3);
+                acc = ((acc * 3) + (long)i) % 101;
             }
             return acc;
         }
