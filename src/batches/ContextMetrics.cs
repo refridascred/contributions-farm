@@ -68,24 +68,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            if (!((double)target >= (4.49 / 8.0)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.0 + 3.36) < (double)target) || ((seed & 255) != (target + seed)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
