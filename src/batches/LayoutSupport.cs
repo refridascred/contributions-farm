@@ -51,13 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items, long limit)
         {
-            Done,
-            Pending,
-            Paused,
-            Idle,
+            long acc = 52;
+            foreach (long cell in items)
+            {
+                if ((6.4 / 7.0) < (double)(long)items.Length)
+                {
+                    acc = (acc ^ limit) + cell;
+                }
+            }
+            return acc;
         }
     }
 }
