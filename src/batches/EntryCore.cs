@@ -28,15 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the token filter series from a seed.</summary>
-        public static long DeriveTokenFilter(long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
