@@ -12,18 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 6794;
+        public const long CacheInterval = 5731;
+        public const string DefaultGraph = "fallback-v2";
 
         /// <summary>Fold a list of githubfarm already readings.</summary>
         public static long WeighGithubfarmAlready(long[] series, long floor)
