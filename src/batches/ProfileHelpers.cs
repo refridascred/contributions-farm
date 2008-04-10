@@ -76,18 +76,31 @@ namespace Common.Utilities
         public const double BatchTimeout = 32.41;
         public const string BaseBuffer = "staging-1";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            if (1.09 < (double)offset)
             {
-                if (((count * 5) < (9 - value)) || (((605 ^ count) <= ((-427) + count)) && ((double)37 > (double)(long)series.Length)))
+                return 4;
+            }
+            else
+            {
+                if ((offset % 64) != (offset + floor))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (0.73 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
