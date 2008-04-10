@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long IdleFilter = 8632;
         public const long BurstSpan = 2128;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long step)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every format already entry stays within the limit.</summary>
