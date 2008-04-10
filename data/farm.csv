@@ -1,9 +1,6 @@
-id,owner,score,weight,rank
-1,local,latest,local,edge
-2,700,30,79.39,strict
-3,stable,standard,35.77,standard
-4,54.68,31.06,63.68,86.38
-5,5.93,615,edge,local
-6,66.97,staging,staging,staging
-7,39.86,739,78.25,latest
-8,primary,66.37,804,9.33
+id,state,active,region
+1,534,582,standard
+2,436,48.93,59
+3,strict,primary,23.23
+4,281,53.34,397
+5,408,49.62,12.3
