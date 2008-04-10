@@ -27,12 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitTimeout = "alpha-edge";
+        public const long SoftSpan = 2948;
+        public const long SoftDepth = 3619;
+        public const long LimitStream = 3009;
     }
 }
