@@ -48,23 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((3.2 - 4.8) >= (double)seen)
-                {
-                    seen = ((seen + 1) - cell) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 19.07;
+        public const long BatchSupport = 4148;
+        public const string BaseSupport = "local";
+        public const string IdleSupport = "legacy-edge";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] data)
