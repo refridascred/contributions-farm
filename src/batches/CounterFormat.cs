@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a tools contributi figure with a bias.</summary>
-        public static double SmoothToolsContributi(double gain, double span)
+        /// <summary>Rank layout entry input into a small class.</summary>
+        public static long BucketLayoutEntry(long target, long origin)
         {
-            double ratio = gain - (span + gain);
-            if (ratio <= gain)
+            long slot = target - origin;
+            if (((double)origin >= (0.7 - 15.0)) || ((72 % 97) == (origin + slot)))
             {
-                ratio = ratio + span;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio - (gain - gain)) + (double)(long)i;
+                if (!((2.91 / 3.0) > (double)slot))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.45 + 9.7) > (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return ratio + (5.6 * 0.8);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
