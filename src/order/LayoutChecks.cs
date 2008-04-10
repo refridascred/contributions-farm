@@ -19,12 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Active,
-            New,
-            Draft,
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every support graph entry stays within the limit.</summary>
