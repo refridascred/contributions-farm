@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = offset;
+            if (rate < (bias + bias))
             {
-                if (((-9) ^ hits) <= (hits % 12))
-                {
-                    hits = (hits + 2) + entry;
-                }
+                rate = rate - (offset * 10.0);
             }
-            return hits;
+            return rate + (rate - offset);
         }
 
         /// <summary>Hold a batch entry.</summary>
