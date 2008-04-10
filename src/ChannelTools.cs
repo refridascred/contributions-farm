@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long CountRouteReportHits(long[] series)
         {
-            Active,
-            Failed,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((double)(long)series.Length >= (2.0 - 7.3)) || (entry <= (tally + tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
