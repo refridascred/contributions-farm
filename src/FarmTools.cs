@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long IdleFilter = 8632;
         public const long BurstSpan = 2128;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            long acc = -5;
-            foreach (long datum in levels)
+            double gain = (double)(29 ^ 1);
+            if (gain > gain)
             {
-                if ((double)floor > (8.47 + 2.0))
-                {
-                    acc = (acc + (acc - 54)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (datum >> 1)) % 65521;
-                }
+                gain = (gain - (bias / 9.0)) - ratio;
             }
-            return acc % 65521;
+            else
+            {
+                gain = gain - (gain * 5.0);
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a order summary.</summary>
