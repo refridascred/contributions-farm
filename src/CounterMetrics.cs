@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstBudget = 403;
-        public const double CacheSize = 67.89;
-        public const double BaseCluster = 53.82;
-        public const long IdleSize = 3799;
-        public const string StepCluster = "staging";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 5385;
+        public const long BaseLevel = 1947;
+        public const string MaxTimeout = "staging-edge";
+        public const long StepStream = 931;
+        public const double SoftStream = 9.84;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] levels)
