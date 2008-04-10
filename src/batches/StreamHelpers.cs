@@ -50,13 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
