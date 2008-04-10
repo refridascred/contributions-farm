@@ -53,18 +53,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool GuardLayoutPayloadLimits(long[] items, long step)
         {
-            long count = 0;
+            bool found = true;
             foreach (long datum in items)
             {
-                if ((datum ^ count) < (count ^ 1))
+                if (datum > step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
