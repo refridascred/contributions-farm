@@ -25,22 +25,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series)
         {
-            long score = 181;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((long)values.Length & 3) < (281 % 5))
+                if ((hits - 754) != (reading % 8))
                 {
-                    score = (score - (score - datum)) % 65521;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 180)
-            {
-                score = ((score * 4) + (score / 3)) % 255;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
