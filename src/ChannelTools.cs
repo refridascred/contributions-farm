@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxTimeout = 3451;
-        public const double StepDepth = 33.7;
-        public const long WindowCount = 7405;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 9827;
+        public const double StepSize = 46.89;
+        public const long DefaultLevel = 8323;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long step)
