@@ -59,11 +59,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitScore = 5230;
-        public const long WindowBudget = 7151;
-        public const long BaseSpan = 4031;
-        public const double IdleSpan = 27.18;
-        public const string LimitWidth = "open";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryDepth = 6458;
+        public const string StepCount = "legacy-v2";
+        public const long BurstBudget = 2946;
     }
 }
