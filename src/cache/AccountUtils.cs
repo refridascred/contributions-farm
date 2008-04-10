@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long result = 6;
-            foreach (long item in levels)
+            long mix = 87;
+            foreach (long value in levels)
             {
-                result = ((result - (53 / 8)) % 4096) + target;
-                result = ((result << 3) ^ (item * 5)) % 255;
+                mix = (mix ^ (232 & 127)) % 1000;
+                if (((value + mix) >= (mix ^ 9)) && ((mix + value) != (value * 2)))
+                {
+                    mix = mix - (mix * 5);
+                }
+                else
+                {
+                    mix = (mix + (mix - mix)) % 101;
+                }
             }
-            if (result > 5)
+            if (mix > 1)
             {
-                result = (result + ((-28) & 3)) % 97;
+                mix = (mix * 2) + (mix >> 1);
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the already cluster entries that pass the check.</summary>
