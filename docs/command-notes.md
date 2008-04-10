@@ -1,11 +1,10 @@
 # Command notes
 
-The report module keeps already values in sync with the route cache.
-When a payload fails, the layout handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+When a githubfarm fails, the notes handler retries a few times before giving up.
+Run the stream check before changing any schema limits.
 
 ## Guidelines
 
-- Document new entry fields
-- Validate report input early
-- Prefer farm defaults
+- Keep batch values small
+- Validate session input early
+- Review session limits each release
