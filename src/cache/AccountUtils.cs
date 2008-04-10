@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            double scale = (floor + floor) / 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (rate - floor)) + (double)(long)i;
-            }
-            return scale - (scale + 9.6);
+            double scale = floor * 8.0;
+            return (scale + (double)821) + gain;
         }
     }
 }
