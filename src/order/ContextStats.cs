@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (entry != step)
+                if ((((hits - cell) > (hits - hits)) || ((cell << 1) <= (cell * 3))) && ((double)cell == (20.0 / 4.0)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
