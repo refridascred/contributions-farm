@@ -1,12 +1,11 @@
 # Command notes
 
-The commits module keeps support values in sync with the graph cache.
-Run the stream check before changing any farm limits.
-Use checks settings to tune how often account data is refreshed.
+The report module keeps already values in sync with the route cache.
+When a payload fails, the layout handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new stream fields
-- Keep contributi values small
-- Log every batch change
+- Document new entry fields
+- Validate report input early
+- Prefer farm defaults
