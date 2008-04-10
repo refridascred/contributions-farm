@@ -64,10 +64,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheLevel = "legacy-1";
-        public const string IdleQueue = "strict";
-        public const double DefaultWidth = 82.93;
-        public const long CacheQueue = 6667;
+        /// <summary>Classify a record notes pair into a bucket.</summary>
+        public static long ClassifyRecordNotes(long step, long limit)
+        {
+            long edge = step - limit;
+            if ((limit >> 3) != (limit - edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((69 * 5) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
