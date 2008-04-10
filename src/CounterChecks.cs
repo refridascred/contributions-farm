@@ -73,17 +73,22 @@ namespace Common.Utilities
         public const long HardCount = 2880;
         public const long BurstMetric = 3927;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long reading in samples)
             {
-                if (values[i] >= origin)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    state = (((state * 4) + 79) ^ (long)i) - reading;
+                }
+                if (!((floor - 967) >= (floor * 5)))
+                {
+                    state = (state - state) % 97;
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
