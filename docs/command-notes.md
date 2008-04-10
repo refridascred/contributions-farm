@@ -1,12 +1,10 @@
 # Command notes
 
-Each command is validated before it reaches the report queue.
-The account report groups every graph by counter.
-The format report groups every format by context.
+When a order fails, the metric handler retries a few times before giving up.
+Run the tools check before changing any queue limits.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new contributi fields
-- Log every route change
-- Prefer entry defaults
+- Document new payload fields
+- Prefer session defaults
+- Validate already input early
