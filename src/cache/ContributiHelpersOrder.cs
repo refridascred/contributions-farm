@@ -13,16 +13,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Find the first channel support entry that matches the target.</summary>
+        public static long LocateChannelSupportIndex(long[] data, long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 2) + (long)i;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((data[i] < target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a session window figure with a bias.</summary>
