@@ -1,4 +1,14 @@
 # support settings
-flush_ttl_s: stable
-retry_timeout: cached
-enabled: 60
+already_threshold: 7150
+verbose:
+  - legacy
+  - fallback
+  - blue
+readonly: strict
+max_threshold_ms:
+  - standard
+  - primary
+  - open
+  - primary
+idle_delay: latest
+burst_window_ms: 71.48
