@@ -30,15 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Ready,
-            Done,
-            Pending,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 4148;
+        public const long MinSpan = 9331;
+        public const double IdleFactor = 29.01;
+        public const string DefaultProfile = "open-edge";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long floor)
