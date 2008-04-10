@@ -19,13 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Iterate the command buffer series from a seed.</summary>
+        public static long StepCommandBuffer(long step)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 3) + (total + total)) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
