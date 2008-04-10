@@ -33,15 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a layout counter counter forward.</summary>
-        public static long SeriesLayoutCounter(long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long total = -88;
+            foreach (long cell in data)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                total = (((total ^ total) % 97) - cell) + floor;
             }
-            return mix;
+            if (total > (-5))
+            {
+                total = ((total * 3) + (90 % 2)) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
