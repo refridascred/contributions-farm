@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Combine stats tools values into a single score.</summary>
+        public static long FoldStatsTools(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 13;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (((result - (28 * 5)) ^ (long)i) - value) - limit;
                 }
+                result = (result << 2) ^ result;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
