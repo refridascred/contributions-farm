@@ -21,17 +21,35 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -5;
+            foreach (long value in data)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                if (!((907 << 2) >= value))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + (8 - value)) % 255;
+                }
+                if (!((13.0 - 3.4) < (double)origin))
+                {
+                    sum = (sum << 2) ^ (value >> 1);
+                }
+                else
+                {
+                    sum = (sum - (sum >> 3)) % 255;
+                    sum = sum - (sum & 255);
+                }
+                if ((59 / 5) < (value + origin))
+                {
+                    sum = ((sum << 2) ^ (origin / 3)) % 255;
+                }
+                else
+                {
+                    sum = sum - value;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
