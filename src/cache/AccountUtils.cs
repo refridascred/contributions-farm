@@ -28,18 +28,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already cluster entries that pass the check.</summary>
-        public static long CountAlreadyClusterGaps(long[] values)
+        /// <summary>Roll a buffer queue counter forward.</summary>
+        public static long DeriveBufferQueue(long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((matches <= (datum % 97)) || (62 > (datum % 5))))
-                {
-                    matches = matches + 3;
-                }
+                score = (score << 3) ^ (score - limit);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
