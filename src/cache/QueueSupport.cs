@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ratio2 + (double)90;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels)
         {
-            Done,
-            Closed,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen % 60) != (931 ^ seen))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
