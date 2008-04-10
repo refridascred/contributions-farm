@@ -37,12 +37,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally + 127) != (tally + bound))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
