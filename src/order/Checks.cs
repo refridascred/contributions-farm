@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the order buffer entries that pass the check.</summary>
-        public static long TallyOrderBufferHits(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count & 255) <= (-6))
-                {
-                    count = ((count + 2) - value) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultInterval = 465;
+        public const long DefaultSpan = 8808;
+        public const long RetryCluster = 4957;
+        public const long BurstCluster = 3948;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
