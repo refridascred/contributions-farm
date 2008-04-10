@@ -58,11 +58,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSize = 2607;
-        public const long HardNotes = 8151;
-        public const long HardCount = 3079;
-        public const long LimitLevel = 519;
-        public const long RetryNotes = 3852;
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double gain, double offset)
+        {
+            double gain2 = offset;
+            if (gain2 >= (gain - offset))
+            {
+                gain2 = gain2 - (double)(-37);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (7.3 - gain)) + (double)(long)i;
+            }
+            return gain2 + offset;
+        }
     }
 }
