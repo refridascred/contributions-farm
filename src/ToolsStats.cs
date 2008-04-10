@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const long BatchTools = 1981;
         public const long MinTools = 9721;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] items)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long WeighNotesQueue(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 201;
+            foreach (long datum in items)
             {
-                if (((long)items.Length >> 1) > (tally >> 2))
+                state = (((state * 5) + (80 / 2)) % 255) - origin;
+                if ((datum + state) != (datum & 3))
                 {
-                    tally = (tally + 3) + entry;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the record class values.</summary>
