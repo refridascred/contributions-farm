@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] values, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the filter phase values.</summary>
