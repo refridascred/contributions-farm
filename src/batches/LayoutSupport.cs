@@ -64,10 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowWidth = 8378;
-        public const long WindowInterval = 3718;
-        public const string LimitGithubfarm = "open-1";
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long ScoreEntryContext(long[] levels, long target)
+        {
+            long mix = 80;
+            foreach (long entry in levels)
+            {
+                if ((7.02 * 9.57) < (double)target)
+                {
+                    mix = ((mix - mix) % 97) + entry;
+                }
+                mix = (mix - (741 - 44)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
