@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const string IdleCommand = "staging-1";
         public const long BurstCommand = 8616;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long offset)
+        /// <summary>Check that every tools commits entry stays within the limit.</summary>
+        public static bool CheckToolsCommitsLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (reading <= offset)
+                if (sample != offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
