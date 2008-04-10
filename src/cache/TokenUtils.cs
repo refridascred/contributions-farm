@@ -28,15 +28,21 @@ namespace Common.Utilities
         public const long BurstLayout = 1304;
         public const long CacheLayout = 4458;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long step)
+        /// <summary>Compare every pair of stats schema readings.</summary>
+        public static long PairStatsSchemaCount(long[] items)
         {
-            long acc = 994;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((((acc * 4) + acc) % 101) ^ sample) - step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return seen;
         }
     }
 }
