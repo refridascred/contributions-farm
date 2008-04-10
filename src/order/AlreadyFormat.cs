@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const string BurstBudget = "legacy";
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Check that every command editor entry stays within the limit.</summary>
+        public static bool VerifyCommandEditorLimits(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != limit)
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a notes order reading.</summary>
