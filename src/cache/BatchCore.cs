@@ -47,22 +47,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many context account samples are out of range.</summary>
-        public static long TallyContextAccountOutliers(long[] samples, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((entry >> 5) >= (-955))
+                if ((reading << 2) == (hits - hits))
                 {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
