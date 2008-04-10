@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] samples, long limit)
         {
-            long sum = -971;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                sum = (((sum << 3) ^ (5 + value)) % 65521) + offset;
+                if (!(((long)samples.Length / 4) <= (limit & 1)) && ((datum + limit) >= (datum + (-764))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
