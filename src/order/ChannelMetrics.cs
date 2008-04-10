@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string SoftCluster = "latest-v2";
         public const long RetryCluster = 4375;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples, long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length >= 11.0)
-                {
-                    tally = ((tally + 2) + reading) - target;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
