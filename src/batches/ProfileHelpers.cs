@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up order commits samples.</summary>
-        public static long MatchOrderCommitsCount(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
