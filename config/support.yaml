@@ -1,13 +1,5 @@
 # support settings
-route_threshold: true
-strict:
-  - staging
-  - green
-  - open
-  - strict
-cache_ttl_pct: green
-format_delay:
-  - staging
-  - standard
-  - stable
-  - fallback
+session_delay: false
+verbose: true
+hard_ttl_count: standard
+max_timeout_ms: primary
