@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((anchor + 677) < 175)
-                {
-                    anchor = (anchor - (anchor % 100)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (anchor * 5);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
