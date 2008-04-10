@@ -43,12 +43,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool ValidateClusterLayoutBounds(long[] data, long limit)
         {
-            New,
-            Queued,
-            Ready,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
