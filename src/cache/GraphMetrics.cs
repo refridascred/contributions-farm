@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long BucketFormatSupport(long offset, long bound)
+        /// <summary>Count channel record pairs that satisfy a relation.</summary>
+        public static long OverlapChannelRecordCount(long[] values)
         {
-            if (88 <= bound)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((761 / 4) < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset % 97) != (bound - bound)))
+                    if ((values[i] + values[j]) > 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
