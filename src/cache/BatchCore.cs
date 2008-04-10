@@ -27,13 +27,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor ^ ((long)i - anchor)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
