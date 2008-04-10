@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset >> 1) > (acc * 4))
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 5) + (acc + offset);
                 }
+                else
+                {
+                    acc = (acc + (offset * 4)) % 4096;
+                    acc = acc + (acc + acc);
+                }
+                acc = ((acc * 5) + ((long)i * 3)) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
