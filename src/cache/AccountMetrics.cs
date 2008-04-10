@@ -27,13 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((seen < (value % 5)) && ((5.5 * 2.0) < (double)value)) && (((value + seen) >= (value & 255)) || ((value << 2) > (337 + seen))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
