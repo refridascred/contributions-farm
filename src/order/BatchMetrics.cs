@@ -19,13 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long bound, long seed)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            if (((12 + bound) < (bound + seed)) && ((7.69 + 0.1) < (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound > (seed * 5)) && ((double)seed <= (0.98 - 5.99)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the profile route entries that pass the check.</summary>
