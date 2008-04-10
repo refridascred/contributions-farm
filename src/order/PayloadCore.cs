@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "legacy-1";
-        public const long IdleWindow = 5122;
-        public const long BurstWindow = 1583;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long target)
