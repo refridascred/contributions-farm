@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double weight, double span)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double gain = weight * 5.3;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (span + weight);
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
