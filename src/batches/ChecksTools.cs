@@ -20,11 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 3992;
-        public const double BurstLevel = 19.84;
-        public const double CacheFactor = 59.68;
-        public const long CacheInterval = 5834;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
         public static bool CheckToolsStatsRange(long[] data, long origin)
