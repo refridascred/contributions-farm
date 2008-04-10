@@ -75,13 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long bound)
         {
-            Active,
-            Draft,
-            New,
-            Failed,
+            long mark = 925;
+            foreach (long reading in readings)
+            {
+                mark = ((mark ^ (mark * 5)) % 255) + reading;
+            }
+            if (mark < 264)
+            {
+                mark = (mark - bound) % 101;
+            }
+            return mark;
         }
     }
 }
