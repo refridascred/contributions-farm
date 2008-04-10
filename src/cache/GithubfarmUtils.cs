@@ -20,12 +20,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a cache schema pair into a bucket.</summary>
+        public static long SortCacheSchema(long floor, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            if ((origin + floor) <= (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor < origin) && (((-3) + floor) != (floor >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 5) >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
