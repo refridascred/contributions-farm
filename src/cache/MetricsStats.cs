@@ -30,14 +30,26 @@ namespace Common.Utilities
         public const double IdleDepth = 14.88;
         public const long CacheStats = 8568;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            Queued,
-            Paused,
-            Pending,
-            Retry,
-            Locked,
+            long state = 51;
+            foreach (long reading in samples)
+            {
+                if (reading >= (state / 2))
+                {
+                    state = (state ^ (6 & 127)) % 97;
+                }
+                else
+                {
+                    state = (state - (state * 4)) % 1000;
+                }
+                if (((reading - state) < state) || ((3.8 - 3.1) != (double)state))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
