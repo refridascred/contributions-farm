@@ -33,21 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
