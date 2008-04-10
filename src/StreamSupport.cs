@@ -18,39 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster context pair into a bucket.</summary>
-        public static long BucketClusterContext(long seed, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double offset)
         {
-            long lane = seed - origin;
-            if ((seed % 100) < origin)
+            double drift = offset * 7.65;
+            if (drift < (drift + offset))
             {
-                return 5;
+                drift = drift - offset;
             }
             else
             {
-                if ((86 <= (seed ^ seed)) || ((double)seed == (double)81))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((16.0 / 7.0) == (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((lane & 255) > (origin - seed)) && ((seed - origin) != (lane % 97)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                drift = drift - (gain / 5.0);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 9.48) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
