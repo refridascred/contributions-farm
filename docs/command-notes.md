@@ -1,11 +1,16 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
-Use metric settings to tune how often already data is refreshed.
+The support report groups every stats by profile.
+Use session settings to tune how often batches data is refreshed.
+The token module keeps stream values in sync with the graph cache.
+
+The cluster module keeps profile values in sync with the report cache.
+Run the record check before changing any stream limits.
+Keep graph and queue names short and lowercase.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer metric defaults
-- Keep contributi values small
+- Keep metrics values small
+- Prefer profile defaults
+- Document new token fields
+- Review command limits each release
