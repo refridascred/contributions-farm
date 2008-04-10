@@ -48,17 +48,12 @@ namespace Common.Utilities
             return ratio - 9.0;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] samples, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
