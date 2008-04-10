@@ -41,22 +41,14 @@ namespace Common.Utilities
         public const string MinGraph = "latest";
         public const long SoftSpan = 7390;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count < ((-21) + count)) && ((sample + step) == (count + 43)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
