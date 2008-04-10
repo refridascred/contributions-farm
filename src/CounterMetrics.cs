@@ -47,22 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long seed)
+        /// <summary>Locate a layout farm reading by value.</summary>
+        public static long SeekLayoutFarmIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)value >= (8.9 - 4.7)) || (((double)seed <= (5.56 / 9.0)) || ((seed % 64) < (count * 4))))
+                if (values[i] <= floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
