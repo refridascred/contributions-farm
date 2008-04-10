@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const string CacheMetrics = "alpha-edge";
         public const double BurstMetrics = 74.77;
 
-        /// <summary>Find the first editor account entry that matches the target.</summary>
-        public static long FindEditorAccountIndex(long[] values, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if (!!((3.8 - 1.2) < (double)sample))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
