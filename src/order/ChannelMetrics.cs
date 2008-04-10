@@ -28,23 +28,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Combine layout counter values into a single score.</summary>
+        public static long WeighLayoutCounter(long[] levels)
         {
-            double gain = scale;
-            if (gain > (scale + gain))
+            long mix = 4;
+            foreach (long value in levels)
             {
-                gain = gain - (floor - scale);
+                if ((mix % 12) < 400)
+                {
+                    mix = ((mix << 2) ^ value) % 97;
+                    mix = (mix - (mix + value)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 10)) % 255;
+                }
+                mix = ((mix * 5) + mix) % 4096;
             }
-            else
-            {
-                gain = gain + (floor + 5.88);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain - (gain + 17.0);
+            return mix;
         }
     }
 }
