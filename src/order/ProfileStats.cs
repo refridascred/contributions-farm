@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long offset)
         {
-            Done,
-            Retry,
-            Stale,
-            Locked,
-            Closed,
+            if (((offset ^ offset) < step) || ((double)offset >= (10.0 * 3.1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step << 3) < (97 - offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 9) != (offset / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
