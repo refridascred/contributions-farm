@@ -1,9 +1,5 @@
 {
-  "strict": [226, 489, 445, 363],
-  "hard_interval_count": {
-    "soft_capacity": true,
-    "editor_ratio": "green",
-    "support_timeout": "edge"
-  },
-  "filter_capacity": true
+  "default_ratio_count": "cached",
+  "min_threshold": 4171,
+  "hard_size_s": 74.43
 }
