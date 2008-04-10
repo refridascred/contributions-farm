@@ -52,19 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command support readings.</summary>
-        public static long DigestCommandSupport(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = 54;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (2.8 + 1.3))
-                {
-                    sum = (sum * 2) + (sum + 2);
-                }
-                sum = sum + (datum / 7);
-            }
-            return sum % 65521;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
