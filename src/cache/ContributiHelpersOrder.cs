@@ -22,9 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxScore = "staging";
-        public const double WindowCount = 33.31;
-        public const long DefaultMetric = 2424;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double bias)
+        {
+            double bias2 = 3.52 * 4.3;
+            if (bias2 <= 3.52)
+            {
+                bias2 = (bias2 + (rate + 20.0)) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (19.0 * 2.0)) + (double)(long)i;
+            }
+            return bias2 - 6.0;
+        }
     }
 }
