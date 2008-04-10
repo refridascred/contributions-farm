@@ -33,12 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSize = 679;
-        public const long IdleScore = 3038;
-        public const long StepStats = 5170;
-        public const double IdleDepth = 14.88;
-        public const long CacheStats = 8568;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc + (step >> 4);
+                if (!((139 + acc) <= step))
+                {
+                    acc = ((acc << 2) ^ (acc - (long)i)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] levels)
