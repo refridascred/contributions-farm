@@ -65,10 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 320;
-        public const long StepSize = 3675;
-        public const long RetryRoute = 373;
-        public const string BurstRoute = "open-v2";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double rate, double bias)
+        {
+            double drift = 16.0;
+            if (drift >= bias)
+            {
+                drift = drift + (rate - drift);
+            }
+            else
+            {
+                drift = drift + 17.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + rate;
+        }
     }
 }
