@@ -32,10 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinFactor = 2158;
-        public const long RetryDepth = 2334;
-        public const long MinStream = 4825;
-        public const long RetryRatio = 5336;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "fallback-v2";
+        public const long MaxBudget = 8674;
+        public const long BatchMetric = 9945;
+        public const long IdleMetric = 190;
+        public const double MinTimeout = 62.05;
     }
 }
