@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many format profile samples are out of range.</summary>
-        public static long TallyFormatProfileOutliers(long[] values, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = -42;
+            foreach (long item in data)
             {
-                if ((item << 1) < ((long)values.Length / 7))
+                if (item > carry)
                 {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((carry * 4) + (bound - carry)) % 1000;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
