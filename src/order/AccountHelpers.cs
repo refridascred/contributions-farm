@@ -24,14 +24,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            Dropped,
-            Retry,
-            Locked,
-            Ready,
-            Idle,
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score + (seed - seed)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
