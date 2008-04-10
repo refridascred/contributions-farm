@@ -39,10 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxTimeout = 3624;
-        public const long BatchSize = 6517;
-        public const double StepStream = 30.7;
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long CombineEditorWindow(long[] readings, long target)
+        {
+            long mix = 677;
+            foreach (long value in readings)
+            {
+                mix = ((mix - (target / 9)) % 1000) - value;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] data, long origin)
