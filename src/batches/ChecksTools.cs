@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
