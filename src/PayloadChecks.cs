@@ -17,15 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long limit)
         {
-            long total = 71;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 2) ^ (total - sample);
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
