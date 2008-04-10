@@ -24,15 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats payload series from a seed.</summary>
-        public static long RollStatsPayload(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (entry > (count - entry))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
