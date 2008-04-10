@@ -54,13 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((offset + reading) >= (tally & 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
