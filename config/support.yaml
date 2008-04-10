@@ -1,4 +1,23 @@
 # support settings
-strict: 80.33
-soft_ratio: primary
-burst_size_ms: open
+cluster_delay:
+  - 376
+  - 105
+  - 380
+verbose:
+  order_retries: legacy
+  compress: 500
+  poll_ratio_count: 6
+  base_ratio_s: true
+  idle_depth_count: 77.44
+  max_retries_count:
+    min_size_pct: false
+    default_window_ms:
+      - stable
+      - legacy
+      - stable
+    burst_size: true
+    retry_ratio_pct: 38
+    verbose: eu-west
+    burst_window_pct: fallback
+dry_run: 62.42
+strict: latest
