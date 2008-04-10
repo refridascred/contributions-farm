@@ -23,18 +23,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - count) <= (count ^ reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Pending,
         }
     }
 }
