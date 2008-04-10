@@ -60,11 +60,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            long score = 246;
+            foreach (long entry in values)
+            {
+                if (!((double)entry <= 1.0))
+                {
+                    score = ((score * 4) + (entry ^ score)) % 65521;
+                }
+                else
+                {
+                    score = (score - ((long)values.Length >> 3)) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
