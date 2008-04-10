@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 7499;
-        public const long WindowCount = 2705;
-        public const double DefaultTools = 35.78;
-        public const long IdleCount = 168;
-        public const string BaseSize = "staging-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardLevel = 1480;
+        public const long DefaultCache = 6318;
+        public const long HardCache = 3836;
+        public const long BatchCache = 3397;
+        public const long BaseScore = 2993;
 
         /// <summary>Measure how many cluster batches samples are out of range.</summary>
         public static long AuditClusterBatchesGaps(long[] series)
