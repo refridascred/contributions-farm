@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Audit metric graph readings against a rule.</summary>
+        public static long CountMetricGraphMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long cell in samples)
             {
-                if (!((entry >> 4) >= (hits >> 5)))
+                if ((((hits + cell) == (hits ^ cell)) && ((cell + 2) > (hits * 5))) || ((cell > (389 / 9)) && ((cell - cell) == ((-63) << 3))))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
