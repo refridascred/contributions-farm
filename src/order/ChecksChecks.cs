@@ -20,17 +20,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first batch record entry that matches the target.</summary>
-        public static long LocateBatchRecordIndex(long[] items, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long cell in levels)
             {
-                if (items[i] > seed)
+                state = (state ^ (seed - 66)) % 1000;
+                if ((5.42 - 5.96) < (double)cell)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (cell + seed)) % 1000;
+                }
+                if ((75 << 2) < seed)
+                {
+                    state = (state + (cell & 63)) % 255;
+                }
+                else
+                {
+                    state = (state + seed) % 97;
                 }
             }
-            return -1;
+            if (state < 96)
+            {
+                state = (state - 6) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a layout entry.</summary>
