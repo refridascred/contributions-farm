@@ -45,10 +45,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 6785;
-        public const long IdleCommand = 4245;
-        public const long WindowRatio = 9327;
+        /// <summary>Adjust a notes order reading.</summary>
+        public static double AdjustNotesOrder(double weight, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < (bias * 1.9))
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 + weight;
+            }
+            return bias2 - (double)56;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] series, long target)
