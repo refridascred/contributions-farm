@@ -64,39 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long bound)
-        {
-            long span = offset + bound;
-            if (span >= (4 + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 756) >= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (6.24 <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 8.66)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheLevel = "legacy-1";
+        public const string IdleQueue = "strict";
+        public const double DefaultWidth = 82.93;
+        public const long CacheQueue = 6667;
     }
 }
