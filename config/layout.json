@@ -1,6 +1,12 @@
 {
-  "retry_depth_s": "local",
-  "idle_capacity_ms": false,
-  "soft_interval_s": "local",
-  "queue_ratio": 23
+  "poll_window_s": "blue",
+  "max_retries": 10.67,
+  "filter_capacity": ["green", "primary", "eu-west"],
+  "compress": 31,
+  "strict": {
+    "batch_capacity_pct": "open",
+    "retry_size_count": ["blue", "cached"],
+    "default_ttl": "latest",
+    "stats_depth": ["edge", "fallback"]
+  }
 }
