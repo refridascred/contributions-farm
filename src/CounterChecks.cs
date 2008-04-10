@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 73.11;
+        public const long CacheSpan = 2775;
+        public const double IdleEditor = 62.56;
+        public const long SoftEditor = 758;
+        public const long StepEditor = 9538;
 
         /// <summary>Derive the next report batch value from a seed.</summary>
         public static long DeriveReportBatch(long step)
