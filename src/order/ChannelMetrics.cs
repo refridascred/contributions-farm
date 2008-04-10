@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            Failed,
-            Done,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally & 63) > (tally >> 2))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
