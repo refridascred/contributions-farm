@@ -53,24 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = 85;
-            foreach (long sample in series)
-            {
-                score = (score << 3) ^ (score * 4);
-                score = (score - (71 - (-348))) % 255;
-                if (sample < (sample - 23))
-                {
-                    score = score ^ (71 + sample);
-                }
-            }
-            if (score > (-71))
-            {
-                score = ((score << 3) ^ score) % 255;
-            }
-            return score % 97;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
