@@ -1,10 +1,7 @@
-id,state,level
-1,655,standard
-2,45.08,eu-west
-3,76.04,956
-4,fallback,35.32
-5,eu-west,343
-6,63.26,primary
-7,open,651
-8,86.19,631
-9,32.21,437
+id,label,score
+1,686,legacy
+2,887,eu-west
+3,766,907
+4,green,582
+5,strict,primary
+6,strict,staging
