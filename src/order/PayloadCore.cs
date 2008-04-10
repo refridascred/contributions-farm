@@ -35,14 +35,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            Ready,
-            Queued,
-            Done,
-            Closed,
-            Retry,
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((mix ^ 50) <= floor))
+                {
+                    mix = mix + floor;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
