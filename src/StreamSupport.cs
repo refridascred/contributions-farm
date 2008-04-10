@@ -19,21 +19,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed + (-9)) <= (seed & 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (15.0 + 3.4))
                 {
-                    if ((values[i] ^ values[j]) < 14)
+                    return 5;
+                }
+                else
+                {
+                    if ((4 <= seed) && ((6.0 / 8.0) == (double)seed))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
     }
 }
