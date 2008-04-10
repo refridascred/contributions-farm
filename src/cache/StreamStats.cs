@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context batch counter forward.</summary>
-        public static long StepContextBatch(long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
