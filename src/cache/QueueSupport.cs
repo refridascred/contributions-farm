@@ -38,15 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
