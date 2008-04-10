@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every schema record entry stays within the limit.</summary>
-        public static bool CheckSchemaRecordBounds(long[] data, long limit)
+        /// <summary>Digest a series of channel payload entries.</summary>
+        public static long TallyChannelPayload(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 962;
+            foreach (long item in values)
             {
-                if (cell > limit)
+                if ((6.0 - 3.5) < (double)item)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 5) + acc) % 101;
+                acc = acc + (acc - acc);
             }
-            return flag;
+            if (acc > 17)
+            {
+                acc = (acc - (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
