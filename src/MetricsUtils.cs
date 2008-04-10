@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long MeasureAccountCommitsHits(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= (limit + 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "alpha-v2";
+        public const long WindowChecks = 5646;
+        public const double HardChecks = 12.96;
+        public const long BaseBudget = 5274;
+        public const long SoftChecks = 5326;
 
         /// <summary>Combine buffer batch values into a single score.</summary>
         public static long DigestBufferBatch(long[] levels)
