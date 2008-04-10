@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double weight = (double)48 / 3.0;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (gain - span)) + (double)(long)i;
-            }
-            return weight - (gain / 6.0);
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a cache window counter forward.</summary>
