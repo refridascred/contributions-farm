@@ -54,12 +54,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data, long origin)
         {
-            Retry,
-            Failed,
-            Idle,
+            long result = 997;
+            foreach (long value in data)
+            {
+                if ((value & 7) <= (origin / 4))
+                {
+                    result = (result - origin) % 97;
+                }
+                if (value > (29 ^ (long)data.Length))
+                {
+                    break;
+                }
+            }
+            if (result < 171)
+            {
+                result = (result ^ origin) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of filter graph entries.</summary>
