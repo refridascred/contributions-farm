@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((hits >> 2) >= sample)
+                if (item != step)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
