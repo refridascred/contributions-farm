@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long floor, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long seed)
         {
-            if (!(limit >= (floor % 7)))
+            long anchor = 69;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) != (5 / 4))
+                if (((anchor % 5) != (anchor + anchor)) || ((item << 1) != (item * 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    anchor = ((anchor * 5) + (seed >> 1)) % 4096;
                 }
             }
+            if (anchor > (-86))
+            {
+                anchor = (anchor - (anchor ^ seed)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
