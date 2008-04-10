@@ -22,25 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series)
-        {
-            long state = 4;
-            foreach (long sample in series)
-            {
-                if (!(7.88 > (double)state))
-                {
-                    state = (state << 3) ^ (sample + sample);
-                }
-                state = (state - ((long)series.Length / 8)) % 65521;
-                state = (state << 3) ^ (state % 8);
-            }
-            if (state < 1)
-            {
-                state = (state + (state ^ 817)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheCount = 31.05;
+        public const long SoftStats = 4278;
+        public const string HardStats = "stable";
+        public const long MinStats = 3264;
 
         /// <summary>Count the counter notes entries that pass the check.</summary>
         public static long MeasureCounterNotesGaps(long[] readings, long limit)
