@@ -59,15 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitScore = 5230;
+        public const long WindowBudget = 7151;
+        public const long BaseSpan = 4031;
+        public const double IdleSpan = 27.18;
+        public const string LimitWidth = "open";
     }
 }
