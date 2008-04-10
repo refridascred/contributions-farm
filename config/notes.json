@@ -1,7 +1,10 @@
 {
-  "max_capacity": "cached",
-  "max_window_count": "eu-west",
-  "persist": ["latest", "latest", "open", "local"],
-  "already_threshold": "edge",
-  "min_interval": 43.32
+  "default_ttl": ["stable", "primary", "latest", "staging"],
+  "cache_interval": {
+    "route_depth": 9501,
+    "audit": 36.2,
+    "hard_threshold_pct": "eu-west",
+    "poll_ratio_ms": 43.84
+  },
+  "metric_ratio": "legacy"
 }
