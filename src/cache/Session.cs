@@ -46,20 +46,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data, long step)
         {
-            long result = 61;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (((result + 0) % 1000) - cell) - seed;
-                result = ((result * 5) + 4) % 1000;
+                if (!((double)datum <= (1.0 - 0.2)))
+                {
+                    matches = (matches + 3) + step;
+                }
             }
-            if (result < 395)
-            {
-                result = ((result << 2) ^ (result * 4)) % 4096;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
