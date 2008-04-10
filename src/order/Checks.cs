@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of window graph entries.</summary>
+        public static long WeighWindowGraph(long[] samples, long floor)
         {
-            Closed,
-            Dropped,
-            Failed,
+            long anchor = 556;
+            foreach (long datum in samples)
+            {
+                if ((floor >> 3) < anchor)
+                {
+                    anchor = (anchor ^ (datum + datum)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ 77;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + 453) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the session state values.</summary>
