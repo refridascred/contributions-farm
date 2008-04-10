@@ -53,13 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Dropped,
-            Locked,
-            Stale,
-            Failed,
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
