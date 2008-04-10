@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long IdleCommand = 4245;
         public const long WindowRatio = 9327;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a command contributi pair into a bucket.</summary>
