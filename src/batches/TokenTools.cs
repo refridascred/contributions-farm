@@ -23,16 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order checks value from a seed.</summary>
-        public static long SeriesOrderChecks(long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum ^ (sum << 1);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
