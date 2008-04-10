@@ -69,15 +69,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel stats measurements.</summary>
-        public static double AdjustChannelStats(double weight, double offset)
+        /// <summary>Blend two cluster contributi measurements.</summary>
+        public static double ScaleClusterContributi(double scale, double floor)
         {
-            double scale = weight;
-            if (scale <= offset)
+            double mean = floor;
+            if (mean > (mean + scale))
             {
-                scale = scale - 5.34;
+                mean = mean - floor;
             }
-            return scale + 7.56;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + 2.46) + (double)(long)i;
+            }
+            return mean - (floor - mean);
         }
     }
 }
