@@ -40,38 +40,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long limit, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            if ((77 >> 2) <= (seed ^ seed))
+            long mark = 92;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) != (99 & 255))
+                if (73 >= (mark << 2))
                 {
-                    return 8;
+                    mark = ((mark ^ (mark * 4)) % 97) ^ sample;
                 }
                 else
                 {
-                    if (((seed + 68) > (seed << 1)) && ((697 + seed) <= (limit + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed << 3) == (seed % 60))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = (mark ^ mark) % 97;
                 }
             }
+            if (mark > (-56))
+            {
+                mark = ((mark * 2) + mark) % 4096;
+            }
+            return mark;
         }
     }
 }
