@@ -1,7 +1,17 @@
 # support settings
-notes_retries:
+token_limit:
+  verbose: blue
+  idle_retries: legacy
+  graph_capacity: true
+  cache_depth_pct: green
+  min_interval_ms: 243
+  editor_threshold: cached
+audit: false
+format_depth:
+  - fallback
+  - primary
   - standard
-  - blue
-  - stable
-retry_timeout: standard
-soft_size_pct: strict
+readonly:
+  strict: local
+  checks_timeout: 39.14
+  sync_retries_ms: latest
