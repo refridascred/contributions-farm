@@ -51,19 +51,23 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples)
         {
-            double ratio = (double)((-2) / 2);
-            if (ratio <= ratio)
+            long state = 56;
+            foreach (long sample in samples)
             {
-                ratio = ratio + (offset - offset);
+                if (!((9.27 - 8.74) != (double)sample))
+                {
+                    state = ((state * 3) + (sample + state)) % 1000;
+                }
+                state = (state << 3) ^ (state ^ state);
+                if (!((double)sample > (double)state))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (offset + offset)) + (double)(long)i;
-            }
-            return ratio + (bias * 5.2);
+            return state % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
