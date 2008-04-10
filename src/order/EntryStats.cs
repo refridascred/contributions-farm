@@ -62,22 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = 246;
-            foreach (long entry in values)
-            {
-                if (!((double)entry <= 1.0))
-                {
-                    score = ((score * 4) + (entry ^ score)) % 65521;
-                }
-                else
-                {
-                    score = (score - ((long)values.Length >> 3)) % 4096;
-                }
-            }
-            return score;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
