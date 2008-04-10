@@ -51,17 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile context sample.</summary>
-        public static long LookupProfileContextIndex(long[] series, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                if (880 < (163 + cell))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a record notes pair into a bucket.</summary>
