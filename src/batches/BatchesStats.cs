@@ -27,25 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long RollBufferToken(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((-134) + seed) == (seed + seed))
-                {
-                    mix = (mix * 3) + (long)i;
-                    break;
-                }
-                if (((7.17 / 6.0) != (double)(long)i) || ((seed >> 2) >= (mix >> 4)))
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultBudget = 1755;
+        public const long StepLevel = 2141;
+        public const long StepScore = 63;
+        public const double CacheWidth = 56.59;
 
         /// <summary>Classify a profile route pair into a bucket.</summary>
         public static long ClassifyProfileRoute(long seed, long floor)
