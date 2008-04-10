@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Queued,
-            Done,
-            Synced,
-            Idle,
-            Pending,
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
