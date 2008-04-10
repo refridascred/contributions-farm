@@ -1,14 +1,8 @@
 # githubfarm settings
-batch_limit_pct:
-  contributi_threshold: true
-  already_ratio: 84
-  base_threshold_count:
-    - latest
-    - staging
-contributi_threshold: cached
-enabled:
-  - 45
-  - 322
-  - 318
-batch_limit_s: 100
-retry_depth_ms: stable
+metric_ttl: 3708
+hard_limit_count: latest
+readonly:
+  - fallback
+  - staging
+  - strict
+  - blue
