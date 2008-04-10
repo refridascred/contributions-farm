@@ -71,9 +71,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 2640;
-        public const string IdleInterval = "staging-1";
-        public const long HardEditor = 4022;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Dropped,
+            Draft,
+            Ready,
+            Done,
+        }
     }
 }
