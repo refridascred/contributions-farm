@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double bias)
         {
-            Done,
-            Stale,
-            Ready,
-            Locked,
-            Active,
+            double mean = (8.0 + scale) + 5.7;
+            if (mean > (bias - scale))
+            {
+                mean = mean + scale;
+            }
+            else
+            {
+                mean = mean + (double)9;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
