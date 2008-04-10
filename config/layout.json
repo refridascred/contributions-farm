@@ -1,6 +1,7 @@
 {
-  "sync_window": [84, 63],
-  "readonly": "green",
-  "warm_interval_ms": 2951,
-  "cache_delay_pct": 250
+  "account_window": 250,
+  "default_depth": 27,
+  "flush_timeout_count": 32.92,
+  "default_retries": "blue",
+  "verbose": 30
 }
