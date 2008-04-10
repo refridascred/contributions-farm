@@ -1,7 +1,6 @@
 {
-  "audit": 613,
-  "order_size": 69,
-  "format_capacity": false,
-  "stream_limit": "strict",
-  "min_retries": "primary"
+  "batch_threshold": "latest",
+  "flush_ratio": ["strict", "edge"],
+  "default_capacity_ms": 8763,
+  "sync_interval_ms": "strict"
 }
