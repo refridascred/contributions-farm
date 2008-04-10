@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCount = 58.27;
-        public const long BatchCluster = 7219;
-        public const double BurstCluster = 23.61;
-        public const string WindowCluster = "cached";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 9;
+        public const long CacheSpan = 6218;
+        public const double SoftLevel = 82.72;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] data)
