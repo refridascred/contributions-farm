@@ -30,17 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Iterate the token filter series from a seed.</summary>
+        public static long DeriveTokenFilter(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
