@@ -39,24 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long step)
+        /// <summary>Adjust a batch order reading.</summary>
+        public static double ScaleBatchOrder(double weight, double floor)
         {
-            if (2 > (limit + step))
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                rate = (rate + (weight * 7.0)) + (double)(long)i;
             }
-            else
-            {
-                if (((limit / 5) < (limit << 2)) && ((limit / 5) != (limit + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate + rate;
         }
     }
 }
