@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a tools counter counter forward.</summary>
+        public static long IterateToolsCounter(long origin)
         {
-            Failed,
-            New,
-            Dropped,
-            Draft,
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result - ((long)i % 2)) % 4096;
+                result = (result + (origin / 8)) % 65521;
+                result = result - (519 * 3);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
