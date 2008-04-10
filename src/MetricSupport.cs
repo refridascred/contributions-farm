@@ -16,10 +16,22 @@ namespace Common.Utilities
             return scale2 + offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 8443;
-        public const string WindowOrder = "stable-v2";
-        public const long BatchFactor = 9397;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of filter notes readings.</summary>
         public static long CombineFilterNotes(long[] items)
