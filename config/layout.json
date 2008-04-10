@@ -1,15 +1,6 @@
 {
-  "soft_retries_pct": {
-    "persist": false,
-    "hard_retries_pct": "latest",
-    "dry_run": true
-  },
-  "idle_interval_s": 77.93,
-  "idle_capacity": {
-    "payload_delay": true,
-    "base_threshold_pct": 9729,
-    "soft_depth_pct": "eu-west",
-    "sync_ttl_s": "blue",
-    "soft_limit": 7
-  }
+  "batch_limit": ["primary", "primary", "green", "cached"],
+  "idle_size": 14,
+  "poll_limit_s": "primary",
+  "verbose": [435, 419, 390, 88]
 }
