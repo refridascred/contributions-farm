@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long CountTokenContextMatches(long[] data, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading + reading) == (reading + 14)) && (reading > 28))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = 6.72;
+            return ((drift - (double)319) + scale) + span;
         }
 
         /// <summary>Describe the window mode values.</summary>
