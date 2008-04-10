@@ -1,6 +1,8 @@
 {
-  "batch_threshold": "latest",
-  "flush_ratio": ["strict", "edge"],
-  "default_capacity_ms": 8763,
-  "sync_interval_ms": "strict"
+  "burst_depth": true,
+  "hard_ratio_pct": 500,
+  "audit": 64,
+  "cache_threshold": false,
+  "schema_retries": 3936,
+  "base_interval": 33.13
 }
