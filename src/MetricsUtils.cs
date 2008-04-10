@@ -32,22 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session stats pairs that satisfy a relation.</summary>
-        public static long MatchSessionStatsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 8275;
+        public const long BaseDepth = 5982;
+        public const long BatchFormat = 94;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long seed)
