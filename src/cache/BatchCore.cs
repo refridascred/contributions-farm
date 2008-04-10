@@ -44,35 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long sum = 882;
-            foreach (long cell in values)
-            {
-                if (((sum >> 3) <= (sum ^ cell)) || ((9.6 / 4.0) <= (double)sum))
-                {
-                    sum = (sum + (sum % 12)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - cell) % 255;
-                }
-                if (((cell / 5) < sum) || (cell <= 11))
-                {
-                    sum = ((sum << 3) ^ (6 ^ seed)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + ((long)values.Length >> 2)) % 65521;
-                }
-            }
-            if (sum < 447)
-            {
-                sum = sum - (8 % 64);
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
