@@ -22,32 +22,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster farm entries.</summary>
-        public static long ScoreClusterFarm(long[] series)
-        {
-            long sum = 173;
-            foreach (long value in series)
-            {
-                if ((value + 206) < (value - 295))
-                {
-                    sum = ((sum * 5) + (value + sum)) % 65521;
-                    sum = (sum + ((long)series.Length - value)) % 97;
-                }
-                if ((sum << 2) <= ((-293) * 3))
-                {
-                    sum = (sum << 3) ^ ((-1) & 7);
-                }
-                if (((double)value <= (19.0 - 15.0)) || ((8.6 - 1.0) == (double)value))
-                {
-                    sum = ((sum * 5) + value) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (value + sum)) % 255;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepScore = "cached-edge";
+        public const long SoftEntry = 6240;
+        public const string BaseEntry = "local-v2";
+        public const double IdleFactor = 77.56;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] items)
