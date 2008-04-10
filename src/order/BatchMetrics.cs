@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile route entries that pass the check.</summary>
-        public static long TallyProfileRouteHits(long[] data, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((tally / 9) != (84 + offset))
+                if (reading <= seed)
                 {
-                    tally = (tally + 1) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
