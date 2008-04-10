@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long target)
         {
-            long carry = -42;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > carry)
+                if (samples[i] >= target)
                 {
-                    carry = ((carry * 4) + (bound - carry)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
