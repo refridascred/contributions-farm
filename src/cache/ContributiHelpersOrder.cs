@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double HardChannel = 9.36;
         public const long BurstChannel = 9229;
 
-        /// <summary>Project the next layout notes value.</summary>
-        public static double AdjustLayoutNotes(double gain, double offset)
+        /// <summary>Count editor stream pairs that satisfy a relation.</summary>
+        public static long PairEditorStreamCount(long[] samples)
         {
-            double rate = gain;
-            if (rate > 5.8)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (gain - offset);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (17.0 * 5.81);
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
