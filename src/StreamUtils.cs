@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            Failed,
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
