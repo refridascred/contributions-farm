@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many report cluster samples are out of range.</summary>
-        public static long AuditReportClusterMatches(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((2 * 2) >= (count + count))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
