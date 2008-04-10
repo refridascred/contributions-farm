@@ -24,13 +24,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a checks already value against two limits.</summary>
+        public static long GradeChecksAlready(long offset, long target)
         {
-            Synced,
-            Queued,
-            Active,
-            Paused,
+            if (((target % 64) >= (target + 29)) || (target < (offset ^ 14)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target == (double)68)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= (target & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format stats readings against a rule.</summary>
