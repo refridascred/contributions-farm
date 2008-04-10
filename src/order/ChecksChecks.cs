@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 4) >= (tally ^ tally))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
