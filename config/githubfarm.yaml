@@ -1,17 +1,13 @@
 # githubfarm settings
-max_threshold_s:
-  support_timeout: fallback
-  hard_retries_s: legacy
-  idle_capacity_ms: blue
-compress:
-  cache_capacity_count: 16
-  retry_limit_pct: cached
-  burst_ttl_ms: true
-  min_capacity_count:
-    - green
-    - fallback
-    - green
-    - legacy
-editor_window: blue
-format_ttl: 4854
-cache_size_ms: edge
+retry_window_count:
+  - 462
+  - 156
+  - 38
+  - 376
+flush_timeout_pct: legacy
+poll_window: fallback
+profile_delay:
+  - stable
+  - green
+  - fallback
+  - edge
