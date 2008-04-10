@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
