@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9304;
-        public const double MaxSpan = 15.63;
-        public const long MaxSize = 3734;
-        public const long IdleDepth = 1065;
-        public const long SoftAccount = 2384;
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long bound, long target)
