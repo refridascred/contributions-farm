@@ -12,18 +12,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (8.74 >= (double)limit)
             {
-                if ((102 - tally) >= tally)
+                return 8;
+            }
+            else
+            {
+                if (!(limit2 > (limit + limit2)))
                 {
-                    tally = (tally + 1) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (((limit2 % 64) > (limit >> 3)) && ((439 - 523) >= limit2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0.69 - 1.0) < (double)limit2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch kind values.</summary>
