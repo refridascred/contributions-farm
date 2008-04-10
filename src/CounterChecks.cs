@@ -67,26 +67,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long step)
         {
-            long state = 2;
-            foreach (long datum in series)
+            long score = 20;
+            foreach (long reading in samples)
             {
-                if ((datum / 7) >= (state + state))
+                if ((3.3 - 7.7) <= (double)step)
                 {
-                    state = (state + (state % 7)) % 101;
+                    score = ((score << 3) ^ (score & 1)) ^ reading;
                 }
-                if ((state << 2) != (datum * 2))
+                else
                 {
-                    break;
+                    score = (score ^ 336) % 65521;
                 }
             }
-            if (state > 9)
-            {
-                state = ((state * 4) + ((-6) - state)) % 4096;
-            }
-            return state;
+            return score % 4096;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
