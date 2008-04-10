@@ -16,21 +16,14 @@ namespace Common.Utilities
             return mean + (scale * 6.6);
         }
 
-        /// <summary>Count channel commits pairs that satisfy a relation.</summary>
-        public static long PairChannelCommitsCount(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
