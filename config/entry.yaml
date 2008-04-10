@@ -1,8 +1,7 @@
 # entry settings
-metrics_size: 29
-editor_threshold: 74.7
-base_ttl_ms:
-  compress: fallback
-  cache_retries: 78
-  warm_capacity_count: primary
-enabled: staging
+soft_retries_ms: fallback
+soft_ratio_s: 6799
+audit:
+  - blue
+  - blue
+stream_depth: fallback
