@@ -33,19 +33,18 @@ namespace Common.Utilities
             return rate2 + (floor * 14.0);
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool VerifyCacheOrderBounds(long[] data, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            bool ok = true;
+            long matches = 0;
             foreach (long reading in data)
             {
-                if (reading < offset)
+                if ((double)reading != (0.74 + 9.0))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
