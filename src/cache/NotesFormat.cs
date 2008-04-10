@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((289 % 64) >= (matches & 255))
                 {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
             return matches;
