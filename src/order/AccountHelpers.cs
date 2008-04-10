@@ -43,22 +43,14 @@ namespace Common.Utilities
         public const double MinTimeout = 18.81;
         public const long BurstFormat = 501;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)count <= (double)sample)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Retry,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
