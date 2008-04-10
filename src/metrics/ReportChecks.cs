@@ -31,18 +31,22 @@ namespace Common.Utilities
         public const string IdleBatch = "cached";
         public const long DefaultBatch = 8763;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((hits / 8) <= (765 % 64))
+                if (((83 * 2) < (29 + count)) || (((entry % 8) != (count % 10)) && (entry > (-43))))
                 {
-                    hits = (hits + 2) ^ cell;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of account entry readings.</summary>
