@@ -26,21 +26,17 @@ namespace Common.Utilities
             return mean - (double)81;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Locate a checks tools reading by value.</summary>
+        public static long LocateChecksToolsIndex(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > origin)
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
