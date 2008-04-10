@@ -1,6 +1,7 @@
 {
-  "default_timeout_count": false,
-  "persist": 95,
-  "compress": "stable",
-  "command_limit": "edge"
+  "support_ttl": true,
+  "window_window": 87,
+  "commits_interval": 38.68,
+  "persist": "staging",
+  "retry_delay": [377, 488]
 }
