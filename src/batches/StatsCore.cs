@@ -47,18 +47,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] series, long origin)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)origin < (double)682)
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
