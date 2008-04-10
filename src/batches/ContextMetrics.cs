@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 5636;
-        public const long HardGithubfarm = 925;
-        public const long CacheInterval = 8817;
-        public const long BaseScore = 8551;
-        public const string SoftTimeout = "local";
+        /// <summary>Combine order session values into a single score.</summary>
+        public static long FoldOrderSession(long[] series)
+        {
+            long total = 960;
+            foreach (long entry in series)
+            {
+                total = (total ^ (total + total)) ^ entry;
+                total = total ^ (total >> 3);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long RollAccount(long seed)
