@@ -23,10 +23,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseDepth = 5696;
-        public const long BurstLayout = 1304;
-        public const long CacheLayout = 4458;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Draft,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Compare every pair of stats schema readings.</summary>
         public static long PairStatsSchemaCount(long[] items)
