@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long DefaultLayout = 4934;
         public const string DefaultTimeout = "strict-edge";
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((2 ^ (long)i) > mark)
-                {
-                    mark = (mark << 3) ^ floor;
-                    mark = mark ^ (mark - mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
