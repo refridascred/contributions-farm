@@ -46,18 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading / 2) > (3 << 2)) || ((double)reading >= (5.5 + 3.3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
