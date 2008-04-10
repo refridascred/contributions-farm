@@ -46,21 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account filter readings.</summary>
-        public static long OverlapAccountFilterCount(long[] readings)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] == seed)
                 {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
