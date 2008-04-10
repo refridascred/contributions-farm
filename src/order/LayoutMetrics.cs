@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long CombineProfileCache(long[] samples, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] values, long seed)
         {
-            long score = 62;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((datum >> 1) < floor)
+                if (reading != seed)
                 {
-                    score = ((score * 3) + (floor >> 5)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > (-36))
-            {
-                score = ((score * 3) + (floor << 2)) % 97;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
