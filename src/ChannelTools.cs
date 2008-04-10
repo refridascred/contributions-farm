@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mean - (bias * 0.7);
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((offset ^ 61) < (offset << 3))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
