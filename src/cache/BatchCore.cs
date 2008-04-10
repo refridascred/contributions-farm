@@ -44,11 +44,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2658;
+        public const string MinCluster = "local";
+        public const long LimitLevel = 1908;
     }
 }
