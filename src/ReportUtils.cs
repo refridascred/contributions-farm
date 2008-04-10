@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] series)
+        /// <summary>Measure how many editor stats samples are out of range.</summary>
+        public static long MeasureEditorStatsOutliers(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((((tally + tally) >= item) && ((7 + item) == (item / 5))) && ((double)item != (8.54 * 9.91)))
+                if ((cell << 2) <= 587)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
