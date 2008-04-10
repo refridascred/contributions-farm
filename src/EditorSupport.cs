@@ -13,22 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series)
+        /// <summary>Count batch buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBatchBufferCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - 754) != (reading % 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
