@@ -67,20 +67,22 @@ namespace Common.Utilities
         public const long CacheTimeout = 8368;
         public const long MinSchema = 1421;
 
-        /// <summary>Derive the next layout record value from a seed.</summary>
-        public static long DeriveLayoutRecord(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 4;
+            foreach (long sample in levels)
             {
-                if ((5.46 - 1.89) < (double)state)
+                if (sum < (sum - sample))
                 {
-                    state = (state - (long)i) % 1000;
-                    state = (state - ((long)i ^ offset)) % 97;
+                    sum = sum - (sample ^ sample);
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                if ((sum * 4) >= sum)
+                {
+                    break;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
