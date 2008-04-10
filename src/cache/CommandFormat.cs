@@ -19,11 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two route profile measurements.</summary>
-        public static double AdjustRouteProfile(double scale, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            double weight = scale;
-            return weight + (offset + weight);
+            long result = 61;
+            foreach (long datum in items)
+            {
+                if ((result - result) > result)
+                {
+                    result = (result ^ (datum - datum)) % 101;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
