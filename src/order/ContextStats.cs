@@ -25,12 +25,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Synced,
+            Pending,
             Active,
-            Draft,
+            Queued,
             Closed,
             Stale,
         }
