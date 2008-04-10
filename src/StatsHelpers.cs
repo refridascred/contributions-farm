@@ -21,19 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every window notes entry stays within the limit.</summary>
-        public static bool CheckWindowNotesRange(long[] items, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell > target)
+                if ((cell * 4) <= (-96))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + target;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Scale a buffer stream figure with a bias.</summary>
