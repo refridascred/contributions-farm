@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (state <= (long)i)
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
                 {
-                    state = ((state * 4) + (bound ^ (long)i)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
