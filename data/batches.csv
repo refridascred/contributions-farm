@@ -1,8 +1,7 @@
-id,region,label,level,score
-1,local,5,73.81,2.4
-2,legacy,80.92,primary,722
-3,449,7.92,cached,881
-4,12.92,legacy,977,696
-5,712,555,edge,open
-6,blue,9.33,58.19,116
-7,13.86,650,314,eu-west
+id,level,rank
+1,51.58,eu-west
+2,495,71
+3,155,573
+4,880,125
+5,97,cached
+6,15.37,cached
