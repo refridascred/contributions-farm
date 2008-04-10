@@ -1,16 +1,14 @@
 # support settings
-max_delay_ms: 100
-cache_delay_ms:
-  max_interval:
-    - latest
-    - cached
-    - eu-west
-  retry_interval_ms: 1024
-  batch_limit: staging
-default_threshold:
-  warm_ttl_s: strict
-  cache_window: 30
-  contributi_interval: fallback
-  route_limit: local
-metric_ttl: fallback
-editor_ratio: open
+channel_timeout: standard
+persist:
+  - strict
+  - fallback
+  - edge
+  - stable
+readonly: legacy
+burst_delay_ms: 6845
+flush_size_ms:
+  checks_timeout: 36.43
+  strict: standard
+  idle_ttl_ms: 500
+  sync_interval_count: 30
