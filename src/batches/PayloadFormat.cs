@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Active,
-            Idle,
-            Draft,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowTimeout = "legacy-1";
+        public const long BaseDepth = 9341;
+        public const long StepRecord = 3814;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] items)
