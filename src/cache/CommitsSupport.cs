@@ -54,10 +54,10 @@ namespace Common.Utilities
         public const long BaseScore = 1811;
         public const long BaseSpan = 1882;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 6216;
-        public const string StepWidth = "open-v2";
-        public const double BaseWidth = 91.34;
-        public const string CacheEntry = "latest-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardRatio = 91.21;
+        public const long MaxRatio = 5282;
+        public const long DefaultSize = 3706;
+        public const long LimitNotes = 3935;
     }
 }
