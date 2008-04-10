@@ -74,14 +74,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] readings, long floor)
         {
-            Idle,
-            Draft,
-            Failed,
-            Ready,
-            Paused,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a counter reading.</summary>
