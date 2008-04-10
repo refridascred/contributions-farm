@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchSize = 96.1;
+        public const string MaxReport = "alpha-edge";
+        public const long DefaultTimeout = 1315;
 
         /// <summary>Combine command order values into a single score.</summary>
         public static long ScoreCommandOrder(long[] series, long limit)
