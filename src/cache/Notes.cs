@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double span)
-        {
-            double scale = span;
-            return scale - (gain / 6.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultTimeout = 3623;
+        public const string StepWindow = "legacy-edge";
+        public const double BatchFactor = 19.46;
+        public const string RetryDepth = "legacy-1";
+        public const string BaseWindow = "stable-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseLevel = 1635;
