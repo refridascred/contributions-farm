@@ -24,12 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long target)
         {
-            Failed,
-            Queued,
-            Done,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
