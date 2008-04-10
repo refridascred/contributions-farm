@@ -45,11 +45,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 5399;
-        public const long RetryDepth = 7276;
-        public const double BaseOrder = 21.03;
-        public const string StepOrder = "standard";
+        /// <summary>Scale a contributi already figure with a bias.</summary>
+        public static double BlendContributiAlready(double ratio, double bias)
+        {
+            double scale = (double)5 + bias;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - (ratio - ratio);
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] readings, long offset)
