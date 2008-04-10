@@ -23,12 +23,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate command samples.</summary>
