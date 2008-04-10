@@ -30,11 +30,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitTimeout = 4767;
-        public const long LimitInterval = 3295;
-        public const string IdleSpan = "latest-v2";
-        public const long WindowBudget = 6447;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((floor <= (floor & 127)) || ((20 * 2) == (24 + count)))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
