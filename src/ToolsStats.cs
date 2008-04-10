@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const long BatchTools = 1981;
         public const long MinTools = 9721;
 
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long WeighNotesQueue(long[] items, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] levels, long limit)
         {
-            long state = 201;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = (((state * 5) + (80 / 2)) % 255) - origin;
-                if ((datum + state) != (datum & 3))
+                if (((limit + reading) <= (tally + 295)) && (reading > (84 << 2)))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a stream graph counter forward.</summary>
