@@ -98,25 +98,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long BucketBatchToken(long limit, long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] items, long limit)
         {
-            long bound = limit ^ floor;
-            if ((limit % 64) > (bound >> 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.15 + 1.0) >= (double)bound) || (bound > (20 << 1)))
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
