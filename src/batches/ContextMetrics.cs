@@ -51,14 +51,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            New,
-            Queued,
-            Active,
-            Retry,
-            Paused,
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
