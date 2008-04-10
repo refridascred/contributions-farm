@@ -29,15 +29,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long target)
         {
-            double ratio = 7.5;
-            if (ratio < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - gain) + floor;
+                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (gain / 3.0);
+            return -1;
         }
     }
 }
