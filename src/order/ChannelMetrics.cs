@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 501;
-        public const double StepStats = 6.9;
-        public const double MaxSize = 38.22;
-        public const string HardStats = "alpha-1";
-        public const long SoftRatio = 6571;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSize = 2116;
+        public const double BatchRecord = 85.04;
+        public const double BurstTimeout = 93.0;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double rate, double span)
