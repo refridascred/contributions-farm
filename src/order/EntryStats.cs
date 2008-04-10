@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 6456;
-        public const long BaseTimeout = 4036;
-        public const double CacheCluster = 6.44;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
         public static long TallyContextClusterGaps(long[] values, long offset)
