@@ -52,13 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a booking stats.</summary>
+        public sealed class BookingStats
         {
-            Queued,
-            Idle,
-            Paused,
-            Retry,
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
