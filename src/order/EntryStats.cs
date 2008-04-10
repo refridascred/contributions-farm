@@ -43,19 +43,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] samples, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long value in series)
             {
-                if (sample < origin)
+                score = ((score * 4) + (20 * 2)) % 4096;
+                if ((double)floor > (5.21 + 4.7))
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ floor) % 1000;
+                    score = ((score << 2) ^ floor) % 97;
+                }
+                if (!((floor % 100) != (long)series.Length))
+                {
+                    score = (score * 5) + (value >> 2);
+                }
+                else
+                {
+                    score = (score + score) % 4096;
                 }
             }
-            return ok;
+            if (score > 18)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
