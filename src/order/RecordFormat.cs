@@ -57,19 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] series, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double scale = (double)(584 & 1);
+            if (scale > ratio)
             {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (double)3) + floor;
             }
-            return found;
+            else
+            {
+                scale = scale - (ratio + ratio);
+            }
+            return scale - ratio;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
