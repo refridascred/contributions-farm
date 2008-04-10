@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7168;
-        public const long WindowPayload = 5806;
-        public const long BatchInterval = 6072;
-        public const string StepPayload = "fallback-v2";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((8.04 / 2.0) != (double)target)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
