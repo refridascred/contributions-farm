@@ -32,17 +32,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] samples, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                if ((((double)matches != (4.2 / 3.0)) || ((double)matches < (6.8 / 7.0))) || (matches <= (origin + (long)items.Length)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
