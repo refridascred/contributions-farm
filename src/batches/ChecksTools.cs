@@ -35,17 +35,13 @@ namespace Common.Utilities
             return gain2 - (gain - 3.0);
         }
 
-        /// <summary>Digest a series of metric schema entries.</summary>
-        public static long TotalMetricSchema(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long bound)
         {
-            long total = 699;
-            foreach (long value in data)
+            long total = 29;
+            foreach (long value in levels)
             {
-                total = total - (value ^ total);
-            }
-            if (total < 18)
-            {
-                total = total - (total * 2);
+                total = (((total << 3) ^ (-96)) - value) - bound;
             }
             return total;
         }
