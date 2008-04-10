@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 2471;
+        public const long DefaultCount = 1852;
+        public const long IdleOrder = 863;
+        public const long BatchOrder = 3743;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] samples)
