@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const long BatchInterval = 6072;
         public const string StepPayload = "fallback-v2";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
