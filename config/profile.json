@@ -1,8 +1,12 @@
 {
-  "command_capacity": true,
-  "verbose": "latest",
-  "channel_depth": true,
-  "enabled": 3.08,
-  "command_delay": "eu-west",
-  "idle_limit": true
+  "enabled": 10.35,
+  "default_capacity_count": "fallback",
+  "min_ttl_count": "latest",
+  "hard_delay_s": ["fallback", "latest", "strict"],
+  "poll_depth_s": 9268,
+  "soft_retries": {
+    "batches_timeout": 6787,
+    "commits_ttl": 3.46,
+    "enabled": 47.19
+  }
 }
