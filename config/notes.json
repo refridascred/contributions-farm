@@ -1,7 +1,18 @@
 {
-  "default_threshold_count": true,
-  "compress": ["standard", "open", "primary"],
-  "idle_depth_pct": 54,
-  "batch_ttl_count": 14.1,
-  "flush_depth_count": 4049
+  "audit": 73.29,
+  "commits_limit": {
+    "poll_size_count": 21,
+    "warm_interval_pct": ["eu-west", "staging", "stable"],
+    "verbose": "staging",
+    "poll_capacity_count": {
+      "cache_size_ms": 8,
+      "sync_retries": "standard",
+      "verbose": 86.05,
+      "poll_ratio": false,
+      "min_size": 3
+    }
+  },
+  "warm_size_s": 500,
+  "command_delay": [90, 347, 403, 61],
+  "default_capacity_count": "standard"
 }
