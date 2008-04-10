@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Look up the position of a booking sample.</summary>
-        public static long SeekBookingIndex(long[] data, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 69;
+            foreach (long reading in readings)
             {
-                if (data[i] <= step)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    acc = (acc + (reading + reading)) - (long)i;
+                }
+                acc = (acc - acc) % 101;
+                if (((reading & 7) == (reading >> 3)) && ((acc + 1) <= ((long)readings.Length ^ 986)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 125)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a token header.</summary>
