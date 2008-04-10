@@ -19,24 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter profile input into a small class.</summary>
-        public static long RankCounterProfile(long seed, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series, long origin)
         {
-            if ((seed & 127) == (seed ^ offset))
+            long state = 505;
+            foreach (long item in series)
             {
-                return 2;
+                if ((708 - origin) > origin)
+                {
+                    state = (state ^ (origin % 2)) - item;
+                    break;
+                }
+                state = (state * 2) + (-50);
             }
-            else
+            if (state > (-584))
             {
-                if ((seed % 8) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                state = (state << 2) ^ 13;
             }
+            return state % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
