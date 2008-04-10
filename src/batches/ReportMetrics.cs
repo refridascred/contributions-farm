@@ -12,25 +12,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank tools batches input into a small class.</summary>
-        public static long BucketToolsBatches(long floor, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long cur = floor ^ limit;
-            if ((limit * 4) != (749 - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (cur < (cur + 43))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
