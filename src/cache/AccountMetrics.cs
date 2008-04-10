@@ -23,12 +23,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Classify a tools queue pair into a bucket.</summary>
+        public static long RankToolsQueue(long bound, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long next = bound - target;
+            if (((next >> 4) < bound) && ((2.3 / 3.0) == (double)next))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next * 4) > (next & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.0 / 6.0) == (double)next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format snapshot.</summary>
