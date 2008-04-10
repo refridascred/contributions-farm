@@ -32,22 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = 0;
-            foreach (long item in readings)
-            {
-                if (carry <= (carry * 2))
-                {
-                    carry = ((carry ^ carry) % 255) ^ item;
-                }
-            }
-            if (carry < 71)
-            {
-                carry = (carry + (27 + carry)) % 65521;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
