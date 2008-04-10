@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long CountReportCacheGaps(long[] values)
         {
-            Dropped,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value * 3) >= (value + value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
