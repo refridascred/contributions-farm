@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] series, long step)
+        /// <summary>Fold a list of stats contributi readings.</summary>
+        public static long TallyStatsContributi(long[] levels)
         {
-            long carry = 5;
-            foreach (long item in series)
+            long total = 361;
+            foreach (long item in levels)
             {
-                carry = (carry ^ (item % 16)) - step;
-                carry = carry - (70 << 2);
+                total = ((total << 3) ^ (item - item)) % 255;
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
