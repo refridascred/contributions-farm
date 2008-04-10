@@ -59,9 +59,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryDepth = 6458;
-        public const string StepCount = "legacy-v2";
-        public const long BurstBudget = 2946;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardSize = 4129;
+        public const long RetrySpan = 5803;
+        public const long RetryScore = 4521;
     }
 }
