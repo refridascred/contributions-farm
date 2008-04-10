@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long seed)
+        /// <summary>Project the next context order value.</summary>
+        public static double ScaleContextOrder(double gain, double bias)
         {
-            if ((origin >> 5) == (seed << 1))
+            double weight = (double)(6 - 1);
+            if (weight > gain)
             {
-                return 2;
+                weight = weight + (bias + 11.0);
             }
-            else
-            {
-                if ((origin - seed) >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed >> 4) > 7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight + bias;
         }
 
         /// <summary>Describe the metric status values.</summary>
