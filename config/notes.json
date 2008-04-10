@@ -1,17 +1,7 @@
 {
-  "default_window": 250,
-  "verbose": {
-    "warm_ratio_count": "standard",
-    "idle_depth": {
-      "idle_timeout": ["stable", "latest", "legacy"],
-      "cache_timeout_count": 64.9,
-      "base_retries": 21,
-      "compress": "staging",
-      "max_threshold_s": 43.62,
-      "soft_ttl": "latest"
-    },
-    "commits_interval": true
-  },
-  "idle_delay_s": ["eu-west", "edge"],
-  "readonly": 34
+  "batch_interval_ms": 71,
+  "poll_limit": 81.27,
+  "strict": "legacy",
+  "soft_retries": [316, 463, 353],
+  "compress": 66
 }
