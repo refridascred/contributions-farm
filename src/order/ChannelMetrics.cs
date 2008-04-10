@@ -29,18 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((cell + cell) >= seen) || ((double)seen >= (2.5 * 1.9)))
+                if ((reading - count) <= (count ^ reading))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
