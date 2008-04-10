@@ -28,13 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
+        public static bool ValidateLayoutClusterLimits(long[] levels, long target)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
