@@ -1,17 +1,15 @@
 {
-  "sync_capacity": [165, 264, 98],
-  "tools_size": {
-    "audit": [354, 495, 363],
-    "checks_depth": 3188,
-    "dry_run": 48,
-    "min_ratio_count": "primary",
-    "min_window_ms": "eu-west"
-  },
-  "warm_ttl": 27.39,
-  "cluster_window": 15.04,
-  "sync_limit_count": {
-    "window_capacity": 100,
-    "max_ratio": 63,
-    "cache_size_s": 84
+  "enabled": 1024,
+  "layout_capacity": false,
+  "already_capacity": 4075,
+  "warm_ratio_count": {
+    "audit": {
+      "record_limit": 5654,
+      "report_threshold": 3291,
+      "base_window": 45
+    },
+    "max_depth_s": "local",
+    "dry_run": 2955,
+    "idle_ratio_count": 52
   }
 }
