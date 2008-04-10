@@ -39,9 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3838;
-        public const string StepCount = "cached";
-        public const long RetryRatio = 5730;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double rate, double floor)
+        {
+            double scale = (floor + floor) / 7.0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (rate - floor)) + (double)(long)i;
+            }
+            return scale - (scale + 9.6);
+        }
     }
 }
