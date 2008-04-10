@@ -31,22 +31,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the notes entry entries that pass the check.</summary>
-        public static long AuditNotesEntryHits(long[] samples, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double weight = span - (double)(-4);
+            if (weight < (double)222)
             {
-                if ((tally > target) && ((value * 5) < target))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight + weight) + scale;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Combine format stream values into a single score.</summary>
