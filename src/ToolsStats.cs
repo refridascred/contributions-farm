@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long floor, long bound)
-        {
-            if (!(floor >= (floor + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound / 4) >= (331 - 91)) && ((6.7 / 2.0) > (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (4 <= (floor + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (floor + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardTimeout = 4720;
+        public const long IdleBudget = 5455;
+        public const long RetryProfile = 5343;
+        public const long CacheProfile = 3995;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
