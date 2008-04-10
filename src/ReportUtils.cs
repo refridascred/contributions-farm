@@ -68,22 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long TallyToolsOrderOutliers(long[] values, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((149 ^ 821) <= (seen - seed))
+                if (sample < step)
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
