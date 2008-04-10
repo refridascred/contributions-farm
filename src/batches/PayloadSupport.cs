@@ -37,13 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            Locked,
-            Stale,
-            Pending,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
