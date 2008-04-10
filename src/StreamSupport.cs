@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftInterval = 7306;
-        public const long IdleCounter = 4554;
-        public const long CacheCounter = 997;
-        public const long WindowWidth = 8217;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinBudget = 2895;
+        public const long WindowBudget = 6563;
+        public const long WindowLayout = 4716;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
