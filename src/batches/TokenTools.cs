@@ -12,39 +12,22 @@ namespace Common.Utilities
             return ((drift - (double)319) + scale) + span;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items, long step)
         {
-            long offset = target + floor;
-            if (!(target < (target ^ floor)))
+            long mix = 723;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)247 == (double)target)
+                if (((mix - step) > (mix * 2)) || ((step * 4) > datum))
                 {
-                    return 1;
+                    mix = (mix ^ (step >> 4)) % 255;
                 }
                 else
                 {
-                    if ((floor + target) >= (target % 64))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + target) >= (offset ^ target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = mix - (datum + mix);
                 }
             }
+            return mix;
         }
 
         /// <summary>Blend two entry measurements.</summary>
