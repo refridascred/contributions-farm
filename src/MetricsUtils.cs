@@ -15,12 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 4821;
-        public const long MinEditor = 9181;
-        public const string BaseEditor = "open";
-        public const string BatchWidth = "alpha-v2";
-        public const double CacheDepth = 41.89;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long origin)
+        {
+            long total = 3;
+            foreach (long cell in readings)
+            {
+                total = (((total - (total % 3)) % 97) + cell) + origin;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
         public static bool GuardQueueGithubfarmRange(long[] items, long target)
