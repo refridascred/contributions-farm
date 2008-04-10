@@ -56,19 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session batch counter forward.</summary>
-        public static long SeriesSessionBatch(long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long sum = 452;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((7.9 / 8.0) < (double)sample)
                 {
-                    acc = (acc + (45 / 7)) - (long)i2;
+                    sum = sum - sum;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                sum = (sum - (sample / 2)) % 4096;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
