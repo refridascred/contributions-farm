@@ -1,7 +1,25 @@
 {
-  "retry_window_s": 14,
-  "persist": [38, 473, 457, 375],
-  "soft_capacity_pct": ["edge", "fallback", "latest"],
-  "readonly": ["cached", "fallback"],
-  "burst_capacity": false
+  "route_retries": {
+    "stream_retries": {
+      "graph_capacity": false,
+      "dry_run": 2688,
+      "queue_interval": 5.3,
+      "notes_timeout": [205, 79, 300]
+    },
+    "audit": 100,
+    "payload_timeout": {
+      "contributi_limit": 30,
+      "route_ttl": true,
+      "max_delay_count": "cached",
+      "format_ratio": 5858,
+      "sync_ttl_s": true,
+      "verbose": "stable"
+    },
+    "batch_interval_ms": false,
+    "command_timeout": ["strict", "stable", "local", "green"]
+  },
+  "dry_run": 60,
+  "batch_size": 9,
+  "strict": "green",
+  "min_depth_s": 67.8
 }
