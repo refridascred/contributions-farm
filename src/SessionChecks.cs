@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings, long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long mark = 2;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark - (mark % 60)) ^ entry) - origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
