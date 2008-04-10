@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] samples, long bound)
         {
-            long state = -68;
+            long score = 538;
             foreach (long cell in samples)
             {
-                state = ((state << 2) ^ (state - state)) % 255;
-                state = (state - (cell * 4)) % 255;
+                if (((score << 3) > score) && ((2.0 - 6.3) < (double)bound))
+                {
+                    score = score - (score % 60);
+                }
+                if ((bound / 8) > cell)
+                {
+                    break;
+                }
             }
-            if (state < 13)
+            if (score < 3)
             {
-                state = ((state * 3) + (state ^ state)) % 97;
+                score = (score - score) % 1000;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
