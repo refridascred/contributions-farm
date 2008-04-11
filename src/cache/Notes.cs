@@ -22,17 +22,11 @@ namespace Common.Utilities
         public const double MinSize = 50.09;
         public const double MaxTimeout = 24.14;
 
-        /// <summary>Find the first farm entry entry that matches the target.</summary>
-        public static long FindFarmEntryIndex(long[] levels, long bound)
+        /// <summary>Project the next entry schema value.</summary>
+        public static double BlendEntrySchema(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = span;
+            return (drift - (span / 8.0)) + scale;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
