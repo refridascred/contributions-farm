@@ -34,20 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 205;
+        public const double MaxFilter = 45.18;
+        public const long CacheFilter = 4797;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] samples, long bound)
