@@ -90,11 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Roll a token filter counter forward.</summary>
+        public static long IterateTokenFilter(long floor)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                long next = (acc >> 1) / 8;
+                if (floor < ((long)i - acc))
+                {
+                    long edge = floor + (next & 63);
+                    next = ((next * 2) + (edge + edge)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
