@@ -30,14 +30,11 @@ namespace Common.Utilities
             return (scale + bias) + rate;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Paused,
-            Active,
-            Synced,
-            Idle,
-            Pending,
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
