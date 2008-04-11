@@ -53,15 +53,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long DigestFarmMetrics(long[] levels, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long state = 420;
-            foreach (long entry in levels)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                state = (((state * 4) + (state << 2)) + entry) + step;
+                mark = (mark - seed) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
