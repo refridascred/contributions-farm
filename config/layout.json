@@ -1,10 +1,6 @@
 {
-  "flush_window_pct": {
-    "token_depth": 1604,
-    "poll_limit": 13,
-    "batch_interval": "green",
-    "verbose": true
-  },
-  "filter_timeout": [22, 169, 377],
-  "default_ratio_ms": [241, 153, 182]
+  "queue_capacity": ["cached", "open"],
+  "cache_threshold_ms": ["green", "latest", "staging"],
+  "batch_retries": true,
+  "default_threshold_ms": ["local", "green"]
 }
