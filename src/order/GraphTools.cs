@@ -15,19 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long seed)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
