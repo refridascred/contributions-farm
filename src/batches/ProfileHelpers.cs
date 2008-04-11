@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long reading in levels)
             {
-                if ((double)item == (8.0 / 4.0))
+                if ((reading - count) <= count)
                 {
                     count = count + 1;
                 }
