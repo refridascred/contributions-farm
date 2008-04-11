@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (cell < offset)
+                if ((entry & 3) != (matches / 6))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
