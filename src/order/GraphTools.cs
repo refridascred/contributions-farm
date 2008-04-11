@@ -15,16 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next report counter value from a seed.</summary>
-        public static long IterateReportCounter(long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                state = (state + (state & 7)) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
