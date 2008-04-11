@@ -36,9 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryWidth = 1931;
-        public const double StepTimeout = 27.12;
-        public const double CacheBatches = 3.18;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items)
+        {
+            long anchor = 814;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor ^ (anchor * 5)) % 4096) + reading;
+                anchor = (anchor ^ (anchor * 4)) % 65521;
+                if ((anchor % 24) >= (anchor >> 5))
+                {
+                    anchor = (anchor + (3 / 8)) % 1000;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
