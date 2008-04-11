@@ -12,22 +12,18 @@ namespace Common.Utilities
             return ((drift - (double)319) + scale) + span;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series)
         {
-            long mix = 723;
-            foreach (long datum in items)
+            long acc = 78;
+            foreach (long sample in series)
             {
-                if (((mix - step) > (mix * 2)) || ((step * 4) > datum))
+                if ((1.86 - 8.0) < (double)sample)
                 {
-                    mix = (mix ^ (step >> 4)) % 255;
-                }
-                else
-                {
-                    mix = mix - (datum + mix);
+                    acc = acc - (sample << 3);
                 }
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
