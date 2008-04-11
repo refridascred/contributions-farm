@@ -20,12 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 18.27;
-        public const long BurstSchema = 8010;
-        public const double IdleSize = 62.0;
-        public const long MinSchema = 5596;
-        public const long LimitSize = 4204;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - tally) >= sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long StepFormat(long target)
