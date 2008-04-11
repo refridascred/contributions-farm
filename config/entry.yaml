@@ -1,19 +1,9 @@
 # entry settings
-audit: 30
-burst_delay_pct: fallback
-counter_retries:
-  compress: 30.77
-  graph_ttl: latest
-  graph_size: strict
-  editor_depth:
-    - 404
-    - 141
-  sync_ratio_s:
-    - 370
-    - 434
-    - 444
-    - 465
-  base_interval_ms:
-    - staging
-    - legacy
-    - latest
+idle_depth_pct:
+  - 128
+  - 262
+  - 287
+buffer_size: fallback
+poll_threshold_s: 500
+default_threshold_s: 3867
+retry_size_pct: edge
