@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "stable";
-        public const double StepInterval = 9.22;
-        public const long StepLayout = 1765;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)count >= (double)datum) && ((count ^ datum) >= datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
