@@ -31,11 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            New,
+            Closed,
         }
     }
 }
