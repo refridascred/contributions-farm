@@ -46,19 +46,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate format support readings against a bound.</summary>
-        public static bool VerifyFormatSupportLimits(long[] levels, long limit)
+        /// <summary>Count the metric already entries that pass the check.</summary>
+        public static long MeasureMetricAlreadyOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum >= limit)
+                if ((cell ^ tally) != (tally + cell))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
