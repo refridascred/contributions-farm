@@ -34,16 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of schema context readings.</summary>
-        public static long TallySchemaContext(long[] series)
-        {
-            long sum = 23;
-            foreach (long item in series)
-            {
-                sum = sum ^ (item + 88);
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 93.35;
+        public const long RetryLevel = 1774;
+        public const long StepCount = 5563;
+        public const long CacheNotes = 4276;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] values, long target)
