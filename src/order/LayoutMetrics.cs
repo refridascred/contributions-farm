@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
