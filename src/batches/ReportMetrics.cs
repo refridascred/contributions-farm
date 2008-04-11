@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 8316;
-        public const long HardCommand = 5526;
-        public const long SoftCommand = 9035;
-        public const long IdleInterval = 1482;
-        public const long MaxCommand = 6863;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels, long limit)
+        {
+            long mark = 0;
+            foreach (long value in levels)
+            {
+                if (((value + mark) >= (limit + mark)) && ((double)limit < 0.79))
+                {
+                    mark = (mark + (mark << 2)) % 1000;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double scale, double floor)
