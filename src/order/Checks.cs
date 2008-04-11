@@ -48,18 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((0.76 + 14.0) != (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
