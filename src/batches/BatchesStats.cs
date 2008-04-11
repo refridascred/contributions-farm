@@ -54,13 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long FoldOrderCommits(long[] readings, long floor)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            long acc = 38;
+            foreach (long sample in readings)
+            {
+                if (sample <= (floor & 7))
+                {
+                    acc = ((acc << 2) ^ (sample & 3)) % 97;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (floor * 2);
+                }
+            }
+            return acc;
         }
     }
 }
