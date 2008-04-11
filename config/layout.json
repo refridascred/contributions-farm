@@ -1,6 +1,5 @@
 {
-  "queue_capacity": ["cached", "open"],
-  "cache_threshold_ms": ["green", "latest", "staging"],
-  "batch_retries": true,
-  "default_threshold_ms": ["local", "green"]
+  "hard_interval": 771,
+  "sync_ratio_s": ["latest", "edge", "latest"],
+  "soft_depth_pct": 30
 }
