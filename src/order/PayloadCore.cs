@@ -33,27 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long total = 862;
-            foreach (long value in samples)
-            {
-                total = total ^ (value - total);
-                if ((total << 1) >= total)
-                {
-                    total = (total * 2) + total;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (value - value)) % 4096;
-                }
-            }
-            if (total > 66)
-            {
-                total = total ^ 8;
-            }
-            return total % 97;
+            Pending,
+            Stale,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
