@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long offset)
+        /// <summary>Grade a queue graph value against two limits.</summary>
+        public static long BucketQueueGraph(long floor, long step)
         {
-            if (2 < (bound & 31))
+            long next = floor ^ step;
+            if ((19.0 + 1.25) < (double)step)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (2.0 >= (double)offset)
+                if (((double)next >= (6.0 * 3.14)) || ((double)step <= (8.27 + 3.57)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((offset ^ offset) < (bound << 1)) && (bound < (offset + offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset != (1.1 * 0.5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
