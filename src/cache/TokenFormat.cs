@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series, long seed)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((seed + 202) < (item >> 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
