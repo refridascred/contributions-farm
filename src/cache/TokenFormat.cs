@@ -42,11 +42,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 13.32;
-        public const long SoftMetric = 7277;
-        public const double LimitInterval = 67.42;
-        public const double BurstCount = 59.74;
-        public const long BurstDepth = 78;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 85.54;
+        public const long SoftRoute = 7146;
+        public const long LimitRoute = 8219;
     }
 }
