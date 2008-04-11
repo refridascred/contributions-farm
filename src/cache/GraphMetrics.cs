@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long limit)
+        /// <summary>Grade a payload account value against two limits.</summary>
+        public static long BucketPayloadAccount(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)floor != (7.69 / 4.0)) || ((11.0 + 15.0) > (double)floor))
             {
-                if (readings[i] > limit)
+                return 5;
+            }
+            else
+            {
+                if (((origin % 12) >= floor) && ((2 - floor) == (floor + floor)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (73 < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((4.0 + 7.9) < (double)origin) && (6.2 <= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
