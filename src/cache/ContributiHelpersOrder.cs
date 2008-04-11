@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] values, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((step < count) && ((step - count) > (68 >> 5))) || ((90 / 8) >= (step / 7)))
+                if ((seen - seen) > (offset ^ seen))
                 {
-                    count = (count + 3) - entry;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
