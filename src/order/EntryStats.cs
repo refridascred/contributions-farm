@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const long BaseInterval = 9748;
         public const long RetryFactor = 2656;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
+        public static long GradeGithubfarmLayout(long target, long offset)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            if (!((target % 5) <= (target + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) != (70 << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of queue format entries.</summary>
