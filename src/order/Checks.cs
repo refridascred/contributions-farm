@@ -46,23 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Look up the position of a queue schema sample.</summary>
+        public static long LocateQueueSchemaIndex(long[] series, long seed)
         {
-            long sum = 7;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (reading + sum)) % 65521;
-                if (((9.2 - 17.0) == (double)reading) || ((0.73 / 4.0) >= (double)reading))
+                if ((series[i] <= seed) && ((series[i] % 2) == 0))
                 {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (reading + sum)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
