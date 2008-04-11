@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] data, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
