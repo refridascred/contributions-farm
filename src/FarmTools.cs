@@ -56,24 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long total = -22;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total + total) != (2 * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 2) ^ item) % 101;
-                    total = total - (115 >> 1);
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total << 2) ^ total) % 255;
             }
-            if (total > 0)
-            {
-                total = ((total * 4) + (long)samples.Length) % 255;
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
