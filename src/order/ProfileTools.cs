@@ -66,22 +66,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit route batch readings against a rule.</summary>
-        public static long MeasureRouteBatchGaps(long[] data, long limit)
+        /// <summary>Validate session batch readings against a bound.</summary>
+        public static bool ValidateSessionBatchRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((reading % 10) <= (reading * 4))
+                if (cell < floor)
                 {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
