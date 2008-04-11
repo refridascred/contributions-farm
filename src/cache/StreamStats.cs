@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine entry payload values into a single score.</summary>
-        public static long TallyEntryPayload(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] data)
         {
-            long state = 39;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((item * 5) < (item / 5))
+                if ((5.5 - 9.2) >= (double)reading)
                 {
-                    state = (state << 2) ^ item;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = state - (item % 60);
-                }
-                if (!((item / 6) >= state))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (state < (-856))
-            {
-                state = ((state << 3) ^ (state >> 3)) % 255;
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
