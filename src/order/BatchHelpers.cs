@@ -23,32 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long seed)
         {
-            long slot = origin - step;
-            if (726 > (7 + step))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step >= (4.0 * 5.3))
+                if (datum < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot << 1) != (slot & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
