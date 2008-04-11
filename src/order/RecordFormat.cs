@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            double drift = 4.71;
-            if (drift > 16.0)
+            long mark = -385;
+            foreach (long datum in levels)
             {
-                drift = drift + offset;
+                if (mark <= (716 >> 4))
+                {
+                    mark = (((mark * 3) + limit) % 1000) ^ datum;
+                }
             }
-            else
-            {
-                drift = drift + (15.0 - bias);
-            }
-            return drift - (double)8;
+            return mark;
         }
 
         /// <summary>Hold a farm header.</summary>
