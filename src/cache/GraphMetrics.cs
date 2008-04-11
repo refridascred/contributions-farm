@@ -75,19 +75,21 @@ namespace Common.Utilities
         public const long DefaultAlready = 2007;
         public const long MaxAlready = 4162;
 
-        /// <summary>Digest a series of channel cluster entries.</summary>
-        public static long CombineChannelCluster(long[] items)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long mark = 7;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + (mark + value);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 101)
-            {
-                mark = mark - (mark * 2);
-            }
-            return mark;
+            return tally;
         }
     }
 }
