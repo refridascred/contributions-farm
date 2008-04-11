@@ -1,11 +1,15 @@
 # Command notes
 
-Each filter is validated before it reaches the stats queue.
-Run the schema check before changing any checks limits.
-Each cache is validated before it reaches the githubfarm queue.
+When a order fails, the payload handler retries a few times before giving up.
+The token module keeps cache values in sync with the schema cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep metric and buffer names short and lowercase.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep route values small
-- Document new checks fields
-- Review checks limits each release
+- Review format limits each release
+- Log every entry change
+- Document new batch fields
