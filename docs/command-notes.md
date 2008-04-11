@@ -1,11 +1,14 @@
 # Command notes
 
-The report report groups every account by report.
-The record report groups every schema by batches.
+The tools report groups every command by stream.
+When a cache fails, the report handler retries a few times before giving up.
+
+When a cache fails, the notes handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Use editor settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Log every stats change
-- Keep command values small
-- Document new window fields
-- Prefer payload defaults
+- Validate stats input early
+- Document new commits fields
+- Keep filter values small
