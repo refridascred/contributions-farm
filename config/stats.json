@@ -1,6 +1,6 @@
 {
-  "idle_interval_s": [393, 30, 278, 14],
-  "persist": 63.42,
-  "batches_threshold": [433, 29, 15],
-  "graph_capacity": 30
+  "enabled": 78,
+  "soft_ratio": 17,
+  "sync_ratio_s": ["strict", "strict", "standard", "fallback"],
+  "already_capacity": 500
 }
