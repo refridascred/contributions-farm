@@ -27,15 +27,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of payload batch entries.</summary>
-        public static long TotalPayloadBatch(long[] series, long seed)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long MeasureReportPayloadOutliers(long[] readings)
         {
-            long carry = 846;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                carry = ((((carry << 2) ^ (carry & 3)) % 101) - reading) - seed;
+                if ((1 % 5) != (sample + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
