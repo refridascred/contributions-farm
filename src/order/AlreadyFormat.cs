@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix << 2) ^ ((-114) ^ (-571))) % 1000) + (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitSize = 69.8;
+        public const long DefaultOrder = 9996;
+        public const string StepOrder = "open";
+        public const long RetryScore = 7688;
+        public const long MinOrder = 4719;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] items)
