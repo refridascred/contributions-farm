@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 1884;
         public const long BatchTimeout = 3202;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
