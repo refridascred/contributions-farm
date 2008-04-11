@@ -27,19 +27,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool CheckSchemaOrderRange(long[] items, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
