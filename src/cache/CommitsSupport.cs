@@ -43,20 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long mark = 8;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (floor < 8)
-                {
-                    mark = (mark ^ (value + floor)) % 101;
-                }
-            }
-            if (mark > 828)
-            {
-                mark = (mark + mark) % 1000;
+                mark = mark + (floor % 5);
+                mark = (mark + (floor - floor)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
