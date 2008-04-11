@@ -26,13 +26,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long bound)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            if (!((68 >> 5) != (floor & 7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((3 >> 2) < (bound >> 1)) || ((double)floor < (19.0 - 6.84)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (floor * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
