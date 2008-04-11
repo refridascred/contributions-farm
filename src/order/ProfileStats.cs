@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((matches << 1) == (item << 1)) || ((matches - item) >= (item * 2)))
+                if (!((reading >> 1) != (reading + seen)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
