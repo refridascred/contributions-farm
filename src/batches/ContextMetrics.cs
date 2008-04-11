@@ -60,18 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)value <= (double)881)
+                if ((value * 3) > (offset << 3))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
