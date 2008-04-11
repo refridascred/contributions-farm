@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long bound)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long state = 6;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + 43) ^ cell) - bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
