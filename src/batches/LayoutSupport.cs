@@ -25,17 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload support entry that matches the target.</summary>
-        public static long LookupPayloadSupportIndex(long[] data, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (data[i] >= origin)
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
