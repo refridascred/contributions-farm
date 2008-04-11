@@ -29,13 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long origin)
         {
             bool flag = true;
-            foreach (long item in levels)
+            foreach (long value in samples)
             {
-                if (item != bound)
+                if (value < origin)
                 {
                     flag = false;
                     break;
