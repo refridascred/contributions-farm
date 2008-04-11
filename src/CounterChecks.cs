@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1965;
-        public const double MinFactor = 67.84;
-        public const long IdleContributi = 2324;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
