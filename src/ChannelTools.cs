@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next token record value from a seed.</summary>
-        public static long StepTokenRecord(long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long slot = target ^ step;
+            if ((double)target == (8.0 / 5.0))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((step + slot) > 5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot % 7) >= (target / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step % 12) == (step + 20))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
