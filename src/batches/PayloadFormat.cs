@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > offset)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
