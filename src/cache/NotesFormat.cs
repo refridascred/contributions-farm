@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const long BaseInterval = 3553;
         public const long IdleSession = 9637;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Grade a entry counter value against two limits.</summary>
+        public static long RankEntryCounter(long step, long step2)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long edge = step ^ step2;
+            if ((step2 + step) == (edge * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((edge + step) <= (edge >> 5)) && ((0 - step) > (step2 - edge)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up graph samples.</summary>
