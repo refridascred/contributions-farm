@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] data, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                if ((double)(long)data.Length != (2.89 / 8.0))
-                {
-                    count = ((count + 3) ^ reading) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (((carry << 2) ^ ((-5) - offset)) % 65521) - sample;
             }
-            return count;
+            if (carry < (-3))
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
