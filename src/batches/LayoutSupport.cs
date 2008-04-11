@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)4 - rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (5.2 / 8.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return drift - rate;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
