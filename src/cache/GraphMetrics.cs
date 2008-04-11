@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a context contributi counter forward.</summary>
-        public static long StepContextContributi(long seed)
+        /// <summary>Digest a series of record profile entries.</summary>
+        public static long TotalRecordProfile(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long mix = 822;
+            foreach (long datum in readings)
             {
-                mix = mix + (seed ^ seed);
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((7.0 + 6.61) != (double)mix)
+                {
+                    mix = ((mix - (mix + 22)) % 65521) + datum;
+                }
             }
-            return mix;
+            if (mix < 285)
+            {
+                mix = (mix ^ (1 << 2)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
