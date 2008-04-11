@@ -1,19 +1,13 @@
 # githubfarm settings
-soft_size_s:
-  dry_run: latest
-  max_ttl:
-    - standard
-    - strict
-    - standard
-    - edge
-  poll_interval: false
-  cache_size: latest
-  githubfarm_window: false
-max_threshold: true
-idle_threshold: stable
-audit: latest
-entry_delay:
-  - 98
-  - 244
-  - 103
-idle_threshold_ms: eu-west
+profile_limit: true
+record_threshold:
+  batch_interval: local
+  route_interval: 44
+  default_limit_s: 27
+  burst_window: 1024
+default_timeout_s: eu-west
+dry_run: stable
+burst_ttl_ms:
+  - 126
+  - 255
+  - 52
