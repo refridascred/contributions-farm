@@ -80,18 +80,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((34 & 127) <= reading) && (62 < (reading >> 3))) && ((2.26 * 7.82) > (17.0 / 9.0)))
+                carry = (carry ^ (seed << 2)) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 3;
+                    carry = ((carry - seed) % 97) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
