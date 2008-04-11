@@ -51,11 +51,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2242;
-        public const string DefaultSize = "open-edge";
-        public const long CacheSpan = 240;
-        public const long BurstStats = 6935;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
