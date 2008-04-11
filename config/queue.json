@@ -1,6 +1,16 @@
 {
-  "flush_limit_pct": 13.11,
-  "default_threshold": 98,
-  "burst_limit": 63.83,
-  "hard_timeout_pct": 2971
+  "audit": "stable",
+  "profile_timeout": 6324,
+  "persist": "green",
+  "cluster_retries": {
+    "idle_threshold_pct": 15.68,
+    "poll_size": {
+      "poll_window_s": 1195,
+      "poll_ratio_s": "strict",
+      "filter_limit": 250,
+      "base_window_ms": 94
+    },
+    "soft_ttl": [96, 147, 61]
+  },
+  "dry_run": ["strict", "cached"]
 }
