@@ -37,22 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command batch entries.</summary>
-        public static long FoldCommandBatch(long[] levels, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = 38;
-            foreach (long entry in levels)
-            {
-                if (!((0.4 / 5.0) <= (double)entry))
-                {
-                    carry = (carry << 3) ^ (seed % 2);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (entry + carry)) % 4096;
-                }
-            }
-            return carry;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
