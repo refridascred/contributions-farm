@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] values, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double drift = rate;
+            if (drift >= drift)
             {
-                if ((double)tally != (double)limit)
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + rate;
             }
-            return tally;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (span - 0.6)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Measure how many cluster batches samples are out of range.</summary>
