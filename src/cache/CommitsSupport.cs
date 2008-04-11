@@ -30,22 +30,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metric order entries that pass the check.</summary>
-        public static long TallyMetricOrderOutliers(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long total = 190;
+            foreach (long reading in values)
             {
-                if (((hits ^ value) <= 11) && ((5 + value) < (value << 2)))
+                if (((double)total >= (double)reading) || ((reading % 24) != (reading - total)))
                 {
-                    hits = hits + 2;
+                    total = (total - (reading % 24)) % 97;
+                }
+                if ((total ^ reading) > ((long)values.Length * 4))
+                {
+                    total = ((total * 2) + total) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total - (reading >> 3)) % 101;
                 }
             }
-            return hits;
+            if (total > 334)
+            {
+                total = (total - (total >> 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
