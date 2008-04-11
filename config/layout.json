@@ -1,5 +1,7 @@
 {
-  "min_capacity_pct": true,
-  "min_limit_count": 62,
-  "cache_threshold_s": 67.23
+  "warm_size": 54,
+  "account_threshold": ["standard", "local", "stable"],
+  "sync_capacity": 30,
+  "base_interval": 39.7,
+  "soft_limit_count": 100
 }
