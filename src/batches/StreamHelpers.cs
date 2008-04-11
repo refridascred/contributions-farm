@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Blend two window layout measurements.</summary>
-        public static double ScaleWindowLayout(double ratio, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long offset)
         {
-            double drift = (double)(11 + 56);
-            if (drift > (double)72)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                drift = drift - (ratio / 4.0);
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (ratio - floor)) - (double)(long)i;
-            }
-            return drift + ratio;
+            return flag;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
