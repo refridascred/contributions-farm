@@ -27,18 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] samples, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = -12;
+            foreach (long sample in samples)
             {
-                if ((double)reading <= (0.4 + 1.35))
-                {
-                    matches = (matches + 1) - step;
-                }
+                mark = ((mark * 2) + (sample & 127)) - origin;
             }
-            return matches;
+            return mark;
         }
     }
 }
