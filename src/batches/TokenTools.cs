@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] items, long offset)
         {
-            long anchor = 137;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ anchor) % 97;
-                if (entry >= (entry >> 4))
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < (-3))
-            {
-                anchor = (anchor - (891 + bound)) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
