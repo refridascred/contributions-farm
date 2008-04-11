@@ -50,9 +50,22 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheBudget = "primary";
-        public const double MaxCount = 39.54;
-        public const string BaseTimeout = "strict-v2";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
+        {
+            long acc = 394;
+            foreach (long sample in readings)
+            {
+                if (((sample % 2) == (811 + acc)) && ((acc % 24) >= (sample * 4)))
+                {
+                    acc = acc - (acc + sample);
+                }
+                else
+                {
+                    acc = (acc + (sample << 2)) % 97;
+                }
+            }
+            return acc;
+        }
     }
 }
