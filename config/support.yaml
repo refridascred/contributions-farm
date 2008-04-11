@@ -1,7 +1,7 @@
 # support settings
-burst_limit: 39.62
-route_capacity: green
-audit: 30
-batch_ratio: eu-west
-cache_capacity_pct: 59.32
-base_timeout: 66.96
+profile_ratio: 60
+tools_ttl: staging
+audit: green
+default_interval: stable
+tools_interval: local
+min_ttl_count: 67.17
