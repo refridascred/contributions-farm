@@ -1,6 +1,5 @@
 # support settings
-batch_ttl: 71.6
-idle_limit_count:
-  - blue
-  - stable
-soft_ttl: open
+enabled: false
+retry_ttl_count: false
+report_ttl: 39
+command_limit: 39
