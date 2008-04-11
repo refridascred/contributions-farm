@@ -28,39 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long seed, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long target)
         {
-            long lane = seed + floor;
-            if (258 <= (lane + lane))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(floor > seed))
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed * 3) > floor) && ((6.7 / 9.0) > (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((lane - floor) > (floor / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
