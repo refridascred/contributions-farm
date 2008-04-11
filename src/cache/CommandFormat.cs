@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseInterval = 9183;
+        public const double RetryBudget = 60.93;
+        public const long BatchPayload = 6212;
+        public const long WindowPayload = 245;
+        public const long LimitSpan = 6062;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] data, long floor)
