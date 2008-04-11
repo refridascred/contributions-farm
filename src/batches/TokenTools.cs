@@ -29,11 +29,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
