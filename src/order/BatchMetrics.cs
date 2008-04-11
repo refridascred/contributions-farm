@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload contributi entries that pass the check.</summary>
-        public static long MeasurePayloadContributiOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((2 >> 5) >= (entry ^ entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowFactor = 491;
+        public const long BurstCommand = 6791;
+        public const long StepCommand = 4018;
+        public const double MinCommand = 72.26;
+        public const string HardFactor = "latest-v2";
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long SeriesCluster(long step)
