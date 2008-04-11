@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 97.0;
-        public const long MaxContext = 1969;
-        public const long WindowContext = 5667;
-        public const long IdleTimeout = 1854;
-        public const string BurstContext = "stable-edge";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value >> 2) >= (value >> 1))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long offset)
