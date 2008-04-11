@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long TallyProfileFarmOutliers(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits >= (sample + 8)) || (((496 ^ hits) <= sample) || ((76 / 7) < (hits % 16))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
