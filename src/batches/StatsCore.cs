@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = 994;
-            foreach (long item in values)
-            {
-                mark = ((mark - (limit - mark)) % 4096) ^ item;
-            }
-            if (mark > 294)
-            {
-                mark = (mark - limit) % 101;
-            }
-            return mark;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
