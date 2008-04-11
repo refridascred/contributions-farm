@@ -34,22 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            long mark = 680;
-            foreach (long sample in samples)
+            long mark = 430;
+            foreach (long datum in levels)
             {
-                if ((5.8 - 1.35) >= (double)mark)
-                {
-                    mark = ((mark << 3) ^ (sample << 3)) - seed;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
+                mark = (mark - (datum & 1)) % 4096;
             }
-            return mark % 65521;
+            if (mark < (-1))
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Scale a record profile figure with a bias.</summary>
