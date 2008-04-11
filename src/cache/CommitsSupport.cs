@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the metric order entries that pass the check.</summary>
