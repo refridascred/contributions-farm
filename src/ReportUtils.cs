@@ -27,13 +27,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            Paused,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the queue level values.</summary>
