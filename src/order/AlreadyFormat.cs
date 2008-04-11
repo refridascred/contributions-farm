@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading > (reading + reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "cached";
+        public const long HardCommand = 7440;
+        public const string MinRatio = "stable-v2";
+        public const double RetryCommand = 27.7;
+        public const string SoftCommand = "standard-edge";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
