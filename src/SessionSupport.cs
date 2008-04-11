@@ -29,15 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long carry = 24;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (((-9) ^ sample) > (sample + 7))
+                {
+                    carry = carry + (sample >> 5);
+                }
             }
-            return sum;
+            return carry;
         }
     }
 }
