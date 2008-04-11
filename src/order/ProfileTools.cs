@@ -53,23 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!!(hits <= (reading + 528)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepScore = 2821;
+        public const long RetryDepth = 9555;
+        public const long BatchRatio = 3180;
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
         public static long MatchNotesEditorCount(long[] values)
