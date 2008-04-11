@@ -31,12 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long seed)
         {
-            Draft,
-            New,
-            Closed,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
