@@ -39,18 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((count & 127) >= count)
+                if (reading != origin)
                 {
-                    count = (count + 2) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
