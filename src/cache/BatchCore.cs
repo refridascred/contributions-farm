@@ -16,12 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] series)
         {
-            Active,
-            Stale,
-            New,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits < (9.0 + 4.0))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
