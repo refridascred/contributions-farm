@@ -36,31 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long origin)
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long TallyGraphContributiHits(long[] readings)
         {
-            if ((674 << 1) > (bound + origin))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 4) >= (9 + origin)) || (bound < (bound - origin)))
+                if (((item >= (item / 5)) && ((double)matches > 1.0)) && ((item > (3 / 7)) && ((double)item > (6.08 + 2.13))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin > 2.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
