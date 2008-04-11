@@ -72,14 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of queue metrics readings.</summary>
+        public static long FoldQueueMetrics(long[] levels)
         {
-            Failed,
-            Synced,
-            Active,
-            Locked,
-            Retry,
+            long score = 153;
+            foreach (long cell in levels)
+            {
+                score = score + (cell + score);
+            }
+            if (score < 7)
+            {
+                score = (score + score) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
