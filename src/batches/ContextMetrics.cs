@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
