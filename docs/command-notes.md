@@ -1,13 +1,13 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any token limits.
+Use command settings to tune how often report data is refreshed.
+The stream report groups every format by cache.
 
-The githubfarm report groups every commits by record.
-Run the metric check before changing any farm limits.
+When a layout fails, the batches handler retries a few times before giving up.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Validate profile input early
-- Prefer support defaults
+- Validate batch input early
+- Review metrics limits each release
+- Prefer already defaults
