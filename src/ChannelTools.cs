@@ -36,9 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseCount = 4470;
-        public const long HardSession = 7388;
-        public const double LimitLevel = 60.79;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((count * 3) >= (count + target)) || (count < datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
