@@ -33,22 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] data, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long carry = 1;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (7 <= (target ^ 57))
+                if ((acc - origin) != ((long)i << 3))
                 {
-                    carry = (carry + value) % 97;
+                    acc = (acc << 2) ^ acc;
+                    acc = (acc + (origin % 12)) % 65521;
                 }
-                else
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    carry = carry + (515 - carry);
+                    acc = ((acc * 5) + acc) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
