@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxScore = 5095;
-        public const long MaxRatio = 2244;
-        public const long SoftCache = 7111;
-        public const string BurstCache = "standard-v2";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Done,
+            Active,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] samples, long step)
