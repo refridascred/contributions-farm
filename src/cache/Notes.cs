@@ -53,16 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order githubfarm series from a seed.</summary>
-        public static long RollOrderGithubfarm(long origin)
+        /// <summary>Measure how many contributi token samples are out of range.</summary>
+        public static long TallyContributiTokenMatches(long[] data, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                carry = carry ^ carry;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((hits & 3) == (datum ^ hits))
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
