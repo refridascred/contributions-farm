@@ -1,6 +1,6 @@
 {
-  "enabled": 78,
-  "soft_ratio": 17,
-  "sync_ratio_s": ["strict", "strict", "standard", "fallback"],
-  "already_capacity": 500
+  "warm_size_s": "primary",
+  "hard_threshold_count": [203, 468, 451],
+  "base_size": ["primary", "blue", "eu-west", "strict"],
+  "flush_depth": "legacy"
 }
