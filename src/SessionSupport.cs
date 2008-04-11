@@ -33,15 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double rate = ratio;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate + (ratio + rate)) + (double)(long)i) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (double)8;
+            return seen;
         }
     }
 }
