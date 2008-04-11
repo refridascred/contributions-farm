@@ -62,18 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally << 2) == (reading * 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two command measurements.</summary>
