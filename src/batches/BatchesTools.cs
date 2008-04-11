@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long step)
+        /// <summary>Scale a commits metrics figure with a bias.</summary>
+        public static double AdjustCommitsMetrics(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(546 + 8);
+            if (gain >= (scale / 5.0))
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                gain = (gain - scale) + floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (scale / 6.0)) - (double)(long)i;
+            }
+            return gain + (double)89;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
