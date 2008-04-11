@@ -65,38 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long floor, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (((offset & 31) == (floor + 24)) || ((offset & 127) != (floor + 107)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-37) & 7) == (offset % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 4) < (floor >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((6 >> 3) < (floor ^ floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Synced,
         }
     }
 }
