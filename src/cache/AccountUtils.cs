@@ -14,21 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
