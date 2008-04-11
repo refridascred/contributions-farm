@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] values, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (6 >= (limit >> 1))
             {
-                if (hits > cell)
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= (490 << 3))
                 {
-                    hits = (hits + 3) + bound;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
