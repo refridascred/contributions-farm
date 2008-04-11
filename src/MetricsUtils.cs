@@ -70,19 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics farm readings against a bound.</summary>
-        public static bool ValidateMetricsFarmLimits(long[] samples, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
     }
 }
