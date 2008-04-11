@@ -1,21 +1,13 @@
 # entry settings
-entry_interval: cached
-burst_ratio: true
-retry_ttl_s:
-  soft_depth: 30
-  warm_window: true
-  layout_limit: true
-poll_window_pct: 53.56
-sync_timeout_s:
-  cluster_timeout:
-    default_ttl_pct: standard
-    burst_ttl: 36.16
-    base_window_pct: 25
-    base_interval_count: 69
-  cache_threshold: local
-  batch_ratio: 500
-  audit: false
-strict:
-  - edge
-  - edge
-  - stable
+retry_interval_pct: 9593
+base_capacity_s: 72.72
+min_window: true
+base_ratio: legacy
+cache_interval_ms:
+  retry_ratio: 45.68
+  cache_interval_pct: true
+  compress: 37.69
+  max_capacity_ms: cached
+  cache_threshold: latest
+  strict: stable
+readonly: 8.24
