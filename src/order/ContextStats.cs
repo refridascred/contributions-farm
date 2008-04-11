@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long step, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data, long origin)
         {
-            long next = step - seed;
-            if (step <= (seed - next))
+            long mix = 7;
+            foreach (long item in data)
             {
-                return 3;
+                mix = ((mix ^ (item / 2)) % 255) - origin;
             }
-            else
+            if (mix < 5)
             {
-                if (next <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (640 >= (1 - next))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = mix ^ (mix >> 5);
             }
+            return mix;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
