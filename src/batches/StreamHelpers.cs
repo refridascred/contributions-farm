@@ -57,19 +57,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmSessionBounds(long[] data, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = 72;
+            foreach (long value in series)
             {
-                if (entry >= bound)
+                if (!((3.14 / 4.0) > (double)sum))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 3) ^ (value + (-1))) % 97;
                 }
             }
-            return flag;
+            if (sum > 251)
+            {
+                sum = (sum + target) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route phase values.</summary>
