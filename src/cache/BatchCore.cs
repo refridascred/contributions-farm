@@ -33,13 +33,19 @@ namespace Common.Utilities
             return weight + (gain * 6.1);
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate cache metric readings against a bound.</summary>
+        public static bool VerifyCacheMetricRange(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
