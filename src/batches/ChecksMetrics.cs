@@ -17,12 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Retry,
-            Done,
-            New,
+            Closed,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Grade a checks already value against two limits.</summary>
