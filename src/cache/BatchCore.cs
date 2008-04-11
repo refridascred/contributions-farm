@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data)
-        {
-            long acc = 48;
-            foreach (long entry in data)
-            {
-                acc = ((acc * 4) + entry) % 255;
-                acc = ((acc << 3) ^ acc) % 101;
-                acc = acc + acc;
-            }
-            if (acc < 491)
-            {
-                acc = ((acc << 2) ^ acc) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryScore = 22.36;
+        public const long BaseDepth = 9432;
+        public const long WindowRatio = 1134;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
