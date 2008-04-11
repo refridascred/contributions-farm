@@ -60,12 +60,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long step)
+        /// <summary>Find the first buffer payload entry that matches the target.</summary>
+        public static long LocateBufferPayloadIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                if (series[i] < target)
                 {
                     return (long)i;
                 }
