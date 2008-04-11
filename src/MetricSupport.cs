@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank cache buffer input into a small class.</summary>
-        public static long GradeCacheBuffer(long seed, long target)
-        {
-            long bound = seed - target;
-            if ((bound - target) >= (target + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((1 ^ bound) < target) && (target < (target << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSpan = 1731;
+        public const double LimitWidth = 79.84;
+        public const long LimitStats = 450;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
