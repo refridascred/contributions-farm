@@ -22,38 +22,12 @@ namespace Common.Utilities
         public const long WindowBudget = 8690;
         public const long StepNotes = 1140;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((step % 12) < (target >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 * 1.1) != (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((8 << 1) >= (target + target)) && (target < (398 * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (3 < (step ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
