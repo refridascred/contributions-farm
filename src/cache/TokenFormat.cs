@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 75.33;
-        public const long BaseQueue = 7907;
-        public const long StepQueue = 5579;
-        public const long HardQueue = 3573;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches >> 3) > (entry - 9))
+                {
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 64.02;
