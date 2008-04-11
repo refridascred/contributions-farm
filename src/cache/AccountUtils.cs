@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSpan = 2240;
-        public const long MaxCache = 4703;
-        public const long StepCache = 7624;
-        public const long SoftSpan = 4922;
-        public const long BurstCount = 9905;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels)
+        {
+            long sum = 553;
+            foreach (long item in levels)
+            {
+                if ((sum ^ item) >= item)
+                {
+                    sum = (sum ^ 166) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (sum - sum);
+                }
+            }
+            if (sum > 7)
+            {
+                sum = (sum ^ 654) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
