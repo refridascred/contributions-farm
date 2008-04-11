@@ -1,15 +1,4 @@
 # support settings
-already_threshold:
-  graph_window: eu-west
-  flush_delay_pct: 44
-  flush_limit_count: 61.57
-  idle_window: 500
-  strict:
-    - 317
-    - 493
-    - 141
-    - 346
-  record_delay: standard
-hard_retries_ms: 73
-cache_interval_ms: edge
-burst_timeout_pct: edge
+warm_delay: 250
+dry_run: 38
+default_depth: 97.33
