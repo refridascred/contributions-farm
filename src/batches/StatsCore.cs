@@ -44,16 +44,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long carry = 869;
+            foreach (long value in values)
             {
-                carry = carry - (carry + carry);
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((4 / 2) <= carry)
+                {
+                    carry = ((carry * 2) + (value - 0)) % 4096;
+                    continue;
+                }
+                if ((carry + value) < ((long)values.Length ^ carry))
+                {
+                    carry = carry ^ (3 - 2);
+                }
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
