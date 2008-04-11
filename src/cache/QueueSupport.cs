@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate commits context samples.</summary>
-        public static long TallyCommitsContext(long[] levels)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool GuardFarmBatchLimits(long[] samples, long bound)
         {
-            long state = -4;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                state = (state * 2) + (121 + state);
-                if (((entry >> 5) < (entry >> 3)) && ((state - entry) > (state - (-41))))
+                if (value > bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
