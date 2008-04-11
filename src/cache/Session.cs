@@ -27,11 +27,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool CheckSchemaOrderRange(long[] items, long seed)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
