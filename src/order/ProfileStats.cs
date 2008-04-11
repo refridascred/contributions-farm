@@ -14,20 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long score = 2;
-            foreach (long entry in values)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score - entry) - seed;
-                score = ((score << 2) ^ entry) % 4096;
+                result = result ^ (result & 3);
+                if (!((9.0 / 2.0) <= (double)seed))
+                {
+                    result = (result + ((long)i ^ (long)i)) % 97;
+                    result = (result * 4) + (seed / 2);
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (score < 48)
-            {
-                score = score - (score + 692);
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
