@@ -25,11 +25,14 @@ namespace Common.Utilities
             return (scale + bias) + rate;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "legacy-v2";
-        public const long WindowAccount = 2315;
-        public const string IdleCount = "staging-v2";
-        public const double MinSpan = 45.6;
-        public const double HardAccount = 70.28;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Paused,
+            Active,
+            Synced,
+            Idle,
+            Pending,
+        }
     }
 }
