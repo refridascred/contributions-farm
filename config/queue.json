@@ -1,8 +1,11 @@
 {
-  "poll_ratio_s": 16.73,
-  "hard_timeout_count": "green",
-  "warm_interval_count": "local",
-  "warm_window": 500,
-  "hard_capacity_s": "strict",
-  "flush_retries_s": 1628
+  "warm_delay": 72,
+  "flush_timeout_pct": "stable",
+  "strict": {
+    "layout_capacity": [263, 183, 197],
+    "batch_depth_ms": 5931,
+    "strict": 5150,
+    "cache_threshold": true,
+    "flush_size": 59.84
+  }
 }
