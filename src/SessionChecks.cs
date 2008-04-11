@@ -31,18 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session buffer samples.</summary>
-        public static long ScoreSessionBuffer(long[] values, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long score = 907;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry % 8) >= score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (((score << 3) ^ (score << 3)) % 4096) - offset;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
