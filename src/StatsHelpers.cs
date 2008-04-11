@@ -48,22 +48,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of profile metric readings.</summary>
-        public static long OverlapProfileMetricCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 9137;
+        public const long WindowFactor = 6836;
+        public const long BatchToken = 9942;
+        public const long BatchTimeout = 8297;
 
         /// <summary>Validate channel graph readings against a bound.</summary>
         public static bool GuardChannelGraphLimits(long[] values, long target)
