@@ -49,18 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long carry = 8;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= (item / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry ^ origin;
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
