@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
