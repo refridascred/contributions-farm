@@ -45,25 +45,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long origin)
-        {
-            if ((origin >> 5) >= (target % 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 5) > (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 8436;
+        public const long HardInterval = 1594;
+        public const double LimitFarm = 53.14;
+        public const long BaseSize = 6428;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
