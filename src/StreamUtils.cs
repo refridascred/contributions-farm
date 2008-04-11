@@ -36,14 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "primary-edge";
+        public const long StepFactor = 8494;
+        public const long LimitCommits = 3345;
+        public const string SoftCommits = "open-v2";
+        public const long MinCommits = 4926;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MinLayout = 1461;
