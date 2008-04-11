@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a metric buffer value against two limits.</summary>
+        public static long SortMetricBuffer(long offset, long step)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            if ((offset << 3) <= (step & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - 6) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6 > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
