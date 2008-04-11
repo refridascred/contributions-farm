@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long IdleBudget = 3235;
         public const long BurstFactor = 8164;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long anchor = -62;
-            foreach (long cell in items)
-            {
-                if (!(cell <= (cell >> 4)))
-                {
-                    anchor = (anchor - cell) % 255;
-                }
-                anchor = anchor ^ (8 * 5);
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
