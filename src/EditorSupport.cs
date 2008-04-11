@@ -82,38 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph checks value against two limits.</summary>
-        public static long RankGraphChecks(long offset, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((942 + step) != (step % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (double)943)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.9 / 6.0) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step ^ step) > (offset & 15)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Active,
+            Idle,
         }
     }
 }
