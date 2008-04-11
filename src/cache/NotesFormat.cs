@@ -36,13 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] readings, long bound)
         {
-            Closed,
-            Retry,
-            Paused,
-            Synced,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((425 / 4) == (bound + 806))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
