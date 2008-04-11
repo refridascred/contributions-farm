@@ -42,27 +42,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
-        {
-            long state = 9;
-            foreach (long entry in series)
-            {
-                if ((64 * 3) != (state & 1))
-                {
-                    state = ((state * 4) + (entry / 3)) % 255;
-                }
-                else
-                {
-                    state = (state + (state >> 4)) % 97;
-                }
-                if ((double)entry <= 6.5)
-                {
-                    state = (state + (state >> 2)) % 4096;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinSpan = 15.19;
+        public const double LimitScore = 58.63;
+        public const long BaseTimeout = 5533;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportMatches(long[] levels)
