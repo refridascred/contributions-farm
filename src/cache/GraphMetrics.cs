@@ -33,39 +33,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank context schema input into a small class.</summary>
-        public static long RankContextSchema(long bound, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long offset = bound + seed;
-            if ((offset + offset) == (54 - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 58) >= (seed - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound << 1) < seed) && ((seed + seed) <= bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + 6) <= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Define already limits and defaults.</summary>
