@@ -28,13 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Stale,
-            Active,
             Locked,
-            Dropped,
+            Synced,
+            Stale,
         }
     }
 }
