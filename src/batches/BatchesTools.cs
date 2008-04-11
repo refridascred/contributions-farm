@@ -27,15 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph channel entries.</summary>
-        public static long FoldGraphChannel(long[] samples, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long acc = 14;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc - (datum - datum)) % 4096) - step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
