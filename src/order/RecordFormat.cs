@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((4.0 * 9.56) > (double)entry)
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the batch report series from a seed.</summary>
