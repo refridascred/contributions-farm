@@ -12,25 +12,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long floor2)
-        {
-            if ((13.0 / 8.0) != (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 3) > (floor - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleDepth = 9253;
+        public const long DefaultInterval = 6329;
+        public const long DefaultRatio = 6920;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
