@@ -47,13 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
