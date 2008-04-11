@@ -24,19 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools commits readings.</summary>
-        public static long TallyToolsCommits(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long state = 39;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                state = (state - (item % 97)) % 4096;
-                if ((item % 3) >= (item + state))
+                if ((5.87 / 2.0) > (double)value)
                 {
-                    state = ((state * 2) + 4) % 65521;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
