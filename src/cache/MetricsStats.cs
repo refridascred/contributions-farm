@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data, long bound)
         {
-            Paused,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen & 255) <= (bound - reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
