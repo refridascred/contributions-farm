@@ -71,21 +71,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long MatchNotesEditorCount(long[] values)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long FoldChannelSchema(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 42;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark - (offset ^ offset)) % 255) + value;
+                mark = ((mark * 2) + (offset & 63)) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
