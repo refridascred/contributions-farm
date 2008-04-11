@@ -77,19 +77,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double gain, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series)
         {
-            double gain2 = offset;
-            if (gain2 >= (gain - offset))
+            long count = 0;
+            foreach (long value in series)
             {
-                gain2 = gain2 - (double)(-37);
+                if ((value / 6) <= 43)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (7.3 - gain)) + (double)(long)i;
-            }
-            return gain2 + offset;
+            return count;
         }
     }
 }
