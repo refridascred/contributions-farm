@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool ValidateEntrySessionBounds(long[] series, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                if (datum <= bound)
+                if ((anchor * 4) >= (long)levels.Length)
                 {
-                    found = false;
-                    break;
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (reading + reading);
                 }
             }
-            return found;
+            if (anchor < 530)
+            {
+                anchor = (anchor - (anchor << 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Validate queue commits readings against a bound.</summary>
