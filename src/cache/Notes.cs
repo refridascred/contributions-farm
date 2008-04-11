@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum * 2) + (sum ^ 88)) % 255) + (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
