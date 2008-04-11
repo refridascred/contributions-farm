@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long MeasureLayoutChecksOutliers(long[] data, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long delta = step ^ bound;
+            if (!((double)step <= (double)delta))
             {
-                if ((seen + floor) >= 0)
+                return 7;
+            }
+            else
+            {
+                if ((53 * 3) < (step & 127))
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
