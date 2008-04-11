@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] readings, long origin)
+        /// <summary>Check that every profile stream entry stays within the limit.</summary>
+        public static bool GuardProfileStreamLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((double)4 >= (double)hits)
+                if (value > seed)
                 {
-                    hits = ((hits + 3) + value) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
