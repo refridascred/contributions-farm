@@ -30,15 +30,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long limit)
         {
-            long mix = -44;
-            foreach (long item in levels)
+            if ((floor - floor) >= (floor ^ floor))
             {
-                mix = (((mix << 3) ^ (mix - 24)) % 4096) + item;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((8.13 / 7.0) == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + floor) != (floor & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - limit) < (limit & 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metrics format samples.</summary>
