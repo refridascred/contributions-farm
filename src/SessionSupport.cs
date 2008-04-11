@@ -29,19 +29,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 18.09;
+        public const long SoftFactor = 5679;
+        public const string CacheSpan = "latest-v2";
     }
 }
