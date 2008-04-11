@@ -1,6 +1,34 @@
 # entry settings
-compress: eu-west
-sync_ratio_pct: cached
-editor_ratio: 42
-default_interval_count: false
-base_size_pct: edge
+burst_threshold_ms:
+  - edge
+  - local
+  - open
+schema_size: green
+layout_limit:
+  - stable
+  - primary
+  - open
+verbose:
+  - 328
+  - 410
+  - 237
+  - 240
+hard_timeout:
+  readonly: 73
+  command_ttl: 72
+  max_limit: false
+  max_delay_s:
+    - stable
+    - eu-west
+  min_delay_count:
+    burst_retries_pct: true
+    poll_retries_s: legacy
+    default_delay: 96.11
+    burst_retries: 500
+    notes_window: 40.55
+  checks_interval:
+    retry_limit_count: legacy
+    base_retries: standard
+    warm_interval_pct: strict
+    hard_timeout: 250
+entry_limit: latest
