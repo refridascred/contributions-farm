@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Closed,
-            Queued,
-            Idle,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 18.27;
+        public const long BurstSchema = 8010;
+        public const double IdleSize = 62.0;
+        public const long MinSchema = 5596;
+        public const long LimitSize = 4204;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
