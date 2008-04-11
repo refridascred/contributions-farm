@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const long LimitCluster = 3586;
         public const long SoftCluster = 780;
 
-        /// <summary>Match up report already samples.</summary>
-        public static long MatchReportAlreadyCount(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
