@@ -55,19 +55,21 @@ namespace Common.Utilities
         public const double BatchTimeout = 32.41;
         public const string BaseBuffer = "staging-1";
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long mark = 120;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + value) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 2)
-            {
-                mark = mark ^ (mark + 9);
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
