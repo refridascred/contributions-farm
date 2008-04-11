@@ -13,11 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseLevel = 4321;
-        public const long HardInterval = 7115;
-        public const long HardSpan = 697;
-        public const double BurstDepth = 18.35;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 721;
