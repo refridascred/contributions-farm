@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            Pending,
-            Failed,
-            Synced,
-            Closed,
+            double scale = bias;
+            return (scale + bias) + rate;
         }
 
         /// <summary>Define account limits and defaults.</summary>
