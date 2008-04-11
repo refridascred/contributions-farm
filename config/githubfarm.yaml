@@ -1,7 +1,10 @@
 # githubfarm settings
-checks_depth: blue
-flush_timeout: 250
-hard_timeout_count: 76
-dry_run: 3797
-metric_window: standard
-layout_capacity: false
+soft_depth_count: true
+soft_delay_s: primary
+default_retries_pct: 7958
+warm_ttl_s:
+  - 240
+  - 392
+  - 11
+  - 318
+hard_limit_pct: 5728
