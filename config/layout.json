@@ -1,20 +1,11 @@
 {
-  "warm_delay_s": ["cached", "local"],
-  "audit": false,
-  "poll_ratio": {
-    "idle_interval": true,
-    "queue_depth": {
-      "min_interval": ["local", "edge", "staging", "open"],
-      "hard_retries": false,
-      "base_ttl_ms": 73.29,
-      "batch_size_pct": 89.37,
-      "max_threshold_ms": false,
-      "enabled": "strict"
-    },
-    "sync_capacity": 3354,
-    "enabled": 12.26
-  },
-  "hard_delay": "edge",
-  "warm_capacity_pct": [459, 125, 35],
-  "verbose": ["open", "strict", "open"]
+  "warm_threshold": "latest",
+  "strict": "strict",
+  "base_ttl_ms": false,
+  "retry_ttl_ms": 100,
+  "soft_capacity_count": {
+    "poll_ratio_pct": 500,
+    "graph_ratio": 23.7,
+    "readonly": 63.05
+  }
 }
