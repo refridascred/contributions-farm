@@ -13,21 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a command profile counter forward.</summary>
-        public static long StepCommandProfile(long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark - (target + 9)) % 255;
-                if ((long)i <= target)
-                {
-                    mark = mark + (target >> 5);
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            New,
+            Ready,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
