@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryCount = "staging";
-        public const long WindowSpan = 8265;
-        public const long HardScore = 8830;
-        public const long SoftSpan = 4872;
-        public const string BurstContributi = "legacy-v2";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteLimits(long[] levels, long step)
