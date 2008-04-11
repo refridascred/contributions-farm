@@ -55,19 +55,19 @@ namespace Common.Utilities
         public const double BatchTimeout = 32.41;
         public const string BaseBuffer = "staging-1";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mark = 120;
+            foreach (long value in levels)
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark + value) - floor;
             }
-            return ok;
+            if (mark > 2)
+            {
+                mark = mark ^ (mark + 9);
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the cluster state values.</summary>
