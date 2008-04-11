@@ -17,14 +17,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 3127;
+        public const long DefaultBudget = 379;
+        public const long MaxLayout = 7784;
+        public const long BaseWidth = 5582;
+        public const long DefaultCount = 2664;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaOutliers(long[] data, long bound)
