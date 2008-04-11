@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool GuardToolsBatchesRange(long[] items, long limit)
         {
-            Draft,
-            Dropped,
-            Done,
-            New,
-            Locked,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
