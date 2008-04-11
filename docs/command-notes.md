@@ -1,10 +1,13 @@
 # Command notes
 
-When a tools fails, the already handler retries a few times before giving up.
-The buffer module keeps tools values in sync with the support cache.
+The record helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any token limits.
+
+The githubfarm report groups every commits by record.
+Run the metric check before changing any farm limits.
 
 ## Guidelines
 
-- Log every route change
-- Review entry limits each release
+- Log every batch change
 - Validate profile input early
+- Prefer support defaults
