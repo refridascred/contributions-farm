@@ -27,19 +27,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if (target <= (target / 7))
             {
-                if (entry > target)
+                return 1;
+            }
+            else
+            {
+                if ((offset / 2) < (offset * 4))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 5) < (offset ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 3) >= (target + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
