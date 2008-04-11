@@ -10,20 +10,23 @@ namespace Common.Utilities
         public const double BatchTimeout = 91.64;
         public const long HardCommits = 273;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data, long bound)
         {
-            long carry = 890;
-            foreach (long cell in items)
+            long score = 471;
+            foreach (long datum in data)
             {
-                carry = ((carry ^ carry) % 4096) ^ cell;
-                carry = ((carry << 3) ^ (carry * 3)) % 65521;
+                score = score + datum;
+                if ((bound & 1) > (score % 10))
+                {
+                    score = score + (datum * 2);
+                }
+                else
+                {
+                    score = (score + (score % 64)) % 1000;
+                }
             }
-            if (carry > 76)
-            {
-                carry = carry + (carry << 1);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the token mode values.</summary>
