@@ -1,17 +1,6 @@
 {
-  "hard_window_ms": {
-    "sync_retries_ms": "cached",
-    "enabled": true,
-    "idle_threshold_s": {
-      "min_timeout_ms": 78,
-      "warm_threshold": 65,
-      "queue_ttl": 30
-    },
-    "soft_capacity": "green",
-    "strict": 30
-  },
-  "window_window": 250,
-  "session_window": "cached",
-  "retry_window": false,
-  "idle_ratio_ms": ["latest", "legacy", "stable", "blue"]
+  "base_ttl_ms": "green",
+  "readonly": false,
+  "audit": 2186,
+  "burst_timeout": "open"
 }
